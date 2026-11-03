@@ -1,0 +1,5351 @@
+{
+  "worker": "worker1",
+  "only": [
+    "c1_",
+    "c2_"
+  ],
+  "quick": false,
+  "out_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\paper_concept_results.json",
+  "log_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\worker1_c1_c2.log",
+  "n_specs_total": 96,
+  "n_selected": 24,
+  "elapsed_s": 4390.7,
+  "results": [
+    {
+      "name": "c1_regime_switch_us_equity_style",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat 1.25 below 2.0 - the return series is not distinguishable from noise",
+        "OOS Sharpe retains only 26% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "us_equity_style",
+      "is_negative_control": false,
+      "elapsed_s": 308.9,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.09 is below 0.5, while the gross-of-costs Sharpe is 0.40 - a real gross edge exists but it is too small to survive costs at this size and frequency.",
+      "in_sample_sharpe": 0.26816440330087116,
+      "pooled_oos_sharpe": 0.09000766128562877,
+      "pooled_oos_sharpe_live": 0.09000766128562877,
+      "final_is_sharpe": 0.34079173246655886,
+      "oos_retention": 0.26411339451863325,
+      "oos_cagr": 0.002151942071561219,
+      "oos_max_drawdown": 0.14007710937391338,
+      "oos_trades_total": 53,
+      "n_trades": 36,
+      "max_drawdown": 0.0845287675502594,
+      "total_return": 0.16107884895584368,
+      "cagr": 0.0068764304867372505,
+      "n_bars": 5492,
+      "t_stat": 1.2518898609097187,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.59685711069538,
+          "is_sharpe": 1.1509969129519275,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-14"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.4984827434841519,
+          "is_sharpe": 2.014555285257942,
+          "test_range": [
+            "2010-04-30",
+            "2013-09-25"
+          ],
+          "test_bars": 858,
+          "oos_trades": 6,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.09231776617007789,
+          "is_sharpe": 1.508118220172278,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-05"
+          ],
+          "test_bars": 858,
+          "oos_trades": 17,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.07684895049852616,
+          "is_sharpe": 1.0811213218737716,
+          "test_range": [
+            "2019-01-22",
+            "2022-06-15"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.37104284984599845,
+          "is_sharpe": 0.34079173246655886,
+          "test_range": [
+            "2023-06-01",
+            "2026-10-30"
+          ],
+          "test_bars": 858,
+          "oos_trades": 6,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "0.26816440330087116"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": 0.3968415979864926,
+        "gross_cagr": 0.010358471065661012,
+        "net_sharpe": 0.26816440330087116,
+        "net_cagr": 0.0068764304867372505,
+        "costs_paid": 8060.061875449476,
+        "turnover_total": 13908746.306704206,
+        "interpretation": "the edge survives costs but is materially eroded (32% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": 0.33257191705777633,
+            "cagr": 0.008617179245112405,
+            "n_trades": 36
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": 0.30037241272851917,
+            "cagr": 0.007746509372011268,
+            "n_trades": 36
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": 0.26816440330087116,
+            "cagr": 0.0068764304867372505,
+            "n_trades": 36
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": 0.2037668734646015,
+            "cagr": 0.0051382798679473485,
+            "n_trades": 36
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": 0.26816440330087116,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": 0.21893542613801648,
+            "sharpe_ratio_to_base": 0.8164224014936782
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": 0.23034405890769477,
+            "sharpe_ratio_to_base": 0.8589658286944846
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 36,
+        "trades_per_year": 1.6518572469045885,
+        "prob_profitable": 0.8933333333333333,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.07555422797051033,
+        "sharpe_p50": 0.2809352740412637,
+        "sharpe_p95": 0.6586585913225145,
+        "prob_sharpe_below_zero": 0.09566666666666666,
+        "median_max_drawdown": 0.07134969906108923,
+        "worst5pct_max_drawdown": 0.15878811438511176,
+        "final_p5": 94587.05292213586,
+        "final_p50": 116175.18887725467,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 582276375.2692884,
+        "binding_symbol": "RSP",
+        "per_symbol_limits": {
+          "DIA": 9709145396.785763,
+          "IWM": 42667818722.43848,
+          "MDY": 4307287136.9673195,
+          "QQQ": 53766966679.08508,
+          "RSP": 582276375.2692884,
+          "SPY": 227567565318.6296
+        },
+        "turnover_per_year": 13908746.306704206,
+        "n_traded_symbols": 6,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": 0.26816440330087116,
+      "symbols": [
+        "DIA",
+        "IWM",
+        "MDY",
+        "QQQ",
+        "RSP",
+        "SPY"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "c1_regime_switch_crypto",
+      "verdict": "INCONCLUSIVE",
+      "flags": [
+        "only 20 trades (need >=30)",
+        "t-stat -0.39 below 2.0 - the return series is not distinguishable from noise",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 40%",
+        "only 2/6 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "crypto",
+      "is_negative_control": false,
+      "elapsed_s": 198.7,
+      "gauntlet_raised": null,
+      "reasoning": "Too few trades (20) to distinguish signal from noise.",
+      "in_sample_sharpe": -0.13321203982346835,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": -0.22895741118268606,
+      "oos_retention": null,
+      "oos_cagr": 0.0,
+      "oos_max_drawdown": 0.0,
+      "oos_trades_total": 0,
+      "n_trades": 20,
+      "max_drawdown": 0.367268866218161,
+      "total_return": -0.14615857233403473,
+      "cagr": -0.018503252066642384,
+      "n_bars": 2132,
+      "t_stat": -0.3874688629834092,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": 0.6606427536014974,
+          "test_range": [
+            "2021-08-30",
+            "2022-03-03"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": 0.3144375338686593,
+          "test_range": [
+            "2022-10-31",
+            "2023-05-04"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": 0.2992542685042708,
+          "test_range": [
+            "2023-12-31",
+            "2024-07-03"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "is_sharpe": -0.37799540134109255,
+          "test_range": [
+            "2025-03-01",
+            "2025-09-02"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": null,
+          "is_sharpe": -0.22895741118268606,
+          "test_range": [
+            "2026-05-01",
+            "2026-11-02"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.13321203982346835"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": 0.0752238404873221,
+        "gross_cagr": 0.002499881064705889,
+        "net_sharpe": -0.13321203982346835,
+        "net_cagr": -0.018503252066642384,
+        "costs_paid": 19305.917307658812,
+        "turnover_total": 4470052.896329113,
+        "interpretation": "there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.02922445085696991,
+            "cagr": -0.008041451395728982,
+            "n_trades": 20
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.08129634764430765,
+            "cagr": -0.0132812233102787,
+            "n_trades": 20
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.13321203982346835,
+            "cagr": -0.018503252066642384,
+            "n_trades": 20
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.23621663755758696,
+            "cagr": -0.028881502233318646,
+            "n_trades": 20
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.13321203982346835,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.14717385995903182,
+            "sharpe_ratio_to_base": 1.1048089958990612
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.09889314185918141,
+            "sharpe_ratio_to_base": 0.7423739024658274
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 20,
+        "trades_per_year": 2.3639774859287055,
+        "prob_profitable": 0.4013333333333333,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.5134987462507297,
+        "sharpe_p50": 0.060441240435884544,
+        "sharpe_p95": 0.611657101286015,
+        "prob_sharpe_below_zero": 0.42033333333333334,
+        "median_max_drawdown": 0.4613199006868001,
+        "worst5pct_max_drawdown": 1.0991386661460787,
+        "final_p5": -14420.667542571193,
+        "final_p50": 86607.95437273258,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 2543941766.4766035,
+        "binding_symbol": "DOGE-USD",
+        "per_symbol_limits": {
+          "ADA-USD": 7414081270.044191,
+          "AVAX-USD": 171276762925.82385,
+          "BCH-USD": 3212045878266.743,
+          "BTC-USD": 3.963705619007375e+16,
+          "DOGE-USD": 2543941766.4766035,
+          "ETH-USD": 933410048674783.1,
+          "LINK-USD": 142916881297.02814,
+          "LTC-USD": 1006951746721.9711,
+          "SOL-USD": 5427912718335.719,
+          "XRP-USD": 37839241853.79342
+        },
+        "turnover_per_year": 4470052.896329113,
+        "n_traded_symbols": 10,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.13321203982346835,
+      "symbols": [
+        "ADA-USD",
+        "AVAX-USD",
+        "BCH-USD",
+        "BTC-USD",
+        "DOGE-USD",
+        "ETH-USD",
+        "LINK-USD",
+        "LTC-USD",
+        "SOL-USD",
+        "XRP-USD"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "c1_regime_switch_fx_major",
+      "verdict": "INCONCLUSIVE",
+      "flags": [
+        "only 0 trades (need >=30)",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "parameter stability 0% (< 60%)",
+        "only 0/22 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "fx_major",
+      "is_negative_control": false,
+      "elapsed_s": 349.8,
+      "gauntlet_raised": null,
+      "reasoning": "Too few trades (0) to distinguish signal from noise.",
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": 0.0,
+      "oos_max_drawdown": 0.0,
+      "oos_trades_total": 0,
+      "n_trades": 0,
+      "max_drawdown": 0.0,
+      "total_return": 0.0,
+      "cagr": 0.0,
+      "n_bars": 5680,
+      "t_stat": null,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-06",
+            "2009-05-19"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-21",
+            "2013-09-26"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-01",
+            "2018-02-08"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-11",
+            "2022-06-19"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2023-05-22",
+            "2026-11-03"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ERRORED",
+          "detail": "only 0 trades \u2014 Monte Carlo needs >=20"
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": null,
+        "gross_cagr": 0.0,
+        "net_sharpe": null,
+        "net_cagr": 0.0,
+        "costs_paid": 0.0,
+        "turnover_total": 0.0,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": null,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": null,
+            "sharpe_ratio_to_base": null
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": null,
+            "sharpe_ratio_to_base": null
+          }
+        ],
+        "stability": 0.0,
+        "interpretation": "narrow/unstable - possible curve-fit"
+      },
+      "monte_carlo": {
+        "error": "only 0 trades \u2014 Monte Carlo needs >=20"
+      },
+      "capacity": {
+        "est_capacity_usd": null,
+        "reason": "no traded symbols or zero turnover",
+        "turnover_per_year": 0.0
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": null,
+      "symbols": [
+        "AUDUSD=X",
+        "EURUSD=X",
+        "GBPUSD=X",
+        "NZDUSD=X",
+        "USDCAD=X",
+        "USDCHF=X",
+        "USDJPY=X",
+        "USDSEK=X"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "c1_regime_switch_commodities",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -0.43 below 2.0 - the return series is not distinguishable from noise",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 20%"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "commodities",
+      "is_negative_control": false,
+      "elapsed_s": 459.9,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.14 is below 0.5, and the gross-of-costs Sharpe is -0.05 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.09260453638500007,
+      "pooled_oos_sharpe": -0.1382545109566868,
+      "pooled_oos_sharpe_live": -0.1382545109566868,
+      "final_is_sharpe": -0.03693811713208016,
+      "oos_retention": null,
+      "oos_cagr": -0.015506537784304109,
+      "oos_max_drawdown": 0.34657349236629786,
+      "oos_trades_total": 98,
+      "n_trades": 84,
+      "max_drawdown": 0.38834559373471056,
+      "total_return": -0.22441183713667345,
+      "cagr": -0.011593176797087379,
+      "n_bars": 5492,
+      "t_stat": -0.4323119651513051,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -1.2679404380003974,
+          "is_sharpe": -1.3565395030757006,
+          "test_range": [
+            "2005-12-16",
+            "2009-05-18"
+          ],
+          "test_bars": 858,
+          "oos_trades": 13,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.0819144972547735,
+          "is_sharpe": -0.024276295744411522,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "test_bars": 858,
+          "oos_trades": 13,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.486635874792139,
+          "is_sharpe": 0.5072357455992088,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-09"
+          ],
+          "test_bars": 858,
+          "oos_trades": 36,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.11667064090392004,
+          "is_sharpe": -0.04515395604029902,
+          "test_range": [
+            "2019-01-28",
+            "2022-06-22"
+          ],
+          "test_bars": 858,
+          "oos_trades": 13,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.10572815074316884,
+          "is_sharpe": -0.03693811713208016,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "test_bars": 858,
+          "oos_trades": 23,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.09260453638500007"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": -0.04564995340152684,
+        "gross_cagr": -0.007599670897687649,
+        "net_sharpe": -0.09260453638500007,
+        "net_cagr": -0.011593176797087379,
+        "costs_paid": 6835.050056313839,
+        "turnover_total": 14514918.368507853,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.06932781843852542,
+            "cagr": -0.009614553913521284,
+            "n_trades": 84
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.08099044224604542,
+            "cagr": -0.010606248803878615,
+            "n_trades": 84
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.09260453638500007,
+            "cagr": -0.011593176797087379,
+            "n_trades": 84
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.11590329520406055,
+            "cagr": -0.013570392195616732,
+            "n_trades": 84
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.09260453638500007,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.05553623006278477,
+            "sharpe_ratio_to_base": 0.5997139258048316
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.06522493475340523,
+            "sharpe_ratio_to_base": 0.7043384406378849
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 84,
+        "trades_per_year": 3.8543335761107063,
+        "prob_profitable": 0.20333333333333334,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.441295642398328,
+        "sharpe_p50": -0.13415398125622544,
+        "sharpe_p95": 0.21196738073878205,
+        "prob_sharpe_below_zero": 0.7506666666666667,
+        "median_max_drawdown": 0.35014742277774424,
+        "worst5pct_max_drawdown": 0.7186833296463965,
+        "final_p5": 32203.808916794962,
+        "final_p50": 78674.06653749797,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 27949.515423313747,
+        "binding_symbol": "SI=F",
+        "per_symbol_limits": {
+          "CL=F": 576319878.9693966,
+          "CT=F": 14388709.602402,
+          "GC=F": 10176193.022896139,
+          "HG=F": 35197.81058288732,
+          "KC=F": 35698573.81617988,
+          "NG=F": 9986191.556394288,
+          "PA=F": 196870.10024646134,
+          "PL=F": 501004.5080378163,
+          "SB=F": 20656236.383419372,
+          "SI=F": 27949.515423313747,
+          "ZC=F": 1240622534.7481022,
+          "ZS=F": 1651488301.849421,
+          "ZW=F": 607453274.716998
+        },
+        "turnover_per_year": 14514918.368507853,
+        "n_traded_symbols": 13,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.09260453638500007,
+      "symbols": [
+        "CL=F",
+        "CT=F",
+        "GC=F",
+        "HG=F",
+        "KC=F",
+        "NG=F",
+        "PA=F",
+        "PL=F",
+        "SB=F",
+        "SI=F",
+        "ZC=F",
+        "ZS=F",
+        "ZW=F"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "c1_regime_switch_futures_broad",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -0.89 below 2.0 - the return series is not distinguishable from noise",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 21%",
+        "only 7/22 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "futures_broad",
+      "is_negative_control": false,
+      "elapsed_s": 451.0,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.13 is below 0.5, and the gross-of-costs Sharpe is -0.15 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.19011583827138334,
+      "pooled_oos_sharpe": 0.13157862706709278,
+      "pooled_oos_sharpe_live": 0.13157862706709278,
+      "final_is_sharpe": -0.5400086808670691,
+      "oos_retention": null,
+      "oos_cagr": 0.007190013328812528,
+      "oos_max_drawdown": 0.36577157570097796,
+      "oos_trades_total": 163,
+      "n_trades": 92,
+      "max_drawdown": 0.47284432577424473,
+      "total_return": -0.32310068114083956,
+      "cagr": -0.017730444895158848,
+      "n_bars": 5497,
+      "t_stat": -0.8879344313279198,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 1.2896860447074734,
+          "is_sharpe": -3.042735494685085,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-13"
+          ],
+          "test_bars": 859,
+          "oos_trades": 38,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.7250126177277351,
+          "is_sharpe": -1.182364553914761,
+          "test_range": [
+            "2010-04-29",
+            "2013-09-25"
+          ],
+          "test_bars": 859,
+          "oos_trades": 27,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.273425975638882,
+          "is_sharpe": -0.49610372247806367,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-08"
+          ],
+          "test_bars": 859,
+          "oos_trades": 41,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.3334062703367733,
+          "is_sharpe": -0.41892896105092126,
+          "test_range": [
+            "2019-01-25",
+            "2022-06-22"
+          ],
+          "test_bars": 859,
+          "oos_trades": 28,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.7850961839266702,
+          "is_sharpe": -0.5400086808670691,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "test_bars": 859,
+          "oos_trades": 29,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.19011583827138334"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": -0.1506758285866169,
+        "gross_cagr": -0.014628657940557788,
+        "net_sharpe": -0.19011583827138334,
+        "net_cagr": -0.017730444895158848,
+        "costs_paid": 7317.3771595275575,
+        "turnover_total": 23200988.239902783,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.1705612552641589,
+            "cagr": -0.01618850431540908,
+            "n_trades": 92
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.1803227071981841,
+            "cagr": -0.016957124126711354,
+            "n_trades": 92
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.19011583827138334,
+            "cagr": -0.017730444895158848,
+            "n_trades": 92
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.2120351794172717,
+            "cagr": -0.019427879042186014,
+            "n_trades": 92
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.19011583827138334,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.17212199788235202,
+            "sharpe_ratio_to_base": 0.9053532806491074
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.22101220460120735,
+            "sharpe_ratio_to_base": 1.1625133740079066
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 92,
+        "trades_per_year": 4.2175732217573225,
+        "prob_profitable": 0.20566666666666666,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.43470536012183275,
+        "sharpe_p50": -0.11489472602571994,
+        "sharpe_p95": 0.21653177319774145,
+        "prob_sharpe_below_zero": 0.7213333333333334,
+        "median_max_drawdown": 0.4487896006590163,
+        "worst5pct_max_drawdown": 1.0013430571971842,
+        "final_p5": 3690.1910264248118,
+        "final_p50": 69871.45033000827,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 20172.503253448787,
+        "binding_symbol": "SI=F",
+        "per_symbol_limits": {
+          "CL=F": 416168732.99385047,
+          "ES=F": 57210802920.72437,
+          "GC=F": 7342061.493584796,
+          "HG=F": 25432.942580954234,
+          "NG=F": 7208145.041070256,
+          "NQ=F": 18995796759.693188,
+          "RTY=F": 5898913513.599752,
+          "SI=F": 20172.503253448787,
+          "YM=F": 44636978750.82688,
+          "ZB=F": 658096585.1774697,
+          "ZC=F": 895235687.5483263,
+          "ZF=F": 985710203.5525717,
+          "ZN=F": 2261389021.1747193,
+          "ZS=F": 1192771965.7741811,
+          "ZT=F": 333142315.76582456
+        },
+        "turnover_per_year": 23200988.239902783,
+        "n_traded_symbols": 15,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.19011583827138334,
+      "symbols": [
+        "CL=F",
+        "ES=F",
+        "GC=F",
+        "HG=F",
+        "NG=F",
+        "NQ=F",
+        "RTY=F",
+        "SI=F",
+        "YM=F",
+        "ZB=F",
+        "ZC=F",
+        "ZF=F",
+        "ZN=F",
+        "ZS=F",
+        "ZT=F"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "c1_regime_switch_rates_credit",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -2.19 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "OOS Sharpe retains only -54% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 2%",
+        "only 5/22 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "rates_credit",
+      "is_negative_control": false,
+      "elapsed_s": 374.0,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.44 is below 0.5, and the gross-of-costs Sharpe is -0.21 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.4687089090477306,
+      "pooled_oos_sharpe": -0.4389946807031428,
+      "pooled_oos_sharpe_live": -0.4389946807031428,
+      "final_is_sharpe": 0.8201394838300566,
+      "oos_retention": -0.535268316375935,
+      "oos_cagr": -0.17880333589247388,
+      "oos_max_drawdown": 0.9770341645526451,
+      "oos_trades_total": 108,
+      "n_trades": 52,
+      "max_drawdown": 0.24161670444127126,
+      "total_return": -0.20013308076243697,
+      "cagr": -0.010196088325155173,
+      "n_bars": 5491,
+      "t_stat": -2.1879060035389966,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -1.0702178500303496,
+          "is_sharpe": 0.5858324089059782,
+          "test_range": [
+            "2005-12-19",
+            "2009-05-19"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.5658010124193352,
+          "is_sharpe": 0.4235831452210937,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "test_bars": 858,
+          "oos_trades": 36,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.4074410079778404,
+          "is_sharpe": 0.3862496287719777,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-07"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.37055440270103135,
+          "is_sharpe": 0.465261775190733,
+          "test_range": [
+            "2019-01-24",
+            "2022-06-17"
+          ],
+          "test_bars": 858,
+          "oos_trades": 24,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.245285488846433,
+          "is_sharpe": 0.8201394838300566,
+          "test_range": [
+            "2023-06-05",
+            "2026-11-03"
+          ],
+          "test_bars": 858,
+          "oos_trades": 24,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.4687089090477306"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": -0.20720609507427093,
+        "gross_cagr": -0.004630835629923724,
+        "net_sharpe": -0.4687089090477306,
+        "net_cagr": -0.010196088325155173,
+        "costs_paid": 10754.56960469351,
+        "turnover_total": 18606708.118669886,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.338404669536606,
+            "cagr": -0.007416325852016903,
+            "n_trades": 52
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.4036630238022712,
+            "cagr": -0.008806077699963777,
+            "n_trades": 52
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.4687089090477306,
+            "cagr": -0.010196088325155173,
+            "n_trades": 52
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.5974898039842996,
+            "cagr": -0.012969316440053835,
+            "n_trades": 52
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.4687089090477306,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.39525636690351607,
+            "sharpe_ratio_to_base": 0.84328750589903
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.3274986552773599,
+            "sharpe_ratio_to_base": 0.6987250486506313
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 52,
+        "trades_per_year": 2.38645055545438,
+        "prob_profitable": 0.018,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.7893759862122457,
+        "sharpe_p50": -0.44127178452739635,
+        "sharpe_p95": -0.0999666073174875,
+        "prob_sharpe_below_zero": 0.9816666666666667,
+        "median_max_drawdown": 0.2199272955503352,
+        "worst5pct_max_drawdown": 0.35837965614276374,
+        "final_p5": 65158.52433816525,
+        "final_p50": 80133.16237673207,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 7484514.907805264,
+        "binding_symbol": "^IRX",
+        "per_symbol_limits": {
+          "BND": 2276880512.3828316,
+          "EMB": 2504658448.317289,
+          "HYG": 9908360965.083004,
+          "IEF": 2313438191.128426,
+          "LQD": 4607949636.600803,
+          "SHY": 1638678963.2988482,
+          "TIP": 1385029906.6301632,
+          "TLT": 12679848158.127035,
+          "^FVX": 10802424.72436819,
+          "^IRX": 7484514.907805264,
+          "^TNX": 11944480.223805722,
+          "^TYX": 12865015.852755489
+        },
+        "turnover_per_year": 18606708.118669886,
+        "n_traded_symbols": 12,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.4687089090477306,
+      "symbols": [
+        "BND",
+        "EMB",
+        "HYG",
+        "IEF",
+        "LQD",
+        "SHY",
+        "TIP",
+        "TLT",
+        "^FVX",
+        "^IRX",
+        "^TNX",
+        "^TYX"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "c2_leading_vrp_us_equity_style",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "us_equity_style",
+      "is_negative_control": false,
+      "elapsed_s": 1.2,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VXN",
+        "reason": "",
+        "n_points": 1255
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5492,
+        "n_leading": 1250,
+        "fraction": 0.22760378732702113,
+        "source": "yahoo.chart",
+        "asset": "^VXN",
+        "reason": "",
+        "n_points": 1255,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "DIA": 1250,
+              "IWM": 1250,
+              "MDY": 1250,
+              "QQQ": 1250,
+              "RSP": 1250,
+              "SPY": 1250
+            },
+            "max": 1250,
+            "fraction": 0.22760378732702113
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "DIA": 1250,
+              "IWM": 1250,
+              "MDY": 1250,
+              "QQQ": 1250,
+              "RSP": 1250,
+              "SPY": 1250
+            },
+            "max": 1250,
+            "fraction": 0.22760378732702113
+          }
+        },
+        "resolution": "the universe is Nasdaq-like, so the Nasdaq-100 implied volatility index is the matching leading indicator"
+      }
+    },
+    {
+      "name": "c2_leading_vrp_crypto",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "crypto",
+      "is_negative_control": false,
+      "elapsed_s": 0.8,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "deribit.dvol",
+        "asset": "BTC",
+        "reason": "",
+        "n_points": 2051
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 2132,
+        "n_leading": 2049,
+        "fraction": 0.9610694183864915,
+        "source": "deribit.dvol",
+        "asset": "BTC",
+        "reason": "",
+        "n_points": 2051,
+        "series_first": "2021-03-24",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "ADA-USD": 2049,
+              "AVAX-USD": 2049,
+              "BCH-USD": 2049,
+              "BTC-USD": 2049,
+              "DOGE-USD": 2049,
+              "ETH-USD": 2049,
+              "LINK-USD": 2049,
+              "LTC-USD": 2049,
+              "SOL-USD": 2049,
+              "XRP-USD": 2049
+            },
+            "max": 2049,
+            "fraction": 0.9610694183864915
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "ADA-USD": 2049,
+              "AVAX-USD": 2049,
+              "BCH-USD": 2049,
+              "BTC-USD": 2049,
+              "DOGE-USD": 2049,
+              "ETH-USD": 2049,
+              "LINK-USD": 2049,
+              "LTC-USD": 2049,
+              "SOL-USD": 2049,
+              "XRP-USD": 2049
+            },
+            "max": 2049,
+            "fraction": 0.9610694183864915
+          }
+        },
+        "resolution": "the universe contains BTC-USD, whose options are priced on Deribit as BTC"
+      }
+    },
+    {
+      "name": "c2_leading_vrp_fx_major",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "fx_major",
+      "is_negative_control": false,
+      "elapsed_s": 1.7,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5680,
+        "n_leading": 1298,
+        "fraction": 0.22852112676056338,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "AUDUSD=X": 1298,
+              "EURUSD=X": 1298,
+              "GBPUSD=X": 1298,
+              "NZDUSD=X": 1298,
+              "USDCAD=X": 1298,
+              "USDCHF=X": 1298,
+              "USDJPY=X": 1298,
+              "USDSEK=X": 1298
+            },
+            "max": 1298,
+            "fraction": 0.22852112676056338
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "AUDUSD=X": 1298,
+              "EURUSD=X": 1298,
+              "GBPUSD=X": 1298,
+              "NZDUSD=X": 1298,
+              "USDCAD=X": 1298,
+              "USDCHF=X": 1298,
+              "USDJPY=X": 1298,
+              "USDSEK=X": 1298
+            },
+            "max": 1298,
+            "fraction": 0.22852112676056338
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    },
+    {
+      "name": "c2_leading_vrp_commodities",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "commodities",
+      "is_negative_control": false,
+      "elapsed_s": 2.8,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5492,
+        "n_leading": 1255,
+        "fraction": 0.2285142024763292,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "CL=F": 1255,
+              "CT=F": 1255,
+              "GC=F": 1255,
+              "HG=F": 1255,
+              "KC=F": 1255,
+              "NG=F": 1255,
+              "PA=F": 1255,
+              "PL=F": 1255,
+              "SB=F": 1255,
+              "SI=F": 1255,
+              "ZC=F": 1255,
+              "ZS=F": 1255,
+              "ZW=F": 1255
+            },
+            "max": 1255,
+            "fraction": 0.2285142024763292
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "CL=F": 1255,
+              "CT=F": 1255,
+              "GC=F": 1255,
+              "HG=F": 1255,
+              "KC=F": 1255,
+              "NG=F": 1255,
+              "PA=F": 1255,
+              "PL=F": 1255,
+              "SB=F": 1255,
+              "SI=F": 1255,
+              "ZC=F": 1255,
+              "ZS=F": 1255,
+              "ZW=F": 1255
+            },
+            "max": 1255,
+            "fraction": 0.2285142024763292
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    },
+    {
+      "name": "c2_leading_vrp_futures_broad",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "futures_broad",
+      "is_negative_control": false,
+      "elapsed_s": 2.9,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5497,
+        "n_leading": 1256,
+        "fraction": 0.2284882663270875,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "CL=F": 1256,
+              "ES=F": 1256,
+              "GC=F": 1256,
+              "HG=F": 1256,
+              "NG=F": 1256,
+              "NQ=F": 1256,
+              "RTY=F": 1256,
+              "SI=F": 1256,
+              "YM=F": 1256,
+              "ZB=F": 1256,
+              "ZC=F": 1256,
+              "ZF=F": 1256,
+              "ZN=F": 1256,
+              "ZS=F": 1256,
+              "ZT=F": 1256
+            },
+            "max": 1256,
+            "fraction": 0.2284882663270875
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "CL=F": 1256,
+              "ES=F": 1256,
+              "GC=F": 1256,
+              "HG=F": 1256,
+              "NG=F": 1256,
+              "NQ=F": 1256,
+              "RTY=F": 1256,
+              "SI=F": 1256,
+              "YM=F": 1256,
+              "ZB=F": 1256,
+              "ZC=F": 1256,
+              "ZF=F": 1256,
+              "ZN=F": 1256,
+              "ZS=F": 1256,
+              "ZT=F": 1256
+            },
+            "max": 1256,
+            "fraction": 0.2284882663270875
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    },
+    {
+      "name": "c2_leading_vrp_rates_credit",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "rates_credit",
+      "is_negative_control": false,
+      "elapsed_s": 2.3,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5491,
+        "n_leading": 1253,
+        "fraction": 0.22819158623201602,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "BND": 1253,
+              "EMB": 1253,
+              "HYG": 1253,
+              "IEF": 1253,
+              "LQD": 1253,
+              "SHY": 1253,
+              "TIP": 1253,
+              "TLT": 1253,
+              "^FVX": 1253,
+              "^IRX": 1253,
+              "^TNX": 1253,
+              "^TYX": 1253
+            },
+            "max": 1253,
+            "fraction": 0.22819158623201602
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "BND": 1253,
+              "EMB": 1253,
+              "HYG": 1253,
+              "IEF": 1253,
+              "LQD": 1253,
+              "SHY": 1253,
+              "TIP": 1253,
+              "TLT": 1253,
+              "^FVX": 1253,
+              "^IRX": 1253,
+              "^TNX": 1253,
+              "^TYX": 1253
+            },
+            "max": 1253,
+            "fraction": 0.22819158623201602
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_us_equity_style",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat 1.25 below 2.0 - the return series is not distinguishable from noise",
+        "OOS Sharpe retains only 26% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "us_equity_style",
+      "is_negative_control": true,
+      "elapsed_s": 205.8,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.09 is below 0.5, while the gross-of-costs Sharpe is 0.40 - a real gross edge exists but it is too small to survive costs at this size and frequency.",
+      "in_sample_sharpe": 0.26816440330087116,
+      "pooled_oos_sharpe": 0.09000766128562877,
+      "pooled_oos_sharpe_live": 0.09000766128562877,
+      "final_is_sharpe": 0.34079173246655886,
+      "oos_retention": 0.26411339451863325,
+      "oos_cagr": 0.002151942071561219,
+      "oos_max_drawdown": 0.14007710937391338,
+      "oos_trades_total": 53,
+      "n_trades": 36,
+      "max_drawdown": 0.0845287675502594,
+      "total_return": 0.16107884895584368,
+      "cagr": 0.0068764304867372505,
+      "n_bars": 5492,
+      "t_stat": 1.2518898609097187,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.59685711069538,
+          "is_sharpe": 1.1509969129519275,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-14"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.4984827434841519,
+          "is_sharpe": 2.014555285257942,
+          "test_range": [
+            "2010-04-30",
+            "2013-09-25"
+          ],
+          "test_bars": 858,
+          "oos_trades": 6,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.09231776617007789,
+          "is_sharpe": 1.508118220172278,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-05"
+          ],
+          "test_bars": 858,
+          "oos_trades": 17,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.07684895049852616,
+          "is_sharpe": 1.0811213218737716,
+          "test_range": [
+            "2019-01-22",
+            "2022-06-15"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.37104284984599845,
+          "is_sharpe": 0.34079173246655886,
+          "test_range": [
+            "2023-06-01",
+            "2026-10-30"
+          ],
+          "test_bars": 858,
+          "oos_trades": 6,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "0.26816440330087116"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": 0.3968415979864926,
+        "gross_cagr": 0.010358471065661012,
+        "net_sharpe": 0.26816440330087116,
+        "net_cagr": 0.0068764304867372505,
+        "costs_paid": 8060.061875449476,
+        "turnover_total": 13908746.306704206,
+        "interpretation": "the edge survives costs but is materially eroded (32% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": 0.33257191705777633,
+            "cagr": 0.008617179245112405,
+            "n_trades": 36
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": 0.30037241272851917,
+            "cagr": 0.007746509372011268,
+            "n_trades": 36
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": 0.26816440330087116,
+            "cagr": 0.0068764304867372505,
+            "n_trades": 36
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": 0.2037668734646015,
+            "cagr": 0.0051382798679473485,
+            "n_trades": 36
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": 0.26816440330087116,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": 0.21893542613801648,
+            "sharpe_ratio_to_base": 0.8164224014936782
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": 0.23034405890769477,
+            "sharpe_ratio_to_base": 0.8589658286944846
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 36,
+        "trades_per_year": 1.6518572469045885,
+        "prob_profitable": 0.8933333333333333,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.07555422797051033,
+        "sharpe_p50": 0.2809352740412637,
+        "sharpe_p95": 0.6586585913225145,
+        "prob_sharpe_below_zero": 0.09566666666666666,
+        "median_max_drawdown": 0.07134969906108923,
+        "worst5pct_max_drawdown": 0.15878811438511176,
+        "final_p5": 94587.05292213586,
+        "final_p50": 116175.18887725467,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 582276375.2692884,
+        "binding_symbol": "RSP",
+        "per_symbol_limits": {
+          "DIA": 9709145396.785763,
+          "IWM": 42667818722.43848,
+          "MDY": 4307287136.9673195,
+          "QQQ": 53766966679.08508,
+          "RSP": 582276375.2692884,
+          "SPY": 227567565318.6296
+        },
+        "turnover_per_year": 13908746.306704206,
+        "n_traded_symbols": 6,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": 0.26816440330087116,
+      "symbols": [
+        "DIA",
+        "IWM",
+        "MDY",
+        "QQQ",
+        "RSP",
+        "SPY"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_crypto",
+      "verdict": "INCONCLUSIVE",
+      "flags": [
+        "only 20 trades (need >=30)",
+        "t-stat -0.39 below 2.0 - the return series is not distinguishable from noise",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 40%",
+        "only 2/6 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "crypto",
+      "is_negative_control": true,
+      "elapsed_s": 134.1,
+      "gauntlet_raised": null,
+      "reasoning": "Too few trades (20) to distinguish signal from noise.",
+      "in_sample_sharpe": -0.13321203982346835,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": -0.22895741118268606,
+      "oos_retention": null,
+      "oos_cagr": 0.0,
+      "oos_max_drawdown": 0.0,
+      "oos_trades_total": 0,
+      "n_trades": 20,
+      "max_drawdown": 0.367268866218161,
+      "total_return": -0.14615857233403473,
+      "cagr": -0.018503252066642384,
+      "n_bars": 2132,
+      "t_stat": -0.3874688629834092,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": 0.6606427536014974,
+          "test_range": [
+            "2021-08-30",
+            "2022-03-03"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": 0.3144375338686593,
+          "test_range": [
+            "2022-10-31",
+            "2023-05-04"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": 0.2992542685042708,
+          "test_range": [
+            "2023-12-31",
+            "2024-07-03"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "is_sharpe": -0.37799540134109255,
+          "test_range": [
+            "2025-03-01",
+            "2025-09-02"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": null,
+          "is_sharpe": -0.22895741118268606,
+          "test_range": [
+            "2026-05-01",
+            "2026-11-02"
+          ],
+          "test_bars": 186,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.13321203982346835"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": 0.0752238404873221,
+        "gross_cagr": 0.002499881064705889,
+        "net_sharpe": -0.13321203982346835,
+        "net_cagr": -0.018503252066642384,
+        "costs_paid": 19305.917307658812,
+        "turnover_total": 4470052.896329113,
+        "interpretation": "there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.02922445085696991,
+            "cagr": -0.008041451395728982,
+            "n_trades": 20
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.08129634764430765,
+            "cagr": -0.0132812233102787,
+            "n_trades": 20
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.13321203982346835,
+            "cagr": -0.018503252066642384,
+            "n_trades": 20
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.23621663755758696,
+            "cagr": -0.028881502233318646,
+            "n_trades": 20
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.13321203982346835,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.14717385995903182,
+            "sharpe_ratio_to_base": 1.1048089958990612
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.09889314185918141,
+            "sharpe_ratio_to_base": 0.7423739024658274
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 20,
+        "trades_per_year": 2.3639774859287055,
+        "prob_profitable": 0.4013333333333333,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.5134987462507297,
+        "sharpe_p50": 0.060441240435884544,
+        "sharpe_p95": 0.611657101286015,
+        "prob_sharpe_below_zero": 0.42033333333333334,
+        "median_max_drawdown": 0.4613199006868001,
+        "worst5pct_max_drawdown": 1.0991386661460787,
+        "final_p5": -14420.667542571193,
+        "final_p50": 86607.95437273258,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 2543941766.4766035,
+        "binding_symbol": "DOGE-USD",
+        "per_symbol_limits": {
+          "ADA-USD": 7414081270.044191,
+          "AVAX-USD": 171276762925.82385,
+          "BCH-USD": 3212045878266.743,
+          "BTC-USD": 3.963705619007375e+16,
+          "DOGE-USD": 2543941766.4766035,
+          "ETH-USD": 933410048674783.1,
+          "LINK-USD": 142916881297.02814,
+          "LTC-USD": 1006951746721.9711,
+          "SOL-USD": 5427912718335.719,
+          "XRP-USD": 37839241853.79342
+        },
+        "turnover_per_year": 4470052.896329113,
+        "n_traded_symbols": 10,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.13321203982346835,
+      "symbols": [
+        "ADA-USD",
+        "AVAX-USD",
+        "BCH-USD",
+        "BTC-USD",
+        "DOGE-USD",
+        "ETH-USD",
+        "LINK-USD",
+        "LTC-USD",
+        "SOL-USD",
+        "XRP-USD"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_fx_major",
+      "verdict": "INCONCLUSIVE",
+      "flags": [
+        "only 0 trades (need >=30)",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "parameter stability 0% (< 60%)",
+        "only 0/22 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "fx_major",
+      "is_negative_control": true,
+      "elapsed_s": 317.5,
+      "gauntlet_raised": null,
+      "reasoning": "Too few trades (0) to distinguish signal from noise.",
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": 0.0,
+      "oos_max_drawdown": 0.0,
+      "oos_trades_total": 0,
+      "n_trades": 0,
+      "max_drawdown": 0.0,
+      "total_return": 0.0,
+      "cagr": 0.0,
+      "n_bars": 5680,
+      "t_stat": null,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-06",
+            "2009-05-19"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-21",
+            "2013-09-26"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-01",
+            "2018-02-08"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-11",
+            "2022-06-19"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2023-05-22",
+            "2026-11-03"
+          ],
+          "test_bars": 896,
+          "oos_trades": 0,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ERRORED",
+          "detail": "only 0 trades \u2014 Monte Carlo needs >=20"
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": null,
+        "gross_cagr": 0.0,
+        "net_sharpe": null,
+        "net_cagr": 0.0,
+        "costs_paid": 0.0,
+        "turnover_total": 0.0,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": null,
+            "cagr": 0.0,
+            "n_trades": 0
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": null,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": null,
+            "sharpe_ratio_to_base": null
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": null,
+            "sharpe_ratio_to_base": null
+          }
+        ],
+        "stability": 0.0,
+        "interpretation": "narrow/unstable - possible curve-fit"
+      },
+      "monte_carlo": {
+        "error": "only 0 trades \u2014 Monte Carlo needs >=20"
+      },
+      "capacity": {
+        "est_capacity_usd": null,
+        "reason": "no traded symbols or zero turnover",
+        "turnover_per_year": 0.0
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": null,
+      "symbols": [
+        "AUDUSD=X",
+        "EURUSD=X",
+        "GBPUSD=X",
+        "NZDUSD=X",
+        "USDCAD=X",
+        "USDCHF=X",
+        "USDJPY=X",
+        "USDSEK=X"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_commodities",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -0.43 below 2.0 - the return series is not distinguishable from noise",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 20%"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "commodities",
+      "is_negative_control": true,
+      "elapsed_s": 531.5,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.14 is below 0.5, and the gross-of-costs Sharpe is -0.05 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.09260453638500007,
+      "pooled_oos_sharpe": -0.1382545109566868,
+      "pooled_oos_sharpe_live": -0.1382545109566868,
+      "final_is_sharpe": -0.03693811713208016,
+      "oos_retention": null,
+      "oos_cagr": -0.015506537784304109,
+      "oos_max_drawdown": 0.34657349236629786,
+      "oos_trades_total": 98,
+      "n_trades": 84,
+      "max_drawdown": 0.38834559373471056,
+      "total_return": -0.22441183713667345,
+      "cagr": -0.011593176797087379,
+      "n_bars": 5492,
+      "t_stat": -0.4323119651513051,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -1.2679404380003974,
+          "is_sharpe": -1.3565395030757006,
+          "test_range": [
+            "2005-12-16",
+            "2009-05-18"
+          ],
+          "test_bars": 858,
+          "oos_trades": 13,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.0819144972547735,
+          "is_sharpe": -0.024276295744411522,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "test_bars": 858,
+          "oos_trades": 13,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.486635874792139,
+          "is_sharpe": 0.5072357455992088,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-09"
+          ],
+          "test_bars": 858,
+          "oos_trades": 36,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.11667064090392004,
+          "is_sharpe": -0.04515395604029902,
+          "test_range": [
+            "2019-01-28",
+            "2022-06-22"
+          ],
+          "test_bars": 858,
+          "oos_trades": 13,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.10572815074316884,
+          "is_sharpe": -0.03693811713208016,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "test_bars": 858,
+          "oos_trades": 23,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.09260453638500007"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": -0.04564995340152684,
+        "gross_cagr": -0.007599670897687649,
+        "net_sharpe": -0.09260453638500007,
+        "net_cagr": -0.011593176797087379,
+        "costs_paid": 6835.050056313839,
+        "turnover_total": 14514918.368507853,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.06932781843852542,
+            "cagr": -0.009614553913521284,
+            "n_trades": 84
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.08099044224604542,
+            "cagr": -0.010606248803878615,
+            "n_trades": 84
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.09260453638500007,
+            "cagr": -0.011593176797087379,
+            "n_trades": 84
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.11590329520406055,
+            "cagr": -0.013570392195616732,
+            "n_trades": 84
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.09260453638500007,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.05553623006278477,
+            "sharpe_ratio_to_base": 0.5997139258048316
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.06522493475340523,
+            "sharpe_ratio_to_base": 0.7043384406378849
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 84,
+        "trades_per_year": 3.8543335761107063,
+        "prob_profitable": 0.20333333333333334,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.441295642398328,
+        "sharpe_p50": -0.13415398125622544,
+        "sharpe_p95": 0.21196738073878205,
+        "prob_sharpe_below_zero": 0.7506666666666667,
+        "median_max_drawdown": 0.35014742277774424,
+        "worst5pct_max_drawdown": 0.7186833296463965,
+        "final_p5": 32203.808916794962,
+        "final_p50": 78674.06653749797,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 27949.515423313747,
+        "binding_symbol": "SI=F",
+        "per_symbol_limits": {
+          "CL=F": 576319878.9693966,
+          "CT=F": 14388709.602402,
+          "GC=F": 10176193.022896139,
+          "HG=F": 35197.81058288732,
+          "KC=F": 35698573.81617988,
+          "NG=F": 9986191.556394288,
+          "PA=F": 196870.10024646134,
+          "PL=F": 501004.5080378163,
+          "SB=F": 20656236.383419372,
+          "SI=F": 27949.515423313747,
+          "ZC=F": 1240622534.7481022,
+          "ZS=F": 1651488301.849421,
+          "ZW=F": 607453274.716998
+        },
+        "turnover_per_year": 14514918.368507853,
+        "n_traded_symbols": 13,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.09260453638500007,
+      "symbols": [
+        "CL=F",
+        "CT=F",
+        "GC=F",
+        "HG=F",
+        "KC=F",
+        "NG=F",
+        "PA=F",
+        "PL=F",
+        "SB=F",
+        "SI=F",
+        "ZC=F",
+        "ZS=F",
+        "ZW=F"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_futures_broad",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -0.89 below 2.0 - the return series is not distinguishable from noise",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 21%",
+        "only 7/22 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "futures_broad",
+      "is_negative_control": true,
+      "elapsed_s": 585.6,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.13 is below 0.5, and the gross-of-costs Sharpe is -0.15 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.19011583827138334,
+      "pooled_oos_sharpe": 0.13157862706709278,
+      "pooled_oos_sharpe_live": 0.13157862706709278,
+      "final_is_sharpe": -0.5400086808670691,
+      "oos_retention": null,
+      "oos_cagr": 0.007190013328812528,
+      "oos_max_drawdown": 0.36577157570097796,
+      "oos_trades_total": 163,
+      "n_trades": 92,
+      "max_drawdown": 0.47284432577424473,
+      "total_return": -0.32310068114083956,
+      "cagr": -0.017730444895158848,
+      "n_bars": 5497,
+      "t_stat": -0.8879344313279198,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 1.2896860447074734,
+          "is_sharpe": -3.042735494685085,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-13"
+          ],
+          "test_bars": 859,
+          "oos_trades": 38,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.7250126177277351,
+          "is_sharpe": -1.182364553914761,
+          "test_range": [
+            "2010-04-29",
+            "2013-09-25"
+          ],
+          "test_bars": 859,
+          "oos_trades": 27,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.273425975638882,
+          "is_sharpe": -0.49610372247806367,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-08"
+          ],
+          "test_bars": 859,
+          "oos_trades": 41,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.3334062703367733,
+          "is_sharpe": -0.41892896105092126,
+          "test_range": [
+            "2019-01-25",
+            "2022-06-22"
+          ],
+          "test_bars": 859,
+          "oos_trades": 28,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.7850961839266702,
+          "is_sharpe": -0.5400086808670691,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "test_bars": 859,
+          "oos_trades": 29,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.19011583827138334"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": -0.1506758285866169,
+        "gross_cagr": -0.014628657940557788,
+        "net_sharpe": -0.19011583827138334,
+        "net_cagr": -0.017730444895158848,
+        "costs_paid": 7317.3771595275575,
+        "turnover_total": 23200988.239902783,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.1705612552641589,
+            "cagr": -0.01618850431540908,
+            "n_trades": 92
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.1803227071981841,
+            "cagr": -0.016957124126711354,
+            "n_trades": 92
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.19011583827138334,
+            "cagr": -0.017730444895158848,
+            "n_trades": 92
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.2120351794172717,
+            "cagr": -0.019427879042186014,
+            "n_trades": 92
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.19011583827138334,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.17212199788235202,
+            "sharpe_ratio_to_base": 0.9053532806491074
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.22101220460120735,
+            "sharpe_ratio_to_base": 1.1625133740079066
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 92,
+        "trades_per_year": 4.2175732217573225,
+        "prob_profitable": 0.20566666666666666,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.43470536012183275,
+        "sharpe_p50": -0.11489472602571994,
+        "sharpe_p95": 0.21653177319774145,
+        "prob_sharpe_below_zero": 0.7213333333333334,
+        "median_max_drawdown": 0.4487896006590163,
+        "worst5pct_max_drawdown": 1.0013430571971842,
+        "final_p5": 3690.1910264248118,
+        "final_p50": 69871.45033000827,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 20172.503253448787,
+        "binding_symbol": "SI=F",
+        "per_symbol_limits": {
+          "CL=F": 416168732.99385047,
+          "ES=F": 57210802920.72437,
+          "GC=F": 7342061.493584796,
+          "HG=F": 25432.942580954234,
+          "NG=F": 7208145.041070256,
+          "NQ=F": 18995796759.693188,
+          "RTY=F": 5898913513.599752,
+          "SI=F": 20172.503253448787,
+          "YM=F": 44636978750.82688,
+          "ZB=F": 658096585.1774697,
+          "ZC=F": 895235687.5483263,
+          "ZF=F": 985710203.5525717,
+          "ZN=F": 2261389021.1747193,
+          "ZS=F": 1192771965.7741811,
+          "ZT=F": 333142315.76582456
+        },
+        "turnover_per_year": 23200988.239902783,
+        "n_traded_symbols": 15,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.19011583827138334,
+      "symbols": [
+        "CL=F",
+        "ES=F",
+        "GC=F",
+        "HG=F",
+        "NG=F",
+        "NQ=F",
+        "RTY=F",
+        "SI=F",
+        "YM=F",
+        "ZB=F",
+        "ZC=F",
+        "ZF=F",
+        "ZN=F",
+        "ZS=F",
+        "ZT=F"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_rates_credit",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -2.19 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "OOS Sharpe retains only -54% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 2%",
+        "only 5/22 profitable years"
+      ],
+      "errors": [],
+      "concept": "C1_regime_conditioned_switching",
+      "asset_class": "rates_credit",
+      "is_negative_control": true,
+      "elapsed_s": 450.3,
+      "gauntlet_raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.44 is below 0.5, and the gross-of-costs Sharpe is -0.21 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.4687089090477306,
+      "pooled_oos_sharpe": -0.4389946807031428,
+      "pooled_oos_sharpe_live": -0.4389946807031428,
+      "final_is_sharpe": 0.8201394838300566,
+      "oos_retention": -0.535268316375935,
+      "oos_cagr": -0.17880333589247388,
+      "oos_max_drawdown": 0.9770341645526451,
+      "oos_trades_total": 108,
+      "n_trades": 52,
+      "max_drawdown": 0.24161670444127126,
+      "total_return": -0.20013308076243697,
+      "cagr": -0.010196088325155173,
+      "n_bars": 5491,
+      "t_stat": -2.1879060035389966,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -1.0702178500303496,
+          "is_sharpe": 0.5858324089059782,
+          "test_range": [
+            "2005-12-19",
+            "2009-05-19"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.5658010124193352,
+          "is_sharpe": 0.4235831452210937,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "test_bars": 858,
+          "oos_trades": 36,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.4074410079778404,
+          "is_sharpe": 0.3862496287719777,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-07"
+          ],
+          "test_bars": 858,
+          "oos_trades": 12,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.37055440270103135,
+          "is_sharpe": 0.465261775190733,
+          "test_range": [
+            "2019-01-24",
+            "2022-06-17"
+          ],
+          "test_bars": 858,
+          "oos_trades": 24,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.245285488846433,
+          "is_sharpe": 0.8201394838300566,
+          "test_range": [
+            "2023-06-05",
+            "2026-11-03"
+          ],
+          "test_bars": 858,
+          "oos_trades": 24,
+          "purge_bars": 60,
+          "embargo_bars": 60
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "wf_notes": [],
+      "wf_disjointness": {
+        "ok": true,
+        "violations": [],
+        "checks": [
+          {
+            "id": "a_oos_blocks_disjoint",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "b_no_oos_bar_in_own_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "c_embargo_band_not_in_next_training",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          },
+          {
+            "id": "d_no_training_bar_inside_any_test_block",
+            "applicable": true,
+            "ok": true,
+            "detail": []
+          }
+        ]
+      },
+      "stages": {
+        "walk_forward": {
+          "status": "ran",
+          "detail": ""
+        },
+        "gross_vs_net": {
+          "status": "ran",
+          "detail": ""
+        },
+        "cost_stress": {
+          "status": "ran",
+          "detail": ""
+        },
+        "parameter_sensitivity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "monte_carlo": {
+          "status": "ran",
+          "detail": ""
+        },
+        "subperiod": {
+          "status": "ran",
+          "detail": ""
+        },
+        "capacity": {
+          "status": "ran",
+          "detail": ""
+        },
+        "causality": {
+          "status": "ran",
+          "detail": ""
+        },
+        "deflated_sharpe": {
+          "status": "ran",
+          "detail": "-0.4687089090477306"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": [],
+      "gross_vs_net": {
+        "gross_sharpe": -0.20720609507427093,
+        "gross_cagr": -0.004630835629923724,
+        "net_sharpe": -0.4687089090477306,
+        "net_cagr": -0.010196088325155173,
+        "costs_paid": 10754.56960469351,
+        "turnover_total": 18606708.118669886,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "cost_stress": {
+        "stress": [
+          {
+            "cost_multiplier": 1.0,
+            "sharpe": -0.338404669536606,
+            "cagr": -0.007416325852016903,
+            "n_trades": 52
+          },
+          {
+            "cost_multiplier": 1.5,
+            "sharpe": -0.4036630238022712,
+            "cagr": -0.008806077699963777,
+            "n_trades": 52
+          },
+          {
+            "cost_multiplier": 2.0,
+            "sharpe": -0.4687089090477306,
+            "cagr": -0.010196088325155173,
+            "n_trades": 52
+          },
+          {
+            "cost_multiplier": 3.0,
+            "sharpe": -0.5974898039842996,
+            "cagr": -0.012969316440053835,
+            "n_trades": 52
+          }
+        ]
+      },
+      "parameter_sensitivity": {
+        "base_sharpe": -0.4687089090477306,
+        "perturbations": [
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 45,
+            "base_value": 60,
+            "sharpe": -0.39525636690351607,
+            "sharpe_ratio_to_base": 0.84328750589903
+          },
+          {
+            "feature": "regime_momentum_score",
+            "param": "lookback",
+            "value": 75,
+            "base_value": 60,
+            "sharpe": -0.3274986552773599,
+            "sharpe_ratio_to_base": 0.6987250486506313
+          }
+        ],
+        "stability": 1.0,
+        "interpretation": "broad plateau - robust"
+      },
+      "monte_carlo": {
+        "n_runs": 3000,
+        "n_trades": 52,
+        "trades_per_year": 2.38645055545438,
+        "prob_profitable": 0.018,
+        "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the per-bar Sharpe elsewhere in this report",
+        "resampling": "trade sequence resampled WITH REPLACEMENT (bootstrap); the realised trade ORDER is not preserved or permuted",
+        "sharpe_p5": -0.7893759862122457,
+        "sharpe_p50": -0.44127178452739635,
+        "sharpe_p95": -0.0999666073174875,
+        "prob_sharpe_below_zero": 0.9816666666666667,
+        "median_max_drawdown": 0.2199272955503352,
+        "worst5pct_max_drawdown": 0.35837965614276374,
+        "final_p5": 65158.52433816525,
+        "final_p50": 80133.16237673207,
+        "interpretation": "Distribution of outcomes over bootstrap resamples of the realised trade sequence (sampled WITH REPLACEMENT), each resample replayed as an equity curve. p5 below 0 means a fifth of resamples lose money."
+      },
+      "capacity": {
+        "est_capacity_usd": 7484514.907805264,
+        "binding_symbol": "^IRX",
+        "per_symbol_limits": {
+          "BND": 2276880512.3828316,
+          "EMB": 2504658448.317289,
+          "HYG": 9908360965.083004,
+          "IEF": 2313438191.128426,
+          "LQD": 4607949636.600803,
+          "SHY": 1638678963.2988482,
+          "TIP": 1385029906.6301632,
+          "TLT": 12679848158.127035,
+          "^FVX": 10802424.72436819,
+          "^IRX": 7484514.907805264,
+          "^TNX": 11944480.223805722,
+          "^TYX": 12865015.852755489
+        },
+        "turnover_per_year": 18606708.118669886,
+        "n_traded_symbols": 12,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "deflated_sharpe": -0.4687089090477306,
+      "symbols": [
+        "BND",
+        "EMB",
+        "HYG",
+        "IEF",
+        "LQD",
+        "SHY",
+        "TIP",
+        "TLT",
+        "^FVX",
+        "^IRX",
+        "^TNX",
+        "^TYX"
+      ],
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator"
+      },
+      "leading_coverage_real": {
+        "applicable": false,
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "",
+        "asset": "",
+        "reason": "this spec does not use a leading indicator",
+        "n_points": 0,
+        "series_first": "",
+        "series_last": "",
+        "feature_coverage": {}
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "us_equity_style",
+      "is_negative_control": true,
+      "elapsed_s": 1.2,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VXN",
+        "reason": "",
+        "n_points": 1255
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5492,
+        "n_leading": 1250,
+        "fraction": 0.22760378732702113,
+        "source": "yahoo.chart",
+        "asset": "^VXN",
+        "reason": "",
+        "n_points": 1255,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "DIA": 1250,
+              "IWM": 1250,
+              "MDY": 1250,
+              "QQQ": 1250,
+              "RSP": 1250,
+              "SPY": 1250
+            },
+            "max": 1250,
+            "fraction": 0.22760378732702113
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "DIA": 1250,
+              "IWM": 1250,
+              "MDY": 1250,
+              "QQQ": 1250,
+              "RSP": 1250,
+              "SPY": 1250
+            },
+            "max": 1250,
+            "fraction": 0.22760378732702113
+          }
+        },
+        "resolution": "the universe is Nasdaq-like, so the Nasdaq-100 implied volatility index is the matching leading indicator"
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_crypto",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "crypto",
+      "is_negative_control": true,
+      "elapsed_s": 0.9,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "deribit.dvol",
+        "asset": "BTC",
+        "reason": "",
+        "n_points": 2051
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 2132,
+        "n_leading": 2049,
+        "fraction": 0.9610694183864915,
+        "source": "deribit.dvol",
+        "asset": "BTC",
+        "reason": "",
+        "n_points": 2051,
+        "series_first": "2021-03-24",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "ADA-USD": 2049,
+              "AVAX-USD": 2049,
+              "BCH-USD": 2049,
+              "BTC-USD": 2049,
+              "DOGE-USD": 2049,
+              "ETH-USD": 2049,
+              "LINK-USD": 2049,
+              "LTC-USD": 2049,
+              "SOL-USD": 2049,
+              "XRP-USD": 2049
+            },
+            "max": 2049,
+            "fraction": 0.9610694183864915
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "ADA-USD": 2049,
+              "AVAX-USD": 2049,
+              "BCH-USD": 2049,
+              "BTC-USD": 2049,
+              "DOGE-USD": 2049,
+              "ETH-USD": 2049,
+              "LINK-USD": 2049,
+              "LTC-USD": 2049,
+              "SOL-USD": 2049,
+              "XRP-USD": 2049
+            },
+            "max": 2049,
+            "fraction": 0.9610694183864915
+          }
+        },
+        "resolution": "the universe contains BTC-USD, whose options are priced on Deribit as BTC"
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_fx_major",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "fx_major",
+      "is_negative_control": true,
+      "elapsed_s": 1.8,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5680,
+        "n_leading": 1298,
+        "fraction": 0.22852112676056338,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "AUDUSD=X": 1298,
+              "EURUSD=X": 1298,
+              "GBPUSD=X": 1298,
+              "NZDUSD=X": 1298,
+              "USDCAD=X": 1298,
+              "USDCHF=X": 1298,
+              "USDJPY=X": 1298,
+              "USDSEK=X": 1298
+            },
+            "max": 1298,
+            "fraction": 0.22852112676056338
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "AUDUSD=X": 1298,
+              "EURUSD=X": 1298,
+              "GBPUSD=X": 1298,
+              "NZDUSD=X": 1298,
+              "USDCAD=X": 1298,
+              "USDCHF=X": 1298,
+              "USDJPY=X": 1298,
+              "USDSEK=X": 1298
+            },
+            "max": 1298,
+            "fraction": 0.22852112676056338
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_commodities",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "commodities",
+      "is_negative_control": true,
+      "elapsed_s": 2.6,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5492,
+        "n_leading": 1255,
+        "fraction": 0.2285142024763292,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "CL=F": 1255,
+              "CT=F": 1255,
+              "GC=F": 1255,
+              "HG=F": 1255,
+              "KC=F": 1255,
+              "NG=F": 1255,
+              "PA=F": 1255,
+              "PL=F": 1255,
+              "SB=F": 1255,
+              "SI=F": 1255,
+              "ZC=F": 1255,
+              "ZS=F": 1255,
+              "ZW=F": 1255
+            },
+            "max": 1255,
+            "fraction": 0.2285142024763292
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "CL=F": 1255,
+              "CT=F": 1255,
+              "GC=F": 1255,
+              "HG=F": 1255,
+              "KC=F": 1255,
+              "NG=F": 1255,
+              "PA=F": 1255,
+              "PL=F": 1255,
+              "SB=F": 1255,
+              "SI=F": 1255,
+              "ZC=F": 1255,
+              "ZS=F": 1255,
+              "ZW=F": 1255
+            },
+            "max": 1255,
+            "fraction": 0.2285142024763292
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_futures_broad",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "futures_broad",
+      "is_negative_control": true,
+      "elapsed_s": 2.8,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5497,
+        "n_leading": 1256,
+        "fraction": 0.2284882663270875,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "CL=F": 1256,
+              "ES=F": 1256,
+              "GC=F": 1256,
+              "HG=F": 1256,
+              "NG=F": 1256,
+              "NQ=F": 1256,
+              "RTY=F": 1256,
+              "SI=F": 1256,
+              "YM=F": 1256,
+              "ZB=F": 1256,
+              "ZC=F": 1256,
+              "ZF=F": 1256,
+              "ZN=F": 1256,
+              "ZS=F": 1256,
+              "ZT=F": 1256
+            },
+            "max": 1256,
+            "fraction": 0.2284882663270875
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "CL=F": 1256,
+              "ES=F": 1256,
+              "GC=F": 1256,
+              "HG=F": 1256,
+              "NG=F": 1256,
+              "NQ=F": 1256,
+              "RTY=F": 1256,
+              "SI=F": 1256,
+              "YM=F": 1256,
+              "ZB=F": 1256,
+              "ZC=F": 1256,
+              "ZF=F": 1256,
+              "ZN=F": 1256,
+              "ZS=F": 1256,
+              "ZT=F": 1256
+            },
+            "max": 1256,
+            "fraction": 0.2284882663270875
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    },
+    {
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_rates_credit",
+      "verdict": "INCONCLUSIVE",
+      "flags": [],
+      "errors": [
+        "TypeError: object of type 'float' has no len()"
+      ],
+      "concept": "C2_leading_volatility_risk_premium",
+      "asset_class": "rates_credit",
+      "is_negative_control": true,
+      "elapsed_s": 2.3,
+      "gauntlet_raised": "TypeError: object of type 'float' has no len()",
+      "reasoning": null,
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": null,
+      "oos_max_drawdown": null,
+      "oos_trades_total": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null,
+      "cagr": null,
+      "n_bars": null,
+      "t_stat": null,
+      "folds": [],
+      "wf_mode": null,
+      "wf_notes": null,
+      "wf_disjointness": null,
+      "stages": {
+        "walk_forward": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "gross_vs_net": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "cost_stress": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "parameter_sensitivity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "monte_carlo": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "subperiod": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "capacity": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "causality": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "deflated_sharpe": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        },
+        "replication": {
+          "status": "NOT RUN",
+          "detail": "stage absent from the scorecard"
+        }
+      },
+      "skipped_stages": null,
+      "gross_vs_net": null,
+      "cost_stress": null,
+      "parameter_sensitivity": null,
+      "monte_carlo": null,
+      "capacity": null,
+      "causality": null,
+      "deflated_sharpe": null,
+      "symbols": null,
+      "leading_coverage_row": {
+        "n_bars": 0,
+        "n_leading": 0,
+        "fraction": 0.0,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257
+      },
+      "leading_coverage_real": {
+        "applicable": true,
+        "n_bars": 5491,
+        "n_leading": 1253,
+        "fraction": 0.22819158623201602,
+        "source": "yahoo.chart",
+        "asset": "^VIX",
+        "reason": "",
+        "n_points": 1257,
+        "series_first": "2021-11-03",
+        "series_last": "2026-11-03",
+        "feature_coverage": {
+          "leading_vrp_score": {
+            "per_symbol_nonnull": {
+              "BND": 1253,
+              "EMB": 1253,
+              "HYG": 1253,
+              "IEF": 1253,
+              "LQD": 1253,
+              "SHY": 1253,
+              "TIP": 1253,
+              "TLT": 1253,
+              "^FVX": 1253,
+              "^IRX": 1253,
+              "^TNX": 1253,
+              "^TYX": 1253
+            },
+            "max": 1253,
+            "fraction": 0.22819158623201602
+          },
+          "leading_vrp_zscore": {
+            "per_symbol_nonnull": {
+              "BND": 1253,
+              "EMB": 1253,
+              "HYG": 1253,
+              "IEF": 1253,
+              "LQD": 1253,
+              "SHY": 1253,
+              "TIP": 1253,
+              "TLT": 1253,
+              "^FVX": 1253,
+              "^IRX": 1253,
+              "^TNX": 1253,
+              "^TYX": 1253
+            },
+            "max": 1253,
+            "fraction": 0.22819158623201602
+          }
+        },
+        "resolution": "the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used"
+      }
+    }
+  ]
+}

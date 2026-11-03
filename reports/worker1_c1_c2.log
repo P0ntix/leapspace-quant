@@ -1,0 +1,152 @@
+==============================================================================
+WORKER 1 — C1 + C2 full validation gauntlet
+==============================================================================
+only=['c1_regime_switch_crypto']  quick=False  out=C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\paper_concept_results.json
+disk before: specs=48 controls=48 total=96 selected=2
+   - c1_regime_switch_crypto
+   - NEGATIVE-CONTROL-c1_regime_switch_crypto
+
+=== RUN 2026-11-03 23:06:55 quick=False ===
+[2] c1_regime_switch_crypto -> INCONCLUSIVE (204.7s)
+[2/96] c1_regime_switch_crypto -> INCONCLUSIVE (204.7s)
+[50] NEGATIVE-CONTROL-c1_regime_switch_crypto -> INCONCLUSIVE (177.6s)
+[50/96] NEGATIVE-CONTROL-c1_regime_switch_crypto -> INCONCLUSIVE (177.6s)
+
+run_matrix finished in 382.4s, 2 rows
+wrote C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker1_c1_c2_detail.json
+
+==============================================================================
+JSON SUMMARY
+==============================================================================
+{
+  "out_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\paper_concept_results.json",
+  "log_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\worker1_c1_c2.log",
+  "detail_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\worker1_c1_c2_detail.json",
+  "n_selected": 2,
+  "n_run": 2,
+  "elapsed_s": 382.4,
+  "verdicts": {
+    "c1_regime_switch_crypto": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c1_regime_switch_crypto": "INCONCLUSIVE"
+  }
+}
+==============================================================================
+WORKER 1 — C1 + C2 full validation gauntlet
+==============================================================================
+only=['c1_', 'c2_']  quick=False  out=C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\paper_concept_results.json
+disk before: specs=48 controls=48 total=96 selected=24
+   - c1_regime_switch_us_equity_style
+   - c1_regime_switch_crypto
+   - c1_regime_switch_fx_major
+   - c1_regime_switch_commodities
+   - c1_regime_switch_futures_broad
+   - c1_regime_switch_rates_credit
+   - c2_leading_vrp_us_equity_style
+   - c2_leading_vrp_crypto
+   - c2_leading_vrp_fx_major
+   - c2_leading_vrp_commodities
+   - c2_leading_vrp_futures_broad
+   - c2_leading_vrp_rates_credit
+   - NEGATIVE-CONTROL-c1_regime_switch_us_equity_style
+   - NEGATIVE-CONTROL-c1_regime_switch_crypto
+   - NEGATIVE-CONTROL-c1_regime_switch_fx_major
+   - NEGATIVE-CONTROL-c1_regime_switch_commodities
+   - NEGATIVE-CONTROL-c1_regime_switch_futures_broad
+   - NEGATIVE-CONTROL-c1_regime_switch_rates_credit
+   - NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style
+   - NEGATIVE-CONTROL-c2_leading_vrp_crypto
+   - NEGATIVE-CONTROL-c2_leading_vrp_fx_major
+   - NEGATIVE-CONTROL-c2_leading_vrp_commodities
+   - NEGATIVE-CONTROL-c2_leading_vrp_futures_broad
+   - NEGATIVE-CONTROL-c2_leading_vrp_rates_credit
+
+=== RUN 2026-11-03 23:20:26 quick=False ===
+[1] c1_regime_switch_us_equity_style -> REFUTED (308.9s)
+[1/96] c1_regime_switch_us_equity_style -> REFUTED (308.9s)
+[2] c1_regime_switch_crypto -> INCONCLUSIVE (198.7s)
+[2/96] c1_regime_switch_crypto -> INCONCLUSIVE (198.7s)
+[3] c1_regime_switch_fx_major -> INCONCLUSIVE (349.8s)
+[3/96] c1_regime_switch_fx_major -> INCONCLUSIVE (349.8s)
+[4] c1_regime_switch_commodities -> REFUTED (459.9s)
+[4/96] c1_regime_switch_commodities -> REFUTED (459.9s)
+[5] c1_regime_switch_futures_broad -> REFUTED (451.0s)
+[5/96] c1_regime_switch_futures_broad -> REFUTED (451.0s)
+[6] c1_regime_switch_rates_credit -> REFUTED (374.0s)
+[6/96] c1_regime_switch_rates_credit -> REFUTED (374.0s)
+[7] c2_leading_vrp_us_equity_style -> INCONCLUSIVE (1.2s)
+[7/96] c2_leading_vrp_us_equity_style -> INCONCLUSIVE (1.2s)
+[8] c2_leading_vrp_crypto -> INCONCLUSIVE (0.8s)
+[8/96] c2_leading_vrp_crypto -> INCONCLUSIVE (0.8s)
+[9] c2_leading_vrp_fx_major -> INCONCLUSIVE (1.7s)
+[9/96] c2_leading_vrp_fx_major -> INCONCLUSIVE (1.7s)
+[10] c2_leading_vrp_commodities -> INCONCLUSIVE (2.8s)
+[10/96] c2_leading_vrp_commodities -> INCONCLUSIVE (2.8s)
+[11] c2_leading_vrp_futures_broad -> INCONCLUSIVE (2.9s)
+[11/96] c2_leading_vrp_futures_broad -> INCONCLUSIVE (2.9s)
+[12] c2_leading_vrp_rates_credit -> INCONCLUSIVE (2.3s)
+[12/96] c2_leading_vrp_rates_credit -> INCONCLUSIVE (2.3s)
+[49] NEGATIVE-CONTROL-c1_regime_switch_us_equity_style -> REFUTED (205.8s)
+[49/96] NEGATIVE-CONTROL-c1_regime_switch_us_equity_style -> REFUTED (205.8s)
+[50] NEGATIVE-CONTROL-c1_regime_switch_crypto -> INCONCLUSIVE (134.1s)
+[50/96] NEGATIVE-CONTROL-c1_regime_switch_crypto -> INCONCLUSIVE (134.1s)
+[51] NEGATIVE-CONTROL-c1_regime_switch_fx_major -> INCONCLUSIVE (317.5s)
+[51/96] NEGATIVE-CONTROL-c1_regime_switch_fx_major -> INCONCLUSIVE (317.5s)
+[52] NEGATIVE-CONTROL-c1_regime_switch_commodities -> REFUTED (531.5s)
+[52/96] NEGATIVE-CONTROL-c1_regime_switch_commodities -> REFUTED (531.5s)
+[53] NEGATIVE-CONTROL-c1_regime_switch_futures_broad -> REFUTED (585.6s)
+[53/96] NEGATIVE-CONTROL-c1_regime_switch_futures_broad -> REFUTED (585.6s)
+[54] NEGATIVE-CONTROL-c1_regime_switch_rates_credit -> REFUTED (450.3s)
+[54/96] NEGATIVE-CONTROL-c1_regime_switch_rates_credit -> REFUTED (450.3s)
+[55] NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style -> INCONCLUSIVE (1.2s)
+[55/96] NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style -> INCONCLUSIVE (1.2s)
+[56] NEGATIVE-CONTROL-c2_leading_vrp_crypto -> INCONCLUSIVE (0.9s)
+[56/96] NEGATIVE-CONTROL-c2_leading_vrp_crypto -> INCONCLUSIVE (0.9s)
+[57] NEGATIVE-CONTROL-c2_leading_vrp_fx_major -> INCONCLUSIVE (1.8s)
+[57/96] NEGATIVE-CONTROL-c2_leading_vrp_fx_major -> INCONCLUSIVE (1.8s)
+[58] NEGATIVE-CONTROL-c2_leading_vrp_commodities -> INCONCLUSIVE (2.6s)
+[58/96] NEGATIVE-CONTROL-c2_leading_vrp_commodities -> INCONCLUSIVE (2.6s)
+[59] NEGATIVE-CONTROL-c2_leading_vrp_futures_broad -> INCONCLUSIVE (2.8s)
+[59/96] NEGATIVE-CONTROL-c2_leading_vrp_futures_broad -> INCONCLUSIVE (2.8s)
+[60] NEGATIVE-CONTROL-c2_leading_vrp_rates_credit -> INCONCLUSIVE (2.3s)
+[60/96] NEGATIVE-CONTROL-c2_leading_vrp_rates_credit -> INCONCLUSIVE (2.3s)
+
+run_matrix finished in 4390.7s, 24 rows
+wrote C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker1_c1_c2_detail.json
+
+==============================================================================
+JSON SUMMARY
+==============================================================================
+{
+  "out_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\paper_concept_results.json",
+  "log_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\worker1_c1_c2.log",
+  "detail_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\worker1_c1_c2_detail.json",
+  "n_selected": 24,
+  "n_run": 24,
+  "elapsed_s": 4390.7,
+  "verdicts": {
+    "c1_regime_switch_us_equity_style": "REFUTED",
+    "c1_regime_switch_crypto": "INCONCLUSIVE",
+    "c1_regime_switch_fx_major": "INCONCLUSIVE",
+    "c1_regime_switch_commodities": "REFUTED",
+    "c1_regime_switch_futures_broad": "REFUTED",
+    "c1_regime_switch_rates_credit": "REFUTED",
+    "c2_leading_vrp_us_equity_style": "INCONCLUSIVE",
+    "c2_leading_vrp_crypto": "INCONCLUSIVE",
+    "c2_leading_vrp_fx_major": "INCONCLUSIVE",
+    "c2_leading_vrp_commodities": "INCONCLUSIVE",
+    "c2_leading_vrp_futures_broad": "INCONCLUSIVE",
+    "c2_leading_vrp_rates_credit": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c1_regime_switch_us_equity_style": "REFUTED",
+    "NEGATIVE-CONTROL-c1_regime_switch_crypto": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c1_regime_switch_fx_major": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c1_regime_switch_commodities": "REFUTED",
+    "NEGATIVE-CONTROL-c1_regime_switch_futures_broad": "REFUTED",
+    "NEGATIVE-CONTROL-c1_regime_switch_rates_credit": "REFUTED",
+    "NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c2_leading_vrp_crypto": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c2_leading_vrp_fx_major": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c2_leading_vrp_commodities": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c2_leading_vrp_futures_broad": "INCONCLUSIVE",
+    "NEGATIVE-CONTROL-c2_leading_vrp_rates_credit": "INCONCLUSIVE"
+  }
+}

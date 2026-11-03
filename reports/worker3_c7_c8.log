@@ -1,0 +1,282 @@
+[worker3] built 48 real specs + 48 negative controls = 96
+
+=== RUN 2026-11-03 23:06:25 quick=False ===
+[37] c7_session_drift_us_equity_style -> INCONCLUSIVE (1.8s)
+[37/96] c7_session_drift_us_equity_style -> INCONCLUSIVE (1.8s)
+[38] c7_session_drift_crypto -> INCONCLUSIVE (1.6s)
+[38/96] c7_session_drift_crypto -> INCONCLUSIVE (1.6s)
+[39] c7_session_drift_fx_major -> INCONCLUSIVE (23.5s)
+[39/96] c7_session_drift_fx_major -> INCONCLUSIVE (23.5s)
+[40] c7_session_drift_commodities -> INCONCLUSIVE (14.8s)
+[40/96] c7_session_drift_commodities -> INCONCLUSIVE (14.8s)
+[41] c7_session_drift_futures_broad -> INCONCLUSIVE (6.7s)
+[41/96] c7_session_drift_futures_broad -> INCONCLUSIVE (6.7s)
+[42] c7_session_drift_rates_credit -> INCONCLUSIVE (5.9s)
+[42/96] c7_session_drift_rates_credit -> INCONCLUSIVE (5.9s)
+[43] c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (516.4s)
+[43/96] c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (516.4s)
+[44] c8_liquidity_reversal_crypto -> FRAGILE (238.1s)
+[44/96] c8_liquidity_reversal_crypto -> FRAGILE (238.1s)
+[45] c8_liquidity_reversal_fx_major -> INCONCLUSIVE (815.5s)
+[45/96] c8_liquidity_reversal_fx_major -> INCONCLUSIVE (815.5s)
+[46] c8_liquidity_reversal_commodities -> REFUTED (913.5s)
+[46/96] c8_liquidity_reversal_commodities -> REFUTED (913.5s)
+[47] c8_liquidity_reversal_futures_broad -> REFUTED (1008.2s)
+[47/96] c8_liquidity_reversal_futures_broad -> REFUTED (1008.2s)
+[48] c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (999.7s)
+[48/96] c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (999.7s)
+[85] NEGATIVE-CONTROL-c7_session_drift_us_equity_style -> INCONCLUSIVE (0.3s)
+[85/96] NEGATIVE-CONTROL-c7_session_drift_us_equity_style -> INCONCLUSIVE (0.3s)
+[86] NEGATIVE-CONTROL-c7_session_drift_crypto -> INCONCLUSIVE (0.0s)
+[86/96] NEGATIVE-CONTROL-c7_session_drift_crypto -> INCONCLUSIVE (0.0s)
+[87] NEGATIVE-CONTROL-c7_session_drift_fx_major -> INCONCLUSIVE (0.0s)
+[87/96] NEGATIVE-CONTROL-c7_session_drift_fx_major -> INCONCLUSIVE (0.0s)
+[88] NEGATIVE-CONTROL-c7_session_drift_commodities -> INCONCLUSIVE (0.0s)
+[88/96] NEGATIVE-CONTROL-c7_session_drift_commodities -> INCONCLUSIVE (0.0s)
+[89] NEGATIVE-CONTROL-c7_session_drift_futures_broad -> INCONCLUSIVE (0.0s)
+[89/96] NEGATIVE-CONTROL-c7_session_drift_futures_broad -> INCONCLUSIVE (0.0s)
+[90] NEGATIVE-CONTROL-c7_session_drift_rates_credit -> INCONCLUSIVE (0.0s)
+[90/96] NEGATIVE-CONTROL-c7_session_drift_rates_credit -> INCONCLUSIVE (0.0s)
+[91] NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (517.5s)
+[91/96] NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (517.5s)
+[92] NEGATIVE-CONTROL-c8_liquidity_reversal_crypto -> REFUTED (250.3s)
+[92/96] NEGATIVE-CONTROL-c8_liquidity_reversal_crypto -> REFUTED (250.3s)
+[93] NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major -> INCONCLUSIVE (406.3s)
+[93/96] NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major -> INCONCLUSIVE (406.3s)
+[94] NEGATIVE-CONTROL-c8_liquidity_reversal_commodities -> REFUTED (616.0s)
+[94/96] NEGATIVE-CONTROL-c8_liquidity_reversal_commodities -> REFUTED (616.0s)
+[95] NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad -> REFUTED (674.8s)
+[95/96] NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad -> REFUTED (674.8s)
+[96] NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (554.3s)
+[96/96] NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (554.3s)
+[worker3] run_matrix finished: 24 specs in 7565.5s
+[worker3] wrote C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker3_c7_c8_results.json
+[worker3] wrote C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker3_c7_c8_detail.json (12 scorecards)
+==============================================================================
+c7_session_drift_us_equity_style  ->  INCONCLUSIVE  (1.8s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+c7_session_drift_crypto  ->  INCONCLUSIVE  (1.6s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+c7_session_drift_fx_major  ->  INCONCLUSIVE  (23.5s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+c7_session_drift_commodities  ->  INCONCLUSIVE  (14.8s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+c7_session_drift_futures_broad  ->  INCONCLUSIVE  (6.7s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+c7_session_drift_rates_credit  ->  INCONCLUSIVE  (5.9s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+c8_liquidity_reversal_us_equity_style  ->  INCONCLUSIVE  (516.4s)
+   FLAG : only 0 trades (need >=30)
+   FLAG : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+   FLAG : edge does not survive 2x cost stress
+   FLAG : parameter stability 0% (< 60%)
+   FLAG : only 0/22 profitable years
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds 5  profitable 0
+     fold 0: IS sh=None OOS sh=None range=['2005-08-23', '2009-05-14'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2010-01-05', '2013-09-25'] purge=20 embargo=20
+     fold 2: IS sh=None OOS sh=None range=['2014-05-16', '2018-02-05'] purge=20 embargo=20
+     fold 3: IS sh=None OOS sh=None range=['2018-09-25', '2022-06-15'] purge=20 embargo=20
+     fold 4: IS sh=None OOS sh=None range=['2023-02-06', '2026-10-30'] purge=20 embargo=20
+==============================================================================
+c8_liquidity_reversal_crypto  ->  FRAGILE  (238.1s)
+   FLAG : t-stat -0.56 below 2.0 - the return series is not distinguishable from noise
+   FLAG : only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+   FLAG : edge does not survive 2x cost stress
+   FLAG : Monte Carlo prob(profitable) 37%
+   FLAG : only 1/6 profitable years
+   base(IS) sharpe = -0.19357639591097062
+   pooled OOS sharpe = 0.6500287512277273  (live 0.6500287512277273)  folds 5  profitable 1
+     fold 0: IS sh=None OOS sh=None range=['2021-06-11', '2022-03-03'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2022-08-12', '2023-05-04'] purge=20 embargo=20
+     fold 2: IS sh=0.14021384452213614 OOS sh=None range=['2023-10-12', '2024-07-03'] purge=20 embargo=20
+     fold 3: IS sh=0.12155340742385287 OOS sh=1.4562147318445517 range=['2024-12-11', '2025-09-02'] purge=20 embargo=20
+     fold 4: IS sh=-0.7250714426775438 OOS sh=None range=['2026-02-10', '2026-11-02'] purge=20 embargo=20
+==============================================================================
+c8_liquidity_reversal_fx_major  ->  INCONCLUSIVE  (815.5s)
+   FLAG : only 0 trades (need >=30)
+   FLAG : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+   FLAG : edge does not survive 2x cost stress
+   FLAG : parameter stability 0% (< 60%)
+   FLAG : only 0/22 profitable years
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds 5  profitable 0
+     fold 0: IS sh=None OOS sh=None range=['2005-08-14', '2009-05-19'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2009-12-31', '2013-09-26'] purge=20 embargo=20
+     fold 2: IS sh=None OOS sh=None range=['2014-05-12', '2018-02-08'] purge=20 embargo=20
+     fold 3: IS sh=None OOS sh=None range=['2018-09-20', '2022-06-19'] purge=20 embargo=20
+     fold 4: IS sh=None OOS sh=None range=['2023-01-31', '2026-11-03'] purge=20 embargo=20
+==============================================================================
+c8_liquidity_reversal_commodities  ->  REFUTED  (913.5s)
+   FLAG : t-stat 0.22 below 2.0 - the return series is not distinguishable from noise
+   FLAG : Monte Carlo prob(profitable) 59%
+   FLAG : only 8/22 profitable years
+   base(IS) sharpe = 0.04737391166811742
+   pooled OOS sharpe = 0.1611603466646148  (live 0.1611603466646148)  folds 5  profitable 3
+     fold 0: IS sh=None OOS sh=0.5312852120323227 range=['2005-08-23', '2009-05-18'] purge=20 embargo=20
+     fold 1: IS sh=-0.9685671522537047 OOS sh=0.13462190269428706 range=['2010-01-07', '2013-09-27'] purge=20 embargo=20
+     fold 2: IS sh=-0.7924200817462509 OOS sh=-0.09015899147398101 range=['2014-05-20', '2018-02-09'] purge=20 embargo=20
+     fold 3: IS sh=-0.6867535319781488 OOS sh=-0.04811612697651881 range=['2018-10-01', '2022-06-22'] purge=20 embargo=20
+     fold 4: IS sh=-0.614518529866251 OOS sh=0.1453251876202253 range=['2023-02-10', '2026-11-03'] purge=20 embargo=20
+==============================================================================
+c8_liquidity_reversal_futures_broad  ->  REFUTED  (1008.2s)
+   FLAG : t-stat -0.41 below 2.0 - the return series is not distinguishable from noise
+   FLAG : only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+   FLAG : edge does not survive 2x cost stress
+   FLAG : Monte Carlo prob(profitable) 33%
+   FLAG : only 3/22 profitable years
+   base(IS) sharpe = -0.08876403565730787
+   pooled OOS sharpe = 0.001335410518245405  (live 0.001335410518245405)  folds 5  profitable 2
+     fold 0: IS sh=None OOS sh=0.50920909061427 range=['2005-08-23', '2009-05-13'] purge=20 embargo=20
+     fold 1: IS sh=-0.6945665916047726 OOS sh=-0.3387837044745867 range=['2010-01-04', '2013-09-25'] purge=20 embargo=20
+     fold 2: IS sh=-0.5681034620204075 OOS sh=-0.19543935988460787 range=['2014-05-16', '2018-02-08'] purge=20 embargo=20
+     fold 3: IS sh=-0.49242317834602833 OOS sh=0.12796533088626988 range=['2018-09-28', '2022-06-22'] purge=20 embargo=20
+     fold 4: IS sh=-0.4406684917699108 OOS sh=None range=['2023-02-10', '2026-11-03'] purge=20 embargo=20
+==============================================================================
+c8_liquidity_reversal_rates_credit  ->  INCONCLUSIVE  (999.7s)
+   FLAG : only 0 trades (need >=30)
+   FLAG : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+   FLAG : edge does not survive 2x cost stress
+   FLAG : parameter stability 0% (< 60%)
+   FLAG : only 0/22 profitable years
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds 5  profitable 0
+     fold 0: IS sh=None OOS sh=None range=['2005-08-23', '2009-05-19'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2010-01-07', '2013-09-27'] purge=20 embargo=20
+     fold 2: IS sh=None OOS sh=None range=['2014-05-20', '2018-02-07'] purge=20 embargo=20
+     fold 3: IS sh=None OOS sh=None range=['2018-09-27', '2022-06-17'] purge=20 embargo=20
+     fold 4: IS sh=None OOS sh=None range=['2023-02-08', '2026-11-03'] purge=20 embargo=20
+==============================================================================
+NEGATIVE-CONTROL-c7_session_drift_us_equity_style  ->  INCONCLUSIVE  (0.3s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+NEGATIVE-CONTROL-c7_session_drift_crypto  ->  INCONCLUSIVE  (0.0s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+NEGATIVE-CONTROL-c7_session_drift_fx_major  ->  INCONCLUSIVE  (0.0s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+NEGATIVE-CONTROL-c7_session_drift_commodities  ->  INCONCLUSIVE  (0.0s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+NEGATIVE-CONTROL-c7_session_drift_futures_broad  ->  INCONCLUSIVE  (0.0s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+NEGATIVE-CONTROL-c7_session_drift_rates_credit  ->  INCONCLUSIVE  (0.0s)
+   ERROR: KeyError: "Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']"
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds None  profitable None
+==============================================================================
+NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style  ->  INCONCLUSIVE  (517.5s)
+   FLAG : only 0 trades (need >=30)
+   FLAG : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+   FLAG : edge does not survive 2x cost stress
+   FLAG : parameter stability 0% (< 60%)
+   FLAG : only 0/22 profitable years
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds 5  profitable 0
+     fold 0: IS sh=None OOS sh=None range=['2005-08-23', '2009-05-14'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2010-01-05', '2013-09-25'] purge=20 embargo=20
+     fold 2: IS sh=None OOS sh=None range=['2014-05-16', '2018-02-05'] purge=20 embargo=20
+     fold 3: IS sh=None OOS sh=None range=['2018-09-25', '2022-06-15'] purge=20 embargo=20
+     fold 4: IS sh=None OOS sh=None range=['2023-02-06', '2026-10-30'] purge=20 embargo=20
+==============================================================================
+NEGATIVE-CONTROL-c8_liquidity_reversal_crypto  ->  REFUTED  (250.3s)
+   FLAG : t-stat -0.05 below 2.0 - the return series is not distinguishable from noise
+   FLAG : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+   FLAG : OOS Sharpe retains only -164% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+   FLAG : edge does not survive 2x cost stress
+   FLAG : Monte Carlo prob(profitable) 44%
+   FLAG : only 2/6 profitable years
+   base(IS) sharpe = -0.016241070818798088
+   pooled OOS sharpe = -0.654076525691794  (live -0.654076525691794)  folds 5  profitable 0
+     fold 0: IS sh=None OOS sh=None range=['2021-06-11', '2022-03-03'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2022-08-12', '2023-05-04'] purge=20 embargo=20
+     fold 2: IS sh=-0.44787208731443345 OOS sh=None range=['2023-10-12', '2024-07-03'] purge=20 embargo=20
+     fold 3: IS sh=-0.3882319908323624 OOS sh=-1.4653445354727401 range=['2024-12-11', '2025-09-02'] purge=20 embargo=20
+     fold 4: IS sh=0.39993888823800305 OOS sh=None range=['2026-02-10', '2026-11-02'] purge=20 embargo=20
+==============================================================================
+NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major  ->  INCONCLUSIVE  (406.3s)
+   FLAG : only 0 trades (need >=30)
+   FLAG : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+   FLAG : edge does not survive 2x cost stress
+   FLAG : parameter stability 0% (< 60%)
+   FLAG : only 0/22 profitable years
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds 5  profitable 0
+     fold 0: IS sh=None OOS sh=None range=['2005-08-14', '2009-05-19'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2009-12-31', '2013-09-26'] purge=20 embargo=20
+     fold 2: IS sh=None OOS sh=None range=['2014-05-12', '2018-02-08'] purge=20 embargo=20
+     fold 3: IS sh=None OOS sh=None range=['2018-09-20', '2022-06-19'] purge=20 embargo=20
+     fold 4: IS sh=None OOS sh=None range=['2023-01-31', '2026-11-03'] purge=20 embargo=20
+==============================================================================
+NEGATIVE-CONTROL-c8_liquidity_reversal_commodities  ->  REFUTED  (616.0s)
+   FLAG : t-stat -0.38 below 2.0 - the return series is not distinguishable from noise
+   FLAG : only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+   FLAG : OOS Sharpe retains only -31% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+   FLAG : edge does not survive 2x cost stress
+   FLAG : Monte Carlo prob(profitable) 31%
+   FLAG : only 7/22 profitable years
+   base(IS) sharpe = -0.08042630975019041
+   pooled OOS sharpe = -0.18764338754748322  (live -0.18764338754748322)  folds 5  profitable 2
+     fold 0: IS sh=None OOS sh=-0.534375245332653 range=['2005-08-23', '2009-05-18'] purge=20 embargo=20
+     fold 1: IS sh=0.9506337431339605 OOS sh=-0.20208950882333196 range=['2010-01-07', '2013-09-27'] purge=20 embargo=20
+     fold 2: IS sh=0.7778006250931045 OOS sh=0.04486275626762651 range=['2014-05-20', '2018-02-09'] purge=20 embargo=20
+     fold 3: IS sh=0.6740911909843488 OOS sh=0.03373529304822114 range=['2018-10-01', '2022-06-22'] purge=20 embargo=20
+     fold 4: IS sh=0.6031921735508738 OOS sh=-0.16139790141197935 range=['2023-02-10', '2026-11-03'] purge=20 embargo=20
+==============================================================================
+NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad  ->  REFUTED  (674.8s)
+   FLAG : t-stat 0.29 below 2.0 - the return series is not distinguishable from noise
+   FLAG : only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+   FLAG : OOS Sharpe retains only -8% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+   FLAG : Monte Carlo prob(profitable) 61%
+   FLAG : only 4/22 profitable years
+   base(IS) sharpe = 0.061974835163353115
+   pooled OOS sharpe = -0.03670125017521638  (live -0.03670125017521638)  folds 5  profitable 2
+     fold 0: IS sh=None OOS sh=-0.5374858304004131 range=['2005-08-23', '2009-05-13'] purge=20 embargo=20
+     fold 1: IS sh=0.6903822153215902 OOS sh=0.30847413367220516 range=['2010-01-04', '2013-09-25'] purge=20 embargo=20
+     fold 2: IS sh=0.5646831154526905 OOS sh=0.14972257415928675 range=['2014-05-16', '2018-02-08'] purge=20 embargo=20
+     fold 3: IS sh=0.48945941461775155 OOS sh=-0.17384571542396432 range=['2018-09-28', '2022-06-22'] purge=20 embargo=20
+     fold 4: IS sh=0.4380167307793117 OOS sh=None range=['2023-02-10', '2026-11-03'] purge=20 embargo=20
+==============================================================================
+NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit  ->  INCONCLUSIVE  (554.3s)
+   FLAG : only 0 trades (need >=30)
+   FLAG : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+   FLAG : edge does not survive 2x cost stress
+   FLAG : parameter stability 0% (< 60%)
+   FLAG : only 0/22 profitable years
+   base(IS) sharpe = None
+   pooled OOS sharpe = None  (live None)  folds 5  profitable 0
+     fold 0: IS sh=None OOS sh=None range=['2005-08-23', '2009-05-19'] purge=20 embargo=20
+     fold 1: IS sh=None OOS sh=None range=['2010-01-07', '2013-09-27'] purge=20 embargo=20
+     fold 2: IS sh=None OOS sh=None range=['2014-05-20', '2018-02-07'] purge=20 embargo=20
+     fold 3: IS sh=None OOS sh=None range=['2018-09-27', '2022-06-17'] purge=20 embargo=20
+     fold 4: IS sh=None OOS sh=None range=['2023-02-08', '2026-11-03'] purge=20 embargo=20

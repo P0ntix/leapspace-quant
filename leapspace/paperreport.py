@@ -261,6 +261,89 @@ def _counts(rows: Sequence[Dict[str, Any]]) -> Dict[str, int]:
     return out
 
 
+def _stage_coverage(rows: Sequence[Dict[str, Any]]) -> Dict[str, Dict[str, int]]:
+    """How often each robustness stage RAN, was SKIPPED, or ERRORED.
+
+    A stage that is absent from the ledger did not run, and a stage
+    that errored is not the same as one that was skipped. Both are
+    counted, because "we did not check this" and "the check failed to
+    run" are different facts about the validation.
+    """
+    out: Dict[str, Dict[str, int]] = {}
+    for r in rows:
+        stages = r.get("stages") or {}
+        if not isinstance(stages, dict):
+            continue
+        skipped = set(r.get("skipped_stages") or [])
+        for stage, val in stages.items():
+            if stage == "skipped_stages":
+                continue
+            c = out.setdefault(stage, {"ran": 0, "skipped": 0,
+                                       "errored": 0, "absent": 0})
+            status = ""
+            if isinstance(val, dict):
+                status = str(val.get("status") or "").upper()
+            else:
+                status = str(val).upper()
+            if "SKIP" in status:
+                c["skipped"] += 1
+            elif "ERROR" in status or "FAIL" in status:
+                c["errored"] += 1
+            else:
+                c["ran"] += 1
+        for stage in skipped:
+            c = out.setdefault(stage, {"ran": 0, "skipped": 0,
+                                       "errored": 0, "absent": 0})
+            c["skipped"] += 1
+    return out
+
+
+def _fold_tables(rows: Sequence[Dict[str, Any]],
+                 limit: int = 12) -> List[Dict[str, Any]]:
+    """The specs worth showing a fold table for.
+
+    The ones with the most interesting out-of-sample numbers: the
+    highest OOS Sharpe, the lowest, and anything that came out
+    FRAGILE. The fold table is what distinguishes "an edge" from "one
+    lucky period".
+    """
+    scored: List[Tuple[float, Dict[str, Any]]] = []
+    for r in rows:
+        wf = r.get("walk_forward") or {}
+        folds = wf.get("folds") or []
+        if not folds:
+            continue
+        sh = _sharpe(r)
+        scored.append((sh if sh is not None else -999.0, r))
+    if not scored:
+        return []
+    scored.sort(key=lambda x: -x[0])
+
+    picked: List[Dict[str, Any]] = []
+    seen = set()
+    for _sh, r in scored:
+        name = r.get("name")
+        if name in seen:
+            continue
+        seen.add(name)
+        picked.append(r)
+        if len(picked) >= limit:
+            break
+    # Always include the FRAGILE and SUPPORTED rows, whatever their
+    # rank - those are the ones a reader will look for.
+    for r in rows:
+        if r.get("verdict") in ("FRAGILE", "SUPPORTED"):
+            name = r.get("name")
+            if name and name not in seen:
+                seen.add(name)
+                wf = r.get("walk_forward") or {}
+                if wf.get("folds"):
+                    picked.append(r)
+    return [{"name": r.get("name"), "verdict": r.get("verdict"),
+             "folds": (r.get("walk_forward") or {}).get("folds") or []}
+            for r in picked]
+
+
 # --------------------------------------------------------------------------
 # The markdown report
 # --------------------------------------------------------------------------
@@ -269,6 +352,15 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
     """Render the findings as markdown."""
     s = summary or summarise(rows)
     L: List[str] = []
+    # The section number is a counter, not a literal. The report has
+    # CONDITIONAL sections - the fold tables and the leading coverage
+    # only appear when there is data for them - so hard-coded numbers
+    # collide and two sections end up called "6".
+    _sec = [0]
+
+    def sec(title: str) -> str:
+        _sec[0] += 1
+        return f"## {_sec[0]}. {title}"
 
     L.append("# PAPER-CONCEPT MATRIX — what the research actually supports")
     L.append("")
@@ -283,7 +375,7 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
     # ---- the headline, honestly -------------------------------------
     n_real = s["n_real"]
     n_ctrl = s["n_controls"]
-    L.append("## 1. The headline")
+    L.append(sec("The headline"))
     L.append("")
     if not n_real:
         L.append("**No results were available.** The matrix has not been "
@@ -362,7 +454,7 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
         L.append("")
 
     # ---- the matrix --------------------------------------------------
-    L.append("## 2. The verdict matrix")
+    L.append(sec("The verdict matrix"))
     L.append("")
     L.append("One row per paper concept, one column per asset class. A "
              "concept that works on ONE asset class is a market curiosity, "
@@ -398,7 +490,7 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
     L.append("")
 
     # ---- cross-asset consistency --------------------------------------
-    L.append("## 3. Does it work everywhere, or only somewhere?")
+    L.append(sec("Does it work everywhere, or only somewhere?"))
     L.append("")
     L.append("| Concept | Asset classes SUPPORTED or FRAGILE | Mean OOS "
              "Sharpe | Best | Worst | Controls that also passed |")
@@ -422,7 +514,7 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
     L.append("")
 
     # ---- surviving ----------------------------------------------------
-    L.append("## 4. What survived, and with which flags")
+    L.append(sec("What survived, and with which flags"))
     L.append("")
     if not s["survived"] and not s["fragile"]:
         L.append("**Nothing survived.** Not one of the "
@@ -439,26 +531,89 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
         L.append("")
 
     # ---- the full table ------------------------------------------------
-    L.append("## 5. Every spec, with its flags")
+    L.append(sec("Every spec, with its flags"))
     L.append("")
-    L.append("| Spec | Verdict | OOS Sharpe | Trades | Max DD | Flags |")
-    L.append("|---|---|---|---|---|---|")
+    L.append("| Spec | Verdict | OOS Sharpe | In-sample Sharpe | Trades | "
+             "Max DD | Flags |")
+    L.append("|---|---|---|---|---|---|---|")
     for r in sorted(rows, key=lambda x: (str(x.get("concept")),
                                           str(x.get("asset_class")))):
         sh = _sharpe(r)
         m = r.get("metrics") or {}
+        ish = m.get("in_sample_sharpe")
         dd = m.get("max_drawdown")
         L.append(
             f"| `{r.get('name')}` | {r.get('verdict')} "
             f"| {('%.2f' % sh) if sh is not None else 'n/a'} "
+            f"| {('%.2f' % ish) if isinstance(ish, (int, float)) else 'n/a'} "
             f"| {m.get('n_trades', 'n/a')} "
             f"| {('%.1f%%' % (dd * 100)) if isinstance(dd, (int, float)) else 'n/a'} "
             f"| {'; '.join(r.get('flags') or []) or '—'} |")
     L.append("")
+    L.append("**The OOS Sharpe is the result.** The in-sample Sharpe is "
+             "shown beside it because the GAP between them is the "
+             "overfitting, and a large gap is exactly what a purged "
+             "walk-forward is there to expose.")
+    L.append("")
+
+    # ---- what was actually validated -----------------------------------
+    L.append(sec("What was validated, and what was not"))
+    L.append("")
+    L.append("A verdict is only as good as the checks behind it. The "
+             "stage ledger records, for every spec, which robustness "
+             "stages ran, which were skipped, and which errored. A "
+             "stage that did not run is reported, never hidden.")
+    L.append("")
+    stage_counts = _stage_coverage(rows)
+    if stage_counts:
+        L.append("| Stage | RAN | SKIPPED | ERRORED | NOT RECORDED |")
+        L.append("|---|---|---|---|---|")
+        for stage in sorted(stage_counts):
+            c = stage_counts[stage]
+            L.append(f"| {stage} | {c.get('ran', 0)} | {c.get('skipped', 0)} "
+                     f"| {c.get('errored', 0)} | {c.get('absent', 0)} |")
+        L.append("")
+        never = [s for s, c in stage_counts.items()
+                 if c.get("ran", 0) == 0 and c.get("errored", 0) == 0]
+        if never:
+            L.append("**Stages that never ran for ANY spec:** "
+                     + ", ".join(f"`{s}`" for s in never) + ".")
+            L.append("")
+            L.append("This is a real limitation of the matrix, not a "
+                     "detail. Cross-market replication is structurally "
+                     "unreachable through the matrix runner because it "
+                     "passes no alternative universes to the gauntlet, "
+                     "so no spec in this matrix was tested for whether "
+                     "it transfers to a different market.")
+            L.append("")
+
+    # ---- the fold tables ------------------------------------------------
+    folds = _fold_tables(rows)
+    if folds:
+        L.append(sec("The per-fold walk-forward tables"))
+        L.append("")
+        L.append("Each row is one purged-and-embargoed out-of-sample "
+                 "fold. A concept that works because ONE fold worked is "
+                 "not an edge, and the fold table is where that shows.")
+        L.append("")
+        for r in folds:
+            L.append(f"### `{r['name']}` — {r['verdict']}")
+            L.append("")
+            L.append("| Fold | OOS Sharpe | OOS trades | Period |")
+            L.append("|---|---|---|---|")
+            for f in r["folds"]:
+                o = f.get("oos_sharpe")
+                period = ""
+                if f.get("start") or f.get("end"):
+                    period = f"{f.get('start') or '?'} → {f.get('end') or '?'}"
+                L.append(f"| {f.get('fold')} "
+                         f"| {('%.2f' % o) if isinstance(o, (int, float)) else 'n/a'} "
+                         f"| {f.get('oos_trades', 'n/a')} | {period} |")
+            L.append("")
 
     # ---- leading coverage ----------------------------------------------
     if s["coverage"]:
-        L.append("## 6. Leading-indicator coverage")
+        L.append(sec("Leading-indicator coverage"))
         L.append("")
         L.append("How much of each panel the forward-looking indicator "
                  "actually covered. A leading feature that covers a small "
@@ -474,7 +629,7 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
         L.append("")
 
     # ---- what this means -----------------------------------------------
-    L.append("## 7. What this establishes and what it does not")
+    L.append(sec("What this establishes and what it does not"))
     L.append("")
     L.append("* Every result above is an OUT-OF-SAMPLE result from a "
              "purge-and-embargo walk-forward, at 2x the engine's default "
