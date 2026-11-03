@@ -1,0 +1,1777 @@
+==============================================================================
+C1 + C2 RE-RUN (v2) - FULL GAUNTLET, quick=False, nothing skipped
+==============================================================================
+rows in the shared results file total : 96
+C1/C2 rows in it                     : 24
+scorecards captured                   : 24
+
+------------------------------------------------------------------------------
+PER-SPEC RESULTS  (pooled OOS Sharpe vs in-sample Sharpe, SEPARATELY)
+------------------------------------------------------------------------------
+spec                                            verdict          OOS Sh    IS Sh  trades   maxDD   totRet
+------------------------------------------------------------------------------
+NEGATIVE-CONTROL-c1_regime_switch_commodities   REFUTED          0.0675   0.0192      86  0.3705  -0.0449
+NEGATIVE-CONTROL-c1_regime_switch_crypto        INCONCLUSIVE       None  -0.2997      20  0.4458  -0.2539
+NEGATIVE-CONTROL-c1_regime_switch_futures_broad REFUTED         -0.1943   0.1338      92  0.3512   0.1774
+NEGATIVE-CONTROL-c1_regime_switch_fx_major      INCONCLUSIVE       None     None    None    None     None
+NEGATIVE-CONTROL-c1_regime_switch_rates_credit  FRAGILE          0.5597  -0.0651      52  0.1192  -0.0353
+NEGATIVE-CONTROL-c1_regime_switch_us_equity_styleREFUTED         -0.3131  -0.5210      36  0.2887  -0.2697
+NEGATIVE-CONTROL-c2_leading_vrp_commodities     REFUTED         -0.0487  -0.1296      13  0.2803  -0.1529
+NEGATIVE-CONTROL-c2_leading_vrp_crypto          REFUTED         -0.6448  -0.6813      10  0.5449  -0.4754
+NEGATIVE-CONTROL-c2_leading_vrp_futures_broad   REFUTED         -0.0491  -0.0848      15  0.2701  -0.1116
+NEGATIVE-CONTROL-c2_leading_vrp_fx_major        REFUTED         -0.2762  -0.3348      40  0.1753  -0.1371
+NEGATIVE-CONTROL-c2_leading_vrp_rates_credit    REFUTED          0.1335  -0.2246       8  0.1230  -0.0767
+NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style REFUTED         -0.3303  -0.2825      30  0.1197  -0.0931
+c1_regime_switch_commodities                    REFUTED         -0.1383  -0.0926      84  0.3883  -0.2244
+c1_regime_switch_crypto                         INCONCLUSIVE       None  -0.1332      20  0.3673  -0.1462
+c1_regime_switch_futures_broad                  REFUTED          0.1316  -0.1901      92  0.4728  -0.3231
+c1_regime_switch_fx_major                       INCONCLUSIVE       None     None    None    None     None
+c1_regime_switch_rates_credit                   REFUTED         -0.4390  -0.4687      52  0.2416  -0.2001
+c1_regime_switch_us_equity_style                REFUTED          0.0900   0.2682      36  0.0845   0.1611
+c2_leading_vrp_commodities                      REFUTED          0.0741  -0.0207      13  0.2446  -0.0481
+c2_leading_vrp_crypto                           REFUTED         -0.3223  -0.5279      10  0.4423  -0.3455
+c2_leading_vrp_futures_broad                    REFUTED          0.1061   0.0084      15  0.2036  -0.0168
+c2_leading_vrp_fx_major                         REFUTED         -0.1082  -0.1374      32  0.1247  -0.0617
+c2_leading_vrp_rates_credit                     REFUTED          0.3257  -0.2914      16  0.0962  -0.0709
+c2_leading_vrp_us_equity_style                  REFUTED         -0.4616  -0.4957      12  0.1498  -0.1451
+
+==============================================================================
+PER-SPEC DETAIL
+==============================================================================
+
+##############################################################################
+# NEGATIVE-CONTROL-c1_regime_switch_commodities
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c1_regime_switch_commodities; not a paper claim
+concept            : C1_regime_conditioned_switching
+asset_class        : commodities
+elapsed_s          : 118.7
+POOLED OOS Sharpe  : 0.0675   (live-basis 0.0675)
+IN-SAMPLE Sharpe   : 0.0192
+oos == in_sample ? : no
+n_trades           : 86   (OOS trades 98)
+max drawdown       : 0.3705
+total return       : -0.0449
+oos profitable folds: 2
+oos retention      : None
+oos max drawdown   : 0.3073
+oos cagr           : 0.0021
+pbo                : 0.2000
+deflated sharpe    : 0.0192
+
+FLAGS (verbatim):
+  - t-stat 0.09 below 2.0 - the return series is not distinguishable from noise
+  - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - Monte Carlo prob(profitable) 44%
+  - only 10/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0        1.2184         None        None          None          None
+     1       -0.2149         None        None          None          None
+     2       -0.5729         None        None          None          None
+     3        0.0910         None        None          None          None
+     4       -0.1467         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=1.2184 IS=1.2005 oos_trades=13 test=['2005-12-16', '2009-05-18'] purge=60 embargo=60
+    fold 1: OOS=-0.2149 IS=-0.1212 oos_trades=13 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=-0.5729 IS=-0.7261 oos_trades=36 test=['2014-09-12', '2018-02-09'] purge=60 embargo=60
+    fold 3: OOS=0.0910 IS=-0.1586 oos_trades=13 test=['2019-01-28', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=-0.1467 IS=-0.0745 oos_trades=23 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['CL=F', 'CT=F', 'GC=F', 'HG=F', 'KC=F', 'NG=F', 'PA=F', 'PL=F', 'SB=F', 'SI=F', 'ZC=F', 'ZS=F', 'ZW=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c1_regime_switch_crypto
+##############################################################################
+verdict            : INCONCLUSIVE
+paper              : Negative control for c1_regime_switch_crypto; not a paper claim
+concept            : C1_regime_conditioned_switching
+asset_class        : crypto
+elapsed_s          : 37.3
+POOLED OOS Sharpe  : None   (live-basis None)
+IN-SAMPLE Sharpe   : -0.2997
+oos == in_sample ? : no
+n_trades           : 20   (OOS trades 0)
+max drawdown       : 0.4458
+total return       : -0.2539
+oos profitable folds: 0
+oos retention      : None
+oos max drawdown   : 0.0000
+oos cagr           : 0.0000
+pbo                : None
+deflated sharpe    : -0.2997
+
+FLAGS (verbatim):
+  - only 20 trades (need >=30)
+  - t-stat -0.87 below 2.0 - the return series is not distinguishable from noise
+  - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 25%
+  - only 2/6 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3          None         None        None          None          None
+     4          None         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=-0.7268 oos_trades=0 test=['2021-08-30', '2022-03-03'] purge=60 embargo=60
+    fold 1: OOS=None IS=-0.4443 oos_trades=0 test=['2022-10-31', '2023-05-04'] purge=60 embargo=60
+    fold 2: OOS=None IS=-0.5322 oos_trades=0 test=['2023-12-31', '2024-07-03'] purge=60 embargo=60
+    fold 3: OOS=None IS=0.0635 oos_trades=0 test=['2025-03-01', '2025-09-02'] purge=60 embargo=60
+    fold 4: OOS=None IS=-0.1449 oos_trades=0 test=['2026-05-01', '2026-11-02'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c1_regime_switch_futures_broad
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c1_regime_switch_futures_broad; not a paper claim
+concept            : C1_regime_conditioned_switching
+asset_class        : futures_broad
+elapsed_s          : 122.0
+POOLED OOS Sharpe  : -0.1943   (live-basis -0.1943)
+IN-SAMPLE Sharpe   : 0.1338
+oos == in_sample ? : no
+n_trades           : 92   (OOS trades 163)
+max drawdown       : 0.3512
+total return       : 0.1774
+oos profitable folds: 2
+oos retention      : -0.4233
+oos max drawdown   : 0.4985
+oos cagr           : -0.0183
+pbo                : 0.8000
+deflated sharpe    : 0.1338
+
+FLAGS (verbatim):
+  - t-stat 0.62 below 2.0 - the return series is not distinguishable from noise
+  - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - OOS Sharpe retains only -42% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  - Monte Carlo prob(profitable) 66%
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0       -1.3567         None        None          None          None
+     1       -0.8467         None        None          None          None
+     2       -0.3482         None        None          None          None
+     3        0.3346         None        None          None          None
+     4        0.6362         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=-1.3567 IS=2.8456 oos_trades=38 test=['2005-12-15', '2009-05-13'] purge=60 embargo=60
+    fold 1: OOS=-0.8467 IS=1.0672 oos_trades=27 test=['2010-04-29', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=-0.3482 IS=0.4365 oos_trades=41 test=['2014-09-10', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=0.3346 IS=0.3576 oos_trades=28 test=['2019-01-25', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=0.6362 IS=0.4591 oos_trades=29 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['CL=F', 'ES=F', 'GC=F', 'HG=F', 'NG=F', 'NQ=F', 'RTY=F', 'SI=F', 'YM=F', 'ZB=F', 'ZC=F', 'ZF=F', 'ZN=F', 'ZS=F', 'ZT=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c1_regime_switch_fx_major
+##############################################################################
+verdict            : INCONCLUSIVE
+paper              : Negative control for c1_regime_switch_fx_major; not a paper claim
+concept            : C1_regime_conditioned_switching
+asset_class        : fx_major
+elapsed_s          : 64.8
+POOLED OOS Sharpe  : None   (live-basis None)
+IN-SAMPLE Sharpe   : None
+oos == in_sample ? : YES - IDENTICAL (FIX DID NOT WORK)
+n_trades           : None   (OOS trades 0)
+max drawdown       : None
+total return       : None
+oos profitable folds: 0
+oos retention      : None
+oos max drawdown   : 0.0000
+oos cagr           : 0.0000
+pbo                : None
+deflated sharpe    : None
+
+FLAGS (verbatim):
+  - only 0 trades (need >=30)
+  - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  - edge does not survive 2x cost stress
+  - parameter stability 0% (< 60%)
+  - only 0/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=no traded symbols or zero turnover
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 0 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3          None         None        None          None          None
+     4          None         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-06', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-21', '2013-09-26'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-01', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=None IS=None oos_trades=0 test=['2019-01-11', '2022-06-19'] purge=60 embargo=60
+    fold 4: OOS=None IS=None oos_trades=0 test=['2023-05-22', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['AUDUSD=X', 'EURUSD=X', 'GBPUSD=X', 'NZDUSD=X', 'USDCAD=X', 'USDCHF=X', 'USDJPY=X', 'USDSEK=X']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c1_regime_switch_rates_credit
+##############################################################################
+verdict            : FRAGILE
+paper              : Negative control for c1_regime_switch_rates_credit; not a paper claim
+concept            : C1_regime_conditioned_switching
+asset_class        : rates_credit
+elapsed_s          : 104.2
+POOLED OOS Sharpe  : 0.5597   (live-basis 0.5597)
+IN-SAMPLE Sharpe   : -0.0651
+oos == in_sample ? : no
+n_trades           : 52   (OOS trades 108)
+max drawdown       : 0.1192
+total return       : -0.0353
+oos profitable folds: 4
+oos retention      : None
+oos max drawdown   : 0.4603
+oos cagr           : 0.1300
+pbo                : 0.3000
+deflated sharpe    : -0.0651
+
+FLAGS (verbatim):
+  - t-stat -0.30 below 2.0 - the return series is not distinguishable from noise
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 37%
+  - only 10/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0        1.0927         None        None          None          None
+     1        0.7683         None        None          None          None
+     2        0.6753         None        None          None          None
+     3        0.3495         None        None          None          None
+     4       -0.5162         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=1.0927 IS=-0.7825 oos_trades=12 test=['2005-12-19', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=0.7683 IS=-0.6708 oos_trades=36 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=0.6753 IS=-0.6693 oos_trades=12 test=['2014-09-12', '2018-02-07'] purge=60 embargo=60
+    fold 3: OOS=0.3495 IS=-0.8233 oos_trades=24 test=['2019-01-24', '2022-06-17'] purge=60 embargo=60
+    fold 4: OOS=-0.5162 IS=-1.2913 oos_trades=24 test=['2023-06-05', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['BND', 'EMB', 'HYG', 'IEF', 'LQD', 'SHY', 'TIP', 'TLT', '^FVX', '^IRX', '^TNX', '^TYX']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c1_regime_switch_us_equity_style
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c1_regime_switch_us_equity_style; not a paper claim
+concept            : C1_regime_conditioned_switching
+asset_class        : us_equity_style
+elapsed_s          : 62.5
+POOLED OOS Sharpe  : -0.3131   (live-basis -0.3131)
+IN-SAMPLE Sharpe   : -0.5210
+oos == in_sample ? : no
+n_trades           : 36   (OOS trades 53)
+max drawdown       : 0.2887
+total return       : -0.2697
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.1759
+oos cagr           : -0.0091
+pbo                : 0.7000
+deflated sharpe    : -0.5210
+
+FLAGS (verbatim):
+  - t-stat -2.43 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 0%
+  - only 6/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0       -0.7819         None        None          None          None
+     1        0.2409         None        None          None          None
+     2       -0.3198         None        None          None          None
+     3       -0.1169         None        None          None          None
+     4       -0.6403         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=-0.7819 IS=-1.4783 oos_trades=12 test=['2005-12-15', '2009-05-14'] purge=60 embargo=60
+    fold 1: OOS=0.2409 IS=-2.3115 oos_trades=6 test=['2010-04-30', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=-0.3198 IS=-1.7957 oos_trades=17 test=['2014-09-10', '2018-02-05'] purge=60 embargo=60
+    fold 3: OOS=-0.1169 IS=-1.3721 oos_trades=12 test=['2019-01-22', '2022-06-15'] purge=60 embargo=60
+    fold 4: OOS=-0.6403 IS=-0.6260 oos_trades=6 test=['2023-06-01', '2026-10-30'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c2_leading_vrp_commodities
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c2_leading_vrp_commodities; not a paper claim
+concept            : C2_leading_volatility_risk_premium
+asset_class        : commodities
+elapsed_s          : 108.5
+POOLED OOS Sharpe  : -0.0487   (live-basis -0.0487)
+IN-SAMPLE Sharpe   : -0.1296
+oos == in_sample ? : no
+n_trades           : 13   (OOS trades 26)
+max drawdown       : 0.2803
+total return       : -0.1529
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.1961
+oos cagr           : -0.0037
+pbo                : None
+deflated sharpe    : -0.1296
+
+FLAGS (verbatim):
+  - only 13 trades (need >=30)
+  - t-stat -0.61 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - only 2/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 13 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3       -0.2379         None        None          None          None
+     4        0.0086         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-16', '2009-05-18'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-12', '2018-02-09'] purge=60 embargo=60
+    fold 3: OOS=-0.2379 IS=None oos_trades=13 test=['2019-01-28', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=0.0086 IS=-0.5447 oos_trades=13 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5492 n_leading=1255 fraction=0.2285142024763292
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17158s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['CL=F', 'CT=F', 'GC=F', 'HG=F', 'KC=F', 'NG=F', 'PA=F', 'PL=F', 'SB=F', 'SI=F', 'ZC=F', 'ZS=F', 'ZW=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c2_leading_vrp_crypto
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c2_leading_vrp_crypto; not a paper claim
+concept            : C2_leading_volatility_risk_premium
+asset_class        : crypto
+elapsed_s          : 103.1
+POOLED OOS Sharpe  : -0.6448   (live-basis -0.6448)
+IN-SAMPLE Sharpe   : -0.6813
+oos == in_sample ? : no
+n_trades           : 10   (OOS trades 50)
+max drawdown       : 0.5449
+total return       : -0.4754
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.3763
+oos cagr           : -0.0929
+pbo                : 0.8000
+deflated sharpe    : -0.6813
+
+FLAGS (verbatim):
+  - only 10 trades (need >=30)
+  - t-stat -1.98 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - only 2/6 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 10 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0       -0.4481         None        None          None          None
+     1       -1.1878         None        None          None          None
+     2       -1.6241         None        None          None          None
+     3        0.0819         None        None          None          None
+     4       -0.2285         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=-0.4481 IS=-1.2800 oos_trades=10 test=['2021-08-30', '2022-03-03'] purge=60 embargo=60
+    fold 1: OOS=-1.1878 IS=-0.1019 oos_trades=10 test=['2022-10-31', '2023-05-04'] purge=60 embargo=60
+    fold 2: OOS=-1.6241 IS=0.9795 oos_trades=10 test=['2023-12-31', '2024-07-03'] purge=60 embargo=60
+    fold 3: OOS=0.0819 IS=-1.0303 oos_trades=10 test=['2025-03-01', '2025-09-02'] purge=60 embargo=60
+    fold 4: OOS=-0.2285 IS=-0.8093 oos_trades=10 test=['2026-05-01', '2026-11-02'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: 'BTC'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 2051
+  reason: ''
+  source: 'deribit.dvol'
+  REAL coverage (measured independently): n_bars=2132 n_leading=2049 fraction=0.9610694183864915
+    leading source=deribit.dvol asset=BTC series_points=2051
+    provenance: cache:deribit.dvol
+    provenance_note: 2051 cached points, fetched 19099s ago; 2051 points of BTC implied volatility over 3 page(s) at 86400s
+    panel=2021-01-01..2026-11-02 reason=''
+  symbols in the panel: ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c2_leading_vrp_futures_broad
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c2_leading_vrp_futures_broad; not a paper claim
+concept            : C2_leading_volatility_risk_premium
+asset_class        : futures_broad
+elapsed_s          : 121.2
+POOLED OOS Sharpe  : -0.0491   (live-basis -0.0491)
+IN-SAMPLE Sharpe   : -0.0848
+oos == in_sample ? : no
+n_trades           : 15   (OOS trades 30)
+max drawdown       : 0.2701
+total return       : -0.1116
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.2467
+oos cagr           : -0.0038
+pbo                : None
+deflated sharpe    : -0.0848
+
+FLAGS (verbatim):
+  - only 15 trades (need >=30)
+  - t-stat -0.40 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - only 2/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 15 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        0.1835         None        None          None          None
+     4       -0.2302         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-15', '2009-05-13'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-29', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-10', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=0.1835 IS=None oos_trades=15 test=['2019-01-25', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=-0.2302 IS=-0.2916 oos_trades=15 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5497 n_leading=1256 fraction=0.2284882663270875
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17164s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['CL=F', 'ES=F', 'GC=F', 'HG=F', 'NG=F', 'NQ=F', 'RTY=F', 'SI=F', 'YM=F', 'ZB=F', 'ZC=F', 'ZF=F', 'ZN=F', 'ZS=F', 'ZT=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c2_leading_vrp_fx_major
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c2_leading_vrp_fx_major; not a paper claim
+concept            : C2_leading_volatility_risk_premium
+asset_class        : fx_major
+elapsed_s          : 70.1
+POOLED OOS Sharpe  : -0.2762   (live-basis -0.2762)
+IN-SAMPLE Sharpe   : -0.3348
+oos == in_sample ? : no
+n_trades           : 40   (OOS trades 40)
+max drawdown       : 0.1753
+total return       : -0.1371
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.1144
+oos cagr           : -0.0048
+pbo                : None
+deflated sharpe    : -0.3348
+
+FLAGS (verbatim):
+  - t-stat -1.59 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 0%
+  - only 0/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=no ADV data
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        0.2098         None        None          None          None
+     4       -0.7604         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-06', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-21', '2013-09-26'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-01', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=0.2098 IS=None oos_trades=8 test=['2019-01-11', '2022-06-19'] purge=60 embargo=60
+    fold 4: OOS=-0.7604 IS=-0.5961 oos_trades=32 test=['2023-05-22', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5680 n_leading=1298 fraction=0.22852112676056338
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17143s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['AUDUSD=X', 'EURUSD=X', 'GBPUSD=X', 'NZDUSD=X', 'USDCAD=X', 'USDCHF=X', 'USDJPY=X', 'USDSEK=X']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c2_leading_vrp_rates_credit
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c2_leading_vrp_rates_credit; not a paper claim
+concept            : C2_leading_volatility_risk_premium
+asset_class        : rates_credit
+elapsed_s          : 97.7
+POOLED OOS Sharpe  : 0.1335   (live-basis 0.1335)
+IN-SAMPLE Sharpe   : -0.2246
+oos == in_sample ? : no
+n_trades           : 8   (OOS trades 24)
+max drawdown       : 0.1230
+total return       : -0.0767
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.2269
+oos cagr           : 0.0047
+pbo                : None
+deflated sharpe    : -0.2246
+
+FLAGS (verbatim):
+  - only 8 trades (need >=30)
+  - t-stat -1.05 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - only 1/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 8 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        1.1992         None        None          None          None
+     4       -0.3032         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-19', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-12', '2018-02-07'] purge=60 embargo=60
+    fold 3: OOS=1.1992 IS=None oos_trades=12 test=['2019-01-24', '2022-06-17'] purge=60 embargo=60
+    fold 4: OOS=-0.3032 IS=-0.8416 oos_trades=12 test=['2023-06-05', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5491 n_leading=1253 fraction=0.22819158623201602
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17170s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['BND', 'EMB', 'HYG', 'IEF', 'LQD', 'SHY', 'TIP', 'TLT', '^FVX', '^IRX', '^TNX', '^TYX']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style
+##############################################################################
+verdict            : REFUTED
+paper              : Negative control for c2_leading_vrp_us_equity_style; not a paper claim
+concept            : C2_leading_volatility_risk_premium
+asset_class        : us_equity_style
+elapsed_s          : 51.3
+POOLED OOS Sharpe  : -0.3303   (live-basis -0.3303)
+IN-SAMPLE Sharpe   : -0.2825
+oos == in_sample ? : no
+n_trades           : 30   (OOS trades 24)
+max drawdown       : 0.1197
+total return       : -0.0931
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.1110
+oos cagr           : -0.0054
+pbo                : None
+deflated sharpe    : -0.2825
+
+FLAGS (verbatim):
+  - t-stat -1.32 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 10%
+  - only 1/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        0.4555         None        None          None          None
+     4       -0.8948         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-15', '2009-05-14'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-30', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-10', '2018-02-05'] purge=60 embargo=60
+    fold 3: OOS=0.4555 IS=None oos_trades=12 test=['2019-01-22', '2022-06-15'] purge=60 embargo=60
+    fold 4: OOS=-0.8948 IS=-0.1543 oos_trades=12 test=['2023-06-01', '2026-10-30'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VXN'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1255
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5492 n_leading=1250 fraction=0.22760378732702113
+    leading source=yahoo.chart asset=^VXN series_points=1255
+    provenance: cache:yahoo.chart
+    provenance_note: 1255 cached points, fetched 17653s ago; HTTP 200; 1255 bars of ^VXN implied volatility
+    panel=2005-01-03..2026-10-30 reason=''
+  symbols in the panel: ['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c1_regime_switch_commodities
+##############################################################################
+verdict            : REFUTED
+paper              : Financial market regime identification (LeapSpace)
+concept            : C1_regime_conditioned_switching
+asset_class        : commodities
+elapsed_s          : 204.0
+POOLED OOS Sharpe  : -0.1383   (live-basis -0.1383)
+IN-SAMPLE Sharpe   : -0.0926
+oos == in_sample ? : no
+n_trades           : 84   (OOS trades 98)
+max drawdown       : 0.3883
+total return       : -0.2244
+oos profitable folds: 3
+oos retention      : None
+oos max drawdown   : 0.3466
+oos cagr           : -0.0155
+pbo                : 0.1000
+deflated sharpe    : -0.0926
+
+FLAGS (verbatim):
+  - t-stat -0.43 below 2.0 - the return series is not distinguishable from noise
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 20%
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0       -1.2679         None        None          None          None
+     1        0.0819         None        None          None          None
+     2        0.4866         None        None          None          None
+     3       -0.1167         None        None          None          None
+     4        0.1057         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=-1.2679 IS=-1.3565 oos_trades=13 test=['2005-12-16', '2009-05-18'] purge=60 embargo=60
+    fold 1: OOS=0.0819 IS=-0.0243 oos_trades=13 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=0.4866 IS=0.5072 oos_trades=36 test=['2014-09-12', '2018-02-09'] purge=60 embargo=60
+    fold 3: OOS=-0.1167 IS=-0.0452 oos_trades=13 test=['2019-01-28', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=0.1057 IS=-0.0369 oos_trades=23 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['CL=F', 'CT=F', 'GC=F', 'HG=F', 'KC=F', 'NG=F', 'PA=F', 'PL=F', 'SB=F', 'SI=F', 'ZC=F', 'ZS=F', 'ZW=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c1_regime_switch_crypto
+##############################################################################
+verdict            : INCONCLUSIVE
+paper              : Financial market regime identification (LeapSpace)
+concept            : C1_regime_conditioned_switching
+asset_class        : crypto
+elapsed_s          : 47.4
+POOLED OOS Sharpe  : None   (live-basis None)
+IN-SAMPLE Sharpe   : -0.1332
+oos == in_sample ? : no
+n_trades           : 20   (OOS trades 0)
+max drawdown       : 0.3673
+total return       : -0.1462
+oos profitable folds: 0
+oos retention      : None
+oos max drawdown   : 0.0000
+oos cagr           : 0.0000
+pbo                : None
+deflated sharpe    : -0.1332
+
+FLAGS (verbatim):
+  - only 20 trades (need >=30)
+  - t-stat -0.39 below 2.0 - the return series is not distinguishable from noise
+  - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 40%
+  - only 2/6 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3          None         None        None          None          None
+     4          None         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=0.6606 oos_trades=0 test=['2021-08-30', '2022-03-03'] purge=60 embargo=60
+    fold 1: OOS=None IS=0.3144 oos_trades=0 test=['2022-10-31', '2023-05-04'] purge=60 embargo=60
+    fold 2: OOS=None IS=0.2993 oos_trades=0 test=['2023-12-31', '2024-07-03'] purge=60 embargo=60
+    fold 3: OOS=None IS=-0.3780 oos_trades=0 test=['2025-03-01', '2025-09-02'] purge=60 embargo=60
+    fold 4: OOS=None IS=-0.2290 oos_trades=0 test=['2026-05-01', '2026-11-02'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c1_regime_switch_futures_broad
+##############################################################################
+verdict            : REFUTED
+paper              : Financial market regime identification (LeapSpace)
+concept            : C1_regime_conditioned_switching
+asset_class        : futures_broad
+elapsed_s          : 204.0
+POOLED OOS Sharpe  : 0.1316   (live-basis 0.1316)
+IN-SAMPLE Sharpe   : -0.1901
+oos == in_sample ? : no
+n_trades           : 92   (OOS trades 163)
+max drawdown       : 0.4728
+total return       : -0.3231
+oos profitable folds: 3
+oos retention      : None
+oos max drawdown   : 0.3658
+oos cagr           : 0.0072
+pbo                : 0.8000
+deflated sharpe    : -0.1901
+
+FLAGS (verbatim):
+  - t-stat -0.89 below 2.0 - the return series is not distinguishable from noise
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 21%
+  - only 7/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0        1.2897         None        None          None          None
+     1        0.7250         None        None          None          None
+     2        0.2734         None        None          None          None
+     3       -0.3334         None        None          None          None
+     4       -0.7851         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=1.2897 IS=-3.0427 oos_trades=38 test=['2005-12-15', '2009-05-13'] purge=60 embargo=60
+    fold 1: OOS=0.7250 IS=-1.1824 oos_trades=27 test=['2010-04-29', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=0.2734 IS=-0.4961 oos_trades=41 test=['2014-09-10', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=-0.3334 IS=-0.4189 oos_trades=28 test=['2019-01-25', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=-0.7851 IS=-0.5400 oos_trades=29 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['CL=F', 'ES=F', 'GC=F', 'HG=F', 'NG=F', 'NQ=F', 'RTY=F', 'SI=F', 'YM=F', 'ZB=F', 'ZC=F', 'ZF=F', 'ZN=F', 'ZS=F', 'ZT=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c1_regime_switch_fx_major
+##############################################################################
+verdict            : INCONCLUSIVE
+paper              : Financial market regime identification (LeapSpace)
+concept            : C1_regime_conditioned_switching
+asset_class        : fx_major
+elapsed_s          : 98.4
+POOLED OOS Sharpe  : None   (live-basis None)
+IN-SAMPLE Sharpe   : None
+oos == in_sample ? : YES - IDENTICAL (FIX DID NOT WORK)
+n_trades           : None   (OOS trades 0)
+max drawdown       : None
+total return       : None
+oos profitable folds: 0
+oos retention      : None
+oos max drawdown   : 0.0000
+oos cagr           : 0.0000
+pbo                : None
+deflated sharpe    : None
+
+FLAGS (verbatim):
+  - only 0 trades (need >=30)
+  - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  - edge does not survive 2x cost stress
+  - parameter stability 0% (< 60%)
+  - only 0/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=no traded symbols or zero turnover
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 0 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3          None         None        None          None          None
+     4          None         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-06', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-21', '2013-09-26'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-01', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=None IS=None oos_trades=0 test=['2019-01-11', '2022-06-19'] purge=60 embargo=60
+    fold 4: OOS=None IS=None oos_trades=0 test=['2023-05-22', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['AUDUSD=X', 'EURUSD=X', 'GBPUSD=X', 'NZDUSD=X', 'USDCAD=X', 'USDCHF=X', 'USDJPY=X', 'USDSEK=X']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c1_regime_switch_rates_credit
+##############################################################################
+verdict            : REFUTED
+paper              : Financial market regime identification (LeapSpace)
+concept            : C1_regime_conditioned_switching
+asset_class        : rates_credit
+elapsed_s          : 174.4
+POOLED OOS Sharpe  : -0.4390   (live-basis -0.4390)
+IN-SAMPLE Sharpe   : -0.4687
+oos == in_sample ? : no
+n_trades           : 52   (OOS trades 108)
+max drawdown       : 0.2416
+total return       : -0.2001
+oos profitable folds: 1
+oos retention      : -0.5353
+oos max drawdown   : 0.9770
+oos cagr           : -0.1788
+pbo                : 0.4000
+deflated sharpe    : -0.4687
+
+FLAGS (verbatim):
+  - t-stat -2.19 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - OOS Sharpe retains only -54% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 2%
+  - only 5/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0       -1.0702         None        None          None          None
+     1       -0.5658         None        None          None          None
+     2       -0.4074         None        None          None          None
+     3       -0.3706         None        None          None          None
+     4        0.2453         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=-1.0702 IS=0.5858 oos_trades=12 test=['2005-12-19', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=-0.5658 IS=0.4236 oos_trades=36 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=-0.4074 IS=0.3862 oos_trades=12 test=['2014-09-12', '2018-02-07'] purge=60 embargo=60
+    fold 3: OOS=-0.3706 IS=0.4653 oos_trades=24 test=['2019-01-24', '2022-06-17'] purge=60 embargo=60
+    fold 4: OOS=0.2453 IS=0.8201 oos_trades=24 test=['2023-06-05', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['BND', 'EMB', 'HYG', 'IEF', 'LQD', 'SHY', 'TIP', 'TLT', '^FVX', '^IRX', '^TNX', '^TYX']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c1_regime_switch_us_equity_style
+##############################################################################
+verdict            : REFUTED
+paper              : Financial market regime identification (LeapSpace)
+concept            : C1_regime_conditioned_switching
+asset_class        : us_equity_style
+elapsed_s          : 108.7
+POOLED OOS Sharpe  : 0.0900   (live-basis 0.0900)
+IN-SAMPLE Sharpe   : 0.2682
+oos == in_sample ? : no
+n_trades           : 36   (OOS trades 53)
+max drawdown       : 0.0845
+total return       : 0.1611
+oos profitable folds: 3
+oos retention      : 0.2641
+oos max drawdown   : 0.1401
+oos cagr           : 0.0022
+pbo                : 0.7000
+deflated sharpe    : 0.2682
+
+FLAGS (verbatim):
+  - t-stat 1.25 below 2.0 - the return series is not distinguishable from noise
+  - OOS Sharpe retains only 26% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0        0.5969         None        None          None          None
+     1       -0.4985         None        None          None          None
+     2        0.0923         None        None          None          None
+     3       -0.0768         None        None          None          None
+     4        0.3710         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=0.5969 IS=1.1510 oos_trades=12 test=['2005-12-15', '2009-05-14'] purge=60 embargo=60
+    fold 1: OOS=-0.4985 IS=2.0146 oos_trades=6 test=['2010-04-30', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=0.0923 IS=1.5081 oos_trades=17 test=['2014-09-10', '2018-02-05'] purge=60 embargo=60
+    fold 3: OOS=-0.0768 IS=1.0811 oos_trades=12 test=['2019-01-22', '2022-06-15'] purge=60 embargo=60
+    fold 4: OOS=0.3710 IS=0.3408 oos_trades=6 test=['2023-06-01', '2026-10-30'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: ''
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  reason: 'this spec does not use a leading indicator'
+  source: ''
+  (no leading indicator on this spec)
+  symbols in the panel: ['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c2_leading_vrp_commodities
+##############################################################################
+verdict            : REFUTED
+paper              : Options market dynamics and volatility (LeapSpace); Financial market regime identification (LeapSpace)
+concept            : C2_leading_volatility_risk_premium
+asset_class        : commodities
+elapsed_s          : 159.1
+POOLED OOS Sharpe  : 0.0741   (live-basis 0.0741)
+IN-SAMPLE Sharpe   : -0.0207
+oos == in_sample ? : no
+n_trades           : 13   (OOS trades 26)
+max drawdown       : 0.2446
+total return       : -0.0481
+oos profitable folds: 2
+oos retention      : None
+oos max drawdown   : 0.1717
+oos cagr           : 0.0025
+pbo                : None
+deflated sharpe    : -0.0207
+
+FLAGS (verbatim):
+  - only 13 trades (need >=30)
+  - t-stat -0.10 below 2.0 - the return series is not distinguishable from noise
+  - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - only 2/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 13 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        0.0164         None        None          None          None
+     4        0.1790         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-16', '2009-05-18'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-12', '2018-02-09'] purge=60 embargo=60
+    fold 3: OOS=0.0164 IS=None oos_trades=13 test=['2019-01-28', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=0.1790 IS=-0.1945 oos_trades=13 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5492 n_leading=1255 fraction=0.2285142024763292
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17158s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['CL=F', 'CT=F', 'GC=F', 'HG=F', 'KC=F', 'NG=F', 'PA=F', 'PL=F', 'SB=F', 'SI=F', 'ZC=F', 'ZS=F', 'ZW=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c2_leading_vrp_crypto
+##############################################################################
+verdict            : REFUTED
+paper              : Options market dynamics and volatility (LeapSpace); Financial market regime identification (LeapSpace)
+concept            : C2_leading_volatility_risk_premium
+asset_class        : crypto
+elapsed_s          : 166.4
+POOLED OOS Sharpe  : -0.3223   (live-basis -0.3223)
+IN-SAMPLE Sharpe   : -0.5279
+oos == in_sample ? : no
+n_trades           : 10   (OOS trades 50)
+max drawdown       : 0.4423
+total return       : -0.3455
+oos profitable folds: 2
+oos retention      : None
+oos max drawdown   : 0.3194
+oos cagr           : -0.0647
+pbo                : 0.6000
+deflated sharpe    : -0.5279
+
+FLAGS (verbatim):
+  - only 10 trades (need >=30)
+  - t-stat -1.54 below 2.0 - the return series is not distinguishable from noise
+  - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - only 2/6 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 10 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0        0.0423         None        None          None          None
+     1        0.1173         None        None          None          None
+     2       -0.9728         None        None          None          None
+     3       -0.1044         None        None          None          None
+     4       -1.5006         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=0.0423 IS=-0.1137 oos_trades=10 test=['2021-08-30', '2022-03-03'] purge=60 embargo=60
+    fold 1: OOS=0.1173 IS=-2.1643 oos_trades=10 test=['2022-10-31', '2023-05-04'] purge=60 embargo=60
+    fold 2: OOS=-0.9728 IS=-0.6030 oos_trades=10 test=['2023-12-31', '2024-07-03'] purge=60 embargo=60
+    fold 3: OOS=-0.1044 IS=-1.1957 oos_trades=10 test=['2025-03-01', '2025-09-02'] purge=60 embargo=60
+    fold 4: OOS=-1.5006 IS=-1.0267 oos_trades=10 test=['2026-05-01', '2026-11-02'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: 'BTC'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 2051
+  reason: ''
+  source: 'deribit.dvol'
+  REAL coverage (measured independently): n_bars=2132 n_leading=2049 fraction=0.9610694183864915
+    leading source=deribit.dvol asset=BTC series_points=2051
+    provenance: cache:deribit.dvol
+    provenance_note: 2051 cached points, fetched 19099s ago; 2051 points of BTC implied volatility over 3 page(s) at 86400s
+    panel=2021-01-01..2026-11-02 reason=''
+  symbols in the panel: ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c2_leading_vrp_futures_broad
+##############################################################################
+verdict            : REFUTED
+paper              : Options market dynamics and volatility (LeapSpace); Financial market regime identification (LeapSpace)
+concept            : C2_leading_volatility_risk_premium
+asset_class        : futures_broad
+elapsed_s          : 172.6
+POOLED OOS Sharpe  : 0.1061   (live-basis 0.1061)
+IN-SAMPLE Sharpe   : 0.0084
+oos == in_sample ? : no
+n_trades           : 15   (OOS trades 30)
+max drawdown       : 0.2036
+total return       : -0.0168
+oos profitable folds: 2
+oos retention      : 1.2510
+oos max drawdown   : 0.1346
+oos cagr           : 0.0040
+pbo                : None
+deflated sharpe    : 0.0084
+
+FLAGS (verbatim):
+  - only 15 trades (need >=30)
+  - t-stat 0.04 below 2.0 - the return series is not distinguishable from noise
+  - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - only 2/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 15 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        0.2686         None        None          None          None
+     4        0.1208         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-15', '2009-05-13'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-29', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-10', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=0.2686 IS=None oos_trades=15 test=['2019-01-25', '2022-06-22'] purge=60 embargo=60
+    fold 4: OOS=0.1208 IS=0.0848 oos_trades=15 test=['2023-06-07', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5497 n_leading=1256 fraction=0.2284882663270875
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17164s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['CL=F', 'ES=F', 'GC=F', 'HG=F', 'NG=F', 'NQ=F', 'RTY=F', 'SI=F', 'YM=F', 'ZB=F', 'ZC=F', 'ZF=F', 'ZN=F', 'ZS=F', 'ZT=F']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c2_leading_vrp_fx_major
+##############################################################################
+verdict            : REFUTED
+paper              : Options market dynamics and volatility (LeapSpace); Financial market regime identification (LeapSpace)
+concept            : C2_leading_volatility_risk_premium
+asset_class        : fx_major
+elapsed_s          : 108.7
+POOLED OOS Sharpe  : -0.1082   (live-basis -0.1082)
+IN-SAMPLE Sharpe   : -0.1374
+oos == in_sample ? : no
+n_trades           : 32   (OOS trades 40)
+max drawdown       : 0.1247
+total return       : -0.0617
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.0811
+oos cagr           : -0.0020
+pbo                : None
+deflated sharpe    : -0.1374
+
+FLAGS (verbatim):
+  - t-stat -0.65 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - Monte Carlo prob(profitable) 8%
+  - only 0/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=no ADV data
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=None
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        0.3717         None        None          None          None
+     4       -0.3675         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-06', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-21', '2013-09-26'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-01', '2018-02-08'] purge=60 embargo=60
+    fold 3: OOS=0.3717 IS=None oos_trades=24 test=['2019-01-11', '2022-06-19'] purge=60 embargo=60
+    fold 4: OOS=-0.3675 IS=-0.2899 oos_trades=16 test=['2023-05-22', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5680 n_leading=1298 fraction=0.22852112676056338
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17143s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['AUDUSD=X', 'EURUSD=X', 'GBPUSD=X', 'NZDUSD=X', 'USDCAD=X', 'USDCHF=X', 'USDJPY=X', 'USDSEK=X']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c2_leading_vrp_rates_credit
+##############################################################################
+verdict            : REFUTED
+paper              : Options market dynamics and volatility (LeapSpace); Financial market regime identification (LeapSpace)
+concept            : C2_leading_volatility_risk_premium
+asset_class        : rates_credit
+elapsed_s          : 103.1
+POOLED OOS Sharpe  : 0.3257   (live-basis 0.3257)
+IN-SAMPLE Sharpe   : -0.2914
+oos == in_sample ? : no
+n_trades           : 16   (OOS trades 36)
+max drawdown       : 0.0962
+total return       : -0.0709
+oos profitable folds: 1
+oos retention      : None
+oos max drawdown   : 0.1607
+oos cagr           : 0.0108
+pbo                : None
+deflated sharpe    : -0.2914
+
+FLAGS (verbatim):
+  - only 16 trades (need >=30)
+  - t-stat -1.36 below 2.0 - the return series is not distinguishable from noise
+  - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+  - edge does not survive 2x cost stress
+  - only 0/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 16 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3        1.5652         None        None          None          None
+     4       -0.1291         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-19', '2009-05-19'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-05-04', '2013-09-27'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-12', '2018-02-07'] purge=60 embargo=60
+    fold 3: OOS=1.5652 IS=None oos_trades=24 test=['2019-01-24', '2022-06-17'] purge=60 embargo=60
+    fold 4: OOS=-0.1291 IS=-0.6026 oos_trades=12 test=['2023-06-05', '2026-11-03'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VIX'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1257
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5491 n_leading=1253 fraction=0.22819158623201602
+    leading source=yahoo.chart asset=^VIX series_points=1257
+    provenance: cache:yahoo.chart
+    provenance_note: 1257 cached points, fetched 17170s ago; HTTP 200; 1257 bars of ^VIX implied volatility
+    panel=2005-01-03..2026-11-03 reason=''
+  symbols in the panel: ['BND', 'EMB', 'HYG', 'IEF', 'LQD', 'SHY', 'TIP', 'TLT', '^FVX', '^IRX', '^TNX', '^TYX']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+##############################################################################
+# c2_leading_vrp_us_equity_style
+##############################################################################
+verdict            : REFUTED
+paper              : Options market dynamics and volatility (LeapSpace); Financial market regime identification (LeapSpace)
+concept            : C2_leading_volatility_risk_premium
+asset_class        : us_equity_style
+elapsed_s          : 102.5
+POOLED OOS Sharpe  : -0.4616   (live-basis -0.4616)
+IN-SAMPLE Sharpe   : -0.4957
+oos == in_sample ? : no
+n_trades           : 12   (OOS trades 18)
+max drawdown       : 0.1498
+total return       : -0.1451
+oos profitable folds: 0
+oos retention      : None
+oos max drawdown   : 0.1146
+oos cagr           : -0.0068
+pbo                : None
+deflated sharpe    : -0.4957
+
+FLAGS (verbatim):
+  - only 12 trades (need >=30)
+  - t-stat -2.31 below 2.0 - the return series is not distinguishable from noise
+  - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  - edge does not survive 2x cost stress
+  - only 0/22 profitable years
+ERRORS (verbatim):
+  (none)
+
+STAGE LEDGER (from the row's 'stages'):
+  capacity               status=ran        passed=None     note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  causality              status=ran        passed=None     note=None
+  cost_stress            status=ran        passed=None     note=None
+  gross_vs_net           status=ran        passed=None     note=None
+  monte_carlo            status=ran        passed=None     note=only 12 trades — Monte Carlo needs >=20
+  parameter_sensitivity  status=ran        passed=None     note=None
+  subperiod              status=ran        passed=None     note=None
+  row['skipped_stages']: []
+  scorecard['skipped_stages']: []
+  cross-market replication: NOT IN THE SCORECARD (never ran - run_matrix passes no alt_universes, so the engine skips it; it is not even listed as a skipped stage)
+
+PER-FOLD OOS Sharpe table (row['walk_forward']['folds']):
+  fold    OOS Sharpe    IS Sharpe  OOS trades         start           end
+     0          None         None        None          None          None
+     1          None         None        None          None          None
+     2          None         None        None          None          None
+     3       -0.0774         None        None          None          None
+     4       -1.0634         None        None          None          None
+  (engine's raw fold_info, with trade counts and date ranges):
+    fold 0: OOS=None IS=None oos_trades=0 test=['2005-12-15', '2009-05-14'] purge=60 embargo=60
+    fold 1: OOS=None IS=None oos_trades=0 test=['2010-04-30', '2013-09-25'] purge=60 embargo=60
+    fold 2: OOS=None IS=None oos_trades=0 test=['2014-09-10', '2018-02-05'] purge=60 embargo=60
+    fold 3: OOS=-0.0774 IS=None oos_trades=6 test=['2019-01-22', '2022-06-15'] purge=60 embargo=60
+    fold 4: OOS=-1.0634 IS=-1.3473 oos_trades=12 test=['2023-06-01', '2026-10-30'] purge=60 embargo=60
+
+leading_coverage (row['leading_coverage']):
+  asset: '^VXN'
+  fraction: 0.0
+  n_bars: 0
+  n_leading: 0
+  n_points: 1255
+  reason: ''
+  source: 'yahoo.chart'
+  REAL coverage (measured independently): n_bars=5492 n_leading=1250 fraction=0.22760378732702113
+    leading source=yahoo.chart asset=^VXN series_points=1255
+    provenance: cache:yahoo.chart
+    provenance_note: 1255 cached points, fetched 17653s ago; HTTP 200; 1255 bars of ^VXN implied volatility
+    panel=2005-01-03..2026-10-30 reason=''
+  symbols in the panel: ['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  walk-forward mode: purged_embargoed, n_folds=5, label_horizon=60, purge=60, embargo=60
+
+==============================================================================
+THE CRITICAL CHECK: does every negative control DIFFER from its twin?
+==============================================================================
+twin                                      control                                               IS twin  IS ctrl  OOS twin  OOS ctrl  differs?
+------------------------------------------------------------------------------
+c1_regime_switch_commodities              NEGATIVE-CONTROL-c1_regime_switch_commodities         -0.0926   0.0192   -0.1383    0.0675  DIFFERS (IS,OOS,trades,ret,dd)
+c1_regime_switch_crypto                   NEGATIVE-CONTROL-c1_regime_switch_crypto              -0.1332  -0.2997      None      None  DIFFERS (IS,ret,dd)
+c1_regime_switch_futures_broad            NEGATIVE-CONTROL-c1_regime_switch_futures_broad       -0.1901   0.1338    0.1316   -0.1943  DIFFERS (IS,OOS,ret,dd)
+c1_regime_switch_fx_major                 NEGATIVE-CONTROL-c1_regime_switch_fx_major               None     None      None      None  *** IDENTICAL ***  [VACUOUS: 0 trades both sides]
+c1_regime_switch_rates_credit             NEGATIVE-CONTROL-c1_regime_switch_rates_credit        -0.4687  -0.0651   -0.4390    0.5597  DIFFERS (IS,OOS,ret,dd)
+c1_regime_switch_us_equity_style          NEGATIVE-CONTROL-c1_regime_switch_us_equity_style      0.2682  -0.5210    0.0900   -0.3131  DIFFERS (IS,OOS,ret,dd)
+c2_leading_vrp_commodities                NEGATIVE-CONTROL-c2_leading_vrp_commodities           -0.0207  -0.1296    0.0741   -0.0487  DIFFERS (IS,OOS,ret,dd)
+c2_leading_vrp_crypto                     NEGATIVE-CONTROL-c2_leading_vrp_crypto                -0.5279  -0.6813   -0.3223   -0.6448  DIFFERS (IS,OOS,ret,dd)
+c2_leading_vrp_futures_broad              NEGATIVE-CONTROL-c2_leading_vrp_futures_broad          0.0084  -0.0848    0.1061   -0.0491  DIFFERS (IS,OOS,ret,dd)
+c2_leading_vrp_fx_major                   NEGATIVE-CONTROL-c2_leading_vrp_fx_major              -0.1374  -0.3348   -0.1082   -0.2762  DIFFERS (IS,OOS,trades,ret,dd)
+c2_leading_vrp_rates_credit               NEGATIVE-CONTROL-c2_leading_vrp_rates_credit          -0.2914  -0.2246    0.3257    0.1335  DIFFERS (IS,OOS,trades,ret,dd)
+c2_leading_vrp_us_equity_style            NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style       -0.4957  -0.2825   -0.4616   -0.3303  DIFFERS (IS,OOS,trades,ret,dd)
+
+*** CRITICAL: 1 of 12 controls are IDENTICAL to their twin:
+    NEGATIVE-CONTROL-c1_regime_switch_fx_major  vs  c1_regime_switch_fx_major   (VACUOUS: both twin and control produced 0 trades, so the inverted signal never fired and the control CANNOT fail)
+
+==============================================================================
+C1 (LAGGING regime classifier) vs C2 (LEADING implied-vol premium)
+same asset class, same risk block, same costs
+==============================================================================
+asset class                 C1 OOS    C1 IS    C2 OOS    C2 IS  C2-C1 OOS  verdict C1 / C2
+------------------------------------------------------------------------------
+us_equity_style             0.0900   0.2682   -0.4616  -0.4957    -0.5516  REFUTED / REFUTED
+crypto                        None  -0.1332   -0.3223  -0.5279       None  INCONCLUSIVE / REFUTED
+fx_major                      None     None   -0.1082  -0.1374       None  INCONCLUSIVE / REFUTED
+commodities                -0.1383  -0.0926    0.0741  -0.0207     0.2123  REFUTED / REFUTED
+futures_broad               0.1316  -0.1901    0.1061   0.0084    -0.0255  REFUTED / REFUTED
+rates_credit               -0.4390  -0.4687    0.3257  -0.2914     0.7647  REFUTED / REFUTED
+
+C2 pooled OOS Sharpe beats C1's on 2 of 4 asset classes where both are numeric.
+
+==============================================================================
+C1 vs C2: HOW MUCH OF EACH PANEL CAN EACH SIGNAL ACT ON?
+(a Sharpe comparison over different effective samples is not a like-for-like comparison)
+==============================================================================
+spec                                          bars  signal bars  coverage  leading cov
+------------------------------------------------------------------------------
+c1_regime_switch_us_equity_style              5492        31513    0.9563          n/a
+c2_leading_vrp_us_equity_style                5492         6477    0.1966       0.2276
+c1_regime_switch_crypto                       2132        19989    0.9376          n/a
+c2_leading_vrp_crypto                         2132        19337    0.9070       0.9611
+c1_regime_switch_fx_major                     5680            0    0.0000          n/a
+c2_leading_vrp_fx_major                       5680         9460    0.2082       0.2285
+c1_regime_switch_commodities                  5492        66927    0.9374          n/a
+c2_leading_vrp_commodities                    5492        14492    0.2030       0.2285
+c1_regime_switch_futures_broad                5497        75803    0.9193          n/a
+c2_leading_vrp_futures_broad                  5497        16776    0.2035       0.2285
+c1_regime_switch_rates_credit                 5491        60577    0.9193          n/a
+c2_leading_vrp_rates_credit                   5491        12102    0.1837       0.2282
+
+==============================================================================
+C1 vs C2 RESTRICTED TO THE FOLDS WHERE BOTH HAVE A NUMBER
+(C2's leading series starts 2021-11, so C2's evidence sits in folds 3-4 while C1 has 5 folds)
+==============================================================================
+asset class             matched   C1 mean   C2 mean     C2-C1  C2 better?
+------------------------------------------------------------------------------
+us_equity_style               2    0.1471   -0.5704   -0.7175  False
+crypto                        0      None      None      None  None
+fx_major                      0      None      None      None  None
+commodities                   2   -0.0055    0.0977    0.1032  True
+futures_broad                 2   -0.5593    0.1947    0.7540  True
+rates_credit                  2   -0.0626    0.7180    0.7807  True
+
+==============================================================================
+VERDICT TALLY
+==============================================================================
+  REAL      : {'REFUTED': 10, 'INCONCLUSIVE': 2}
+  CONTROL   : {'REFUTED': 9, 'INCONCLUSIVE': 2, 'FRAGILE': 1}
+
+rows carrying an ERROR: 0

@@ -1,0 +1,80 @@
+total specs built: 96
+specs in scope: 24
+  - c7_session_drift_us_equity_style | signal: paper_cross_sectional | params: {"long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c7_session_drift_crypto | signal: paper_cross_sectional | params: {"long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c7_session_drift_fx_major | signal: paper_cross_sectional | params: {"long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c7_session_drift_commodities | signal: paper_cross_sectional | params: {"long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c7_session_drift_futures_broad | signal: paper_cross_sectional | params: {"long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c7_session_drift_rates_credit | signal: paper_cross_sectional | params: {"long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c8_liquidity_reversal_us_equity_style | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c8_liquidity_reversal_crypto | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c8_liquidity_reversal_fx_major | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c8_liquidity_reversal_commodities | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c8_liquidity_reversal_futures_broad | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - c8_liquidity_reversal_rates_credit | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c7_session_drift_us_equity_style | signal: paper_cross_sectional | params: {"invert_signal": true, "long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c7_session_drift_crypto | signal: paper_cross_sectional | params: {"invert_signal": true, "long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c7_session_drift_fx_major | signal: paper_cross_sectional | params: {"invert_signal": true, "long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c7_session_drift_commodities | signal: paper_cross_sectional | params: {"invert_signal": true, "long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c7_session_drift_futures_broad | signal: paper_cross_sectional | params: {"invert_signal": true, "long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c7_session_drift_rates_credit | signal: paper_cross_sectional | params: {"invert_signal": true, "long_rank": 0.75, "short_rank": 0.25} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "invert_signal": true, "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c8_liquidity_reversal_crypto | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "invert_signal": true, "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "invert_signal": true, "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c8_liquidity_reversal_commodities | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "invert_signal": true, "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "invert_signal": true, "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+  - NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit | signal: liquidity_gated_reversion | params: {"entry": -2.0, "exit": -0.5, "feature": "zscore", "invert_signal": true, "max_volume_ratio": 0.8, "min_volatility": 0.3, "vol_feature": "volatility", "volume_feature": "volume_ratio"} | execution: {"fill_at": "open", "cost_multiplier": 2.0, "max_participation": 0.1}
+[37/96] c7_session_drift_us_equity_style -> REFUTED (41.1s)
+[38/96] c7_session_drift_crypto -> REFUTED (20.8s)
+[39/96] c7_session_drift_fx_major -> INCONCLUSIVE (44.0s)
+[40/96] c7_session_drift_commodities -> REFUTED (69.0s)
+[41/96] c7_session_drift_futures_broad -> REFUTED (83.8s)
+[42/96] c7_session_drift_rates_credit -> REFUTED (58.0s)
+[43/96] c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (116.6s)
+[44/96] c8_liquidity_reversal_crypto -> FRAGILE (66.2s)
+[45/96] c8_liquidity_reversal_fx_major -> INCONCLUSIVE (144.1s)
+[46/96] c8_liquidity_reversal_commodities -> REFUTED (204.0s)
+[47/96] c8_liquidity_reversal_futures_broad -> REFUTED (221.1s)
+[48/96] c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (197.8s)
+[85/96] NEGATIVE-CONTROL-c7_session_drift_us_equity_style -> REFUTED (30.9s)
+[86/96] NEGATIVE-CONTROL-c7_session_drift_crypto -> REFUTED (18.7s)
+[87/96] NEGATIVE-CONTROL-c7_session_drift_fx_major -> INCONCLUSIVE (40.4s)
+[88/96] NEGATIVE-CONTROL-c7_session_drift_commodities -> REFUTED (48.7s)
+[89/96] NEGATIVE-CONTROL-c7_session_drift_futures_broad -> REFUTED (53.7s)
+[90/96] NEGATIVE-CONTROL-c7_session_drift_rates_credit -> REFUTED (47.5s)
+[91/96] NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (120.5s)
+[92/96] NEGATIVE-CONTROL-c8_liquidity_reversal_crypto -> REFUTED (59.4s)
+[93/96] NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major -> INCONCLUSIVE (110.4s)
+[94/96] NEGATIVE-CONTROL-c8_liquidity_reversal_commodities -> REFUTED (164.2s)
+[95/96] NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad -> REFUTED (174.7s)
+[96/96] NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (140.9s)
+
+RUN DONE in 2276.3s
+results_path: C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\paper_concept_results.json
+n_run: 24
+c7_session_drift_us_equity_style                        REFUTED        oos=0.1348875086447168 is=0.15719301527814192 n=8 err=[]
+c7_session_drift_crypto                                 REFUTED        oos=-0.6288674978742219 is=0.31295361059755444 n=10 err=[]
+c7_session_drift_fx_major                               INCONCLUSIVE   oos=None is=None n=None err=[]
+c7_session_drift_commodities                            REFUTED        oos=-0.3723093105128827 is=-0.31175557727340525 n=13 err=[]
+c7_session_drift_futures_broad                          REFUTED        oos=-0.0644845024056179 is=-0.11923160428652402 n=15 err=[]
+c7_session_drift_rates_credit                           REFUTED        oos=-0.20667360100948626 is=0.036921444474586756 n=12 err=[]
+c8_liquidity_reversal_us_equity_style                   INCONCLUSIVE   oos=None is=None n=None err=[]
+c8_liquidity_reversal_crypto                            FRAGILE        oos=0.6500287512277273 is=-0.19357639591097217 n=30 err=[]
+c8_liquidity_reversal_fx_major                          INCONCLUSIVE   oos=None is=None n=None err=[]
+c8_liquidity_reversal_commodities                       REFUTED        oos=0.16116034666461562 is=0.04737391166811781 n=171 err=[]
+c8_liquidity_reversal_futures_broad                     REFUTED        oos=0.0013354105182441895 is=-0.08876403565730943 n=110 err=[]
+c8_liquidity_reversal_rates_credit                      INCONCLUSIVE   oos=None is=None n=None err=[]
+NEGATIVE-CONTROL-c7_session_drift_us_equity_style       REFUTED        oos=-0.4894992890573981 is=-0.5124882791705377 n=8 err=[]
+NEGATIVE-CONTROL-c7_session_drift_crypto                REFUTED        oos=0.15388257429005228 is=-0.6467566703863004 n=10 err=[]
+NEGATIVE-CONTROL-c7_session_drift_fx_major              INCONCLUSIVE   oos=None is=None n=None err=[]
+NEGATIVE-CONTROL-c7_session_drift_commodities           REFUTED        oos=0.36366340440404743 is=0.28885633172228425 n=13 err=[]
+NEGATIVE-CONTROL-c7_session_drift_futures_broad         REFUTED        oos=0.0345788089691653 is=0.07266495725911994 n=15 err=[]
+NEGATIVE-CONTROL-c7_session_drift_rates_credit          REFUTED        oos=0.32061276745792955 is=-0.11333580087515174 n=12 err=[]
+NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style  INCONCLUSIVE   oos=None is=None n=None err=[]
+NEGATIVE-CONTROL-c8_liquidity_reversal_crypto           REFUTED        oos=-0.654076525691794 is=-0.01624107081879999 n=30 err=[]
+NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major         INCONCLUSIVE   oos=None is=None n=None err=[]
+NEGATIVE-CONTROL-c8_liquidity_reversal_commodities      REFUTED        oos=-0.18764338754748394 is=-0.08042630975019036 n=171 err=[]
+NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad    REFUTED        oos=-0.036701250175215076 is=0.061974835163354 n=110 err=[]
+NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit     INCONCLUSIVE   oos=None is=None n=None err=[]
+scorecards captured: 24
+EXIT=0
