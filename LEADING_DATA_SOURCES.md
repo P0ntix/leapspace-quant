@@ -353,27 +353,69 @@ premium is where the directional information is.
 * `leapspace/leading.py::deribit_gamma_exposure` — live GEX proxy
 * `leapspace/leading.py::deribit_option_flow` — live flow
 * `leapspace/leading.py::align_to_bars` — the no-look-ahead alignment
+* `leapspace/cryptoderivs.py::fetch_crypto_derivatives` — funding rate,
+  annualised funding, funding z-score, open interest and open-interest
+  change, from Bybit or Binance, aligned to a bar grid with the same
+  one-bar publication lag as the volatility measures
+
+**The crypto derivatives layer, verified live on this host:**
+
+```
+Bybit BTCUSDT, 120 daily points:
+  funding rate        -0.000046 .. +0.000100 per 8h
+  funding annualised  -5.0% .. +11.0%
+  funding z-score     -2.50 .. +1.65
+  open-interest change -10.67% .. +11.33%
+Binance BTCUSDT: 200 funding points, each carrying the mark price
+Bybit history depth: 200 daily OI points, 200 funding points
+```
+
+The funding rate is the crypto-native analogue of the implied
+volatility risk premium: it says how crowded the market is and how
+much it costs to hold that crowding, and it is published before the
+move it tends to precede. It is a RISK-CONDITION measure, not a
+directional one — elevated funding means the market is crowded long
+and paying to hold it, which is a sizing input.
+
+**Two constraints that are stated in the code rather than glossed:**
+
+1. **Funding and open interest are VENUE-SPECIFIC.** Bybit's open
+   interest is not Binance's, and neither is the whole market. The
+   venue is recorded with every reading.
+2. **A funding rate is published at the END of its interval**, so the
+   alignment uses the same one-bar publication lag as every other
+   leading series. Without it, the "leading" property is an illusion.
 
 **NOT yet implemented, and worth doing next, in this order:**
 
-1. **Crypto funding rate and open interest.** The crypto-native
-   leading indicator. Public and keyless on every major venue.
-2. **The volatility term structure** (short IV minus long IV) rather
+1. **The volatility term structure** (short IV minus long IV) rather
    than only the level. The momentum-crash literature's crash dummy
    uses "elevated short-versus-long volatility", and Deribit's
    per-expiry `mark_iv` gives it directly from the live book.
-3. **A term structure from HISTORY.** The per-instrument
+2. **A term structure from HISTORY.** The per-instrument
    `get_tradingview_chart_data` endpoint returns 400 at hourly
    resolution for the instruments tested, so the historical term
    structure is not yet obtainable. Until it is, the term structure
    stays a live reading and the backtests use the LEVEL.
-4. **Option-implied measures for equities and FX.** The equity options
+3. **Option-implied measures for equities and FX.** The equity options
    chain is available keylessly from Nasdaq, but no free, historical,
    per-expiry IV series was found for it.
-5. **The cross-asset forward-looking linkage** the regime paper calls
+4. **The cross-asset forward-looking linkage** the regime paper calls
    for in crypto — a crisis-regime-conditioned equity link.
-6. **Real-time macro vintages** (ALFRED) so the macro layer can be
+5. **Real-time macro vintages** (ALFRED) so the macro layer can be
    backtested without the revision look-ahead hazard.
+6. **Crypto EXCHANGE-NETFLOW as a leading feature.** This is the
+   one genuinely *leading* on-chain measure — coins leaving exchanges
+   precede the supply squeeze — and it is on the list because it needs
+   a balance-snapshot series, not a single read.
+
+**Deliberately NOT used:**
+
+* **CBOE VIX1D, VIX9D, VIX3M** — the term-structure indices that
+  *are* free on CBOE's site, but whose historical CSV distribution is
+  not reliable enough to backtest against.
+* **^V2TX** — the Yahoo chart API returns HTTP 404 for it. A source
+  that does not answer is not a source.
 
 ---
 

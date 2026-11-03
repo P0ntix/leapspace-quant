@@ -623,6 +623,7 @@ def build_leading_features(
     rv_window: int = 20,
     max_lag_bars: int = 1,
     label: str = "",
+    derivatives: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """Assemble the leading feature block for a bar grid.
 
@@ -641,6 +642,14 @@ def build_leading_features(
       vrp         - implied minus realised, percentage points
       iv_zscore  - the implied level's z-score over the sample
       vrp_zscore - the risk premium's z-score over the sample
+
+    When `derivatives` is supplied - the block returned by
+    `leapspace.cryptoderivs.build_crypto_derivatives_features` - its
+    series are merged in, so a crypto panel can carry the funding and
+    open-interest measures alongside the volatility ones. A CRYPTO
+    panel should: the perpetual-swap funding rate is the crypto-native
+    equivalent of the implied-volatility risk premium, and it is
+    leading in the same way.
     """
     n = len(bar_timestamps)
     iv_aligned = align_to_bars(iv_series, bar_timestamps,
@@ -667,7 +676,7 @@ def build_leading_features(
             return [None] * len(series)
         return [None if v is None else (v - m) / sd for v in series]
 
-    return {
+    block = {
         "label": label,
         "iv_level": iv_aligned,
         "rv_level": rv_aligned,
@@ -682,3 +691,20 @@ def build_leading_features(
             f"bar so no bar uses its own close"),
         "source": "implied volatility series supplied by the caller",
     }
+
+    # Merge the crypto-derivatives measures in, when supplied. They are
+    # aligned to the SAME bar grid with the SAME publication lag, so a
+    # crypto panel carries the volatility and the positioning measures
+    # on one timeline.
+    if derivatives:
+        for key in ("funding_rate", "funding_annualised", "funding_zscore",
+                    "open_interest", "oi_change_pct"):
+            if key in derivatives:
+                block[key] = derivatives[key]
+        block["derivatives_source"] = derivatives.get("source")
+        block["derivatives_venue_note"] = derivatives.get("venue_note")
+        block["derivatives_interpretation_note"] = derivatives.get(
+            "interpretation_note")
+        block["n_derivatives_observed"] = derivatives.get("n_funding_observed")
+
+    return block

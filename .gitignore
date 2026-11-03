@@ -18,6 +18,22 @@ reports/doctext/raw_*.html
 reports/doctext/*.txt
 data/_raw/
 
+# Worker scratch files. The matrix workers probe the engine with
+# throwaway scripts under reports/; those are working files, not
+# deliverables, and they are regenerated on every run.
+reports/_*.py
+reports/_*.json
+reports/_*.out
+reports/run_matrix_worker*.py
+reports/_probe*.py
+reports/_analyze*.py
+reports/_demo*.py
+reports/_explore*.py
+reports/_prefetch*.py
+reports/_preflight*.py
+reports/_proto*.py
+reports/_run_*.py
+
 __pycache__/
 *.pyc
 .idea/
