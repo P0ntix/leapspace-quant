@@ -109,6 +109,34 @@ def _sharpe(row: Dict[str, Any]) -> Optional[float]:
     return None
 
 
+def _ran(row: Dict[str, Any]) -> bool:
+    """Whether a spec ACTUALLY EXECUTED, as opposed to failing.
+
+    A row can be INCONCLUSIVE because the evidence was insufficient -
+    in which case it ran and produced flags - or because the code
+    crashed - in which case it carries an error and no metrics at all.
+    Those are different claims and the report must not merge them.
+
+    The rule: an ERROR means it did not run. Otherwise, any sign of
+    real execution (flags, metrics, a stage record) means it did.
+
+    A spec that ran and produced ZERO trades has flags like "only 0
+    trades (need >=30)" and a null Sharpe. That is a real result - the
+    signal never fired - and it must not be counted as a crash.
+    """
+    if row.get("errors"):
+        return False
+    if row.get("flags"):
+        return True
+    m = row.get("metrics") or {}
+    if any(m.get(k) is not None for k in ("oos_sharpe", "n_trades",
+                                          "total_return", "max_drawdown")):
+        return True
+    if row.get("walk_forward") or row.get("stages"):
+        return True
+    return False
+
+
 def summarise(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     """Turn the rows into the tables the report renders."""
     real = [r for r in rows if not _is_control(r.get("name", ""))]
@@ -151,6 +179,16 @@ def summarise(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     fragile = [r for r in real if r.get("verdict") == "FRAGILE"]
     controls_survived = [r for r in controls
                          if r.get("verdict") == "SUPPORTED"]
+
+    # Which specs ACTUALLY EXECUTED. A control that never ran cannot
+    # testify that the validation discriminates.
+    real_ran = [r for r in real if _ran(r)]
+    real_did_not_run = [r for r in real if not _ran(r)]
+    controls_ran = [r for r in controls if _ran(r)]
+    controls_did_not_run = [r for r in controls if not _ran(r)]
+    controls_tested_and_failed = [
+        r for r in controls_ran
+        if r.get("verdict") in ("REFUTED", "FRAGILE", "INCONCLUSIVE")]
 
     # Cross-asset consistency: how many asset classes each concept
     # produced a SUPPORTED or FRAGILE result on.
@@ -204,6 +242,11 @@ def summarise(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
         "survived": survived,
         "fragile": fragile,
         "controls_survived": controls_survived,
+        "real_ran": real_ran,
+        "real_did_not_run": real_did_not_run,
+        "controls_ran": controls_ran,
+        "controls_did_not_run": controls_did_not_run,
+        "controls_tested_and_failed": controls_tested_and_failed,
         "coverage": coverage,
         "verdict_counts": _counts(real),
         "control_verdict_counts": _counts(controls),
@@ -255,7 +298,29 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
         L.append(f"| {v} | {counts.get(v, 0)} | "
                  f"{s['control_verdict_counts'].get(v, 0)} |")
     L.append(f"| **total** | **{n_real}** | **{n_ctrl}** |")
+    L.append(f"| **of which actually executed** | **{len(s['real_ran'])}** | "
+             f"**{len(s['controls_ran'])}** |")
     L.append("")
+
+    # ---- did the specs actually run? --------------------------------
+    if s["real_did_not_run"] or s["controls_did_not_run"]:
+        L.append("### :rotating_light: CRITICAL — some specs did NOT run")
+        L.append("")
+        L.append(f"**{len(s['real_did_not_run'])} of the {n_real} real specs "
+                 f"and {len(s['controls_did_not_run'])} of the {n_ctrl} "
+                 "controls produced no result at all.** A spec that "
+                 "crashed is not a research finding, and its row is not "
+                 "evidence about the concept. The rows that did not run:")
+        L.append("")
+        for r in (s["real_did_not_run"] + s["controls_did_not_run"]):
+            errs = r.get("errors") or ["no metrics produced"]
+            L.append(f"* `{r.get('name')}` — {errs[0]}")
+        L.append("")
+        L.append("**These rows must be re-run before the matrix means "
+                 "anything for the concepts they cover.** Until then, a "
+                 "concept whose every row is in this list has NOT been "
+                 "tested - it has not been refuted either.")
+        L.append("")
 
     if s["controls_survived"]:
         L.append("### :rotating_light: CRITICAL — a negative control "
@@ -277,11 +342,23 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
                  "explained.")
         L.append("")
     else:
-        L.append("### The negative controls all failed, as they must")
+        L.append("### The negative controls that ran, all failed")
         L.append("")
-        L.append("Every inverted-polarity control was REFUTED, FRAGILE or "
-                 "INCONCLUSIVE. The validation is discriminating, so the "
-                 "verdicts below are meaningful.")
+        if s["controls_did_not_run"]:
+            L.append(f"Of the {n_ctrl} negative controls, **{len(s['controls_ran'])} "
+                     "actually executed** and every one of them came out "
+                     f"REFUTED, FRAGILE or INCONCLUSIVE. The remaining "
+                     f"**{len(s['controls_did_not_run'])} did not run** and "
+                     "so say nothing either way.")
+            L.append("")
+            L.append("The discrimination claim therefore covers the "
+                     f"{len(s['controls_ran'])} controls that executed, "
+                     "not the whole set.")
+        else:
+            L.append("Every inverted-polarity control was REFUTED, "
+                     "FRAGILE or INCONCLUSIVE. The validation is "
+                     "discriminating, so the verdicts below are "
+                     "meaningful.")
         L.append("")
 
     # ---- the matrix --------------------------------------------------
@@ -303,18 +380,27 @@ def render_markdown(rows: Sequence[Dict[str, Any]],
                 continue
             sh = _sharpe(r)
             v = str(r.get("verdict") or "?")
+            if not _ran(r):
+                # A spec that did not execute has NO finding attached to
+                # it. Rendering its verdict as if it were a result would
+                # repeat the exact mistake that made 24 crashed rows
+                # look like research outcomes.
+                cells.append("**DID NOT RUN**")
+                continue
             cells.append(f"**{v}**" + (f" ({sh:.2f})" if sh is not None
                                         else ""))
         L.append(f"| {c} | " + " | ".join(cells) + " |")
     L.append("")
     L.append("Sharpe figures are the POOLED OUT-OF-SAMPLE numbers, not "
-             "the in-sample ones.")
+             "the in-sample ones. **DID NOT RUN** means the spec "
+             "produced no result at all - it is not a verdict on the "
+             "concept.")
     L.append("")
 
     # ---- cross-asset consistency --------------------------------------
     L.append("## 3. Does it work everywhere, or only somewhere?")
     L.append("")
-    L.append("| Concept | Asset classes with a positive result | Mean OOS "
+    L.append("| Concept | Asset classes SUPPORTED or FRAGILE | Mean OOS "
              "Sharpe | Best | Worst | Controls that also passed |")
     L.append("|---|---|---|---|---|---|")
     for row in s["consistency"]:
@@ -445,8 +531,12 @@ def _verdict_matrix_svg(summary: Dict[str, Any]) -> str:
                 continue
             col = _VERDICT_COLOUR.get(str(r.get("verdict")), NEUTRAL)
             sh = _sharpe(r)
-            label = str(r.get("verdict") or "?")[:4]
-            if sh is not None:
+            if not _ran(r):
+                col = NEUTRAL
+                label = "NOT RUN"
+            else:
+                label = str(r.get("verdict") or "?")[:4]
+            if sh is not None and _ran(r):
                 label += f" {sh:.1f}"
             out.append(f'<rect x="{x}" y="{y}" width="{cw-4}" '
                        f'height="{ch-4}" fill="{col}" opacity="0.22" '
@@ -478,6 +568,8 @@ def render_html(rows: Sequence[Dict[str, Any]],
         '<div class="grid">'
         f'<div><div class="kv">Real specs tested</div>'
         f'<div class="vv big">{s["n_real"]}</div></div>'
+        f'<div><div class="kv">Actually executed</div>'
+        f'<div class="vv big">{len(s["real_ran"])}</div></div>'
         f'<div><div class="kv">Negative controls</div>'
         f'<div class="vv big">{s["n_controls"]}</div></div>'
         f'<div><div class="kv">SUPPORTED (real)</div>'
@@ -496,9 +588,20 @@ def render_html(rows: Sequence[Dict[str, Any]],
         + ('<p class="note warn">A negative control SURVIVED. The '
            'validation is not discriminating and every other verdict is '
            'void until that is explained.</p>' if ctrl_ok else
-           '<p class="note">Every inverted control failed, as it must. '
-           'The validation is discriminating, so the verdicts mean '
-           'something.</p>')
+           f'<p class="note">Of the {s["n_controls"]} negative controls, '
+           f'{len(s["controls_ran"])} actually executed and every one of '
+           f'them failed, as it must.'
+           + (f' The other {len(s["controls_did_not_run"])} did not run and '
+              'so say nothing either way.'
+              if s["controls_did_not_run"] else '')
+           + '</p>')
+        + ('<p class="note warn">'
+           f'{len(s["real_did_not_run"])} real specs and '
+           f'{len(s["controls_did_not_run"])} controls produced NO result '
+           'at all. A spec that crashed is not a research finding; those '
+           'concepts are untested, not refuted, and the rows are marked '
+           'DID NOT RUN.</p>'
+           if (s["real_did_not_run"] or s["controls_did_not_run"]) else '')
         + '</div>')
 
     parts.append('<div class="card"><h2>Verdict matrix</h2>'
@@ -550,14 +653,23 @@ def render_html(rows: Sequence[Dict[str, Any]],
     for r in sorted(rows, key=lambda x: (str(x.get("concept")),
                                           str(x.get("asset_class")))):
         sh = _sharpe(r)
+        ran = _ran(r)
         col = _VERDICT_COLOUR.get(str(r.get("verdict")), NEUTRAL)
+        if not ran:
+            label = "DID NOT RUN"
+            col = NEUTRAL
+        else:
+            label = str(r.get("verdict"))
+        flag_text = "; ".join(str(x) for x in (r.get("flags") or []))
+        if not ran and r.get("errors"):
+            flag_text = "; ".join(str(x) for x in (r.get("errors") or []))
         trows.append(
             f'<tr><td>{_esc(r.get("concept"))}</td>'
             f'<td>{_esc(r.get("asset_class"))}</td>'
             f'<td><span class="tag" style="color:{col};background:'
-            f'{col}22">{_esc(r.get("verdict"))}</span></td>'
-            f'<td>{("%.2f" % sh) if sh is not None else "n/a"}</td>'
-            f'<td class="kv">{_esc("; ".join(r.get("flags") or []))}</td></tr>')
+            f'{col}22">{_esc(label)}</span></td>'
+            f'<td>{("%.2f" % sh) if (sh is not None and ran) else "n/a"}</td>'
+            f'<td class="kv">{_esc(flag_text)}</td></tr>')
     parts.append('<div class="card"><h2>Every spec, with its flags</h2>'
                  '<table><tr><th>Concept</th><th>Asset class</th>'
                  '<th>Verdict</th><th>OOS Sharpe</th><th>Flags</th></tr>'
