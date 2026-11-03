@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from typing import Any, Dict, List
 
 from .models import CHAINS, SUPPORTED_CHAINS, to_json
@@ -132,6 +133,39 @@ def _num(v) -> str:
     if isinstance(v, float):
         return f"{v:.4g}"
     return str(v)
+
+
+def _trade_field(record: Any, name: str) -> Any:
+    """Read a field from a trade record that may be a dataclass OR a dict.
+
+    The simulator returns `TradeRecord` dataclasses, but some code paths
+    hand back plain dicts. Reading them with `.get()` on a dataclass
+    raises AttributeError; reading them with getattr() on a dict returns
+    None, which silently prints "n/a" for a number that exists. This
+    reads either shape.
+
+    It also looks INSIDE the nested `trade` object, because a
+    `TradeRecord` wraps a `CopyTrade` and the fields a reader wants
+    (token, action, skipped, skip_reason) live on the inner one. The
+    outer object is checked first so an outer field always wins.
+    """
+    if isinstance(record, dict):
+        if name in record:
+            return record.get(name)
+        inner = record.get("trade")
+        if isinstance(inner, dict):
+            return inner.get(name)
+        return None
+
+    value = getattr(record, name, None)
+    if value is not None:
+        return value
+    inner = getattr(record, "trade", None)
+    if inner is None:
+        return None
+    if isinstance(inner, dict):
+        return inner.get(name)
+    return getattr(inner, name, None)
 
 
 # --------------------------------------------------------------------------
@@ -285,11 +319,12 @@ def _build_config(section: str, obj: Dict[str, Any], cls, label: str):
                      and k not in aliases
                      and k not in cls.__dataclass_fields__)
     if renamed:
-        print(f"  [{label}] renamed: {', '.join(renamed)}")
+        print(f"  [{label}] renamed: {', '.join(renamed)}", file=sys.stderr)
     if dropped:
         print(f"  [{label}] WARNING: {len(dropped)} config key(s) match no "
-              f"field and were DROPPED: {', '.join(dropped)}")
-        print(f"  [{label}] the settings they carried are NOT in effect.")
+              f"field and were DROPPED: {', '.join(dropped)}", file=sys.stderr)
+        print(f"  [{label}] the settings they carried are NOT in effect.",
+              file=sys.stderr)
     return cls(**mapped)
 
 def cmd_simulate(args) -> int:
@@ -357,20 +392,21 @@ def cmd_simulate(args) -> int:
     print(f"  trades={stats.get('n_trades')}  skipped={stats.get('n_skipped')}  "
           f"win_rate={_num(stats.get('win_rate'))}  "
           f"profit_factor={_num(stats.get('profit_factor'))}")
-    print(f"  return={_num(stats.get('total_return'))}  "
-          f"max_dd={_num(stats.get('max_drawdown'))}")
+    print(f"  return={_num(stats.get('total_return_pct'))}%  "
+          f"max_dd={_num(stats.get('max_drawdown_pct'))}%")
     rugs = res.rugs or []
     if rugs:
         print(f"\n  INJECTED RUG EVENTS ({len(rugs)}) — SYNTHETIC by construction:")
         for r in rugs[:10]:
             _rf = r.to_flat() if hasattr(r, "to_flat") else dict(r)
             print(f"    ts={_rf.get('ts')} {_rf.get('token', '')} "
-                  f"{_num(r.get('drop_pct'))} drop")
-    skipped = [c for c in (res.trades or []) if c.get("skipped")]
+                  f"{_num(_rf.get('drop_pct'))} drop")
+    skipped = [c for c in (res.trades or []) if _trade_field(c, "skipped")]
     if skipped:
         print(f"\n  SKIPPED TRADES ({len(skipped)}) — recorded, never dropped:")
         for c in skipped[:10]:
-            print(f"    {c.get('token')} {c.get('action')}: {c.get('skip_reason')}")
+            print(f"    {_trade_field(c, 'token')} {_trade_field(c, 'action')}: "
+                  f"{_trade_field(c, 'skip_reason')}")
     if res.disclosure:
         print(f"\n  {res.disclosure}")
     return 0
