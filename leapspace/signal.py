@@ -45,6 +45,20 @@ NO ORDER PLACEMENT
 This module never places an order and never talks to an exchange. It
 produces a brief for a human to act on. Order placement is a separate,
 deliberately gated step - see LIVE_CAPITAL_READINESS.md.
+
+THE KILL SWITCH IS ON THIS PATH
+--------------------------------
+`leapspace.riskguard.KillSwitch` is a CODE-ENFORCED brake: a latching
+halt that survives a restart, cleared only by an explicit reset with an
+actor and a reason, which no prompt and no model can do. Until now it
+was excellent and disconnected - this module assembled a verdict
+without ever asking it whether trading was permitted.
+
+The gate is consulted BEFORE a verdict is emitted, so a halted switch
+downgrades an ENTER to AVOID with the reason recorded in the signal's
+gaps. A blocking DATA_QUALITY conflict HALTS the switch, because a
+decision built on too little evidence is a reason to stop, not a reason
+to trade carefully.
 """
 from __future__ import annotations
 
@@ -833,6 +847,169 @@ def leg_liquidity(identity: Leg, target_usd: float = 1000.0) -> Leg:
 
 
 # --------------------------------------------------------------------------
+# THE KILL SWITCH GATE
+# --------------------------------------------------------------------------
+def _kill_switch_from_config(project_root: Optional[str] = None):
+    """Build the kill switch from the operator config.
+
+    A missing or unreadable config must NOT silently produce a switch
+    with no rules - that would be a brake with no brakes. The defaults
+    inside `KillSwitch` are the ones the operator config states, so a
+    missing config still yields a working (if default) brake, and the
+    source is recorded so a reader can tell which rules applied.
+    """
+    from .riskguard import KillSwitch
+
+    cfg: Dict[str, Any] = {}
+    source = "defaults (operator config not read)"
+    path = os.path.join(_root(project_root), "leapspace", "data",
+                         "operator_config.json")
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            full = json.load(fh)
+        cfg = full.get("kill_switch") or {}
+        source = path
+    except Exception:  # noqa: BLE001
+        pass
+
+    ks = KillSwitch(cfg=cfg)
+    try:
+        ks.load()
+    except Exception:  # noqa: BLE001
+        pass
+    return ks, source
+
+
+def kill_switch_gate(ks: Any = None, token_address: Optional[str] = None,
+                     chain: str = "ethereum", equity_usd: Optional[float] = None,
+                     liquidity_usd: Optional[float] = None,
+                     slippage_bps: Optional[float] = None,
+                     ts: Optional[int] = None,
+                     project_root: Optional[str] = None) -> Dict[str, Any]:
+    """Ask the kill switch whether trading is permitted right now.
+
+    This is the function the decision path calls. It is deliberately
+    small and side-effect-light so it can be driven in a test without a
+    network.
+
+    Parameters
+    ----------
+    ks:
+        A `KillSwitch`. When omitted one is built from the operator
+        config.
+    token_address, chain:
+        Identity of the candidate trade, used for per-token rule
+        overrides and for the halt message.
+    equity_usd:
+        Current account equity. `None` means UNKNOWN, and the drawdown
+        rule is then not evaluated - it is never treated as zero, which
+        would read as a total loss.
+    liquidity_usd:
+        Pool liquidity at the decision point.
+    slippage_bps:
+        Observed or modelled slippage.
+    ts:
+        Timestamp for the check. Defaults to now.
+
+    Returns
+    -------
+    dict
+        ``allowed`` is the switch's answer. ``reason`` is empty when
+        allowed and names the rule when not. ``trigger`` is the rule
+        kind. ``gaps`` is a list of human-readable gap lines for the
+        signal brief.
+    """
+    if ks is None:
+        ks, _src = _kill_switch_from_config(project_root)
+    if ts is None:
+        ts = int(PROV.utcnow_iso() and _now_ts())
+
+    allowed, reason = ks.check(equity_usd, ts,
+                               liquidity_usd=liquidity_usd,
+                               token=token_address,
+                               slippage_bps=slippage_bps)
+
+    gaps: List[str] = []
+    if not allowed:
+        gaps.append(f"KILL SWITCH HALTED: {reason}")
+    state = {}
+    try:
+        state = ks.to_flat()
+    except Exception:  # noqa: BLE001
+        state = {}
+
+    return {
+        "allowed": bool(allowed),
+        "reason": reason or "",
+        "trigger": state.get("trigger"),
+        "halted": bool(state.get("halted")),
+        "gaps": gaps,
+        "checked_at": ts,
+    }
+
+
+def _now_ts() -> int:
+    """Current unix timestamp."""
+    import time
+    return int(time.time())
+
+
+def halt_on_data_quality(ks: Any, dq_leg: Optional["Leg"] = None) -> bool:
+    """Halt the switch when the evidence set is too thin to trade on.
+
+    A blocking DATA_QUALITY conflict means the decision was built on
+    too few answered legs. That is a reason to STOP, not a reason to
+    trade carefully, so it trips the brake.
+
+    Returns True when a halt was issued.
+    """
+    if dq_leg is None:
+        return False
+    if not getattr(dq_leg, "blocking", False):
+        return False
+    if getattr(dq_leg, "verdict", "") != CONFLICTS:
+        return False
+    reason = (f"data quality conflict: {dq_leg.detail} "
+              f"(evidence too thin to support a decision)")
+    try:
+        ks.halt(reason, trigger="data_quality")
+        ks.save()
+    except Exception:  # noqa: BLE001
+        return False
+    return True
+
+
+def apply_kill_switch(signal_obj: Dict[str, Any],
+                       gate: Dict[str, Any]) -> Dict[str, Any]:
+    """Apply the gate's answer to a verdict.
+
+    A halted switch downgrades ENTER to AVOID and records the reason in
+    the gaps, so a reader of the brief can see WHY no trade happened.
+    A non-blocking verdict (WATCH, AVOID) is left alone - the switch
+    does not need to explain a decision it was not going to authorise.
+    """
+    if not isinstance(signal_obj, dict):
+        return signal_obj
+    if gate.get("allowed", True):
+        return signal_obj
+
+    out = dict(signal_obj)
+    if out.get("verdict") == ENTER:
+        out["verdict"] = AVOID
+        out["confidence"] = "HIGH"
+        halt_reason = gate.get("reason") or "no reason recorded"
+        out["reason"] = (
+            "the kill switch is HALTED - " + halt_reason +
+            " - so no position is authorised regardless of the evidence")
+    gaps = list(out.get("gaps") or [])
+    for g in (gate.get("gaps") or []):
+        if g not in gaps:
+            gaps.append(g)
+    out["gaps"] = gaps
+    return out
+
+
+# --------------------------------------------------------------------------
 # THE ASSEMBLY
 # --------------------------------------------------------------------------
 def assess_trade(address: str, chain: str = "solana",
@@ -893,6 +1070,54 @@ def assess_trade(address: str, chain: str = "solana",
                   "edge for this asset")
     dq.metrics["verdict_reason"] = reason
 
+    # ---- the kill switch --------------------------------------------------
+    # The brake is consulted BEFORE the verdict is returned, so a halted
+    # switch cannot be talked out of by the evidence. Two things happen
+    # here, in this order:
+    #
+    #   1. A blocking DATA_QUALITY conflict HALTS the switch. A decision
+    #      built on too little evidence is a reason to stop.
+    #   2. The switch is asked whether trading is permitted. If it is
+    #      not, an ENTER is downgraded to AVOID and the reason is
+    #      recorded in the gaps.
+    #
+    # The switch is loaded from disk, so a halt issued by an earlier run
+    # - or by an operator, or by `leapspace.cli risk` - is in force here
+    # too. That latching is the whole point of the brake.
+    ks, ks_source = _kill_switch_from_config(project_root)
+    halted_for_quality = halt_on_data_quality(ks, dq)
+
+    liq_metrics = next((l.metrics for l in legs
+                        if l.name == "LIQUIDITY"), {}) or {}
+    pool_liquidity = liq_metrics.get("pool_liquidity_usd")
+    gate = kill_switch_gate(
+        ks=ks,
+        token_address=address,
+        chain=chain,
+        equity_usd=None,          # unknown: never treated as zero
+        liquidity_usd=pool_liquidity,
+        project_root=project_root,
+    )
+    gate["source"] = ks_source
+    gate["halted_for_data_quality"] = halted_for_quality
+    legs.append(Leg(
+        "KILL_SWITCH",
+        SUPPORTS if gate["allowed"] else CONFLICTS,
+        (f"trading permitted (rules from {ks_source})" if gate["allowed"]
+         else f"HALTED: {gate['reason']}"),
+        {"allowed": gate["allowed"], "trigger": gate.get("trigger"),
+         "halted": gate.get("halted"),
+         "halted_for_data_quality": halted_for_quality,
+         "source": ks_source},
+        PROV.LIVE, blocking=not gate["allowed"]))
+
+    if not gate["allowed"]:
+        verdict, confidence = AVOID, "HIGH"
+        reason = ("the kill switch is HALTED - " + (gate["reason"] or "") +
+                  " - so no position is authorised regardless of the "
+                  "evidence")
+        dq.metrics["verdict_reason"] = reason
+
     # ---- entry / exit ----------------------------------------------------
     if qualified is not None and qualified.verdict == SUPPORTS:
         m = qualified.metrics
@@ -937,6 +1162,10 @@ def assess_trade(address: str, chain: str = "solana",
 
     gaps = [f"{l.name}: {l.detail}" for l in unavail] or \
            ["none - every evidence leg answered"]
+    # A halt is a GAP the reader must see, not a footnote.
+    for g in (gate.get("gaps") or []):
+        if g not in gaps:
+            gaps.append(g)
 
     prov_summary: Dict[str, int] = {}
     for l in legs:

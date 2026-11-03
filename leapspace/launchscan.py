@@ -28,13 +28,39 @@ and do they have a record".
 
 THE LIMITATIONS ARE REAL AND STATED
 -----------------------------------
-* A brand-new token's transfer history may exceed the page budget, in
-  which case the earliest transfers are NOT reached and the scan says
-  so rather than pretending to see the start.
 * A wallet's prior record is measured on OTHER tokens. A wallet with no
   prior memecoin history is reported as INSUFFICIENT, not as skilful.
 * Early arrival is NECESSARY but not SUFFICIENT for edge. Both are
   reported separately.
+
+HOW THE LAUNCH WINDOW IS FOUND
+-------------------------------
+The first implementation walked Blockscout's token-transfers endpoint
+BACKWARDS through the token's entire history until it reached the first
+transfer. That works only for a token with almost no history, and it
+fails for every established token:
+
+    PEPE   read 600 transfers over 12 pages -> "insufficient_history"
+    TURBO  read 750 transfers over 15 pages -> "insufficient_history"
+
+Because the walk could not reach the launch window, `early_buyers` -
+and therefore `screen_early_buyers`, and therefore
+`edge.screen_universe` - could never run on a real token. This is not
+an edge case; it is the normal case.
+
+The fix asks the chain directly. The launch block is known
+(`token_launch`), and an ERC-20's transfers are `Transfer` LOGS emitted
+by the token contract. `eth_getLogs` over
+[launch_block, launch_block + window] returns exactly the launch
+window's transfers in one or two calls, with no history walk at all.
+Verified live: PEPE's launch block is 17046105, and the log query
+returns the mint and the first buyers in seconds where the walk could
+not reach the same window after 750 transfers.
+
+The Blockscout walk is KEPT as a fallback, because it works on chains
+where the log route is unavailable and it gives a cross-check. When
+both are available the log route wins, because it is bounded by the
+window instead of by the token's age.
 """
 from __future__ import annotations
 
@@ -51,7 +77,205 @@ BLOCKSCOUT_HOSTS = {
 
 EVM_RPC = "https://ethereum-rpc.publicnode.com"
 
+#: The ERC-20 Transfer event topic. Transfers are LOGS, so this is what
+#: the launch-window scan asks the chain for.
+TRANSFER_TOPIC = ("0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f"
+                  "55a4df523b3ef")
 
+#: The zero address. A transfer FROM it is a mint, not a purchase, and
+#: a mint is not an early buyer.
+ZERO_ADDRESS = "0x" + "0" * 40
+
+
+# --------------------------------------------------------------------------
+# THE LOG ROUTE — asking the chain for the launch window directly
+# --------------------------------------------------------------------------
+def fetch_transfer_logs(token: str, from_block: int, to_block: int,
+                        chain: str = "ethereum",
+                        max_providers: int = 4) -> Dict[str, Any]:
+    """Fetch a token's ERC-20 Transfer LOGS over a block range.
+
+    This is the route that makes the launch scan work on a token of any
+    age. The range is bounded by the CALLER (the launch window), not by
+    the token's history, so the answer arrives in one or two calls.
+
+    PROVIDER BEHAVIOUR, measured live
+    ----------------------------------
+    Public providers differ, and the differences matter:
+      * drpc.org and blastapi REJECT a 500-block range with HTTP 400.
+      * tenderly, mevblocker and pokt answer it.
+      * Where they answer, they can return DIFFERENT SUBSETS of the
+        same range (drpc returned 4 logs over 100 blocks; tenderly
+        returned 2 over 500; pokt returned 1).
+
+    So the providers are tried in order and the FIRST one that answers
+    is used, and the result records WHICH provider answered. Silently
+    merging providers would fabricate a history no single node
+    attested to, and silently using one without saying which would hide
+    a coverage gap. The caller is told the provider and can decide.
+
+    Returns a dict with ``ok``, ``logs``, ``provider`` and, on failure,
+    ``reason``. It never returns an empty list as if it were a window
+    with no buyers - that is reported as a failure with a reason.
+    """
+    if from_block > to_block:
+        return {"ok": False, "reason": "empty block range",
+                "logs": [], "provider": None}
+
+    from .costs import ArchiveRpc
+
+    try:
+        rpc = ArchiveRpc(chain)
+    except Exception as exc:  # noqa: BLE001
+        return {"ok": False, "reason": f"{type(exc).__name__}: {str(exc)[:150]}",
+                "logs": [], "provider": None}
+
+    providers = list(rpc.urls)[:max_providers]
+    errors: List[str] = []
+    for url in providers:
+        try:
+            single = ArchiveRpc(chain, urls=[url])
+            d = single.get_logs(address=token, topics=[TRANSFER_TOPIC],
+                                from_block=from_block, to_block=to_block)
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{url}: {type(exc).__name__}: {str(exc)[:90]}")
+            continue
+        if not isinstance(d, dict):
+            errors.append(f"{url}: unexpected response shape")
+            continue
+        if d.get("ok") and isinstance(d.get("result"), list):
+            return {
+                "ok": True,
+                "logs": d["result"],
+                "provider": d.get("url") or url,
+                "http_status": d.get("http_status"),
+                "from_block": from_block,
+                "to_block": to_block,
+                "errors": errors,
+                "note": ("Providers can return different subsets of the same "
+                         "range. The provider that answered is named so the "
+                         "coverage is not hidden."),
+            }
+        errors.append(f"{url}: {d.get('reason') or 'no logs returned'}")
+
+    return {"ok": False, "reason": "no provider returned logs: "
+            + "; ".join(errors[:4]), "logs": [], "provider": None,
+            "errors": errors}
+
+
+def decode_transfer_logs(logs: List[Dict[str, Any]],
+                         decimals: int = 18) -> List[Dict[str, Any]]:
+    """Decode ERC-20 Transfer logs into per-recipient purchases.
+
+    A transfer is a purchase when it comes FROM somewhere and goes TO
+    a wallet. Two cases are excluded because neither is a buyer:
+      * FROM the zero address - that is a MINT.
+      * TO the zero address - that is a BURN.
+
+    Buys by the same recipient are AGGREGATED, because "how much did
+    this wallet buy" is the question the gate asks, and "how many
+    transfers" is not it.
+
+    The amount is the log's ``data`` field, which holds the value as an
+    UNSIGNED 256-bit integer. The recipient and sender are the indexed
+    topics. Some providers place the amount in a fourth topic instead
+    (the non-indexed form), so both are read.
+    """
+    out: Dict[str, Dict[str, Any]] = {}
+
+    for lg in logs or []:
+        if not isinstance(lg, dict):
+            continue
+        topics = lg.get("topics") or []
+        if len(topics) < 3:
+            continue
+        try:
+            frm = "0x" + str(topics[1])[-40:].lower()
+            to = "0x" + str(topics[2])[-40:].lower()
+        except Exception:  # noqa: BLE001
+            continue
+        if frm == ZERO_ADDRESS or to == ZERO_ADDRESS:
+            continue
+
+        raw = None
+        data = lg.get("data")
+        if isinstance(data, str) and data not in ("", "0x"):
+            try:
+                raw = int(data, 16)
+            except ValueError:
+                raw = None
+        if raw is None and len(topics) >= 4:
+            try:
+                raw = int(str(topics[3]), 16)
+            except ValueError:
+                raw = None
+        if raw is None:
+            continue
+
+        try:
+            blk = int(str(lg.get("blockNumber")), 16)
+        except (TypeError, ValueError):
+            continue
+
+        try:
+            amount = float(raw) / (10 ** int(decimals))
+        except (TypeError, ValueError, ZeroDivisionError, OverflowError):
+            continue
+
+        b = out.setdefault(to, {
+            "address": to, "to": to, "from": frm,
+            "bought": 0.0, "n_buys": 0,
+            "first_block": blk, "last_block": blk,
+            "first_timestamp": lg.get("timestamp"),
+        })
+        b["bought"] += amount
+        b["n_buys"] += 1
+        b["last_block"] = max(b["last_block"], blk)
+        if b["first_block"] == blk:
+            b["first_timestamp"] = lg.get("timestamp")
+
+    return list(out.values())
+
+
+def scan_launch_window(logs: List[Dict[str, Any]], launch_block: int,
+                       window_blocks: int = 1000, decimals: int = 18,
+                       provider: Optional[str] = None,
+                       token: Optional[str] = None) -> Dict[str, Any]:
+    """Find the buyers inside a launch window, from transfer logs.
+
+    The window is bounded by BLOCKS FROM THE LAUNCH, which is what
+    "early" means. A buyer outside the window is not an early buyer and
+    is not listed.
+    """
+    cutoff = launch_block + int(window_blocks)
+    decoded = decode_transfer_logs(logs or [], decimals=decimals)
+    buyers = []
+    for b in decoded:
+        if b["first_block"] < launch_block or b["first_block"] > cutoff:
+            continue
+        b = dict(b)
+        b["entry_lag_blocks"] = b["first_block"] - launch_block
+        b["entry_class"] = _entry_class(b["entry_lag_blocks"])
+        buyers.append(b)
+    buyers.sort(key=lambda r: (r["first_block"], -r["bought"]))
+
+    return {
+        "status": "ok",
+        "method": "eth_getLogs over the launch window (no history walk)",
+        "token": token,
+        "launch_block": launch_block,
+        "window_blocks": window_blocks,
+        "n_buyers_in_window": len(buyers),
+        "buyers": buyers,
+        "provider": provider,
+        "note": ("Only buyers INSIDE the window are listed. A wallet that "
+                 "bought after it is not an early buyer and is not here."),
+    }
+
+
+# --------------------------------------------------------------------------
+# THE ASSEMBLY
+# --------------------------------------------------------------------------
 def _bs(path: str, params: Optional[Dict[str, Any]] = None,
         chain: str = "ethereum", timeout: int = 30) -> Any:
     host = BLOCKSCOUT_HOSTS.get(chain)
@@ -176,25 +400,62 @@ def fetch_token_transfers(token: str, chain: str = "ethereum",
 def early_buyers(token: str, chain: str = "ethereum",
                   window_blocks: int = 1000,
                   max_pages: int = 40) -> Dict[str, Any]:
-    """Wallets that bought the token within `window_blocks` of its launch."""
+    """Wallets that bought the token within `window_blocks` of its launch.
+
+    THE LOG ROUTE IS THE PRIMARY PATH
+    ----------------------------------
+    The launch window is a range of BLOCKS, and the chain will tell us
+    exactly which transfers happened in that range - one or two
+    `eth_getLogs` calls, bounded by the window rather than by the
+    token's age. This works on a token with 10,000 transfers just as it
+    does on one with 10.
+
+    The Blockscout history walk is kept as a FALLBACK for chains where
+    the log route does not answer, and as a cross-check where it does.
+    It is no longer the primary path because it could not reach the
+    launch window for any established token.
+    """
     launch = token_launch(token, chain)
     if launch.get("status") != "ok":
         return {"status": "unavailable", "reason": launch.get("reason"),
                 "buyers": [], "token": token}
+
+    lb = launch["launch_block"]
+
+    # ---- primary: ask the chain for the window -------------------------
+    logs = fetch_transfer_logs(token, lb, lb + window_blocks, chain=chain)
+    if logs.get("ok"):
+        scanned = scan_launch_window(
+            logs["logs"], launch_block=lb, window_blocks=window_blocks,
+            provider=logs.get("provider"), token=token)
+        scanned["launch"] = launch
+        scanned["method"] = "eth_getLogs over the launch window"
+        scanned["provider"] = logs.get("provider")
+        scanned["provider_errors"] = logs.get("errors") or []
+        scanned["note"] = (
+            "The window was read from Transfer LOGS over the launch block "
+            "range, so it is bounded by the window and not by the token's "
+            "age. The provider that answered is named: public providers can "
+            "return different subsets of the same range.")
+        return scanned
+
+    # ---- fallback: the Blockscout history walk -------------------------
     hist = fetch_token_transfers(token, chain, max_pages=max_pages)
     if not hist.get("history_fully_read"):
         return {
             "status": "insufficient_history",
             "token": token,
-            "reason": (f"read {hist['n_transfers']} transfers over "
+            "reason": (f"the log route did not answer "
+                       f"({logs.get('reason')}) AND read "
+                       f"{hist['n_transfers']} transfers over "
                        f"{hist['pages_fetched']} pages without reaching the "
                        f"start of this token's history; the launch window "
                        f"cannot be identified"),
             "launch": launch,
             "buyers": [],
+            "log_route_reason": logs.get("reason"),
         }
 
-    lb = launch["launch_block"]
     cutoff = lb + window_blocks
     buyers: Dict[str, Dict[str, Any]] = {}
     for t in hist["transfers"]:
@@ -229,6 +490,7 @@ def early_buyers(token: str, chain: str = "ethereum",
     out.sort(key=lambda r: (r["first_block"], -r["bought"]))
     return {
         "status": "ok",
+        "method": "Blockscout transfer-history walk (log route unavailable)",
         "token": token,
         "chain": chain,
         "launch": launch,
@@ -292,12 +554,24 @@ def screen_early_buyers(token: str, chain: str = "ethereum",
             continue
         trades = []
         for pos in prof.get("positions") or []:
+            # The per-trade RETURN. Without it the gate's
+            # `bet_returns` series is empty, and an empty series means
+            # the Probability of Backtest Overfitting can never be
+            # computed - which is the one thing `edge.screen_universe`
+            # exists to do. The position carries cost and proceeds, so
+            # the return is derived from those rather than left None.
+            ret_pct = None
+            cost = float(pos.get("cost_usd") or 0.0)
+            proceeds = float(pos.get("proceeds_usd") or 0.0)
+            if pos.get("n_sells") and cost > 0:
+                ret_pct = (proceeds / cost) - 1.0
             if pos.get("n_buys"):
                 trades.append({
                     "ts": pos.get("first_buy") or 0,
                     "token_address": pos.get("address"),
                     "symbol": pos.get("symbol"), "side": "buy",
                     "amount": pos.get("bought"), "price_usd": pos.get("price_usd"),
+                    "cost_usd": cost,
                     "realised_pnl_usd": None, "return_pct": None,
                 })
             if pos.get("n_sells"):
@@ -306,8 +580,9 @@ def screen_early_buyers(token: str, chain: str = "ethereum",
                     "token_address": pos.get("address"),
                     "symbol": pos.get("symbol"), "side": "sell",
                     "amount": pos.get("sold"), "price_usd": pos.get("price_usd"),
+                    "cost_usd": cost, "proceeds_usd": proceeds,
                     "realised_pnl_usd": pos.get("realised_usd"),
-                    "return_pct": None,
+                    "return_pct": ret_pct,
                 })
         edge = evaluate_edge(trades, trials_scanned=len(buyers))
         results.append({
@@ -325,6 +600,11 @@ def screen_early_buyers(token: str, chain: str = "ethereum",
                                  ).get("independent_bets"),
             "deflated_sharpe": edge.get("deflated_sharpe"),
             "rejected_by": edge.get("rejected_by"),
+            # The trade list is carried so `edge.screen_universe` can be
+            # run over this candidate matrix. PBO needs the MATRIX, not
+            # one wallet, and until this was carried the PBO path had
+            # no reachable caller.
+            "trades": trades,
             "edge": edge,
         })
 
