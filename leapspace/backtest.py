@@ -1920,6 +1920,36 @@ def apply_intake_gate(spec: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _normalise_stage(name: str) -> str:
+    """Put a stage name into one canonical snake_case form.
+
+    The gauntlet's scorecard uses several names for the same stage:
+    "monte_carlo" and "Monte Carlo", "parameter_sensitivity" and
+    "paramsens". A raw read reports one stage twice, and the report's
+    coverage table double-counts it - which would make the validation
+    look broader than it is.
+    """
+    s = str(name or "").strip().lower()
+    s = s.replace(" ", "_").replace("-", "_")
+    aliases = {
+        "monte_carlo": "monte_carlo",
+        "paramsens": "parameter_sensitivity",
+        "parameter_sensitivity": "parameter_sensitivity",
+        "cost_stress": "cost_stress",
+        "coststress": "cost_stress",
+        "gross_vs_net": "gross_vs_net",
+        "subperiod": "subperiod",
+        "subperiod_regime": "subperiod",
+        "capacity": "capacity",
+        "replication": "replication",
+        "cross_market_replication": "replication",
+        "causality": "causality",
+        "walk_forward": "walk_forward",
+        "walkforward": "walk_forward",
+    }
+    return aliases.get(s, s or "unknown")
+
+
 def run_spec(spec: Dict[str, Any], quick: bool = False,
              n_variants: Optional[int] = None,
              walk_forward_folds: int = 5,
@@ -1987,22 +2017,50 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
     # absent. Without this the results file cannot say what was
     # actually validated, and a partial validation looks like a
     # complete one.
+    #
+    # The stage names are NORMALISED. The scorecard uses both
+    # "monte_carlo" and "Monte Carlo" for the same stage, and
+    # "parameter_sensitivity" and "paramsens" for another, so a raw
+    # read would report one stage twice and the report's coverage table
+    # would double-count it.
     stage_ledger: Dict[str, Any] = {}
     for key in ("gross_vs_net", "cost_stress", "parameter_sensitivity",
                 "monte_carlo", "subperiod", "capacity", "replication",
                 "causality"):
         val = sc.get(key)
         if isinstance(val, dict):
-            stage_ledger[key] = {
+            stage_ledger[_normalise_stage(key)] = {
                 "status": val.get("status") or ("ran" if val else "ran"),
                 "passed": val.get("passed"),
                 "note": val.get("note") or val.get("reason")
                         or val.get("error"),
             }
         elif val is not None:
-            stage_ledger[key] = {"status": str(val)[:160]}
+            stage_ledger[_normalise_stage(key)] = {"status": str(val)[:160]}
+
+    # The scorecard may also carry stages under their display names.
+    for key, val in sc.items():
+        if key in ("gross_vs_net", "cost_stress", "parameter_sensitivity",
+                   "monte_carlo", "subperiod", "capacity", "replication",
+                   "causality", "base", "walk_forward", "symbols",
+                   "deflated_sharpe", "skipped_stages"):
+            continue
+        norm = _normalise_stage(key)
+        if norm in stage_ledger:
+            continue
+        if isinstance(val, dict):
+            stage_ledger[norm] = {
+                "status": val.get("status") or "ran",
+                "passed": val.get("passed"),
+                "note": val.get("note") or val.get("reason")
+                        or val.get("error"),
+            }
+        elif val is not None:
+            stage_ledger[norm] = {"status": str(val)[:160]}
+
     for label in (sc.get("skipped_stages") or []):
-        stage_ledger.setdefault(str(label), {"status": "SKIPPED"})
+        stage_ledger.setdefault(_normalise_stage(str(label)),
+                                 {"status": "SKIPPED"})
     stage_ledger["skipped_stages"] = list(sc.get("skipped_stages") or [])
 
     # The TRUE OUT-OF-SAMPLE NUMBERS. `base` is the IN-SAMPLE run and
