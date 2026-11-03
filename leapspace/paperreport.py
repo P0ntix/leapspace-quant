@@ -293,10 +293,13 @@ def _stage_coverage(rows: Sequence[Dict[str, Any]]) -> Dict[str, Dict[str, int]]
     run" are different facts about the validation.
     """
     out: Dict[str, Dict[str, int]] = {}
+    specs_with_ledger = 0
     for r in rows:
         stages = r.get("stages") or {}
         if not isinstance(stages, dict):
             continue
+        if stages:
+            specs_with_ledger += 1
         skipped = set(r.get("skipped_stages") or [])
         for stage, val in stages.items():
             if stage == "skipped_stages":
@@ -318,6 +321,15 @@ def _stage_coverage(rows: Sequence[Dict[str, Any]]) -> Dict[str, Dict[str, int]]
             c = out.setdefault(stage, {"ran": 0, "skipped": 0,
                                        "errored": 0, "absent": 0})
             c["skipped"] += 1
+
+    # A stage that appears for SOME specs and not others was not
+    # recorded for the others. Without this the "not recorded" column
+    # would always read zero, which would understate the gap in the
+    # validation.
+    for stage, c in out.items():
+        c["absent"] = max(
+            0, specs_with_ledger - (c["ran"] + c["skipped"]
+                                     + c["errored"]))
     return out
 
 
