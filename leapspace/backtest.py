@@ -1950,6 +1950,40 @@ def _normalise_stage(name: str) -> str:
     return aliases.get(s, s or "unknown")
 
 
+def _stage_entry(val: Dict[str, Any]) -> Dict[str, Any]:
+    """Normalise one scorecard stage entry into the ledger's shape.
+
+    The gauntlet marks a skipped stage as `{"error": "skipped"}` and
+    an errored stage as `{"error": "..."}`. Reading only the `status`
+    key made every one of them look like it had RUN, with the truth
+    buried in the note - so the report's coverage table counted skipped
+    stages as validated ones.
+
+    The status is therefore derived from what is actually there:
+    an explicit status, else an error, else the note, else "ran".
+    """
+    status = val.get("status")
+    if not status:
+        err = val.get("error")
+        if err:
+            status = "skipped" if str(err).strip().lower() == "skipped" \
+                else "ERROR"
+        else:
+            note = val.get("note") or val.get("reason")
+            if note and "skip" in str(note).lower():
+                status = "skipped"
+            elif note and ("error" in str(note).lower()
+                           or "fail" in str(note).lower()):
+                status = "ERROR"
+            else:
+                status = "ran"
+    return {
+        "status": str(status),
+        "passed": val.get("passed"),
+        "note": val.get("note") or val.get("reason") or val.get("error"),
+    }
+
+
 def run_spec(spec: Dict[str, Any], quick: bool = False,
              n_variants: Optional[int] = None,
              walk_forward_folds: int = 5,
@@ -1983,7 +2017,16 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
     if gate.get("available"):
         spec = gate["spec"]
 
-    skip = ("montecarlo", "sweep", "replication") if quick else ()
+    # The skip tuple names must match what the gauntlet actually
+    # checks. It tests `"paramsens" not in skip` for the parameter
+    # sweep, so a tuple saying "sweep" silently did NOT skip it - the
+    # sweep ran in quick mode anyway, and the run was slower than
+    # quick was supposed to be.
+    #
+    # The names are the ones in btvalidate._SKIP_LABELS:
+    # walkforward, coststress, paramsens, montecarlo, subperiod,
+    # capacity, replication, causality.
+    skip = ("montecarlo", "paramsens", "replication") if quick else ()
     try:
         gauntlet = btvalidate.full_gauntlet(
             spec, n_variants=spec.get("intake", {}).get("variants_tried", 1),
@@ -2029,12 +2072,7 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
                 "causality"):
         val = sc.get(key)
         if isinstance(val, dict):
-            stage_ledger[_normalise_stage(key)] = {
-                "status": val.get("status") or ("ran" if val else "ran"),
-                "passed": val.get("passed"),
-                "note": val.get("note") or val.get("reason")
-                        or val.get("error"),
-            }
+            stage_ledger[_normalise_stage(key)] = _stage_entry(val)
         elif val is not None:
             stage_ledger[_normalise_stage(key)] = {"status": str(val)[:160]}
 
@@ -2049,12 +2087,7 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
         if norm in stage_ledger:
             continue
         if isinstance(val, dict):
-            stage_ledger[norm] = {
-                "status": val.get("status") or "ran",
-                "passed": val.get("passed"),
-                "note": val.get("note") or val.get("reason")
-                        or val.get("error"),
-            }
+            stage_ledger[norm] = _stage_entry(val)
         elif val is not None:
             stage_ledger[norm] = {"status": str(val)[:160]}
 
