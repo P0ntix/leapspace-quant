@@ -1,0 +1,1653 @@
+==============================================================================
+SPEC          : c3_vol_regime_filter_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.01 is below 0.5, while the gross-of-costs Sharpe is 0.15 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.21 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only 1% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "Monte Carlo prob(profitable) 57%",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.008208980542429396
+IN-SAMPLE SH  : 0.04530083509785738 (base run) / 0.6141981455920517 (last fold train)
+n_trades      : 84   maxDD: 0.1064842844214684   total_return: 0.01875378208399381
+FOLD TABLE    :
+   fold 0  OOS_sh=0.5194078339839292  IS_sh=-0.2817519251151917  range=['2005-12-15', '2009-05-14']  trades=30
+   fold 1  OOS_sh=-0.3244425612870233  IS_sh=0.526004259234877  range=['2010-04-30', '2013-09-25']  trades=18
+   fold 2  OOS_sh=-0.19893985866516603  IS_sh=0.25934334803547887  range=['2014-09-10', '2018-02-05']  trades=18
+   fold 3  OOS_sh=0.9215758630829771  IS_sh=0.6057880871693374  range=['2019-01-22', '2022-06-15']  trades=18
+   fold 4  OOS_sh=-0.8834388284364775  IS_sh=0.6141981455920517  range=['2023-06-01', '2026-10-30']  trades=12
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.14826864190485523  net_sh=0.04530083509785738  costs_paid=6217.069145182389
+   interpretation: the edge survives costs but is materially eroded (69% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.09679350343161915, "cagr": 0.0022275758454295413, "n_trades": 84}, {"cost_multiplier": 1.5, "sharpe": 0.07103992666840359, "cagr": 0.0015398724339210634, "n_trades": 84}, {"cost_multiplier": 2.0, "sharpe": 0.04530083509785738, "cagr": 0.0008529098986684858, "n_trades": 84}, {"cost_multiplier": 3.0, "sharpe": -0.006158658839465608, "cagr": -0.0005198909836653387, "n_trades": 84}]
+
+==============================================================================
+SPEC          : c3_vol_regime_filter_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.26 is below 0.5, and the gross-of-costs Sharpe is -0.67 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 10 trades (need >=30)",
+  "t-stat -2.36 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress"
+]
+ERRORS        : []
+POOLED OOS SH : -0.2626825713646016
+IN-SAMPLE SH  : -0.8105403672836927 (base run) / -1.629376179703055 (last fold train)
+n_trades      : 10   maxDD: 0.653152305411933   total_return: -0.6010622014457603
+FOLD TABLE    :
+   fold 0  OOS_sh=0.4418969810726339  IS_sh=-0.37139274134924183  range=['2021-08-30', '2022-03-03']  trades=10
+   fold 1  OOS_sh=-0.7674620050279811  IS_sh=-0.7202986715941586  range=['2022-10-31', '2023-05-04']  trades=10
+   fold 2  OOS_sh=-1.7127068241046866  IS_sh=0.05727838422597436  range=['2023-12-31', '2024-07-03']  trades=10
+   fold 3  OOS_sh=-0.05101244977947468  IS_sh=-1.8716843731082022  range=['2025-03-01', '2025-09-02']  trades=10
+   fold 4  OOS_sh=0.055049595084546314  IS_sh=-1.629376179703055  range=['2026-05-01', '2026-11-02']  trades=10
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 10 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.6704893625127737  net_sh=-0.8105403672836927  costs_paid=10404.902313274973
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.7408318847753301, "cagr": -0.09488813185180123, "n_trades": 10}, {"cost_multiplier": 1.5, "sharpe": -0.7758405188755095, "cagr": -0.09891915540368601, "n_trades": 10}, {"cost_multiplier": 2.0, "sharpe": -0.8105403672836927, "cagr": -0.1029277088806616, "n_trades": 10}, {"cost_multiplier": 3.0, "sharpe": -0.8792320881327599, "cagr": -0.11091090474299925, "n_trades": 10}]
+
+==============================================================================
+SPEC          : c3_vol_regime_filter_fx_major
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.20 is below 0.5, and the gross-of-costs Sharpe is -0.16 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 16 trades (need >=30)",
+  "t-stat -1.00 below 2.0 - the return series is not distinguishable from noise",
+  "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "only 6/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.20076549618865677
+IN-SAMPLE SH  : -0.2110223025130282 (base run) / -0.4482682717514691 (last fold train)
+n_trades      : 16   maxDD: 0.22138990170466544   total_return: -0.20178823856814265
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.13332052173286857  IS_sh=-2.4704604977799742  range=['2005-12-06', '2009-05-19']  trades=8
+   fold 1  OOS_sh=-0.22200249937912087  IS_sh=-0.588268020445576  range=['2010-04-21', '2013-09-26']  trades=8
+   fold 2  OOS_sh=0.51912222419503  IS_sh=-0.7400847421759679  range=['2014-09-01', '2018-02-08']  trades=8
+   fold 3  OOS_sh=-0.7337848681490614  IS_sh=-0.37639481472332226  range=['2019-01-11', '2022-06-19']  trades=8
+   fold 4  OOS_sh=-0.5239041137908368  IS_sh=-0.4482682717514691  range=['2023-05-22', '2026-11-03']  trades=16
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 16 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.1569589357532817  net_sh=-0.2110223025130282  costs_paid=4817.013524534578
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.18399729290946493, "cagr": -0.008795585072545187, "n_trades": 16}, {"cost_multiplier": 1.5, "sharpe": -0.1975040330050353, "cagr": -0.009372338789944146, "n_trades": 16}, {"cost_multiplier": 2.0, "sharpe": -0.2110223025130282, "cagr": -0.009949486565041243, "n_trades": 16}, {"cost_multiplier": 3.0, "sharpe": -0.23800589363199426, "cagr": -0.011100846603646852, "n_trades": 16}]
+
+==============================================================================
+SPEC          : c3_vol_regime_filter_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.37 is below 0.5, and the gross-of-costs Sharpe is -0.32 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 13 trades (need >=30)",
+  "t-stat -1.68 below 2.0 - the return series is not distinguishable from noise",
+  "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+  "OOS Sharpe retains only -340% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "edge does not survive 2x cost stress",
+  "only 8/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.37415158295985734
+IN-SAMPLE SH  : -0.36008112404045606 (base run) / 0.11008945383562746 (last fold train)
+n_trades      : 13   maxDD: 0.6654681068797788   total_return: -0.6055865005743175
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.314455996775183  IS_sh=2.053749597600967  range=['2005-12-16', '2009-05-18']  trades=13
+   fold 1  OOS_sh=-0.05098467360401524  IS_sh=0.18788064808614854  range=['2010-05-04', '2013-09-27']  trades=13
+   fold 2  OOS_sh=-1.001927561708335  IS_sh=0.2901536148566343  range=['2014-09-12', '2018-02-09']  trades=13
+   fold 3  OOS_sh=-0.49227633756652417  IS_sh=0.4521879571013041  range=['2019-01-28', '2022-06-22']  trades=13
+   fold 4  OOS_sh=-0.17232634274069833  IS_sh=0.11008945383562746  range=['2023-06-07', '2026-11-03']  trades=13
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 13 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.3181473197494591  net_sh=-0.36008112404045606  costs_paid=5934.590890401984
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.33907458542337804, "cagr": -0.03968898684361055, "n_trades": 13}, {"cost_multiplier": 1.5, "sharpe": -0.3495724336808317, "cagr": -0.04073935634076853, "n_trades": 13}, {"cost_multiplier": 2.0, "sharpe": -0.36008112404045606, "cagr": -0.041790928851780484, "n_trades": 13}, {"cost_multiplier": 3.0, "sharpe": -0.381082626465022, "cagr": -0.04389450153434782, "n_trades": 13}]
+
+==============================================================================
+SPEC          : c3_vol_regime_filter_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.18 is below 0.5, and the gross-of-costs Sharpe is -0.13 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 15 trades (need >=30)",
+  "t-stat -0.75 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "only 9/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.1839212807564211
+IN-SAMPLE SH  : -0.15982274262262303 (base run) / -0.32151076708816395 (last fold train)
+n_trades      : 15   maxDD: 0.47765466517640065   total_return: -0.3781618497641892
+FOLD TABLE    :
+   fold 0  OOS_sh=0.1864450196287613  IS_sh=0.006955940303704605  range=['2005-12-15', '2009-05-13']  trades=14
+   fold 1  OOS_sh=-0.03124776434170514  IS_sh=-1.0063389378780279  range=['2010-04-29', '2013-09-25']  trades=14
+   fold 2  OOS_sh=-1.0985787162608127  IS_sh=-1.0408082579080704  range=['2014-09-10', '2018-02-08']  trades=15
+   fold 3  OOS_sh=0.17305810306477812  IS_sh=-0.48030079421096156  range=['2019-01-25', '2022-06-22']  trades=15
+   fold 4  OOS_sh=-0.6539631884710548  IS_sh=-0.32151076708816395  range=['2023-06-07', '2026-11-03']  trades=15
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 15 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.12778881912846382  net_sh=-0.15982274262262303  costs_paid=6125.335315734642
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.14382609356656909, "cagr": -0.019916197651722478, "n_trades": 15}, {"cost_multiplier": 1.5, "sharpe": -0.15183300895216362, "cagr": -0.02073091261247384, "n_trades": 15}, {"cost_multiplier": 2.0, "sharpe": -0.15982274262262303, "cagr": -0.0215435223832241, "n_trades": 15}, {"cost_multiplier": 3.0, "sharpe": -0.1758136750502651, "cagr": -0.02316935058263736, "n_trades": 15}]
+
+==============================================================================
+SPEC          : c3_vol_regime_filter_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.08 is below 0.5, and the gross-of-costs Sharpe is -0.11 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 12 trades (need >=30)",
+  "t-stat -0.92 below 2.0 - the return series is not distinguishable from noise",
+  "OOS Sharpe retains only -234% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "edge does not survive 2x cost stress",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.07976541842633558
+IN-SAMPLE SH  : -0.19664603724302618 (base run) / 0.034075448438806014 (last fold train)
+n_trades      : 12   maxDD: 0.1859647151301319   total_return: -0.14633192398131123
+FOLD TABLE    :
+   fold 0  OOS_sh=0.13195678861087753  IS_sh=-0.44756908900021247  range=['2005-12-19', '2009-05-19']  trades=12
+   fold 1  OOS_sh=-0.7411015945586986  IS_sh=-0.1539718154841727  range=['2010-05-04', '2013-09-27']  trades=12
+   fold 2  OOS_sh=0.24816497450199146  IS_sh=-0.03766009283604999  range=['2014-09-12', '2018-02-07']  trades=12
+   fold 3  OOS_sh=0.5495367164829763  IS_sh=0.20222092237997788  range=['2019-01-24', '2022-06-17']  trades=12
+   fold 4  OOS_sh=-0.44044199651759985  IS_sh=0.034075448438806014  range=['2023-06-05', '2026-11-03']  trades=12
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 12 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.11100409373090261  net_sh=-0.19664603724302618  costs_paid=6095.704452624219
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.15412615723047585, "cagr": -0.005755116731429366, "n_trades": 12}, {"cost_multiplier": 1.5, "sharpe": -0.17547128784858776, "cagr": -0.006495227607597909, "n_trades": 12}, {"cost_multiplier": 2.0, "sharpe": -0.19664603724302618, "cagr": -0.007234609024988625, "n_trades": 12}, {"cost_multiplier": 3.0, "sharpe": -0.23854655364192132, "cagr": -0.008714040178384397, "n_trades": 12}]
+
+==============================================================================
+SPEC          : c4_volume_confirmation_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.11 is below 0.5, and the gross-of-costs Sharpe is -0.21 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -1.46 below 2.0 - the return series is not distinguishable from noise",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 8%",
+  "only 5/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.11142522236076914
+IN-SAMPLE SH  : -0.31182001086128913 (base run) / -0.8501589352626916 (last fold train)
+n_trades      : 317   maxDD: 0.21032639443739565   total_return: -0.20305609980226258
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.26683277244734727  IS_sh=-1.5302312765718769  range=['2005-12-15', '2009-05-14']  trades=48
+   fold 1  OOS_sh=0.07408189674598548  IS_sh=-1.3470976627639235  range=['2010-04-30', '2013-09-25']  trades=48
+   fold 2  OOS_sh=0.22648935195187164  IS_sh=-1.6402714135842897  range=['2014-09-10', '2018-02-05']  trades=53
+   fold 3  OOS_sh=0.2458049336855723  IS_sh=-1.2846641730315964  range=['2019-01-22', '2022-06-15']  trades=54
+   fold 4  OOS_sh=-0.938432262506923  IS_sh=-0.8501589352626916  range=['2023-06-01', '2026-10-30']  trades=60
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.20926962324304674  net_sh=-0.31182001086128913  costs_paid=6278.110922933255
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.2605886935370057, "cagr": -0.00874366806187965, "n_trades": 317}, {"cost_multiplier": 1.5, "sharpe": -0.2862162908127248, "cagr": -0.009552349539764249, "n_trades": 317}, {"cost_multiplier": 2.0, "sharpe": -0.31182001086128913, "cagr": -0.010360502967590834, "n_trades": 317}, {"cost_multiplier": 3.0, "sharpe": -0.3629988118731002, "cagr": -0.011977180842745017, "n_trades": 317}]
+
+==============================================================================
+SPEC          : c4_volume_confirmation_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.08 is below 0.5, and the gross-of-costs Sharpe is -0.14 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -0.87 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 29%",
+  "only 2/6 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.0843630131177977
+IN-SAMPLE SH  : -0.30030394304257824 (base run) / -0.848342109336531 (last fold train)
+n_trades      : 140   maxDD: 0.4546201924414741   total_return: -0.24778276890721007
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.1318952325078813  IS_sh=0.8875639592522774  range=['2021-08-30', '2022-03-03']  trades=10
+   fold 1  OOS_sh=1.1547137703452195  IS_sh=0.014390948201678052  range=['2022-10-31', '2023-05-04']  trades=20
+   fold 2  OOS_sh=0.3297886599885703  IS_sh=0.15791998401802748  range=['2023-12-31', '2024-07-03']  trades=30
+   fold 3  OOS_sh=-1.07063356992023  IS_sh=-0.6237081323219688  range=['2025-03-01', '2025-09-02']  trades=20
+   fold 4  OOS_sh=-0.9957873819841722  IS_sh=-0.848342109336531  range=['2026-05-01', '2026-11-02']  trades=20
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.13642069497616705  net_sh=-0.30030394304257824  costs_paid=14410.49337230231
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.21856062377692342, "cagr": -0.025351028451880864, "n_trades": 140}, {"cost_multiplier": 1.5, "sharpe": -0.2594665115206941, "cagr": -0.029225177090659193, "n_trades": 140}, {"cost_multiplier": 2.0, "sharpe": -0.30030394304257824, "cagr": -0.03309475825957742, "n_trades": 140}, {"cost_multiplier": 3.0, "sharpe": -0.38125405454182315, "cagr": -0.040786741075072186, "n_trades": 140}]
+
+==============================================================================
+SPEC          : c4_volume_confirmation_fx_major
+VERDICT       : INCONCLUSIVE
+REASONING     : Too few trades (0) to distinguish signal from noise.
+FLAGS         : [
+  "only 0 trades (need >=30)",
+  "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+  "edge does not survive 2x cost stress",
+  "parameter stability 0% (< 60%)",
+  "only 0/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : None
+IN-SAMPLE SH  : None (base run) / None (last fold train)
+n_trades      : 0   maxDD: 0.0   total_return: 0.0
+FOLD TABLE    :
+   fold 0  OOS_sh=None  IS_sh=None  range=['2005-12-06', '2009-05-19']  trades=0
+   fold 1  OOS_sh=None  IS_sh=None  range=['2010-04-21', '2013-09-26']  trades=0
+   fold 2  OOS_sh=None  IS_sh=None  range=['2014-09-01', '2018-02-08']  trades=0
+   fold 3  OOS_sh=None  IS_sh=None  range=['2019-01-11', '2022-06-19']  trades=0
+   fold 4  OOS_sh=None  IS_sh=None  range=['2023-05-22', '2026-11-03']  trades=0
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 0 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=None  net_sh=None  costs_paid=0.0
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": null, "cagr": 0.0, "n_trades": 0}, {"cost_multiplier": 1.5, "sharpe": null, "cagr": 0.0, "n_trades": 0}, {"cost_multiplier": 2.0, "sharpe": null, "cagr": 0.0, "n_trades": 0}, {"cost_multiplier": 3.0, "sharpe": null, "cagr": 0.0, "n_trades": 0}]
+
+==============================================================================
+SPEC          : c4_volume_confirmation_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.17 is below 0.5, and the gross-of-costs Sharpe is -0.08 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 13 trades (need >=30)",
+  "t-stat -0.63 below 2.0 - the return series is not distinguishable from noise",
+  "edge does not survive 2x cost stress"
+]
+ERRORS        : []
+POOLED OOS SH : -0.16676719926809833
+IN-SAMPLE SH  : -0.1338955342205121 (base run) / -0.2459284961261543 (last fold train)
+n_trades      : 13   maxDD: 0.5202743837481404   total_return: -0.3355264277042379
+FOLD TABLE    :
+   fold 0  OOS_sh=0.01592345280102773  IS_sh=0.27390555531331523  range=['2005-12-16', '2009-05-18']  trades=13
+   fold 1  OOS_sh=0.13316292755515363  IS_sh=-0.5446086332184994  range=['2010-05-04', '2013-09-27']  trades=13
+   fold 2  OOS_sh=-0.9031539147093514  IS_sh=-0.45647057536561714  range=['2014-09-12', '2018-02-09']  trades=13
+   fold 3  OOS_sh=-0.5341609148466041  IS_sh=-0.009412441893054705  range=['2019-01-28', '2022-06-22']  trades=13
+   fold 4  OOS_sh=0.44225783125691936  IS_sh=-0.2459284961261543  range=['2023-06-07', '2026-11-03']  trades=13
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 13 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.08290195191042386  net_sh=-0.1338955342205121  costs_paid=8339.513854036246
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.10844287189659313, "cagr": -0.016066069664165683, "n_trades": 13}, {"cost_multiplier": 1.5, "sharpe": -0.1211445666955153, "cagr": -0.017322667460530905, "n_trades": 13}, {"cost_multiplier": 2.0, "sharpe": -0.1338955342205121, "cagr": -0.01858113134938566, "n_trades": 13}, {"cost_multiplier": 3.0, "sharpe": -0.15963132748852113, "cagr": -0.021109709650782182, "n_trades": 13}]
+
+==============================================================================
+SPEC          : c4_volume_confirmation_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.23 is below 0.5, and the gross-of-costs Sharpe is -0.06 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -0.51 below 2.0 - the return series is not distinguishable from noise",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 19%",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.22895041328151278
+IN-SAMPLE SH  : -0.10995873013393687 (base run) / -0.5988469494886269 (last fold train)
+n_trades      : 227   maxDD: 0.4503901408941502   total_return: -0.24129573437319385
+FOLD TABLE    :
+   fold 0  OOS_sh=0.20452293474846994  IS_sh=0.8073119013988705  range=['2005-12-15', '2009-05-13']  trades=38
+   fold 1  OOS_sh=0.029660772522268876  IS_sh=-0.9472830920549993  range=['2010-04-29', '2013-09-25']  trades=50
+   fold 2  OOS_sh=-1.3174574783653878  IS_sh=-0.8630519655780734  range=['2014-09-10', '2018-02-08']  trades=51
+   fold 3  OOS_sh=-0.2547792557822523  IS_sh=-0.38990670094841956  range=['2019-01-25', '2022-06-22']  trades=41
+   fold 4  OOS_sh=0.03256826266739119  IS_sh=-0.5988469494886269  range=['2023-06-07', '2026-11-03']  trades=56
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.061099929421433635  net_sh=-0.10995873013393687  costs_paid=7458.724837411691
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.08541845668102675, "cagr": -0.010554322631674329, "n_trades": 228}, {"cost_multiplier": 1.5, "sharpe": -0.09768177193870324, "cagr": -0.011567065009392419, "n_trades": 228}, {"cost_multiplier": 2.0, "sharpe": -0.10995873013393687, "cagr": -0.012579493376049578, "n_trades": 227}, {"cost_multiplier": 3.0, "sharpe": -0.13458302599869681, "cagr": -0.01460992058407673, "n_trades": 227}]
+
+==============================================================================
+SPEC          : c4_volume_confirmation_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.09 is below 0.5, and the gross-of-costs Sharpe is -0.18 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -1.41 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 0%",
+  "only 8/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.0886464249342202
+IN-SAMPLE SH  : -0.30110948691667294 (base run) / -1.3230832048220125 (last fold train)
+n_trades      : 126   maxDD: 0.3793129901275568   total_return: -0.26486893954403934
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.8031419640064053  IS_sh=-1.1305214770921221  range=['2005-12-19', '2009-05-19']  trades=21
+   fold 1  OOS_sh=-0.4218402594722045  IS_sh=-0.7653031232823997  range=['2010-05-04', '2013-09-27']  trades=36
+   fold 2  OOS_sh=0.5115206560522544  IS_sh=-0.76060949266773  range=['2014-09-12', '2018-02-07']  trades=24
+   fold 3  OOS_sh=0.9858191084202677  IS_sh=-0.9544035447417982  range=['2019-01-24', '2022-06-17']  trades=36
+   fold 4  OOS_sh=-0.512711088995432  IS_sh=-1.3230832048220125  range=['2023-06-05', '2026-11-03']  trades=72
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.18109093751036928  net_sh=-0.30110948691667294  costs_paid=10507.181818292122
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.24190960353841562, "cagr": -0.011278469020365667, "n_trades": 126}, {"cost_multiplier": 1.5, "sharpe": -0.2717137005796926, "cagr": -0.012648154036672188, "n_trades": 126}, {"cost_multiplier": 2.0, "sharpe": -0.30110948691667294, "cagr": -0.014022416785814507, "n_trades": 126}, {"cost_multiplier": 3.0, "sharpe": -0.3585309060411718, "cagr": -0.0167817661499019, "n_trades": 126}]
+
+==============================================================================
+SPEC          : c5_rsi_reversion_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.07 is below 0.5, and the gross-of-costs Sharpe is -0.04 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 24 trades (need >=30)",
+  "t-stat -0.28 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 45%",
+  "only 2/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.06564194802955602
+IN-SAMPLE SH  : -0.06104761158157341 (base run) / None (last fold train)
+n_trades      : 24   maxDD: 0.029258469238045648   total_return: -0.0060212615882662135
+FOLD TABLE    :
+   fold 0  OOS_sh=0.5973523864201409  IS_sh=None  range=['2005-08-05', '2009-05-14']  trades=6
+   fold 1  OOS_sh=0.6597431065929124  IS_sh=None  range=['2009-12-16', '2013-09-25']  trades=6
+   fold 2  OOS_sh=None  IS_sh=None  range=['2014-04-30', '2018-02-05']  trades=0
+   fold 3  OOS_sh=-1.0395090498858843  IS_sh=None  range=['2018-09-07', '2022-06-15']  trades=6
+   fold 4  OOS_sh=-0.02875098386933687  IS_sh=None  range=['2023-01-19', '2026-10-30']  trades=6
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.0392245382908769  net_sh=-0.06104761158157341  costs_paid=211.9901557650634
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.05018619812846309, "cagr": -0.00022850710180133404, "n_trades": 24}, {"cost_multiplier": 1.5, "sharpe": -0.05562993590717306, "cagr": -0.00025279299282687795, "n_trades": 24}, {"cost_multiplier": 2.0, "sharpe": -0.06104761158157341, "cagr": -0.0002770818798505381, "n_trades": 24}, {"cost_multiplier": 3.0, "sharpe": -0.07180094981047765, "cagr": -0.000325668645460242, "n_trades": 24}]
+
+==============================================================================
+SPEC          : c5_rsi_reversion_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.08 is below 0.5, and the gross-of-costs Sharpe is -0.22 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 10 trades (need >=30)",
+  "t-stat -0.88 below 2.0 - the return series is not distinguishable from noise",
+  "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "parameter stability 50% (< 60%)",
+  "only 1/6 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.08020156264670915
+IN-SAMPLE SH  : -0.3037777063746183 (base run) / -0.5716028760253228 (last fold train)
+n_trades      : 10   maxDD: 0.020677306569737097   total_return: -0.013511109723563619
+FOLD TABLE    :
+   fold 0  OOS_sh=None  IS_sh=None  range=['2021-05-30', '2022-03-03']  trades=0
+   fold 1  OOS_sh=None  IS_sh=None  range=['2022-07-31', '2023-05-04']  trades=0
+   fold 2  OOS_sh=None  IS_sh=None  range=['2023-09-30', '2024-07-03']  trades=0
+   fold 3  OOS_sh=None  IS_sh=None  range=['2024-11-29', '2025-09-02']  trades=0
+   fold 4  OOS_sh=0.17908688560118438  IS_sh=-0.5716028760253228  range=['2026-01-29', '2026-11-02']  trades=10
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 10 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.22187091526252745  net_sh=-0.3037777063746183  costs_paid=350.7383947171071
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.26342204836200583, "cagr": -0.0013969711966522746, "n_trades": 10}, {"cost_multiplier": 1.5, "sharpe": -0.2837978659013335, "cagr": -0.0015017409527183778, "n_trades": 10}, {"cost_multiplier": 2.0, "sharpe": -0.3037777063746183, "cagr": -0.0016065927858818219, "n_trades": 10}, {"cost_multiplier": 3.0, "sharpe": -0.34219030231623426, "cagr": -0.0018165432332126752, "n_trades": 10}]
+
+==============================================================================
+SPEC          : c5_rsi_reversion_fx_major
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.30 is below 0.5, while the gross-of-costs Sharpe is 0.30 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 1.23 below 2.0 - the return series is not distinguishable from noise",
+  "only 6/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.2988940453828775
+IN-SAMPLE SH  : 0.25808245072477703 (base run) / -0.1375625667055912 (last fold train)
+n_trades      : 119   maxDD: 0.02528255052229389   total_return: 0.046215525403686675
+FOLD TABLE    :
+   fold 0  OOS_sh=0.7418995492516548  IS_sh=None  range=['2005-07-27', '2009-05-19']  trades=23
+   fold 1  OOS_sh=0.4401221551042724  IS_sh=None  range=['2009-12-15', '2013-09-26']  trades=8
+   fold 2  OOS_sh=-0.022848822812303028  IS_sh=-1.239924684245957  range=['2014-04-24', '2018-02-08']  trades=8
+   fold 3  OOS_sh=0.1005420173631016  IS_sh=-1.0733595815738488  range=['2018-09-04', '2022-06-19']  trades=40
+   fold 4  OOS_sh=-0.28206583491125614  IS_sh=-0.1375625667055912  range=['2023-01-13', '2026-11-03']  trades=24
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.30006414847620333  net_sh=0.25808245072477703  costs_paid=774.0457968518673
+   interpretation: the edge survives costs with little erosion (14% of the gross Sharpe lost to costs) - costs are not the constraint
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.2790942911384841, "cagr": 0.002172242241629707, "n_trades": 119}, {"cost_multiplier": 1.5, "sharpe": 0.2685930520707279, "cagr": 0.0020893468658276237, "n_trades": 119}, {"cost_multiplier": 2.0, "sharpe": 0.25808245072477703, "cagr": 0.0020064480268564555, "n_trades": 119}, {"cost_multiplier": 3.0, "sharpe": 0.23703771233303492, "cagr": 0.0018406399570900511, "n_trades": 119}]
+
+==============================================================================
+SPEC          : c5_rsi_reversion_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.07 is below 0.5, while the gross-of-costs Sharpe is 0.01 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat -0.05 below 2.0 - the return series is not distinguishable from noise",
+  "OOS Sharpe retains only -23% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 38%",
+  "only 8/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.07199338918487097
+IN-SAMPLE SH  : -0.011121374226221156 (base run) / 0.3195101196121896 (last fold train)
+n_trades      : 336   maxDD: 0.20686636585492335   total_return: -0.03083927894067262
+FOLD TABLE    :
+   fold 0  OOS_sh=0.11475206272441928  IS_sh=None  range=['2005-08-05', '2009-05-18']  trades=63
+   fold 1  OOS_sh=0.17260519160873503  IS_sh=0.9298025271110257  range=['2009-12-18', '2013-09-27']  trades=38
+   fold 2  OOS_sh=0.16879302427563536  IS_sh=0.18798737934518925  range=['2014-05-02', '2018-02-09']  trades=94
+   fold 3  OOS_sh=-0.14667635272510796  IS_sh=-0.08929087802676659  range=['2018-09-13', '2022-06-22']  trades=39
+   fold 4  OOS_sh=-0.46448251327325135  IS_sh=0.3195101196121896  range=['2023-01-25', '2026-11-03']  trades=68
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.005999411063180486  net_sh=-0.011121374226221156  costs_paid=1659.4207218279519
+   interpretation: there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.0025436442851642176, "cagr": -0.0010597980481322766, "n_trades": 336}, {"cost_multiplier": 1.5, "sharpe": -0.006815613187215819, "cagr": -0.0012473045034246955, "n_trades": 336}, {"cost_multiplier": 2.0, "sharpe": -0.011121374226221156, "cagr": -0.0014363044062236652, "n_trades": 336}, {"cost_multiplier": 3.0, "sharpe": -0.019666315604254064, "cagr": -0.001811443437829019, "n_trades": 336}]
+
+==============================================================================
+SPEC          : c5_rsi_reversion_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.16 is below 0.5, and the gross-of-costs Sharpe is -0.07 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -0.44 below 2.0 - the return series is not distinguishable from noise",
+  "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only -774% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 16%",
+  "only 9/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.16221825264845433
+IN-SAMPLE SH  : -0.09461719333508223 (base run) / 0.020964575774212096 (last fold train)
+n_trades      : 550   maxDD: 0.2773192288650683   total_return: -0.12429411173978788
+FOLD TABLE    :
+   fold 0  OOS_sh=0.6387644426011944  IS_sh=None  range=['2005-08-05', '2009-05-13']  trades=83
+   fold 1  OOS_sh=-0.9954570857322308  IS_sh=1.0011691079364882  range=['2009-12-15', '2013-09-25']  trades=97
+   fold 2  OOS_sh=-0.09991678505337968  IS_sh=-0.6336185351216866  range=['2014-04-30', '2018-02-08']  trades=138
+   fold 3  OOS_sh=-0.13995563737964872  IS_sh=-0.6858890648878206  range=['2018-09-12', '2022-06-22']  trades=119
+   fold 4  OOS_sh=-0.7190231708842227  IS_sh=0.020964575774212096  range=['2023-01-25', '2026-11-03']  trades=45
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.0708513051544595  net_sh=-0.09461719333508223  costs_paid=2614.4207679821784
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.08273764074243058, "cagr": -0.005463170152410268, "n_trades": 550}, {"cost_multiplier": 1.5, "sharpe": -0.08867833153709564, "cagr": -0.005764613892764503, "n_trades": 550}, {"cost_multiplier": 2.0, "sharpe": -0.09461719333508223, "cagr": -0.006066063183139958, "n_trades": 550}, {"cost_multiplier": 3.0, "sharpe": -0.10648889817385218, "cagr": -0.006668979534523833, "n_trades": 550}]
+
+==============================================================================
+SPEC          : c5_rsi_reversion_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.07 is below 0.5, while the gross-of-costs Sharpe is 0.19 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.60 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only 9% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "parameter stability 25% (< 60%)",
+  "Monte Carlo prob(profitable) 84%",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.06633068485013395
+IN-SAMPLE SH  : 0.12769887359581925 (base run) / 0.7048012677549793 (last fold train)
+n_trades      : 157   maxDD: 0.03560885045907247   total_return: 0.028350132226240055
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.047318227539805635  IS_sh=0.8586929541733996  range=['2005-08-05', '2009-05-19']  trades=20
+   fold 1  OOS_sh=0.6204874403422845  IS_sh=0.5089654998394274  range=['2009-12-18', '2013-09-27']  trades=36
+   fold 2  OOS_sh=0.14695118921928427  IS_sh=0.4159689531240307  range=['2014-05-02', '2018-02-07']  trades=60
+   fold 3  OOS_sh=-1.0508528658198866  IS_sh=0.37133810814239415  range=['2018-09-11', '2022-06-17']  trades=48
+   fold 4  OOS_sh=-0.8739353845478898  IS_sh=0.7048012677549793  range=['2023-01-23', '2026-11-03']  trades=24
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.18759638888616043  net_sh=0.12769887359581925  costs_paid=1400.2930790690618
+   interpretation: the edge survives costs but is materially eroded (32% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.15763870296485746, "cagr": 0.0015953078884884953, "n_trades": 157}, {"cost_multiplier": 1.5, "sharpe": 0.14266422298204157, "cagr": 0.0014395564723483911, "n_trades": 157}, {"cost_multiplier": 2.0, "sharpe": 0.12769887359581925, "cagr": 0.001283802345710905, "n_trades": 157}, {"cost_multiplier": 3.0, "sharpe": 0.09781405088025684, "cagr": 0.0009722859889553792, "n_trades": 157}]
+
+==============================================================================
+SPEC          : c6_rebound_danger_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.43 is below 0.5, while the gross-of-costs Sharpe is 0.34 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 1.17 below 2.0 - the return series is not distinguishable from noise"
+]
+ERRORS        : []
+POOLED OOS SH : 0.42854573994449674
+IN-SAMPLE SH  : 0.25051836511137543 (base run) / -0.12073424356804542 (last fold train)
+n_trades      : 90   maxDD: 0.08880634696868694   total_return: 0.16664138205940437
+FOLD TABLE    :
+   fold 0  OOS_sh=0.4799146528700672  IS_sh=-1.8385453657997635  range=['2005-12-15', '2009-05-14']  trades=30
+   fold 1  OOS_sh=0.3669583785971102  IS_sh=-0.9695039133645695  range=['2010-04-30', '2013-09-25']  trades=18
+   fold 2  OOS_sh=-0.2207239992726073  IS_sh=-1.5893109356654929  range=['2014-09-10', '2018-02-05']  trades=18
+   fold 3  OOS_sh=1.2309146477795978  IS_sh=-0.7362266577875938  range=['2019-01-22', '2022-06-15']  trades=18
+   fold 4  OOS_sh=-0.04210502690760515  IS_sh=-0.12073424356804542  range=['2023-06-01', '2026-10-30']  trades=6
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.3399105480409497  net_sh=0.25051836511137543  costs_paid=6186.706153676757
+   interpretation: the edge survives costs but is materially eroded (26% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.29523486591097053, "cagr": 0.008450668086009694, "n_trades": 90}, {"cost_multiplier": 1.5, "sharpe": 0.2728831947034494, "cagr": 0.007773786797226512, "n_trades": 90}, {"cost_multiplier": 2.0, "sharpe": 0.25051836511137543, "cagr": 0.007097264750867138, "n_trades": 90}, {"cost_multiplier": 3.0, "sharpe": 0.20574633525612887, "cagr": 0.005744912860369267, "n_trades": 90}]
+
+==============================================================================
+SPEC          : c6_rebound_danger_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.42 is below 0.5, and the gross-of-costs Sharpe is -0.24 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -1.19 below 2.0 - the return series is not distinguishable from noise",
+  "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 28%"
+]
+ERRORS        : []
+POOLED OOS SH : -0.41784737023372087
+IN-SAMPLE SH  : -0.40937971830515946 (base run) / -1.0326151142249345 (last fold train)
+n_trades      : 30   maxDD: 0.43805517165965524   total_return: -0.34272648699134656
+FOLD TABLE    :
+   fold 0  OOS_sh=0.15646998192441625  IS_sh=-0.1586151203604759  range=['2021-08-30', '2022-03-03']  trades=10
+   fold 1  OOS_sh=-0.0267593344545053  IS_sh=-0.6462390180902081  range=['2022-10-31', '2023-05-04']  trades=10
+   fold 2  OOS_sh=-1.9650105254373293  IS_sh=0.058494472822526164  range=['2023-12-31', '2024-07-03']  trades=10
+   fold 3  OOS_sh=-0.21530469190138513  IS_sh=-1.2118837805722562  range=['2025-03-01', '2025-09-02']  trades=10
+   fold 4  OOS_sh=-0.8042231716591108  IS_sh=-1.0326151142249345  range=['2026-05-01', '2026-11-02']  trades=10
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.24497855126637624  net_sh=-0.40937971830515946  costs_paid=13167.63585371224
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.32748693720915517, "cagr": -0.03985573133734688, "n_trades": 30}, {"cost_multiplier": 1.5, "sharpe": -0.36856515602950407, "cagr": -0.04413388887773251, "n_trades": 30}, {"cost_multiplier": 2.0, "sharpe": -0.40937971830515946, "cagr": -0.048392627837663515, "n_trades": 30}, {"cost_multiplier": 3.0, "sharpe": -0.4903801959316459, "cagr": -0.05687568435547585, "n_trades": 30}]
+
+==============================================================================
+SPEC          : c6_rebound_danger_fx_major
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.11 is below 0.5, and the gross-of-costs Sharpe is -0.08 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 8 trades (need >=30)",
+  "t-stat -0.62 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "only 5/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.11367864409483325
+IN-SAMPLE SH  : -0.13097890685175637 (base run) / -0.3525765355825491 (last fold train)
+n_trades      : 8   maxDD: 0.20121264751908974   total_return: -0.1397010944599424
+FOLD TABLE    :
+   fold 0  OOS_sh=0.12561142381545704  IS_sh=-1.607705661488682  range=['2005-12-06', '2009-05-19']  trades=8
+   fold 1  OOS_sh=-0.14394980809071078  IS_sh=-0.2293427867569024  range=['2010-04-21', '2013-09-26']  trades=8
+   fold 2  OOS_sh=0.36748591273401643  IS_sh=-0.44278997191681563  range=['2014-09-01', '2018-02-08']  trades=8
+   fold 3  OOS_sh=-0.7576414000643363  IS_sh=-0.2683105141329329  range=['2019-01-11', '2022-06-19']  trades=8
+   fold 4  OOS_sh=-0.39771075002128586  IS_sh=-0.3525765355825491  range=['2023-05-22', '2026-11-03']  trades=8
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 8 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.07671206393445734  net_sh=-0.13097890685175637  costs_paid=5177.678861384291
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.10385563787907266, "cagr": -0.005474552332222271, "n_trades": 8}, {"cost_multiplier": 1.5, "sharpe": -0.11741625783432333, "cagr": -0.006064218534402088, "n_trades": 8}, {"cost_multiplier": 2.0, "sharpe": -0.13097890685175637, "cagr": -0.006653785508573873, "n_trades": 8}, {"cost_multiplier": 3.0, "sharpe": -0.15807646049036778, "cagr": -0.007831072219789847, "n_trades": 8}]
+
+==============================================================================
+SPEC          : c6_rebound_danger_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.33 is below 0.5, and the gross-of-costs Sharpe is -0.25 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 13 trades (need >=30)",
+  "t-stat -1.35 below 2.0 - the return series is not distinguishable from noise",
+  "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only -241% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "edge does not survive 2x cost stress",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.3269272667740663
+IN-SAMPLE SH  : -0.28820118163318603 (base run) / 0.13540359148735756 (last fold train)
+n_trades      : 13   maxDD: 0.6537588184845695   total_return: -0.5303352361392477
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.6304396169794586  IS_sh=1.6483926523126535  range=['2005-12-16', '2009-05-18']  trades=13
+   fold 1  OOS_sh=-0.32885532511768856  IS_sh=0.09167243295564022  range=['2010-05-04', '2013-09-27']  trades=13
+   fold 2  OOS_sh=-0.3374098305226692  IS_sh=-0.022661282377808248  range=['2014-09-12', '2018-02-09']  trades=13
+   fold 3  OOS_sh=-0.5248954759121741  IS_sh=0.10650058848839729  range=['2019-01-28', '2022-06-22']  trades=13
+   fold 4  OOS_sh=0.13639753124995546  IS_sh=0.13540359148735756  range=['2023-06-07', '2026-11-03']  trades=13
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 13 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.24982465174473922  net_sh=-0.28820118163318603  costs_paid=5599.878585736992
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.26919002261351294, "cagr": -0.03218447189024254, "n_trades": 13}, {"cost_multiplier": 1.5, "sharpe": -0.2785580203935679, "cagr": -0.03311938154878924, "n_trades": 13}, {"cost_multiplier": 2.0, "sharpe": -0.28820118163318603, "cagr": -0.03408253992968868, "n_trades": 13}, {"cost_multiplier": 3.0, "sharpe": -0.30729284265441775, "cagr": -0.03598895318687301, "n_trades": 13}]
+
+==============================================================================
+SPEC          : c6_rebound_danger_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.16 is below 0.5, and the gross-of-costs Sharpe is -0.12 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 15 trades (need >=30)",
+  "t-stat -0.69 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.16035089594014573
+IN-SAMPLE SH  : -0.14831617063321992 (base run) / -0.5029503649468179 (last fold train)
+n_trades      : 15   maxDD: 0.510149955128095   total_return: -0.35497189044902644
+FOLD TABLE    :
+   fold 0  OOS_sh=0.09453647939778385  IS_sh=0.21395330708069732  range=['2005-12-15', '2009-05-13']  trades=14
+   fold 1  OOS_sh=-0.37142316603268155  IS_sh=-1.1687970161379768  range=['2010-04-29', '2013-09-25']  trades=14
+   fold 2  OOS_sh=-0.8595284139719774  IS_sh=-1.332543320073611  range=['2014-09-10', '2018-02-08']  trades=15
+   fold 3  OOS_sh=0.026199492464767455  IS_sh=-0.7969169698034452  range=['2019-01-25', '2022-06-22']  trades=15
+   fold 4  OOS_sh=-0.11667366823048204  IS_sh=-0.5029503649468179  range=['2023-06-07', '2026-11-03']  trades=15
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 15 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.11837206376506892  net_sh=-0.14831617063321992  costs_paid=5540.877115237411
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.13328811287938974, "cagr": -0.018392519209071145, "n_trades": 15}, {"cost_multiplier": 1.5, "sharpe": -0.14091743587956387, "cagr": -0.019157828557630152, "n_trades": 15}, {"cost_multiplier": 2.0, "sharpe": -0.14831617063321992, "cagr": -0.019899799593987466, "n_trades": 15}, {"cost_multiplier": 3.0, "sharpe": -0.16371994391697056, "cagr": -0.0214444932172827, "n_trades": 15}]
+
+==============================================================================
+SPEC          : c6_rebound_danger_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.12 is below 0.5, and the gross-of-costs Sharpe is -0.17 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "only 12 trades (need >=30)",
+  "t-stat -1.18 below 2.0 - the return series is not distinguishable from noise",
+  "edge does not survive 2x cost stress",
+  "only 9/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.12335699212492086
+IN-SAMPLE SH  : -0.2531923203324148 (base run) / 0.08863291877918109 (last fold train)
+n_trades      : 12   maxDD: 0.23061128133920983   total_return: -0.19431998767934155
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.16092268824390882  IS_sh=-0.3488635195929775  range=['2005-12-19', '2009-05-19']  trades=12
+   fold 1  OOS_sh=-0.5080298934821292  IS_sh=-0.348504221491688  range=['2010-05-04', '2013-09-27']  trades=12
+   fold 2  OOS_sh=0.1556115077888939  IS_sh=-0.0333556427112045  range=['2014-09-12', '2018-02-07']  trades=12
+   fold 3  OOS_sh=1.2536592760042369  IS_sh=0.1953254298204754  range=['2019-01-24', '2022-06-17']  trades=12
+   fold 4  OOS_sh=0.18668185212726876  IS_sh=0.08863291877918109  range=['2023-06-05', '2026-11-03']  trades=12
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 12 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.1725691915441167  net_sh=-0.2531923203324148  costs_paid=6046.550247061155
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.2131780182441372, "cagr": -0.00835382091520398, "n_trades": 12}, {"cost_multiplier": 1.5, "sharpe": -0.23327079857359945, "cagr": -0.009110813448466426, "n_trades": 12}, {"cost_multiplier": 2.0, "sharpe": -0.2531923203324148, "cagr": -0.009867095372978363, "n_trades": 12}, {"cost_multiplier": 3.0, "sharpe": -0.2925754124266697, "cagr": -0.011380253849798017, "n_trades": 12}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c3_vol_regime_filter_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.21 is below 0.5, and the gross-of-costs Sharpe is -0.14 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -1.15 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 12%",
+  "only 7/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.20900510235538045
+IN-SAMPLE SH  : -0.24688616284117618 (base run) / -0.8580951395471752 (last fold train)
+n_trades      : 84   maxDD: 0.22158592957027257   total_return: -0.14084893315435332
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.7362159480830066  IS_sh=-0.03067179379035546  range=['2005-12-15', '2009-05-14']  trades=30
+   fold 1  OOS_sh=0.10666887079945014  IS_sh=-0.7431417316640473  range=['2010-04-30', '2013-09-25']  trades=18
+   fold 2  OOS_sh=-0.07246381275298036  IS_sh=-0.4963501264891863  range=['2014-09-10', '2018-02-05']  trades=18
+   fold 3  OOS_sh=-1.0628927229666347  IS_sh=-0.8416517921966158  range=['2019-01-22', '2022-06-15']  trades=18
+   fold 4  OOS_sh=0.7057419957776909  IS_sh=-0.8580951395471752  range=['2023-06-01', '2026-10-30']  trades=12
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.1426459679752007  net_sh=-0.24688616284117618  costs_paid=5494.82599375182
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.19483474075259885, "cagr": -0.005553604991469063, "n_trades": 84}, {"cost_multiplier": 1.5, "sharpe": -0.22087295185486797, "cagr": -0.0062477997410277375, "n_trades": 84}, {"cost_multiplier": 2.0, "sharpe": -0.24688616284117618, "cagr": -0.006941608544390077, "n_trades": 84}, {"cost_multiplier": 3.0, "sharpe": -0.2988138890096777, "cagr": -0.008327834858409489, "n_trades": 84}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c3_vol_regime_filter_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.09 is below 0.5, while the gross-of-costs Sharpe is 0.52 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 10 trades (need >=30)",
+  "t-stat 1.04 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only -7% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "only 2/6 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.09069989629330673
+IN-SAMPLE SH  : 0.3570617672043139 (base run) / 1.3127640584028328 (last fold train)
+n_trades      : 10   maxDD: 0.27593946967220007   total_return: 0.2966844711511365
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.7608329711204469  IS_sh=0.40064443698151625  range=['2021-08-30', '2022-03-03']  trades=10
+   fold 1  OOS_sh=0.3533978763634337  IS_sh=0.658670816087839  range=['2022-10-31', '2023-05-04']  trades=10
+   fold 2  OOS_sh=1.2740589545690624  IS_sh=-0.230291664229653  range=['2023-12-31', '2024-07-03']  trades=10
+   fold 3  OOS_sh=-0.18902033360876994  IS_sh=1.5910181574021927  range=['2025-03-01', '2025-09-02']  trades=10
+   fold 4  OOS_sh=-0.5431280841923091  IS_sh=1.3127640584028328  range=['2026-05-01', '2026-11-02']  trades=10
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 10 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.5205352849078668  net_sh=0.3570617672043139  costs_paid=15258.639591498917
+   interpretation: the edge survives costs but is materially eroded (31% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.43868386324296593, "cagr": 0.03953599407699304, "n_trades": 10}, {"cost_multiplier": 1.5, "sharpe": 0.3979551374018767, "cagr": 0.035362851969196196, "n_trades": 10}, {"cost_multiplier": 2.0, "sharpe": 0.3570617672043139, "cagr": 0.03118571569759565, "n_trades": 10}, {"cost_multiplier": 3.0, "sharpe": 0.2754366164608608, "cagr": 0.022873680588284317, "n_trades": 10}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c3_vol_regime_filter_fx_major
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.09 is below 0.5, while the gross-of-costs Sharpe is 0.15 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 16 trades (need >=30)",
+  "t-stat 0.48 below 2.0 - the return series is not distinguishable from noise",
+  "OOS Sharpe retains only 25% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+]
+ERRORS        : []
+POOLED OOS SH : 0.08978157991354827
+IN-SAMPLE SH  : 0.10165651725891153 (base run) / 0.35645588014211926 (last fold train)
+n_trades      : 16   maxDD: 0.22845637425485432   total_return: 0.08095885799323344
+FOLD TABLE    :
+   fold 0  OOS_sh=0.05583080415850451  IS_sh=2.3420948006629394  range=['2005-12-06', '2009-05-19']  trades=8
+   fold 1  OOS_sh=0.11638886583663188  IS_sh=0.49958978736652915  range=['2010-04-21', '2013-09-26']  trades=8
+   fold 2  OOS_sh=-0.6620087145650105  IS_sh=0.6312485105964971  range=['2014-09-01', '2018-02-08']  trades=8
+   fold 3  OOS_sh=0.5846504337937228  IS_sh=0.2618298248616642  range=['2019-01-11', '2022-06-19']  trades=8
+   fold 4  OOS_sh=0.40035743279765296  IS_sh=0.35645588014211926  range=['2023-05-22', '2026-11-03']  trades=16
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 16 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.15466709752554808  net_sh=0.10165651725891153  costs_paid=5215.336159402349
+   interpretation: the edge survives costs but is materially eroded (34% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.12815083476434275, "cagr": 0.004606926813915058, "n_trades": 16}, {"cost_multiplier": 1.5, "sharpe": 0.11488560041001195, "cagr": 0.004032410114690688, "n_trades": 16}, {"cost_multiplier": 2.0, "sharpe": 0.10165651725891153, "cagr": 0.0034598123388234203, "n_trades": 16}, {"cost_multiplier": 3.0, "sharpe": 0.07509324117461388, "cagr": 0.002311195435387381, "n_trades": 16}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c3_vol_regime_filter_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.34 is below 0.5, while the gross-of-costs Sharpe is 0.33 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 13 trades (need >=30)",
+  "t-stat 1.37 below 2.0 - the return series is not distinguishable from noise"
+]
+ERRORS        : []
+POOLED OOS SH : 0.3408794443349706
+IN-SAMPLE SH  : 0.293469879430474 (base run) / -0.3354673922472025 (last fold train)
+n_trades      : 13   maxDD: 0.22212841839983255   total_return: 0.7520792989077478
+FOLD TABLE    :
+   fold 0  OOS_sh=0.22529859218620155  IS_sh=-2.121062745160666  range=['2005-12-16', '2009-05-18']  trades=13
+   fold 1  OOS_sh=-0.05408036535188705  IS_sh=-0.29681867177867116  range=['2010-05-04', '2013-09-27']  trades=13
+   fold 2  OOS_sh=0.9252619107829868  IS_sh=-0.44195790761951737  range=['2014-09-12', '2018-02-09']  trades=13
+   fold 3  OOS_sh=0.5305382138466791  IS_sh=-0.6262530863973177  range=['2019-01-28', '2022-06-22']  trades=13
+   fold 4  OOS_sh=0.1762081024261138  IS_sh=-0.3354673922472025  range=['2023-06-07', '2026-11-03']  trades=13
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 13 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.3297948642378722  net_sh=0.293469879430474  costs_paid=10091.403037660588
+   interpretation: the edge survives costs with little erosion (11% of the gross Sharpe lost to costs) - costs are not the constraint
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.3115017368012278, "cagr": 0.028045223375553707, "n_trades": 13}, {"cost_multiplier": 1.5, "sharpe": 0.30248935672989474, "cagr": 0.027055883689602656, "n_trades": 13}, {"cost_multiplier": 2.0, "sharpe": 0.293469879430474, "cagr": 0.02606635115160083, "n_trades": 13}, {"cost_multiplier": 3.0, "sharpe": 0.2752000016028071, "cagr": 0.024064099792115545, "n_trades": 13}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c3_vol_regime_filter_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.17 is below 0.5, while the gross-of-costs Sharpe is 0.17 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 15 trades (need >=30)",
+  "t-stat 0.66 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)"
+]
+ERRORS        : []
+POOLED OOS SH : 0.17385684222949993
+IN-SAMPLE SH  : 0.14168058832616115 (base run) / 0.22005507927443513 (last fold train)
+n_trades      : 15   maxDD: 0.3310511692047452   total_return: 0.2293321456997921
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.23362372846824273  IS_sh=-0.12484697218441124  range=['2005-12-15', '2009-05-13']  trades=14
+   fold 1  OOS_sh=-0.01616641212236782  IS_sh=0.9458713033514611  range=['2010-04-29', '2013-09-25']  trades=14
+   fold 2  OOS_sh=1.0167418144738176  IS_sh=0.975454336408943  range=['2014-09-10', '2018-02-08']  trades=15
+   fold 3  OOS_sh=-0.06541856452579109  IS_sh=0.4028699741361143  range=['2019-01-25', '2022-06-22']  trades=15
+   fold 4  OOS_sh=0.6100372833886754  IS_sh=0.22005507927443513  range=['2023-06-07', '2026-11-03']  trades=15
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 15 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.16910479105323575  net_sh=0.14168058832616115  costs_paid=6597.411380579829
+   interpretation: the edge survives costs but is materially eroded (16% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.15538003559911956, "cagr": 0.011016478194132429, "n_trades": 15}, {"cost_multiplier": 1.5, "sharpe": 0.14853378530774902, "cagr": 0.010263468901867023, "n_trades": 15}, {"cost_multiplier": 2.0, "sharpe": 0.14168058832616115, "cagr": 0.009510228576082635, "n_trades": 15}, {"cost_multiplier": 3.0, "sharpe": 0.12823411195090384, "cagr": 0.008033528215270813, "n_trades": 15}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c3_vol_regime_filter_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.07 is below 0.5, while the gross-of-costs Sharpe is 0.12 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 12 trades (need >=30)",
+  "t-stat 0.14 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "only 8/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.06681714331579185
+IN-SAMPLE SH  : 0.030679499772204574 (base run) / -0.35117381758332905 (last fold train)
+n_trades      : 12   maxDD: 0.22558043239424563   total_return: 0.010287065652948568
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.1017527560239784  IS_sh=0.3213015074860301  range=['2005-12-19', '2009-05-19']  trades=12
+   fold 1  OOS_sh=0.7573888140067782  IS_sh=-0.08160067222705021  range=['2010-05-04', '2013-09-27']  trades=12
+   fold 2  OOS_sh=-0.13483284960808203  IS_sh=-0.1838080476933707  range=['2014-09-12', '2018-02-07']  trades=12
+   fold 3  OOS_sh=-0.589011982422575  IS_sh=-0.457503435378717  range=['2019-01-24', '2022-06-17']  trades=12
+   fold 4  OOS_sh=0.3227832777370637  IS_sh=-0.35117381758332905  range=['2023-06-05', '2026-11-03']  trades=12
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 12 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.11742954357200454  net_sh=0.030679499772204574  costs_paid=5937.704948542904
+   interpretation: the edge survives costs but is materially eroded (74% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.07382377472391878, "cagr": 0.0018568115732435775, "n_trades": 12}, {"cost_multiplier": 1.5, "sharpe": 0.05218790771774331, "cagr": 0.0011634967683191721, "n_trades": 12}, {"cost_multiplier": 2.0, "sharpe": 0.030679499772204574, "cagr": 0.00046980573479760146, "n_trades": 12}, {"cost_multiplier": 3.0, "sharpe": -0.011849203977111339, "cagr": -0.0009159229672721647, "n_trades": 12}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c4_volume_confirmation_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.09 is below 0.5, while the gross-of-costs Sharpe is 0.21 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.52 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only -15% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "Monte Carlo prob(profitable) 66%"
+]
+ERRORS        : []
+POOLED OOS SH : -0.08615772415509627
+IN-SAMPLE SH  : 0.11186625045054399 (base run) / 0.5622484681187737 (last fold train)
+n_trades      : 317   maxDD: 0.17459987053302695   total_return: 0.06854759371627228
+FOLD TABLE    :
+   fold 0  OOS_sh=0.13273158734064913  IS_sh=1.1968545901919685  range=['2005-12-15', '2009-05-14']  trades=48
+   fold 1  OOS_sh=-0.3314484095755858  IS_sh=1.134579777185012  range=['2010-04-30', '2013-09-25']  trades=48
+   fold 2  OOS_sh=-0.4394627578324769  IS_sh=1.3889028865845756  range=['2014-09-10', '2018-02-05']  trades=53
+   fold 3  OOS_sh=-0.42028666057315883  IS_sh=1.0242666740348452  range=['2019-01-22', '2022-06-15']  trades=54
+   fold 4  OOS_sh=0.7084392617083016  IS_sh=0.5622484681187737  range=['2023-06-01', '2026-10-30']  trades=60
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.21245549281879628  net_sh=0.11186625045054399  costs_paid=7272.813924513658
+   interpretation: the edge survives costs but is materially eroded (47% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.16213049873771265, "cagr": 0.004643279847043269, "n_trades": 317}, {"cost_multiplier": 1.5, "sharpe": 0.1369632786270338, "cagr": 0.003843707103913241, "n_trades": 317}, {"cost_multiplier": 2.0, "sharpe": 0.11186625045054399, "cagr": 0.003046818052019118, "n_trades": 317}, {"cost_multiplier": 3.0, "sharpe": 0.06158124377924746, "cagr": 0.001450988857259361, "n_trades": 317}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c4_volume_confirmation_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.17 is below 0.5, while the gross-of-costs Sharpe is 0.14 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat -0.08 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only -28% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "edge does not survive 2x cost stress",
+  "parameter stability 50% (< 60%)",
+  "Monte Carlo prob(profitable) 41%"
+]
+ERRORS        : []
+POOLED OOS SH : -0.17028498550614143
+IN-SAMPLE SH  : -0.025952108217377055 (base run) / 0.6159498189013584 (last fold train)
+n_trades      : 140   maxDD: 0.45391043990450697   total_return: -0.0602903954152062
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.18395724260783317  IS_sh=-0.8337949597846104  range=['2021-08-30', '2022-03-03']  trades=10
+   fold 1  OOS_sh=-1.1919205923604452  IS_sh=-0.06900150761540888  range=['2022-10-31', '2023-05-04']  trades=20
+   fold 2  OOS_sh=-0.744449862561184  IS_sh=-0.3049311200245129  range=['2023-12-31', '2024-07-03']  trades=30
+   fold 3  OOS_sh=0.8646047632348  IS_sh=0.41360677143467617  range=['2025-03-01', '2025-09-02']  trades=20
+   fold 4  OOS_sh=0.6796095835249734  IS_sh=0.6159498189013584  range=['2026-05-01', '2026-11-02']  trades=20
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.13590349369577934  net_sh=-0.025952108217377055  costs_paid=10594.402169679217
+   interpretation: there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.05492307133391126, "cagr": 0.0005907310643624708, "n_trades": 140}, {"cost_multiplier": 1.5, "sharpe": 0.01445919315825825, "cagr": -0.003371705289531457, "n_trades": 140}, {"cost_multiplier": 2.0, "sharpe": -0.025952108217377055, "cagr": -0.007323177936472747, "n_trades": 140}, {"cost_multiplier": 3.0, "sharpe": -0.10651313737902392, "cagr": -0.015193311730680836, "n_trades": 140}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c4_volume_confirmation_fx_major
+VERDICT       : INCONCLUSIVE
+REASONING     : Too few trades (0) to distinguish signal from noise.
+FLAGS         : [
+  "only 0 trades (need >=30)",
+  "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+  "edge does not survive 2x cost stress",
+  "parameter stability 0% (< 60%)",
+  "only 0/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : None
+IN-SAMPLE SH  : None (base run) / None (last fold train)
+n_trades      : 0   maxDD: 0.0   total_return: 0.0
+FOLD TABLE    :
+   fold 0  OOS_sh=None  IS_sh=None  range=['2005-12-06', '2009-05-19']  trades=0
+   fold 1  OOS_sh=None  IS_sh=None  range=['2010-04-21', '2013-09-26']  trades=0
+   fold 2  OOS_sh=None  IS_sh=None  range=['2014-09-01', '2018-02-08']  trades=0
+   fold 3  OOS_sh=None  IS_sh=None  range=['2019-01-11', '2022-06-19']  trades=0
+   fold 4  OOS_sh=None  IS_sh=None  range=['2023-05-22', '2026-11-03']  trades=0
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 0 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=None  net_sh=None  costs_paid=0.0
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": null, "cagr": 0.0, "n_trades": 0}, {"cost_multiplier": 1.5, "sharpe": null, "cagr": 0.0, "n_trades": 0}, {"cost_multiplier": 2.0, "sharpe": null, "cagr": 0.0, "n_trades": 0}, {"cost_multiplier": 3.0, "sharpe": null, "cagr": 0.0, "n_trades": 0}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c4_volume_confirmation_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.11 is below 0.5, while the gross-of-costs Sharpe is 0.07 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 13 trades (need >=30)",
+  "t-stat 0.16 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "parameter stability 50% (< 60%)",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.10810569674783672
+IN-SAMPLE SH  : 0.034250941898808354 (base run) / 0.06303227683812367 (last fold train)
+n_trades      : 13   maxDD: 0.2906923182064626   total_return: -0.03508597189244289
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.14281148601739  IS_sh=-0.3445993618737268  range=['2005-12-16', '2009-05-18']  trades=13
+   fold 1  OOS_sh=-0.24723481650165643  IS_sh=0.442783935386772  range=['2010-05-04', '2013-09-27']  trades=13
+   fold 2  OOS_sh=0.8364392907044095  IS_sh=0.3368942468805289  range=['2014-09-12', '2018-02-09']  trades=13
+   fold 3  OOS_sh=0.6140681577986983  IS_sh=-0.10831673216561298  range=['2019-01-28', '2022-06-22']  trades=13
+   fold 4  OOS_sh=-0.45974743522678263  IS_sh=0.06303227683812367  range=['2023-06-07', '2026-11-03']  trades=13
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 13 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.07359885086203974  net_sh=0.034250941898808354  costs_paid=9894.897684837766
+   interpretation: the edge survives costs but is materially eroded (53% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.05383902865745482, "cagr": 0.0003524391249645209, "n_trades": 13}, {"cost_multiplier": 1.5, "sharpe": 0.044017688604540146, "cagr": -0.0006462127115135496, "n_trades": 13}, {"cost_multiplier": 2.0, "sharpe": 0.034250941898808354, "cagr": -0.0016374962311889174, "n_trades": 13}, {"cost_multiplier": 3.0, "sharpe": 0.014132323410303318, "cagr": -0.0036755664042997793, "n_trades": 13}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c4_volume_confirmation_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.17 is below 0.5, while the gross-of-costs Sharpe is 0.09 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.24 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only 32% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "parameter stability 50% (< 60%)",
+  "Monte Carlo prob(profitable) 53%"
+]
+ERRORS        : []
+POOLED OOS SH : 0.17110713480946876
+IN-SAMPLE SH  : 0.05176526280579854 (base run) / 0.5271294503060785 (last fold train)
+n_trades      : 226   maxDD: 0.25389577558130993   total_return: 0.017950353514890383
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.29409319593891337  IS_sh=-0.8655023640566406  range=['2005-12-15', '2009-05-13']  trades=38
+   fold 1  OOS_sh=-0.10099649847634712  IS_sh=0.9025727489093213  range=['2010-04-29', '2013-09-25']  trades=50
+   fold 2  OOS_sh=1.2590666146421443  IS_sh=0.8222760227446694  range=['2014-09-10', '2018-02-08']  trades=51
+   fold 3  OOS_sh=0.22063765599787713  IS_sh=0.33007783352871656  range=['2019-01-25', '2022-06-22']  trades=41
+   fold 4  OOS_sh=-0.047074718492302235  IS_sh=0.5271294503060785  range=['2023-06-07', '2026-11-03']  trades=55
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.09161598404977589  net_sh=0.05176526280579854  costs_paid=7137.766723001036
+   interpretation: the edge survives costs but is materially eroded (43% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.07225262391709614, "cagr": 0.002548926587417011, "n_trades": 226}, {"cost_multiplier": 1.5, "sharpe": 0.06200702191990669, "cagr": 0.0016820361250795557, "n_trades": 226}, {"cost_multiplier": 2.0, "sharpe": 0.05176526280579854, "cagr": 0.0008159356359442871, "n_trades": 226}, {"cost_multiplier": 3.0, "sharpe": 0.031165594833277636, "cagr": -0.0009249360330985112, "n_trades": 226}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c4_volume_confirmation_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.02 is below 0.5, while the gross-of-costs Sharpe is 0.18 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.39 below 2.0 - the return series is not distinguishable from noise",
+  "OOS Sharpe retains only -2% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "Monte Carlo prob(profitable) 76%"
+]
+ERRORS        : []
+POOLED OOS SH : -0.015860744001133388
+IN-SAMPLE SH  : 0.08380034810148164 (base run) / 1.0382994173569264 (last fold train)
+n_trades      : 126   maxDD: 0.25826923779197286   total_return: 0.06384194881126781
+FOLD TABLE    :
+   fold 0  OOS_sh=0.7206667609116542  IS_sh=0.939976937245322  range=['2005-12-19', '2009-05-19']  trades=21
+   fold 1  OOS_sh=0.6657796427632284  IS_sh=0.4796733611218854  range=['2010-05-04', '2013-09-27']  trades=36
+   fold 2  OOS_sh=-0.33697810159216846  IS_sh=0.3563633959251459  range=['2014-09-12', '2018-02-07']  trades=24
+   fold 3  OOS_sh=-0.9405911984160317  IS_sh=0.5929659042320914  range=['2019-01-24', '2022-06-17']  trades=36
+   fold 4  OOS_sh=0.2956850818769738  IS_sh=1.0382994173569264  range=['2023-06-05', '2026-11-03']  trades=72
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.1765774585506248  net_sh=0.08380034810148164  costs_paid=9290.152843089787
+   interpretation: the edge survives costs but is materially eroded (53% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.12952829259400106, "cagr": 0.004956757782549781, "n_trades": 126}, {"cost_multiplier": 1.5, "sharpe": 0.10649093704966284, "cagr": 0.003898880689212181, "n_trades": 126}, {"cost_multiplier": 2.0, "sharpe": 0.08380034810148164, "cagr": 0.0028442270265609526, "n_trades": 126}, {"cost_multiplier": 3.0, "sharpe": 0.039570488698561467, "cagr": 0.0007486689687496995, "n_trades": 126}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c5_rsi_reversion_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.02 is below 0.5, while the gross-of-costs Sharpe is 0.04 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 24 trades (need >=30)",
+  "t-stat 0.07 below 2.0 - the return series is not distinguishable from noise",
+  "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "Monte Carlo prob(profitable) 51%",
+  "only 1/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.016107354898227646
+IN-SAMPLE SH  : 0.014980003527899598 (base run) / None (last fold train)
+n_trades      : 24   maxDD: 0.01996888196986968   total_return: 0.0012057138059355932
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.6429970847713395  IS_sh=None  range=['2005-08-05', '2009-05-14']  trades=6
+   fold 1  OOS_sh=-0.7011711640033089  IS_sh=None  range=['2009-12-16', '2013-09-25']  trades=6
+   fold 2  OOS_sh=None  IS_sh=None  range=['2014-04-30', '2018-02-05']  trades=0
+   fold 3  OOS_sh=1.009465987441546  IS_sh=None  range=['2018-09-07', '2022-06-15']  trades=6
+   fold 4  OOS_sh=-0.016939186219454557  IS_sh=None  range=['2023-01-19', '2026-10-30']  trades=6
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.03617599525810116  net_sh=0.014980003527899598  costs_paid=200.10658399690584
+   interpretation: the edge survives costs but is materially eroded (59% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.025615732836028585, "cagr": 0.00010141800764418285, "n_trades": 24}, {"cost_multiplier": 1.5, "sharpe": 0.020306765301535225, "cagr": 7.835643201059561e-05, "n_trades": 24}, {"cost_multiplier": 2.0, "sharpe": 0.014980003527899598, "cagr": 5.529228861855806e-05, "n_trades": 24}, {"cost_multiplier": 3.0, "sharpe": 0.004277519583002122, "cagr": 9.15629587550093e-06, "n_trades": 24}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c5_rsi_reversion_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.69 is below 0.5, while the gross-of-costs Sharpe is 0.23 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 10 trades (need >=30)",
+  "t-stat 0.42 below 2.0 - the return series is not distinguishable from noise",
+  "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+  "OOS Sharpe retains only -254% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "parameter stability 25% (< 60%)",
+  "only 1/6 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.6859652998122312
+IN-SAMPLE SH  : 0.14329584282443017 (base run) / 0.26953477579364993 (last fold train)
+n_trades      : 10   maxDD: 0.009160348306158195   total_return: 0.006511680492917282
+FOLD TABLE    :
+   fold 0  OOS_sh=None  IS_sh=None  range=['2021-05-30', '2022-03-03']  trades=0
+   fold 1  OOS_sh=None  IS_sh=None  range=['2022-07-31', '2023-05-04']  trades=0
+   fold 2  OOS_sh=None  IS_sh=None  range=['2023-09-30', '2024-07-03']  trades=0
+   fold 3  OOS_sh=None  IS_sh=None  range=['2024-11-29', '2025-09-02']  trades=0
+   fold 4  OOS_sh=-1.5374112486614784  IS_sh=0.26953477579364993  range=['2026-01-29', '2026-11-02']  trades=10
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 10 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.22580284698927444  net_sh=0.14329584282443017  costs_paid=349.2045283474056
+   interpretation: the edge survives costs but is materially eroded (37% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.18435228265368686, "cagr": 0.000972515880431235, "n_trades": 10}, {"cost_multiplier": 1.5, "sharpe": 0.1637317750482643, "cagr": 0.0008700333891231704, "n_trades": 10}, {"cost_multiplier": 2.0, "sharpe": 0.14329584282443017, "cagr": 0.0007674725528883375, "n_trades": 10}, {"cost_multiplier": 3.0, "sharpe": 0.10327969706500992, "cagr": 0.0005621153336219376, "n_trades": 10}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c5_rsi_reversion_fx_major
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.36 is below 0.5, and the gross-of-costs Sharpe is -0.30 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -1.55 below 2.0 - the return series is not distinguishable from noise",
+  "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only -1785% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 4%",
+  "only 6/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.36390016391192437
+IN-SAMPLE SH  : -0.32680078193678497 (base run) / 0.020389715055517253 (last fold train)
+n_trades      : 119   maxDD: 0.07060798630768128   total_return: -0.05811479908901218
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.7855683827546726  IS_sh=None  range=['2005-07-27', '2009-05-19']  trades=23
+   fold 1  OOS_sh=-0.45953372495548606  IS_sh=None  range=['2009-12-15', '2013-09-26']  trades=8
+   fold 2  OOS_sh=-0.037278886695422134  IS_sh=1.1110014325747826  range=['2014-04-24', '2018-02-08']  trades=8
+   fold 3  OOS_sh=-0.2039458586028182  IS_sh=0.961900022254276  range=['2018-09-04', '2022-06-19']  trades=40
+   fold 4  OOS_sh=0.12112371819810351  IS_sh=0.020389715055517253  range=['2023-01-13', '2026-11-03']  trades=24
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.2981666643941798  net_sh=-0.32680078193678497  costs_paid=499.11203906105993
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.3125084425305941, "cagr": -0.0025372548532044403, "n_trades": 119}, {"cost_multiplier": 1.5, "sharpe": -0.3196611394658687, "cagr": -0.0025950079745221677, "n_trades": 119}, {"cost_multiplier": 2.0, "sharpe": -0.32680078193678497, "cagr": -0.002652762789409291, "n_trades": 119}, {"cost_multiplier": 3.0, "sharpe": -0.34103815201050386, "cagr": -0.002768277500689975, "n_trades": 119}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c5_rsi_reversion_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.07 is below 0.5, while the gross-of-costs Sharpe is 0.03 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.06 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "parameter stability 50% (< 60%)",
+  "Monte Carlo prob(profitable) 45%"
+]
+ERRORS        : []
+POOLED OOS SH : 0.07308389495137099
+IN-SAMPLE SH  : 0.013630571219064486 (base run) / -0.3544843983440307 (last fold train)
+n_trades      : 336   maxDD: 0.16874703310703032   total_return: -0.009596835052063435
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.1544179496576351  IS_sh=None  range=['2005-08-05', '2009-05-18']  trades=63
+   fold 1  OOS_sh=-0.22247838929515745  IS_sh=-0.9351007496838721  range=['2009-12-18', '2013-09-27']  trades=38
+   fold 2  OOS_sh=-0.2106124088312055  IS_sh=-0.29037335787609564  range=['2014-05-02', '2018-02-09']  trades=94
+   fold 3  OOS_sh=0.2070658775847981  IS_sh=0.018773054294366487  range=['2018-09-13', '2022-06-22']  trades=39
+   fold 4  OOS_sh=0.41475005885520116  IS_sh=-0.3544843983440307  range=['2023-01-25', '2026-11-03']  trades=68
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.027709790141673327  net_sh=0.013630571219064486  costs_paid=1365.6870171094565
+   interpretation: the edge survives costs but is materially eroded (51% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.02067060021603652, "cagr": -0.00011774742659609316, "n_trades": 336}, {"cost_multiplier": 1.5, "sharpe": 0.01715066826402025, "cagr": -0.0002800562110282234, "n_trades": 336}, {"cost_multiplier": 2.0, "sharpe": 0.013630571219064486, "cagr": -0.0004423787641457677, "n_trades": 336}, {"cost_multiplier": 3.0, "sharpe": 0.006590060602838423, "cagr": -0.000767065439344794, "n_trades": 336}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c5_rsi_reversion_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.15 is below 0.5, while the gross-of-costs Sharpe is 0.09 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.34 below 2.0 - the return series is not distinguishable from noise",
+  "Monte Carlo prob(profitable) 66%",
+  "only 8/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.14903565468776914
+IN-SAMPLE SH  : 0.07186663695053905 (base run) / -0.08804275759564383 (last fold train)
+n_trades      : 550   maxDD: 0.161478596520658   total_return: 0.05291411652900302
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.6473945249890779  IS_sh=None  range=['2005-08-05', '2009-05-13']  trades=83
+   fold 1  OOS_sh=0.9378253901185604  IS_sh=-1.0054621501593126  range=['2009-12-15', '2013-09-25']  trades=96
+   fold 2  OOS_sh=0.034727040219364104  IS_sh=0.5980585593005032  range=['2014-04-30', '2018-02-08']  trades=138
+   fold 3  OOS_sh=0.18752808570581816  IS_sh=0.6442273133249826  range=['2018-09-12', '2022-06-22']  trades=119
+   fold 4  OOS_sh=0.6900704098369305  IS_sh=-0.08804275759564383  range=['2023-01-25', '2026-11-03']  trades=45
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.09264079393598453  net_sh=0.07186663695053905  costs_paid=2257.941047989485
+   interpretation: the edge survives costs but is materially eroded (22% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.08225564111328378, "cagr": 0.002899996538863414, "n_trades": 550}, {"cost_multiplier": 1.5, "sharpe": 0.07706156352537749, "cagr": 0.0026332685898218244, "n_trades": 550}, {"cost_multiplier": 2.0, "sharpe": 0.07186663695053905, "cagr": 0.00236654710981532, "n_trades": 550}, {"cost_multiplier": 3.0, "sharpe": 0.06148241246933787, "cagr": 0.0018335192491678587, "n_trades": 550}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c5_rsi_reversion_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.03 is below 0.5, and the gross-of-costs Sharpe is -0.18 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -1.10 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "edge does not survive 2x cost stress",
+  "parameter stability 50% (< 60%)",
+  "Monte Carlo prob(profitable) 2%"
+]
+ERRORS        : []
+POOLED OOS SH : -0.033733992486111794
+IN-SAMPLE SH  : -0.23459913678301403 (base run) / -0.7511000642445465 (last fold train)
+n_trades      : 157   maxDD: 0.07306126253740142   total_return: -0.05432523600300654
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.08340818436883841  IS_sh=-0.9019967127786169  range=['2005-08-05', '2009-05-19']  trades=20
+   fold 1  OOS_sh=-0.6399307497986259  IS_sh=-0.5386865202013023  range=['2009-12-18', '2013-09-27']  trades=36
+   fold 2  OOS_sh=-0.02540092765641801  IS_sh=-0.4402564931704143  range=['2014-05-02', '2018-02-07']  trades=60
+   fold 3  OOS_sh=0.9984439262413285  IS_sh=-0.41457931563186184  range=['2018-09-11', '2022-06-17']  trades=48
+   fold 4  OOS_sh=0.6668000716274884  IS_sh=-0.7511000642445465  range=['2023-01-23', '2026-11-03']  trades=24
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.18160322029888554  net_sh=-0.23459913678301403  costs_paid=1179.8046558480683
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.20814512331787968, "cagr": -0.0022771285842683175, "n_trades": 157}, {"cost_multiplier": 1.5, "sharpe": -0.2213850565868072, "cagr": -0.002418637105966237, "n_trades": 157}, {"cost_multiplier": 2.0, "sharpe": -0.23459913678301403, "cagr": -0.002560158406690438, "n_trades": 157}, {"cost_multiplier": 3.0, "sharpe": -0.2609343792197964, "cagr": -0.002843239465754599, "n_trades": 157}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c6_rebound_danger_us_equity_style
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.60 is below 0.5, and the gross-of-costs Sharpe is -0.34 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+FLAGS         : [
+  "t-stat -2.00 below 2.0 - the return series is not distinguishable from noise",
+  "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+  "edge does not survive 2x cost stress",
+  "Monte Carlo prob(profitable) 3%",
+  "only 7/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : -0.5957780100577714
+IN-SAMPLE SH  : -0.428452486100696 (base run) / -0.14378037747933187 (last fold train)
+n_trades      : 90   maxDD: 0.28878672291766516   total_return: -0.2539861622351599
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.6310201145838867  IS_sh=1.418516269912109  range=['2005-12-15', '2009-05-14']  trades=30
+   fold 1  OOS_sh=-0.5284056598125318  IS_sh=0.6854745664412457  range=['2010-04-30', '2013-09-25']  trades=18
+   fold 2  OOS_sh=-0.05175579846094255  IS_sh=1.2381422834825233  range=['2014-09-10', '2018-02-05']  trades=18
+   fold 3  OOS_sh=-1.3202596305164966  IS_sh=0.40284439984939774  range=['2019-01-22', '2022-06-15']  trades=18
+   fold 4  OOS_sh=-0.16162976845948246  IS_sh=-0.14378037747933187  range=['2023-06-01', '2026-10-30']  trades=6
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=-0.33837398805365165  net_sh=-0.428452486100696  costs_paid=5323.394884922794
+   interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": -0.38351955581435143, "cagr": -0.012001707386065097, "n_trades": 90}, {"cost_multiplier": 1.5, "sharpe": -0.4059823234240091, "cagr": -0.012677872039063232, "n_trades": 90}, {"cost_multiplier": 2.0, "sharpe": -0.428452486100696, "cagr": -0.013354815738212622, "n_trades": 90}, {"cost_multiplier": 3.0, "sharpe": -0.4733174795678906, "cagr": -0.014708146430508995, "n_trades": 90}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c6_rebound_danger_crypto
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.12 is below 0.5, while the gross-of-costs Sharpe is 0.18 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "t-stat 0.04 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+  "OOS Sharpe retains only 17% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+  "parameter stability 38% (< 60%)",
+  "Monte Carlo prob(profitable) 48%",
+  "only 2/6 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.11853941574725906
+IN-SAMPLE SH  : 0.014790126722099364 (base run) / 0.6979556725166486 (last fold train)
+n_trades      : 30   maxDD: 0.33741160577470153   total_return: -0.031001069658029623
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.41873998052490585  IS_sh=0.1561879909266367  range=['2021-08-30', '2022-03-03']  trades=10
+   fold 1  OOS_sh=-0.07294176418638296  IS_sh=0.5588681141932624  range=['2022-10-31', '2023-05-04']  trades=10
+   fold 2  OOS_sh=1.5957307832225716  IS_sh=-0.2925226703906649  range=['2023-12-31', '2024-07-03']  trades=10
+   fold 3  OOS_sh=-0.33451253330843483  IS_sh=0.884734586915382  range=['2025-03-01', '2025-09-02']  trades=10
+   fold 4  OOS_sh=0.3371732499991524  IS_sh=0.6979556725166486  range=['2026-05-01', '2026-11-02']  trades=10
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            RAN      
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.18343659960115788  net_sh=0.014790126722099364  costs_paid=13596.178795407266
+   interpretation: the edge survives costs but is materially eroded (92% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.09910126654275468, "cagr": 0.004956156722319305, "n_trades": 30}, {"cost_multiplier": 1.5, "sharpe": 0.05700595763889197, "cagr": 0.000620028231890668, "n_trades": 30}, {"cost_multiplier": 2.0, "sharpe": 0.014790126722099364, "cagr": -0.0037153727375518475, "n_trades": 30}, {"cost_multiplier": 3.0, "sharpe": -0.06952074685957495, "cagr": -0.012345225563523243, "n_trades": 30}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c6_rebound_danger_fx_major
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.01 is below 0.5, while the gross-of-costs Sharpe is 0.08 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 8 trades (need >=30)",
+  "t-stat 0.12 below 2.0 - the return series is not distinguishable from noise",
+  "OOS Sharpe retains only 3% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+]
+ERRORS        : []
+POOLED OOS SH : 0.007480908001395375
+IN-SAMPLE SH  : 0.024826026014280553 (base run) / 0.26434150490806807 (last fold train)
+n_trades      : 8   maxDD: 0.24332751146738973   total_return: 0.0028376308779711756
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.20552704625264884  IS_sh=1.477215128205709  range=['2005-12-06', '2009-05-19']  trades=8
+   fold 1  OOS_sh=0.04643004753681563  IS_sh=0.14186289734174992  range=['2010-04-21', '2013-09-26']  trades=8
+   fold 2  OOS_sh=-0.4779002028010215  IS_sh=0.3334316407828399  range=['2014-09-01', '2018-02-08']  trades=8
+   fold 3  OOS_sh=0.6076568470835507  IS_sh=0.16394682452355558  range=['2019-01-11', '2022-06-19']  trades=8
+   fold 4  OOS_sh=0.2807720365855934  IS_sh=0.26434150490806807  range=['2023-05-22', '2026-11-03']  trades=8
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 8 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.07634816085709437  net_sh=0.024826026014280553  costs_paid=4896.8377264944465
+   interpretation: the edge survives costs but is materially eroded (67% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.05058016413989621, "cagr": 0.001258314356538115, "n_trades": 8}, {"cost_multiplier": 1.5, "sharpe": 0.03768840747463303, "cagr": 0.0006912075786307259, "n_trades": 8}, {"cost_multiplier": 2.0, "sharpe": 0.024826026014280553, "cagr": 0.0001257245093040371, "n_trades": 8}, {"cost_multiplier": 3.0, "sharpe": -0.0009871622977808182, "cagr": -0.0010081682961836647, "n_trades": 8}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c6_rebound_danger_commodities
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.30 is below 0.5, while the gross-of-costs Sharpe is 0.29 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 13 trades (need >=30)",
+  "t-stat 1.17 below 2.0 - the return series is not distinguishable from noise"
+]
+ERRORS        : []
+POOLED OOS SH : 0.3029546358534225
+IN-SAMPLE SH  : 0.2497254661859544 (base run) / -0.3433967918546397 (last fold train)
+n_trades      : 13   maxDD: 0.2131545429437871   total_return: 0.5704659080839372
+FOLD TABLE    :
+   fold 0  OOS_sh=0.5422043680495574  IS_sh=-1.7392448349858423  range=['2005-12-16', '2009-05-18']  trades=13
+   fold 1  OOS_sh=0.2516107880701574  IS_sh=-0.1869970898047717  range=['2010-05-04', '2013-09-27']  trades=13
+   fold 2  OOS_sh=0.2547858476821211  IS_sh=-0.13581521926667767  range=['2014-09-12', '2018-02-09']  trades=13
+   fold 3  OOS_sh=0.5613729722368508  IS_sh=-0.27928683253890046  range=['2019-01-28', '2022-06-22']  trades=13
+   fold 4  OOS_sh=-0.11221601566174971  IS_sh=-0.3433967918546397  range=['2023-06-07', '2026-11-03']  trades=13
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 13 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.28517786254414373  net_sh=0.2497254661859544  costs_paid=10320.130901785244
+   interpretation: the edge survives costs with little erosion (12% of the gross Sharpe lost to costs) - costs are not the constraint
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.2674431040237429, "cagr": 0.022827829701514313, "n_trades": 13}, {"cost_multiplier": 1.5, "sharpe": 0.25867299336073835, "cagr": 0.02188661866762076, "n_trades": 13}, {"cost_multiplier": 2.0, "sharpe": 0.2497254661859544, "cagr": 0.020927149916222465, "n_trades": 13}, {"cost_multiplier": 3.0, "sharpe": 0.23184600853076015, "cagr": 0.01901290007069867, "n_trades": 13}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c6_rebound_danger_futures_broad
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe 0.16 is below 0.5, while the gross-of-costs Sharpe is 0.16 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 15 trades (need >=30)",
+  "t-stat 0.61 below 2.0 - the return series is not distinguishable from noise",
+  "only 10/22 profitable years"
+]
+ERRORS        : []
+POOLED OOS SH : 0.15957672381416058
+IN-SAMPLE SH  : 0.13037742262774865 (base run) / 0.3669131388280088 (last fold train)
+n_trades      : 15   maxDD: 0.2679725667107088   total_return: 0.1955684049752351
+FOLD TABLE    :
+   fold 0  OOS_sh=-0.13100376210083964  IS_sh=-0.28791827263286457  range=['2005-12-15', '2009-05-13']  trades=14
+   fold 1  OOS_sh=0.31475523718003756  IS_sh=1.1093031366164634  range=['2010-04-29', '2013-09-25']  trades=14
+   fold 2  OOS_sh=0.8054640273931094  IS_sh=1.2555635671403909  range=['2014-09-10', '2018-02-08']  trades=15
+   fold 3  OOS_sh=0.07129067013250591  IS_sh=0.7007717078349207  range=['2019-01-25', '2022-06-22']  trades=15
+   fold 4  OOS_sh=0.09822424882630434  IS_sh=0.3669131388280088  range=['2023-06-07', '2026-11-03']  trades=15
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 15 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.15631333028836036  net_sh=0.13037742262774865  costs_paid=6817.930998412727
+   interpretation: the edge survives costs but is materially eroded (17% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.1433869453446523, "cagr": 0.00961693468687197, "n_trades": 15}, {"cost_multiplier": 1.5, "sharpe": 0.13689283481511855, "cagr": 0.008920560254499721, "n_trades": 15}, {"cost_multiplier": 2.0, "sharpe": 0.13037742262774865, "cagr": 0.008222207371266776, "n_trades": 15}, {"cost_multiplier": 3.0, "sharpe": 0.11731331118586741, "cagr": 0.006822875203471357, "n_trades": 15}]
+
+==============================================================================
+SPEC          : NEGATIVE-CONTROL-c6_rebound_danger_rates_credit
+VERDICT       : REFUTED
+REASONING     : Pooled OOS Sharpe -0.14 is below 0.5, while the gross-of-costs Sharpe is 0.20 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+FLAGS         : [
+  "only 12 trades (need >=30)",
+  "t-stat 0.53 below 2.0 - the return series is not distinguishable from noise",
+  "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)"
+]
+ERRORS        : []
+POOLED OOS SH : -0.13976789182806
+IN-SAMPLE SH  : 0.11375155521864799 (base run) / -0.2910785334020516 (last fold train)
+n_trades      : 12   maxDD: 0.17004338120435314   total_return: 0.07409196986523425
+FOLD TABLE    :
+   fold 0  OOS_sh=0.15810398419893298  IS_sh=0.2351183378540749  range=['2005-12-19', '2009-05-19']  trades=12
+   fold 1  OOS_sh=0.47244328843238087  IS_sh=0.12840024000439576  range=['2010-05-04', '2013-09-27']  trades=12
+   fold 2  OOS_sh=-0.05156848337419665  IS_sh=-0.14689607789109904  range=['2014-09-12', '2018-02-07']  trades=12
+   fold 3  OOS_sh=-1.1617214007845096  IS_sh=-0.40272828655352544  range=['2019-01-24', '2022-06-17']  trades=12
+   fold 4  OOS_sh=-0.2904920140321717  IS_sh=-0.2910785334020516  range=['2023-06-05', '2026-11-03']  trades=12
+STAGES        :
+   walk_forward           RAN      
+   gross_vs_net           RAN      
+   cost_stress            RAN      
+   parameter_sensitivity  RAN      
+   monte_carlo            ERRORED  only 12 trades — Monte Carlo needs >=20
+   subperiod              RAN      
+   capacity               RAN      
+   replication            SKIPPED  stage key absent from the scorecard
+   causality              RAN      
+GROSS vs NET  : gross_sh=0.19965575190694482  net_sh=0.11375155521864799  costs_paid=6323.957437628011
+   interpretation: the edge survives costs but is materially eroded (43% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+COST STRESS   : [{"cost_multiplier": 1.0, "sharpe": 0.15650324503703322, "cagr": 0.004713075036581138, "n_trades": 12}, {"cost_multiplier": 1.5, "sharpe": 0.135069491856901, "cagr": 0.0039992963360544476, "n_trades": 12}, {"cost_multiplier": 2.0, "sharpe": 0.11375155521864799, "cagr": 0.0032856367957081467, "n_trades": 12}, {"cost_multiplier": 3.0, "sharpe": 0.07148066074599449, "cagr": 0.0018586382975593896, "n_trades": 12}]
+

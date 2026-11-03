@@ -1,0 +1,39 @@
+{
+  "spec": "c1_regime_switch_crypto",
+  "n_bars": 2132,
+  "full_panel_bars": 2132,
+  "full_panel_usable_hmm_rows": 2072,
+  "hmm_threshold_needed": 160,
+  "fold_len_186": {
+    "fold_len": 186,
+    "usable_hmm_rows": 126,
+    "identify_regimes_is_None": true,
+    "signal_nonzero_bars": 0
+  },
+  "fold_len_858": {
+    "fold_len": 858,
+    "usable_hmm_rows": 798,
+    "identify_regimes_is_None": false,
+    "signal_nonzero_bars": 7430
+  }
+}
+{
+  "spec": "c1_regime_switch_us_equity_style",
+  "n_bars": 5492,
+  "full_panel_bars": 5492,
+  "full_panel_usable_hmm_rows": 5432,
+  "hmm_threshold_needed": 160,
+  "fold_len_186": {
+    "fold_len": 186,
+    "usable_hmm_rows": 126,
+    "identify_regimes_is_None": true,
+    "signal_nonzero_bars": 0
+  },
+  "fold_len_858": {
+    "fold_len": 858,
+    "usable_hmm_rows": 798,
+    "identify_regimes_is_None": false,
+    "signal_nonzero_bars": 4501
+  }
+}
+WROTE C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\_probe_c1_fold_length.json

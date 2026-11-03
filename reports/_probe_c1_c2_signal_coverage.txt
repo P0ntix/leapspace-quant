@@ -1,0 +1,13 @@
+c1_regime_switch_us_equity_style         bars=5492 signal_nonzero=31513 frac=0.9563 leading_cov=None
+c2_leading_vrp_us_equity_style           bars=5492 signal_nonzero=6477 frac=0.1966 leading_cov=0.22760378732702113
+c1_regime_switch_crypto                  bars=2132 signal_nonzero=19989 frac=0.9376 leading_cov=None
+c2_leading_vrp_crypto                    bars=2132 signal_nonzero=19337 frac=0.9070 leading_cov=0.9610694183864915
+c1_regime_switch_fx_major                bars=5680 signal_nonzero=0 frac=0.0000 leading_cov=None
+c2_leading_vrp_fx_major                  bars=5680 signal_nonzero=9460 frac=0.2082 leading_cov=0.22852112676056338
+c1_regime_switch_commodities             bars=5492 signal_nonzero=66927 frac=0.9374 leading_cov=None
+c2_leading_vrp_commodities               bars=5492 signal_nonzero=14492 frac=0.2030 leading_cov=0.2285142024763292
+c1_regime_switch_futures_broad           bars=5497 signal_nonzero=75803 frac=0.9193 leading_cov=None
+c2_leading_vrp_futures_broad             bars=5497 signal_nonzero=16776 frac=0.2035 leading_cov=0.2284882663270875
+c1_regime_switch_rates_credit            bars=5491 signal_nonzero=60577 frac=0.9193 leading_cov=None
+c2_leading_vrp_rates_credit              bars=5491 signal_nonzero=12102 frac=0.1837 leading_cov=0.22819158623201602
+WROTE C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\_probe_c1_c2_signal_coverage.json

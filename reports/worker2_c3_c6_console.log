@@ -1,0 +1,107 @@
+total specs built: 48 real + 48 controls = 96
+selected by only=['c3_', 'c4_', 'c5_', 'c6_']: 48
+    c3_vol_regime_filter_us_equity_style
+    c3_vol_regime_filter_crypto
+    c3_vol_regime_filter_fx_major
+    c3_vol_regime_filter_commodities
+    c3_vol_regime_filter_futures_broad
+    c3_vol_regime_filter_rates_credit
+    c4_volume_confirmation_us_equity_style
+    c4_volume_confirmation_crypto
+    c4_volume_confirmation_fx_major
+    c4_volume_confirmation_commodities
+    c4_volume_confirmation_futures_broad
+    c4_volume_confirmation_rates_credit
+    c5_rsi_reversion_us_equity_style
+    c5_rsi_reversion_crypto
+    c5_rsi_reversion_fx_major
+    c5_rsi_reversion_commodities
+    c5_rsi_reversion_futures_broad
+    c5_rsi_reversion_rates_credit
+    c6_rebound_danger_us_equity_style
+    c6_rebound_danger_crypto
+    c6_rebound_danger_fx_major
+    c6_rebound_danger_commodities
+    c6_rebound_danger_futures_broad
+    c6_rebound_danger_rates_credit
+    NEGATIVE-CONTROL-c3_vol_regime_filter_us_equity_style
+    NEGATIVE-CONTROL-c3_vol_regime_filter_crypto
+    NEGATIVE-CONTROL-c3_vol_regime_filter_fx_major
+    NEGATIVE-CONTROL-c3_vol_regime_filter_commodities
+    NEGATIVE-CONTROL-c3_vol_regime_filter_futures_broad
+    NEGATIVE-CONTROL-c3_vol_regime_filter_rates_credit
+    NEGATIVE-CONTROL-c4_volume_confirmation_us_equity_style
+    NEGATIVE-CONTROL-c4_volume_confirmation_crypto
+    NEGATIVE-CONTROL-c4_volume_confirmation_fx_major
+    NEGATIVE-CONTROL-c4_volume_confirmation_commodities
+    NEGATIVE-CONTROL-c4_volume_confirmation_futures_broad
+    NEGATIVE-CONTROL-c4_volume_confirmation_rates_credit
+    NEGATIVE-CONTROL-c5_rsi_reversion_us_equity_style
+    NEGATIVE-CONTROL-c5_rsi_reversion_crypto
+    NEGATIVE-CONTROL-c5_rsi_reversion_fx_major
+    NEGATIVE-CONTROL-c5_rsi_reversion_commodities
+    NEGATIVE-CONTROL-c5_rsi_reversion_futures_broad
+    NEGATIVE-CONTROL-c5_rsi_reversion_rates_credit
+    NEGATIVE-CONTROL-c6_rebound_danger_us_equity_style
+    NEGATIVE-CONTROL-c6_rebound_danger_crypto
+    NEGATIVE-CONTROL-c6_rebound_danger_fx_major
+    NEGATIVE-CONTROL-c6_rebound_danger_commodities
+    NEGATIVE-CONTROL-c6_rebound_danger_futures_broad
+    NEGATIVE-CONTROL-c6_rebound_danger_rates_credit
+[13/96] c3_vol_regime_filter_us_equity_style -> REFUTED (105.6s)
+[14/96] c3_vol_regime_filter_crypto -> REFUTED (89.2s)
+[15/96] c3_vol_regime_filter_fx_major -> REFUTED (201.2s)
+[16/96] c3_vol_regime_filter_commodities -> REFUTED (169.9s)
+[17/96] c3_vol_regime_filter_futures_broad -> REFUTED (172.4s)
+[18/96] c3_vol_regime_filter_rates_credit -> REFUTED (188.5s)
+[19/96] c4_volume_confirmation_us_equity_style -> REFUTED (85.9s)
+[20/96] c4_volume_confirmation_crypto -> REFUTED (56.4s)
+[21/96] c4_volume_confirmation_fx_major -> INCONCLUSIVE (111.8s)
+[22/96] c4_volume_confirmation_commodities -> REFUTED (193.8s)
+[23/96] c4_volume_confirmation_futures_broad -> REFUTED (200.3s)
+[24/96] c4_volume_confirmation_rates_credit -> REFUTED (150.5s)
+[25/96] c5_rsi_reversion_us_equity_style -> REFUTED (63.8s)
+[26/96] c5_rsi_reversion_crypto -> REFUTED (37.9s)
+[27/96] c5_rsi_reversion_fx_major -> REFUTED (72.7s)
+[28/96] c5_rsi_reversion_commodities -> REFUTED (115.8s)
+[29/96] c5_rsi_reversion_futures_broad -> REFUTED (117.6s)
+[30/96] c5_rsi_reversion_rates_credit -> REFUTED (89.6s)
+[31/96] c6_rebound_danger_us_equity_style -> REFUTED (39.4s)
+[32/96] c6_rebound_danger_crypto -> REFUTED (23.7s)
+[33/96] c6_rebound_danger_fx_major -> REFUTED (52.7s)
+[34/96] c6_rebound_danger_commodities -> REFUTED (81.0s)
+[35/96] c6_rebound_danger_futures_broad -> REFUTED (95.8s)
+[36/96] c6_rebound_danger_rates_credit -> REFUTED (71.7s)
+[61/96] NEGATIVE-CONTROL-c3_vol_regime_filter_us_equity_style -> REFUTED (83.3s)
+[62/96] NEGATIVE-CONTROL-c3_vol_regime_filter_crypto -> REFUTED (54.5s)
+[63/96] NEGATIVE-CONTROL-c3_vol_regime_filter_fx_major -> REFUTED (114.2s)
+[64/96] NEGATIVE-CONTROL-c3_vol_regime_filter_commodities -> REFUTED (171.4s)
+[65/96] NEGATIVE-CONTROL-c3_vol_regime_filter_futures_broad -> REFUTED (189.6s)
+[66/96] NEGATIVE-CONTROL-c3_vol_regime_filter_rates_credit -> REFUTED (182.8s)
+[67/96] NEGATIVE-CONTROL-c4_volume_confirmation_us_equity_style -> REFUTED (85.0s)
+[68/96] NEGATIVE-CONTROL-c4_volume_confirmation_crypto -> REFUTED (44.9s)
+[69/96] NEGATIVE-CONTROL-c4_volume_confirmation_fx_major -> INCONCLUSIVE (97.9s)
+[70/96] NEGATIVE-CONTROL-c4_volume_confirmation_commodities -> REFUTED (151.1s)
+[71/96] NEGATIVE-CONTROL-c4_volume_confirmation_futures_broad -> REFUTED (174.9s)
+[72/96] NEGATIVE-CONTROL-c4_volume_confirmation_rates_credit -> REFUTED (140.3s)
+[73/96] NEGATIVE-CONTROL-c5_rsi_reversion_us_equity_style -> REFUTED (61.8s)
+[74/96] NEGATIVE-CONTROL-c5_rsi_reversion_crypto -> REFUTED (37.5s)
+[75/96] NEGATIVE-CONTROL-c5_rsi_reversion_fx_major -> REFUTED (85.1s)
+[76/96] NEGATIVE-CONTROL-c5_rsi_reversion_commodities -> REFUTED (135.2s)
+[77/96] NEGATIVE-CONTROL-c5_rsi_reversion_futures_broad -> REFUTED (151.3s)
+[78/96] NEGATIVE-CONTROL-c5_rsi_reversion_rates_credit -> REFUTED (118.6s)
+[79/96] NEGATIVE-CONTROL-c6_rebound_danger_us_equity_style -> REFUTED (52.8s)
+[80/96] NEGATIVE-CONTROL-c6_rebound_danger_crypto -> REFUTED (32.2s)
+[81/96] NEGATIVE-CONTROL-c6_rebound_danger_fx_major -> REFUTED (68.8s)
+[82/96] NEGATIVE-CONTROL-c6_rebound_danger_commodities -> REFUTED (104.7s)
+[83/96] NEGATIVE-CONTROL-c6_rebound_danger_futures_broad -> REFUTED (117.3s)
+[84/96] NEGATIVE-CONTROL-c6_rebound_danger_rates_credit -> REFUTED (95.8s)
+run_matrix finished: 48 rows in 5138.1s
+merged 48 rows into C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\paper_concept_results.json
+artifacts:
+    C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker2_c3_c6_results.json
+    C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker2_c3_c6.log
+    C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker2_c3_c6_detail.log
+    C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker2_c3_c6_summary.json
+    C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\worker2_c3_c6_gauntlet
+EXIT=0

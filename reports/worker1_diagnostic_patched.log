@@ -1,0 +1,24 @@
+
+=== RUN 2026-11-04 00:01:00 quick=False ===
+[1] c2_leading_vrp_us_equity_style -> REFUTED (274.6s)
+[2] c2_leading_vrp_crypto -> REFUTED (160.9s)
+[3] c2_leading_vrp_fx_major -> REFUTED (352.9s)
+[4] c2_leading_vrp_commodities -> REFUTED (559.9s)
+[5] c2_leading_vrp_futures_broad -> REFUTED (590.2s)
+[6] c2_leading_vrp_rates_credit -> REFUTED (310.4s)
+
+=== RUN 2026-11-04 00:38:29 quick=False ===
+[1] NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style -> REFUTED (146.4s)
+[2] NEGATIVE-CONTROL-c2_leading_vrp_crypto -> REFUTED (88.0s)
+[3] NEGATIVE-CONTROL-c2_leading_vrp_fx_major -> REFUTED (200.6s)
+[4] NEGATIVE-CONTROL-c2_leading_vrp_commodities -> REFUTED (304.2s)
+[5] NEGATIVE-CONTROL-c2_leading_vrp_futures_broad -> REFUTED (338.3s)
+[6] NEGATIVE-CONTROL-c2_leading_vrp_rates_credit -> REFUTED (271.9s)
+
+=== RUN 2026-11-04 01:00:58 quick=False ===
+[1] NEGATIVE-CONTROL-c1_regime_switch_us_equity_style -> REFUTED (156.5s)
+[2] NEGATIVE-CONTROL-c1_regime_switch_crypto -> INCONCLUSIVE (84.2s)
+[3] NEGATIVE-CONTROL-c1_regime_switch_fx_major -> INCONCLUSIVE (167.1s)
+[4] NEGATIVE-CONTROL-c1_regime_switch_commodities -> REFUTED (290.1s)
+[5] NEGATIVE-CONTROL-c1_regime_switch_futures_broad -> REFUTED (228.5s)
+[6] NEGATIVE-CONTROL-c1_regime_switch_rates_credit -> FRAGILE (185.3s)

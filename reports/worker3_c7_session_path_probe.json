@@ -1,0 +1,1093 @@
+{
+  "generated": "2026-11-04T00:03:01",
+  "asset_classes": {
+    "us_equity_style": {
+      "preset": "us_equity_style",
+      "spec_period_start": "2005-01-01",
+      "n_symbols": 6,
+      "symbols": [
+        "SPY",
+        "IWM",
+        "MDY",
+        "RSP",
+        "QQQ",
+        "DIA"
+      ],
+      "per_symbol_60m": [
+        {
+          "symbol": "SPY",
+          "ok": true,
+          "n_60m_bars": 3477,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718711,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "IWM",
+          "ok": true,
+          "n_60m_bars": 3477,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718712,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "MDY",
+          "ok": true,
+          "n_60m_bars": 3477,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718713,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "RSP",
+          "ok": true,
+          "n_60m_bars": 3481,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718715,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "QQQ",
+          "ok": true,
+          "n_60m_bars": 3478,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718716,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "DIA",
+          "ok": true,
+          "n_60m_bars": 3477,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718717,
+          "elapsed_s": 0.1
+        }
+      ],
+      "n_fetch_failures": 0,
+      "fetch_failures": [],
+      "min_span_days": 729,
+      "max_span_days": 729,
+      "provider_60m_truncated": true,
+      "session_panel": {
+        "ok": true,
+        "n_sessions": 501,
+        "first_session": "2024-11-04",
+        "last_session": "2026-11-03",
+        "n_symbols_in_panel": 6,
+        "symbols_in_panel": [
+          "DIA",
+          "IWM",
+          "MDY",
+          "QQQ",
+          "RSP",
+          "SPY"
+        ],
+        "per_symbol_failures": {},
+        "info": {
+          "n_sessions": 501,
+          "first_session": "2024-11-04",
+          "last_session": "2026-11-03",
+          "window": "first",
+          "interval": "60m",
+          "note": "One bar per session = the 09:30-10:00 ET opening window. Returns are therefore DAILY and annualise at 252."
+        },
+        "audit_fatal": [],
+        "elapsed_s": 0.6
+      },
+      "walk_forward_feasibility": {
+        "n_sessions": 501,
+        "engine_min_for_5_folds": 360,
+        "enough_for_5_folds": true,
+        "note": "btvalidate.walk_forward needs n >= (n_folds+1)*60 bars; the purged/embargoed planner additionally needs purge+embargo bands and a feature warm-up"
+      }
+    },
+    "crypto": {
+      "preset": "crypto",
+      "spec_period_start": "2021-01-01",
+      "n_symbols": 10,
+      "symbols": [
+        "BTC-USD",
+        "ETH-USD",
+        "LTC-USD",
+        "BCH-USD",
+        "XRP-USD",
+        "SOL-USD",
+        "ADA-USD",
+        "DOGE-USD",
+        "AVAX-USD",
+        "LINK-USD"
+      ],
+      "per_symbol_60m": [
+        {
+          "symbol": "BTC-USD",
+          "ok": true,
+          "n_60m_bars": 17489,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793718256,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "ETH-USD",
+          "ok": true,
+          "n_60m_bars": 17486,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719582,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "LTC-USD",
+          "ok": true,
+          "n_60m_bars": 17488,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719585,
+          "elapsed_s": 0.4
+        },
+        {
+          "symbol": "BCH-USD",
+          "ok": true,
+          "n_60m_bars": 17489,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719588,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "XRP-USD",
+          "ok": true,
+          "n_60m_bars": 17489,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719591,
+          "elapsed_s": 0.4
+        },
+        {
+          "symbol": "SOL-USD",
+          "ok": true,
+          "n_60m_bars": 17488,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719594,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "ADA-USD",
+          "ok": true,
+          "n_60m_bars": 17486,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719597,
+          "elapsed_s": 0.4
+        },
+        {
+          "symbol": "DOGE-USD",
+          "ok": true,
+          "n_60m_bars": 17487,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719601,
+          "elapsed_s": 0.4
+        },
+        {
+          "symbol": "AVAX-USD",
+          "ok": true,
+          "n_60m_bars": 17486,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719603,
+          "elapsed_s": 0.4
+        },
+        {
+          "symbol": "LINK-USD",
+          "ok": true,
+          "n_60m_bars": 17486,
+          "n_calendar_days": 731,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719606,
+          "elapsed_s": 0.4
+        }
+      ],
+      "n_fetch_failures": 0,
+      "fetch_failures": [],
+      "min_span_days": 730,
+      "max_span_days": 730,
+      "provider_60m_truncated": true,
+      "session_panel": {
+        "ok": true,
+        "n_sessions": 731,
+        "first_session": "2024-11-03",
+        "last_session": "2026-11-03",
+        "n_symbols_in_panel": 10,
+        "symbols_in_panel": [
+          "ADA-USD",
+          "AVAX-USD",
+          "BCH-USD",
+          "BTC-USD",
+          "DOGE-USD",
+          "ETH-USD",
+          "LINK-USD",
+          "LTC-USD",
+          "SOL-USD",
+          "XRP-USD"
+        ],
+        "per_symbol_failures": {},
+        "info": {
+          "n_sessions": 731,
+          "first_session": "2024-11-03",
+          "last_session": "2026-11-03",
+          "window": "first",
+          "interval": "60m",
+          "note": "One bar per session = the 09:30-10:00 ET opening window. Returns are therefore DAILY and annualise at 252."
+        },
+        "audit_fatal": [],
+        "elapsed_s": 4.1
+      },
+      "walk_forward_feasibility": {
+        "n_sessions": 731,
+        "engine_min_for_5_folds": 360,
+        "enough_for_5_folds": true,
+        "note": "btvalidate.walk_forward needs n >= (n_folds+1)*60 bars; the purged/embargoed planner additionally needs purge+embargo bands and a feature warm-up"
+      }
+    },
+    "fx_major": {
+      "preset": "fx_major",
+      "spec_period_start": "2005-01-01",
+      "n_symbols": 8,
+      "symbols": [
+        "EURUSD=X",
+        "GBPUSD=X",
+        "USDJPY=X",
+        "AUDUSD=X",
+        "USDCHF=X",
+        "USDCAD=X",
+        "NZDUSD=X",
+        "USDSEK=X"
+      ],
+      "per_symbol_60m": [
+        {
+          "symbol": "EURUSD=X",
+          "ok": true,
+          "n_60m_bars": 12312,
+          "n_calendar_days": 581,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718259,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "GBPUSD=X",
+          "ok": true,
+          "n_60m_bars": 12315,
+          "n_calendar_days": 581,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719696,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "USDJPY=X",
+          "ok": true,
+          "n_60m_bars": 12245,
+          "n_calendar_days": 581,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719698,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "AUDUSD=X",
+          "ok": true,
+          "n_60m_bars": 12378,
+          "n_calendar_days": 581,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719702,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "USDCHF=X",
+          "ok": true,
+          "n_60m_bars": 12258,
+          "n_calendar_days": 581,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719705,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "USDCAD=X",
+          "ok": true,
+          "n_60m_bars": 12379,
+          "n_calendar_days": 581,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719707,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "NZDUSD=X",
+          "ok": true,
+          "n_60m_bars": 12379,
+          "n_calendar_days": 581,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719710,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "USDSEK=X",
+          "ok": true,
+          "n_60m_bars": 12132,
+          "n_calendar_days": 578,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719712,
+          "elapsed_s": 0.2
+        }
+      ],
+      "n_fetch_failures": 0,
+      "fetch_failures": [],
+      "min_span_days": 729,
+      "max_span_days": 729,
+      "provider_60m_truncated": true,
+      "session_panel": {
+        "ok": true,
+        "n_sessions": 581,
+        "first_session": "2024-11-04",
+        "last_session": "2026-11-03",
+        "n_symbols_in_panel": 8,
+        "symbols_in_panel": [
+          "AUDUSD=X",
+          "EURUSD=X",
+          "GBPUSD=X",
+          "NZDUSD=X",
+          "USDCAD=X",
+          "USDCHF=X",
+          "USDJPY=X",
+          "USDSEK=X"
+        ],
+        "per_symbol_failures": {},
+        "info": {
+          "n_sessions": 581,
+          "first_session": "2024-11-04",
+          "last_session": "2026-11-03",
+          "window": "first",
+          "interval": "60m",
+          "note": "One bar per session = the 09:30-10:00 ET opening window. Returns are therefore DAILY and annualise at 252."
+        },
+        "audit_fatal": [],
+        "elapsed_s": 2.5
+      },
+      "walk_forward_feasibility": {
+        "n_sessions": 581,
+        "engine_min_for_5_folds": 360,
+        "enough_for_5_folds": true,
+        "note": "btvalidate.walk_forward needs n >= (n_folds+1)*60 bars; the purged/embargoed planner additionally needs purge+embargo bands and a feature warm-up"
+      }
+    },
+    "commodities": {
+      "preset": "commodities",
+      "spec_period_start": "2005-01-01",
+      "n_symbols": 14,
+      "symbols": [
+        "GC=F",
+        "SI=F",
+        "CL=F",
+        "NG=F",
+        "HG=F",
+        "PL=F",
+        "PA=F",
+        "ZC=F",
+        "ZS=F",
+        "ZW=F",
+        "KC=F",
+        "SB=F",
+        "CT=F",
+        "LBS=F"
+      ],
+      "per_symbol_60m": [
+        {
+          "symbol": "GC=F",
+          "ok": true,
+          "n_60m_bars": 11458,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793718262,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "SI=F",
+          "ok": true,
+          "n_60m_bars": 11456,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719715,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "CL=F",
+          "ok": true,
+          "n_60m_bars": 11332,
+          "n_calendar_days": 610,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719718,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "NG=F",
+          "ok": true,
+          "n_60m_bars": 11332,
+          "n_calendar_days": 610,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719720,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "HG=F",
+          "ok": true,
+          "n_60m_bars": 11449,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719725,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "PL=F",
+          "ok": true,
+          "n_60m_bars": 11447,
+          "n_calendar_days": 610,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719728,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "PA=F",
+          "ok": true,
+          "n_60m_bars": 11431,
+          "n_calendar_days": 610,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719730,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "ZC=F",
+          "ok": true,
+          "n_60m_bars": 9306,
+          "n_calendar_days": 502,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719732,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "ZS=F",
+          "ok": true,
+          "n_60m_bars": 9308,
+          "n_calendar_days": 502,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719734,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "ZW=F",
+          "ok": true,
+          "n_60m_bars": 9304,
+          "n_calendar_days": 502,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719735,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "KC=F",
+          "ok": true,
+          "n_60m_bars": 4871,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719737,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "SB=F",
+          "ok": true,
+          "n_60m_bars": 4867,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719740,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "CT=F",
+          "ok": true,
+          "n_60m_bars": 4973,
+          "n_calendar_days": 488,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719742,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "LBS=F",
+          "ok": false,
+          "error": "RuntimeError: HTTP failed after 3 tries: https://query1.finance.yahoo.com/v8/finance/chart/LBS%3DF?range=2y&interval=60m&includePrePost=false&events=div%2Csplit -> HTTPError:",
+          "elapsed_s": 8.8
+        }
+      ],
+      "n_fetch_failures": 1,
+      "fetch_failures": [
+        {
+          "symbol": "LBS=F",
+          "ok": false,
+          "error": "RuntimeError: HTTP failed after 3 tries: https://query1.finance.yahoo.com/v8/finance/chart/LBS%3DF?range=2y&interval=60m&includePrePost=false&events=div%2Csplit -> HTTPError:",
+          "elapsed_s": 8.8
+        }
+      ],
+      "min_span_days": 729,
+      "max_span_days": 730,
+      "provider_60m_truncated": true,
+      "session_panel": {
+        "ok": true,
+        "n_sessions": 610,
+        "first_session": "2024-11-03",
+        "last_session": "2026-11-03",
+        "n_symbols_in_panel": 13,
+        "symbols_in_panel": [
+          "CL=F",
+          "CT=F",
+          "GC=F",
+          "HG=F",
+          "KC=F",
+          "NG=F",
+          "PA=F",
+          "PL=F",
+          "SB=F",
+          "SI=F",
+          "ZC=F",
+          "ZS=F",
+          "ZW=F"
+        ],
+        "per_symbol_failures": {
+          "LBS=F": "RuntimeError: HTTP failed after 3 tries: https://query1.finance.yahoo.com/v8/finance/chart/LBS%3DF?range=2y&interval=60m&includePrePost=false&events=div%2Csplit -> HTTPError: HTTP Error 404: Not Found"
+        },
+        "info": {
+          "n_sessions": 610,
+          "first_session": "2024-11-03",
+          "last_session": "2026-11-03",
+          "window": "first",
+          "interval": "60m",
+          "note": "One bar per session = the 09:30-10:00 ET opening window. Returns are therefore DAILY and annualise at 252."
+        },
+        "audit_fatal": [],
+        "elapsed_s": 12.0
+      },
+      "walk_forward_feasibility": {
+        "n_sessions": 610,
+        "engine_min_for_5_folds": 360,
+        "enough_for_5_folds": true,
+        "note": "btvalidate.walk_forward needs n >= (n_folds+1)*60 bars; the purged/embargoed planner additionally needs purge+embargo bands and a feature warm-up"
+      }
+    },
+    "futures_broad": {
+      "preset": "futures_broad",
+      "spec_period_start": "2005-01-01",
+      "n_symbols": 15,
+      "symbols": [
+        "ES=F",
+        "NQ=F",
+        "YM=F",
+        "RTY=F",
+        "ZN=F",
+        "ZB=F",
+        "ZF=F",
+        "ZT=F",
+        "GC=F",
+        "SI=F",
+        "CL=F",
+        "NG=F",
+        "HG=F",
+        "ZC=F",
+        "ZS=F"
+      ],
+      "per_symbol_60m": [
+        {
+          "symbol": "ES=F",
+          "ok": true,
+          "n_60m_bars": 11432,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793718264,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "NQ=F",
+          "ok": true,
+          "n_60m_bars": 11432,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719826,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "YM=F",
+          "ok": true,
+          "n_60m_bars": 11427,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719828,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "RTY=F",
+          "ok": true,
+          "n_60m_bars": 11443,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719831,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "ZN=F",
+          "ok": true,
+          "n_60m_bars": 11379,
+          "n_calendar_days": 600,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719834,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "ZB=F",
+          "ok": true,
+          "n_60m_bars": 11380,
+          "n_calendar_days": 602,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719837,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "ZF=F",
+          "ok": true,
+          "n_60m_bars": 11378,
+          "n_calendar_days": 600,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719838,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "ZT=F",
+          "ok": true,
+          "n_60m_bars": 11382,
+          "n_calendar_days": 600,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719841,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "GC=F",
+          "ok": true,
+          "n_60m_bars": 11458,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793718262,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "SI=F",
+          "ok": true,
+          "n_60m_bars": 11456,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719715,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "CL=F",
+          "ok": true,
+          "n_60m_bars": 11332,
+          "n_calendar_days": 610,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719718,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "NG=F",
+          "ok": true,
+          "n_60m_bars": 11332,
+          "n_calendar_days": 610,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719720,
+          "elapsed_s": 0.3
+        },
+        {
+          "symbol": "HG=F",
+          "ok": true,
+          "n_60m_bars": 11449,
+          "n_calendar_days": 611,
+          "first_day": "2024-11-03",
+          "last_day": "2026-11-03",
+          "span_days": 730,
+          "fetched_epoch": 1793719725,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "ZC=F",
+          "ok": true,
+          "n_60m_bars": 9306,
+          "n_calendar_days": 502,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719732,
+          "elapsed_s": 0.4
+        },
+        {
+          "symbol": "ZS=F",
+          "ok": true,
+          "n_60m_bars": 9308,
+          "n_calendar_days": 502,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719734,
+          "elapsed_s": 0.2
+        }
+      ],
+      "n_fetch_failures": 0,
+      "fetch_failures": [],
+      "min_span_days": 729,
+      "max_span_days": 730,
+      "provider_60m_truncated": true,
+      "session_panel": {
+        "ok": true,
+        "n_sessions": 612,
+        "first_session": "2024-11-03",
+        "last_session": "2026-11-03",
+        "n_symbols_in_panel": 15,
+        "symbols_in_panel": [
+          "CL=F",
+          "ES=F",
+          "GC=F",
+          "HG=F",
+          "NG=F",
+          "NQ=F",
+          "RTY=F",
+          "SI=F",
+          "YM=F",
+          "ZB=F",
+          "ZC=F",
+          "ZF=F",
+          "ZN=F",
+          "ZS=F",
+          "ZT=F"
+        ],
+        "per_symbol_failures": {},
+        "info": {
+          "n_sessions": 612,
+          "first_session": "2024-11-03",
+          "last_session": "2026-11-03",
+          "window": "first",
+          "interval": "60m",
+          "note": "One bar per session = the 09:30-10:00 ET opening window. Returns are therefore DAILY and annualise at 252."
+        },
+        "audit_fatal": [],
+        "elapsed_s": 3.9
+      },
+      "walk_forward_feasibility": {
+        "n_sessions": 612,
+        "engine_min_for_5_folds": 360,
+        "enough_for_5_folds": true,
+        "note": "btvalidate.walk_forward needs n >= (n_folds+1)*60 bars; the purged/embargoed planner additionally needs purge+embargo bands and a feature warm-up"
+      }
+    },
+    "rates_credit": {
+      "preset": "rates_credit",
+      "spec_period_start": "2005-01-01",
+      "n_symbols": 12,
+      "symbols": [
+        "^TNX",
+        "^TYX",
+        "^FVX",
+        "^IRX",
+        "TLT",
+        "IEF",
+        "SHY",
+        "LQD",
+        "HYG",
+        "EMB",
+        "TIP",
+        "BND"
+      ],
+      "per_symbol_60m": [
+        {
+          "symbol": "^TNX",
+          "ok": true,
+          "n_60m_bars": 3481,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793718265,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "^TYX",
+          "ok": true,
+          "n_60m_bars": 3481,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719933,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "^FVX",
+          "ok": true,
+          "n_60m_bars": 3481,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719934,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "^IRX",
+          "ok": true,
+          "n_60m_bars": 3481,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719935,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "TLT",
+          "ok": true,
+          "n_60m_bars": 3479,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719936,
+          "elapsed_s": 0.0
+        },
+        {
+          "symbol": "IEF",
+          "ok": true,
+          "n_60m_bars": 3479,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719937,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "SHY",
+          "ok": true,
+          "n_60m_bars": 3479,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719938,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "LQD",
+          "ok": true,
+          "n_60m_bars": 3478,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719939,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "HYG",
+          "ok": true,
+          "n_60m_bars": 3478,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719940,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "EMB",
+          "ok": true,
+          "n_60m_bars": 3479,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719942,
+          "elapsed_s": 0.2
+        },
+        {
+          "symbol": "TIP",
+          "ok": true,
+          "n_60m_bars": 3478,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719943,
+          "elapsed_s": 0.1
+        },
+        {
+          "symbol": "BND",
+          "ok": true,
+          "n_60m_bars": 3479,
+          "n_calendar_days": 501,
+          "first_day": "2024-11-04",
+          "last_day": "2026-11-03",
+          "span_days": 729,
+          "fetched_epoch": 1793719944,
+          "elapsed_s": 0.1
+        }
+      ],
+      "n_fetch_failures": 0,
+      "fetch_failures": [],
+      "min_span_days": 729,
+      "max_span_days": 729,
+      "provider_60m_truncated": true,
+      "session_panel": {
+        "ok": true,
+        "n_sessions": 501,
+        "first_session": "2024-11-04",
+        "last_session": "2026-11-03",
+        "n_symbols_in_panel": 12,
+        "symbols_in_panel": [
+          "BND",
+          "EMB",
+          "HYG",
+          "IEF",
+          "LQD",
+          "SHY",
+          "TIP",
+          "TLT",
+          "^FVX",
+          "^IRX",
+          "^TNX",
+          "^TYX"
+        ],
+        "per_symbol_failures": {},
+        "info": {
+          "n_sessions": 501,
+          "first_session": "2024-11-04",
+          "last_session": "2026-11-03",
+          "window": "first",
+          "interval": "60m",
+          "note": "One bar per session = the 09:30-10:00 ET opening window. Returns are therefore DAILY and annualise at 252."
+        },
+        "audit_fatal": [],
+        "elapsed_s": 1.4
+      },
+      "walk_forward_feasibility": {
+        "n_sessions": 501,
+        "engine_min_for_5_folds": 360,
+        "enough_for_5_folds": true,
+        "note": "btvalidate.walk_forward needs n >= (n_folds+1)*60 bars; the purged/embargoed planner additionally needs purge+embargo bands and a feature warm-up"
+      }
+    }
+  }
+}

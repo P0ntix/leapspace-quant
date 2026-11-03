@@ -1,0 +1,746 @@
+[
+  {
+    "name": "c7_session_drift_us_equity_style",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Trading strategies for retail traders (LeapSpace)",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 1.8,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c7_session_drift_crypto",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Trading strategies for retail traders (LeapSpace)",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "crypto",
+    "elapsed_s": 1.6,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c7_session_drift_fx_major",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Trading strategies for retail traders (LeapSpace)",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "fx_major",
+    "elapsed_s": 23.5,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c7_session_drift_commodities",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Trading strategies for retail traders (LeapSpace)",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "commodities",
+    "elapsed_s": 14.8,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c7_session_drift_futures_broad",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Trading strategies for retail traders (LeapSpace)",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "futures_broad",
+    "elapsed_s": 6.7,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c7_session_drift_rates_credit",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Trading strategies for retail traders (LeapSpace)",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "rates_credit",
+    "elapsed_s": 5.9,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c8_liquidity_reversal_us_equity_style",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 516.4,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c8_liquidity_reversal_crypto",
+    "verdict": "FRAGILE",
+    "flags": [
+      "t-stat -0.56 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 37%",
+      "only 1/6 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "crypto",
+    "elapsed_s": 238.1,
+    "metrics": {
+      "oos_sharpe": -0.19357639591097062,
+      "in_sample_sharpe": -0.19357639591097062,
+      "n_trades": 30,
+      "max_drawdown": 0.03110936905972128,
+      "total_return": -0.013691543985916765
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c8_liquidity_reversal_fx_major",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "fx_major",
+    "elapsed_s": 815.5,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c8_liquidity_reversal_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.22 below 2.0 - the return series is not distinguishable from noise",
+      "Monte Carlo prob(profitable) 59%",
+      "only 8/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "commodities",
+    "elapsed_s": 913.5,
+    "metrics": {
+      "oos_sharpe": 0.04737391166811742,
+      "in_sample_sharpe": 0.04737391166811742,
+      "n_trades": 171,
+      "max_drawdown": 0.09529675960279038,
+      "total_return": 0.013560870849937068
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c8_liquidity_reversal_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.41 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 33%",
+      "only 3/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "futures_broad",
+    "elapsed_s": 1008.2,
+    "metrics": {
+      "oos_sharpe": -0.08876403565730787,
+      "in_sample_sharpe": -0.08876403565730787,
+      "n_trades": 110,
+      "max_drawdown": 0.044999270005495196,
+      "total_return": -0.015433318532485307
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c8_liquidity_reversal_rates_credit",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "rates_credit",
+    "elapsed_s": 999.7,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c7_session_drift_us_equity_style",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Negative control for c7_session_drift_us_equity_style; not a paper claim",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 0.3,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c7_session_drift_crypto",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Negative control for c7_session_drift_crypto; not a paper claim",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "crypto",
+    "elapsed_s": 0.0,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c7_session_drift_fx_major",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Negative control for c7_session_drift_fx_major; not a paper claim",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "fx_major",
+    "elapsed_s": 0.0,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c7_session_drift_commodities",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Negative control for c7_session_drift_commodities; not a paper claim",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "commodities",
+    "elapsed_s": 0.0,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c7_session_drift_futures_broad",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Negative control for c7_session_drift_futures_broad; not a paper claim",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "futures_broad",
+    "elapsed_s": 0.0,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c7_session_drift_rates_credit",
+    "verdict": "INCONCLUSIVE",
+    "flags": [],
+    "errors": [
+      "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'leading_iv_level', 'leading_vrp_score', 'leading_vrp_zscore', 'ma_crossover', 'max_drawdown', 'momentum', 'regime_momentum_score', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+    ],
+    "paper": "Negative control for c7_session_drift_rates_credit; not a paper claim",
+    "concept": "C7_order_flow_microstructure_base",
+    "asset_class": "rates_credit",
+    "elapsed_s": 0.0,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c8_liquidity_reversal_us_equity_style; not a paper claim",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 517.5,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c8_liquidity_reversal_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.05 below 2.0 - the return series is not distinguishable from noise",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "OOS Sharpe retains only -164% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 44%",
+      "only 2/6 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c8_liquidity_reversal_crypto; not a paper claim",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "crypto",
+    "elapsed_s": 250.3,
+    "metrics": {
+      "oos_sharpe": -0.016241070818798088,
+      "in_sample_sharpe": -0.016241070818798088,
+      "n_trades": 30,
+      "max_drawdown": 0.026623790579134,
+      "total_return": -0.0014879123173692221
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c8_liquidity_reversal_fx_major; not a paper claim",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "fx_major",
+    "elapsed_s": 406.3,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c8_liquidity_reversal_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.38 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -31% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 31%",
+      "only 7/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c8_liquidity_reversal_commodities; not a paper claim",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "commodities",
+    "elapsed_s": 616.0,
+    "metrics": {
+      "oos_sharpe": -0.08042630975019041,
+      "in_sample_sharpe": -0.08042630975019041,
+      "n_trades": 171,
+      "max_drawdown": 0.08323772995186351,
+      "total_return": -0.029780524136878928
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.29 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -8% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "Monte Carlo prob(profitable) 61%",
+      "only 4/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c8_liquidity_reversal_futures_broad; not a paper claim",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "futures_broad",
+    "elapsed_s": 674.8,
+    "metrics": {
+      "oos_sharpe": 0.061974835163353115,
+      "in_sample_sharpe": 0.061974835163353115,
+      "n_trades": 110,
+      "max_drawdown": 0.022687407994443354,
+      "total_return": 0.009725334614018033
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c8_liquidity_reversal_rates_credit; not a paper claim",
+    "concept": "C8_liquidity_provision_reversal",
+    "asset_class": "rates_credit",
+    "elapsed_s": 554.3,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  }
+]

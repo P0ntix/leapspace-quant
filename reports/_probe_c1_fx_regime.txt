@@ -1,0 +1,116 @@
+{
+  "spec": "c1_regime_switch_us_equity_style",
+  "n_bars": 5492,
+  "symbols": [
+    "DIA",
+    "IWM",
+    "MDY",
+    "QQQ",
+    "RSP",
+    "SPY"
+  ],
+  "feature_coverage": {
+    "vol_level": 5482,
+    "vol_change": 5462,
+    "trend": 5432,
+    "drawdown": 5492,
+    "liquidity": 5483
+  },
+  "labels": {
+    "3": "tranquil_uptrend",
+    "2": "range_chop",
+    "1": "regular_bear",
+    "0": "crash_rebound"
+  },
+  "n_posteriors": 5492,
+  "momentum_labels_present": [
+    "tranquil_uptrend"
+  ],
+  "reversal_labels_present": [
+    "crash_rebound",
+    "range_chop",
+    "regular_bear"
+  ],
+  "labels_covered_by_mom_or_rev": [
+    "crash_rebound",
+    "range_chop",
+    "regular_bear",
+    "tranquil_uptrend"
+  ],
+  "labels_NOT_covered": [],
+  "bars_where_hysteresis_fires": 5259,
+  "bars_with_none_posterior": 60,
+  "verdict": "the hysteresis test fires on 5259 of 5492 bars"
+}
+{
+  "spec": "c1_regime_switch_crypto",
+  "n_bars": 2132,
+  "symbols": [
+    "ADA-USD",
+    "AVAX-USD",
+    "BCH-USD",
+    "BTC-USD",
+    "DOGE-USD",
+    "ETH-USD",
+    "LINK-USD",
+    "LTC-USD",
+    "SOL-USD",
+    "XRP-USD"
+  ],
+  "feature_coverage": {
+    "vol_level": 2122,
+    "vol_change": 2102,
+    "trend": 2072,
+    "drawdown": 2132,
+    "liquidity": 2123
+  },
+  "labels": {
+    "3": "tranquil_uptrend",
+    "2": "range_chop",
+    "1": "regular_bear",
+    "0": "crash_rebound"
+  },
+  "n_posteriors": 2132,
+  "momentum_labels_present": [
+    "tranquil_uptrend"
+  ],
+  "reversal_labels_present": [
+    "crash_rebound",
+    "range_chop",
+    "regular_bear"
+  ],
+  "labels_covered_by_mom_or_rev": [
+    "crash_rebound",
+    "range_chop",
+    "regular_bear",
+    "tranquil_uptrend"
+  ],
+  "labels_NOT_covered": [],
+  "bars_where_hysteresis_fires": 1999,
+  "bars_with_none_posterior": 60,
+  "verdict": "the hysteresis test fires on 1999 of 2132 bars"
+}
+{
+  "spec": "c1_regime_switch_fx_major",
+  "n_bars": 5680,
+  "symbols": [
+    "AUDUSD=X",
+    "EURUSD=X",
+    "GBPUSD=X",
+    "NZDUSD=X",
+    "USDCAD=X",
+    "USDCHF=X",
+    "USDJPY=X",
+    "USDSEK=X"
+  ],
+  "feature_coverage": {
+    "vol_level": 5670,
+    "vol_change": 5650,
+    "trend": 5620,
+    "drawdown": 5680,
+    "liquidity": 0
+  },
+  "identify_regimes": null,
+  "verdict": "identify_regimes returned None -> sig_regime_switch returns all zeros"
+}
+WROTE C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\_probe_c1_fx_regime.json

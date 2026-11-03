@@ -1,0 +1,14 @@
+{
+  "c7": {
+    "error": "KeyError: \"Unknown feature 'session_drift'. Available: ['atr_pct', 'bollinger_pct', 'dist_to_high', 'ma_crossover', 'max_drawdown', 'momentum', 'return', 'rsi', 'skew', 'sma_gap', 'vol_ratio', 'volatility', 'volume_ratio', 'zscore']\""
+  },
+  "c8": {
+    "real_name": "c8_liquidity_reversal_us_equity_style",
+    "ctrl_name": "NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style",
+    "signal_type": "liquidity_gated_reversion",
+    "identical_signal": false,
+    "nonzero_positions_real": 6,
+    "nonzero_positions_control": 6,
+    "conclusion": "control differs -- invert_signal honoured"
+  }
+}

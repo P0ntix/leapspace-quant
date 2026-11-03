@@ -1,0 +1,20 @@
+{
+  "n_bars": 5492,
+  "rebalance": "monthly",
+  "n_rebalance_bars": 262,
+  "signal_nonzero_bars_total": 5,
+  "signal_nonzero_bars_ON_a_rebalance_bar": 0,
+  "signal_nonzero_bars_OFF_a_rebalance_bar": 5,
+  "per_symbol_nonzero": {
+    "DIA": 0,
+    "IWM": 2,
+    "MDY": 1,
+    "QQQ": 1,
+    "RSP": 2,
+    "SPY": 0
+  },
+  "engine_trade_count": 0,
+  "engine_final_equity": 100000.0,
+  "stateful_hold_bars_if_signal_kept_position_value": 30,
+  "conclusion": "The signal emits the position value ONLY on the entry bar (0.0 on every held bar). construct_target_weights refreshes the book only on rebalance-marked bars, so a position is opened only when the entry coincides with a monthly rebalance bar. 0 of 5 entry events qualify; the portfolio builder therefore sees a near-empty book and the engine records ~zero trades."
+}

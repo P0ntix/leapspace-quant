@@ -1,0 +1,371 @@
+################################################################################################
+c7_session_drift_us_equity_style  ->  REFUTED
+  OOS(pooled) 0.1349 | IN-SAMPLE 0.1572 | n_trades 8 | max_dd 0.0841 | total_return 0.0713
+  oos_live 0.1349 | oos_trades 49 | oos_maxdd 0.0753 | oos_cagr 0.0027 | profitable_folds 3 | retention 0.794 | pbo 0.4 | deflated 0.1572
+  fold OOS sharpes: [-0.158, 0.4769, -0.3541, 0.5936, 0.0433]
+  FLAGS:
+    - only 8 trades (need >=30)
+    - t-stat 0.73 below 2.0 - the return series is not distinguishable from noise
+  ERRORS: (none)
+  gross_sharpe 0.3377 net_sharpe 0.1572 costs_paid 8626 | cost_stress [(1.0, 0.2475), (1.5, 0.2023), (2.0, 0.1572), (3.0, 0.0669)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 8 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c7_session_drift_crypto  ->  REFUTED
+  OOS(pooled) -0.6289 | IN-SAMPLE 0.3130 | n_trades 10 | max_dd 0.3112 | total_return 0.3694
+  oos_live -0.6289 | oos_trades 50 | oos_maxdd 0.4348 | oos_cagr -0.0789 | profitable_folds 0 | retention -0.714 | pbo 0.8 | deflated 0.3130
+  fold OOS sharpes: [-0.3097, -0.3804, -1.2284, -0.9554, -0.2507]
+  FLAGS:
+    - only 10 trades (need >=30)
+    - t-stat 0.91 below 2.0 - the return series is not distinguishable from noise
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - OOS Sharpe retains only -71% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  ERRORS: (none)
+  gross_sharpe 0.4725 net_sharpe 0.3130 costs_paid 28309 | cost_stress [(1.0, 0.3928), (1.5, 0.3529), (2.0, 0.313), (3.0, 0.2331)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 10 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c7_session_drift_fx_major  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c7_session_drift_commodities  ->  REFUTED
+  OOS(pooled) -0.3723 | IN-SAMPLE -0.3118 | n_trades 13 | max_dd 0.6813 | total_return -0.5407
+  oos_live -0.3723 | oos_trades 65 | oos_maxdd 0.6608 | oos_cagr -0.0417 | profitable_folds 0 | retention None | pbo 0.9 | deflated -0.3118
+  fold OOS sharpes: [-0.8282, -0.2111, -0.7534, -0.2307, -0.2305]
+  FLAGS:
+    - only 13 trades (need >=30)
+    - t-stat -1.46 below 2.0 - the return series is not distinguishable from noise
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - only 8/22 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.2702 net_sharpe -0.3118 costs_paid 5707 | cost_stress [(1.0, -0.2909), (1.5, -0.3013), (2.0, -0.3118), (3.0, -0.3327)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 13 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c7_session_drift_futures_broad  ->  REFUTED
+  OOS(pooled) -0.0645 | IN-SAMPLE -0.1192 | n_trades 15 | max_dd 0.5986 | total_return -0.3372
+  oos_live -0.0645 | oos_trades 73 | oos_maxdd 0.5398 | oos_cagr -0.0132 | profitable_folds 2 | retention None | pbo 0.0 | deflated -0.1192
+  fold OOS sharpes: [0.4011, -0.9456, -0.0871, 0.0521, -0.0841]
+  FLAGS:
+    - only 15 trades (need >=30)
+    - t-stat -0.56 below 2.0 - the return series is not distinguishable from noise
+    - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - edge does not survive 2x cost stress
+    - only 9/22 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.0803 net_sharpe -0.1192 costs_paid 6825 | cost_stress [(1.0, -0.0996), (1.5, -0.1094), (2.0, -0.1192), (3.0, -0.1391)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 15 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c7_session_drift_rates_credit  ->  REFUTED
+  OOS(pooled) -0.2067 | IN-SAMPLE 0.0369 | n_trades 12 | max_dd 0.5103 | total_return -0.0148
+  oos_live -0.2067 | oos_trades 84 | oos_maxdd 0.9224 | oos_cagr -0.1062 | profitable_folds 2 | retention -0.208 | pbo 0.4 | deflated 0.0369
+  fold OOS sharpes: [-0.5277, 0.2226, -0.6594, -0.4487, 0.5519]
+  FLAGS:
+    - only 12 trades (need >=30)
+    - t-stat 0.17 below 2.0 - the return series is not distinguishable from noise
+    - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - OOS Sharpe retains only -21% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  ERRORS: (none)
+  gross_sharpe 0.0826 net_sharpe 0.0369 costs_paid 9287 | cost_stress [(1.0, 0.0591), (1.5, 0.0478), (2.0, 0.0369), (3.0, 0.0161)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 12 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c8_liquidity_reversal_us_equity_style  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - parameter stability 0% (< 60%)
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=0.0 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c8_liquidity_reversal_crypto  ->  FRAGILE
+  OOS(pooled) 0.6500 | IN-SAMPLE -0.1936 | n_trades 30 | max_dd 0.0311 | total_return -0.0137
+  oos_live 0.6500 | oos_trades 10 | oos_maxdd 0.0462 | oos_cagr 0.0336 | profitable_folds 1 | retention None | pbo None | deflated -0.1936
+  fold OOS sharpes: [None, None, None, 1.4562, None]
+  FLAGS:
+    - t-stat -0.56 below 2.0 - the return series is not distinguishable from noise
+    - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - edge does not survive 2x cost stress
+    - Monte Carlo prob(profitable) 37%
+    - only 1/6 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.0865 net_sharpe -0.1936 costs_paid 735 | cost_stress [(1.0, -0.14), (1.5, -0.1668), (2.0, -0.1936), (3.0, -0.2466)]
+  param_sens stability=0.875 perturbations=8 note=broad plateau - robust
+  monte_carlo {"n_runs": 3000, "n_trades": 30, "trades_per_year": 3.5459662288930582, "prob_profitable": 0.36666666666666664, "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT compa
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c8_liquidity_reversal_fx_major  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - parameter stability 0% (< 60%)
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=0.0 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c8_liquidity_reversal_commodities  ->  REFUTED
+  OOS(pooled) 0.1612 | IN-SAMPLE 0.0474 | n_trades 171 | max_dd 0.0953 | total_return 0.0136
+  oos_live 0.1612 | oos_trades 160 | oos_maxdd 0.0723 | oos_cagr 0.0028 | profitable_folds 3 | retention None | pbo 0.3333333333333333 | deflated 0.0474
+  fold OOS sharpes: [0.5313, 0.1346, -0.0902, -0.0481, 0.1453]
+  FLAGS:
+    - t-stat 0.22 below 2.0 - the return series is not distinguishable from noise
+    - Monte Carlo prob(profitable) 59%
+    - only 8/22 profitable years
+  ERRORS: (none)
+  gross_sharpe 0.0665 net_sharpe 0.0474 costs_paid 665 | cost_stress [(1.0, 0.0569), (1.5, 0.0521), (2.0, 0.0474), (3.0, 0.0378)]
+  param_sens stability=0.875 perturbations=8 note=broad plateau - robust
+  monte_carlo {"n_runs": 3000, "n_trades": 171, "trades_per_year": 7.846321922796795, "prob_profitable": 0.5936666666666667, "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT compar
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c8_liquidity_reversal_futures_broad  ->  REFUTED
+  OOS(pooled) 0.0013 | IN-SAMPLE -0.0888 | n_trades 110 | max_dd 0.0450 | total_return -0.0154
+  oos_live 0.0013 | oos_trades 96 | oos_maxdd 0.0307 | oos_cagr -0.0000 | profitable_folds 2 | retention None | pbo 0.0 | deflated -0.0888
+  fold OOS sharpes: [0.5092, -0.3388, -0.1954, 0.128, None]
+  FLAGS:
+    - t-stat -0.41 below 2.0 - the return series is not distinguishable from noise
+    - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - edge does not survive 2x cost stress
+    - Monte Carlo prob(profitable) 33%
+    - only 3/22 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.0736 net_sharpe -0.0888 costs_paid 253 | cost_stress [(1.0, -0.0812), (1.5, -0.085), (2.0, -0.0888), (3.0, -0.0963)]
+  param_sens stability=0.625 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"n_runs": 3000, "n_trades": 110, "trades_per_year": 5.042750591231581, "prob_profitable": 0.32666666666666666, "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT compa
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+c8_liquidity_reversal_rates_credit  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - parameter stability 0% (< 60%)
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=0.0 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c7_session_drift_us_equity_style  ->  REFUTED
+  OOS(pooled) -0.4895 | IN-SAMPLE -0.5125 | n_trades 8 | max_dd 0.2429 | total_return -0.2187
+  oos_live -0.4895 | oos_trades 49 | oos_maxdd 0.2215 | oos_cagr -0.0109 | profitable_folds 0 | retention None | pbo 0.5 | deflated -0.5125
+  fold OOS sharpes: [-0.1653, -0.9248, -0.1267, -0.9391, -0.3273]
+  FLAGS:
+    - only 8 trades (need >=30)
+    - t-stat -2.39 below 2.0 - the return series is not distinguishable from noise
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - only 4/22 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.3332 net_sharpe -0.5125 costs_paid 7685 | cost_stress [(1.0, -0.423), (1.5, -0.4678), (2.0, -0.5125), (3.0, -0.6014)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 8 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c7_session_drift_crypto  ->  REFUTED
+  OOS(pooled) 0.1539 | IN-SAMPLE -0.6468 | n_trades 10 | max_dd 0.7050 | total_return -0.6081
+  oos_live 0.1539 | oos_trades 50 | oos_maxdd 0.1935 | oos_cagr 0.0111 | profitable_folds 3 | retention None | pbo 0.8 | deflated -0.6468
+  fold OOS sharpes: [0.0557, -0.2496, 0.6737, 0.5901, -0.5542]
+  FLAGS:
+    - only 10 trades (need >=30)
+    - t-stat -1.88 below 2.0 - the return series is not distinguishable from noise
+    - edge does not survive 2x cost stress
+    - only 0/6 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.4793 net_sharpe -0.6468 costs_paid 12523 | cost_stress [(1.0, -0.5634), (1.5, -0.6052), (2.0, -0.6468), (3.0, -0.7292)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 10 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c7_session_drift_fx_major  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c7_session_drift_commodities  ->  REFUTED
+  OOS(pooled) 0.3637 | IN-SAMPLE 0.2889 | n_trades 13 | max_dd 0.3210 | total_return 0.6331
+  oos_live 0.3637 | oos_trades 65 | oos_maxdd 0.2732 | oos_cagr 0.0302 | profitable_folds 5 | retention 4.632 | pbo 0.9 | deflated 0.2889
+  fold OOS sharpes: [0.709, 0.0649, 0.6494, 0.3613, 0.1909]
+  FLAGS:
+    - only 13 trades (need >=30)
+    - t-stat 1.35 below 2.0 - the return series is not distinguishable from noise
+  ERRORS: (none)
+  gross_sharpe 0.3369 net_sharpe 0.2889 costs_paid 11541 | cost_stress [(1.0, 0.3129), (1.5, 0.3009), (2.0, 0.2889), (3.0, 0.2652)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 13 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c7_session_drift_futures_broad  ->  REFUTED
+  OOS(pooled) 0.0346 | IN-SAMPLE 0.0727 | n_trades 15 | max_dd 0.3753 | total_return 0.0523
+  oos_live 0.0346 | oos_trades 73 | oos_maxdd 0.3337 | oos_cagr -0.0015 | profitable_folds 2 | retention 0.043 | pbo 0.2 | deflated 0.0727
+  fold OOS sharpes: [-0.48, 0.828, -0.0097, -0.0016, 0.0495]
+  FLAGS:
+    - only 15 trades (need >=30)
+    - t-stat 0.34 below 2.0 - the return series is not distinguishable from noise
+    - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - OOS Sharpe retains only 4% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  ERRORS: (none)
+  gross_sharpe 0.1096 net_sharpe 0.0727 costs_paid 8478 | cost_stress [(1.0, 0.0912), (1.5, 0.0819), (2.0, 0.0727), (3.0, 0.0546)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 15 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c7_session_drift_rates_credit  ->  REFUTED
+  OOS(pooled) 0.3206 | IN-SAMPLE -0.1133 | n_trades 12 | max_dd 0.4378 | total_return -0.1949
+  oos_live 0.3206 | oos_trades 84 | oos_maxdd 0.7905 | oos_cagr 0.0530 | profitable_folds 3 | retention None | pbo 0.3 | deflated -0.1133
+  fold OOS sharpes: [0.2335, -0.1548, 0.946, 0.5479, -0.958]
+  FLAGS:
+    - only 12 trades (need >=30)
+    - t-stat -0.53 below 2.0 - the return series is not distinguishable from noise
+    - edge does not survive 2x cost stress
+    - only 10/22 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.0194 net_sharpe -0.1133 costs_paid 12555 | cost_stress [(1.0, -0.0672), (1.5, -0.0905), (2.0, -0.1133), (3.0, -0.1577)]
+  param_sens stability=None perturbations=0 note=no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  monte_carlo {"error": "only 12 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - parameter stability 0% (< 60%)
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=0.0 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c8_liquidity_reversal_crypto  ->  REFUTED
+  OOS(pooled) -0.6541 | IN-SAMPLE -0.0162 | n_trades 30 | max_dd 0.0266 | total_return -0.0015
+  oos_live -0.6541 | oos_trades 10 | oos_maxdd 0.2089 | oos_cagr -0.0426 | profitable_folds 0 | retention -1.635 | pbo None | deflated -0.0162
+  fold OOS sharpes: [None, None, None, -1.4653, None]
+  FLAGS:
+    - t-stat -0.05 below 2.0 - the return series is not distinguishable from noise
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - OOS Sharpe retains only -164% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+    - edge does not survive 2x cost stress
+    - Monte Carlo prob(profitable) 44%
+    - only 2/6 profitable years
+  ERRORS: (none)
+  gross_sharpe 0.0861 net_sharpe -0.0162 costs_paid 723 | cost_stress [(1.0, 0.0342), (1.5, 0.0088), (2.0, -0.0162), (3.0, -0.0648)]
+  param_sens stability=1.0 perturbations=8 note=broad plateau - robust
+  monte_carlo {"n_runs": 3000, "n_trades": 30, "trades_per_year": 3.5459662288930582, "prob_profitable": 0.43966666666666665, "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT compa
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - parameter stability 0% (< 60%)
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=0.0 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c8_liquidity_reversal_commodities  ->  REFUTED
+  OOS(pooled) -0.1876 | IN-SAMPLE -0.0804 | n_trades 171 | max_dd 0.0832 | total_return -0.0298
+  oos_live -0.1876 | oos_trades 160 | oos_maxdd 0.0963 | oos_cagr -0.0036 | profitable_folds 2 | retention -0.311 | pbo 0.5 | deflated -0.0804
+  fold OOS sharpes: [-0.5344, -0.2021, 0.0449, 0.0337, -0.1614]
+  FLAGS:
+    - t-stat -0.38 below 2.0 - the return series is not distinguishable from noise
+    - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - OOS Sharpe retains only -31% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+    - edge does not survive 2x cost stress
+    - Monte Carlo prob(profitable) 31%
+    - only 7/22 profitable years
+  ERRORS: (none)
+  gross_sharpe -0.0635 net_sharpe -0.0804 costs_paid 559 | cost_stress [(1.0, -0.072), (1.5, -0.0762), (2.0, -0.0804), (3.0, -0.0889)]
+  param_sens stability=0.875 perturbations=8 note=broad plateau - robust
+  monte_carlo {"n_runs": 3000, "n_trades": 171, "trades_per_year": 7.846321922796795, "prob_profitable": 0.31466666666666665, "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT compa
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad  ->  REFUTED
+  OOS(pooled) -0.0367 | IN-SAMPLE 0.0620 | n_trades 110 | max_dd 0.0227 | total_return 0.0097
+  oos_live -0.0367 | oos_trades 96 | oos_maxdd 0.0227 | oos_cagr -0.0003 | profitable_folds 2 | retention -0.084 | pbo 0.0 | deflated 0.0620
+  fold OOS sharpes: [-0.5375, 0.3085, 0.1497, -0.1738, None]
+  FLAGS:
+    - t-stat 0.29 below 2.0 - the return series is not distinguishable from noise
+    - only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - OOS Sharpe retains only -8% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+    - Monte Carlo prob(profitable) 61%
+    - only 4/22 profitable years
+  ERRORS: (none)
+  gross_sharpe 0.0762 net_sharpe 0.0620 costs_paid 240 | cost_stress [(1.0, 0.0691), (1.5, 0.0655), (2.0, 0.062), (3.0, 0.0549)]
+  param_sens stability=0.625 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"n_runs": 3000, "n_trades": 110, "trades_per_year": 5.042750591231581, "prob_profitable": 0.613, "sharpe_basis": "per-trade (annualised at the observed trade frequency) \u2014 NOT comparable to the p
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']
+################################################################################################
+NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit  ->  INCONCLUSIVE
+  OOS(pooled) None | IN-SAMPLE None | n_trades None | max_dd None | total_return None
+  oos_live None | oos_trades 0 | oos_maxdd 0.0000 | oos_cagr 0.0000 | profitable_folds 0 | retention None | pbo None | deflated None
+  fold OOS sharpes: [None, None, None, None, None]
+  FLAGS:
+    - only 0 trades (need >=30)
+    - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+    - edge does not survive 2x cost stress
+    - parameter stability 0% (< 60%)
+    - only 0/22 profitable years
+  ERRORS: (none)
+  gross_sharpe None net_sharpe None costs_paid 0 | cost_stress [(1.0, None), (1.5, None), (2.0, None), (3.0, None)]
+  param_sens stability=0.0 perturbations=8 note=narrow/unstable - possible curve-fit
+  monte_carlo {"error": "only 0 trades \u2014 Monte Carlo needs >=20"}
+  causality {"causal": true, "violations": []} | skipped_stages [] | ledger keys ['gross_vs_net', 'cost_stress', 'parameter_sensitivity', 'monte_carlo', 'subperiod', 'capacity', 'causality']

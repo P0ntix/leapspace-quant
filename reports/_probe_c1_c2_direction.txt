@@ -1,0 +1,7 @@
+us_equity_style      both_nonzero=6120 opposite=3697 frac=0.6040849673202614
+crypto               both_nonzero=18672 opposite=9795 frac=0.524582262210797
+fx_major             both_nonzero=0 opposite=0 frac=None
+commodities          both_nonzero=13441 opposite=7166 frac=0.533144855293505
+futures_broad        both_nonzero=16174 opposite=9372 frac=0.5794484975887226
+rates_credit         both_nonzero=11461 opposite=6321 frac=0.5515225547508943
+WROTE C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\_probe_c1_c2_direction.json

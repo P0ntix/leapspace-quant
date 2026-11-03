@@ -1,0 +1,1005 @@
+==============================================================================
+C7 RE-RUN - FULL VALIDATION GAUNTLET (quick=False)
+started 2026-11-04 03:28:37  total 1990.4s  results_path=C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\paper_concept_results.json
+runner rows: 12
+==============================================================================
+
+------------------------------------------------------------------------------
+SPEC: c7_session_drift_us_equity_style
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : us_equity_style
+  elapsed_s          : 95.9
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.15719301527815036, "in_sample_sharpe": 0.15719301527815036, "n_trades": 8, "max_drawdown": 0.08414241331151384, "total_return": 0.07134465572905024}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.7
+  CAPTURED GAUNTLET SCORECARD (elapsed 95.9s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe 0.13 is below 0.5, while the gross-of-costs Sharpe is 0.34 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 8 trades (need >=30)
+  flag               : t-stat 0.73 below 2.0 - the return series is not distinguishable from noise
+  IN-SAMPLE sharpe   : 0.15719301527815036
+  POOLED OOS sharpe  : 0.13488750864471363
+  OOS sharpe (live)  : 0.13488750864471363
+  n_trades (base)    : 8
+  max_drawdown       : 0.08414241331151384
+  total_return       : 0.07134465572905024
+  cagr               : 0.0031671435580473695
+  final_equity       : 107134.46557290501
+  n_bars             : 5492
+  t_stat             : 0.7338346909964528
+  costs_paid         : 8625.6098238406
+  turnover_total     : 15205305.176236525
+  symbols used       : ['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=0.13488750864471363 oos_profitable_folds=3/5 retention=0.7938128333774308 pbo=0.4
+     oos_cagr=0.002722877429928161 oos_max_drawdown=0.07527264392290955 oos_trades_total=49
+     fold 0: IS_sh=-0.06922625258355246 OOS_sh=-0.15802582516467645 oos_trades=11 test=['2005-06-29', '2009-05-14'] train_bars=121 test_bars=976 purge=1 embargo=1
+     fold 1: IS_sh=0.06816118547098364 OOS_sh=0.4769132096225315 oos_trades=11 test=['2009-11-09', '2013-09-25'] train_bars=242 test_bars=976 purge=1 embargo=1
+     fold 2: IS_sh=0.3950252675969152 OOS_sh=-0.3541223538676315 oos_trades=11 test=['2014-03-24', '2018-02-05'] train_bars=362 test_bars=976 purge=1 embargo=1
+     fold 3: IS_sh=0.5493004957509213 OOS_sh=0.5935678984591073 oos_trades=7 test=['2018-08-01', '2022-06-15'] train_bars=482 test_bars=976 purge=1 embargo=1
+     fold 4: IS_sh=0.16992356758810329 OOS_sh=0.043316670493620445 oos_trades=9 test=['2022-12-09', '2026-10-30'] train_bars=602 test_bars=976 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.3377005278203196 net_sharpe=0.15719301527815036 gross_cagr=0.00708246734564888 net_cagr=0.0031671435580473695
+     costs_paid=8625.6098238406 turnover_total=15205305.176236525
+     interpretation: the edge survives costs but is materially eroded (53% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.2474979837208724 cagr=0.005123136030499964 n_trades=8
+     x1.5: sharpe=0.2023392792237105 cagr=0.004144497718838069 n_trades=8
+     x2.0: sharpe=0.15719301527815036 cagr=0.0031671435580473695 n_trades=8
+     x3.0: sharpe=0.06687927208548422 cagr=0.001213196117743065 n_trades=8
+  -- parameter sensitivity --
+     base_sharpe=0.15719301527815036 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 8 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=12/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': 0.3076302154256651, 'bars': 2744}, 'low_vol': {'sharpe': -0.11948215953053201, 'bars': 2743}}
+       2005: ret=-0.0016879682283781339 sharpe=-0.08939196552440645 bars=252
+       2006: ret=-0.04195064517684677 sharpe=-1.8178489452820465 bars=251
+       2007: ret=0.01702030774565899 sharpe=0.8479892799139095 bars=251
+       2008: ret=3.6237584029708e-05 sharpe=0.013814668505247938 bars=253
+       2009: ret=0.02808124748450136 sharpe=1.363207511974365 bars=252
+       2010: ret=-0.004832176673225552 sharpe=-0.22484329861763286 bars=252
+       2011: ret=0.008533961125834155 sharpe=0.4595980641620199 bars=252
+       2012: ret=0.009032578433838978 sharpe=0.5696049125156208 bars=250
+       2013: ret=0.015978544198673506 sharpe=1.0857430295774724 bars=252
+       2014: ret=-0.014022750285360264 sharpe=-0.8533113995127584 bars=252
+       2015: ret=0.003248081258043767 sharpe=0.3242675243492288 bars=252
+       2016: ret=-0.0014065755243892752 sharpe=-0.07684584145160155 bars=252
+       2017: ret=-0.006360981914749209 sharpe=-0.3339357655820345 bars=251
+       2018: ret=0.016852471514254175 sharpe=0.9290676048244161 bars=251
+       2019: ret=-0.009927802327685531 sharpe=-0.6689009363896797 bars=252
+       2020: ret=0.045602491065431794 sharpe=1.4707124956399356 bars=253
+       2021: ret=-0.0014376431613024598 sharpe=-0.042048993844753677 bars=252
+       2022: ret=0.00817467101652336 sharpe=0.37151417230462863 bars=251
+       2023: ret=-0.017885244820256663 sharpe=-0.690076129715227 bars=250
+       2024: ret=-0.04653662264428249 sharpe=-1.5186825453338553 bars=252
+       2025: ret=0.02988311718367509 sharpe=1.1415858218730182 bars=250
+       2026: ret=0.03795012200919223 sharpe=1.6460795315049848 bars=209
+  -- capacity --
+     est_capacity_usd=532625573.12331104 binding_symbol=RSP turnover_per_year=15205305.176236525
+     per_symbol_limits={'DIA': 8881244974.276962, 'IWM': 39029526812.67574, 'MDY': 3940004055.41593, 'QQQ': 49182248600.25525, 'RSP': 532625573.12331104, 'SPY': 208162841650.67795}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.15719301527815036
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: c7_session_drift_crypto
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : crypto
+  elapsed_s          : 64.7
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.45732720474827393, "in_sample_sharpe": 0.45732720474827393, "n_trades": 10, "max_drawdown": 0.2863538408490037, "total_return": 0.6329716233482308}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.8
+  CAPTURED GAUNTLET SCORECARD (elapsed 64.7s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.63 is below 0.5, while the gross-of-costs Sharpe is 0.62 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 10 trades (need >=30)
+  flag               : t-stat 1.33 below 2.0 - the return series is not distinguishable from noise
+  flag               : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  flag               : OOS Sharpe retains only -71% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  IN-SAMPLE sharpe   : 0.45732720474827393
+  POOLED OOS sharpe  : -0.6288674978742221
+  OOS sharpe (live)  : -0.6288674978742221
+  n_trades (base)    : 10
+  max_drawdown       : 0.2863538408490037
+  total_return       : 0.6329716233482308
+  cagr               : 0.05967779802138784
+  final_equity       : 163297.16233482308
+  n_bars             : 2132
+  t_stat             : 1.330210484502893
+  costs_paid         : 30198.641432871264
+  turnover_total     : 7096869.230114725
+  symbols used       : ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.6288674978742221 oos_profitable_folds=0/5 retention=-0.7114851590143839 pbo=0.8
+     oos_cagr=-0.0788834150466291 oos_max_drawdown=0.4347933738928491 oos_trades_total=50
+     fold 0: IS_sh=0.6474501167239081 OOS_sh=-0.3096594054410739 oos_trades=10 test=['2021-05-04', '2022-03-03'] train_bars=121 test_bars=304 purge=1 embargo=1
+     fold 1: IS_sh=0.6813534685773693 OOS_sh=-0.38037032797052706 oos_trades=10 test=['2022-07-05', '2023-05-04'] train_bars=242 test_bars=304 purge=1 embargo=1
+     fold 2: IS_sh=1.2371076714573588 OOS_sh=-1.228363707574845 oos_trades=10 test=['2023-09-04', '2024-07-03'] train_bars=362 test_bars=304 purge=1 embargo=1
+     fold 3: IS_sh=1.0544092811096852 OOS_sh=-0.9554448306515015 oos_trades=10 test=['2024-11-03', '2025-09-02'] train_bars=482 test_bars=304 purge=1 embargo=1
+     fold 4: IS_sh=0.8838799937097612 OOS_sh=-0.2507482059184848 oos_trades=10 test=['2026-01-03', '2026-11-02'] train_bars=602 test_bars=304 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.6228317569965511 net_sharpe=0.45732720474827393 gross_cagr=0.08645484144499438 net_cagr=0.05967779802138784
+     costs_paid=30198.641432871264 turnover_total=7096869.230114725
+     interpretation: the edge survives costs but is materially eroded (27% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.5402141520255499 cagr=0.07300459609355281 n_trades=10
+     x1.5: sharpe=0.4987893957524982 cagr=0.06632551848545254 n_trades=10
+     x2.0: sharpe=0.45732720474827393 cagr=0.05967779802138784 n_trades=10
+     x3.0: sharpe=0.3743571384802938 cagr=0.046471317607379437 n_trades=10
+  -- parameter sensitivity --
+     base_sharpe=0.45732720474827393 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 10 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=4/6 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': 0.7190735103514156, 'bars': 1064}, 'low_vol': {'sharpe': -0.13516532641368756, 'bars': 1063}}
+       2021: ret=0.024191784259167903 sharpe=0.20086962952155532 bars=365
+       2022: ret=0.1580618009928294 sharpe=1.286987320724368 bars=365
+       2023: ret=0.21794542240421366 sharpe=1.0143443447055633 bars=365
+       2024: ret=0.24152249579087015 sharpe=1.238817975260174 bars=366
+       2025: ret=-0.01997130525153501 sharpe=-0.07860296827211996 bars=365
+       2026: ret=-0.07093863307140813 sharpe=-0.7288812540193543 bars=306
+  -- capacity --
+     est_capacity_usd=1602333915.5070655 binding_symbol=DOGE-USD turnover_per_year=7096869.230114725
+     per_symbol_limits={'ADA-USD': 4669852914.035548, 'AVAX-USD': 107880836657.05042, 'BCH-USD': 2023147745256.698, 'BTC-USD': 2.4965901453074224e+16, 'DOGE-USD': 1602333915.5070655, 'ETH-USD': 587920131575252.9, 'LINK-USD': 90018006315.40977, 'LTC-USD': 634241300769.3877, 'SOL-USD': 3418839516537.912, 'XRP-USD': 23833525341.809456}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.45732720474827393
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: c7_session_drift_fx_major
+  runner verdict     : ERROR
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : fx_major
+  elapsed_s          : 3.2
+  row metrics (as written by the runner)   : {"oos_sharpe": null, "in_sample_sharpe": null, "n_trades": null, "max_drawdown": null, "total_return": null}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : ["ValueError: The cross_sectional signal needs at least TWO instruments to rank against each other, but only 0 has a usable value for feature 'session_drift' (universe: ['AUDUSD=X', 'EURUSD=X', 'GBPUSD=X', 'NZDUSD=X', 'USDCAD=X', 'USDCHF=X', 'USDJPY=X', 'USDSEK=X']). A single-instrument cross-sectional strategy is always flat. Use a time-series signal (time_series_threshold / time_series_zscore / crossover) for a one-instrument universe, or widen the universe."]
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 3.2s):
+  verdict            : None
+  reasoning          : None
+  IN-SAMPLE sharpe   : None
+  POOLED OOS sharpe  : None
+  OOS sharpe (live)  : None
+  n_trades (base)    : None
+  max_drawdown       : None
+  total_return       : None
+  cagr               : None
+  final_equity       : None
+  n_bars             : None
+  t_stat             : None
+  costs_paid         : None
+  turnover_total     : None
+  symbols used       : None
+  -- walk-forward --
+     n_folds=None mode=None purge=None embargo=None horizon=None
+     pooled oos_sharpe=None oos_profitable_folds=None/None retention=None pbo=None
+     oos_cagr=None oos_max_drawdown=None oos_trades_total=None
+     disjointness.ok=None violations=None
+     notes=None
+  -- gross vs net --
+     None
+  -- cost stress --
+     None
+  -- parameter sensitivity --
+     None
+  -- monte carlo --
+     None
+  -- subperiod / regime --
+     None
+  -- capacity --
+     None
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     null
+  -- deflated sharpe -- None
+  -- skipped_stages (from the gauntlet) -- None
+
+------------------------------------------------------------------------------
+SPEC: c7_session_drift_commodities
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : commodities
+  elapsed_s          : 240.6
+  row metrics (as written by the runner)   : {"oos_sharpe": -0.23199529745982883, "in_sample_sharpe": -0.23199529745982883, "n_trades": 13, "max_drawdown": 0.6169524626927805, "total_return": -0.4631292126854657}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 240.6s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.37 is below 0.5, and the gross-of-costs Sharpe is -0.19 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  flag               : only 13 trades (need >=30)
+  flag               : t-stat -1.08 below 2.0 - the return series is not distinguishable from noise
+  flag               : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  flag               : edge does not survive 2x cost stress
+  flag               : only 10/22 profitable years
+  IN-SAMPLE sharpe   : -0.23199529745982883
+  POOLED OOS sharpe  : -0.3723093105128846
+  OOS sharpe (live)  : -0.3723093105128846
+  n_trades (base)    : 13
+  max_drawdown       : 0.6169524626927805
+  total_return       : -0.4631292126854657
+  cagr               : -0.028136895077846447
+  final_equity       : 53687.07873145343
+  n_bars             : 5492
+  t_stat             : -1.0830391994378115
+  costs_paid         : 6794.079944409628
+  turnover_total     : 14168815.710268887
+  symbols used       : ['CL=F', 'CT=F', 'GC=F', 'HG=F', 'KC=F', 'NG=F', 'PA=F', 'PL=F', 'SB=F', 'SI=F', 'ZC=F', 'ZS=F', 'ZW=F']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.3723093105128846 oos_profitable_folds=0/5 retention=None pbo=1.0
+     oos_cagr=-0.04170512036431151 oos_max_drawdown=0.6608109236494061 oos_trades_total=65
+     fold 0: IS_sh=0.4512410197462375 OOS_sh=-0.8282124743395592 oos_trades=13 test=['2005-06-29', '2009-05-18'] train_bars=121 test_bars=976 purge=1 embargo=1
+     fold 1: IS_sh=-0.10124464721465258 OOS_sh=-0.2110947108998463 oos_trades=13 test=['2009-11-11', '2013-09-27'] train_bars=242 test_bars=976 purge=1 embargo=1
+     fold 2: IS_sh=0.36832891824041336 OOS_sh=-0.7533705489659088 oos_trades=13 test=['2014-03-26', '2018-02-09'] train_bars=362 test_bars=976 purge=1 embargo=1
+     fold 3: IS_sh=0.16073057457049297 OOS_sh=-0.23073963144369428 oos_trades=13 test=['2018-08-07', '2022-06-22'] train_bars=482 test_bars=976 purge=1 embargo=1
+     fold 4: IS_sh=-0.04154060514912514 OOS_sh=-0.23053535192614902 oos_trades=13 test=['2022-12-15', '2026-11-03'] train_bars=602 test_bars=976 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=-0.18770650849627984 net_sharpe=-0.23199529745982883 gross_cagr=-0.02373825775513394 net_cagr=-0.028136895077846447
+     costs_paid=6794.079944409628 turnover_total=14168815.710268887
+     interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  -- cost stress --
+     x1.0: sharpe=-0.20982733365762482 cagr=-0.02593565966159228 n_trades=13
+     x1.5: sharpe=-0.2209164033095353 cagr=-0.027037363960059402 n_trades=13
+     x2.0: sharpe=-0.23199529745982883 cagr=-0.028136895077846447 n_trades=13
+     x3.0: sharpe=-0.2541148368395189 cagr=-0.03032875278948366 n_trades=13
+  -- parameter sensitivity --
+     base_sharpe=-0.23199529745982883 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 13 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=10/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': -0.15348461278638323, 'bars': 2744}, 'low_vol': {'sharpe': -0.4563427558143068, 'bars': 2743}}
+       2005: ret=-0.08422501788197101 sharpe=-1.2918448898575696 bars=251
+       2006: ret=0.13042977557291757 sharpe=1.6417879182403965 bars=250
+       2007: ret=-0.05943040562341728 sharpe=-0.8522966673467234 bars=251
+       2008: ret=0.031072269090704374 sharpe=0.4270785917623005 bars=253
+       2009: ret=-0.15039282261481135 sharpe=-2.05801857063783 bars=252
+       2010: ret=0.1166693159455745 sharpe=1.4561339831706486 bars=252
+       2011: ret=-0.04644616327537887 sharpe=-0.6174022070145174 bars=252
+       2012: ret=-0.0814945111397134 sharpe=-1.248320109814155 bars=250
+       2013: ret=-0.057063226534366795 sharpe=-0.8736925731849179 bars=252
+       2014: ret=0.007895300458443222 sharpe=0.13539551003896458 bars=252
+       2015: ret=0.02486788767243664 sharpe=0.35529285523855436 bars=252
+       2016: ret=-0.09732942474453776 sharpe=-1.3337932577144136 bars=250
+       2017: ret=-0.08358721461796981 sharpe=-1.5081641341282446 bars=251
+       2018: ret=-0.084902811716426 sharpe=-1.2519443943860344 bars=251
+       2019: ret=-0.14374229414286543 sharpe=-2.4174935185790116 bars=252
+       2020: ret=-0.07240893256580527 sharpe=-0.11818571729572847 bars=253
+       2021: ret=0.0022622401861851493 sharpe=0.06935323300206861 bars=252
+       2022: ret=0.0211831108368008 sharpe=0.2353219701403085 bars=251
+       2023: ret=-0.04101800535448741 sharpe=-0.5242814081817384 bars=250
+       2024: ret=0.05224679117787989 sharpe=0.6576210023889517 bars=252
+       2025: ret=0.05441979867164837 sharpe=0.7233030539315844 bars=252
+       2026: ret=0.00912846268531542 sharpe=0.14698345681025055 bars=211
+  -- capacity --
+     est_capacity_usd=28632.240203020563 binding_symbol=SI=F turnover_per_year=14168815.710268887
+     per_symbol_limits={'CL=F': 590397685.2014802, 'CT=F': 14740183.62421531, 'GC=F': 10424767.605839198, 'HG=F': 36057.589978429874, 'KC=F': 36570585.39045458, 'NG=F': 10230124.960147055, 'PA=F': 201679.06003649437, 'PL=F': 513242.5804051435, 'SB=F': 21160807.722880896, 'SI=F': 28632.240203020563, 'ZC=F': 1270927308.6916494, 'ZS=F': 1691829322.7934918, 'ZW=F': 622291578.5974799}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- -0.23199529745982883
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: c7_session_drift_futures_broad
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : futures_broad
+  elapsed_s          : 277.9
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.054019367761259415, "in_sample_sharpe": 0.054019367761259415, "n_trades": 15, "max_drawdown": 0.6547736776247716, "total_return": -0.003242214387764064}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 277.9s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.06 is below 0.5, while the gross-of-costs Sharpe is 0.09 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 15 trades (need >=30)
+  flag               : t-stat 0.25 below 2.0 - the return series is not distinguishable from noise
+  flag               : only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  flag               : only 9/22 profitable years
+  IN-SAMPLE sharpe   : 0.054019367761259415
+  POOLED OOS sharpe  : -0.06448450240561517
+  OOS sharpe (live)  : -0.06448450240561517
+  n_trades (base)    : 15
+  max_drawdown       : 0.6547736776247716
+  total_return       : -0.003242214387764064
+  cagr               : -0.0001488638325978231
+  final_equity       : 99675.77856122359
+  n_bars             : 5497
+  t_stat             : 0.2522970049729284
+  costs_paid         : 7716.699217508561
+  turnover_total     : 24127856.555391356
+  symbols used       : ['CL=F', 'ES=F', 'GC=F', 'HG=F', 'NG=F', 'NQ=F', 'RTY=F', 'SI=F', 'YM=F', 'ZB=F', 'ZC=F', 'ZF=F', 'ZN=F', 'ZS=F', 'ZT=F']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.06448450240561517 oos_profitable_folds=2/5 retention=None pbo=0.2
+     oos_cagr=-0.01323075183271838 oos_max_drawdown=0.5397521150508449 oos_trades_total=73
+     fold 0: IS_sh=-1.2052440822423096 OOS_sh=0.40108044899308476 oos_trades=14 test=['2005-06-29', '2009-05-13'] train_bars=121 test_bars=977 purge=1 embargo=1
+     fold 1: IS_sh=-2.0283348627438182 OOS_sh=-0.9455851394583012 oos_trades=14 test=['2009-11-06', '2013-09-25'] train_bars=242 test_bars=977 purge=1 embargo=1
+     fold 2: IS_sh=-1.673906072349123 OOS_sh=-0.08711942306971249 oos_trades=15 test=['2014-03-24', '2018-02-08'] train_bars=362 test_bars=977 purge=1 embargo=1
+     fold 3: IS_sh=-1.5210355918724021 OOS_sh=0.05205075427646331 oos_trades=15 test=['2018-08-06', '2022-06-22'] train_bars=482 test_bars=977 purge=1 embargo=1
+     fold 4: IS_sh=-1.091984571472543 OOS_sh=-0.08406584639810434 oos_trades=15 test=['2022-12-15', '2026-11-03'] train_bars=602 test_bars=977 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.09468984202104284 net_sharpe=0.054019367761259415 gross_cagr=0.004357459027967581 net_cagr=-0.0001488638325978231
+     costs_paid=7716.699217508561 turnover_total=24127856.555391356
+     interpretation: the edge survives costs but is materially eroded (43% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.07456637717969541 cagr=0.002126582774225616 n_trades=15
+     x1.5: sharpe=0.06428865730071621 cagr=0.0009880436150078165 n_trades=15
+     x2.0: sharpe=0.054019367761259415 cagr=-0.0001488638325978231 n_trades=15
+     x3.0: sharpe=0.033545950930039016 cagr=-0.0024135335484316567 n_trades=15
+  -- parameter sensitivity --
+     base_sharpe=0.054019367761259415 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 15 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=9/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': 0.11454617058783702, 'bars': 2746}, 'low_vol': {'sharpe': -0.06308141828206391, 'bars': 2746}}
+       2005: ret=0.04668105855513405 sharpe=0.5742854370226733 bars=252
+       2006: ret=-0.01687506075189993 sharpe=-0.14244061339661204 bars=252
+       2007: ret=0.09149618718882313 sharpe=1.092219287883923 bars=252
+       2008: ret=0.15291591351966427 sharpe=1.0365338387058232 bars=253
+       2009: ret=-0.27551549908852424 sharpe=-1.7962342490259777 bars=252
+       2010: ret=-0.10255488953799718 sharpe=-1.0217688570099217 bars=252
+       2011: ret=-0.08069745882212254 sharpe=-1.0367440969235944 bars=252
+       2012: ret=-0.03355446593389766 sharpe=-0.34576493758905463 bars=250
+       2013: ret=-0.014457312372067599 sharpe=-0.1605206605620011 bars=252
+       2014: ret=-0.13874614659188522 sharpe=-2.0204704254073036 bars=252
+       2015: ret=0.03155068296777741 sharpe=0.39370399677436174 bars=252
+       2016: ret=-0.01707835613360853 sharpe=-0.14664754485312195 bars=250
+       2017: ret=0.007241422060263236 sharpe=0.15239002926224088 bars=251
+       2018: ret=-0.04745927512034209 sharpe=-0.45710801509273924 bars=251
+       2019: ret=-0.029084046550863607 sharpe=-0.27437839721020557 bars=252
+       2020: ret=0.3039554044707107 sharpe=1.3966403836843138 bars=253
+       2021: ret=0.04704447968103742 sharpe=0.479243739287313 bars=252
+       2022: ret=-0.022904454887447523 sharpe=-0.07551522758015958 bars=251
+       2023: ret=-0.015776539217295715 sharpe=-0.13497066166408317 bars=251
+       2024: ret=-0.03676620086062121 sharpe=-0.32259745984457916 bars=252
+       2025: ret=0.1824162889168559 sharpe=1.6167996591245521 bars=252
+       2026: ret=0.1114713563139591 sharpe=1.0327067525590952 bars=211
+  -- capacity --
+     est_capacity_usd=19397.57929504462 binding_symbol=SI=F turnover_per_year=24127856.555391356
+     per_symbol_limits={'CL=F': 400181667.93386555, 'ES=F': 55013057737.30352, 'GC=F': 7060017.203693165, 'HG=F': 24455.939563972217, 'NG=F': 6931245.133418855, 'NQ=F': 18266075820.59527, 'RTY=F': 5672307556.331605, 'SI=F': 19397.57929504462, 'YM=F': 42922255306.235054, 'ZB=F': 632815894.7053636, 'ZC=F': 860845330.834366, 'ZF=F': 947844280.6584585, 'ZN=F': 2174518070.66535, 'ZS=F': 1146951793.5536993, 'ZT=F': 320344699.1883654}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.054019367761259415
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: c7_session_drift_rates_credit
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : rates_credit
+  elapsed_s          : 289.9
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.03438514443326499, "in_sample_sharpe": 0.03438514443326499, "n_trades": 12, "max_drawdown": 0.5103338605529977, "total_return": -0.019620882160311326}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 289.9s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.21 is below 0.5, while the gross-of-costs Sharpe is 0.08 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 12 trades (need >=30)
+  flag               : t-stat 0.16 below 2.0 - the return series is not distinguishable from noise
+  flag               : only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  flag               : OOS Sharpe retains only -21% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  IN-SAMPLE sharpe   : 0.03438514443326499
+  POOLED OOS sharpe  : -0.20667360100948615
+  OOS sharpe (live)  : -0.20667360100948615
+  n_trades (base)    : 12
+  max_drawdown       : 0.5103338605529977
+  total_return       : -0.019620882160311326
+  cagr               : -0.0009090044980464285
+  final_equity       : 98037.91178396887
+  n_bars             : 5491
+  t_stat             : 0.16050785996567185
+  costs_paid         : 9242.665360660196
+  turnover_total     : 16078361.383474978
+  symbols used       : ['BND', 'EMB', 'HYG', 'IEF', 'LQD', 'SHY', 'TIP', 'TLT', '^FVX', '^IRX', '^TNX', '^TYX']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.20667360100948615 oos_profitable_folds=2/5 retention=-0.21330268322109497 pbo=0.4
+     oos_cagr=-0.10617034523191049 oos_max_drawdown=0.9224396407596738 oos_trades_total=84
+     fold 0: IS_sh=1.4902753251261294 OOS_sh=-0.5276999120768703 oos_trades=10 test=['2005-06-29', '2009-05-19'] train_bars=121 test_bars=976 purge=1 embargo=1
+     fold 1: IS_sh=0.20734174344428463 OOS_sh=0.2226049301309228 oos_trades=20 test=['2009-11-11', '2013-09-27'] train_bars=241 test_bars=976 purge=1 embargo=1
+     fold 2: IS_sh=0.007471486200238117 OOS_sh=-0.6594221288027562 oos_trades=17 test=['2014-03-26', '2018-02-07'] train_bars=361 test_bars=976 purge=1 embargo=1
+     fold 3: IS_sh=0.3147547724999563 OOS_sh=-0.4487006953556132 oos_trades=17 test=['2018-08-03', '2022-06-17'] train_bars=481 test_bars=976 purge=1 embargo=1
+     fold 4: IS_sh=0.96892171204083 OOS_sh=0.5519267383685038 oos_trades=20 test=['2022-12-13', '2026-11-03'] train_bars=601 test_bars=976 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.07993965230878587 net_sharpe=0.03438514443326499 gross_cagr=0.0031845865970046017 net_cagr=-0.0009090044980464285
+     costs_paid=9242.665360660196 turnover_total=16078361.383474978
+     interpretation: the edge survives costs but is materially eroded (57% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.056500853039284954 cagr=0.0011247980113950895 n_trades=12
+     x1.5: sharpe=0.04528390367820506 cagr=0.00010519552182919334 n_trades=12
+     x2.0: sharpe=0.03438514443326499 cagr=-0.0009090044980464285 n_trades=12
+     x3.0: sharpe=0.013575928049774985 cagr=-0.0029179093408353562 n_trades=12
+  -- parameter sensitivity --
+     base_sharpe=0.03438514443326499 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 12 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=12/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': -0.05057240086379184, 'bars': 2743}, 'low_vol': {'sharpe': 0.22553975226693782, 'bars': 2743}}
+       2005: ret=0.08467932152271485 sharpe=1.8315698505482954 bars=250
+       2006: ret=0.04286273960323839 sharpe=0.9778312069815775 bars=250
+       2007: ret=-0.11240105958608637 sharpe=-1.2516212442934485 bars=251
+       2008: ret=-0.22644938621784672 sharpe=-1.603378136902722 bars=253
+       2009: ret=0.061449331814749986 sharpe=0.5454830644189368 bars=252
+       2010: ret=-0.04005781124210672 sharpe=-0.3253414687066573 bars=252
+       2011: ret=-0.12062640763500587 sharpe=-1.4177379648702788 bars=252
+       2012: ret=-0.047532176651608915 sharpe=-0.5954493405053587 bars=250
+       2013: ret=0.10907067007610127 sharpe=1.1387978190017245 bars=252
+       2014: ret=-0.09482984193270572 sharpe=-1.7514453565088626 bars=252
+       2015: ret=0.017527967125063437 sharpe=0.2272579530654079 bars=252
+       2016: ret=0.04541519496387525 sharpe=0.534321743639762 bars=252
+       2017: ret=0.0402582533875635 sharpe=0.6316130671462825 bars=251
+       2018: ret=0.1070838568328627 sharpe=1.8202713794405332 bars=251
+       2019: ret=-0.08513834625195682 sharpe=-1.3226428040550084 bars=252
+       2020: ret=-0.19192221763075235 sharpe=-1.5747522272543661 bars=253
+       2021: ret=0.11261237047839123 sharpe=1.5927229270287535 bars=252
+       2022: ret=0.42065971671670455 sharpe=3.3604325991878743 bars=251
+       2023: ret=0.06184702128050645 sharpe=0.6802218469287021 bars=250
+       2024: ret=-0.03467805273608948 sharpe=-0.412640695081485 bars=252
+       2025: ret=-0.021893371081197155 sharpe=-0.3731193984854161 bars=250
+       2026: ret=0.0265563049174935 sharpe=0.5212211453165743 bars=211
+  -- capacity --
+     est_capacity_usd=8661466.238872882 binding_symbol=^IRX turnover_per_year=16078361.383474978
+     per_symbol_limits={'BND': 2634923429.3574877, 'EMB': 2898519791.494333, 'HYG': 11466465768.160015, 'IEF': 2677229858.581954, 'LQD': 5332556712.021832, 'SHY': 1896363717.8626726, 'TIP': 1602827961.9826696, 'TLT': 14673773529.54687, '^FVX': 12501122.410820002, '^IRX': 8661466.238872882, '^TNX': 13822767.871233407, '^TYX': 14888059.125248166}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.03438514443326499
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_us_equity_style
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : us_equity_style
+  elapsed_s          : 137.3
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.15719301527815036, "in_sample_sharpe": 0.15719301527815036, "n_trades": 8, "max_drawdown": 0.08414241331151384, "total_return": 0.07134465572905024}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 137.3s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe 0.13 is below 0.5, while the gross-of-costs Sharpe is 0.34 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 8 trades (need >=30)
+  flag               : t-stat 0.73 below 2.0 - the return series is not distinguishable from noise
+  IN-SAMPLE sharpe   : 0.15719301527815036
+  POOLED OOS sharpe  : 0.13488750864471363
+  OOS sharpe (live)  : 0.13488750864471363
+  n_trades (base)    : 8
+  max_drawdown       : 0.08414241331151384
+  total_return       : 0.07134465572905024
+  cagr               : 0.0031671435580473695
+  final_equity       : 107134.46557290501
+  n_bars             : 5492
+  t_stat             : 0.7338346909964528
+  costs_paid         : 8625.6098238406
+  turnover_total     : 15205305.176236525
+  symbols used       : ['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=0.13488750864471363 oos_profitable_folds=3/5 retention=0.7938128333774308 pbo=0.4
+     oos_cagr=0.002722877429928161 oos_max_drawdown=0.07527264392290955 oos_trades_total=49
+     fold 0: IS_sh=-0.06922625258355246 OOS_sh=-0.15802582516467645 oos_trades=11 test=['2005-06-29', '2009-05-14'] train_bars=121 test_bars=976 purge=1 embargo=1
+     fold 1: IS_sh=0.06816118547098364 OOS_sh=0.4769132096225315 oos_trades=11 test=['2009-11-09', '2013-09-25'] train_bars=242 test_bars=976 purge=1 embargo=1
+     fold 2: IS_sh=0.3950252675969152 OOS_sh=-0.3541223538676315 oos_trades=11 test=['2014-03-24', '2018-02-05'] train_bars=362 test_bars=976 purge=1 embargo=1
+     fold 3: IS_sh=0.5493004957509213 OOS_sh=0.5935678984591073 oos_trades=7 test=['2018-08-01', '2022-06-15'] train_bars=482 test_bars=976 purge=1 embargo=1
+     fold 4: IS_sh=0.16992356758810329 OOS_sh=0.043316670493620445 oos_trades=9 test=['2022-12-09', '2026-10-30'] train_bars=602 test_bars=976 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.3377005278203196 net_sharpe=0.15719301527815036 gross_cagr=0.00708246734564888 net_cagr=0.0031671435580473695
+     costs_paid=8625.6098238406 turnover_total=15205305.176236525
+     interpretation: the edge survives costs but is materially eroded (53% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.2474979837208724 cagr=0.005123136030499964 n_trades=8
+     x1.5: sharpe=0.2023392792237105 cagr=0.004144497718838069 n_trades=8
+     x2.0: sharpe=0.15719301527815036 cagr=0.0031671435580473695 n_trades=8
+     x3.0: sharpe=0.06687927208548422 cagr=0.001213196117743065 n_trades=8
+  -- parameter sensitivity --
+     base_sharpe=0.15719301527815036 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 8 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=12/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': 0.3076302154256651, 'bars': 2744}, 'low_vol': {'sharpe': -0.11948215953053201, 'bars': 2743}}
+       2005: ret=-0.0016879682283781339 sharpe=-0.08939196552440645 bars=252
+       2006: ret=-0.04195064517684677 sharpe=-1.8178489452820465 bars=251
+       2007: ret=0.01702030774565899 sharpe=0.8479892799139095 bars=251
+       2008: ret=3.6237584029708e-05 sharpe=0.013814668505247938 bars=253
+       2009: ret=0.02808124748450136 sharpe=1.363207511974365 bars=252
+       2010: ret=-0.004832176673225552 sharpe=-0.22484329861763286 bars=252
+       2011: ret=0.008533961125834155 sharpe=0.4595980641620199 bars=252
+       2012: ret=0.009032578433838978 sharpe=0.5696049125156208 bars=250
+       2013: ret=0.015978544198673506 sharpe=1.0857430295774724 bars=252
+       2014: ret=-0.014022750285360264 sharpe=-0.8533113995127584 bars=252
+       2015: ret=0.003248081258043767 sharpe=0.3242675243492288 bars=252
+       2016: ret=-0.0014065755243892752 sharpe=-0.07684584145160155 bars=252
+       2017: ret=-0.006360981914749209 sharpe=-0.3339357655820345 bars=251
+       2018: ret=0.016852471514254175 sharpe=0.9290676048244161 bars=251
+       2019: ret=-0.009927802327685531 sharpe=-0.6689009363896797 bars=252
+       2020: ret=0.045602491065431794 sharpe=1.4707124956399356 bars=253
+       2021: ret=-0.0014376431613024598 sharpe=-0.042048993844753677 bars=252
+       2022: ret=0.00817467101652336 sharpe=0.37151417230462863 bars=251
+       2023: ret=-0.017885244820256663 sharpe=-0.690076129715227 bars=250
+       2024: ret=-0.04653662264428249 sharpe=-1.5186825453338553 bars=252
+       2025: ret=0.02988311718367509 sharpe=1.1415858218730182 bars=250
+       2026: ret=0.03795012200919223 sharpe=1.6460795315049848 bars=209
+  -- capacity --
+     est_capacity_usd=532625573.12331104 binding_symbol=RSP turnover_per_year=15205305.176236525
+     per_symbol_limits={'DIA': 8881244974.276962, 'IWM': 39029526812.67574, 'MDY': 3940004055.41593, 'QQQ': 49182248600.25525, 'RSP': 532625573.12331104, 'SPY': 208162841650.67795}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.15719301527815036
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_crypto
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : crypto
+  elapsed_s          : 72.9
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.45732720474827393, "in_sample_sharpe": 0.45732720474827393, "n_trades": 10, "max_drawdown": 0.2863538408490037, "total_return": 0.6329716233482308}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 72.9s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.63 is below 0.5, while the gross-of-costs Sharpe is 0.62 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 10 trades (need >=30)
+  flag               : t-stat 1.33 below 2.0 - the return series is not distinguishable from noise
+  flag               : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  flag               : OOS Sharpe retains only -71% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  IN-SAMPLE sharpe   : 0.45732720474827393
+  POOLED OOS sharpe  : -0.6288674978742221
+  OOS sharpe (live)  : -0.6288674978742221
+  n_trades (base)    : 10
+  max_drawdown       : 0.2863538408490037
+  total_return       : 0.6329716233482308
+  cagr               : 0.05967779802138784
+  final_equity       : 163297.16233482308
+  n_bars             : 2132
+  t_stat             : 1.330210484502893
+  costs_paid         : 30198.641432871264
+  turnover_total     : 7096869.230114725
+  symbols used       : ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.6288674978742221 oos_profitable_folds=0/5 retention=-0.7114851590143839 pbo=0.8
+     oos_cagr=-0.0788834150466291 oos_max_drawdown=0.4347933738928491 oos_trades_total=50
+     fold 0: IS_sh=0.6474501167239081 OOS_sh=-0.3096594054410739 oos_trades=10 test=['2021-05-04', '2022-03-03'] train_bars=121 test_bars=304 purge=1 embargo=1
+     fold 1: IS_sh=0.6813534685773693 OOS_sh=-0.38037032797052706 oos_trades=10 test=['2022-07-05', '2023-05-04'] train_bars=242 test_bars=304 purge=1 embargo=1
+     fold 2: IS_sh=1.2371076714573588 OOS_sh=-1.228363707574845 oos_trades=10 test=['2023-09-04', '2024-07-03'] train_bars=362 test_bars=304 purge=1 embargo=1
+     fold 3: IS_sh=1.0544092811096852 OOS_sh=-0.9554448306515015 oos_trades=10 test=['2024-11-03', '2025-09-02'] train_bars=482 test_bars=304 purge=1 embargo=1
+     fold 4: IS_sh=0.8838799937097612 OOS_sh=-0.2507482059184848 oos_trades=10 test=['2026-01-03', '2026-11-02'] train_bars=602 test_bars=304 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.6228317569965511 net_sharpe=0.45732720474827393 gross_cagr=0.08645484144499438 net_cagr=0.05967779802138784
+     costs_paid=30198.641432871264 turnover_total=7096869.230114725
+     interpretation: the edge survives costs but is materially eroded (27% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.5402141520255499 cagr=0.07300459609355281 n_trades=10
+     x1.5: sharpe=0.4987893957524982 cagr=0.06632551848545254 n_trades=10
+     x2.0: sharpe=0.45732720474827393 cagr=0.05967779802138784 n_trades=10
+     x3.0: sharpe=0.3743571384802938 cagr=0.046471317607379437 n_trades=10
+  -- parameter sensitivity --
+     base_sharpe=0.45732720474827393 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 10 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=4/6 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': 0.7190735103514156, 'bars': 1064}, 'low_vol': {'sharpe': -0.13516532641368756, 'bars': 1063}}
+       2021: ret=0.024191784259167903 sharpe=0.20086962952155532 bars=365
+       2022: ret=0.1580618009928294 sharpe=1.286987320724368 bars=365
+       2023: ret=0.21794542240421366 sharpe=1.0143443447055633 bars=365
+       2024: ret=0.24152249579087015 sharpe=1.238817975260174 bars=366
+       2025: ret=-0.01997130525153501 sharpe=-0.07860296827211996 bars=365
+       2026: ret=-0.07093863307140813 sharpe=-0.7288812540193543 bars=306
+  -- capacity --
+     est_capacity_usd=1602333915.5070655 binding_symbol=DOGE-USD turnover_per_year=7096869.230114725
+     per_symbol_limits={'ADA-USD': 4669852914.035548, 'AVAX-USD': 107880836657.05042, 'BCH-USD': 2023147745256.698, 'BTC-USD': 2.4965901453074224e+16, 'DOGE-USD': 1602333915.5070655, 'ETH-USD': 587920131575252.9, 'LINK-USD': 90018006315.40977, 'LTC-USD': 634241300769.3877, 'SOL-USD': 3418839516537.912, 'XRP-USD': 23833525341.809456}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.45732720474827393
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_fx_major
+  runner verdict     : ERROR
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : fx_major
+  elapsed_s          : 0.1
+  row metrics (as written by the runner)   : {"oos_sharpe": null, "in_sample_sharpe": null, "n_trades": null, "max_drawdown": null, "total_return": null}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : ["ValueError: The cross_sectional signal needs at least TWO instruments to rank against each other, but only 0 has a usable value for feature 'session_drift' (universe: ['AUDUSD=X', 'EURUSD=X', 'GBPUSD=X', 'NZDUSD=X', 'USDCAD=X', 'USDCHF=X', 'USDJPY=X', 'USDSEK=X']). A single-instrument cross-sectional strategy is always flat. Use a time-series signal (time_series_threshold / time_series_zscore / crossover) for a one-instrument universe, or widen the universe."]
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 0.1s):
+  verdict            : None
+  reasoning          : None
+  IN-SAMPLE sharpe   : None
+  POOLED OOS sharpe  : None
+  OOS sharpe (live)  : None
+  n_trades (base)    : None
+  max_drawdown       : None
+  total_return       : None
+  cagr               : None
+  final_equity       : None
+  n_bars             : None
+  t_stat             : None
+  costs_paid         : None
+  turnover_total     : None
+  symbols used       : None
+  -- walk-forward --
+     n_folds=None mode=None purge=None embargo=None horizon=None
+     pooled oos_sharpe=None oos_profitable_folds=None/None retention=None pbo=None
+     oos_cagr=None oos_max_drawdown=None oos_trades_total=None
+     disjointness.ok=None violations=None
+     notes=None
+  -- gross vs net --
+     None
+  -- cost stress --
+     None
+  -- parameter sensitivity --
+     None
+  -- monte carlo --
+     None
+  -- subperiod / regime --
+     None
+  -- capacity --
+     None
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     null
+  -- deflated sharpe -- None
+  -- skipped_stages (from the gauntlet) -- None
+
+------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_commodities
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : commodities
+  elapsed_s          : 251.3
+  row metrics (as written by the runner)   : {"oos_sharpe": -0.23199529745982883, "in_sample_sharpe": -0.23199529745982883, "n_trades": 13, "max_drawdown": 0.6169524626927805, "total_return": -0.4631292126854657}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 251.3s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.37 is below 0.5, and the gross-of-costs Sharpe is -0.19 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  flag               : only 13 trades (need >=30)
+  flag               : t-stat -1.08 below 2.0 - the return series is not distinguishable from noise
+  flag               : 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+  flag               : edge does not survive 2x cost stress
+  flag               : only 10/22 profitable years
+  IN-SAMPLE sharpe   : -0.23199529745982883
+  POOLED OOS sharpe  : -0.3723093105128846
+  OOS sharpe (live)  : -0.3723093105128846
+  n_trades (base)    : 13
+  max_drawdown       : 0.6169524626927805
+  total_return       : -0.4631292126854657
+  cagr               : -0.028136895077846447
+  final_equity       : 53687.07873145343
+  n_bars             : 5492
+  t_stat             : -1.0830391994378115
+  costs_paid         : 6794.079944409628
+  turnover_total     : 14168815.710268887
+  symbols used       : ['CL=F', 'CT=F', 'GC=F', 'HG=F', 'KC=F', 'NG=F', 'PA=F', 'PL=F', 'SB=F', 'SI=F', 'ZC=F', 'ZS=F', 'ZW=F']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.3723093105128846 oos_profitable_folds=0/5 retention=None pbo=1.0
+     oos_cagr=-0.04170512036431151 oos_max_drawdown=0.6608109236494061 oos_trades_total=65
+     fold 0: IS_sh=0.4512410197462375 OOS_sh=-0.8282124743395592 oos_trades=13 test=['2005-06-29', '2009-05-18'] train_bars=121 test_bars=976 purge=1 embargo=1
+     fold 1: IS_sh=-0.10124464721465258 OOS_sh=-0.2110947108998463 oos_trades=13 test=['2009-11-11', '2013-09-27'] train_bars=242 test_bars=976 purge=1 embargo=1
+     fold 2: IS_sh=0.36832891824041336 OOS_sh=-0.7533705489659088 oos_trades=13 test=['2014-03-26', '2018-02-09'] train_bars=362 test_bars=976 purge=1 embargo=1
+     fold 3: IS_sh=0.16073057457049297 OOS_sh=-0.23073963144369428 oos_trades=13 test=['2018-08-07', '2022-06-22'] train_bars=482 test_bars=976 purge=1 embargo=1
+     fold 4: IS_sh=-0.04154060514912514 OOS_sh=-0.23053535192614902 oos_trades=13 test=['2022-12-15', '2026-11-03'] train_bars=602 test_bars=976 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=-0.18770650849627984 net_sharpe=-0.23199529745982883 gross_cagr=-0.02373825775513394 net_cagr=-0.028136895077846447
+     costs_paid=6794.079944409628 turnover_total=14168815.710268887
+     interpretation: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  -- cost stress --
+     x1.0: sharpe=-0.20982733365762482 cagr=-0.02593565966159228 n_trades=13
+     x1.5: sharpe=-0.2209164033095353 cagr=-0.027037363960059402 n_trades=13
+     x2.0: sharpe=-0.23199529745982883 cagr=-0.028136895077846447 n_trades=13
+     x3.0: sharpe=-0.2541148368395189 cagr=-0.03032875278948366 n_trades=13
+  -- parameter sensitivity --
+     base_sharpe=-0.23199529745982883 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 13 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=10/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': -0.15348461278638323, 'bars': 2744}, 'low_vol': {'sharpe': -0.4563427558143068, 'bars': 2743}}
+       2005: ret=-0.08422501788197101 sharpe=-1.2918448898575696 bars=251
+       2006: ret=0.13042977557291757 sharpe=1.6417879182403965 bars=250
+       2007: ret=-0.05943040562341728 sharpe=-0.8522966673467234 bars=251
+       2008: ret=0.031072269090704374 sharpe=0.4270785917623005 bars=253
+       2009: ret=-0.15039282261481135 sharpe=-2.05801857063783 bars=252
+       2010: ret=0.1166693159455745 sharpe=1.4561339831706486 bars=252
+       2011: ret=-0.04644616327537887 sharpe=-0.6174022070145174 bars=252
+       2012: ret=-0.0814945111397134 sharpe=-1.248320109814155 bars=250
+       2013: ret=-0.057063226534366795 sharpe=-0.8736925731849179 bars=252
+       2014: ret=0.007895300458443222 sharpe=0.13539551003896458 bars=252
+       2015: ret=0.02486788767243664 sharpe=0.35529285523855436 bars=252
+       2016: ret=-0.09732942474453776 sharpe=-1.3337932577144136 bars=250
+       2017: ret=-0.08358721461796981 sharpe=-1.5081641341282446 bars=251
+       2018: ret=-0.084902811716426 sharpe=-1.2519443943860344 bars=251
+       2019: ret=-0.14374229414286543 sharpe=-2.4174935185790116 bars=252
+       2020: ret=-0.07240893256580527 sharpe=-0.11818571729572847 bars=253
+       2021: ret=0.0022622401861851493 sharpe=0.06935323300206861 bars=252
+       2022: ret=0.0211831108368008 sharpe=0.2353219701403085 bars=251
+       2023: ret=-0.04101800535448741 sharpe=-0.5242814081817384 bars=250
+       2024: ret=0.05224679117787989 sharpe=0.6576210023889517 bars=252
+       2025: ret=0.05441979867164837 sharpe=0.7233030539315844 bars=252
+       2026: ret=0.00912846268531542 sharpe=0.14698345681025055 bars=211
+  -- capacity --
+     est_capacity_usd=28632.240203020563 binding_symbol=SI=F turnover_per_year=14168815.710268887
+     per_symbol_limits={'CL=F': 590397685.2014802, 'CT=F': 14740183.62421531, 'GC=F': 10424767.605839198, 'HG=F': 36057.589978429874, 'KC=F': 36570585.39045458, 'NG=F': 10230124.960147055, 'PA=F': 201679.06003649437, 'PL=F': 513242.5804051435, 'SB=F': 21160807.722880896, 'SI=F': 28632.240203020563, 'ZC=F': 1270927308.6916494, 'ZS=F': 1691829322.7934918, 'ZW=F': 622291578.5974799}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- -0.23199529745982883
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_futures_broad
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : futures_broad
+  elapsed_s          : 320.6
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.054019367761259415, "in_sample_sharpe": 0.054019367761259415, "n_trades": 15, "max_drawdown": 0.6547736776247716, "total_return": -0.003242214387764064}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 320.6s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.06 is below 0.5, while the gross-of-costs Sharpe is 0.09 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 15 trades (need >=30)
+  flag               : t-stat 0.25 below 2.0 - the return series is not distinguishable from noise
+  flag               : only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  flag               : only 9/22 profitable years
+  IN-SAMPLE sharpe   : 0.054019367761259415
+  POOLED OOS sharpe  : -0.06448450240561517
+  OOS sharpe (live)  : -0.06448450240561517
+  n_trades (base)    : 15
+  max_drawdown       : 0.6547736776247716
+  total_return       : -0.003242214387764064
+  cagr               : -0.0001488638325978231
+  final_equity       : 99675.77856122359
+  n_bars             : 5497
+  t_stat             : 0.2522970049729284
+  costs_paid         : 7716.699217508561
+  turnover_total     : 24127856.555391356
+  symbols used       : ['CL=F', 'ES=F', 'GC=F', 'HG=F', 'NG=F', 'NQ=F', 'RTY=F', 'SI=F', 'YM=F', 'ZB=F', 'ZC=F', 'ZF=F', 'ZN=F', 'ZS=F', 'ZT=F']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.06448450240561517 oos_profitable_folds=2/5 retention=None pbo=0.2
+     oos_cagr=-0.01323075183271838 oos_max_drawdown=0.5397521150508449 oos_trades_total=73
+     fold 0: IS_sh=-1.2052440822423096 OOS_sh=0.40108044899308476 oos_trades=14 test=['2005-06-29', '2009-05-13'] train_bars=121 test_bars=977 purge=1 embargo=1
+     fold 1: IS_sh=-2.0283348627438182 OOS_sh=-0.9455851394583012 oos_trades=14 test=['2009-11-06', '2013-09-25'] train_bars=242 test_bars=977 purge=1 embargo=1
+     fold 2: IS_sh=-1.673906072349123 OOS_sh=-0.08711942306971249 oos_trades=15 test=['2014-03-24', '2018-02-08'] train_bars=362 test_bars=977 purge=1 embargo=1
+     fold 3: IS_sh=-1.5210355918724021 OOS_sh=0.05205075427646331 oos_trades=15 test=['2018-08-06', '2022-06-22'] train_bars=482 test_bars=977 purge=1 embargo=1
+     fold 4: IS_sh=-1.091984571472543 OOS_sh=-0.08406584639810434 oos_trades=15 test=['2022-12-15', '2026-11-03'] train_bars=602 test_bars=977 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.09468984202104284 net_sharpe=0.054019367761259415 gross_cagr=0.004357459027967581 net_cagr=-0.0001488638325978231
+     costs_paid=7716.699217508561 turnover_total=24127856.555391356
+     interpretation: the edge survives costs but is materially eroded (43% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.07456637717969541 cagr=0.002126582774225616 n_trades=15
+     x1.5: sharpe=0.06428865730071621 cagr=0.0009880436150078165 n_trades=15
+     x2.0: sharpe=0.054019367761259415 cagr=-0.0001488638325978231 n_trades=15
+     x3.0: sharpe=0.033545950930039016 cagr=-0.0024135335484316567 n_trades=15
+  -- parameter sensitivity --
+     base_sharpe=0.054019367761259415 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 15 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=9/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': 0.11454617058783702, 'bars': 2746}, 'low_vol': {'sharpe': -0.06308141828206391, 'bars': 2746}}
+       2005: ret=0.04668105855513405 sharpe=0.5742854370226733 bars=252
+       2006: ret=-0.01687506075189993 sharpe=-0.14244061339661204 bars=252
+       2007: ret=0.09149618718882313 sharpe=1.092219287883923 bars=252
+       2008: ret=0.15291591351966427 sharpe=1.0365338387058232 bars=253
+       2009: ret=-0.27551549908852424 sharpe=-1.7962342490259777 bars=252
+       2010: ret=-0.10255488953799718 sharpe=-1.0217688570099217 bars=252
+       2011: ret=-0.08069745882212254 sharpe=-1.0367440969235944 bars=252
+       2012: ret=-0.03355446593389766 sharpe=-0.34576493758905463 bars=250
+       2013: ret=-0.014457312372067599 sharpe=-0.1605206605620011 bars=252
+       2014: ret=-0.13874614659188522 sharpe=-2.0204704254073036 bars=252
+       2015: ret=0.03155068296777741 sharpe=0.39370399677436174 bars=252
+       2016: ret=-0.01707835613360853 sharpe=-0.14664754485312195 bars=250
+       2017: ret=0.007241422060263236 sharpe=0.15239002926224088 bars=251
+       2018: ret=-0.04745927512034209 sharpe=-0.45710801509273924 bars=251
+       2019: ret=-0.029084046550863607 sharpe=-0.27437839721020557 bars=252
+       2020: ret=0.3039554044707107 sharpe=1.3966403836843138 bars=253
+       2021: ret=0.04704447968103742 sharpe=0.479243739287313 bars=252
+       2022: ret=-0.022904454887447523 sharpe=-0.07551522758015958 bars=251
+       2023: ret=-0.015776539217295715 sharpe=-0.13497066166408317 bars=251
+       2024: ret=-0.03676620086062121 sharpe=-0.32259745984457916 bars=252
+       2025: ret=0.1824162889168559 sharpe=1.6167996591245521 bars=252
+       2026: ret=0.1114713563139591 sharpe=1.0327067525590952 bars=211
+  -- capacity --
+     est_capacity_usd=19397.57929504462 binding_symbol=SI=F turnover_per_year=24127856.555391356
+     per_symbol_limits={'CL=F': 400181667.93386555, 'ES=F': 55013057737.30352, 'GC=F': 7060017.203693165, 'HG=F': 24455.939563972217, 'NG=F': 6931245.133418855, 'NQ=F': 18266075820.59527, 'RTY=F': 5672307556.331605, 'SI=F': 19397.57929504462, 'YM=F': 42922255306.235054, 'ZB=F': 632815894.7053636, 'ZC=F': 860845330.834366, 'ZF=F': 947844280.6584585, 'ZN=F': 2174518070.66535, 'ZS=F': 1146951793.5536993, 'ZT=F': 320344699.1883654}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.054019367761259415
+  -- skipped_stages (from the gauntlet) -- []
+
+------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_rates_credit
+  runner verdict     : REFUTED
+  concept            : C7_order_flow_microstructure_base
+  asset_class        : rates_credit
+  elapsed_s          : 236.0
+  row metrics (as written by the runner)   : {"oos_sharpe": 0.03438514443326499, "in_sample_sharpe": 0.03438514443326499, "n_trades": 12, "max_drawdown": 0.5103338605529977, "total_return": -0.019620882160311326}
+  row walk_forward (as written by runner)  : None
+  row stages (as written by runner)        : {}
+  row errors                             : []
+  rss_mb at end                          : 160.9
+  CAPTURED GAUNTLET SCORECARD (elapsed 236.0s):
+  verdict            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.21 is below 0.5, while the gross-of-costs Sharpe is 0.08 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  flag               : only 12 trades (need >=30)
+  flag               : t-stat 0.16 below 2.0 - the return series is not distinguishable from noise
+  flag               : only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+  flag               : OOS Sharpe retains only -21% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  IN-SAMPLE sharpe   : 0.03438514443326499
+  POOLED OOS sharpe  : -0.20667360100948615
+  OOS sharpe (live)  : -0.20667360100948615
+  n_trades (base)    : 12
+  max_drawdown       : 0.5103338605529977
+  total_return       : -0.019620882160311326
+  cagr               : -0.0009090044980464285
+  final_equity       : 98037.91178396887
+  n_bars             : 5491
+  t_stat             : 0.16050785996567185
+  costs_paid         : 9242.665360660196
+  turnover_total     : 16078361.383474978
+  symbols used       : ['BND', 'EMB', 'HYG', 'IEF', 'LQD', 'SHY', 'TIP', 'TLT', '^FVX', '^IRX', '^TNX', '^TYX']
+  -- walk-forward --
+     n_folds=5 mode=purged_embargoed purge=1 embargo=1 horizon=1
+     pooled oos_sharpe=-0.20667360100948615 oos_profitable_folds=2/5 retention=-0.21330268322109497 pbo=0.4
+     oos_cagr=-0.10617034523191049 oos_max_drawdown=0.9224396407596738 oos_trades_total=84
+     fold 0: IS_sh=1.4902753251261294 OOS_sh=-0.5276999120768703 oos_trades=10 test=['2005-06-29', '2009-05-19'] train_bars=121 test_bars=976 purge=1 embargo=1
+     fold 1: IS_sh=0.20734174344428463 OOS_sh=0.2226049301309228 oos_trades=20 test=['2009-11-11', '2013-09-27'] train_bars=241 test_bars=976 purge=1 embargo=1
+     fold 2: IS_sh=0.007471486200238117 OOS_sh=-0.6594221288027562 oos_trades=17 test=['2014-03-26', '2018-02-07'] train_bars=361 test_bars=976 purge=1 embargo=1
+     fold 3: IS_sh=0.3147547724999563 OOS_sh=-0.4487006953556132 oos_trades=17 test=['2018-08-03', '2022-06-17'] train_bars=481 test_bars=976 purge=1 embargo=1
+     fold 4: IS_sh=0.96892171204083 OOS_sh=0.5519267383685038 oos_trades=20 test=['2022-12-13', '2026-11-03'] train_bars=601 test_bars=976 purge=1 embargo=1
+     disjointness.ok=True violations=[]
+     notes=[]
+  -- gross vs net --
+     gross_sharpe=0.07993965230878587 net_sharpe=0.03438514443326499 gross_cagr=0.0031845865970046017 net_cagr=-0.0009090044980464285
+     costs_paid=9242.665360660196 turnover_total=16078361.383474978
+     interpretation: the edge survives costs but is materially eroded (57% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  -- cost stress --
+     x1.0: sharpe=0.056500853039284954 cagr=0.0011247980113950895 n_trades=12
+     x1.5: sharpe=0.04528390367820506 cagr=0.00010519552182919334 n_trades=12
+     x2.0: sharpe=0.03438514443326499 cagr=-0.0009090044980464285 n_trades=12
+     x3.0: sharpe=0.013575928049774985 cagr=-0.0029179093408353562 n_trades=12
+  -- parameter sensitivity --
+     base_sharpe=0.03438514443326499 stability=None
+     n_perturbations=0
+     interpretation: no perturbable parameter found - the sweep tested nothing and is NOT evidence of robustness
+  -- monte carlo --
+     {"error": "only 12 trades \u2014 Monte Carlo needs >=20"}
+  -- subperiod / regime --
+     positive_years=12/22 edge_concentration=True
+     by_regime={'high_vol': {'sharpe': -0.05057240086379184, 'bars': 2743}, 'low_vol': {'sharpe': 0.22553975226693782, 'bars': 2743}}
+       2005: ret=0.08467932152271485 sharpe=1.8315698505482954 bars=250
+       2006: ret=0.04286273960323839 sharpe=0.9778312069815775 bars=250
+       2007: ret=-0.11240105958608637 sharpe=-1.2516212442934485 bars=251
+       2008: ret=-0.22644938621784672 sharpe=-1.603378136902722 bars=253
+       2009: ret=0.061449331814749986 sharpe=0.5454830644189368 bars=252
+       2010: ret=-0.04005781124210672 sharpe=-0.3253414687066573 bars=252
+       2011: ret=-0.12062640763500587 sharpe=-1.4177379648702788 bars=252
+       2012: ret=-0.047532176651608915 sharpe=-0.5954493405053587 bars=250
+       2013: ret=0.10907067007610127 sharpe=1.1387978190017245 bars=252
+       2014: ret=-0.09482984193270572 sharpe=-1.7514453565088626 bars=252
+       2015: ret=0.017527967125063437 sharpe=0.2272579530654079 bars=252
+       2016: ret=0.04541519496387525 sharpe=0.534321743639762 bars=252
+       2017: ret=0.0402582533875635 sharpe=0.6316130671462825 bars=251
+       2018: ret=0.1070838568328627 sharpe=1.8202713794405332 bars=251
+       2019: ret=-0.08513834625195682 sharpe=-1.3226428040550084 bars=252
+       2020: ret=-0.19192221763075235 sharpe=-1.5747522272543661 bars=253
+       2021: ret=0.11261237047839123 sharpe=1.5927229270287535 bars=252
+       2022: ret=0.42065971671670455 sharpe=3.3604325991878743 bars=251
+       2023: ret=0.06184702128050645 sharpe=0.6802218469287021 bars=250
+       2024: ret=-0.03467805273608948 sharpe=-0.412640695081485 bars=252
+       2025: ret=-0.021893371081197155 sharpe=-0.3731193984854161 bars=250
+       2026: ret=0.0265563049174935 sharpe=0.5212211453165743 bars=211
+  -- capacity --
+     est_capacity_usd=8661466.238872882 binding_symbol=^IRX turnover_per_year=16078361.383474978
+     per_symbol_limits={'BND': 2634923429.3574877, 'EMB': 2898519791.494333, 'HYG': 11466465768.160015, 'IEF': 2677229858.581954, 'LQD': 5332556712.021832, 'SHY': 1896363717.8626726, 'TIP': 1602827961.9826696, 'TLT': 14673773529.54687, '^FVX': 12501122.410820002, '^IRX': 8661466.238872882, '^TNX': 13822767.871233407, '^TYX': 14888059.125248166}
+     note: Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+  -- replication --
+     None  (absent => the stage NEVER RAN: run_matrix passes no alt_universes)
+  -- causality audit --
+     {"causal": true, "violations": []}
+  -- deflated sharpe -- 0.03438514443326499
+  -- skipped_stages (from the gauntlet) -- []

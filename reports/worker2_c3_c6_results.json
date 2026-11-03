@@ -1,0 +1,1559 @@
+[
+  {
+    "name": "c3_vol_regime_filter_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.21 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only 1% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "Monte Carlo prob(profitable) 57%",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "NASDAQ market regime identification (LeapSpace); Financial market regime identification (LeapSpace)",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 105.6,
+    "metrics": {
+      "oos_sharpe": 0.04530083509785738,
+      "in_sample_sharpe": 0.04530083509785738,
+      "n_trades": 84,
+      "max_drawdown": 0.1064842844214684,
+      "total_return": 0.01875378208399381
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c3_vol_regime_filter_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 10 trades (need >=30)",
+      "t-stat -2.36 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress"
+    ],
+    "errors": [],
+    "paper": "NASDAQ market regime identification (LeapSpace); Financial market regime identification (LeapSpace)",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "crypto",
+    "elapsed_s": 89.2,
+    "metrics": {
+      "oos_sharpe": -0.8105403672836927,
+      "in_sample_sharpe": -0.8105403672836927,
+      "n_trades": 10,
+      "max_drawdown": 0.653152305411933,
+      "total_return": -0.6010622014457603
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c3_vol_regime_filter_fx_major",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 16 trades (need >=30)",
+      "t-stat -1.00 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "only 6/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "NASDAQ market regime identification (LeapSpace); Financial market regime identification (LeapSpace)",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "fx_major",
+    "elapsed_s": 201.2,
+    "metrics": {
+      "oos_sharpe": -0.2110223025130282,
+      "in_sample_sharpe": -0.2110223025130282,
+      "n_trades": 16,
+      "max_drawdown": 0.22138990170466544,
+      "total_return": -0.20178823856814265
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c3_vol_regime_filter_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 13 trades (need >=30)",
+      "t-stat -1.68 below 2.0 - the return series is not distinguishable from noise",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "OOS Sharpe retains only -340% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "only 8/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "NASDAQ market regime identification (LeapSpace); Financial market regime identification (LeapSpace)",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "commodities",
+    "elapsed_s": 169.9,
+    "metrics": {
+      "oos_sharpe": -0.36008112404045606,
+      "in_sample_sharpe": -0.36008112404045606,
+      "n_trades": 13,
+      "max_drawdown": 0.6654681068797788,
+      "total_return": -0.6055865005743175
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c3_vol_regime_filter_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 15 trades (need >=30)",
+      "t-stat -0.75 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "only 9/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "NASDAQ market regime identification (LeapSpace); Financial market regime identification (LeapSpace)",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "futures_broad",
+    "elapsed_s": 172.4,
+    "metrics": {
+      "oos_sharpe": -0.15982274262262303,
+      "in_sample_sharpe": -0.15982274262262303,
+      "n_trades": 15,
+      "max_drawdown": 0.47765466517640065,
+      "total_return": -0.3781618497641892
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c3_vol_regime_filter_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 12 trades (need >=30)",
+      "t-stat -0.92 below 2.0 - the return series is not distinguishable from noise",
+      "OOS Sharpe retains only -234% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "NASDAQ market regime identification (LeapSpace); Financial market regime identification (LeapSpace)",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "rates_credit",
+    "elapsed_s": 188.5,
+    "metrics": {
+      "oos_sharpe": -0.19664603724302618,
+      "in_sample_sharpe": -0.19664603724302618,
+      "n_trades": 12,
+      "max_drawdown": 0.1859647151301319,
+      "total_return": -0.14633192398131123
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c4_volume_confirmation_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -1.46 below 2.0 - the return series is not distinguishable from noise",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 8%",
+      "only 5/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 85.9,
+    "metrics": {
+      "oos_sharpe": -0.31182001086128913,
+      "in_sample_sharpe": -0.31182001086128913,
+      "n_trades": 317,
+      "max_drawdown": 0.21032639443739565,
+      "total_return": -0.20305609980226258
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c4_volume_confirmation_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.87 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 29%",
+      "only 2/6 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "crypto",
+    "elapsed_s": 56.4,
+    "metrics": {
+      "oos_sharpe": -0.30030394304257824,
+      "in_sample_sharpe": -0.30030394304257824,
+      "n_trades": 140,
+      "max_drawdown": 0.4546201924414741,
+      "total_return": -0.24778276890721007
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c4_volume_confirmation_fx_major",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "fx_major",
+    "elapsed_s": 111.8,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c4_volume_confirmation_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 13 trades (need >=30)",
+      "t-stat -0.63 below 2.0 - the return series is not distinguishable from noise",
+      "edge does not survive 2x cost stress"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "commodities",
+    "elapsed_s": 193.8,
+    "metrics": {
+      "oos_sharpe": -0.1338955342205121,
+      "in_sample_sharpe": -0.1338955342205121,
+      "n_trades": 13,
+      "max_drawdown": 0.5202743837481404,
+      "total_return": -0.3355264277042379
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c4_volume_confirmation_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.51 below 2.0 - the return series is not distinguishable from noise",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 19%",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "futures_broad",
+    "elapsed_s": 200.3,
+    "metrics": {
+      "oos_sharpe": -0.10995873013393687,
+      "in_sample_sharpe": -0.10995873013393687,
+      "n_trades": 227,
+      "max_drawdown": 0.4503901408941502,
+      "total_return": -0.24129573437319385
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c4_volume_confirmation_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -1.41 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 0%",
+      "only 8/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace); Trading strategies for retail traders (LeapSpace)",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "rates_credit",
+    "elapsed_s": 150.5,
+    "metrics": {
+      "oos_sharpe": -0.30110948691667294,
+      "in_sample_sharpe": -0.30110948691667294,
+      "n_trades": 126,
+      "max_drawdown": 0.3793129901275568,
+      "total_return": -0.26486893954403934
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c5_rsi_reversion_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 24 trades (need >=30)",
+      "t-stat -0.28 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 45%",
+      "only 2/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace)",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 63.8,
+    "metrics": {
+      "oos_sharpe": -0.06104761158157341,
+      "in_sample_sharpe": -0.06104761158157341,
+      "n_trades": 24,
+      "max_drawdown": 0.029258469238045648,
+      "total_return": -0.0060212615882662135
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c5_rsi_reversion_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 10 trades (need >=30)",
+      "t-stat -0.88 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "parameter stability 50% (< 60%)",
+      "only 1/6 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace)",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "crypto",
+    "elapsed_s": 37.9,
+    "metrics": {
+      "oos_sharpe": -0.3037777063746183,
+      "in_sample_sharpe": -0.3037777063746183,
+      "n_trades": 10,
+      "max_drawdown": 0.020677306569737097,
+      "total_return": -0.013511109723563619
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c5_rsi_reversion_fx_major",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 1.23 below 2.0 - the return series is not distinguishable from noise",
+      "only 6/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace)",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "fx_major",
+    "elapsed_s": 72.7,
+    "metrics": {
+      "oos_sharpe": 0.25808245072477703,
+      "in_sample_sharpe": 0.25808245072477703,
+      "n_trades": 119,
+      "max_drawdown": 0.02528255052229389,
+      "total_return": 0.046215525403686675
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c5_rsi_reversion_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.05 below 2.0 - the return series is not distinguishable from noise",
+      "OOS Sharpe retains only -23% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 38%",
+      "only 8/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace)",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "commodities",
+    "elapsed_s": 115.8,
+    "metrics": {
+      "oos_sharpe": -0.011121374226221156,
+      "in_sample_sharpe": -0.011121374226221156,
+      "n_trades": 336,
+      "max_drawdown": 0.20686636585492335,
+      "total_return": -0.03083927894067262
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c5_rsi_reversion_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.44 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -774% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 16%",
+      "only 9/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace)",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "futures_broad",
+    "elapsed_s": 117.6,
+    "metrics": {
+      "oos_sharpe": -0.09461719333508223,
+      "in_sample_sharpe": -0.09461719333508223,
+      "n_trades": 550,
+      "max_drawdown": 0.2773192288650683,
+      "total_return": -0.12429411173978788
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c5_rsi_reversion_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.60 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only 9% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "parameter stability 25% (< 60%)",
+      "Monte Carlo prob(profitable) 84%",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Free trading indicators for directional edge (LeapSpace)",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "rates_credit",
+    "elapsed_s": 89.6,
+    "metrics": {
+      "oos_sharpe": 0.12769887359581925,
+      "in_sample_sharpe": 0.12769887359581925,
+      "n_trades": 157,
+      "max_drawdown": 0.03560885045907247,
+      "total_return": 0.028350132226240055
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c6_rebound_danger_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 1.17 below 2.0 - the return series is not distinguishable from noise"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace)",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 39.4,
+    "metrics": {
+      "oos_sharpe": 0.25051836511137543,
+      "in_sample_sharpe": 0.25051836511137543,
+      "n_trades": 90,
+      "max_drawdown": 0.08880634696868694,
+      "total_return": 0.16664138205940437
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c6_rebound_danger_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -1.19 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 28%"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace)",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "crypto",
+    "elapsed_s": 23.7,
+    "metrics": {
+      "oos_sharpe": -0.40937971830515946,
+      "in_sample_sharpe": -0.40937971830515946,
+      "n_trades": 30,
+      "max_drawdown": 0.43805517165965524,
+      "total_return": -0.34272648699134656
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c6_rebound_danger_fx_major",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 8 trades (need >=30)",
+      "t-stat -0.62 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "only 5/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace)",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "fx_major",
+    "elapsed_s": 52.7,
+    "metrics": {
+      "oos_sharpe": -0.13097890685175637,
+      "in_sample_sharpe": -0.13097890685175637,
+      "n_trades": 8,
+      "max_drawdown": 0.20121264751908974,
+      "total_return": -0.1397010944599424
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c6_rebound_danger_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 13 trades (need >=30)",
+      "t-stat -1.35 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -241% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace)",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "commodities",
+    "elapsed_s": 81.0,
+    "metrics": {
+      "oos_sharpe": -0.28820118163318603,
+      "in_sample_sharpe": -0.28820118163318603,
+      "n_trades": 13,
+      "max_drawdown": 0.6537588184845695,
+      "total_return": -0.5303352361392477
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c6_rebound_danger_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 15 trades (need >=30)",
+      "t-stat -0.69 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace)",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "futures_broad",
+    "elapsed_s": 95.8,
+    "metrics": {
+      "oos_sharpe": -0.14831617063321992,
+      "in_sample_sharpe": -0.14831617063321992,
+      "n_trades": 15,
+      "max_drawdown": 0.510149955128095,
+      "total_return": -0.35497189044902644
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "c6_rebound_danger_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 12 trades (need >=30)",
+      "t-stat -1.18 below 2.0 - the return series is not distinguishable from noise",
+      "edge does not survive 2x cost stress",
+      "only 9/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Financial market regime identification (LeapSpace)",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "rates_credit",
+    "elapsed_s": 71.7,
+    "metrics": {
+      "oos_sharpe": -0.2531923203324148,
+      "in_sample_sharpe": -0.2531923203324148,
+      "n_trades": 12,
+      "max_drawdown": 0.23061128133920983,
+      "total_return": -0.19431998767934155
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c3_vol_regime_filter_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -1.15 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 12%",
+      "only 7/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c3_vol_regime_filter_us_equity_style; not a paper claim",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 83.3,
+    "metrics": {
+      "oos_sharpe": -0.24688616284117618,
+      "in_sample_sharpe": -0.24688616284117618,
+      "n_trades": 84,
+      "max_drawdown": 0.22158592957027257,
+      "total_return": -0.14084893315435332
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c3_vol_regime_filter_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 10 trades (need >=30)",
+      "t-stat 1.04 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -7% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "only 2/6 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c3_vol_regime_filter_crypto; not a paper claim",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "crypto",
+    "elapsed_s": 54.5,
+    "metrics": {
+      "oos_sharpe": 0.3570617672043139,
+      "in_sample_sharpe": 0.3570617672043139,
+      "n_trades": 10,
+      "max_drawdown": 0.27593946967220007,
+      "total_return": 0.2966844711511365
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c3_vol_regime_filter_fx_major",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 16 trades (need >=30)",
+      "t-stat 0.48 below 2.0 - the return series is not distinguishable from noise",
+      "OOS Sharpe retains only 25% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+    ],
+    "errors": [],
+    "paper": "Negative control for c3_vol_regime_filter_fx_major; not a paper claim",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "fx_major",
+    "elapsed_s": 114.2,
+    "metrics": {
+      "oos_sharpe": 0.10165651725891153,
+      "in_sample_sharpe": 0.10165651725891153,
+      "n_trades": 16,
+      "max_drawdown": 0.22845637425485432,
+      "total_return": 0.08095885799323344
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c3_vol_regime_filter_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 13 trades (need >=30)",
+      "t-stat 1.37 below 2.0 - the return series is not distinguishable from noise"
+    ],
+    "errors": [],
+    "paper": "Negative control for c3_vol_regime_filter_commodities; not a paper claim",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "commodities",
+    "elapsed_s": 171.4,
+    "metrics": {
+      "oos_sharpe": 0.293469879430474,
+      "in_sample_sharpe": 0.293469879430474,
+      "n_trades": 13,
+      "max_drawdown": 0.22212841839983255,
+      "total_return": 0.7520792989077478
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c3_vol_regime_filter_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 15 trades (need >=30)",
+      "t-stat 0.66 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)"
+    ],
+    "errors": [],
+    "paper": "Negative control for c3_vol_regime_filter_futures_broad; not a paper claim",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "futures_broad",
+    "elapsed_s": 189.6,
+    "metrics": {
+      "oos_sharpe": 0.14168058832616115,
+      "in_sample_sharpe": 0.14168058832616115,
+      "n_trades": 15,
+      "max_drawdown": 0.3310511692047452,
+      "total_return": 0.2293321456997921
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c3_vol_regime_filter_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 12 trades (need >=30)",
+      "t-stat 0.14 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "only 8/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c3_vol_regime_filter_rates_credit; not a paper claim",
+    "concept": "C3_volatility_regime_filter",
+    "asset_class": "rates_credit",
+    "elapsed_s": 182.8,
+    "metrics": {
+      "oos_sharpe": 0.030679499772204574,
+      "in_sample_sharpe": 0.030679499772204574,
+      "n_trades": 12,
+      "max_drawdown": 0.22558043239424563,
+      "total_return": 0.010287065652948568
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c4_volume_confirmation_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.52 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -15% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "Monte Carlo prob(profitable) 66%"
+    ],
+    "errors": [],
+    "paper": "Negative control for c4_volume_confirmation_us_equity_style; not a paper claim",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 85.0,
+    "metrics": {
+      "oos_sharpe": 0.11186625045054399,
+      "in_sample_sharpe": 0.11186625045054399,
+      "n_trades": 317,
+      "max_drawdown": 0.17459987053302695,
+      "total_return": 0.06854759371627228
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c4_volume_confirmation_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -0.08 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -28% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "parameter stability 50% (< 60%)",
+      "Monte Carlo prob(profitable) 41%"
+    ],
+    "errors": [],
+    "paper": "Negative control for c4_volume_confirmation_crypto; not a paper claim",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "crypto",
+    "elapsed_s": 44.9,
+    "metrics": {
+      "oos_sharpe": -0.025952108217377055,
+      "in_sample_sharpe": -0.025952108217377055,
+      "n_trades": 140,
+      "max_drawdown": 0.45391043990450697,
+      "total_return": -0.0602903954152062
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c4_volume_confirmation_fx_major",
+    "verdict": "INCONCLUSIVE",
+    "flags": [
+      "only 0 trades (need >=30)",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "parameter stability 0% (< 60%)",
+      "only 0/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c4_volume_confirmation_fx_major; not a paper claim",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "fx_major",
+    "elapsed_s": 97.9,
+    "metrics": {
+      "oos_sharpe": null,
+      "in_sample_sharpe": null,
+      "n_trades": null,
+      "max_drawdown": null,
+      "total_return": null
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c4_volume_confirmation_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 13 trades (need >=30)",
+      "t-stat 0.16 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "parameter stability 50% (< 60%)",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c4_volume_confirmation_commodities; not a paper claim",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "commodities",
+    "elapsed_s": 151.1,
+    "metrics": {
+      "oos_sharpe": 0.034250941898808354,
+      "in_sample_sharpe": 0.034250941898808354,
+      "n_trades": 13,
+      "max_drawdown": 0.2906923182064626,
+      "total_return": -0.03508597189244289
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c4_volume_confirmation_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.24 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only 32% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "parameter stability 50% (< 60%)",
+      "Monte Carlo prob(profitable) 53%"
+    ],
+    "errors": [],
+    "paper": "Negative control for c4_volume_confirmation_futures_broad; not a paper claim",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "futures_broad",
+    "elapsed_s": 174.9,
+    "metrics": {
+      "oos_sharpe": 0.05176526280579854,
+      "in_sample_sharpe": 0.05176526280579854,
+      "n_trades": 226,
+      "max_drawdown": 0.25389577558130993,
+      "total_return": 0.017950353514890383
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c4_volume_confirmation_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.39 below 2.0 - the return series is not distinguishable from noise",
+      "OOS Sharpe retains only -2% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "Monte Carlo prob(profitable) 76%"
+    ],
+    "errors": [],
+    "paper": "Negative control for c4_volume_confirmation_rates_credit; not a paper claim",
+    "concept": "C4_volume_confirmation",
+    "asset_class": "rates_credit",
+    "elapsed_s": 140.3,
+    "metrics": {
+      "oos_sharpe": 0.08380034810148164,
+      "in_sample_sharpe": 0.08380034810148164,
+      "n_trades": 126,
+      "max_drawdown": 0.25826923779197286,
+      "total_return": 0.06384194881126781
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c5_rsi_reversion_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 24 trades (need >=30)",
+      "t-stat 0.07 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "Monte Carlo prob(profitable) 51%",
+      "only 1/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c5_rsi_reversion_us_equity_style; not a paper claim",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 61.8,
+    "metrics": {
+      "oos_sharpe": 0.014980003527899598,
+      "in_sample_sharpe": 0.014980003527899598,
+      "n_trades": 24,
+      "max_drawdown": 0.01996888196986968,
+      "total_return": 0.0012057138059355932
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c5_rsi_reversion_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 10 trades (need >=30)",
+      "t-stat 0.42 below 2.0 - the return series is not distinguishable from noise",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "OOS Sharpe retains only -254% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "parameter stability 25% (< 60%)",
+      "only 1/6 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c5_rsi_reversion_crypto; not a paper claim",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "crypto",
+    "elapsed_s": 37.5,
+    "metrics": {
+      "oos_sharpe": 0.14329584282443017,
+      "in_sample_sharpe": 0.14329584282443017,
+      "n_trades": 10,
+      "max_drawdown": 0.009160348306158195,
+      "total_return": 0.006511680492917282
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c5_rsi_reversion_fx_major",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -1.55 below 2.0 - the return series is not distinguishable from noise",
+      "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only -1785% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 4%",
+      "only 6/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c5_rsi_reversion_fx_major; not a paper claim",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "fx_major",
+    "elapsed_s": 85.1,
+    "metrics": {
+      "oos_sharpe": -0.32680078193678497,
+      "in_sample_sharpe": -0.32680078193678497,
+      "n_trades": 119,
+      "max_drawdown": 0.07060798630768128,
+      "total_return": -0.05811479908901218
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c5_rsi_reversion_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.06 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "parameter stability 50% (< 60%)",
+      "Monte Carlo prob(profitable) 45%"
+    ],
+    "errors": [],
+    "paper": "Negative control for c5_rsi_reversion_commodities; not a paper claim",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "commodities",
+    "elapsed_s": 135.2,
+    "metrics": {
+      "oos_sharpe": 0.013630571219064486,
+      "in_sample_sharpe": 0.013630571219064486,
+      "n_trades": 336,
+      "max_drawdown": 0.16874703310703032,
+      "total_return": -0.009596835052063435
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c5_rsi_reversion_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.34 below 2.0 - the return series is not distinguishable from noise",
+      "Monte Carlo prob(profitable) 66%",
+      "only 8/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c5_rsi_reversion_futures_broad; not a paper claim",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "futures_broad",
+    "elapsed_s": 151.3,
+    "metrics": {
+      "oos_sharpe": 0.07186663695053905,
+      "in_sample_sharpe": 0.07186663695053905,
+      "n_trades": 550,
+      "max_drawdown": 0.161478596520658,
+      "total_return": 0.05291411652900302
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c5_rsi_reversion_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -1.10 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "edge does not survive 2x cost stress",
+      "parameter stability 50% (< 60%)",
+      "Monte Carlo prob(profitable) 2%"
+    ],
+    "errors": [],
+    "paper": "Negative control for c5_rsi_reversion_rates_credit; not a paper claim",
+    "concept": "C5_rsi_secondary_confirmation",
+    "asset_class": "rates_credit",
+    "elapsed_s": 118.6,
+    "metrics": {
+      "oos_sharpe": -0.23459913678301403,
+      "in_sample_sharpe": -0.23459913678301403,
+      "n_trades": 157,
+      "max_drawdown": 0.07306126253740142,
+      "total_return": -0.05432523600300654
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c6_rebound_danger_us_equity_style",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat -2.00 below 2.0 - the return series is not distinguishable from noise",
+      "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+      "edge does not survive 2x cost stress",
+      "Monte Carlo prob(profitable) 3%",
+      "only 7/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c6_rebound_danger_us_equity_style; not a paper claim",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "us_equity_style",
+    "elapsed_s": 52.8,
+    "metrics": {
+      "oos_sharpe": -0.428452486100696,
+      "in_sample_sharpe": -0.428452486100696,
+      "n_trades": 90,
+      "max_drawdown": 0.28878672291766516,
+      "total_return": -0.2539861622351599
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c6_rebound_danger_crypto",
+    "verdict": "REFUTED",
+    "flags": [
+      "t-stat 0.04 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+      "OOS Sharpe retains only 17% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "parameter stability 38% (< 60%)",
+      "Monte Carlo prob(profitable) 48%",
+      "only 2/6 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c6_rebound_danger_crypto; not a paper claim",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "crypto",
+    "elapsed_s": 32.2,
+    "metrics": {
+      "oos_sharpe": 0.014790126722099364,
+      "in_sample_sharpe": 0.014790126722099364,
+      "n_trades": 30,
+      "max_drawdown": 0.33741160577470153,
+      "total_return": -0.031001069658029623
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c6_rebound_danger_fx_major",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 8 trades (need >=30)",
+      "t-stat 0.12 below 2.0 - the return series is not distinguishable from noise",
+      "OOS Sharpe retains only 3% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+    ],
+    "errors": [],
+    "paper": "Negative control for c6_rebound_danger_fx_major; not a paper claim",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "fx_major",
+    "elapsed_s": 68.8,
+    "metrics": {
+      "oos_sharpe": 0.024826026014280553,
+      "in_sample_sharpe": 0.024826026014280553,
+      "n_trades": 8,
+      "max_drawdown": 0.24332751146738973,
+      "total_return": 0.0028376308779711756
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c6_rebound_danger_commodities",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 13 trades (need >=30)",
+      "t-stat 1.17 below 2.0 - the return series is not distinguishable from noise"
+    ],
+    "errors": [],
+    "paper": "Negative control for c6_rebound_danger_commodities; not a paper claim",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "commodities",
+    "elapsed_s": 104.7,
+    "metrics": {
+      "oos_sharpe": 0.2497254661859544,
+      "in_sample_sharpe": 0.2497254661859544,
+      "n_trades": 13,
+      "max_drawdown": 0.2131545429437871,
+      "total_return": 0.5704659080839372
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c6_rebound_danger_futures_broad",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 15 trades (need >=30)",
+      "t-stat 0.61 below 2.0 - the return series is not distinguishable from noise",
+      "only 10/22 profitable years"
+    ],
+    "errors": [],
+    "paper": "Negative control for c6_rebound_danger_futures_broad; not a paper claim",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "futures_broad",
+    "elapsed_s": 117.3,
+    "metrics": {
+      "oos_sharpe": 0.13037742262774865,
+      "in_sample_sharpe": 0.13037742262774865,
+      "n_trades": 15,
+      "max_drawdown": 0.2679725667107088,
+      "total_return": 0.1955684049752351
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  },
+  {
+    "name": "NEGATIVE-CONTROL-c6_rebound_danger_rates_credit",
+    "verdict": "REFUTED",
+    "flags": [
+      "only 12 trades (need >=30)",
+      "t-stat 0.53 below 2.0 - the return series is not distinguishable from noise",
+      "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)"
+    ],
+    "errors": [],
+    "paper": "Negative control for c6_rebound_danger_rates_credit; not a paper claim",
+    "concept": "C6_rebound_after_crash_danger",
+    "asset_class": "rates_credit",
+    "elapsed_s": 95.8,
+    "metrics": {
+      "oos_sharpe": 0.11375155521864799,
+      "in_sample_sharpe": 0.11375155521864799,
+      "n_trades": 12,
+      "max_drawdown": 0.17004338120435314,
+      "total_return": 0.07409196986523425
+    },
+    "walk_forward": null,
+    "stages": {},
+    "leading_coverage": {
+      "n_bars": 0,
+      "n_leading": 0,
+      "fraction": 0.0,
+      "source": "",
+      "asset": "",
+      "reason": "this spec does not use a leading indicator"
+    }
+  }
+]

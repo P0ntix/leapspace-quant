@@ -1,0 +1,24 @@
+=== c7_session_drift_us_equity_style
+    -> FRAGILE ["only 9 trades (need >=30)"]
+=== NEGATIVE-CONTROL-c7_session_drift_us_equity_style
+    -> FRAGILE ["only 9 trades (need >=30)"]
+=== c7_session_drift_crypto
+    -> FRAGILE ["t-stat -0.24 below 2.0 - the return series is not distinguishable from noise", "edge does not survive 2x cost stress", "Monte Carlo prob(profitable) 38%"]
+=== NEGATIVE-CONTROL-c7_session_drift_crypto
+    -> FRAGILE ["t-stat -0.24 below 2.0 - the return series is not distinguishable from noise", "edge does not survive 2x cost stress", "Monte Carlo prob(profitable) 38%"]
+=== c7_session_drift_fx_major
+    -> INCONCLUSIVE []
+=== NEGATIVE-CONTROL-c7_session_drift_fx_major
+    -> INCONCLUSIVE []
+=== c7_session_drift_commodities
+    -> FRAGILE ["only 13 trades (need >=30)", "t-stat 1.84 below 2.0 - the return series is not distinguishable from noise"]
+=== NEGATIVE-CONTROL-c7_session_drift_commodities
+    -> FRAGILE ["only 13 trades (need >=30)", "t-stat 1.84 below 2.0 - the return series is not distinguishable from noise"]
+=== c7_session_drift_futures_broad
+    -> FRAGILE ["only 15 trades (need >=30)", "t-stat 0.76 below 2.0 - the return series is not distinguishable from noise"]
+=== NEGATIVE-CONTROL-c7_session_drift_futures_broad
+    -> FRAGILE ["only 15 trades (need >=30)", "t-stat 0.76 below 2.0 - the return series is not distinguishable from noise"]
+=== c7_session_drift_rates_credit
+    -> REFUTED ["only 15 trades (need >=30)", "t-stat -0.23 below 2.0 - the return series is not distinguishable from noise", "only 1/2 walk-forward folds profitable (edge concentrated in a few periods)", "edge does not survive 2x cost stress"]
+=== NEGATIVE-CONTROL-c7_session_drift_rates_credit
+    -> REFUTED ["only 15 trades (need >=30)", "t-stat -0.23 below 2.0 - the return series is not distinguishable from noise", "only 1/2 walk-forward folds profitable (edge concentrated in a few periods)", "edge does not survive 2x cost stress"]

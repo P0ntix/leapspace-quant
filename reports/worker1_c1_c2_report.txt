@@ -1,0 +1,1250 @@
+PRIMARY RUN (as shipped): 24 specs, quick=False, elapsed 4390.7s
+
+==============================================================================
+c1_regime_switch_us_equity_style
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : us_equity_style
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe 0.09 is below 0.5, while the gross-of-costs Sharpe is 0.40 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  FLAGS (verbatim):
+     - t-stat 1.25 below 2.0 - the return series is not distinguishable from noise
+     - OOS Sharpe retains only 26% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  in-sample Sharpe   : 0.268
+  POOLED OOS Sharpe  : 0.090   (live-basis 0.090)
+  final in-sample Sh : 0.341
+  OOS retention      : 0.264
+  n_trades           : 36
+  max drawdown       : 0.085
+  total return       : 0.161
+  cagr               : 0.007
+  n_bars             : 5492
+  t_stat             : 1.252
+  OOS trades (folds) : 53
+  OOS max drawdown   : 0.140
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = 0.597   | in-sample Sharpe = 1.151   | test ['2005-12-15', '2009-05-14'] (858 bars) | OOS trades 12
+     fold 1: OOS Sharpe = -0.498   | in-sample Sharpe = 2.015   | test ['2010-04-30', '2013-09-25'] (858 bars) | OOS trades 6
+     fold 2: OOS Sharpe = 0.092   | in-sample Sharpe = 1.508   | test ['2014-09-10', '2018-02-05'] (858 bars) | OOS trades 17
+     fold 3: OOS Sharpe = -0.077   | in-sample Sharpe = 1.081   | test ['2019-01-22', '2022-06-15'] (858 bars) | OOS trades 12
+     fold 4: OOS Sharpe = 0.371   | in-sample Sharpe = 0.341   | test ['2023-06-01', '2026-10-30'] (858 bars) | OOS trades 6
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        0.26816440330087116
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe 0.397 vs net 0.268 :: the edge survives costs but is materially eroded (32% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  leading_coverage   : this spec does not use a leading indicator
+
+==============================================================================
+c1_regime_switch_crypto
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : crypto
+  VERDICT            : INCONCLUSIVE
+  reasoning          : Too few trades (20) to distinguish signal from noise.
+  FLAGS (verbatim):
+     - only 20 trades (need >=30)
+     - t-stat -0.39 below 2.0 - the return series is not distinguishable from noise
+     - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 40%
+     - only 2/6 profitable years
+  in-sample Sharpe   : -0.133
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : -0.229
+  OOS retention      : None
+  n_trades           : 20
+  max drawdown       : 0.367
+  total return       : -0.146
+  cagr               : -0.019
+  n_bars             : 2132
+  t_stat             : -0.387
+  OOS trades (folds) : 0
+  OOS max drawdown   : 0.000
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = None   | in-sample Sharpe = 0.661   | test ['2021-08-30', '2022-03-03'] (186 bars) | OOS trades 0
+     fold 1: OOS Sharpe = None   | in-sample Sharpe = 0.314   | test ['2022-10-31', '2023-05-04'] (186 bars) | OOS trades 0
+     fold 2: OOS Sharpe = None   | in-sample Sharpe = 0.299   | test ['2023-12-31', '2024-07-03'] (186 bars) | OOS trades 0
+     fold 3: OOS Sharpe = None   | in-sample Sharpe = -0.378   | test ['2025-03-01', '2025-09-02'] (186 bars) | OOS trades 0
+     fold 4: OOS Sharpe = None   | in-sample Sharpe = -0.229   | test ['2026-05-01', '2026-11-02'] (186 bars) | OOS trades 0
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.13321203982346835
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe 0.075 vs net -0.133 :: there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency
+  leading_coverage   : this spec does not use a leading indicator
+
+==============================================================================
+c1_regime_switch_fx_major
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : fx_major
+  VERDICT            : INCONCLUSIVE
+  reasoning          : Too few trades (0) to distinguish signal from noise.
+  FLAGS (verbatim):
+     - only 0 trades (need >=30)
+     - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     - edge does not survive 2x cost stress
+     - parameter stability 0% (< 60%)
+     - only 0/22 profitable years
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : 0
+  max drawdown       : 0.000
+  total return       : 0.000
+  cagr               : 0.000
+  n_bars             : 5680
+  t_stat             : None
+  OOS trades (folds) : 0
+  OOS max drawdown   : 0.000
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2005-12-06', '2009-05-19'] (896 bars) | OOS trades 0
+     fold 1: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2010-04-21', '2013-09-26'] (896 bars) | OOS trades 0
+     fold 2: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2014-09-01', '2018-02-08'] (896 bars) | OOS trades 0
+     fold 3: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2019-01-11', '2022-06-19'] (896 bars) | OOS trades 0
+     fold 4: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2023-05-22', '2026-11-03'] (896 bars) | OOS trades 0
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ERRORED    only 0 trades — Monte Carlo needs >=20
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe None vs net None :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+
+==============================================================================
+c1_regime_switch_commodities
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : commodities
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.14 is below 0.5, and the gross-of-costs Sharpe is -0.05 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  FLAGS (verbatim):
+     - t-stat -0.43 below 2.0 - the return series is not distinguishable from noise
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 20%
+  in-sample Sharpe   : -0.093
+  POOLED OOS Sharpe  : -0.138   (live-basis -0.138)
+  final in-sample Sh : -0.037
+  OOS retention      : None
+  n_trades           : 84
+  max drawdown       : 0.388
+  total return       : -0.224
+  cagr               : -0.012
+  n_bars             : 5492
+  t_stat             : -0.432
+  OOS trades (folds) : 98
+  OOS max drawdown   : 0.347
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = -1.268   | in-sample Sharpe = -1.357   | test ['2005-12-16', '2009-05-18'] (858 bars) | OOS trades 13
+     fold 1: OOS Sharpe = 0.082   | in-sample Sharpe = -0.024   | test ['2010-05-04', '2013-09-27'] (858 bars) | OOS trades 13
+     fold 2: OOS Sharpe = 0.487   | in-sample Sharpe = 0.507   | test ['2014-09-12', '2018-02-09'] (858 bars) | OOS trades 36
+     fold 3: OOS Sharpe = -0.117   | in-sample Sharpe = -0.045   | test ['2019-01-28', '2022-06-22'] (858 bars) | OOS trades 13
+     fold 4: OOS Sharpe = 0.106   | in-sample Sharpe = -0.037   | test ['2023-06-07', '2026-11-03'] (858 bars) | OOS trades 23
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.09260453638500007
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe -0.046 vs net -0.093 :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+
+==============================================================================
+c1_regime_switch_futures_broad
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : futures_broad
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe 0.13 is below 0.5, and the gross-of-costs Sharpe is -0.15 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  FLAGS (verbatim):
+     - t-stat -0.89 below 2.0 - the return series is not distinguishable from noise
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 21%
+     - only 7/22 profitable years
+  in-sample Sharpe   : -0.190
+  POOLED OOS Sharpe  : 0.132   (live-basis 0.132)
+  final in-sample Sh : -0.540
+  OOS retention      : None
+  n_trades           : 92
+  max drawdown       : 0.473
+  total return       : -0.323
+  cagr               : -0.018
+  n_bars             : 5497
+  t_stat             : -0.888
+  OOS trades (folds) : 163
+  OOS max drawdown   : 0.366
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = 1.290   | in-sample Sharpe = -3.043   | test ['2005-12-15', '2009-05-13'] (859 bars) | OOS trades 38
+     fold 1: OOS Sharpe = 0.725   | in-sample Sharpe = -1.182   | test ['2010-04-29', '2013-09-25'] (859 bars) | OOS trades 27
+     fold 2: OOS Sharpe = 0.273   | in-sample Sharpe = -0.496   | test ['2014-09-10', '2018-02-08'] (859 bars) | OOS trades 41
+     fold 3: OOS Sharpe = -0.333   | in-sample Sharpe = -0.419   | test ['2019-01-25', '2022-06-22'] (859 bars) | OOS trades 28
+     fold 4: OOS Sharpe = -0.785   | in-sample Sharpe = -0.540   | test ['2023-06-07', '2026-11-03'] (859 bars) | OOS trades 29
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.19011583827138334
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe -0.151 vs net -0.190 :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+
+==============================================================================
+c1_regime_switch_rates_credit
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : rates_credit
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.44 is below 0.5, and the gross-of-costs Sharpe is -0.21 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  FLAGS (verbatim):
+     - t-stat -2.19 below 2.0 - the return series is not distinguishable from noise
+     - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+     - OOS Sharpe retains only -54% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 2%
+     - only 5/22 profitable years
+  in-sample Sharpe   : -0.469
+  POOLED OOS Sharpe  : -0.439   (live-basis -0.439)
+  final in-sample Sh : 0.820
+  OOS retention      : -0.535
+  n_trades           : 52
+  max drawdown       : 0.242
+  total return       : -0.200
+  cagr               : -0.010
+  n_bars             : 5491
+  t_stat             : -2.188
+  OOS trades (folds) : 108
+  OOS max drawdown   : 0.977
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = -1.070   | in-sample Sharpe = 0.586   | test ['2005-12-19', '2009-05-19'] (858 bars) | OOS trades 12
+     fold 1: OOS Sharpe = -0.566   | in-sample Sharpe = 0.424   | test ['2010-05-04', '2013-09-27'] (858 bars) | OOS trades 36
+     fold 2: OOS Sharpe = -0.407   | in-sample Sharpe = 0.386   | test ['2014-09-12', '2018-02-07'] (858 bars) | OOS trades 12
+     fold 3: OOS Sharpe = -0.371   | in-sample Sharpe = 0.465   | test ['2019-01-24', '2022-06-17'] (858 bars) | OOS trades 24
+     fold 4: OOS Sharpe = 0.245   | in-sample Sharpe = 0.820   | test ['2023-06-05', '2026-11-03'] (858 bars) | OOS trades 24
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.4687089090477306
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe -0.207 vs net -0.469 :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+
+==============================================================================
+c2_leading_vrp_us_equity_style
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : us_equity_style
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1250/5492 bars = 22.8%
+     source           : yahoo.chart (^VXN)
+     series span      : 2021-11-03 .. 2026-11-03 (1255 points)
+     resolution       : the universe is Nasdaq-like, so the Nasdaq-100 implied volatility index is the matching leading indicator
+     feature leading_vrp_score: 1250/5492 bars non-null = 22.8%
+     feature leading_vrp_zscore: 1250/5492 bars non-null = 22.8%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.208
+     POOLED OOS Sharpe: -0.156
+     n_trades         : 6
+     flags            : ['only 6 trades (need >=30)', 't-stat -0.97 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'only 3/22 profitable years']
+
+==============================================================================
+c2_leading_vrp_crypto
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : crypto
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 2049/2132 bars = 96.1%
+     source           : deribit.dvol (BTC)
+     series span      : 2021-03-24 .. 2026-11-03 (2051 points)
+     resolution       : the universe contains BTC-USD, whose options are priced on Deribit as BTC
+     feature leading_vrp_score: 2049/2132 bars non-null = 96.1%
+     feature leading_vrp_zscore: 2049/2132 bars non-null = 96.1%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.143
+     POOLED OOS Sharpe: -0.277
+     n_trades         : 10
+     flags            : ['only 10 trades (need >=30)', 't-stat -0.42 below 2.0 - the return series is not distinguishable from noise', 'only 2/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'only 2/6 profitable years', 'LOOK-AHEAD DETECTED — feature uses future data']
+
+==============================================================================
+c2_leading_vrp_fx_major
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : fx_major
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1298/5680 bars = 22.9%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1298/5680 bars non-null = 22.9%
+     feature leading_vrp_zscore: 1298/5680 bars non-null = 22.9%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.089
+     POOLED OOS Sharpe: -0.047
+     n_trades         : 32
+     flags            : ['t-stat -0.42 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'Monte Carlo prob(profitable) 21%', 'only 2/22 profitable years']
+
+==============================================================================
+c2_leading_vrp_commodities
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : commodities
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1255/5492 bars = 22.9%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1255/5492 bars non-null = 22.9%
+     feature leading_vrp_zscore: 1255/5492 bars non-null = 22.9%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.124
+     POOLED OOS Sharpe: -0.075
+     n_trades         : 13
+     flags            : ['only 13 trades (need >=30)', 't-stat -0.58 below 2.0 - the return series is not distinguishable from noise', '0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few', 'edge does not survive 2x cost stress', 'only 2/22 profitable years']
+
+==============================================================================
+c2_leading_vrp_futures_broad
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : futures_broad
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1256/5497 bars = 22.8%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1256/5497 bars non-null = 22.8%
+     feature leading_vrp_zscore: 1256/5497 bars non-null = 22.8%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.043
+     POOLED OOS Sharpe: 0.023
+     n_trades         : 15
+     flags            : ['only 15 trades (need >=30)', 't-stat -0.20 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'OOS Sharpe retains only 29% of the in-sample Sharpe (need 40%) - the edge degrades out of sample', 'edge does not survive 2x cost stress', 'only 2/22 profitable years']
+
+==============================================================================
+c2_leading_vrp_rates_credit
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : rates_credit
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1253/5491 bars = 22.8%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1253/5491 bars non-null = 22.8%
+     feature leading_vrp_zscore: 1253/5491 bars non-null = 22.8%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.237
+     POOLED OOS Sharpe: 0.313
+     n_trades         : 8
+     flags            : ['only 8 trades (need >=30)', 't-stat -1.10 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'only 2/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c1_regime_switch_us_equity_style
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : us_equity_style
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe 0.09 is below 0.5, while the gross-of-costs Sharpe is 0.40 - a real gross edge exists but it is too small to survive costs at this size and frequency.
+  FLAGS (verbatim):
+     - t-stat 1.25 below 2.0 - the return series is not distinguishable from noise
+     - OOS Sharpe retains only 26% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  in-sample Sharpe   : 0.268
+  POOLED OOS Sharpe  : 0.090   (live-basis 0.090)
+  final in-sample Sh : 0.341
+  OOS retention      : 0.264
+  n_trades           : 36
+  max drawdown       : 0.085
+  total return       : 0.161
+  cagr               : 0.007
+  n_bars             : 5492
+  t_stat             : 1.252
+  OOS trades (folds) : 53
+  OOS max drawdown   : 0.140
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = 0.597   | in-sample Sharpe = 1.151   | test ['2005-12-15', '2009-05-14'] (858 bars) | OOS trades 12
+     fold 1: OOS Sharpe = -0.498   | in-sample Sharpe = 2.015   | test ['2010-04-30', '2013-09-25'] (858 bars) | OOS trades 6
+     fold 2: OOS Sharpe = 0.092   | in-sample Sharpe = 1.508   | test ['2014-09-10', '2018-02-05'] (858 bars) | OOS trades 17
+     fold 3: OOS Sharpe = -0.077   | in-sample Sharpe = 1.081   | test ['2019-01-22', '2022-06-15'] (858 bars) | OOS trades 12
+     fold 4: OOS Sharpe = 0.371   | in-sample Sharpe = 0.341   | test ['2023-06-01', '2026-10-30'] (858 bars) | OOS trades 6
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        0.26816440330087116
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe 0.397 vs net 0.268 :: the edge survives costs but is materially eroded (32% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+  leading_coverage   : this spec does not use a leading indicator
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.521
+     POOLED OOS Sharpe: -0.313
+     n_trades         : 36
+     flags            : ['t-stat -2.43 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'Monte Carlo prob(profitable) 0%', 'only 6/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c1_regime_switch_crypto
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : crypto
+  VERDICT            : INCONCLUSIVE
+  reasoning          : Too few trades (20) to distinguish signal from noise.
+  FLAGS (verbatim):
+     - only 20 trades (need >=30)
+     - t-stat -0.39 below 2.0 - the return series is not distinguishable from noise
+     - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 40%
+     - only 2/6 profitable years
+  in-sample Sharpe   : -0.133
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : -0.229
+  OOS retention      : None
+  n_trades           : 20
+  max drawdown       : 0.367
+  total return       : -0.146
+  cagr               : -0.019
+  n_bars             : 2132
+  t_stat             : -0.387
+  OOS trades (folds) : 0
+  OOS max drawdown   : 0.000
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = None   | in-sample Sharpe = 0.661   | test ['2021-08-30', '2022-03-03'] (186 bars) | OOS trades 0
+     fold 1: OOS Sharpe = None   | in-sample Sharpe = 0.314   | test ['2022-10-31', '2023-05-04'] (186 bars) | OOS trades 0
+     fold 2: OOS Sharpe = None   | in-sample Sharpe = 0.299   | test ['2023-12-31', '2024-07-03'] (186 bars) | OOS trades 0
+     fold 3: OOS Sharpe = None   | in-sample Sharpe = -0.378   | test ['2025-03-01', '2025-09-02'] (186 bars) | OOS trades 0
+     fold 4: OOS Sharpe = None   | in-sample Sharpe = -0.229   | test ['2026-05-01', '2026-11-02'] (186 bars) | OOS trades 0
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.13321203982346835
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe 0.075 vs net -0.133 :: there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency
+  leading_coverage   : this spec does not use a leading indicator
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : INCONCLUSIVE
+     IS Sharpe        : -0.300
+     POOLED OOS Sharpe: None
+     n_trades         : 20
+     flags            : ['only 20 trades (need >=30)', 't-stat -0.87 below 2.0 - the return series is not distinguishable from noise', '0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few', 'edge does not survive 2x cost stress', 'Monte Carlo prob(profitable) 25%', 'only 2/6 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c1_regime_switch_fx_major
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : fx_major
+  VERDICT            : INCONCLUSIVE
+  reasoning          : Too few trades (0) to distinguish signal from noise.
+  FLAGS (verbatim):
+     - only 0 trades (need >=30)
+     - 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     - edge does not survive 2x cost stress
+     - parameter stability 0% (< 60%)
+     - only 0/22 profitable years
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : 0
+  max drawdown       : 0.000
+  total return       : 0.000
+  cagr               : 0.000
+  n_bars             : 5680
+  t_stat             : None
+  OOS trades (folds) : 0
+  OOS max drawdown   : 0.000
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2005-12-06', '2009-05-19'] (896 bars) | OOS trades 0
+     fold 1: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2010-04-21', '2013-09-26'] (896 bars) | OOS trades 0
+     fold 2: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2014-09-01', '2018-02-08'] (896 bars) | OOS trades 0
+     fold 3: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2019-01-11', '2022-06-19'] (896 bars) | OOS trades 0
+     fold 4: OOS Sharpe = None   | in-sample Sharpe = None   | test ['2023-05-22', '2026-11-03'] (896 bars) | OOS trades 0
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ERRORED    only 0 trades — Monte Carlo needs >=20
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe None vs net None :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : INCONCLUSIVE
+     IS Sharpe        : None
+     POOLED OOS Sharpe: None
+     n_trades         : 0
+     flags            : ['only 0 trades (need >=30)', '0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few', 'edge does not survive 2x cost stress', 'parameter stability 0% (< 60%)', 'only 0/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c1_regime_switch_commodities
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : commodities
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.14 is below 0.5, and the gross-of-costs Sharpe is -0.05 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  FLAGS (verbatim):
+     - t-stat -0.43 below 2.0 - the return series is not distinguishable from noise
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 20%
+  in-sample Sharpe   : -0.093
+  POOLED OOS Sharpe  : -0.138   (live-basis -0.138)
+  final in-sample Sh : -0.037
+  OOS retention      : None
+  n_trades           : 84
+  max drawdown       : 0.388
+  total return       : -0.224
+  cagr               : -0.012
+  n_bars             : 5492
+  t_stat             : -0.432
+  OOS trades (folds) : 98
+  OOS max drawdown   : 0.347
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = -1.268   | in-sample Sharpe = -1.357   | test ['2005-12-16', '2009-05-18'] (858 bars) | OOS trades 13
+     fold 1: OOS Sharpe = 0.082   | in-sample Sharpe = -0.024   | test ['2010-05-04', '2013-09-27'] (858 bars) | OOS trades 13
+     fold 2: OOS Sharpe = 0.487   | in-sample Sharpe = 0.507   | test ['2014-09-12', '2018-02-09'] (858 bars) | OOS trades 36
+     fold 3: OOS Sharpe = -0.117   | in-sample Sharpe = -0.045   | test ['2019-01-28', '2022-06-22'] (858 bars) | OOS trades 13
+     fold 4: OOS Sharpe = 0.106   | in-sample Sharpe = -0.037   | test ['2023-06-07', '2026-11-03'] (858 bars) | OOS trades 23
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.09260453638500007
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe -0.046 vs net -0.093 :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : 0.019
+     POOLED OOS Sharpe: 0.068
+     n_trades         : 86
+     flags            : ['t-stat 0.09 below 2.0 - the return series is not distinguishable from noise', 'only 2/5 walk-forward folds profitable (edge concentrated in a few periods)', 'Monte Carlo prob(profitable) 44%', 'only 10/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c1_regime_switch_futures_broad
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : futures_broad
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe 0.13 is below 0.5, and the gross-of-costs Sharpe is -0.15 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  FLAGS (verbatim):
+     - t-stat -0.89 below 2.0 - the return series is not distinguishable from noise
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 21%
+     - only 7/22 profitable years
+  in-sample Sharpe   : -0.190
+  POOLED OOS Sharpe  : 0.132   (live-basis 0.132)
+  final in-sample Sh : -0.540
+  OOS retention      : None
+  n_trades           : 92
+  max drawdown       : 0.473
+  total return       : -0.323
+  cagr               : -0.018
+  n_bars             : 5497
+  t_stat             : -0.888
+  OOS trades (folds) : 163
+  OOS max drawdown   : 0.366
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = 1.290   | in-sample Sharpe = -3.043   | test ['2005-12-15', '2009-05-13'] (859 bars) | OOS trades 38
+     fold 1: OOS Sharpe = 0.725   | in-sample Sharpe = -1.182   | test ['2010-04-29', '2013-09-25'] (859 bars) | OOS trades 27
+     fold 2: OOS Sharpe = 0.273   | in-sample Sharpe = -0.496   | test ['2014-09-10', '2018-02-08'] (859 bars) | OOS trades 41
+     fold 3: OOS Sharpe = -0.333   | in-sample Sharpe = -0.419   | test ['2019-01-25', '2022-06-22'] (859 bars) | OOS trades 28
+     fold 4: OOS Sharpe = -0.785   | in-sample Sharpe = -0.540   | test ['2023-06-07', '2026-11-03'] (859 bars) | OOS trades 29
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.19011583827138334
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe -0.151 vs net -0.190 :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : 0.134
+     POOLED OOS Sharpe: -0.194
+     n_trades         : 92
+     flags            : ['t-stat 0.62 below 2.0 - the return series is not distinguishable from noise', 'only 2/5 walk-forward folds profitable (edge concentrated in a few periods)', 'OOS Sharpe retains only -42% of the in-sample Sharpe (need 40%) - the edge degrades out of sample', 'Monte Carlo prob(profitable) 66%']
+
+==============================================================================
+NEGATIVE-CONTROL-c1_regime_switch_rates_credit
+==============================================================================
+  concept            : C1_regime_conditioned_switching
+  asset class        : rates_credit
+  VERDICT            : REFUTED
+  reasoning          : Pooled OOS Sharpe -0.44 is below 0.5, and the gross-of-costs Sharpe is -0.21 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  FLAGS (verbatim):
+     - t-stat -2.19 below 2.0 - the return series is not distinguishable from noise
+     - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+     - OOS Sharpe retains only -54% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+     - edge does not survive 2x cost stress
+     - Monte Carlo prob(profitable) 2%
+     - only 5/22 profitable years
+  in-sample Sharpe   : -0.469
+  POOLED OOS Sharpe  : -0.439   (live-basis -0.439)
+  final in-sample Sh : 0.820
+  OOS retention      : -0.535
+  n_trades           : 52
+  max drawdown       : 0.242
+  total return       : -0.200
+  cagr               : -0.010
+  n_bars             : 5491
+  t_stat             : -2.188
+  OOS trades (folds) : 108
+  OOS max drawdown   : 0.977
+  per-fold walk-forward table:
+     fold 0: OOS Sharpe = -1.070   | in-sample Sharpe = 0.586   | test ['2005-12-19', '2009-05-19'] (858 bars) | OOS trades 12
+     fold 1: OOS Sharpe = -0.566   | in-sample Sharpe = 0.424   | test ['2010-05-04', '2013-09-27'] (858 bars) | OOS trades 36
+     fold 2: OOS Sharpe = -0.407   | in-sample Sharpe = 0.386   | test ['2014-09-12', '2018-02-07'] (858 bars) | OOS trades 12
+     fold 3: OOS Sharpe = -0.371   | in-sample Sharpe = 0.465   | test ['2019-01-24', '2022-06-17'] (858 bars) | OOS trades 24
+     fold 4: OOS Sharpe = 0.245   | in-sample Sharpe = 0.820   | test ['2023-06-05', '2026-11-03'] (858 bars) | OOS trades 24
+  robustness stages:
+     walk_forward             ran        
+     gross_vs_net             ran        
+     cost_stress              ran        
+     parameter_sensitivity    ran        
+     monte_carlo              ran        
+     subperiod                ran        
+     capacity                 ran        
+     causality                ran        
+     deflated_sharpe          ran        -0.4687089090477306
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: []
+  gross Sharpe -0.207 vs net -0.469 :: no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+  leading_coverage   : this spec does not use a leading indicator
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : FRAGILE
+     IS Sharpe        : -0.065
+     POOLED OOS Sharpe: 0.560
+     n_trades         : 52
+     flags            : ['t-stat -0.30 below 2.0 - the return series is not distinguishable from noise', 'edge does not survive 2x cost stress', 'Monte Carlo prob(profitable) 37%', 'only 10/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : us_equity_style
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1250/5492 bars = 22.8%
+     source           : yahoo.chart (^VXN)
+     series span      : 2021-11-03 .. 2026-11-03 (1255 points)
+     resolution       : the universe is Nasdaq-like, so the Nasdaq-100 implied volatility index is the matching leading indicator
+     feature leading_vrp_score: 1250/5492 bars non-null = 22.8%
+     feature leading_vrp_zscore: 1250/5492 bars non-null = 22.8%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.157
+     POOLED OOS Sharpe: -0.280
+     n_trades         : 12
+     flags            : ['only 12 trades (need >=30)', 't-stat -0.73 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'OOS Sharpe retains only -169% of the in-sample Sharpe (need 40%) - the edge degrades out of sample', 'edge does not survive 2x cost stress', 'only 1/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c2_leading_vrp_crypto
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : crypto
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 2049/2132 bars = 96.1%
+     source           : deribit.dvol (BTC)
+     series span      : 2021-03-24 .. 2026-11-03 (2051 points)
+     resolution       : the universe contains BTC-USD, whose options are priced on Deribit as BTC
+     feature leading_vrp_score: 2049/2132 bars non-null = 96.1%
+     feature leading_vrp_zscore: 2049/2132 bars non-null = 96.1%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.567
+     POOLED OOS Sharpe: -0.792
+     n_trades         : 20
+     flags            : ['only 20 trades (need >=30)', 't-stat -1.65 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'Monte Carlo prob(profitable) 18%', 'only 2/6 profitable years', 'LOOK-AHEAD DETECTED — feature uses future data']
+
+==============================================================================
+NEGATIVE-CONTROL-c2_leading_vrp_fx_major
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : fx_major
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1298/5680 bars = 22.9%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1298/5680 bars non-null = 22.9%
+     feature leading_vrp_zscore: 1298/5680 bars non-null = 22.9%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.237
+     POOLED OOS Sharpe: -0.274
+     n_trades         : 24
+     flags            : ['only 24 trades (need >=30)', 't-stat -1.12 below 2.0 - the return series is not distinguishable from noise', '0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few', 'edge does not survive 2x cost stress', 'Monte Carlo prob(profitable) 2%', 'only 0/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c2_leading_vrp_commodities
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : commodities
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1255/5492 bars = 22.9%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1255/5492 bars non-null = 22.9%
+     feature leading_vrp_zscore: 1255/5492 bars non-null = 22.9%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.190
+     POOLED OOS Sharpe: -0.110
+     n_trades         : 13
+     flags            : ['only 13 trades (need >=30)', 't-stat -0.89 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'only 2/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c2_leading_vrp_futures_broad
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : futures_broad
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1256/5497 bars = 22.8%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1256/5497 bars non-null = 22.8%
+     feature leading_vrp_zscore: 1256/5497 bars non-null = 22.8%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.102
+     POOLED OOS Sharpe: -0.038
+     n_trades         : 15
+     flags            : ['only 15 trades (need >=30)', 't-stat -0.48 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'only 2/22 profitable years']
+
+==============================================================================
+NEGATIVE-CONTROL-c2_leading_vrp_rates_credit
+==============================================================================
+  concept            : C2_leading_volatility_risk_premium
+  asset class        : rates_credit
+  VERDICT            : INCONCLUSIVE
+  ERRORS             :
+     - TypeError: object of type 'float' has no len()
+  GAUNTLET RAISED    : TypeError: object of type 'float' has no len()
+  FLAGS (verbatim):
+     (none)
+  in-sample Sharpe   : None
+  POOLED OOS Sharpe  : None   (live-basis None)
+  final in-sample Sh : None
+  OOS retention      : None
+  n_trades           : None
+  max drawdown       : None
+  total return       : None
+  cagr               : None
+  n_bars             : None
+  t_stat             : None
+  OOS trades (folds) : None
+  OOS max drawdown   : None
+  per-fold walk-forward table:
+     (no folds -- the walk-forward did not run)
+  robustness stages:
+     walk_forward             NOT RUN    stage absent from the scorecard
+     gross_vs_net             NOT RUN    stage absent from the scorecard
+     cost_stress              NOT RUN    stage absent from the scorecard
+     parameter_sensitivity    NOT RUN    stage absent from the scorecard
+     monte_carlo              NOT RUN    stage absent from the scorecard
+     subperiod                NOT RUN    stage absent from the scorecard
+     capacity                 NOT RUN    stage absent from the scorecard
+     causality                NOT RUN    stage absent from the scorecard
+     deflated_sharpe          NOT RUN    stage absent from the scorecard
+     replication              NOT RUN    stage absent from the scorecard
+  engine skipped_stages: None
+  LEADING COVERAGE   : 1253/5491 bars = 22.8%
+     source           : yahoo.chart (^VIX)
+     series span      : 2021-11-03 .. 2026-11-03 (1257 points)
+     resolution       : the universe is not crypto and not Nasdaq-like, so the S&P 500 implied volatility index is used
+     feature leading_vrp_score: 1253/5491 bars non-null = 22.8%
+     feature leading_vrp_zscore: 1253/5491 bars non-null = 22.8%
+  --- DIAGNOSTIC (crash fixed / control knob honoured) ---
+     verdict          : REFUTED
+     IS Sharpe        : -0.313
+     POOLED OOS Sharpe: 0.461
+     n_trades         : 8
+     flags            : ['only 8 trades (need >=30)', 't-stat -1.46 below 2.0 - the return series is not distinguishable from noise', 'only 1/5 walk-forward folds profitable (edge concentrated in a few periods)', 'edge does not survive 2x cost stress', 'only 0/22 profitable years']
+
+##############################################################################
+SUMMARY TABLE — as shipped
+##############################################################################
+name                                           verdict          IS_Sh   OOS_Sh n_trades    maxDD total_ret
+c1_regime_switch_us_equity_style               REFUTED           0.27     0.09     36    0.085    0.1611
+c1_regime_switch_crypto                        INCONCLUSIVE     -0.13     None     20    0.367   -0.1462
+c1_regime_switch_fx_major                      INCONCLUSIVE      None     None      0    0.000    0.0000
+c1_regime_switch_commodities                   REFUTED          -0.09    -0.14     84    0.388   -0.2244
+c1_regime_switch_futures_broad                 REFUTED          -0.19     0.13     92    0.473   -0.3231
+c1_regime_switch_rates_credit                  REFUTED          -0.47    -0.44     52    0.242   -0.2001
+c2_leading_vrp_us_equity_style                 INCONCLUSIVE      None     None   None     None      None
+c2_leading_vrp_crypto                          INCONCLUSIVE      None     None   None     None      None
+c2_leading_vrp_fx_major                        INCONCLUSIVE      None     None   None     None      None
+c2_leading_vrp_commodities                     INCONCLUSIVE      None     None   None     None      None
+c2_leading_vrp_futures_broad                   INCONCLUSIVE      None     None   None     None      None
+c2_leading_vrp_rates_credit                    INCONCLUSIVE      None     None   None     None      None
+NEGATIVE-CONTROL-c1_regime_switch_us_equity_st REFUTED           0.27     0.09     36    0.085    0.1611
+NEGATIVE-CONTROL-c1_regime_switch_crypto       INCONCLUSIVE     -0.13     None     20    0.367   -0.1462
+NEGATIVE-CONTROL-c1_regime_switch_fx_major     INCONCLUSIVE      None     None      0    0.000    0.0000
+NEGATIVE-CONTROL-c1_regime_switch_commodities  REFUTED          -0.09    -0.14     84    0.388   -0.2244
+NEGATIVE-CONTROL-c1_regime_switch_futures_broa REFUTED          -0.19     0.13     92    0.473   -0.3231
+NEGATIVE-CONTROL-c1_regime_switch_rates_credit REFUTED          -0.47    -0.44     52    0.242   -0.2001
+NEGATIVE-CONTROL-c2_leading_vrp_us_equity_styl INCONCLUSIVE      None     None   None     None      None
+NEGATIVE-CONTROL-c2_leading_vrp_crypto         INCONCLUSIVE      None     None   None     None      None
+NEGATIVE-CONTROL-c2_leading_vrp_fx_major       INCONCLUSIVE      None     None   None     None      None
+NEGATIVE-CONTROL-c2_leading_vrp_commodities    INCONCLUSIVE      None     None   None     None      None
+NEGATIVE-CONTROL-c2_leading_vrp_futures_broad  INCONCLUSIVE      None     None   None     None      None
+NEGATIVE-CONTROL-c2_leading_vrp_rates_credit   INCONCLUSIVE      None     None   None     None      None
+
+##############################################################################
+C1 vs C2 — same asset class, side by side (as shipped)
+##############################################################################
+asset_class      concept                       IS_Sh     OOS_Sh   n_trades    verdict
+commodities      C1_regime_conditioned_switching      -0.09      -0.14         84    REFUTED
+commodities      C2_leading_volatility_risk_premium       None       None       None INCONCLUSI
+crypto           C1_regime_conditioned_switching      -0.13       None         20 INCONCLUSI
+crypto           C2_leading_volatility_risk_premium       None       None       None INCONCLUSI
+futures_broad    C1_regime_conditioned_switching      -0.19       0.13         92    REFUTED
+futures_broad    C2_leading_volatility_risk_premium       None       None       None INCONCLUSI
+fx_major         C1_regime_conditioned_switching       None       None          0 INCONCLUSI
+fx_major         C2_leading_volatility_risk_premium       None       None       None INCONCLUSI
+rates_credit     C1_regime_conditioned_switching      -0.47      -0.44         52    REFUTED
+rates_credit     C2_leading_volatility_risk_premium       None       None       None INCONCLUSI
+us_equity_style  C1_regime_conditioned_switching       0.27       0.09         36    REFUTED
+us_equity_style  C2_leading_volatility_risk_premium       None       None       None INCONCLUSI
+
+##############################################################################
+DIAGNOSTIC RESULTS (patched: C2 crash fixed, control knobs honoured)
+##############################################################################
+name                                           verdict          IS_Sh   OOS_Sh n_trades
+c2_leading_vrp_us_equity_style                 REFUTED          -0.21    -0.16      6
+c2_leading_vrp_crypto                          REFUTED          -0.14    -0.28     10
+c2_leading_vrp_fx_major                        REFUTED          -0.09    -0.05     32
+c2_leading_vrp_commodities                     REFUTED          -0.12    -0.07     13
+c2_leading_vrp_futures_broad                   REFUTED          -0.04     0.02     15
+c2_leading_vrp_rates_credit                    REFUTED          -0.24     0.31      8
+NEGATIVE-CONTROL-c2_leading_vrp_us_equity_styl REFUTED          -0.16    -0.28     12
+NEGATIVE-CONTROL-c2_leading_vrp_crypto         REFUTED          -0.57    -0.79     20
+NEGATIVE-CONTROL-c2_leading_vrp_fx_major       REFUTED          -0.24    -0.27     24
+NEGATIVE-CONTROL-c2_leading_vrp_commodities    REFUTED          -0.19    -0.11     13
+NEGATIVE-CONTROL-c2_leading_vrp_futures_broad  REFUTED          -0.10    -0.04     15
+NEGATIVE-CONTROL-c2_leading_vrp_rates_credit   REFUTED          -0.31     0.46      8
+NEGATIVE-CONTROL-c1_regime_switch_us_equity_st REFUTED          -0.52    -0.31     36
+NEGATIVE-CONTROL-c1_regime_switch_crypto       INCONCLUSIVE     -0.30     None     20
+NEGATIVE-CONTROL-c1_regime_switch_fx_major     INCONCLUSIVE      None     None      0
+NEGATIVE-CONTROL-c1_regime_switch_commodities  REFUTED           0.02     0.07     86
+NEGATIVE-CONTROL-c1_regime_switch_futures_broa REFUTED           0.13    -0.19     92
+NEGATIVE-CONTROL-c1_regime_switch_rates_credit FRAGILE          -0.07     0.56     52

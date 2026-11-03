@@ -1,0 +1,142 @@
+{
+  "real_signal_params": {
+    "type": "cross_sectional",
+    "params": {
+      "long_rank": 0.75,
+      "short_rank": 0.25
+    }
+  },
+  "control_signal_params": {
+    "type": "cross_sectional",
+    "params": {
+      "long_rank": 0.75,
+      "short_rank": 0.25,
+      "invert_signal": true
+    }
+  },
+  "session_drift_registered": true,
+  "session_panel": {
+    "n_sessions": 501,
+    "first": "2024-11-04",
+    "last": "2026-11-03",
+    "symbols": [
+      "DIA",
+      "IWM",
+      "MDY",
+      "QQQ",
+      "RSP",
+      "SPY"
+    ],
+    "failures": {},
+    "info": {
+      "n_sessions": 501,
+      "first_session": "2024-11-04",
+      "last_session": "2026-11-03",
+      "window": "first",
+      "interval": "60m",
+      "note": "One bar per session = the 09:30-10:00 ET opening window. Returns are therefore DAILY and annualise at 252."
+    }
+  },
+  "result": {
+    "identical_signal_series": true,
+    "nonzero_real": 2004,
+    "nonzero_control": 2004,
+    "short_positions_real": 1002,
+    "short_positions_control": 1002,
+    "verdict": "NEGATIVE CONTROL IS A DUPLICATE -- invert_signal is silently ignored by the engine's cross_sectional signal"
+  },
+  "sample_rows": {
+    "DIA": {
+      "real": [
+        -1.0,
+        -1.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        -1.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "control": [
+        -1.0,
+        -1.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        -1.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ]
+    },
+    "IWM": {
+      "real": [
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        -1.0,
+        1.0,
+        -1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        -1.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "control": [
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        -1.0,
+        1.0,
+        -1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        -1.0,
+        0.0,
+        -1.0,
+        0.0
+      ]
+    }
+  }
+}

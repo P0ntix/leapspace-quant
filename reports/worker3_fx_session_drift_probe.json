@@ -1,0 +1,329 @@
+{
+  "symbols": [
+    {
+      "symbol": "EURUSD=X",
+      "n_raw_records": 12312,
+      "n_sessions": 581,
+      "first_sessions_raw": [
+        {
+          "day": "2024-11-04",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-04T00:00:00+00:00",
+          "o": 1.0875475406646729,
+          "h": 1.088139295578003,
+          "l": 1.087311029434204,
+          "c": 1.088020920753479,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-05",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-05T00:00:00+00:00",
+          "o": 1.0876659154891968,
+          "h": 1.087902545928955,
+          "l": 1.0876659154891968,
+          "c": 1.087902545928955,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-06",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-06T00:00:00+00:00",
+          "o": 1.0933741331100464,
+          "h": 1.0934937000274658,
+          "l": 1.0840108394622803,
+          "c": 1.0847163200378418,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-07",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-07T00:00:00+00:00",
+          "o": 1.0735372304916382,
+          "h": 1.0742292404174805,
+          "l": 1.0723860263824463,
+          "c": 1.0723860263824463,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        }
+      ],
+      "session_bar_condition_counts": {
+        "n_none_ohlc": 0,
+        "n_zero_or_negative_range": 2,
+        "n_zero_volume": 579,
+        "n_usable": 0
+      }
+    },
+    {
+      "symbol": "GBPUSD=X",
+      "n_raw_records": 12315,
+      "n_sessions": 581,
+      "first_sessions_raw": [
+        {
+          "day": "2024-11-04",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-04T00:00:00+00:00",
+          "o": 1.29537034034729,
+          "h": 1.2966132164001465,
+          "l": 1.295303225517273,
+          "c": 1.2962603569030762,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-05",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-05T00:00:00+00:00",
+          "o": 1.2954542636871338,
+          "h": 1.2956892251968384,
+          "l": 1.2949509620666504,
+          "c": 1.295588493347168,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-06",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-06T00:00:00+00:00",
+          "o": 1.303865909576416,
+          "h": 1.3041549921035767,
+          "l": 1.2962266206741333,
+          "c": 1.2962266206741333,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-07",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-07T00:00:00+00:00",
+          "o": 1.2882779836654663,
+          "h": 1.2891913652420044,
+          "l": 1.2879295349121094,
+          "c": 1.2880953550338745,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        }
+      ],
+      "session_bar_condition_counts": {
+        "n_none_ohlc": 0,
+        "n_zero_or_negative_range": 1,
+        "n_zero_volume": 580,
+        "n_usable": 0
+      }
+    },
+    {
+      "symbol": "AUDUSD=X",
+      "n_raw_records": 12378,
+      "n_sessions": 581,
+      "first_sessions_raw": [
+        {
+          "day": "2024-11-04",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-04T00:00:00+00:00",
+          "o": 0.6593000888824463,
+          "h": 0.6601967215538025,
+          "l": 0.6586096882820129,
+          "c": 0.6600180864334106,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-05",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-05T00:00:00+00:00",
+          "o": 0.6584275364875793,
+          "h": 0.6586747169494629,
+          "l": 0.6579769849777222,
+          "c": 0.6584275364875793,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-06",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-06T00:00:00+00:00",
+          "o": 0.6640105843544006,
+          "h": 0.6642311811447144,
+          "l": 0.6590914726257324,
+          "c": 0.659256637096405,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-07",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-07T00:00:00+00:00",
+          "o": 0.656728208065033,
+          "h": 0.6575053930282593,
+          "l": 0.6565384864807129,
+          "c": 0.6570561528205872,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        }
+      ],
+      "session_bar_condition_counts": {
+        "n_none_ohlc": 0,
+        "n_zero_or_negative_range": 2,
+        "n_zero_volume": 579,
+        "n_usable": 0
+      }
+    },
+    {
+      "symbol": "SPY",
+      "n_raw_records": 3477,
+      "n_sessions": 501,
+      "first_sessions_raw": [
+        {
+          "day": "2024-11-04",
+          "n_bars_that_day": 7,
+          "first_bar_utc": "2024-11-04T14:30:00+00:00",
+          "o": 571.1799926757812,
+          "h": 572.5,
+          "l": 569.27001953125,
+          "c": 572.1099243164062,
+          "v": 5624924.0,
+          "range_is_zero": false,
+          "volume_falsy": false,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-05",
+          "n_bars_that_day": 7,
+          "first_bar_utc": "2024-11-05T14:30:00+00:00",
+          "o": 570.739990234375,
+          "h": 574.780029296875,
+          "l": 570.52001953125,
+          "c": 574.010009765625,
+          "v": 7820983.0,
+          "range_is_zero": false,
+          "volume_falsy": false,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-06",
+          "n_bars_that_day": 7,
+          "first_bar_utc": "2024-11-06T14:30:00+00:00",
+          "o": 589.2000122070312,
+          "h": 589.4299926757812,
+          "l": 585.3900146484375,
+          "c": 588.8200073242188,
+          "v": 19813490.0,
+          "range_is_zero": false,
+          "volume_falsy": false,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-07",
+          "n_bars_that_day": 7,
+          "first_bar_utc": "2024-11-07T14:30:00+00:00",
+          "o": 593.3599853515625,
+          "h": 594.405029296875,
+          "l": 592.9998779296875,
+          "c": 594.27001953125,
+          "v": 7972498.0,
+          "range_is_zero": false,
+          "volume_falsy": false,
+          "any_none": false
+        }
+      ],
+      "session_bar_condition_counts": {
+        "n_none_ohlc": 0,
+        "n_zero_or_negative_range": 0,
+        "n_zero_volume": 0,
+        "n_usable": 501
+      }
+    },
+    {
+      "symbol": "BTC-USD",
+      "n_raw_records": 17489,
+      "n_sessions": 731,
+      "first_sessions_raw": [
+        {
+          "day": "2024-11-03",
+          "n_bars_that_day": 9,
+          "first_bar_utc": "2024-11-03T15:00:00+00:00",
+          "o": 67750.4609375,
+          "h": 68164.1171875,
+          "l": 67554.7421875,
+          "c": 68067.1875,
+          "v": 0.0,
+          "range_is_zero": false,
+          "volume_falsy": true,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-04",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-04T00:00:00+00:00",
+          "o": 68746.7890625,
+          "h": 68746.7890625,
+          "l": 68261.3359375,
+          "c": 68608.2265625,
+          "v": 528306176.0,
+          "range_is_zero": false,
+          "volume_falsy": false,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-05",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-05T00:00:00+00:00",
+          "o": 67785.1953125,
+          "h": 68106.9609375,
+          "l": 67785.1953125,
+          "c": 67985.4453125,
+          "v": 126218240.0,
+          "range_is_zero": false,
+          "volume_falsy": false,
+          "any_none": false
+        },
+        {
+          "day": "2024-11-06",
+          "n_bars_that_day": 24,
+          "first_bar_utc": "2024-11-06T00:00:00+00:00",
+          "o": 69371.3203125,
+          "h": 71422.0625,
+          "l": 69322.03125,
+          "c": 71174.8671875,
+          "v": 4097089536.0,
+          "range_is_zero": false,
+          "volume_falsy": false,
+          "any_none": false
+        }
+      ],
+      "session_bar_condition_counts": {
+        "n_none_ohlc": 0,
+        "n_zero_or_negative_range": 0,
+        "n_zero_volume": 404,
+        "n_usable": 327
+      }
+    }
+  ]
+}

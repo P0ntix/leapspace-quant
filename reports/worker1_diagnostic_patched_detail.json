@@ -1,0 +1,1883 @@
+{
+  "patches": {
+    "B1_fixed": "sig_leading_vrp_switch: z no longer shadowed",
+    "B3_control_knob": "invert_signal mapped onto invert_vrp (the knob this signal's docstring names)",
+    "B2_fixed": "sig_regime_switch now honours invert_signal"
+  },
+  "results": [
+    {
+      "phase": "A_c2_real",
+      "name": "c2_leading_vrp_us_equity_style",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 6 trades (need >=30)",
+        "t-stat -0.97 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "only 3/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.16 is below 0.5, and the gross-of-costs Sharpe is -0.16 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.20816309345640222,
+      "pooled_oos_sharpe": -0.156222124669855,
+      "pooled_oos_sharpe_live": -0.156222124669855,
+      "final_is_sharpe": -0.5855309786169427,
+      "oos_retention": null,
+      "oos_cagr": -0.0026418398153746914,
+      "oos_max_drawdown": 0.09076299400169852,
+      "oos_trades_total": 12,
+      "n_trades": 6,
+      "max_drawdown": 0.11572540603109982,
+      "total_return": -0.06932069301878085,
+      "cagr": -0.003290969700451396,
+      "n_bars": 5492,
+      "t_stat": -0.9717817238453197,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-14"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-30",
+            "2013-09-25"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-05"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.3092106277156438,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-22",
+            "2022-06-15"
+          ],
+          "oos_trades": 6
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.6011866955336421,
+          "is_sharpe": -0.5855309786169427,
+          "test_range": [
+            "2023-06-01",
+            "2026-10-30"
+          ],
+          "oos_trades": 6
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.16418528803612537,
+        "gross_cagr": -0.0026211424928954674,
+        "net_sharpe": -0.20816309345640222,
+        "net_cagr": -0.003290969700451396,
+        "costs_paid": 1415.34354138635,
+        "turnover_total": 2388961.117624407,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "A_c2_real",
+      "name": "c2_leading_vrp_crypto",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 10 trades (need >=30)",
+        "t-stat -0.42 below 2.0 - the return series is not distinguishable from noise",
+        "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "only 2/6 profitable years",
+        "LOOK-AHEAD DETECTED \u2014 feature uses future data"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pipeline is not causal; results are unusable.",
+      "in_sample_sharpe": -0.14323567638599038,
+      "pooled_oos_sharpe": -0.2772007027898235,
+      "pooled_oos_sharpe_live": -0.2772007027898235,
+      "final_is_sharpe": -1.0041739277221235,
+      "oos_retention": null,
+      "oos_cagr": -0.06088905404186673,
+      "oos_max_drawdown": 0.3460830447851718,
+      "oos_trades_total": 50,
+      "n_trades": 10,
+      "max_drawdown": 0.32961667781771053,
+      "total_return": -0.1441646734615315,
+      "cagr": -0.018232618670655176,
+      "n_bars": 2132,
+      "t_stat": -0.4166242386310323,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.25710594000737663,
+          "is_sharpe": -0.9270652380214539,
+          "test_range": [
+            "2021-08-30",
+            "2022-03-03"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.21976408250833546,
+          "is_sharpe": -1.092432290743351,
+          "test_range": [
+            "2022-10-31",
+            "2023-05-04"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -1.2305301199627316,
+          "is_sharpe": -0.5761764808728227,
+          "test_range": [
+            "2023-12-31",
+            "2024-07-03"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.1904648277507451,
+          "is_sharpe": -1.0916786874162943,
+          "test_range": [
+            "2025-03-01",
+            "2025-09-02"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -1.4926950379742243,
+          "is_sharpe": -1.0041739277221235,
+          "test_range": [
+            "2026-05-01",
+            "2026-11-02"
+          ],
+          "oos_trades": 10
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": 0.032122187336545475,
+        "gross_cagr": -0.0015026652769508653,
+        "net_sharpe": -0.14323567638599038,
+        "net_cagr": -0.018232618670655176,
+        "costs_paid": 14623.655044529894,
+        "turnover_total": 3386001.155410515,
+        "interpretation": "there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency"
+      },
+      "causality": {
+        "causal": false,
+        "violations": [
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "ADA-USD",
+            "bar": 83,
+            "full": -0.3556486930303796,
+            "truncated": -0.894267926774629
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "AVAX-USD",
+            "bar": 83,
+            "full": -2.395214394600909,
+            "truncated": -1.9875005344757724
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "BCH-USD",
+            "bar": 83,
+            "full": 1.229244267034051,
+            "truncated": 0.8963187170155136
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "BTC-USD",
+            "bar": 83,
+            "full": 1.995702021034328,
+            "truncated": 1.5689424684858237
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "DOGE-USD",
+            "bar": 83,
+            "full": 0.3772016014202277,
+            "truncated": 0.24150632548836742
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "ETH-USD",
+            "bar": 83,
+            "full": 1.4754171048893274,
+            "truncated": 1.2047493100807565
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "LINK-USD",
+            "bar": 83,
+            "full": 1.1791330115319105,
+            "truncated": 0.9325606280656433
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "LTC-USD",
+            "bar": 83,
+            "full": 1.5349993841176377,
+            "truncated": 1.271814970894879
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "SOL-USD",
+            "bar": 83,
+            "full": 1.015300395121304,
+            "truncated": 0.9454156297363477
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "XRP-USD",
+            "bar": 83,
+            "full": 0.5809907031297131,
+            "truncated": 0.43568455305948983
+          }
+        ]
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "A_c2_real",
+      "name": "c2_leading_vrp_fx_major",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -0.42 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 21%",
+        "only 2/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.05 is below 0.5, and the gross-of-costs Sharpe is -0.06 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.08889525448680238,
+      "pooled_oos_sharpe": -0.04706814736006971,
+      "pooled_oos_sharpe_live": -0.04706814736006971,
+      "final_is_sharpe": -0.39087516118477517,
+      "oos_retention": null,
+      "oos_cagr": -0.0009273759082375488,
+      "oos_max_drawdown": 0.08665557279916358,
+      "oos_trades_total": 40,
+      "n_trades": 32,
+      "max_drawdown": 0.11953687271099311,
+      "total_return": -0.03768440753356861,
+      "cagr": -0.0017027795213007124,
+      "n_bars": 5680,
+      "t_stat": -0.4220388928099597,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-06",
+            "2009-05-19"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-21",
+            "2013-09-26"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-01",
+            "2018-02-08"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 1.0808041997863154,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-11",
+            "2022-06-19"
+          ],
+          "oos_trades": 24
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.43772981542020917,
+          "is_sharpe": -0.39087516118477517,
+          "test_range": [
+            "2023-05-22",
+            "2026-11-03"
+          ],
+          "oos_trades": 16
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.059523001062525484,
+        "gross_cagr": -0.0011900595525927704,
+        "net_sharpe": -0.08889525448680238,
+        "net_cagr": -0.0017027795213007124,
+        "costs_paid": 1155.303977859661,
+        "turnover_total": 3221953.778697986,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "A_c2_real",
+      "name": "c2_leading_vrp_commodities",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 13 trades (need >=30)",
+        "t-stat -0.58 below 2.0 - the return series is not distinguishable from noise",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "only 2/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.07 is below 0.5, and the gross-of-costs Sharpe is -0.11 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.12355029473659672,
+      "pooled_oos_sharpe": -0.07496076818059216,
+      "pooled_oos_sharpe_live": -0.07496076818059216,
+      "final_is_sharpe": -0.052976795186110696,
+      "oos_retention": null,
+      "oos_cagr": -0.0054253847781725595,
+      "oos_max_drawdown": 0.22978065300201067,
+      "oos_trades_total": 26,
+      "n_trades": 13,
+      "max_drawdown": 0.28545162295010795,
+      "total_return": -0.1530423658479284,
+      "cagr": -0.007592725582700188,
+      "n_bars": 5492,
+      "t_stat": -0.5767781233798467,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-16",
+            "2009-05-18"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-09"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.258528266998644,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-28",
+            "2022-06-22"
+          ],
+          "oos_trades": 13
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.04908774803683029,
+          "is_sharpe": -0.052976795186110696,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "oos_trades": 13
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.10955716857385207,
+        "gross_cagr": -0.006873896087926545,
+        "net_sharpe": -0.12355029473659672,
+        "net_cagr": -0.007592725582700188,
+        "costs_paid": 1299.2767060338751,
+        "turnover_total": 2600099.264037237,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "A_c2_real",
+      "name": "c2_leading_vrp_futures_broad",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 15 trades (need >=30)",
+        "t-stat -0.20 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "OOS Sharpe retains only 29% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+        "edge does not survive 2x cost stress",
+        "only 2/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.02 is below 0.5, and the gross-of-costs Sharpe is -0.03 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.04251990549944374,
+      "pooled_oos_sharpe": 0.02311066786798754,
+      "pooled_oos_sharpe_live": 0.02311066786798754,
+      "final_is_sharpe": 0.07909593153358922,
+      "oos_retention": 0.2921852922128272,
+      "oos_cagr": -7.429698028016407e-05,
+      "oos_max_drawdown": 0.15905907983869427,
+      "oos_trades_total": 30,
+      "n_trades": 15,
+      "max_drawdown": 0.20135030475728055,
+      "total_return": -0.06750649104301065,
+      "cagr": -0.003198994214061779,
+      "n_bars": 5497,
+      "t_stat": -0.19858886273258178,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-13"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-29",
+            "2013-09-25"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-08"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.21628144609264272,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-25",
+            "2022-06-22"
+          ],
+          "oos_trades": 15
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.060898753715708735,
+          "is_sharpe": 0.07909593153358922,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "oos_trades": 15
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.02837904178676606,
+        "gross_cagr": -0.002518207084925783,
+        "net_sharpe": -0.04251990549944374,
+        "net_cagr": -0.003198994214061779,
+        "costs_paid": 1368.4416027898517,
+        "turnover_total": 4055927.665855135,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "A_c2_real",
+      "name": "c2_leading_vrp_rates_credit",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 8 trades (need >=30)",
+        "t-stat -1.10 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "only 2/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.31 is below 0.5, and the gross-of-costs Sharpe is -0.17 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.23661832736316438,
+      "pooled_oos_sharpe": 0.31284616550473826,
+      "pooled_oos_sharpe_live": 0.31284616550473826,
+      "final_is_sharpe": -0.7803120884443571,
+      "oos_retention": null,
+      "oos_cagr": 0.01176037138463526,
+      "oos_max_drawdown": 0.1645509905444471,
+      "oos_trades_total": 24,
+      "n_trades": 8,
+      "max_drawdown": 0.11690566260213031,
+      "total_return": -0.0678391573207675,
+      "cagr": -0.003218806877658631,
+      "n_bars": 5491,
+      "t_stat": -1.1045206288846185,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-19",
+            "2009-05-19"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-07"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 1.4968961586815699,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-24",
+            "2022-06-17"
+          ],
+          "oos_trades": 12
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.2457364453932259,
+          "is_sharpe": -0.7803120884443571,
+          "test_range": [
+            "2023-06-05",
+            "2026-11-03"
+          ],
+          "oos_trades": 12
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.1722483757125182,
+        "gross_cagr": -0.0023656416728058405,
+        "net_sharpe": -0.23661832736316438,
+        "net_cagr": -0.003218806877658631,
+        "costs_paid": 1753.4661475308715,
+        "turnover_total": 2876650.28312666,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "B_c2_control",
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_us_equity_style",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 12 trades (need >=30)",
+        "t-stat -0.73 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "OOS Sharpe retains only -169% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+        "edge does not survive 2x cost stress",
+        "only 1/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.28 is below 0.5, and the gross-of-costs Sharpe is -0.12 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.1570552049377304,
+      "pooled_oos_sharpe": -0.27968739103870444,
+      "pooled_oos_sharpe_live": -0.27968739103870444,
+      "final_is_sharpe": 0.16578005624626035,
+      "oos_retention": -1.687099144321913,
+      "oos_cagr": -0.0048575212286668945,
+      "oos_max_drawdown": 0.09477254544595326,
+      "oos_trades_total": 18,
+      "n_trades": 12,
+      "max_drawdown": 0.11531367195478459,
+      "total_return": -0.061314347623370735,
+      "cagr": -0.002899140649760712,
+      "n_bars": 5492,
+      "t_stat": -0.7331913417458564,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-14"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-30",
+            "2013-09-25"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-05"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.17847085676045035,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-22",
+            "2022-06-15"
+          ],
+          "oos_trades": 6
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.8255415416513873,
+          "is_sharpe": 0.16578005624626035,
+          "test_range": [
+            "2023-06-01",
+            "2026-10-30"
+          ],
+          "oos_trades": 12
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.12074931446859312,
+        "gross_cagr": -0.0022644513321194992,
+        "net_sharpe": -0.1570552049377304,
+        "net_cagr": -0.002899140649760712,
+        "costs_paid": 1368.6887787961248,
+        "turnover_total": 2225065.812001792,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "B_c2_control",
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_crypto",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 20 trades (need >=30)",
+        "t-stat -1.65 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 18%",
+        "only 2/6 profitable years",
+        "LOOK-AHEAD DETECTED \u2014 feature uses future data"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pipeline is not causal; results are unusable.",
+      "in_sample_sharpe": -0.5665243274127034,
+      "pooled_oos_sharpe": -0.791681131508892,
+      "pooled_oos_sharpe_live": -0.791681131508892,
+      "final_is_sharpe": -0.37024874297549254,
+      "oos_retention": null,
+      "oos_cagr": -0.10746391060668159,
+      "oos_max_drawdown": 0.37131196870156624,
+      "oos_trades_total": 50,
+      "n_trades": 20,
+      "max_drawdown": 0.506242846752156,
+      "total_return": -0.4404339839199478,
+      "cagr": -0.06632375133477075,
+      "n_bars": 2132,
+      "t_stat": -1.647828058829627,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -1.2480709061124964,
+          "is_sharpe": 0.7988848134005457,
+          "test_range": [
+            "2021-08-30",
+            "2022-03-03"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.9097958085469512,
+          "is_sharpe": 0.6110476384288921,
+          "test_range": [
+            "2022-10-31",
+            "2023-05-04"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -1.4472654623016838,
+          "is_sharpe": 1.0860039460550885,
+          "test_range": [
+            "2023-12-31",
+            "2024-07-03"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.08344572764311695,
+          "is_sharpe": -0.5180198808760806,
+          "test_range": [
+            "2025-03-01",
+            "2025-09-02"
+          ],
+          "oos_trades": 10
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.27150547590234114,
+          "is_sharpe": -0.37024874297549254,
+          "test_range": [
+            "2026-05-01",
+            "2026-11-02"
+          ],
+          "oos_trades": 10
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.39837760579372117,
+        "gross_cagr": -0.048421827172492105,
+        "net_sharpe": -0.5665243274127034,
+        "net_cagr": -0.06632375133477075,
+        "costs_paid": 12395.312999698202,
+        "turnover_total": 2871079.721412209,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": false,
+        "violations": [
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "ADA-USD",
+            "bar": 83,
+            "full": -0.3556486930303796,
+            "truncated": -0.894267926774629
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "AVAX-USD",
+            "bar": 83,
+            "full": -2.395214394600909,
+            "truncated": -1.9875005344757724
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "BCH-USD",
+            "bar": 83,
+            "full": 1.229244267034051,
+            "truncated": 0.8963187170155136
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "BTC-USD",
+            "bar": 83,
+            "full": 1.995702021034328,
+            "truncated": 1.5689424684858237
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "DOGE-USD",
+            "bar": 83,
+            "full": 0.3772016014202277,
+            "truncated": 0.24150632548836742
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "ETH-USD",
+            "bar": 83,
+            "full": 1.4754171048893274,
+            "truncated": 1.2047493100807565
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "LINK-USD",
+            "bar": 83,
+            "full": 1.1791330115319105,
+            "truncated": 0.9325606280656433
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "LTC-USD",
+            "bar": 83,
+            "full": 1.5349993841176377,
+            "truncated": 1.271814970894879
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "SOL-USD",
+            "bar": 83,
+            "full": 1.015300395121304,
+            "truncated": 0.9454156297363477
+          },
+          {
+            "feature": "leading_vrp_zscore",
+            "symbol": "XRP-USD",
+            "bar": 83,
+            "full": 0.5809907031297131,
+            "truncated": 0.43568455305948983
+          }
+        ]
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "B_c2_control",
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_fx_major",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 24 trades (need >=30)",
+        "t-stat -1.12 below 2.0 - the return series is not distinguishable from noise",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 2%",
+        "only 0/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.27 is below 0.5, and the gross-of-costs Sharpe is -0.21 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.23688829627282976,
+      "pooled_oos_sharpe": -0.2736983553878189,
+      "pooled_oos_sharpe_live": -0.2736983553878189,
+      "final_is_sharpe": -0.05726185740950348,
+      "oos_retention": null,
+      "oos_cagr": -0.004890565090322818,
+      "oos_max_drawdown": 0.10713166565862464,
+      "oos_trades_total": 32,
+      "n_trades": 24,
+      "max_drawdown": 0.13920989416791418,
+      "total_return": -0.10147578464655205,
+      "cagr": -0.004736004666420324,
+      "n_bars": 5680,
+      "t_stat": -1.1246502960792524,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-06",
+            "2009-05-19"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-21",
+            "2013-09-26"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-01",
+            "2018-02-08"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.003601537591724424,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-11",
+            "2022-06-19"
+          ],
+          "oos_trades": 8
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.6712899709341527,
+          "is_sharpe": -0.05726185740950348,
+          "test_range": [
+            "2023-05-22",
+            "2026-11-03"
+          ],
+          "oos_trades": 24
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.206713840262571,
+        "gross_cagr": -0.0041552476415082085,
+        "net_sharpe": -0.23688829627282976,
+        "net_cagr": -0.004736004666420324,
+        "costs_paid": 1250.1121357782258,
+        "turnover_total": 3421378.463072815,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "B_c2_control",
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_commodities",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 13 trades (need >=30)",
+        "t-stat -0.89 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "only 2/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.11 is below 0.5, and the gross-of-costs Sharpe is -0.17 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.1901704617565138,
+      "pooled_oos_sharpe": -0.109719598122726,
+      "pooled_oos_sharpe_live": -0.109719598122726,
+      "final_is_sharpe": -0.760844480047408,
+      "oos_retention": null,
+      "oos_cagr": -0.007203336943255256,
+      "oos_max_drawdown": 0.27447791913450226,
+      "oos_trades_total": 26,
+      "n_trades": 13,
+      "max_drawdown": 0.3637784414794305,
+      "total_return": -0.2178055428530662,
+      "cagr": -0.011208430967866168,
+      "n_bars": 5492,
+      "t_stat": -0.8877855151057839,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-16",
+            "2009-05-18"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-09"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.5233317465072983,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-28",
+            "2022-06-22"
+          ],
+          "oos_trades": 13
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.02296019854243339,
+          "is_sharpe": -0.760844480047408,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "oos_trades": 13
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.17268596119819193,
+        "gross_cagr": -0.010295062654490317,
+        "net_sharpe": -0.1901704617565138,
+        "net_cagr": -0.011208430967866168,
+        "costs_paid": 1592.5360948079597,
+        "turnover_total": 3267019.852838263,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "B_c2_control",
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_futures_broad",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 15 trades (need >=30)",
+        "t-stat -0.48 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "only 2/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.04 is below 0.5, and the gross-of-costs Sharpe is -0.08 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.10180910587871868,
+      "pooled_oos_sharpe": -0.038061002372131905,
+      "pooled_oos_sharpe_live": -0.038061002372131905,
+      "final_is_sharpe": -0.21858308673021143,
+      "oos_retention": null,
+      "oos_cagr": -0.0031798699303022815,
+      "oos_max_drawdown": 0.2153994993772611,
+      "oos_trades_total": 30,
+      "n_trades": 15,
+      "max_drawdown": 0.26848561989023867,
+      "total_return": -0.12529719803373718,
+      "cagr": -0.0061182847373015825,
+      "n_bars": 5497,
+      "t_stat": -0.47549857683809416,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-13"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-29",
+            "2013-09-25"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-08"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.11132779360028494,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-25",
+            "2022-06-22"
+          ],
+          "oos_trades": 15
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.1652284546289815,
+          "is_sharpe": -0.21858308673021143,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "oos_trades": 15
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.08470110545812688,
+        "gross_cagr": -0.005285803261424471,
+        "net_sharpe": -0.10180910587871868,
+        "net_cagr": -0.0061182847373015825,
+        "costs_paid": 1585.8410126416675,
+        "turnover_total": 4665581.468336287,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "B_c2_control",
+      "name": "NEGATIVE-CONTROL-c2_leading_vrp_rates_credit",
+      "verdict": "REFUTED",
+      "flags": [
+        "only 8 trades (need >=30)",
+        "t-stat -1.46 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "only 0/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.46 is below 0.5, and the gross-of-costs Sharpe is -0.27 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.31266718731924037,
+      "pooled_oos_sharpe": 0.4611093014571395,
+      "pooled_oos_sharpe_live": 0.4611093014571395,
+      "final_is_sharpe": -0.4697872107713966,
+      "oos_retention": null,
+      "oos_cagr": 0.0296609032864128,
+      "oos_max_drawdown": 0.24057637225354278,
+      "oos_trades_total": 24,
+      "n_trades": 8,
+      "max_drawdown": 0.12833454661071741,
+      "total_return": -0.11043798857904086,
+      "cagr": -0.005356313223784492,
+      "n_bars": 5491,
+      "t_stat": -1.4595122965237994,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-19",
+            "2009-05-19"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-07"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 1.4561685270017752,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-24",
+            "2022-06-17"
+          ],
+          "oos_trades": 12
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.3619988475805413,
+          "is_sharpe": -0.4697872107713966,
+          "test_range": [
+            "2023-06-05",
+            "2026-11-03"
+          ],
+          "oos_trades": 12
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.2663155206999235,
+        "gross_cagr": -0.00458073018249161,
+        "net_sharpe": -0.31266718731924037,
+        "net_cagr": -0.005356313223784492,
+        "costs_paid": 1569.9226146045094,
+        "turnover_total": 2467127.0591139486,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "C_c1_control",
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_us_equity_style",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat -2.43 below 2.0 - the return series is not distinguishable from noise",
+        "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 0%",
+        "only 6/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.31 is below 0.5, and the gross-of-costs Sharpe is -0.39 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.",
+      "in_sample_sharpe": -0.5210379449752276,
+      "pooled_oos_sharpe": -0.31310500052972684,
+      "pooled_oos_sharpe_live": -0.31310500052972684,
+      "final_is_sharpe": -0.6260241545106238,
+      "oos_retention": null,
+      "oos_cagr": -0.009140860963505859,
+      "oos_max_drawdown": 0.1758947315036965,
+      "oos_trades_total": 53,
+      "n_trades": 36,
+      "max_drawdown": 0.28865482896672234,
+      "total_return": -0.2696614705967946,
+      "cagr": -0.014315745896250065,
+      "n_bars": 5492,
+      "t_stat": -2.432396367432427,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.7819107002548852,
+          "is_sharpe": -1.4783414494042502,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-14"
+          ],
+          "oos_trades": 12
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.2408553880630662,
+          "is_sharpe": -2.3114998112082774,
+          "test_range": [
+            "2010-04-30",
+            "2013-09-25"
+          ],
+          "oos_trades": 6
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.3198106878509424,
+          "is_sharpe": -1.7956755221673297,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-05"
+          ],
+          "oos_trades": 17
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.11687349951788674,
+          "is_sharpe": -1.3721269138414511,
+          "test_range": [
+            "2019-01-22",
+            "2022-06-15"
+          ],
+          "oos_trades": 12
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.6402572719227428,
+          "is_sharpe": -0.6260241545106238,
+          "test_range": [
+            "2023-06-01",
+            "2026-10-30"
+          ],
+          "oos_trades": 6
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.3948548916117235,
+        "gross_cagr": -0.010942790912442657,
+        "net_sharpe": -0.5210379449752276,
+        "net_cagr": -0.014315745896250065,
+        "costs_paid": 6435.296194431887,
+        "turnover_total": 11270622.423757097,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "C_c1_control",
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_crypto",
+      "verdict": "INCONCLUSIVE",
+      "flags": [
+        "only 20 trades (need >=30)",
+        "t-stat -0.87 below 2.0 - the return series is not distinguishable from noise",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 25%",
+        "only 2/6 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Too few trades (20) to distinguish signal from noise.",
+      "in_sample_sharpe": -0.29974600057462464,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": -0.1448739705669944,
+      "oos_retention": null,
+      "oos_cagr": 0.0,
+      "oos_max_drawdown": 0.0,
+      "oos_trades_total": 0,
+      "n_trades": 20,
+      "max_drawdown": 0.44577396200836206,
+      "total_return": -0.25392210274437155,
+      "cagr": -0.034030903512524247,
+      "n_bars": 2132,
+      "t_stat": -0.8718599473469891,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": -0.7267980582128791,
+          "test_range": [
+            "2021-08-30",
+            "2022-03-03"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": -0.44430007646214464,
+          "test_range": [
+            "2022-10-31",
+            "2023-05-04"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": -0.5321867065961033,
+          "test_range": [
+            "2023-12-31",
+            "2024-07-03"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "is_sharpe": 0.06351836862652058,
+          "test_range": [
+            "2025-03-01",
+            "2025-09-02"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": null,
+          "is_sharpe": -0.1448739705669944,
+          "test_range": [
+            "2026-05-01",
+            "2026-11-02"
+          ],
+          "oos_trades": 0
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": -0.08739882390572319,
+        "gross_cagr": -0.013374587797160054,
+        "net_sharpe": -0.29974600057462464,
+        "net_cagr": -0.034030903512524247,
+        "costs_paid": 13332.265389889955,
+        "turnover_total": 3091288.02161804,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "C_c1_control",
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_fx_major",
+      "verdict": "INCONCLUSIVE",
+      "flags": [
+        "only 0 trades (need >=30)",
+        "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+        "edge does not survive 2x cost stress",
+        "parameter stability 0% (< 60%)",
+        "only 0/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Too few trades (0) to distinguish signal from noise.",
+      "in_sample_sharpe": null,
+      "pooled_oos_sharpe": null,
+      "pooled_oos_sharpe_live": null,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "oos_cagr": 0.0,
+      "oos_max_drawdown": 0.0,
+      "oos_trades_total": 0,
+      "n_trades": 0,
+      "max_drawdown": 0.0,
+      "total_return": 0.0,
+      "cagr": 0.0,
+      "n_bars": 5680,
+      "t_stat": null,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2005-12-06",
+            "2009-05-19"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2010-04-21",
+            "2013-09-26"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2014-09-01",
+            "2018-02-08"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2019-01-11",
+            "2022-06-19"
+          ],
+          "oos_trades": 0
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": null,
+          "is_sharpe": null,
+          "test_range": [
+            "2023-05-22",
+            "2026-11-03"
+          ],
+          "oos_trades": 0
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": null,
+        "gross_cagr": 0.0,
+        "net_sharpe": null,
+        "net_cagr": 0.0,
+        "costs_paid": 0.0,
+        "turnover_total": 0.0,
+        "interpretation": "no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "C_c1_control",
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_commodities",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat 0.09 below 2.0 - the return series is not distinguishable from noise",
+        "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "Monte Carlo prob(profitable) 44%",
+        "only 10/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe 0.07 is below 0.5, while the gross-of-costs Sharpe is 0.07 - a real gross edge exists but it is too small to survive costs at this size and frequency.",
+      "in_sample_sharpe": 0.01924779557592183,
+      "pooled_oos_sharpe": 0.06752817027358043,
+      "pooled_oos_sharpe_live": 0.06752817027358043,
+      "final_is_sharpe": -0.07450518558906069,
+      "oos_retention": null,
+      "oos_cagr": 0.0020788396337914072,
+      "oos_max_drawdown": 0.3073196119116893,
+      "oos_trades_total": 98,
+      "n_trades": 86,
+      "max_drawdown": 0.37046466304876524,
+      "total_return": -0.04485318550009787,
+      "cagr": -0.0021034537708507495,
+      "n_bars": 5492,
+      "t_stat": 0.08985577440464561,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 1.218383064675342,
+          "is_sharpe": 1.2005296260718616,
+          "test_range": [
+            "2005-12-16",
+            "2009-05-18"
+          ],
+          "oos_trades": 13
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.2149423289519905,
+          "is_sharpe": -0.12116823374642176,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "oos_trades": 13
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.5729456394735648,
+          "is_sharpe": -0.726115359302608,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-09"
+          ],
+          "oos_trades": 36
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.0910073241850856,
+          "is_sharpe": -0.15859616508719418,
+          "test_range": [
+            "2019-01-28",
+            "2022-06-22"
+          ],
+          "oos_trades": 13
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.14673100476992,
+          "is_sharpe": -0.07450518558906069,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "oos_trades": 23
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": 0.07395540479905634,
+        "gross_cagr": 0.0026587554524215573,
+        "net_sharpe": 0.01924779557592183,
+        "net_cagr": -0.0021034537708507495,
+        "costs_paid": 10538.75443564459,
+        "turnover_total": 22104407.312387384,
+        "interpretation": "the edge survives costs but is materially eroded (74% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "C_c1_control",
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_futures_broad",
+      "verdict": "REFUTED",
+      "flags": [
+        "t-stat 0.62 below 2.0 - the return series is not distinguishable from noise",
+        "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+        "OOS Sharpe retains only -42% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+        "Monte Carlo prob(profitable) 66%"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "Pooled OOS Sharpe -0.19 is below 0.5, while the gross-of-costs Sharpe is 0.18 - a real gross edge exists but it is too small to survive costs at this size and frequency.",
+      "in_sample_sharpe": 0.13376879035927297,
+      "pooled_oos_sharpe": -0.1943283425827953,
+      "pooled_oos_sharpe_live": -0.1943283425827953,
+      "final_is_sharpe": 0.4591310823562098,
+      "oos_retention": -0.4232524219129835,
+      "oos_cagr": -0.018289295166963204,
+      "oos_max_drawdown": 0.4985215177190784,
+      "oos_trades_total": 163,
+      "n_trades": 92,
+      "max_drawdown": 0.3512325252767522,
+      "total_return": 0.17737919727309137,
+      "cagr": 0.007513866023358906,
+      "n_bars": 5497,
+      "t_stat": 0.624766015693725,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -1.3567471301067557,
+          "is_sharpe": 2.8456328198760876,
+          "test_range": [
+            "2005-12-15",
+            "2009-05-13"
+          ],
+          "oos_trades": 38
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.8466885183827658,
+          "is_sharpe": 1.0672316987717136,
+          "test_range": [
+            "2010-04-29",
+            "2013-09-25"
+          ],
+          "oos_trades": 27
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.3481936216575542,
+          "is_sharpe": 0.4364926492611278,
+          "test_range": [
+            "2014-09-10",
+            "2018-02-08"
+          ],
+          "oos_trades": 41
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.33455016870830123,
+          "is_sharpe": 0.35756869026609855,
+          "test_range": [
+            "2019-01-25",
+            "2022-06-22"
+          ],
+          "oos_trades": 28
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.6361517152108394,
+          "is_sharpe": 0.4591310823562098,
+          "test_range": [
+            "2023-06-07",
+            "2026-11-03"
+          ],
+          "oos_trades": 29
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": 0.18051124845524,
+        "gross_cagr": 0.011253769734491437,
+        "net_sharpe": 0.13376879035927297,
+        "net_cagr": 0.007513866023358906,
+        "costs_paid": 7382.773546249563,
+        "turnover_total": 22983845.186308034,
+        "interpretation": "the edge survives costs but is materially eroded (26% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    },
+    {
+      "phase": "C_c1_control",
+      "name": "NEGATIVE-CONTROL-c1_regime_switch_rates_credit",
+      "verdict": "FRAGILE",
+      "flags": [
+        "t-stat -0.30 below 2.0 - the return series is not distinguishable from noise",
+        "edge does not survive 2x cost stress",
+        "Monte Carlo prob(profitable) 37%",
+        "only 10/22 profitable years"
+      ],
+      "errors": [],
+      "raised": null,
+      "reasoning": "OOS Sharpe 0.56 is positive but concerns remain: t-stat -0.30 below 2.0 - the return series is not distinguishable from noise; edge does not survive 2x cost stress; Monte Carlo prob(profitable) 37%; only 10/22 profitable years",
+      "in_sample_sharpe": -0.06508510365261024,
+      "pooled_oos_sharpe": 0.5596824372528555,
+      "pooled_oos_sharpe_live": 0.5596824372528555,
+      "final_is_sharpe": -1.2913046900476077,
+      "oos_retention": null,
+      "oos_cagr": 0.13000089403714665,
+      "oos_max_drawdown": 0.4603083733292259,
+      "oos_trades_total": 108,
+      "n_trades": 52,
+      "max_drawdown": 0.11920665958117282,
+      "total_return": -0.03529337225905882,
+      "cagr": -0.0016476434401572204,
+      "n_bars": 5491,
+      "t_stat": -0.30381348908390937,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 1.0927094377943412,
+          "is_sharpe": -0.7825154671640723,
+          "test_range": [
+            "2005-12-19",
+            "2009-05-19"
+          ],
+          "oos_trades": 12
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.7682837488470763,
+          "is_sharpe": -0.6707691264330098,
+          "test_range": [
+            "2010-05-04",
+            "2013-09-27"
+          ],
+          "oos_trades": 36
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.6752898036842704,
+          "is_sharpe": -0.6693067271177219,
+          "test_range": [
+            "2014-09-12",
+            "2018-02-07"
+          ],
+          "oos_trades": 12
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.349465643834495,
+          "is_sharpe": -0.8232946181805837,
+          "test_range": [
+            "2019-01-24",
+            "2022-06-17"
+          ],
+          "oos_trades": 24
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.5162125120714032,
+          "is_sharpe": -1.2913046900476077,
+          "test_range": [
+            "2023-06-05",
+            "2026-11-03"
+          ],
+          "oos_trades": 24
+        }
+      ],
+      "wf_mode": "purged_embargoed",
+      "gross_vs_net": {
+        "gross_sharpe": 0.19673077626394653,
+        "gross_cagr": 0.004024447714397139,
+        "net_sharpe": -0.06508510365261024,
+        "net_cagr": -0.0016476434401572204,
+        "costs_paid": 12309.272319795153,
+        "turnover_total": 21455689.213090133,
+        "interpretation": "there IS a positive gross-of-costs edge, but it is too small to survive trading costs - the strategy may be real but is untradeable at this size and frequency"
+      },
+      "causality": {
+        "causal": true,
+        "violations": []
+      },
+      "skipped_stages": []
+    }
+  ]
+}

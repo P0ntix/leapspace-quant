@@ -1,0 +1,132 @@
+{
+  "spec": "c1_regime_switch_crypto",
+  "twin": {
+    "n_bars": 2132,
+    "n_symbols": 10,
+    "n_signal_values": 21320,
+    "n_nonzero": 19989,
+    "n_abs_gt_0.01": 19989,
+    "min": -0.9888364420940008,
+    "max": 0.9888364420940008,
+    "sum": 326.97592926910147,
+    "signal_params": {
+      "feature": "regime_momentum_score",
+      "n_states": 4
+    }
+  },
+  "control": {
+    "n_bars": 2132,
+    "n_symbols": 10,
+    "n_signal_values": 21320,
+    "n_nonzero": 19989,
+    "n_abs_gt_0.01": 19989,
+    "min": -0.9888364420940008,
+    "max": 0.9888364420940008,
+    "sum": -326.97592926910147,
+    "signal_params": {
+      "feature": "regime_momentum_score",
+      "n_states": 4,
+      "invert_signal": true
+    }
+  },
+  "inverted_signal_differs": true,
+  "twin_n_nonzero": 19989,
+  "control_n_nonzero": 19989,
+  "twin_n_abs_gt_0.01": 19989,
+  "control_n_abs_gt_0.01": 19989,
+  "twin_sum": 326.97592926910147,
+  "control_sum": -326.97592926910147,
+  "twin_min": -0.9888364420940008,
+  "control_min": -0.9888364420940008,
+  "twin_max": 0.9888364420940008,
+  "control_max": 0.9888364420940008
+}
+{
+  "spec": "c1_regime_switch_fx_major",
+  "twin": {
+    "n_bars": 5680,
+    "n_symbols": 8,
+    "n_signal_values": 45440,
+    "n_nonzero": 0,
+    "n_abs_gt_0.01": 0,
+    "min": 0.0,
+    "max": 0.0,
+    "sum": 0.0,
+    "signal_params": {
+      "feature": "regime_momentum_score",
+      "n_states": 4
+    }
+  },
+  "control": {
+    "n_bars": 5680,
+    "n_symbols": 8,
+    "n_signal_values": 45440,
+    "n_nonzero": 0,
+    "n_abs_gt_0.01": 0,
+    "min": 0.0,
+    "max": 0.0,
+    "sum": 0.0,
+    "signal_params": {
+      "feature": "regime_momentum_score",
+      "n_states": 4,
+      "invert_signal": true
+    }
+  },
+  "inverted_signal_differs": false,
+  "twin_n_nonzero": 0,
+  "control_n_nonzero": 0,
+  "twin_n_abs_gt_0.01": 0,
+  "control_n_abs_gt_0.01": 0,
+  "twin_sum": 0.0,
+  "control_sum": 0.0,
+  "twin_min": 0.0,
+  "control_min": 0.0,
+  "twin_max": 0.0,
+  "control_max": 0.0
+}
+{
+  "spec": "c2_leading_vrp_fx_major",
+  "twin": {
+    "n_bars": 5680,
+    "n_symbols": 8,
+    "n_signal_values": 45440,
+    "n_nonzero": 9460,
+    "n_abs_gt_0.01": 6870,
+    "min": -0.1402376087513969,
+    "max": 0.14044064458950567,
+    "sum": 12.85333186483437,
+    "signal_params": {
+      "feature": "regime_momentum_score",
+      "vrp_z_feature": "leading_vrp_zscore",
+      "exposure_cap": 1.0
+    }
+  },
+  "control": {
+    "n_bars": 5680,
+    "n_symbols": 8,
+    "n_signal_values": 45440,
+    "n_nonzero": 8170,
+    "n_abs_gt_0.01": 4835,
+    "min": -0.13444050601649882,
+    "max": 0.13791246992562334,
+    "sum": 14.548920993394605,
+    "signal_params": {
+      "feature": "regime_momentum_score",
+      "vrp_z_feature": "leading_vrp_zscore",
+      "exposure_cap": 1.0,
+      "invert_signal": true
+    }
+  },
+  "inverted_signal_differs": true,
+  "twin_n_nonzero": 9460,
+  "control_n_nonzero": 8170,
+  "twin_n_abs_gt_0.01": 6870,
+  "control_n_abs_gt_0.01": 4835,
+  "twin_sum": 12.85333186483437,
+  "control_sum": 14.548920993394605,
+  "twin_min": -0.1402376087513969,
+  "control_min": -0.13444050601649882,
+  "twin_max": 0.14044064458950567,
+  "control_max": 0.13791246992562334
+}
+WROTE C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\_probe_c1_fx_signal.json
