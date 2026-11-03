@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # The offline core: compile, import, and every check that does not
+  # need the network. This is the gate that must always be green.
+  offline:
+    name: Offline core (compile + checks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile check
+        run: python -m compileall -q leapspace
+
+      - name: Import check
+        run: python -c "import leapspace, leapspace.cli; print('import OK')"
+
+      - name: Vendored skill suite (upstream, unmodified)
+        working-directory: leapspace/vendor/data_quality_checker
+        run: |
+          python -m pip install --quiet pytest
+          python -m pytest scripts/tests -q
+
+      - name: Report validator suite
+        run: python leapspace/tests/test_reportvalidate.py
+
+      - name: Offline check scripts
+        run: |
+          set -e
+          for t in check_intake_gate check_meme_paper_coverage \
+                   check_narrative_forward_selection check_quant_cli \
+                   check_report_integrity check_source_reliability; do
+            echo "--- $t"
+            python "leapspace/tests/$t.py"
+          done
+
+  # The live-network suite. Kept separate and allowed to fail: it talks
+  # to public RPC and data endpoints that rate-limit, and a red X from
+  # someone's flaky upstream is not a defect in this package.
+  live:
+    name: Live network tests (informational)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Live end-to-end tests
+        run: |
+          for t in leapspace/tests/test_*.py; do
+            case "$t" in
+              *test_reportvalidate*) continue ;;
+            esac
+            echo "--- $t"
+            timeout 600 python "$t" || echo "FAILED (informational): $t"
+          done

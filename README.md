@@ -285,6 +285,63 @@ cross-checked against the package's own, and an intake-gate refusal
 suite that proves the validator rejects specifications with stripped
 provenance.
 
+`leapspace/tests/check_quant_integration.py` is excluded from the loop
+above because it makes live network calls that can take several
+minutes on a slow link. Run it directly when you want the live
+integration check.
+
+### The pre-flight report validator
+
+Every report is validated **before** it is written. If validation finds
+errors, the report is still written, but it carries a machine-readable
+block naming every error so nobody can mistake it for a clean report.
+
+```bash
+python -m leapspace.cli report --from-json reports/leapspace_report.json
+```
+
+The validator runs five checks from a vendored, unmodified, MIT-licensed
+`data_quality_checker` skill (price scale, notation, dates, allocations,
+units) plus three package-specific checks that upstream does not
+implement:
+
+| Check | What it catches |
+|---|---|
+| `base_unit_scale` | a token quantity in raw base units (1 token = 1e18 base units) compared against a whole-token price — the error class that once shipped a +30,833% return |
+| `missing_not_zero` | `n/a` / `unavailable` rendered as `0`, which silently changes the arithmetic |
+| `percent_scale` | one quantity stated twice in the two percentage scales with values that disagree |
+
+The vendored code lives in `leapspace/vendor/data_quality_checker/` with
+its own `NOTICE` file recording the upstream commit, licence and every
+adapter decision. It is used **unmodified**; package-specific behaviour
+lives in `leapspace/reportvalidate.py`.
+
+The validator's own test suite proves it catches each defect class *and*
+that it does not fire on legitimate documents:
+
+```bash
+python leapspace/tests/test_reportvalidate.py
+```
+
+---
+
+## Repository
+
+This is a **standalone repository**. It is not a subdirectory of, and
+does not share history with, any other project.
+
+```
+https://github.com/P0ntix/leapspace-quant
+```
+
+Clone it anywhere and run it — the core is standard library only:
+
+```bash
+git clone https://github.com/P0ntix/leapspace-quant.git
+cd leapspace-quant
+python -m leapspace.cli --help
+```
+
 ---
 
 ## Further reading
