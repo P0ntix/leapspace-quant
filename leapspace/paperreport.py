@@ -101,11 +101,34 @@ def _twin(name: str) -> str:
 
 
 def _sharpe(row: Dict[str, Any]) -> Optional[float]:
+    """The POOLED OUT-OF-SAMPLE Sharpe, or None.
+
+    The key's PRESENCE is what decides, not its value. If the row has
+    an `oos_sharpe` key and it is None, the answer is None - a spec
+    with no out-of-sample result has no out-of-sample Sharpe, and
+    falling through to another key would substitute a different number
+    for the missing one.
+
+    The `sharpe` fallback is for legacy rows written before the key
+    existed. Those rows carried the IN-SAMPLE number under `sharpe`, so
+    using it would be wrong - but a row that has neither key has
+    nothing to report at all, and None says that.
+    """
     m = row.get("metrics") or {}
-    for key in ("oos_sharpe", "sharpe"):
-        v = m.get(key)
-        if isinstance(v, (int, float)):
-            return float(v)
+    if "oos_sharpe" in m:
+        v = m.get("oos_sharpe")
+        return float(v) if isinstance(v, (int, float)) else None
+    v = m.get("sharpe")
+    return float(v) if isinstance(v, (int, float)) else None
+
+
+def _in_sample_sharpe(row: Dict[str, Any]) -> Optional[float]:
+    """The IN-SAMPLE Sharpe, or None."""
+    m = row.get("metrics") or {}
+    for key in ("in_sample_sharpe", "sharpe"):
+        if key in m:
+            v = m.get(key)
+            return float(v) if isinstance(v, (int, float)) else None
     return None
 
 
