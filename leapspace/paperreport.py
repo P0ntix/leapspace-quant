@@ -826,6 +826,29 @@ def render_html(rows: Sequence[Dict[str, Any]],
                        'The table in the markdown report gives the '
                        'per-asset-class breakdown.</p></div>')
 
+    # The stage coverage: what was validated, and what was not.
+    stage_counts = _stage_coverage(rows)
+    if stage_counts:
+        trows = []
+        for stage in sorted(stage_counts):
+            c = stage_counts[stage]
+            ran = c.get("ran", 0)
+            skipped = c.get("skipped", 0)
+            errored = c.get("errored", 0)
+            col = UP if ran else (WARN if skipped else DOWN)
+            trows.append(
+                f'<tr><td>{_esc(stage)}</td>'
+                f'<td style="color:{col}">{ran}</td>'
+                f'<td style="color:{WARN if skipped else MUTED}">{skipped}</td>'
+                f'<td style="color:{DOWN if errored else MUTED}">{errored}</td>'
+                f'</tr>')
+        parts.append('<div class="card"><h2>What was validated</h2>'
+                     '<table><tr><th>Stage</th><th>Ran</th><th>Skipped</th>'
+                     '<th>Errored</th></tr>' + "".join(trows) + '</table>'
+                     '<p class="note">A verdict is only as good as the '
+                     'checks behind it. A stage that did not run is '
+                     'reported, never hidden.</p></div>')
+
     # The verdict detail table.
     trows = []
     for r in sorted(rows, key=lambda x: (str(x.get("concept")),
