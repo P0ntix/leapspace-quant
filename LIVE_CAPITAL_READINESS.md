@@ -43,9 +43,14 @@ market rather than to the bookkeeping. Each concept shipped with an
   (`c8_liquidity_reversal_crypto`) carries a **negative** OOS Sharpe of −0.19 and a
   negative total return: it is a losing strategy the gauntlet could not cleanly
   reject, not an edge.
-* **No negative control survived**, so the validation is discriminating over the 36
-  controls that ran. That matters: a matrix without controls would look identical
-  whether the concepts were real or invented.
+* **No negative control survived** — but this claim needed narrowing, and
+  the narrowing is recorded here rather than quietly dropped. Four of
+  the eight signals did not read the inversion flag, so the controls
+  for C1, C2 and C7 were byte-identical to their twins: they could not
+  fail, and so they proved nothing. The controls for **C3, C4, C5 and
+  C6 were genuine, and all failed** — which is what makes the refutations
+  of those four concepts meaningful. The C1, C2 and C7 controls are
+  being re-run against fixed code.
 * **The two most promising concepts were never actually tested.** The leading
   volatility risk premium (C2) and the order-flow microstructure base (C7) — 24 rows
   — crashed on implementation bugs, and the runner was reporting those crashes as
@@ -54,6 +59,12 @@ market rather than to the bookkeeping. Each concept shipped with an
   z-score that normalised over the whole panel instead of an expanding window), the
   verdict logic now distinguishes ERROR from INCONCLUSIVE, and the 24 rows are being
   re-run through the full gauntlet.
+* **The results file was reporting the in-sample Sharpe under the
+  `oos_sharpe` key.** 62 of 96 rows had `oos_sharpe == in_sample_sharpe`,
+  and a report that labels that number "pooled OOS Sharpe" is
+  confidently wrong. `run_spec` now exposes the true pooled OOS Sharpe
+  from the walk-forward block, plus the per-fold table and the stage
+  ledger, which never reached the file at all.
 * **Leading-data coverage is a hard limit on the equity panel.** ^VXN covers only
   1,250 of 5,492 panel bars (22.8%) — 2005–2021 has no implied-volatility data at
   all. Crypto is far better: Deribit DVOL covers 2,049 of 2,132 bars (96.1%).

@@ -44,8 +44,17 @@ rather than manufacturing a signal.
 SUPPORTED concept either. Of the 96 specs, 0 earned a SUPPORTED
 verdict. The single FRAGILE row carries a *negative* Sharpe. That is
 not a disappointing result — it is the result, and it is reported
-rather than dressed up. The negative controls all failed, which is what
-makes the finding meaningful: the validation discriminates.
+rather than dressed up.
+
+**A caveat on the negative controls.** The first matrix pass reported
+that no control survived, which is what makes the refutations
+meaningful. That claim has since been *narrowed*: four of the eight
+signals did not read the inversion flag, so those controls were
+byte-identical to their twins and could not fail. The controls for C3,
+C4, C5 and C6 were genuine and all failed; the controls for C1, C2 and
+C7 are being re-run against fixed code. The report states which
+controls executed and which were no-ops, so the discrimination claim
+is always scoped to the controls that could actually fail.
 
 See `reports/PAPER_CONCEPT_REPORT.md` for the full matrix and
 `reports/charts/paper_concepts.html` for the visual presentation.
