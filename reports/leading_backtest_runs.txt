@@ -1,0 +1,882 @@
+
+==============================================================================
+ENVIRONMENT
+==============================================================================
+python  : 3.14.9
+cwd     : C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant
+started : 2026-11-03 23:09:00
+sha256[:16] leapspace/backtest.py                      c6a614ddfc8bd6b3
+sha256[:16] leapspace/leadingspecs.py                  39a864e8055ddba6
+sha256[:16] leapspace/leading.py                       3a786859a784573e
+sha256[:16] leapspace/leadingcache.py                  b006268d273563fa
+sha256[:16] leapspace/data/leading_specs.json          dd260d0523fbca07
+
+==============================================================================
+SPEC: leading_vrp_crypto_momentum
+==============================================================================
+
+--- PASS 1: run_spec() on the spec EXACTLY as authored ---
+  RAISED: AttributeError: 'str' object has no attribute 'get'
+  elapsed: 0.0s
+
+--- PASS 2: intake gate with ONLY the provenance format fixed (so the gate can render its verdict) ---
+  available      : True
+  missing_before : ['direction', 'exit', 'leverage', 'costs']
+  auto_accepted  : ['costs']
+  missing_after  : ['direction', 'exit', 'leverage']
+  passed         : False
+    reason[direction]: no provenance entry supplies this condition
+    reason[exit]: no provenance entry supplies this condition
+    reason[leverage]: no provenance entry supplies this condition
+    reason[costs]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+
+--- PASS 3: bridged spec -> FULL gauntlet (quick=False, walk_forward_folds=5) ---
+  NOTE: this pass bypasses the gate refusal above. The verdict and numbers are the strategy's real numbers; they are NOT a gate-cleared validation.
+  BRIDGE: provenance: string values normalised to {'source','note'} (the gate reads pp[key]['source']; the shipped strings made it raise AttributeError)
+  BRIDGE: portfolio.long_only = False -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's direction check needs the key PRESENT
+  BRIDGE: portfolio.gross_leverage = 1.0 -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's leverage check needs the key PRESENT
+  BRIDGE: parameter_provenance['exit'] added -- documents the exit rule the shipped signal code implements (the gate's exit probes are signal.params.entry/exit/threshold and execution.mode/flat_at_close, none of which the leading signal has)
+  BRIDGE: parameter_provenance['direction'] added -- the gate's direction probe is portfolio.long_only, which the spec omits; the signal emits a signed (long/short) value
+  BRIDGE: parameter_provenance['leverage'] added -- the gate's leverage probe is portfolio.gross_leverage, which the spec omits
+  BRIDGE: parameter_provenance['timeframe'] added -- the gate's timeframe probe needs a recognised window key on every feature ('rv_window' is not in its whitelist; the whitelist was taught 'rv_window' at runtime)
+  BRIDGE: capital: {'start_usd': 10000.0} -> 10000.0 -- the engine reads spec['capital'] as a FLOAT initial_capital
+  intake gate after bridge: missing_before=['exit', 'costs'] auto_accepted=['exit', 'costs'] missing_after=[] passed=True
+
+==================================================================
+STAGE 8 — VALIDATION GAUNTLET
+==================================================================
+[stage 1-2] fetching 10 symbols for crypto...
+  [BTC-USD] 4430 bars
+  [ETH-USD] 3281 bars
+  [LTC-USD] 4430 bars
+  [BCH-USD] 3281 bars
+  [XRP-USD] 3281 bars
+  [SOL-USD] 2398 bars
+  [ADA-USD] 3281 bars
+  [DOGE-USD] 3281 bars
+  [AVAX-USD] 2235 bars
+  [LINK-USD] 3281 bars
+[stage 3] computing 3 feature(s)...
+[stage 4] signal: leading_vrp_switch
+[stage 5] constructing target weights...
+[stage 6-7] simulating with costs...
+
+[1] BASE METRICS
+    bars=2132  trades=20  sharpe=-0.27  cagr=-7.9%  maxDD=63.5%
+
+[2] WALK-FORWARD OUT-OF-SAMPLE
+  fold 0: IS sh=0.60 (n=121)  OOS sh=-0.70  (2021-06-11..2022-03-03)  purge=20 embargo=20
+  fold 1: IS sh=0.11 (n=242)  OOS sh=-1.26  (2022-08-12..2023-05-04)  purge=20 embargo=20
+  fold 2: IS sh=-0.01 (n=362)  OOS sh=0.88  (2023-10-12..2024-07-03)  purge=20 embargo=20
+  fold 3: IS sh=0.07 (n=482)  OOS sh=-0.02  (2024-12-11..2025-09-02)  purge=20 embargo=20
+  fold 4: IS sh=0.04 (n=602)  OOS sh=-2.86  (2026-02-10..2026-11-02)  purge=20 embargo=20
+  disjointness: PASS (4 checks: a_oos_blocks_disjoint, b_no_oos_bar_in_own_training, c_embargo_band_not_in_next_training, d_no_training_bar_inside_any_test_block)
+  gross-of-costs sharpe=-0.04 vs net -0.27  (no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem)
+  cost x1.0: sharpe=-0.27 cagr=-7.9%
+  cost x1.5: sharpe=-0.38 cagr=-10.2%
+  cost x2.0: sharpe=-0.50 cagr=-12.3%
+  cost x3.0: sharpe=-0.72 cagr=-16.6%
+  regime_momentum_score.lookback=15: sharpe=-0.43 (158% of base)
+  regime_momentum_score.lookback=25: sharpe=-0.09 (32% of base)
+  leading_vrp_score.rv_window=15: sharpe=-0.27 (100% of base)
+  leading_vrp_score.rv_window=25: sharpe=-0.27 (100% of base)
+  leading_vrp_zscore.rv_window=15: sharpe=0.31 (-115% of base)
+  leading_vrp_zscore.rv_window=25: sharpe=-0.11 (42% of base)
+  MC runs=3000 trades=20 (2/yr) P(profitable)=20.3% per-trade Sharpe p5/p50/p95=-0.68/-0.08/0.35  median-DD=73.9%
+  years positive: 3/6
+    2021: ret=-12.7% sh=-0.13
+    2022: ret=-27.6% sh=-0.94
+    2023: ret=3.9% sh=0.23
+    2024: ret=4.8% sh=0.25
+    2025: ret=7.2% sh=0.46
+    2026: ret=-32.5% sh=-3.09
+  est. capacity ~$791,145,188 (binding symbol: DOGE-USD, 5% of ADV participation)
+
+[9] CAUSALITY AUDIT (look-ahead check)
+  causality audit: FAIL — 10 violation(s)
+  elapsed: 37.9s
+  VERDICT: REFUTED
+  FLAGS (verbatim):
+    - only 20 trades (need >=30)
+    - t-stat -0.79 below 2.0 - the return series is not distinguishable from noise
+    - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - OOS Sharpe retains only -1369% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+    - edge does not survive 2x cost stress
+    - Monte Carlo prob(profitable) 20%
+    - LOOK-AHEAD DETECTED — feature uses future data
+  ERRORS (verbatim):
+  skipped_stages: []
+  METRICS:
+    avg_gross_exposure         0.7379
+    cagr                       -0.0790
+    calmar                     -0.1244
+    costs_paid                 2944.8318
+    cvar_95                    -0.0332
+    expectancy                 -250.8098
+    final_equity               4983.8030
+    kurtosis                   19.4684
+    max_drawdown               0.6353
+    n_bars                     2132
+    n_trades                   20
+    profit_factor              0.6358
+    sharpe                     -0.2713
+    sharpe_lag1                -0.1895
+    skew                       0.0624
+    sortino                    -0.3836
+    t_stat                     -0.7891
+    time_in_market             0.9522
+    total_return               -0.5016
+    trade_pnl_basis            net
+    turnover_total             1437353.6539
+    var_95                     -0.0186
+    win_rate                   0.4000
+  WALK-FORWARD (scalars):
+    embargo_bars               20
+    embargo_bars_requested     20
+    final_is_sharpe            0.0390
+    label_horizon              20
+    mode                       purged_embargoed
+    n_folds                    5
+    oos_cagr                   -0.1338
+    oos_max_drawdown           0.5526
+    oos_profitable_folds       1
+    oos_retention              -13.6899
+    oos_sharpe                 -0.5335
+    oos_sharpe_live            -0.5335
+    oos_trades_total           60
+    pbo                        0.6000
+    purge_bars                 20
+    purge_bars_requested       20
+
+  --- RAW GAUNTLET DETAIL ---
+  reasoning: Pipeline is not causal; results are unusable.
+  thresholds: {"min_trades": 30, "min_oos_sharpe": 0.5, "min_in_sharpe": 0.7, "oos_retention_min": 0.4, "oos_sharpe_strong": 1.0, "cost_stress_min_x": 2.0, "mc_prob_min": 0.85, "param_stability_min": 0.6, "min_positive_year_frac": 0.5, "min_profitable_fold_frac": 0.6, "t_stat_min": 2.0}
+  symbols in panel: ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  scorecard.skipped_stages: []
+
+  WALK-FORWARD FOLD TABLE:
+    mode=purged_embargoed n_folds=5 label_horizon=20 purge=20 embargo=20
+    notes: []
+    fold  train_range              test_range                  IS_sh   OOS_sh OOS_cagr trades
+    0     2021-01-21..2021-05-21   2021-06-11..2022-03-03      0.596   -0.701   -0.228     20
+    1     2021-01-21..2022-07-22   2022-08-12..2023-05-04      0.114   -1.256   -0.287     10
+    2     2021-01-21..2023-09-21   2023-10-12..2024-07-03     -0.007    0.877    0.217     10
+    3     2021-01-21..2024-11-20   2024-12-11..2025-09-02      0.070   -0.022   -0.011     10
+    4     2021-01-21..2026-01-20   2026-02-10..2026-11-02      0.039   -2.863   -0.264     10
+    pooled oos_sharpe      = -0.534
+    pooled oos_sharpe_live = -0.534
+    pooled oos_cagr        = -0.134
+    pooled oos_max_dd      = 0.553
+    oos_retention          = -13.690
+    final_is_sharpe        = 0.039
+    profitable folds       = 1 / 5
+    oos_trades_total       = 60
+    pbo (rank inversion)   = 0.600
+    disjointness ok=True checks=4 violations=[]
+
+  GROSS-vs-NET:
+    gross_sharpe         -0.0443
+    net_sharpe           -0.2713
+    gross_cagr           -0.0324
+    net_cagr             -0.0790
+    costs_paid           2944.8318
+    turnover_total       1437353.6539
+    interpretation       no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+
+  COST STRESS:
+    cost x1.0  sharpe=-0.271   cagr=-0.079    trades=20
+    cost x1.5  sharpe=-0.384   cagr=-0.102    trades=20
+    cost x2.0  sharpe=-0.497   cagr=-0.123    trades=20
+    cost x3.0  sharpe=-0.720   cagr=-0.166    trades=20
+
+  PARAMETER SWEEP:
+    base_sharpe=-0.271 stability=0.833  (broad plateau - robust)
+      regime_momentum_score    lookback     -> 15     sharpe=-0.428   ratio=1.577
+      regime_momentum_score    lookback     -> 25     sharpe=-0.087   ratio=0.320
+      leading_vrp_score        rv_window    -> 15     sharpe=-0.271   ratio=1.000
+      leading_vrp_score        rv_window    -> 25     sharpe=-0.271   ratio=1.000
+      leading_vrp_zscore       rv_window    -> 15     sharpe=0.312    ratio=-1.151
+      leading_vrp_zscore       rv_window    -> 25     sharpe=-0.114   ratio=0.420
+
+  MONTE CARLO:
+    n_runs                     3000
+    n_trades                   20
+    trades_per_year            2.3640
+    prob_profitable            0.2027
+    prob_sharpe_below_zero     0.5827
+    sharpe_p5                  -0.6814
+    sharpe_p50                 -0.0762
+    sharpe_p95                 0.3545
+    median_max_drawdown        0.7390
+    worst5pct_max_drawdown     1.1314
+    final_p5                   -4872.3100
+    final_p50                  4547.9508
+    NOTE (basis): per-trade (annualised at the observed trade frequency) — NOT comparable to the per-bar Sharpe elsewhere in this report
+
+  SUBPERIOD / REGIMES:
+    positive years: 3/6   edge_concentration=True
+      2021   ret=-0.1273   sharpe=-0.128   bars=365
+      2022   ret=-0.2761   sharpe=-0.937   bars=365
+      2023   ret=0.0392    sharpe=0.231    bars=365
+      2024   ret=0.0478    sharpe=0.253    bars=366
+      2025   ret=0.0725    sharpe=0.461    bars=365
+      2026   ret=-0.3245   sharpe=-3.088   bars=306
+    by regime: {"high_vol": {"sharpe": -0.2008253163938129, "bars": 1064}, "low_vol": {"sharpe": -0.5970867890012401, "bars": 1063}}
+
+  CAPACITY:
+    {"est_capacity_usd": 791145187.5841465, "binding_symbol": "DOGE-USD", "per_symbol_limits": {"ADA-USD": 2305718941.5452623, "AVAX-USD": 53265679474.036224, "BCH-USD": 998920129531.8243, "BTC-USD": 1.2326801921339364e+16, "DOGE-USD": 791145187.5841465, "ETH-USD": 290282929343355.4, "LINK-USD": 44445987071.18966, "LTC-USD": 313153798977.0508, "SOL-USD": 1688036684772.745, "XRP-USD": 11767696292.79822}, "turnover_per_year": 1437353.653891987, "n_traded_symbols": 10, "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."}
+
+  REPLICATION:
+    NOT RUN -- the scorecard has no 'replication' key. The package's run_spec passes alt_universes=None, so the gauntlet's replication branch is never entered (it is not in the skip list either -- it is simply absent).
+
+  CAUSALITY AUDIT:
+    causal=False violations=10
+      {"feature": "leading_vrp_zscore", "symbol": "ADA-USD", "bar": 83, "full": -0.3556486930303796, "truncated": -0.894267926774629}
+      {"feature": "leading_vrp_zscore", "symbol": "AVAX-USD", "bar": 83, "full": -2.395214394600909, "truncated": -1.9875005344757724}
+      {"feature": "leading_vrp_zscore", "symbol": "BCH-USD", "bar": 83, "full": 1.229244267034051, "truncated": 0.8963187170155136}
+      {"feature": "leading_vrp_zscore", "symbol": "BTC-USD", "bar": 83, "full": 1.995702021034328, "truncated": 1.5689424684858237}
+      {"feature": "leading_vrp_zscore", "symbol": "DOGE-USD", "bar": 83, "full": 0.3772016014202277, "truncated": 0.24150632548836742}
+      {"feature": "leading_vrp_zscore", "symbol": "ETH-USD", "bar": 83, "full": 1.4754171048893274, "truncated": 1.2047493100807565}
+      {"feature": "leading_vrp_zscore", "symbol": "LINK-USD", "bar": 83, "full": 1.1791330115319105, "truncated": 0.9325606280656433}
+      {"feature": "leading_vrp_zscore", "symbol": "LTC-USD", "bar": 83, "full": 1.5349993841176377, "truncated": 1.271814970894879}
+      {"feature": "leading_vrp_zscore", "symbol": "SOL-USD", "bar": 83, "full": 1.015300395121304, "truncated": 0.9454156297363477}
+      {"feature": "leading_vrp_zscore", "symbol": "XRP-USD", "bar": 83, "full": 0.5809907031297131, "truncated": 0.43568455305948983}
+
+  DEFATED SHARPE: -0.271
+
+  LEADING-INPUT COVERAGE (measured on the real panel):
+    panel bars=2132 symbols=['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+    panel date range: 2021-01-01 .. 2026-11-02
+    resolved source: deribit.dvol / BTC
+    why: the universe contains BTC-USD, whose options are priced on Deribit as BTC
+    series info: {"source": "deribit.dvol", "asset": "BTC", "why": "the universe contains BTC-USD, whose options are priced on Deribit as BTC", "ok": true, "fetched": false, "reason": "", "n_points": 2051, "provenance": "cache:deribit.dvol", "provenance_note": "2051 cached points, fetched 1438s ago; 2051 points of BTC implied volatility over 3 page(s) at 86400s"}
+    implied series: n=2051 points  2021-03-24 .. 2026-11-03
+    leading_vrp_score    non-missing bars: min=2049 max=2049  {'ADA-USD': 2049, 'AVAX-USD': 2049, 'BCH-USD': 2049, 'BTC-USD': 2049, 'DOGE-USD': 2049, 'ETH-USD': 2049, 'LINK-USD': 2049, 'LTC-USD': 2049, 'SOL-USD': 2049, 'XRP-USD': 2049}
+    leading_vrp_zscore   non-missing bars: min=2049 max=2049  {'ADA-USD': 2049, 'AVAX-USD': 2049, 'BCH-USD': 2049, 'BTC-USD': 2049, 'DOGE-USD': 2049, 'ETH-USD': 2049, 'LINK-USD': 2049, 'LTC-USD': 2049, 'SOL-USD': 2049, 'XRP-USD': 2049}
+    signal non-zero bars: {'ADA-USD': 1881, 'AVAX-USD': 1770, 'BCH-USD': 1881, 'BTC-USD': 1721, 'DOGE-USD': 1996, 'ETH-USD': 1791, 'LINK-USD': 1846, 'LTC-USD': 1804, 'SOL-USD': 1894, 'XRP-USD': 1951}
+    n trades (base run): 20
+
+==============================================================================
+SPEC: leading_vrp_nasdaq_momentum
+==============================================================================
+
+--- PASS 1: run_spec() on the spec EXACTLY as authored ---
+  RAISED: AttributeError: 'str' object has no attribute 'get'
+  elapsed: 0.0s
+
+--- PASS 2: intake gate with ONLY the provenance format fixed (so the gate can render its verdict) ---
+  available      : True
+  missing_before : ['direction', 'exit', 'rebalance', 'leverage', 'costs']
+  auto_accepted  : ['rebalance', 'costs']
+  missing_after  : ['direction', 'exit', 'leverage']
+  passed         : False
+    reason[direction]: no provenance entry supplies this condition
+    reason[exit]: no provenance entry supplies this condition
+    reason[rebalance]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+    reason[leverage]: no provenance entry supplies this condition
+    reason[costs]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+
+--- PASS 3: bridged spec -> FULL gauntlet (quick=False, walk_forward_folds=5) ---
+  NOTE: this pass bypasses the gate refusal above. The verdict and numbers are the strategy's real numbers; they are NOT a gate-cleared validation.
+  BRIDGE: provenance: string values normalised to {'source','note'} (the gate reads pp[key]['source']; the shipped strings made it raise AttributeError)
+  BRIDGE: portfolio.long_only = False -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's direction check needs the key PRESENT
+  BRIDGE: portfolio.gross_leverage = 1.0 -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's leverage check needs the key PRESENT
+  BRIDGE: parameter_provenance['exit'] added -- documents the exit rule the shipped signal code implements (the gate's exit probes are signal.params.entry/exit/threshold and execution.mode/flat_at_close, none of which the leading signal has)
+  BRIDGE: parameter_provenance['direction'] added -- the gate's direction probe is portfolio.long_only, which the spec omits; the signal emits a signed (long/short) value
+  BRIDGE: parameter_provenance['leverage'] added -- the gate's leverage probe is portfolio.gross_leverage, which the spec omits
+  BRIDGE: parameter_provenance['timeframe'] added -- the gate's timeframe probe needs a recognised window key on every feature ('rv_window' is not in its whitelist; the whitelist was taught 'rv_window' at runtime)
+  BRIDGE: capital: {'start_usd': 10000.0} -> 10000.0 -- the engine reads spec['capital'] as a FLOAT initial_capital
+  intake gate after bridge: missing_before=['exit', 'rebalance', 'costs'] auto_accepted=['exit', 'rebalance', 'costs'] missing_after=[] passed=True
+
+==================================================================
+STAGE 8 — VALIDATION GAUNTLET
+==================================================================
+[stage 1-2] fetching 6 symbols for us_equity_style...
+  [SPY] 8497 bars
+  [IWM] 6647 bars
+  [MDY] 7926 bars
+  [RSP] 5914 bars
+  [QQQ] 6955 bars
+  [DIA] 7241 bars
+[stage 3] computing 3 feature(s)...
+[stage 4] signal: leading_vrp_switch
+[stage 5] constructing target weights...
+[stage 6-7] simulating with costs...
+
+[1] BASE METRICS
+    bars=5492  trades=6  sharpe=-0.12  cagr=-0.3%  maxDD=12.7%
+
+[2] WALK-FORWARD OUT-OF-SAMPLE
+  fold 0: IS sh=n/a (n=121)  OOS sh=n/a  (2005-12-15..2009-05-14)  purge=60 embargo=60
+  fold 1: IS sh=n/a (n=242)  OOS sh=n/a  (2010-04-30..2013-09-25)  purge=60 embargo=60
+  fold 2: IS sh=n/a (n=362)  OOS sh=n/a  (2014-09-10..2018-02-05)  purge=60 embargo=60
+  fold 3: IS sh=n/a (n=482)  OOS sh=0.36  (2019-01-22..2022-06-15)  purge=60 embargo=60
+  fold 4: IS sh=-0.33 (n=602)  OOS sh=-0.60  (2023-06-01..2026-10-30)  purge=60 embargo=60
+  disjointness: PASS (4 checks: a_oos_blocks_disjoint, b_no_oos_bar_in_own_training, c_embargo_band_not_in_next_training, d_no_training_bar_inside_any_test_block)
+  gross-of-costs sharpe=-0.09 vs net -0.12  (no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem)
+  cost x1.0: sharpe=-0.12 cagr=-0.3%
+  cost x1.5: sharpe=-0.13 cagr=-0.3%
+  cost x2.0: sharpe=-0.14 cagr=-0.3%
+  cost x3.0: sharpe=-0.17 cagr=-0.4%
+  regime_momentum_score.lookback=45: sharpe=0.00 (-0% of base)
+  regime_momentum_score.lookback=75: sharpe=-0.06 (52% of base)
+  leading_vrp_score.rv_window=15: sharpe=-0.12 (100% of base)
+  leading_vrp_score.rv_window=25: sharpe=-0.12 (100% of base)
+  leading_vrp_zscore.rv_window=15: sharpe=-0.22 (182% of base)
+  leading_vrp_zscore.rv_window=25: sharpe=-0.16 (138% of base)
+  years positive: 3/22
+    2005: ret=0.0% sh=n/a
+    2006: ret=0.0% sh=n/a
+    2007: ret=0.0% sh=n/a
+    2008: ret=0.0% sh=n/a
+    2009: ret=0.0% sh=n/a
+    2010: ret=0.0% sh=n/a
+    2011: ret=0.0% sh=n/a
+    2012: ret=0.0% sh=n/a
+    2013: ret=0.0% sh=n/a
+    2014: ret=0.0% sh=n/a
+    2015: ret=0.0% sh=n/a
+    2016: ret=0.0% sh=n/a
+    2017: ret=0.0% sh=n/a
+    2018: ret=0.0% sh=n/a
+    2019: ret=0.0% sh=n/a
+    2020: ret=0.0% sh=n/a
+    2021: ret=2.5% sh=0.73
+    2022: ret=4.1% sh=0.81
+    2023: ret=-5.6% sh=-1.40
+    2024: ret=-4.5% sh=-1.22
+    2025: ret=-2.3% sh=-0.85
+    2026: ret=0.4% sh=0.13
+  est. capacity ~$2,107,386,095 (binding symbol: RSP, 5% of ADV participation)
+
+[9] CAUSALITY AUDIT (look-ahead check)
+  causality audit: PASS (no look-ahead)
+  elapsed: 61.6s
+  VERDICT: REFUTED
+  FLAGS (verbatim):
+    - only 6 trades (need >=30)
+    - t-stat -0.55 below 2.0 - the return series is not distinguishable from noise
+    - only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+    - edge does not survive 2x cost stress
+    - only 3/22 profitable years
+  ERRORS (verbatim):
+  skipped_stages: []
+  METRICS:
+    avg_gross_exposure         0.1324
+    cagr                       -0.0027
+    calmar                     -0.0210
+    costs_paid                 110.0353
+    cvar_95                    -0.0033
+    expectancy                 -94.3676
+    final_equity               9433.7946
+    kurtosis                   48.0797
+    max_drawdown               0.1270
+    n_bars                     5492
+    n_trades                   6
+    profit_factor              0.4484
+    sharpe                     -0.1188
+    sharpe_lag1                -0.0837
+    skew                       -0.8925
+    sortino                    -0.1628
+    t_stat                     -0.5544
+    time_in_market             0.2245
+    total_return               -0.0566
+    trade_pnl_basis            net
+    turnover_total             384302.3546
+    var_95                     -0.0012
+    win_rate                   0.3333
+  WALK-FORWARD (scalars):
+    embargo_bars               60
+    embargo_bars_requested     60
+    final_is_sharpe            -0.3318
+    label_horizon              60
+    mode                       purged_embargoed
+    n_folds                    5
+    oos_cagr                   -0.0025
+    oos_max_drawdown           0.0974
+    oos_profitable_folds       1
+    oos_retention              None
+    oos_sharpe                 -0.1023
+    oos_sharpe_live            -0.1023
+    oos_trades_total           12
+    pbo                        None
+    pbo_detail                 None
+    purge_bars                 60
+    purge_bars_requested       60
+
+  --- RAW GAUNTLET DETAIL ---
+  reasoning: Pooled OOS Sharpe -0.10 is below 0.5, and the gross-of-costs Sharpe is -0.09 - there is NO positive edge even before costs. The signal has no exploitable expectancy in this sample; this is not a cost problem that better execution could solve.
+  thresholds: {"min_trades": 30, "min_oos_sharpe": 0.5, "min_in_sharpe": 0.7, "oos_retention_min": 0.4, "oos_sharpe_strong": 1.0, "cost_stress_min_x": 2.0, "mc_prob_min": 0.85, "param_stability_min": 0.6, "min_positive_year_frac": 0.5, "min_profitable_fold_frac": 0.6, "t_stat_min": 2.0}
+  symbols in panel: ['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  scorecard.skipped_stages: []
+
+  WALK-FORWARD FOLD TABLE:
+    mode=purged_embargoed n_folds=5 label_horizon=60 purge=60 embargo=60
+    notes: []
+    fold  train_range              test_range                  IS_sh   OOS_sh OOS_cagr trades
+    0     2005-03-31..2005-09-20   2005-12-15..2009-05-14       None     None    0.000      0
+    1     2005-03-31..2010-02-02   2010-04-30..2013-09-25       None     None    0.000      0
+    2     2005-03-31..2014-06-13   2014-09-10..2018-02-05       None     None    0.000      0
+    3     2005-03-31..2018-10-22   2019-01-22..2022-06-15       None    0.356    0.011      6
+    4     2005-03-31..2023-03-06   2023-06-01..2026-10-30     -0.332   -0.600   -0.023      6
+    pooled oos_sharpe      = -0.102
+    pooled oos_sharpe_live = -0.102
+    pooled oos_cagr        = -0.002
+    pooled oos_max_dd      = 0.097
+    oos_retention          = None
+    final_is_sharpe        = -0.332
+    profitable folds       = 1 / 5
+    oos_trades_total       = 12
+    pbo (rank inversion)   = None
+    disjointness ok=True checks=4 violations=[]
+
+  GROSS-vs-NET:
+    gross_sharpe         -0.0942
+    net_sharpe           -0.1188
+    gross_cagr           -0.0022
+    net_cagr             -0.0027
+    costs_paid           110.0353
+    turnover_total       384302.3546
+    interpretation       no positive edge even before costs - the signal itself has no exploitable expectancy in this sample, so costs are not the primary problem
+
+  COST STRESS:
+    cost x1.0  sharpe=-0.119   cagr=-0.003    trades=6
+    cost x1.5  sharpe=-0.131   cagr=-0.003    trades=6
+    cost x2.0  sharpe=-0.143   cagr=-0.003    trades=6
+    cost x3.0  sharpe=-0.168   cagr=-0.004    trades=6
+
+  PARAMETER SWEEP:
+    base_sharpe=-0.119 stability=0.833  (broad plateau - robust)
+      regime_momentum_score    lookback     -> 45     sharpe=0.001    ratio=-0.005
+      regime_momentum_score    lookback     -> 75     sharpe=-0.062   ratio=0.522
+      leading_vrp_score        rv_window    -> 15     sharpe=-0.119   ratio=1.000
+      leading_vrp_score        rv_window    -> 25     sharpe=-0.119   ratio=1.000
+      leading_vrp_zscore       rv_window    -> 15     sharpe=-0.217   ratio=1.823
+      leading_vrp_zscore       rv_window    -> 25     sharpe=-0.164   ratio=1.384
+
+  MONTE CARLO:
+    {'error': 'only 6 trades — Monte Carlo needs >=20'}
+
+  SUBPERIOD / REGIMES:
+    positive years: 3/22   edge_concentration=True
+      2005   ret=0.0000    sharpe=None     bars=252
+      2006   ret=0.0000    sharpe=None     bars=251
+      2007   ret=0.0000    sharpe=None     bars=251
+      2008   ret=0.0000    sharpe=None     bars=253
+      2009   ret=0.0000    sharpe=None     bars=252
+      2010   ret=0.0000    sharpe=None     bars=252
+      2011   ret=0.0000    sharpe=None     bars=252
+      2012   ret=0.0000    sharpe=None     bars=250
+      2013   ret=0.0000    sharpe=None     bars=252
+      2014   ret=0.0000    sharpe=None     bars=252
+      2015   ret=0.0000    sharpe=None     bars=252
+      2016   ret=0.0000    sharpe=None     bars=252
+      2017   ret=0.0000    sharpe=None     bars=251
+      2018   ret=0.0000    sharpe=None     bars=251
+      2019   ret=0.0000    sharpe=None     bars=252
+      2020   ret=0.0000    sharpe=None     bars=253
+      2021   ret=0.0249    sharpe=0.732    bars=252
+      2022   ret=0.0412    sharpe=0.811    bars=251
+      2023   ret=-0.0563   sharpe=-1.404   bars=250
+      2024   ret=-0.0454   sharpe=-1.218   bars=252
+      2025   ret=-0.0227   sharpe=-0.852   bars=250
+      2026   ret=0.0042    sharpe=0.133    bars=209
+    by regime: {"high_vol": {"sharpe": -0.11881592103551732, "bars": 5487}, "low_vol": {"sharpe": null, "bars": 0}}
+
+  CAPACITY:
+    {"est_capacity_usd": 2107386095.2593884, "binding_symbol": "RSP", "per_symbol_limits": {"DIA": 35139529740.6242, "IWM": 154424207661.062, "MDY": 15589018215.8543, "QQQ": 194594461970.7037, "RSP": 2107386095.2593884, "SPY": 823617002600.736}, "turnover_per_year": 384302.35457214556, "n_traded_symbols": 6, "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."}
+
+  REPLICATION:
+    NOT RUN -- the scorecard has no 'replication' key. The package's run_spec passes alt_universes=None, so the gauntlet's replication branch is never entered (it is not in the skip list either -- it is simply absent).
+
+  CAUSALITY AUDIT:
+    causal=True violations=0
+
+  DEFATED SHARPE: -0.119
+
+  LEADING-INPUT COVERAGE (measured on the real panel):
+    panel bars=5492 symbols=['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+    panel date range: 2005-01-03 .. 2026-10-30
+    resolved source: yahoo.chart / ^VXN
+    why: the universe is Nasdaq-like, so the Nasdaq-100 implied volatility index is the matching leading indicator
+    series info: {"source": "yahoo.chart", "asset": "^VXN", "why": "the universe is Nasdaq-like, so the Nasdaq-100 implied volatility index is the matching leading indicator", "ok": true, "fetched": false, "reason": "", "n_points": 1255, "provenance": "cache:yahoo.chart", "provenance_note": "1255 cached points, fetched 61s ago; HTTP 200; 1255 bars of ^VXN implied volatility"}
+    implied series: n=1255 points  2021-11-03 .. 2026-11-03
+    leading_vrp_score    non-missing bars: min=1250 max=1250  {'DIA': 1250, 'IWM': 1250, 'MDY': 1250, 'QQQ': 1250, 'RSP': 1250, 'SPY': 1250}
+    leading_vrp_zscore   non-missing bars: min=1250 max=1250  {'DIA': 1250, 'IWM': 1250, 'MDY': 1250, 'QQQ': 1250, 'RSP': 1250, 'SPY': 1250}
+    signal non-zero bars: {'DIA': 1086, 'IWM': 1102, 'MDY': 1100, 'QQQ': 1115, 'RSP': 1091, 'SPY': 1133}
+    n trades (base run): 6
+
+==============================================================================
+SPEC: NEGATIVE-CONTROL-leading_vrp_crypto_inverted
+==============================================================================
+
+--- PASS 1: run_spec() on the spec EXACTLY as authored ---
+  RAISED: AttributeError: 'str' object has no attribute 'get'
+  elapsed: 0.0s
+
+--- PASS 2: intake gate with ONLY the provenance format fixed (so the gate can render its verdict) ---
+  available      : True
+  missing_before : ['direction', 'exit', 'leverage', 'costs']
+  auto_accepted  : ['costs']
+  missing_after  : ['direction', 'exit', 'leverage']
+  passed         : False
+    reason[direction]: no provenance entry supplies this condition
+    reason[exit]: no provenance entry supplies this condition
+    reason[leverage]: no provenance entry supplies this condition
+    reason[costs]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+
+--- PASS 3: bridged spec -> FULL gauntlet (quick=False, walk_forward_folds=5) ---
+  NOTE: this pass bypasses the gate refusal above. The verdict and numbers are the strategy's real numbers; they are NOT a gate-cleared validation.
+  BRIDGE: provenance: string values normalised to {'source','note'} (the gate reads pp[key]['source']; the shipped strings made it raise AttributeError)
+  BRIDGE: portfolio.long_only = False -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's direction check needs the key PRESENT
+  BRIDGE: portfolio.gross_leverage = 1.0 -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's leverage check needs the key PRESENT
+  BRIDGE: parameter_provenance['exit'] added -- documents the exit rule the shipped signal code implements (the gate's exit probes are signal.params.entry/exit/threshold and execution.mode/flat_at_close, none of which the leading signal has)
+  BRIDGE: parameter_provenance['direction'] added -- the gate's direction probe is portfolio.long_only, which the spec omits; the signal emits a signed (long/short) value
+  BRIDGE: parameter_provenance['leverage'] added -- the gate's leverage probe is portfolio.gross_leverage, which the spec omits
+  BRIDGE: parameter_provenance['timeframe'] added -- the gate's timeframe probe needs a recognised window key on every feature ('rv_window' is not in its whitelist; the whitelist was taught 'rv_window' at runtime)
+  BRIDGE: capital: {'start_usd': 10000.0} -> 10000.0 -- the engine reads spec['capital'] as a FLOAT initial_capital
+  intake gate after bridge: missing_before=['exit', 'costs'] auto_accepted=['exit', 'costs'] missing_after=[] passed=True
+
+==================================================================
+STAGE 8 — VALIDATION GAUNTLET
+==================================================================
+[stage 1-2] fetching 10 symbols for crypto...
+[stage 3] computing 3 feature(s)...
+[stage 4] signal: leading_vrp_switch
+[stage 5] constructing target weights...
+[stage 6-7] simulating with costs...
+
+[1] BASE METRICS
+    bars=2132  trades=10  sharpe=0.02  cagr=-1.0%  maxDD=44.6%
+
+[2] WALK-FORWARD OUT-OF-SAMPLE
+  fold 0: IS sh=2.49 (n=121)  OOS sh=0.66  (2021-06-11..2022-03-03)  purge=20 embargo=20
+  fold 1: IS sh=1.44 (n=242)  OOS sh=-0.97  (2022-08-12..2023-05-04)  purge=20 embargo=20
+  fold 2: IS sh=1.63 (n=362)  OOS sh=0.04  (2023-10-12..2024-07-03)  purge=20 embargo=20
+  fold 3: IS sh=1.52 (n=482)  OOS sh=0.48  (2024-12-11..2025-09-02)  purge=20 embargo=20
+  fold 4: IS sh=1.05 (n=602)  OOS sh=-2.11  (2026-02-10..2026-11-02)  purge=20 embargo=20
+  disjointness: PASS (4 checks: a_oos_blocks_disjoint, b_no_oos_bar_in_own_training, c_embargo_band_not_in_next_training, d_no_training_bar_inside_any_test_block)
+  gross-of-costs sharpe=0.30 vs net 0.02  (the edge survives costs but is materially eroded (93% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it)
+  cost x1.0: sharpe=0.02 cagr=-1.0%
+  cost x1.5: sharpe=-0.12 cagr=-3.4%
+  cost x2.0: sharpe=-0.25 cagr=-5.6%
+  cost x3.0: sharpe=-0.53 cagr=-10.0%
+  regime_momentum_score.lookback=15: sharpe=0.10 (462% of base)
+  regime_momentum_score.lookback=25: sharpe=0.22 (985% of base)
+  leading_vrp_score.rv_window=15: sharpe=0.02 (100% of base)
+  leading_vrp_score.rv_window=25: sharpe=0.02 (100% of base)
+  leading_vrp_zscore.rv_window=15: sharpe=-0.08 (-336% of base)
+  leading_vrp_zscore.rv_window=25: sharpe=-0.04 (-182% of base)
+  years positive: 4/6
+    2021: ret=39.9% sh=0.99
+    2022: ret=1.6% sh=0.15
+    2023: ret=4.9% sh=0.29
+    2024: ret=-20.7% sh=-0.94
+    2025: ret=4.3% sh=0.28
+    2026: ret=-26.0% sh=-2.34
+  est. capacity ~$452,260,932 (binding symbol: DOGE-USD, 5% of ADV participation)
+
+[9] CAUSALITY AUDIT (look-ahead check)
+  causality audit: FAIL — 10 violation(s)
+  elapsed: 39.9s
+  VERDICT: REFUTED
+  FLAGS (verbatim):
+    - only 10 trades (need >=30)
+    - t-stat 0.07 below 2.0 - the return series is not distinguishable from noise
+    - OOS Sharpe retains only -21% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+    - edge does not survive 2x cost stress
+    - LOOK-AHEAD DETECTED — feature uses future data
+  ERRORS (verbatim):
+  skipped_stages: []
+  METRICS:
+    avg_gross_exposure         0.6763
+    cagr                       -0.0105
+    calmar                     -0.0235
+    costs_paid                 5138.5637
+    cvar_95                    -0.0246
+    expectancy                 -85.3832
+    final_equity               9146.1683
+    kurtosis                   12.4488
+    max_drawdown               0.4465
+    n_bars                     2132
+    n_trades                   10
+    profit_factor              0.9164
+    sharpe                     0.0226
+    sharpe_lag1                0.0158
+    skew                       0.5779
+    sortino                    0.0335
+    t_stat                     0.0658
+    time_in_market             0.9587
+    total_return               -0.0854
+    trade_pnl_basis            net
+    turnover_total             2514379.0797
+    var_95                     -0.0154
+    win_rate                   0.6000
+  WALK-FORWARD (scalars):
+    embargo_bars               20
+    embargo_bars_requested     20
+    final_is_sharpe            1.0466
+    label_horizon              20
+    mode                       purged_embargoed
+    n_folds                    5
+    oos_cagr                   -0.0420
+    oos_max_drawdown           0.3934
+    oos_profitable_folds       3
+    oos_retention              -0.2086
+    oos_sharpe                 -0.2183
+    oos_sharpe_live            -0.2183
+    oos_trades_total           50
+    pbo                        0.1000
+    purge_bars                 20
+    purge_bars_requested       20
+
+  --- RAW GAUNTLET DETAIL ---
+  reasoning: Pipeline is not causal; results are unusable.
+  thresholds: {"min_trades": 30, "min_oos_sharpe": 0.5, "min_in_sharpe": 0.7, "oos_retention_min": 0.4, "oos_sharpe_strong": 1.0, "cost_stress_min_x": 2.0, "mc_prob_min": 0.85, "param_stability_min": 0.6, "min_positive_year_frac": 0.5, "min_profitable_fold_frac": 0.6, "t_stat_min": 2.0}
+  symbols in panel: ['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  scorecard.skipped_stages: []
+
+  WALK-FORWARD FOLD TABLE:
+    mode=purged_embargoed n_folds=5 label_horizon=20 purge=20 embargo=20
+    notes: []
+    fold  train_range              test_range                  IS_sh   OOS_sh OOS_cagr trades
+    0     2021-01-21..2021-05-21   2021-06-11..2022-03-03      2.494    0.659    0.113     10
+    1     2021-01-21..2022-07-22   2022-08-12..2023-05-04      1.443   -0.967   -0.127     10
+    2     2021-01-21..2023-09-21   2023-10-12..2024-07-03      1.632    0.036   -0.006     10
+    3     2021-01-21..2024-11-20   2024-12-11..2025-09-02      1.519    0.477    0.059     10
+    4     2021-01-21..2026-01-20   2026-02-10..2026-11-02      1.047   -2.108   -0.211     10
+    pooled oos_sharpe      = -0.218
+    pooled oos_sharpe_live = -0.218
+    pooled oos_cagr        = -0.042
+    pooled oos_max_dd      = 0.393
+    oos_retention          = -0.209
+    final_is_sharpe        = 1.047
+    profitable folds       = 3 / 5
+    oos_trades_total       = 50
+    pbo (rank inversion)   = 0.100
+    disjointness ok=True checks=4 violations=[]
+
+  GROSS-vs-NET:
+    gross_sharpe         0.3020
+    net_sharpe           0.0226
+    gross_cagr           0.0376
+    net_cagr             -0.0105
+    costs_paid           5138.5637
+    turnover_total       2514379.0797
+    interpretation       the edge survives costs but is materially eroded (93% of the gross Sharpe lost to costs) - a lower-turnover or larger-size version of this strategy would keep more of it
+
+  COST STRESS:
+    cost x1.0  sharpe=0.023    cagr=-0.010    trades=10
+    cost x1.5  sharpe=-0.117   cagr=-0.034    trades=10
+    cost x2.0  sharpe=-0.255   cagr=-0.056    trades=10
+    cost x3.0  sharpe=-0.529   cagr=-0.100    trades=10
+
+  PARAMETER SWEEP:
+    base_sharpe=0.023 stability=0.667  (narrow/unstable - possible curve-fit)
+      regime_momentum_score    lookback     -> 15     sharpe=0.105    ratio=4.618
+      regime_momentum_score    lookback     -> 25     sharpe=0.223    ratio=9.847
+      leading_vrp_score        rv_window    -> 15     sharpe=0.023    ratio=1.000
+      leading_vrp_score        rv_window    -> 25     sharpe=0.023    ratio=1.000
+      leading_vrp_zscore       rv_window    -> 15     sharpe=-0.076   ratio=-3.355
+      leading_vrp_zscore       rv_window    -> 25     sharpe=-0.041   ratio=-1.816
+
+  MONTE CARLO:
+    {'error': 'only 10 trades — Monte Carlo needs >=20'}
+
+  SUBPERIOD / REGIMES:
+    positive years: 4/6   edge_concentration=True
+      2021   ret=0.3994    sharpe=0.990    bars=365
+      2022   ret=0.0164    sharpe=0.151    bars=365
+      2023   ret=0.0493    sharpe=0.286    bars=365
+      2024   ret=-0.2066   sharpe=-0.936   bars=366
+      2025   ret=0.0431    sharpe=0.284    bars=365
+      2026   ret=-0.2595   sharpe=-2.344   bars=306
+    by regime: {"high_vol": {"sharpe": 0.3671400593063225, "bars": 1064}, "low_vol": {"sharpe": -0.8319056348173332, "bars": 1063}}
+
+  CAPACITY:
+    {"est_capacity_usd": 452260932.0529825, "binding_symbol": "DOGE-USD", "per_symbol_limits": {"ADA-USD": 1318072351.2200665, "AVAX-USD": 30449513216.309395, "BCH-USD": 571036209179.3654, "BTC-USD": 7046659720197672.0, "DOGE-USD": 452260932.0529825, "ETH-USD": 165941258626353.72, "LINK-USD": 25407705000.66156, "LTC-USD": 179015471779.2931, "SOL-USD": 964972114317.1958, "XRP-USD": 6727045019.067745}, "turnover_per_year": 2514379.079729832, "n_traded_symbols": 10, "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."}
+
+  REPLICATION:
+    NOT RUN -- the scorecard has no 'replication' key. The package's run_spec passes alt_universes=None, so the gauntlet's replication branch is never entered (it is not in the skip list either -- it is simply absent).
+
+  CAUSALITY AUDIT:
+    causal=False violations=10
+      {"feature": "leading_vrp_zscore", "symbol": "ADA-USD", "bar": 83, "full": -0.3556486930303796, "truncated": -0.894267926774629}
+      {"feature": "leading_vrp_zscore", "symbol": "AVAX-USD", "bar": 83, "full": -2.395214394600909, "truncated": -1.9875005344757724}
+      {"feature": "leading_vrp_zscore", "symbol": "BCH-USD", "bar": 83, "full": 1.229244267034051, "truncated": 0.8963187170155136}
+      {"feature": "leading_vrp_zscore", "symbol": "BTC-USD", "bar": 83, "full": 1.995702021034328, "truncated": 1.5689424684858237}
+      {"feature": "leading_vrp_zscore", "symbol": "DOGE-USD", "bar": 83, "full": 0.3772016014202277, "truncated": 0.24150632548836742}
+      {"feature": "leading_vrp_zscore", "symbol": "ETH-USD", "bar": 83, "full": 1.4754171048893274, "truncated": 1.2047493100807565}
+      {"feature": "leading_vrp_zscore", "symbol": "LINK-USD", "bar": 83, "full": 1.1791330115319105, "truncated": 0.9325606280656433}
+      {"feature": "leading_vrp_zscore", "symbol": "LTC-USD", "bar": 83, "full": 1.5349993841176377, "truncated": 1.271814970894879}
+      {"feature": "leading_vrp_zscore", "symbol": "SOL-USD", "bar": 83, "full": 1.015300395121304, "truncated": 0.9454156297363477}
+      {"feature": "leading_vrp_zscore", "symbol": "XRP-USD", "bar": 83, "full": 0.5809907031297131, "truncated": 0.43568455305948983}
+
+  DEFATED SHARPE: 0.023
+
+  LEADING-INPUT COVERAGE (measured on the real panel):
+    panel bars=2132 symbols=['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+    panel date range: 2021-01-01 .. 2026-11-02
+    resolved source: deribit.dvol / BTC
+    why: the universe contains BTC-USD, whose options are priced on Deribit as BTC
+    series info: {"source": "deribit.dvol", "asset": "BTC", "why": "the universe contains BTC-USD, whose options are priced on Deribit as BTC", "ok": true, "fetched": false, "reason": "", "n_points": 2051, "provenance": "cache:deribit.dvol", "provenance_note": "2051 cached points, fetched 1546s ago; 2051 points of BTC implied volatility over 3 page(s) at 86400s"}
+    implied series: n=2051 points  2021-03-24 .. 2026-11-03
+    leading_vrp_score    non-missing bars: min=2049 max=2049  {'ADA-USD': 2049, 'AVAX-USD': 2049, 'BCH-USD': 2049, 'BTC-USD': 2049, 'DOGE-USD': 2049, 'ETH-USD': 2049, 'LINK-USD': 2049, 'LTC-USD': 2049, 'SOL-USD': 2049, 'XRP-USD': 2049}
+    leading_vrp_zscore   non-missing bars: min=2049 max=2049  {'ADA-USD': 2049, 'AVAX-USD': 2049, 'BCH-USD': 2049, 'BTC-USD': 2049, 'DOGE-USD': 2049, 'ETH-USD': 2049, 'LINK-USD': 2049, 'LTC-USD': 2049, 'SOL-USD': 2049, 'XRP-USD': 2049}
+    signal non-zero bars: {'ADA-USD': 1888, 'AVAX-USD': 1802, 'BCH-USD': 1842, 'BTC-USD': 1786, 'DOGE-USD': 1898, 'ETH-USD': 1766, 'LINK-USD': 1826, 'LTC-USD': 1763, 'SOL-USD': 1850, 'XRP-USD': 1850}
+    n trades (base run): 10
+
+==============================================================================
+BRIDGE APPLIED (full list)
+==============================================================================
+
+leading_vrp_crypto_momentum
+  - provenance: string values normalised to {'source','note'} (the gate reads pp[key]['source']; the shipped strings made it raise AttributeError)
+  - portfolio.long_only = False -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's direction check needs the key PRESENT
+  - portfolio.gross_leverage = 1.0 -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's leverage check needs the key PRESENT
+  - parameter_provenance['exit'] added -- documents the exit rule the shipped signal code implements (the gate's exit probes are signal.params.entry/exit/threshold and execution.mode/flat_at_close, none of which the leading signal has)
+  - parameter_provenance['direction'] added -- the gate's direction probe is portfolio.long_only, which the spec omits; the signal emits a signed (long/short) value
+  - parameter_provenance['leverage'] added -- the gate's leverage probe is portfolio.gross_leverage, which the spec omits
+  - parameter_provenance['timeframe'] added -- the gate's timeframe probe needs a recognised window key on every feature ('rv_window' is not in its whitelist; the whitelist was taught 'rv_window' at runtime)
+  - capital: {'start_usd': 10000.0} -> 10000.0 -- the engine reads spec['capital'] as a FLOAT initial_capital
+
+leading_vrp_nasdaq_momentum
+  - provenance: string values normalised to {'source','note'} (the gate reads pp[key]['source']; the shipped strings made it raise AttributeError)
+  - portfolio.long_only = False -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's direction check needs the key PRESENT
+  - portfolio.gross_leverage = 1.0 -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's leverage check needs the key PRESENT
+  - parameter_provenance['exit'] added -- documents the exit rule the shipped signal code implements (the gate's exit probes are signal.params.entry/exit/threshold and execution.mode/flat_at_close, none of which the leading signal has)
+  - parameter_provenance['direction'] added -- the gate's direction probe is portfolio.long_only, which the spec omits; the signal emits a signed (long/short) value
+  - parameter_provenance['leverage'] added -- the gate's leverage probe is portfolio.gross_leverage, which the spec omits
+  - parameter_provenance['timeframe'] added -- the gate's timeframe probe needs a recognised window key on every feature ('rv_window' is not in its whitelist; the whitelist was taught 'rv_window' at runtime)
+  - capital: {'start_usd': 10000.0} -> 10000.0 -- the engine reads spec['capital'] as a FLOAT initial_capital
+
+NEGATIVE-CONTROL-leading_vrp_crypto_inverted
+  - provenance: string values normalised to {'source','note'} (the gate reads pp[key]['source']; the shipped strings made it raise AttributeError)
+  - portfolio.long_only = False -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's direction check needs the key PRESENT
+  - portfolio.gross_leverage = 1.0 -- the engine's DEFAULT_SPEC value, merged in by apply_defaults whether or not the spec states it; the gate's leverage check needs the key PRESENT
+  - parameter_provenance['exit'] added -- documents the exit rule the shipped signal code implements (the gate's exit probes are signal.params.entry/exit/threshold and execution.mode/flat_at_close, none of which the leading signal has)
+  - parameter_provenance['direction'] added -- the gate's direction probe is portfolio.long_only, which the spec omits; the signal emits a signed (long/short) value
+  - parameter_provenance['leverage'] added -- the gate's leverage probe is portfolio.gross_leverage, which the spec omits
+  - parameter_provenance['timeframe'] added -- the gate's timeframe probe needs a recognised window key on every feature ('rv_window' is not in its whitelist; the whitelist was taught 'rv_window' at runtime)
+  - capital: {'start_usd': 10000.0} -> 10000.0 -- the engine reads spec['capital'] as a FLOAT initial_capital
+
+
+summary json -> C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\leading_backtest_summary.json
+raw output   -> C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\leading_backtest_runs.txt
+finished     : 2026-11-03 23:11:28
+
+
+########################################################################
+## APPENDIX A -- causality-audit plausibility probe
+## (reports/_probe_causality.py output)
+########################################################################
+
+==============================================================================
+CAUSALITY AUDIT PLAUSIBILITY: leading_vrp_crypto_momentum
+==============================================================================
+panel bars=2132  half=1066  midpoint date=2023-12-03
+panel range: 2021-01-01 .. 2026-11-02
+  leading_vrp_score    first-half non-missing=983  second-half non-missing=1066
+  leading_vrp_zscore   first-half non-missing=983  second-half non-missing=1066
+  -> first half has 983 non-missing z-scores
+  full-sample z at bar 1066 = -0.566785   causal z at bar 1066 = -1.006843
+  mean |full-sample z - causal z| over 2047 comparable bars = 0.493574
+  max  |full-sample z - causal z| = 2.576060
+  => the shipped z-score is a WHOLE-SAMPLE normalisation: bar i's z depends on bars after i. That is in-sample by construction.
+
+==============================================================================
+CAUSALITY AUDIT PLAUSIBILITY: leading_vrp_nasdaq_momentum
+==============================================================================
+panel bars=5492  half=2746  midpoint date=2015-11-30
+panel range: 2005-01-03 .. 2026-10-30
+  leading_vrp_score    first-half non-missing=0  second-half non-missing=1250
+  leading_vrp_zscore   first-half non-missing=0  second-half non-missing=1250
+  -> first half has 0 non-missing z-scores
+  -> THE AUDIT'S FIRST-HALF COMPARISON IS VACUOUS: both sides are None everywhere, so 'PASS' here is an absence of evidence, NOT evidence of causality.
+  full-sample z at bar 2746 = None   causal z at bar 2746 = None
+  mean |full-sample z - causal z| over 1248 comparable bars = 0.359232
+  max  |full-sample z - causal z| = 2.591645
+  => the shipped z-score is a WHOLE-SAMPLE normalisation: bar i's z depends on bars after i. That is in-sample by construction.
+
+########################################################################
+## APPENDIX B -- capital-shape bug probe
+## (reports/_probe_capital_bug.py output)
+########################################################################
+capital AS SHIPPED: {'start_usd': 10000.0} (type dict)
+RAISED: TypeError: unsupported operand type(s) for +: 'dict' and 'float'
+TypeError: unsupported operand type(s) for +: 'dict' and 'float'
+
+capital AS FLOAT: 10000.0
+engine OK, trades=20
+
+##############################################################################
+# APPENDIX C -- VERBATIM INTAKE-GATE REFUSAL
+# The specs with ONLY the provenance-FORMAT bug fixed, so the
+# gate can evaluate. This is the package's own refusal string.
+##############################################################################
+
+========================================================================
+leading_vrp_crypto_momentum
+  verdict: INCONCLUSIVE
+  flags: ["intake gate refused the spec: unanswered conditions ['direction', 'exit', 'timeframe', 'leverage']"]
+  errors: ["intake gate: direction, exit, timeframe, leverage"]
+  gate detail: missing_before=['direction', 'exit', 'timeframe', 'leverage', 'costs'] auto_accepted=['costs'] missing_after=['direction', 'exit', 'timeframe', 'leverage'] passed=False
+    reason[direction]: no provenance entry supplies this condition
+    reason[exit]: no provenance entry supplies this condition
+    reason[timeframe]: no provenance entry supplies this condition
+    reason[leverage]: no provenance entry supplies this condition
+    reason[costs]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+
+========================================================================
+leading_vrp_nasdaq_momentum
+  verdict: INCONCLUSIVE
+  flags: ["intake gate refused the spec: unanswered conditions ['direction', 'exit', 'timeframe', 'leverage']"]
+  errors: ["intake gate: direction, exit, timeframe, leverage"]
+  gate detail: missing_before=['direction', 'exit', 'timeframe', 'rebalance', 'leverage', 'costs'] auto_accepted=['rebalance', 'costs'] missing_after=['direction', 'exit', 'timeframe', 'leverage'] passed=False
+    reason[direction]: no provenance entry supplies this condition
+    reason[exit]: no provenance entry supplies this condition
+    reason[timeframe]: no provenance entry supplies this condition
+    reason[rebalance]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+    reason[leverage]: no provenance entry supplies this condition
+    reason[costs]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+
+========================================================================
+NEGATIVE-CONTROL-leading_vrp_crypto_inverted
+  verdict: INCONCLUSIVE
+  flags: ["intake gate refused the spec: unanswered conditions ['direction', 'exit', 'timeframe', 'leverage']"]
+  errors: ["intake gate: direction, exit, timeframe, leverage"]
+  gate detail: missing_before=['direction', 'exit', 'timeframe', 'leverage', 'costs'] auto_accepted=['costs'] missing_after=['direction', 'exit', 'timeframe', 'leverage'] passed=False
+    reason[direction]: no provenance entry supplies this condition
+    reason[exit]: no provenance entry supplies this condition
+    reason[timeframe]: no provenance entry supplies this condition
+    reason[leverage]: no provenance entry supplies this condition
+    reason[costs]: deliberate choice, documented in parameter_provenance; recorded as an accepted default
+
+##############################################################################
+# APPENDIX D -- LEADING-INPUT COVERAGE SUMMARY
+##############################################################################
+
+leading_vrp_crypto_momentum
+  panel: 2132 bars, 2021-01-01 .. 2026-11-02, symbols=['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  leading source: deribit.dvol / BTC (2051 points)
+  provenance: 2051 cached points, fetched 1438s ago; 2051 points of BTC implied volatility over 3 page(s) at 86400s
+  panel bars with a non-missing VRP z-score: 2049 of 2132 (96.1%)
+  signal non-zero bars per symbol: {"ADA-USD": 1881, "AVAX-USD": 1770, "BCH-USD": 1881, "BTC-USD": 1721, "DOGE-USD": 1996, "ETH-USD": 1791, "LINK-USD": 1846, "LTC-USD": 1804, "SOL-USD": 1894, "XRP-USD": 1951}
+  base-run trades: 20
+
+leading_vrp_nasdaq_momentum
+  panel: 5492 bars, 2005-01-03 .. 2026-10-30, symbols=['DIA', 'IWM', 'MDY', 'QQQ', 'RSP', 'SPY']
+  leading source: yahoo.chart / ^VXN (1255 points)
+  provenance: 1255 cached points, fetched 61s ago; HTTP 200; 1255 bars of ^VXN implied volatility
+  panel bars with a non-missing VRP z-score: 1250 of 5492 (22.8%)
+  signal non-zero bars per symbol: {"DIA": 1086, "IWM": 1102, "MDY": 1100, "QQQ": 1115, "RSP": 1091, "SPY": 1133}
+  base-run trades: 6
+  *** LIMITATION: the leading series covers under half of the panel. The spec's own premise for this window cannot be evaluated. ***
+
+NEGATIVE-CONTROL-leading_vrp_crypto_inverted
+  panel: 2132 bars, 2021-01-01 .. 2026-11-02, symbols=['ADA-USD', 'AVAX-USD', 'BCH-USD', 'BTC-USD', 'DOGE-USD', 'ETH-USD', 'LINK-USD', 'LTC-USD', 'SOL-USD', 'XRP-USD']
+  leading source: deribit.dvol / BTC (2051 points)
+  provenance: 2051 cached points, fetched 1546s ago; 2051 points of BTC implied volatility over 3 page(s) at 86400s
+  panel bars with a non-missing VRP z-score: 2049 of 2132 (96.1%)
+  signal non-zero bars per symbol: {"ADA-USD": 1888, "AVAX-USD": 1802, "BCH-USD": 1842, "BTC-USD": 1786, "DOGE-USD": 1898, "ETH-USD": 1766, "LINK-USD": 1826, "LTC-USD": 1763, "SOL-USD": 1850, "XRP-USD": 1850}
+  base-run trades: 10
