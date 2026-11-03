@@ -4,6 +4,14 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
+# The blocking CI job must not depend on an option-chain endpoint being
+# up. Set LEAPSPACE_SKIP_NETWORK_TESTS=1 there; the informational live
+# job leaves it unset and runs this for real.
+if os.environ.get("LEAPSPACE_SKIP_NETWORK_TESTS") == "1":
+    print("SKIP: test_gamma_live is a live-network test and "
+          "LEAPSPACE_SKIP_NETWORK_TESTS=1")
+    raise SystemExit(0)
+
 from leapspace.market import fetch_option_chain, fetch_ohlcv
 from leapspace.gamma import compute_gamma_exposure, compute_option_flow, merge_flow_and_gamma
 

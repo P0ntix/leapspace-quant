@@ -5,6 +5,14 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
+# The blocking CI job must not depend on the House/OGE endpoints being
+# up. Set LEAPSPACE_SKIP_NETWORK_TESTS=1 there; the informational live
+# job leaves it unset and runs this for real.
+if os.environ.get("LEAPSPACE_SKIP_NETWORK_TESTS") == "1":
+    print("SKIP: test_disclosure_live is a live-network test and "
+          "LEAPSPACE_SKIP_NETWORK_TESTS=1")
+    raise SystemExit(0)
+
 from leapspace.disclosure import (fetch_house_index, fetch_house_pdf, fetch_oge_index,
                                   fetch_oge_pdf, extract_assets_from_text,
                                   analyse_market_impact, build_disclosure_report,

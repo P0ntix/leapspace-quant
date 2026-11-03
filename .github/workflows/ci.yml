@@ -56,6 +56,23 @@ jobs:
             python "leapspace/tests/$t.py"
           done
 
+      - name: Offline test suites
+        env:
+          # The blocking job must not depend on a third party being up.
+          # The live-network checks inside these files skip when this is
+          # set; the informational live job below leaves it unset and
+          # runs them for real.
+          LEAPSPACE_SKIP_NETWORK_TESTS: "1"
+        run: |
+          for t in leapspace/tests/test_*.py; do
+            case "$t" in
+              *test_reportvalidate*) continue ;;
+              *test_friction_sim*) continue ;;
+            esac
+            echo "--- $t"
+            python "$t"
+          done
+
   # The live-network suite. Kept separate and allowed to fail: it talks
   # to public RPC and data endpoints that rate-limit, and a red X from
   # someone's flaky upstream is not a defect in this package.

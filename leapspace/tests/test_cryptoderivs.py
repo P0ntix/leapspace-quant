@@ -170,46 +170,59 @@ print("=" * 72)
 print("TEST 6 — the LIVE fetch works and carries real provenance")
 print("=" * 72)
 
-try:
-    f, prov_f = CD.fetch_bybit_funding("BTCUSDT", limit=50)
-    check("bybit funding returned points", len(f) > 0, "no points")
-    check("the funding points are oldest-first",
-          all(f[i][0] <= f[i + 1][0] for i in range(len(f) - 1)),
-          "not sorted")
-    check("the funding timestamps are sane",
-          all(t > 1_500_000_000 for t, _v in f),
-          f"sample {f[0] if f else None}")
-    check("the provenance names the source",
-          "bybit" in prov_f.source, f"got {prov_f.source}")
-    check("the provenance carries a URL",
-          bool(prov_f.url), "no url")
-    rates = [v for _t, v in f]
-    check("the funding rates are plausible magnitudes",
-          all(-0.01 < r < 0.01 for r in rates),
-          f"min={min(rates)} max={max(rates)}")
-except Exception as exc:  # noqa: BLE001
-    check("bybit funding fetch", False, f"{type(exc).__name__}: {exc}")
+# The live fetch is the only network-dependent part of this file. The
+# blocking CI job sets LEAPSPACE_SKIP_NETWORK_TESTS=1 so a rate-limited
+# or unreachable upstream cannot turn a package defect into a red
+# build; the informational live job leaves it unset and runs it for
+# real.
+if os.environ.get("LEAPSPACE_SKIP_NETWORK_TESTS") == "1":
+    print("  [SKIP] the live fetch (LEAPSPACE_SKIP_NETWORK_TESTS=1)")
+    print("         The deterministic checks above still ran and still "
+          "count.")
+else:
+    try:
+        f, prov_f = CD.fetch_bybit_funding("BTCUSDT", limit=50)
+        check("bybit funding returned points", len(f) > 0, "no points")
+        check("the funding points are oldest-first",
+              all(f[i][0] <= f[i + 1][0] for i in range(len(f) - 1)),
+              "not sorted")
+        check("the funding timestamps are sane",
+              all(t > 1_500_000_000 for t, _v in f),
+              f"sample {f[0] if f else None}")
+        check("the provenance names the source",
+              "bybit" in prov_f.source, f"got {prov_f.source}")
+        check("the provenance carries a URL",
+              bool(prov_f.url), "no url")
+        rates = [v for _t, v in f]
+        check("the funding rates are plausible magnitudes",
+              all(-0.01 < r < 0.01 for r in rates),
+              f"min={min(rates)} max={max(rates)}")
+    except Exception as exc:  # noqa: BLE001
+        check("bybit funding fetch", False, f"{type(exc).__name__}: {exc}")
 
-try:
-    o, prov_o = CD.fetch_bybit_open_interest("BTCUSDT", interval="1d",
-                                              limit=50)
-    check("bybit open interest returned points", len(o) > 0, "no points")
-    check("the open-interest timestamps are sane",
-          all(t > 1_500_000_000 for t, _v in o),
-          f"sample {o[0] if o else None}")
-    check("the open-interest values are positive",
-          all(v > 0 for _t, v in o), "non-positive OI")
-except Exception as exc:  # noqa: BLE001
-    check("bybit open interest fetch", False, f"{type(exc).__name__}: {exc}")
+    try:
+        o, prov_o = CD.fetch_bybit_open_interest("BTCUSDT", interval="1d",
+                                                  limit=50)
+        check("bybit open interest returned points", len(o) > 0,
+              "no points")
+        check("the open-interest timestamps are sane",
+              all(t > 1_500_000_000 for t, _v in o),
+              f"sample {o[0] if o else None}")
+        check("the open-interest values are positive",
+              all(v > 0 for _t, v in o), "non-positive OI")
+    except Exception as exc:  # noqa: BLE001
+        check("bybit open interest fetch", False,
+              f"{type(exc).__name__}: {exc}")
 
-try:
-    bf, prov_bf = CD.fetch_binance_funding("BTCUSDT", limit=50)
-    check("binance funding returned points", len(bf) > 0, "no points")
-    check("binance funding timestamps are sane",
-          all(t > 1_500_000_000 for t, _v in bf),
-          f"sample {bf[0] if bf else None}")
-except Exception as exc:  # noqa: BLE001
-    check("binance funding fetch", False, f"{type(exc).__name__}: {exc}")
+    try:
+        bf, prov_bf = CD.fetch_binance_funding("BTCUSDT", limit=50)
+        check("binance funding returned points", len(bf) > 0, "no points")
+        check("binance funding timestamps are sane",
+              all(t > 1_500_000_000 for t, _v in bf),
+              f"sample {bf[0] if bf else None}")
+    except Exception as exc:  # noqa: BLE001
+        check("binance funding fetch", False,
+              f"{type(exc).__name__}: {exc}")
 
 print()
 print("=" * 72)
