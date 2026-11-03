@@ -1288,6 +1288,25 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     def _invert(v: float, invert: bool) -> float:
         return -float(v) if invert else float(v)
 
+    def sig_ensemble_blend(panel, features, members=None,
+                           min_agreement=2, rank_floor=0.30,
+                           invert_signal=False, **kw):
+        """The long/short hedged ensemble signal.
+
+        Delegates to `leapspace.ensemble.signal_ensemble_blend`, which
+        blends the concept features' CROSS-SECTIONAL RANKS into one
+        long/short signal with a consensus filter.
+
+        The portfolio block supplies the market-neutral construction:
+        net target 0.0, long_only False, a volatility target, a
+        per-name cap, a name count and a rebalance cadence. The signal
+        itself only says WHICH WAY, and how strongly.
+        """
+        from .ensemble import signal_ensemble_blend as _impl
+        return _impl(panel, features, members=members,
+                      min_agreement=min_agreement, rank_floor=rank_floor,
+                      invert_signal=invert_signal, **kw)
+
     def sig_paper_cross_sectional(panel, features, long_rank=0.8,
                                   short_rank=0.2, invert_signal=False, **kw):
         """Cross-sectional selection, with the NEGATIVE CONTROL honoured.
@@ -1565,6 +1584,7 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     btengine.SIGNALS["rebound_danger_momentum"] = sig_rebound_danger_momentum
     btengine.SIGNALS["liquidity_gated_reversion"] = sig_liquidity_gated_reversion
     btengine.SIGNALS["paper_cross_sectional"] = sig_paper_cross_sectional
+    btengine.SIGNALS["ensemble_blend"] = sig_ensemble_blend
     return {
         "registered": True,
         "features": ["regime_momentum_score", "leading_iv_level",

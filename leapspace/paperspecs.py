@@ -691,6 +691,17 @@ def _c8_liquidity_reversal(asset_class: str) -> Dict[str, Any]:
 
 
 #: The concept builders, keyed by concept id.
+def _c9_ensemble(asset_class: str) -> Dict[str, Any]:
+    """The long/short hedged ensemble - the combination of the papers'
+    signals, ranked cross-sectionally, with a consensus filter.
+
+    The module `leapspace/ensemble.py` carries the full reasoning and
+    the parameter provenance; this is the spec factory's adapter.
+    """
+    from .ensemble import ensemble_spec
+    return ensemble_spec(asset_class)
+
+
 _BUILDERS = {
     "C1": _c1_regime_switch,
     "C2": _c2_leading_vrp,
@@ -700,6 +711,11 @@ _BUILDERS = {
     "C6": _c6_rebound_danger,
     "C7": _c7_session_drift,
     "C8": _c8_liquidity_reversal,
+    # C9 is the long/short HEDGED ENSEMBLE - the combination of the
+    # papers' signals, cross-sectionally ranked, market-neutral, with
+    # a consensus filter. It is the test of whether the ideas work
+    # TOGETHER where none of them worked alone.
+    "C9": _c9_ensemble,
 }
 
 
