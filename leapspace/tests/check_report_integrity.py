@@ -18,7 +18,11 @@ import os
 import re
 import sys
 
-ROOT = r"C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant"
+# Repository root, derived from this file's location so the check runs
+# against WHICHERVER checkout it lives in. A hardcoded absolute path
+# made this script validate a different directory than the one it was
+# run from — a false pass that only a clean clone could expose.
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 R = os.path.join(ROOT, "reports")
 
 sys.path.insert(0, ROOT)

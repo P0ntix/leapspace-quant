@@ -51,12 +51,15 @@ from __future__ import annotations
 
 import itertools
 import math
+import os
 import random
 import statistics
 import sys
 
-sys.path.insert(0, r"C:\Users\HP\AppData\Local\hermes\projects"
-                   r"\leapspace-quant")
+# Repository root, derived from this file's location so the test runs
+# against whichever checkout it lives in.
+sys.path.insert(0, os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from leapspace.pbo import (CITED_CRITERIA,  # noqa: E402
                            benjamini_hochberg,
