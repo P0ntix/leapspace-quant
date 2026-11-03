@@ -2094,6 +2094,24 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
     for label in (sc.get("skipped_stages") or []):
         stage_ledger.setdefault(_normalise_stage(str(label)),
                                  {"status": "SKIPPED"})
+
+    # Cross-market replication is CONDITIONAL on alternative universes
+    # being passed. The matrix runner passes none, so the gauntlet
+    # never writes the key at all. Leaving it absent means the reader
+    # cannot tell "ran and passed" from "never ran" - and this stage
+    # is the one that would say whether an edge transfers to another
+    # market, so its absence is a material limitation, not a detail.
+    if "replication" not in stage_ledger:
+        stage_ledger["replication"] = {
+            "status": "SKIPPED",
+            "passed": None,
+            "note": ("the gauntlet only runs cross-market replication when "
+                     "alternative universes are supplied, and the matrix "
+                     "runner supplies none - so NO spec in this matrix was "
+                     "tested for whether it transfers to a different "
+                     "market"),
+        }
+
     stage_ledger["skipped_stages"] = list(sc.get("skipped_stages") or [])
 
     # The TRUE OUT-OF-SAMPLE NUMBERS. `base` is the IN-SAMPLE run and
@@ -2105,7 +2123,11 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
     oos_sharpe = wf.get("oos_sharpe")
     oos_sharpe_live = wf.get("oos_sharpe_live")
     fold_sharpes = list(wf.get("oos_sharpes") or [])
-    fold_info = list(wf.get("fold_info") or [])
+    # The gauntlet stores the fold table under "folds", not "fold_info".
+    # Reading the wrong key silently produced a fold table built from
+    # the flat per-fold Sharpe list, with the per-fold in-sample
+    # Sharpe, trade counts and date ranges all lost.
+    fold_info = list(wf.get("folds") or wf.get("fold_info") or [])
 
     fold_table: List[Dict[str, Any]] = []
     for i, f in enumerate(fold_info):
