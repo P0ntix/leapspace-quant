@@ -629,7 +629,15 @@ def _c7_session_drift(asset_class: str) -> Dict[str, Any]:
             "The session path returns DAILY returns (one bar per session), "
             "so the Sharpe annualises at 252 and every metric and "
             "walk-forward fold works unchanged. `flat_at_close` is NOT set, "
-            "so positions may be held overnight."),
+            "so positions may be held overnight. "
+            "LIMITATION - THE FEATURE IS A PROXY, NOT ORDER FLOW. The "
+            "concept names the session OPENING-WINDOW drift, which needs "
+            "intraday bars; this package's panels are daily, so the "
+            "implemented feature is the daily-bar stand-in "
+            "(close's position in the day's range, weighted by the volume "
+            "behind it). It is a price-and-volume summary that CORRELATES "
+            "with order flow, not a measurement of it. A SUPPORTED verdict "
+            "here would support the PROXY, not the order-flow claim."),
     )
 
 

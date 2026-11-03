@@ -1033,6 +1033,90 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
         aligned, _info = _leading_aligned(panel)
         return list(aligned)
 
+    def f_session_drift(panel, sym, lookback=20, **kw):
+        """The session drift, as a DAILY-BAR PROXY. LAGGING.
+
+        WHAT IT IS
+            Where the close landed inside the day's range, weighted by
+            how much volume was behind it:
+
+                close_position = (close - low) / (high - low)
+                volume_ratio   = volume / rolling_mean(volume)
+                session_drift  = close_position * volume_ratio
+
+            A close near the high on heavy volume is a strong reading of
+            buying pressure; a close near the low on heavy volume is the
+            same reading downward. The volume weight is what separates a
+            decisive session from a quiet one.
+
+        WHAT IT IS NOT
+            It is NOT the session OPENING-WINDOW drift the concept
+            names. That requires intraday bars - the drift between the
+            session open and a fixed early timestamp. This package's
+            panels are DAILY, so the opening window does not exist
+            here. This feature is the daily-bar stand-in, and the
+            distinction is recorded in the spec's notes so nobody
+            mistakes the proxy for the thing.
+
+            It is also NOT order flow. It is a price-and-volume
+            summary that CORRELATES with order flow, not a measurement
+            of it. The honest reading of a result built on this feature
+            is "a daily-bar price-and-volume proxy for session drift",
+            not "order flow predicts returns".
+
+        WHY IT EXISTS
+            The concept is the microstructure base the retail-trader
+            paper calls the strongest edge in its evidence set:
+            "Order flow can contain information about future volatility
+            and returns in several markets". Without intraday data the
+            concept cannot be tested as stated, so this proxy is the
+            most faithful daily-bar version of it, and the limitation
+            is reported with the result.
+
+        None wherever the range is zero (a flat session), the inputs
+        are missing, or the volume window has not warmed up.
+        """
+        lookback = max(2, int(lookback))
+        closes = btengine._close_series(panel, sym)
+        opens = panel.open.get(sym) or []
+        highs = panel.high.get(sym) or []
+        lows = panel.low.get(sym) or []
+        vols = panel.vol.get(sym) or []
+        n = panel.n
+        if not (len(closes) == len(opens) == len(highs) == len(lows)
+                == len(vols) == n):
+            return [None] * n
+
+        out: List[Optional[float]] = []
+        for i in range(n):
+            c, o, h, l, v = (closes[i], opens[i], highs[i], lows[i],
+                             vols[i])
+            if c is None or h is None or l is None or o is None:
+                out.append(None)
+                continue
+            rng = h - l
+            if rng is None or rng <= 0:
+                out.append(None)
+                continue
+            # The volume ratio needs its own warm-up, measured over
+            # the `lookback` bars ENDING at i (inclusive), so it never
+            # reaches forward.
+            if i < lookback - 1:
+                out.append(None)
+                continue
+            window_v = [x for x in vols[i - lookback + 1:i + 1]
+                        if x is not None]
+            if len(window_v) < max(2, lookback // 2):
+                out.append(None)
+                continue
+            mean_v = sum(window_v) / len(window_v)
+            if mean_v <= 0 or v is None:
+                out.append(None)
+                continue
+            close_position = (c - l) / rng
+            out.append(close_position * (v / mean_v))
+        return out
+
     def f_leading_vrp_score(panel, sym, lookback=20, rv_window=None, **kw):
         """The VOLATILITY RISK PREMIUM: implied minus realised.
 
@@ -1066,25 +1150,45 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
         return [volatility_risk_premium(a, b)
                 for a, b in zip(aligned, rv_shifted)]
 
-    def f_leading_vrp_zscore(panel, sym, lookback=20, rv_window=None, **kw):
+    def f_leading_vrp_zscore(panel, sym, lookback=20, rv_window=None,
+                             min_periods=20, **kw):
         """The risk premium's z-score over the panel. LEADING.
 
         A level is not comparable across regimes - a 5-point premium
         means something different when the premium's own history ranges
         over 30 points than when it ranges over 2. The z-score is the
         comparable version, and it is what the signal consumes.
+
+        THE Z-SCORE IS CAUSAL. It is computed over an EXPANDING window:
+        bar i's z-score uses only the premium observations at or before
+        bar i. A z-score normalised over the WHOLE panel would be
+        in-sample by construction - bar i's value would depend on bars
+        that come after it - and the engine's causality audit detects
+        exactly that. The whole-panel version is what this function
+        used to do, and it was a genuine look-ahead.
+
+        The first `min_periods` observations return None, because a
+        z-score computed from three points is noise, and because the
+        expanding window needs a floor before it means anything.
         """
         window = int(rv_window if rv_window is not None else lookback)
         raw = f_leading_vrp_score(panel, sym, lookback=window)
-        vals = [v for v in raw if v is not None]
-        if len(vals) < 3:
-            return [None] * panel.n
-        m = sum(vals) / len(vals)
-        var = sum((v - m) ** 2 for v in vals) / (len(vals) - 1)
-        sd = var ** 0.5
-        if sd <= 0:
-            return [None] * panel.n
-        return [None if v is None else (v - m) / sd for v in raw]
+        min_periods = max(3, int(min_periods))
+        out: List[Optional[float]] = []
+        seen: List[float] = []
+        for v in raw:
+            if v is None:
+                out.append(None)
+                continue
+            seen.append(v)
+            if len(seen) < min_periods:
+                out.append(None)
+                continue
+            m = sum(seen) / len(seen)
+            var = sum((x - m) ** 2 for x in seen) / (len(seen) - 1)
+            sd = var ** 0.5
+            out.append(None if sd <= 0 else (v - m) / sd)
+        return out
 
     def sig_leading_vrp_switch(panel, features, feature=None,
                                vrp_z_feature=None,
@@ -1126,10 +1230,10 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
         for s in panel.symbols:
             row: List[float] = []
             v = vals.get(s) or []
-            z = zvals.get(s) or []
+            z_series = zvals.get(s) or []
             for i in range(panel.n):
                 d = v[i] if i < len(v) else None
-                zz = z[i] if i < len(z) else None
+                zz = z_series[i] if i < len(z_series) else None
                 if d is None or zz is None:
                     row.append(0.0)
                     continue
@@ -1143,11 +1247,17 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
                 # NEGATIVE CONTROL: if a spec with the premium inverted
                 # still performs well, the premium was never the thing
                 # doing the work, and every other verdict is suspect.
-                z = -float(zz) if invert_vrp else float(zz)
-                if z <= 0:
+                #
+                # The reading goes into `z_reading`, NOT into `z`. The
+                # series `z` is the per-symbol LIST, and rebinding it
+                # to a scalar here makes the next iteration's
+                # `len(z)` raise "object of type 'float' has no
+                # len()".
+                z_reading = -float(zz) if invert_vrp else float(zz)
+                if z_reading <= 0:
                     size = 1.0
                 else:
-                    size = max(0.0, 1.0 - z)
+                    size = max(0.0, 1.0 - z_reading)
                 row.append(float(d) * size * float(exposure_cap))
             sig[s] = row
         return sig
@@ -1405,6 +1515,7 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     btengine.FEATURES["leading_iv_level"] = f_leading_iv_level
     btengine.FEATURES["leading_vrp_score"] = f_leading_vrp_score
     btengine.FEATURES["leading_vrp_zscore"] = f_leading_vrp_zscore
+    btengine.FEATURES["session_drift"] = f_session_drift
     btengine.SIGNALS["regime_switch"] = sig_regime_switch
     btengine.SIGNALS["regime_switch_cross_sectional"] = sig_regime_switch_cross_sectional
     btengine.SIGNALS["rsi_volume_confirmation"] = sig_rsi_volume_confirmation
@@ -1417,7 +1528,8 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     return {
         "registered": True,
         "features": ["regime_momentum_score", "leading_iv_level",
-                     "leading_vrp_score", "leading_vrp_zscore"],
+                     "leading_vrp_score", "leading_vrp_zscore",
+                     "session_drift"],
         "signals": ["regime_switch", "regime_switch_cross_sectional",
                     "rsi_volume_confirmation", "leading_vrp_switch",
                     "vol_regime_momentum", "volume_confirmed_momentum",
@@ -1806,13 +1918,40 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
             walk_forward_folds=walk_forward_folds,
             alt_universes=alt_universes, skip=skip, verbose=verbose)
     except Exception as exc:  # noqa: BLE001
-        return BacktestResult(name=spec.get("name", "?"), verdict="INCONCLUSIVE",
+        # A spec that CRASHED was NOT TESTED. Calling that
+        # "INCONCLUSIVE" is wrong in a way that matters: INCONCLUSIVE
+        # means "it ran and the evidence was insufficient", and this
+        # matrix had 24 specs that never ran at all - the whole
+        # leading-VRP concept and the whole order-flow concept - and
+        # every one of them was reported as INCONCLUSIVE. That made an
+        # implementation failure look like a research finding.
+        #
+        # A crash is an ERROR. It is reported as one, with the
+        # exception text, so the matrix distinguishes "the idea was
+        # tested and failed" from "the code did not run".
+        return BacktestResult(name=spec.get("name", "?"), verdict="ERROR",
+                              flags=[f"the spec did not run: "
+                                     f"{type(exc).__name__}: {exc}"],
                               errors=[f"{type(exc).__name__}: {exc}"],
                               parameter_provenance=spec.get("parameter_provenance", {}))
 
     base = (gauntlet.get("scorecard") or {}).get("base") or {}
     wf = (gauntlet.get("scorecard") or {}).get("walk_forward") or {}
     flags = list(gauntlet.get("flags") or [])
+
+    # SAFETY NET. If the gauntlet itself recorded an error, the spec did
+    # not complete its evaluation and its verdict must not be reported
+    # as a research finding. An ERROR verdict outranks the gauntlet's
+    # own verdict, whatever that verdict was.
+    gauntlet_errors = [e for e in (gauntlet.get("errors") or [])
+                       if e]
+    if gauntlet_errors:
+        verdict = "ERROR"
+        for e in gauntlet_errors:
+            if e not in flags:
+                flags.append(f"the gauntlet recorded an error: {e}")
+    else:
+        verdict = gauntlet.get("verdict", "INCONCLUSIVE")
 
     report_path = None
     if out_dir:
@@ -1832,7 +1971,7 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
     return BacktestResult(
         name=spec.get("name", "?"),
         paper=spec.get("paper", ""),
-        verdict=gauntlet.get("verdict", "INCONCLUSIVE"),
+        verdict=verdict,
         flags=flags,
         metrics={k: v for k, v in base.items() if not isinstance(v, (list, dict))},
         walk_forward={k: v for k, v in wf.items() if not isinstance(v, (list, dict))},
