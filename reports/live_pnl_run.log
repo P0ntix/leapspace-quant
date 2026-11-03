@@ -1,0 +1,52 @@
+========================================================================
+A. LIVE TRADE LIST FROM A REAL WALLET
+========================================================================
+Blockscout holders: HTTP via memecoinscan.fetch_top_holders -> 60 holders, 23 EOAs
+wallet: 0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270
+transfers scanned: 29  trades built: 24
+pool candidates (counterparty -> count): [('0x841ed663f2636863d40be4ee76243377dff13a34', 10), ('0x841ec8423841fac410a151df1f11a0e506c73a34', 4), ('0x40b38765696e3d5d8d9d834d8aad4bb6e418e489', 4), ('0x841e69f6444f65fbd64c339455941ee7aac83a34', 3), ('0x2efb50e952580f4ff32d8d2122853432bbf2e204', 1), ('0xafc80fdda1fb68d36f87d9605e615425b0972c7b', 1)]
+
+========================================================================
+B. LIVE PRICING OF EACH TRADE (keyless, archive RPC + DefiLlama)
+========================================================================
+  archive provider verified: https://eth.drpc.org (status ok, probe block 15798687)
+  blk  26305735 buy  qty=1                  -> ok                     5.308867253104268e-06 via defillama
+  blk  26305732 sell qty=3e+12              -> ok                     5.308867253104268e-06 via defillama
+  blk  26300562 buy  qty=1                  -> ok                     5.285216578253042e-06 via defillama
+  blk  26300559 sell qty=1.29e+12           -> ok                     5.281812385981675e-06 via defillama
+  blk  26185016 buy  qty=1.668e+09          -> ok                     4.193041534613505e-06 via defillama
+  blk  26135623 buy  qty=5e+11              -> ok                     4.264172737570083e-06 via defillama
+  blk  26028821 buy  qty=1                  -> ok                     4.8621786937571334e-06 via defillama
+  blk  26028819 sell qty=1.809e+12          -> ok                     4.8621786937571334e-06 via defillama
+  blk  25856409 buy  qty=1                  -> ok                     3.662903389110122e-06 via defillama
+  blk  25856407 sell qty=1.625e+12          -> ok                     3.662903389110122e-06 via defillama
+  blk  25542030 buy  qty=30                 -> ok                     2.7761595868867113e-06 via defillama
+  blk  25407353 buy  qty=8.969              -> ok                     2.4235655879904303e-06 via defillama
+
+  PRICED 12/12 trades with a keyless source
+
+========================================================================
+C. REALISED PnL (FIFO and weighted-average)
+========================================================================
+  archive provider: https://eth.drpc.org (ok)
+  priced 24/24 (coverage 100.0%)
+  FIFO realised PnL: $300,121.68
+  cost $104,703,401.22  proceeds $37,487,004.46
+  remaining qty 2.887e+13  avg cost 3.552122524032228e-06
+  unpriced trades: 0
+  WAC realised PnL: $300,118.94
+
+========================================================================
+D. QUANTITY PROXY AND ITS MEASURED BIAS
+========================================================================
+  winner true PnL +1000 vs loser true PnL -1000
+  proxy turnover for both: winner 1.0 / loser 1.0
+  proxy separates them? False
+  live proxy: 1 tokens, in 2.938e+13, out 7.724e+12
+     PEPE: in 2.938e+13 out 7.724e+12 net 2.165e+13 turnover 0.26293083394505407
+
+========================================================================
+E. LIVE CROSS-CHAIN LINKER
+========================================================================
+  ethereum  archive=https://eth.drpc.org | first_tx_block=24592010 | funder=0x841ed663f2636863d40be4ee76243377dff13a34 | cps=ok | 3087.0s
+  base      archive=None | first_tx_block=None | funder=None | cps=unavailable | 5.8s

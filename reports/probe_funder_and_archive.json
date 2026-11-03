@@ -1,0 +1,135 @@
+{
+  "funder": {
+    "ethereum": {
+      "status": "ok",
+      "first_tx_block": 24592010,
+      "rpc": "https://eth.drpc.org",
+      "rpc_calls": 25,
+      "n_txs_in_block": 422,
+      "n_txs_from_wallet": 1,
+      "wallet_first_tx": {
+        "hash": "0x16c0538b7c548efe47fa6999777c5ca9294db6e95cac4129592f6d4e579114fe",
+        "to": "0x514910771af9ca656af840dff83e8264ecf986ca",
+        "value": "0x0"
+      },
+      "balance_before_block": 4715160392831794,
+      "balance_at_block": 4709571751695895,
+      "inbound_value_in_first_block": [],
+      "funder": null,
+      "funder_evidence": "wallet already held a balance before its first tx; the funder is an earlier transfer and needs a backwards scan",
+      "seconds": 14.29
+    },
+    "optimism": {
+      "status": "unavailable",
+      "detail": {
+        "error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://optimism-rpc.publicnode.com"
+      },
+      "seconds": 0.55
+    },
+    "gnosis": {
+      "status": "unavailable",
+      "detail": {
+        "error": "{\"code\": -32002, \"message\": \"No state available for block 24540359 (0xc58775ea5ae04457f81888403e9dea905c142982fe662b1845b4cf86a69bdce8)\"}",
+        "calls": 1,
+        "rpc": "https://gnosis-rpc.publicnode.com"
+      },
+      "seconds": 1.53
+    },
+    "base": {
+      "status": "unavailable",
+      "detail": {
+        "error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://base-rpc.publicnode.com"
+      },
+      "seconds": 0.81
+    },
+    "arbitrum": {
+      "status": "unavailable",
+      "detail": {
+        "error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://arbitrum-one-rpc.publicnode.com"
+      },
+      "seconds": 1.82
+    },
+    "polygon": {
+      "status": "unavailable",
+      "detail": {
+        "error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://polygon-bor-rpc.publicnode.com"
+      },
+      "seconds": 0.81
+    },
+    "bsc": {
+      "status": "unavailable",
+      "detail": {
+        "error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://bsc-rpc.publicnode.com"
+      },
+      "seconds": 1.84
+    }
+  },
+  "archive_other_chains": {
+    "ethereum:PEPE": {
+      "pool": "0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f",
+      "chain": "ethereum",
+      "rpc": "https://eth.drpc.org",
+      "old_block": 19748296,
+      "latest_block": 26331062,
+      "code_at_old_block_len": 22588,
+      "call_old_http": 200,
+      "call_old_result": "0x000000000000000000000000000000000000001f9fe85babce8e338fcecf637d0000000000000000000000000000000000000000000001333887afe4354e5b7600000000000000000000000000000000000000000000000000000000662d3c2f",
+      "call_old_error": null,
+      "call_latest_result": "0x0000000000000000000000000000000000000028d799f2fbd85ac7469cefeb9a000000000000000000000000000000000000000000000175cba66123b68e0593000000000000000000000000000000000000000000000000000000006ae93c47",
+      "call_latest_error": null,
+      "archive_works": true
+    },
+    "base:BRETT": {
+      "pool": "0xBA3F945812a83471d709BCe9C3CA699A19FB46f7",
+      "chain": "base",
+      "rpc": "https://base-rpc.publicnode.com",
+      "old_block": 40080352,
+      "latest_block": 53440470,
+      "code_at_old_block_len": 0,
+      "call_old_http": 403,
+      "call_old_result": null,
+      "call_old_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+      "call_latest_result": null,
+      "call_latest_error": "{\"code\": 3, \"message\": \"execution reverted\"}",
+      "archive_works": false
+    },
+    "arbitrum:PEPE": {
+      "pool": "0x6Dc147be79e625E5C9033651238CCce973a0950c",
+      "chain": "arbitrum",
+      "rpc": "https://arbitrum-one-rpc.publicnode.com",
+      "old_block": 390554177,
+      "latest_block": 520738903,
+      "code_at_old_block_len": 0,
+      "call_old_http": 403,
+      "call_old_result": null,
+      "call_old_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+      "call_latest_result": "0x0000000000000000000000000000000000000000000000006b8c448405b9e27f0000000000000000000000000000000000000c7520a87767abc12921972a2116000000000000000000000000000000000000000000000000000000006ae8bf58",
+      "call_latest_error": null,
+      "archive_works": false
+    },
+    "bsc:FLOKI": {
+      "pool": "0x231d9e7181E8479A8B40930961e93E7ed798542C",
+      "chain": "bsc",
+      "rpc": "https://bsc-rpc.publicnode.com",
+      "old_block": 98510344,
+      "latest_block": 131347126,
+      "code_at_old_block_len": 0,
+      "call_old_http": 403,
+      "call_old_result": null,
+      "call_old_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+      "call_latest_result": "0x00000000000000000000000000000000000000000000014771ff55e7c4b9647900000000000000000000000000000000000000000000000a2bd8e04f297f5ab9000000000000000000000000000000000000000000000000000000006ae93b8d",
+      "call_latest_error": null,
+      "archive_works": false
+    }
+  }
+}

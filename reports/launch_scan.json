@@ -1,0 +1,559 @@
+{
+  "early": {
+    "status": "ok",
+    "token": "0x93025BB139fa2756A6130De833df9D07bBD2E3b1",
+    "chain": "ethereum",
+    "launch": {
+      "token": "0x93025BB139fa2756A6130De833df9D07bBD2E3b1",
+      "chain": "ethereum",
+      "status": "ok",
+      "creator": "0x2F0F35765563Ba038BA80ffB80d76Eb6106B946A",
+      "creation_tx": "0x1624a2bcc79436636f5572b7015dda5dfd7d6cb406ae0d7481618d4bdc35277f",
+      "launch_block": 26327462,
+      "launch_timestamp": 1793626895
+    },
+    "window_blocks": 1000,
+    "n_buyers_in_window": 2,
+    "note": "Only buyers INSIDE the window are listed. A wallet that bought after it is not an early buyer and is not here."
+  },
+  "buyers": [
+    {
+      "address": "0x2F0F35765563Ba038BA80ffB80d76Eb6106B946A",
+      "bought": 10000719520.116606,
+      "n_buys": 5,
+      "first_block": 26327462,
+      "last_block": 26327823,
+      "first_timestamp": "2026-11-02T13:41:35.000000Z",
+      "entry_lag_blocks": 0,
+      "entry_class": "sniper (<10 blocks)"
+    },
+    {
+      "address": "0x211D2FfE82fe134571F031850703041752EFCE49",
+      "bought": 5000719830.556544,
+      "n_buys": 2,
+      "first_block": 26327482,
+      "last_block": 26327819,
+      "first_timestamp": "2026-11-02T13:45:35.000000Z",
+      "entry_lag_blocks": 20,
+      "entry_class": "very early (<100 blocks)"
+    }
+  ],
+  "screen": {
+    "status": "ok",
+    "token": "0x93025BB139fa2756A6130De833df9D07bBD2E3b1",
+    "chain": "ethereum",
+    "launch": {
+      "token": "0x93025BB139fa2756A6130De833df9D07bBD2E3b1",
+      "chain": "ethereum",
+      "status": "ok",
+      "creator": "0x2F0F35765563Ba038BA80ffB80d76Eb6106B946A",
+      "creation_tx": "0x1624a2bcc79436636f5572b7015dda5dfd7d6cb406ae0d7481618d4bdc35277f",
+      "launch_block": 26327462,
+      "launch_timestamp": 1793626895
+    },
+    "window_blocks": 1000,
+    "candidates_scanned": 2,
+    "n_in_window": 2,
+    "candidates": [
+      {
+        "address": "0x2F0F35765563Ba038BA80ffB80d76Eb6106B946A",
+        "status": "ok",
+        "entry_lag_blocks": 0,
+        "entry_class": "sniper (<10 blocks)",
+        "bought_tokens": 10000719520.116606,
+        "n_buys_in_window": 5,
+        "prior_meme_tokens": 1,
+        "edge_verdict": "FLUKE",
+        "edge_reason": "rejected by: skill_not_distinguishable (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+        "skill_p": 0.5,
+        "independent_bets": 1,
+        "deflated_sharpe": null,
+        "rejected_by": [
+          {
+            "test": "skill_not_distinguishable",
+            "failed": true,
+            "severity": "reject",
+            "binding": "REJECT",
+            "detail": "P(win rate > 0.5) = 0.5 (threshold 0.95); 0W/1L over 1 closed trades",
+            "authority": "ANALYST_CHOICE"
+          },
+          {
+            "test": "insufficient_independent_bets",
+            "failed": true,
+            "severity": "reject",
+            "binding": "INSUFFICIENT",
+            "detail": "1 independent bet(s) from 1 closed trades (threshold 5) - scaling in on one token is one bet, not many",
+            "authority": "ANALYST_CHOICE"
+          },
+          {
+            "test": "single_token_only",
+            "failed": true,
+            "severity": "reject",
+            "binding": "INSUFFICIENT",
+            "detail": "traded 1 distinct token(s) (threshold 2)",
+            "authority": "ANALYST_CHOICE"
+          },
+          {
+            "test": "too_few_closed_trades",
+            "failed": true,
+            "severity": "reject",
+            "binding": "INSUFFICIENT",
+            "detail": "1 closed trades (threshold 30)",
+            "authority": "ANALYST_CHOICE"
+          }
+        ],
+        "edge": {
+          "verdict": "FLUKE",
+          "reason": "rejected by: skill_not_distinguishable (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "n_closed_trades": 1,
+          "wins": 0,
+          "losses": 1,
+          "win_rate": 0.0,
+          "wilson_interval": {
+            "status": "computed",
+            "win_rate": 0.0,
+            "lower": 5.551115123125783e-17,
+            "upper": 0.7934506858870163,
+            "confidence": 0.95,
+            "method": "Wilson score interval",
+            "source": "NIST/SEMATECH e-Handbook 7.2.4.1",
+            "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+            "note": "NIST: Wilson 'was recommended by Agresti and Coull for virtually all combinations of n and p'. Its lower limit cannot be negative, which the naive Wald interval cannot guarantee."
+          },
+          "bayesian_skill_p": 0.5,
+          "bayesian_skill_meaning": "P(true win rate > 50%) with a uniform Beta(1,1) prior; identical to the one-sided binomial tail probability",
+          "total_realised_pnl_usd": 0.0,
+          "largest_win_usd": 0.0,
+          "largest_win_share": null,
+          "independent_bets": {
+            "independent_bets": 1,
+            "raw_trades": 2,
+            "distinct_tokens": 1,
+            "per_token": {
+              "0x93025bb139fa2756a6130de833df9d07bbd2e3b1": 1
+            },
+            "detail": [
+              {
+                "token": "0x93025bb139fa2756a6130de833df9d07bbd2e3b1",
+                "trades": 2,
+                "independent_bets": 1,
+                "symbol": "GIGA"
+              }
+            ],
+            "note": "Trades in the SAME token with an open position between them are ONE bet. Scaling in is not diversification."
+          },
+          "sharpe_per_trade": null,
+          "sortino_per_trade": null,
+          "calmar": null,
+          "deflated_sharpe": null,
+          "deflated_sharpe_detail": {},
+          "consistency_ratio": null,
+          "n_periods": 0,
+          "edge_decay": null,
+          "fluke_tests": [
+            {
+              "test": "largest_win_share",
+              "failed": false,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "largest win carries n/a% of total PnL (threshold 0.5)",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "skill_not_distinguishable",
+              "failed": true,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "P(win rate > 0.5) = 0.5 (threshold 0.95); 0W/1L over 1 closed trades",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "deflated_sharpe",
+              "failed": false,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "DSR = n/a after deflating for 2 trial(s) scanned (threshold > 0.0)",
+              "authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'"
+            },
+            {
+              "test": "insufficient_independent_bets",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 independent bet(s) from 1 closed trades (threshold 5) - scaling in on one token is one bet, not many",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "single_token_only",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "traded 1 distinct token(s) (threshold 2)",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "edge_decay",
+              "failed": false,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "n/a",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "too_few_closed_trades",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 closed trades (threshold 30)",
+              "authority": "ANALYST_CHOICE"
+            }
+          ],
+          "rejected_by": [
+            {
+              "test": "skill_not_distinguishable",
+              "failed": true,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "P(win rate > 0.5) = 0.5 (threshold 0.95); 0W/1L over 1 closed trades",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "insufficient_independent_bets",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 independent bet(s) from 1 closed trades (threshold 5) - scaling in on one token is one bet, not many",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "single_token_only",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "traded 1 distinct token(s) (threshold 2)",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "too_few_closed_trades",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 closed trades (threshold 30)",
+              "authority": "ANALYST_CHOICE"
+            }
+          ],
+          "definitive_rejections": [
+            "skill_not_distinguishable"
+          ],
+          "insufficiencies": [
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "thresholds": {
+            "min_bayesian_skill": 0.95,
+            "min_independent_bets": 5,
+            "min_deflated_sharpe": 0.0,
+            "min_consistency_ratio": 0.5,
+            "max_largest_win_share": 0.5,
+            "max_edge_decay_ratio": 0.5,
+            "min_distinct_tokens": 2,
+            "min_closed_trades": 30
+          },
+          "threshold_label": "ANALYST_CHOICE unless the test cites a source",
+          "cited_criteria": {
+            "bayesian_skill": {
+              "label": "Posterior probability the win rate exceeds chance",
+              "authority": "Beta-Binomial conjugate model (weak uniform Beta(1,1) prior)",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "P(p > 0.5 | data) with a Beta(1,1) prior equals the one-sided binomial tail probability of the observed win count, so it is computed exactly."
+            },
+            "min_independent_bets": {
+              "label": "Minimum independent bets (not raw trades)",
+              "authority": "Bailey & Lopez de Prado - independent bets, not trades",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "A 'bet' is a sequence of trades in one asset where the position is not closed before the next opens. Overlapping trades in the same asset are ONE bet, not many."
+            },
+            "deflated_sharpe": {
+              "label": "Deflated Sharpe Ratio",
+              "authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "Corrects an observed Sharpe for (a) the number of trials performed and (b) non-normal returns. A Sharpe that is not positive after deflation was selection, not skill."
+            },
+            "consistency_ratio": {
+              "label": "Share of periods with a positive return",
+              "authority": "Professional performance-measurement practice",
+              "tag": "ANALYTICS-VENDOR-CONVENTION",
+              "note": "The threshold is an analyst choice. The MEASURE itself is standard practice; the number is not published by any authority."
+            },
+            "sortino": {
+              "label": "Sortino ratio",
+              "authority": "CFA Institute - 'The Sortino Ratio'",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "url": "https://rpc.cfainstitute.org/sites/default/files/-/media/documents/code/gips/the-sortino-ratio.pdf",
+              "note": "(Mean return - MAR) / downside deviation. CFA Institute publishes the DEFINITION; it publishes no band."
+            },
+            "calmar": {
+              "label": "Calmar ratio",
+              "authority": "Standard risk-adjusted performance measure",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "Annualised return / maximum drawdown."
+            }
+          },
+          "trials_scanned": 2,
+          "trials_note": "The number of candidate wallets screened BEFORE this one was chosen. It enters the Deflated Sharpe, so scanning 500 wallets and keeping the best sets a far higher bar than scanning 5. Under-reporting it inflates the verdict."
+        }
+      },
+      {
+        "address": "0x211D2FfE82fe134571F031850703041752EFCE49",
+        "status": "ok",
+        "entry_lag_blocks": 20,
+        "entry_class": "very early (<100 blocks)",
+        "bought_tokens": 5000719830.556544,
+        "n_buys_in_window": 2,
+        "prior_meme_tokens": 1,
+        "edge_verdict": "FLUKE",
+        "edge_reason": "rejected by: skill_not_distinguishable (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+        "skill_p": 0.5,
+        "independent_bets": 1,
+        "deflated_sharpe": null,
+        "rejected_by": [
+          {
+            "test": "skill_not_distinguishable",
+            "failed": true,
+            "severity": "reject",
+            "binding": "REJECT",
+            "detail": "P(win rate > 0.5) = 0.5 (threshold 0.95); 0W/1L over 1 closed trades",
+            "authority": "ANALYST_CHOICE"
+          },
+          {
+            "test": "insufficient_independent_bets",
+            "failed": true,
+            "severity": "reject",
+            "binding": "INSUFFICIENT",
+            "detail": "1 independent bet(s) from 1 closed trades (threshold 5) - scaling in on one token is one bet, not many",
+            "authority": "ANALYST_CHOICE"
+          },
+          {
+            "test": "single_token_only",
+            "failed": true,
+            "severity": "reject",
+            "binding": "INSUFFICIENT",
+            "detail": "traded 1 distinct token(s) (threshold 2)",
+            "authority": "ANALYST_CHOICE"
+          },
+          {
+            "test": "too_few_closed_trades",
+            "failed": true,
+            "severity": "reject",
+            "binding": "INSUFFICIENT",
+            "detail": "1 closed trades (threshold 30)",
+            "authority": "ANALYST_CHOICE"
+          }
+        ],
+        "edge": {
+          "verdict": "FLUKE",
+          "reason": "rejected by: skill_not_distinguishable (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "n_closed_trades": 1,
+          "wins": 0,
+          "losses": 1,
+          "win_rate": 0.0,
+          "wilson_interval": {
+            "status": "computed",
+            "win_rate": 0.0,
+            "lower": 5.551115123125783e-17,
+            "upper": 0.7934506858870163,
+            "confidence": 0.95,
+            "method": "Wilson score interval",
+            "source": "NIST/SEMATECH e-Handbook 7.2.4.1",
+            "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+            "note": "NIST: Wilson 'was recommended by Agresti and Coull for virtually all combinations of n and p'. Its lower limit cannot be negative, which the naive Wald interval cannot guarantee."
+          },
+          "bayesian_skill_p": 0.5,
+          "bayesian_skill_meaning": "P(true win rate > 50%) with a uniform Beta(1,1) prior; identical to the one-sided binomial tail probability",
+          "total_realised_pnl_usd": 0.0,
+          "largest_win_usd": 0.0,
+          "largest_win_share": null,
+          "independent_bets": {
+            "independent_bets": 1,
+            "raw_trades": 2,
+            "distinct_tokens": 1,
+            "per_token": {
+              "0x93025bb139fa2756a6130de833df9d07bbd2e3b1": 1
+            },
+            "detail": [
+              {
+                "token": "0x93025bb139fa2756a6130de833df9d07bbd2e3b1",
+                "trades": 2,
+                "independent_bets": 1,
+                "symbol": "GIGA"
+              }
+            ],
+            "note": "Trades in the SAME token with an open position between them are ONE bet. Scaling in is not diversification."
+          },
+          "sharpe_per_trade": null,
+          "sortino_per_trade": null,
+          "calmar": null,
+          "deflated_sharpe": null,
+          "deflated_sharpe_detail": {},
+          "consistency_ratio": null,
+          "n_periods": 0,
+          "edge_decay": null,
+          "fluke_tests": [
+            {
+              "test": "largest_win_share",
+              "failed": false,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "largest win carries n/a% of total PnL (threshold 0.5)",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "skill_not_distinguishable",
+              "failed": true,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "P(win rate > 0.5) = 0.5 (threshold 0.95); 0W/1L over 1 closed trades",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "deflated_sharpe",
+              "failed": false,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "DSR = n/a after deflating for 2 trial(s) scanned (threshold > 0.0)",
+              "authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'"
+            },
+            {
+              "test": "insufficient_independent_bets",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 independent bet(s) from 1 closed trades (threshold 5) - scaling in on one token is one bet, not many",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "single_token_only",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "traded 1 distinct token(s) (threshold 2)",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "edge_decay",
+              "failed": false,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "n/a",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "too_few_closed_trades",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 closed trades (threshold 30)",
+              "authority": "ANALYST_CHOICE"
+            }
+          ],
+          "rejected_by": [
+            {
+              "test": "skill_not_distinguishable",
+              "failed": true,
+              "severity": "reject",
+              "binding": "REJECT",
+              "detail": "P(win rate > 0.5) = 0.5 (threshold 0.95); 0W/1L over 1 closed trades",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "insufficient_independent_bets",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 independent bet(s) from 1 closed trades (threshold 5) - scaling in on one token is one bet, not many",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "single_token_only",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "traded 1 distinct token(s) (threshold 2)",
+              "authority": "ANALYST_CHOICE"
+            },
+            {
+              "test": "too_few_closed_trades",
+              "failed": true,
+              "severity": "reject",
+              "binding": "INSUFFICIENT",
+              "detail": "1 closed trades (threshold 30)",
+              "authority": "ANALYST_CHOICE"
+            }
+          ],
+          "definitive_rejections": [
+            "skill_not_distinguishable"
+          ],
+          "insufficiencies": [
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "thresholds": {
+            "min_bayesian_skill": 0.95,
+            "min_independent_bets": 5,
+            "min_deflated_sharpe": 0.0,
+            "min_consistency_ratio": 0.5,
+            "max_largest_win_share": 0.5,
+            "max_edge_decay_ratio": 0.5,
+            "min_distinct_tokens": 2,
+            "min_closed_trades": 30
+          },
+          "threshold_label": "ANALYST_CHOICE unless the test cites a source",
+          "cited_criteria": {
+            "bayesian_skill": {
+              "label": "Posterior probability the win rate exceeds chance",
+              "authority": "Beta-Binomial conjugate model (weak uniform Beta(1,1) prior)",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "P(p > 0.5 | data) with a Beta(1,1) prior equals the one-sided binomial tail probability of the observed win count, so it is computed exactly."
+            },
+            "min_independent_bets": {
+              "label": "Minimum independent bets (not raw trades)",
+              "authority": "Bailey & Lopez de Prado - independent bets, not trades",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "A 'bet' is a sequence of trades in one asset where the position is not closed before the next opens. Overlapping trades in the same asset are ONE bet, not many."
+            },
+            "deflated_sharpe": {
+              "label": "Deflated Sharpe Ratio",
+              "authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "Corrects an observed Sharpe for (a) the number of trials performed and (b) non-normal returns. A Sharpe that is not positive after deflation was selection, not skill."
+            },
+            "consistency_ratio": {
+              "label": "Share of periods with a positive return",
+              "authority": "Professional performance-measurement practice",
+              "tag": "ANALYTICS-VENDOR-CONVENTION",
+              "note": "The threshold is an analyst choice. The MEASURE itself is standard practice; the number is not published by any authority."
+            },
+            "sortino": {
+              "label": "Sortino ratio",
+              "authority": "CFA Institute - 'The Sortino Ratio'",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "url": "https://rpc.cfainstitute.org/sites/default/files/-/media/documents/code/gips/the-sortino-ratio.pdf",
+              "note": "(Mean return - MAR) / downside deviation. CFA Institute publishes the DEFINITION; it publishes no band."
+            },
+            "calmar": {
+              "label": "Calmar ratio",
+              "authority": "Standard risk-adjusted performance measure",
+              "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+              "note": "Annualised return / maximum drawdown."
+            }
+          },
+          "trials_scanned": 2,
+          "trials_note": "The number of candidate wallets screened BEFORE this one was chosen. It enters the Deflated Sharpe, so scanning 500 wallets and keeping the best sets a far higher bar than scanning 5. Under-reporting it inflates the verdict."
+        }
+      }
+    ],
+    "note": "candidates_scanned is the number of wallets examined; it enters the Deflated Sharpe, so a wider screen raises the bar for every one of them."
+  }
+}

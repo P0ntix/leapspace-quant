@@ -1,0 +1,2495 @@
+{
+  "generated_at": "2026-10-27T15:58:20.882317+00:00",
+  "disclosure": "All figures below are computed from LIVE sources at run time unless the entry says otherwise. Sources that could not be reached are listed as gaps; no data was substituted for them.",
+  "sections": {
+    "regime": {
+      "n_states": 4,
+      "labels": {
+        "3": "tranquil_uptrend",
+        "2": "range_chop",
+        "1": "regular_bear",
+        "0": "crash_rebound"
+      },
+      "state_share": {
+        "range_chop": 0.26778242677824265,
+        "tranquil_uptrend": 0.2200836820083682,
+        "regular_bear": 0.27531380753138074,
+        "crash_rebound": 0.23682008368200838
+      },
+      "state_bars": {
+        "range_chop": 320,
+        "tranquil_uptrend": 263,
+        "regular_bear": 329,
+        "crash_rebound": 283
+      },
+      "converged": true,
+      "n_iter": 3,
+      "log_likelihood": -8531.733621534375,
+      "feature_names": [
+        "vol_level",
+        "vol_change",
+        "trend",
+        "drawdown",
+        "liquidity"
+      ],
+      "standardized": true,
+      "bars_used": 1195,
+      "bars_total": 1255,
+      "unusable_bars_warmup": 60,
+      "feature_units": {
+        "vol_level": "annualised realised volatility of trailing returns",
+        "vol_change": "short-window vol divided by long-window vol minus 1",
+        "trend": "trailing return over the trend lookback",
+        "drawdown": "current drawdown from the rolling high (negative)",
+        "liquidity": "log average dollar volume (higher = more liquid)"
+      },
+      "unspecified_in_source": [
+        "feature lookback windows",
+        "number of states (paper says 3-5; set by spec)",
+        "state labelling thresholds"
+      ],
+      "causality": "filter() posteriors are causal and are the only ones safe for backtesting; smooth() and viterbi() use the whole series and are retrospective only",
+      "symbol": "QQQ",
+      "latest_label": "range_chop",
+      "provenance": [
+        "Cached data \u2014 originally fetched 2026-10-27T15:36:02+00:00 from yahoo.chart (https://query1.finance.yahoo.com/v8/finance/chart/QQQ?range=5y&interval=1d&includeAdjustedClose=true). HTTP 200 Served from local cache; upstream not re-contacted.; 1255 bars 2021-10-27..2026-10-27"
+      ]
+    },
+    "gamma": {
+      "flow": {
+        "underlying": "QQQ",
+        "call_volume": 1563103.0,
+        "put_volume": 1376968.0,
+        "call_open_interest": 3723146.0,
+        "put_open_interest": 5284768.0,
+        "net_delta_flow": -155227.77726070417,
+        "net_vega_flow": 17419.853751281917,
+        "net_notional_flow": -1075778956.0,
+        "put_call_volume_ratio": 0.8809195555251318,
+        "put_call_oi_ratio": 1.419436143519486,
+        "directional_flow": -1.0,
+        "volume_implied": 0.32618391110502637,
+        "warnings": [
+          "volume_implied is an analyst mapping from the put/call volume ratio, not a value published by the source and not a paper result."
+        ],
+        "provenance": "OCT 27, 2026 11:36 AM ET"
+      },
+      "gamma": {
+        "underlying": "QQQ",
+        "spot": 719.65,
+        "as_of": "OCT 27, 2026 11:36 AM ET",
+        "net_gamma": 71345.51857545169,
+        "call_gamma": -144304.2361255284,
+        "put_gamma": 215649.75470097997,
+        "gross_gamma": 359953.9908265082,
+        "gamma_by_expiry": {
+          "Oct 28": 1947.2511625321115,
+          "Oct 29": 2928.242993969475,
+          "Oct 30": 42060.15330959693,
+          "Nov 2": -1366.5673528243879,
+          "Nov 3": 905.4970888408238,
+          "Nov 4": 177.14095155892062,
+          "Nov 5": -136.40312477246144,
+          "Nov 6": 9396.910497762467,
+          "Nov 9": -72.63498038188128,
+          "Nov 13": 1297.5127472228598,
+          "Nov 20": 8824.814777420292,
+          "Nov 27": 78.06715991566107,
+          "Nov 30": 800.4334940742175,
+          "Dec 4": -31.062493210200696,
+          "Dec 18": 4470.75055888517,
+          "Dec 31": 299.55244211553037,
+          "Jan 15": -402.39970962198845,
+          "Feb 19": 168.25905236814643
+        },
+        "max_pain_strike": 680.0,
+        "zero_gamma_strike": 320.0,
+        "n_contracts": 5210,
+        "total_open_interest": 9007914.0,
+        "total_volume": 2940071.0,
+        "sign": 1,
+        "state": "positive_gamma_damping",
+        "interpretation": "Positive net gamma: hedging flows tend to damp moves. Paper guidance: treat as a mean-reversion/pinning regime; fade extensions, use passive execution, smaller targets.",
+        "assumptions": [
+          "Dealer positioning is ASSUMED from customer-side open interest: customers net long calls and net long puts, so dealers are short calls and long puts. Open interest alone cannot verify this.",
+          "Gamma is Black-Scholes with a flat volatility surface per contract; real smiles and smirks bias these estimates (paper ref 25).",
+          "IV is derived from last-trade prices where available and is APPROXIMATE; some contracts have no usable quote and are excluded.",
+          "Expiry year inference assumes the next occurrence of the stated month."
+        ],
+        "warnings": [],
+        "provenance": ""
+      },
+      "combined_state": "positive_gamma_damping",
+      "note": "Option flow (pressure) and gamma (amplification) are independent axes. The papers state them separately and do not provide a calibrated joint rule, so no combined directional call is made here.",
+      "iv_context": {
+        "volume_implied": 0.32618391110502637,
+        "note": "IV is the baseline volatility forecast per the paper; this is the volume-derived estimate only."
+      },
+      "provenance": [
+        "Cached data \u2014 originally fetched 2026-10-27T15:36:07+00:00 from nasdaq.option-chain (https://api.nasdaq.com/api/quote/QQQ/option-chain?assetclass=etf&fromdate=2026-10-27&todate=2027-02-24&limit=5000). HTTP 200; 5210 contracts; chain as-of OCT 27, 2026 11:36 AM ET; underlying last LAST TRADE: $719.65 (AS OF OCT 27, 2026 11:36 AM ET); DELAYED data, OI is a snapshot"
+      ]
+    },
+    "backtests": [
+      {
+        "name": "regime_switch_momentum_reversal_us_equity",
+        "paper": "Financial market regime identification (LeapSpace)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat 0.13 below 2.0 - the return series is not distinguishable from noise",
+          "only 1/5 walk-forward folds profitable (edge concentrated in a few periods)",
+          "OOS Sharpe retains only -10% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+          "edge does not survive 2x cost stress",
+          "parameter stability 0% (< 60%)"
+        ],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 80,
+          "final_equity": 79871.35773418166,
+          "trade_pnl_basis": "net",
+          "total_return": -0.20128642265818342,
+          "cagr": -0.01026907516039921,
+          "sharpe": 0.027464016109220866,
+          "sortino": 0.039420088428267816,
+          "max_drawdown": 0.5535072569124422,
+          "calmar": -0.018552738075525627,
+          "profit_factor": 0.8269022506818906,
+          "expectancy": -251.6080283227273,
+          "win_rate": 0.4125,
+          "var_95": -0.015361229766750688,
+          "cvar_95": -0.02564794579762032,
+          "skew": 0.14408389190592927,
+          "kurtosis": 13.335826533107547,
+          "t_stat": 0.1281537311001237,
+          "sharpe_lag1": 0.020194055050085355,
+          "costs_paid": 28895.061692908897,
+          "turnover_total": 110001158.92236431,
+          "time_in_market": 0.946965554948059,
+          "avg_gross_exposure": 0.9473984482729012
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 60,
+          "purge_bars": 60,
+          "embargo_bars": 60,
+          "purge_bars_requested": 60,
+          "embargo_bars_requested": 60,
+          "oos_sharpe": -0.08091495692637768,
+          "oos_sharpe_live": -0.08091495692637768,
+          "oos_cagr": -0.03069830938469953,
+          "oos_max_drawdown": 0.638730028755996,
+          "oos_trades_total": 78,
+          "oos_profitable_folds": 1,
+          "final_is_sharpe": 0.7782265896431625,
+          "oos_retention": -0.10397351877102956,
+          "pbo": 0.2
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\regime_switch_momentum_reversal_us_equity.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': True, 'features': ['regime_momentum_score'], 'signals': ['regime_switch', 'regime_switch_cross_sectional', 'rsi_volume_confirmation']}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "hypothesis": {
+            "source": "paper",
+            "citation": "Financial market regime identification (LeapSpace), 'Best general edge'"
+          },
+          "universe": {
+            "source": "analyst_choice",
+            "note": "The paper names 'Equities, broad indices, crypto'. us_equity_broad (SPY, VTI, IVV, RSP) is a liquid, survivor-bias-free ETF set chosen for a cross-sectional test."
+          },
+          "n_states": {
+            "source": "paper",
+            "citation": "'3-5 latent states, not bull/bear'; 4 chosen because the paper also cites a four-state HMM as optimal in one S&P 500 application"
+          },
+          "momentum_lookback": {
+            "source": "analyst_choice",
+            "note": "The paper names 'medium-horizon return or moving-trend feature' without a window. 60 trading days \u2248 one quarter, the conventional medium-horizon definition. NOT stated in the paper."
+          },
+          "reversal_lookback": {
+            "source": "analyst_choice",
+            "note": "The paper cites short-term reversal and warns it decays quickly and may vanish after costs, but gives no window. 5 trading days is a choice."
+          },
+          "rebalance": {
+            "source": "analyst_choice",
+            "note": "The paper does not specify a rebalance cadence. Weekly chosen to avoid the turnover that destroys short-horizon reversal after costs."
+          },
+          "gross_leverage": {
+            "source": "analyst_choice",
+            "note": "1.0 (no leverage) chosen as the neutral default for a switching test."
+          },
+          "max_position": {
+            "source": "analyst_choice",
+            "note": "25% per name on a 4-symbol universe."
+          },
+          "costs": {
+            "source": "engine_default",
+            "note": "The skill's DEFAULT_COSTS per asset class (US ETF), scaled by cost_multiplier=1.0."
+          },
+          "period": {
+            "source": "analyst_choice",
+            "note": "2005-01-01 onward, to cover the 2008 crisis, the 2020 COVID crash and 2022 bear market \u2014 the paper's own examples of stress regimes. SPY history starts 1993, so this leaves a long sample."
+          },
+          "variants_tried": {
+            "source": "analyst_choice",
+            "note": "1 \u2014 this is the first parameterisation; no tuning was performed before the run."
+          },
+          "direction": {
+            "source": "analyst_choice",
+            "citation": "Financial market regime identification (LeapSpace) -> \"run momentum in orderly trending states, and switch toward reversal/liquidity-provision in stressed, high-volatility, rebound, or illiquid states\"",
+            "note": "Long/short market timing. The signal emits a signed value in [-1, 1] scaled by the regime posterior: long the momentum direction in an orderly-trend state, and the opposite side of the short-horizon move in a stress state. portfolio.long_only=false and portfolio.net_target=null coincide with the engine defaults, so the intake gate reads the direction as unanswered; it is answered here. The paper specifies the direction SWITCH but no net-exposure target, so no net_target is set."
+          },
+          "exit": {
+            "source": "analyst_choice",
+            "citation": "Financial market regime identification (LeapSpace) -> \"Translate state probabilities into explicit position-sizing and turnover controls\"",
+            "note": "The exit is the signal returning 0: the regime posterior is ambiguous (no state clears the hysteresis gap) or the input feature is unavailable. Positions also close when the signal's sign flips. The gate's probed exit fields (signal.params.exit, execution.mode, execution.flat_at_close) cannot express a regime-conditional exit, so the rule lives in the signal implementation and is recorded here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "universe",
+            "direction",
+            "exit",
+            "costs"
+          ],
+          "auto_accepted": [
+            "universe",
+            "direction",
+            "exit",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "universe": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "direction": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "exit": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "regime_switch_momentum_reversal_nasdaq_scalp_proxy",
+        "paper": "NASDAQ market regime identification (LeapSpace)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat -0.58 below 2.0 - the return series is not distinguishable from noise",
+          "edge does not survive 2x cost stress",
+          "only 8/22 profitable years"
+        ],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 637,
+          "final_equity": 45530.83804022761,
+          "trade_pnl_basis": "net",
+          "total_return": -0.5446916195977238,
+          "cagr": -0.03548920316227999,
+          "sharpe": -0.12443978437732625,
+          "sortino": -0.1765285422378672,
+          "max_drawdown": 0.6834744695546048,
+          "calmar": -0.051924694693288254,
+          "profit_factor": 0.6945080658514394,
+          "expectancy": -85.50888847687716,
+          "win_rate": 0.47095761381475665,
+          "var_95": -0.01514459551848722,
+          "cvar_95": -0.0258119523380173,
+          "skew": 0.2046754800782129,
+          "kurtosis": 20.789504750882728,
+          "t_stat": -0.5806660832788763,
+          "sharpe_lag1": -0.09220504112754187,
+          "costs_paid": 41066.02008728273,
+          "turnover_total": 161343072.15342832,
+          "time_in_market": 0.8926553672316384,
+          "avg_gross_exposure": 0.8929503411280119
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 20,
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "purge_bars_requested": 20,
+          "embargo_bars_requested": 20,
+          "oos_sharpe": 0.12471627691257144,
+          "oos_sharpe_live": 0.12471627691257144,
+          "oos_cagr": 0.006367959225670239,
+          "oos_max_drawdown": 0.6021063010969732,
+          "oos_trades_total": 521,
+          "oos_profitable_folds": 4,
+          "final_is_sharpe": -0.38737251989493604,
+          "oos_retention": null,
+          "pbo": 0.5
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\regime_switch_momentum_reversal_nasdaq_scalp_proxy.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "hypothesis": {
+            "source": "paper",
+            "citation": "NASDAQ market regime identification (LeapSpace), 'Direct Answer'"
+          },
+          "universe": {
+            "source": "analyst_choice",
+            "note": "us_equity_style includes QQQ (the Nasdaq proxy) plus SPY/IWM/MDY/RSP/DIA."
+          },
+          "n_states": {
+            "source": "paper",
+            "citation": "'a five-state HSMM better captured U.S. stock regimes than a two-state model'"
+          },
+          "momentum_lookback": {
+            "source": "analyst_choice",
+            "note": "20 trading days \u2014 a swing horizon. The paper is intraday-focused; a daily proxy cannot carry a 1-2 minute signal."
+          },
+          "reversal_lookback": {
+            "source": "analyst_choice",
+            "note": "3 trading days. The paper's 'very short horizon' cannot be tested on daily bars; this is the shortest daily proxy."
+          },
+          "rebalance": {
+            "source": "analyst_choice",
+            "note": "Daily, because the paper's scalping premise is a fast refresh."
+          },
+          "costs": {
+            "source": "engine_default",
+            "note": "Skill DEFAULT_COSTS for US equities."
+          },
+          "period": {
+            "source": "analyst_choice",
+            "note": "Same window as the other spec for comparability."
+          },
+          "variants_tried": {
+            "source": "analyst_choice",
+            "note": "1 \u2014 no tuning before the run."
+          },
+          "direction": {
+            "source": "analyst_choice",
+            "citation": "NASDAQ market regime identification (LeapSpace) -> \"Positive/high gamma + narrow spreads + balanced flow + healthy depth: treat as a mean-reversion / pinning regime ... Negative gamma + rising realized volatility + one-sided imbalance + depth depletion: treat as a momentum / breakout regime\"",
+            "note": "Long/short market timing on the NASDAQ daily proxy. The signal emits a signed value in [-1, 1] scaled by the regime posterior. portfolio.long_only=false and portfolio.net_target=null coincide with the engine defaults, so the intake gate reads the direction as unanswered; it is answered here."
+          },
+          "exit": {
+            "source": "analyst_choice",
+            "citation": "NASDAQ market regime identification (LeapSpace) -> regime-conditional signal switching",
+            "note": "The exit is the signal returning 0 (ambiguous posterior or missing input), plus a sign flip. The gate's probed exit fields cannot express a regime-conditional exit; the rule lives in the signal implementation and is recorded here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "direction",
+            "exit",
+            "costs"
+          ],
+          "auto_accepted": [
+            "direction",
+            "exit",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "direction": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "exit": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "regime_switch_cross_sectional_sector_rotation",
+        "paper": "Financial market regime identification (LeapSpace)",
+        "verdict": "SUPPORTED",
+        "flags": [],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 2089,
+          "final_equity": 272168.6393842923,
+          "trade_pnl_basis": "net",
+          "total_return": 1.7216863938429228,
+          "cagr": 0.04705789010660477,
+          "sharpe": 0.6106875964301612,
+          "sortino": 0.8605541046497035,
+          "max_drawdown": 0.1722195550811665,
+          "calmar": 0.2732435935305172,
+          "profit_factor": 1.3370990008960282,
+          "expectancy": 82.41677328113543,
+          "win_rate": 0.6160842508377214,
+          "var_95": -0.007788074606866372,
+          "cvar_95": -0.012335584434289405,
+          "skew": -0.33681805364613115,
+          "kurtosis": 8.053432485211104,
+          "t_stat": 2.8496157920915226,
+          "sharpe_lag1": 0.4514128850675304,
+          "costs_paid": 27376.04052744186,
+          "turnover_total": 109504162.1097677,
+          "time_in_market": 0.9425915800984145,
+          "avg_gross_exposure": 0.4232955452168595
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 60,
+          "purge_bars": 60,
+          "embargo_bars": 60,
+          "purge_bars_requested": 60,
+          "embargo_bars_requested": 60,
+          "oos_sharpe": 0.5278948265425338,
+          "oos_sharpe_live": 0.5278948265425338,
+          "oos_cagr": 0.03958263014156693,
+          "oos_max_drawdown": 0.13321900271243325,
+          "oos_trades_total": 1539,
+          "oos_profitable_folds": 5,
+          "final_is_sharpe": 0.9718263939812808,
+          "oos_retention": 0.5431986924947647,
+          "pbo": 0.4
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\regime_switch_cross_sectional_sector_rotation.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [],
+        "parameter_provenance": {
+          "hypothesis": {
+            "source": "paper",
+            "citation": "Financial market regime identification (LeapSpace), 'Best general edge' + suggested further research on position sizing from state probabilities"
+          },
+          "universe": {
+            "source": "analyst_choice",
+            "note": "us_equity_sector = 11 SPDR sector ETFs. The paper says 'Equities, broad indices, crypto' and names no list. Sector ETFs give the cross-sectional dispersion a selection rule needs; XLC and XLRE start late (2018/2015), which shortens the panel."
+          },
+          "long_rank": {
+            "source": "analyst_choice",
+            "note": "Top quartile of the universe by the ranking variable. The paper gives no cutoff."
+          },
+          "max_names": {
+            "source": "analyst_choice",
+            "note": "3 concurrent positions \u2014 concentration control, not stated in the paper."
+          },
+          "regime_gap": {
+            "source": "analyst_choice",
+            "note": "0.10 posterior gap required to act. A hysteresis band: the paper argues for soft probabilities but sets no threshold."
+          },
+          "momentum_lookback": {
+            "source": "analyst_choice",
+            "note": "60 trading days \u2014 the paper's 'medium-horizon' without a stated window."
+          },
+          "reversal_lookback": {
+            "source": "analyst_choice",
+            "note": "5 trading days \u2014 the paper's 'short horizon' without a stated window."
+          },
+          "rebalance": {
+            "source": "analyst_choice",
+            "note": "Weekly."
+          },
+          "gross_leverage": {
+            "source": "analyst_choice",
+            "note": "1.0, no leverage."
+          },
+          "max_position": {
+            "source": "analyst_choice",
+            "note": "15% per name."
+          },
+          "costs": {
+            "source": "engine_default",
+            "note": "Skill DEFAULT_COSTS for US equities."
+          },
+          "period": {
+            "source": "analyst_choice",
+            "note": "2005 onward, covering the 2008, 2020 and 2022 stress regimes the paper discusses."
+          },
+          "variants_tried": {
+            "source": "analyst_choice",
+            "note": "1 \u2014 no tuning before the run."
+          },
+          "exit": {
+            "source": "analyst_choice",
+            "citation": "Financial market regime identification (LeapSpace) -> asset allocation across a universe by regime",
+            "note": "A name exits when the regime MODE changes (trend <-> stress) or when it falls out of the selected rank set at the next rebalance; the engine closes the position when the signal stops naming it. max_names=3 caps the book. The gate's probed exit fields do not exist for a cross-sectional signal, so the rule is recorded here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "exit",
+            "costs"
+          ],
+          "auto_accepted": [
+            "exit",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "exit": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        },
+        "validation": "FULL gauntlet"
+      },
+      {
+        "name": "v1_crypto_momentum_20d_ma",
+        "paper": "Trading strategies for retail traders (LeapSpace v1)",
+        "verdict": "FRAGILE",
+        "flags": [
+          "Monte Carlo prob(profitable) 81%"
+        ],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 1328,
+          "final_equity": 1179496.3367531186,
+          "trade_pnl_basis": "net",
+          "total_return": 10.794963367531185,
+          "cagr": 0.21303102174528044,
+          "sharpe": 0.7470487846189819,
+          "sortino": 1.1682044874056594,
+          "max_drawdown": 0.6518654704542374,
+          "calmar": 0.3268021262068609,
+          "profit_factor": 1.1152240353312686,
+          "expectancy": 812.8737475550579,
+          "win_rate": 0.3509036144578313,
+          "var_95": -0.029397991638479597,
+          "cvar_95": -0.04612004458715539,
+          "skew": 0.6931614035726334,
+          "kurtosis": 9.970720439731132,
+          "t_stat": 2.670401903981252,
+          "sharpe_lag1": 0.5251369211712612,
+          "costs_paid": 1279445.5945068495,
+          "turnover_total": 639722797.2534282,
+          "time_in_market": 0.7770186335403727,
+          "avg_gross_exposure": 0.3963015857937823
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 20,
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "purge_bars_requested": 20,
+          "embargo_bars_requested": 20,
+          "oos_sharpe": 0.7833531133016806,
+          "oos_sharpe_live": 0.7833531133016806,
+          "oos_cagr": 0.2342158493136559,
+          "oos_max_drawdown": 0.6234477083137024,
+          "oos_trades_total": 1026,
+          "oos_profitable_folds": 3,
+          "final_is_sharpe": 1.0886901285457562,
+          "oos_retention": 0.7195372611195282,
+          "pbo": 0.5
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\v1_crypto_momentum_20d_ma.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [],
+        "parameter_provenance": {
+          "hypothesis": {
+            "source": "paper",
+            "citation": "v1 \u00a75 Strategy 1 \u2014 Crypto Trend-Following Momentum (20-day MA)"
+          },
+          "momentum_lookback": {
+            "source": "paper",
+            "citation": "v1 \u00a75 Strategy 1: '20-day moving average' and '20-day return is positive'"
+          },
+          "ma_lookback": {
+            "source": "paper",
+            "citation": "v1 \u00a75 Strategy 1: '20-day moving average'"
+          },
+          "rebalance": {
+            "source": "analyst_choice",
+            "note": "The paper states NO rebalance cadence anywhere \u2014 the word appears zero times. Daily bar evaluation is inferred from a 20-day MA rule and disclosed as such."
+          },
+          "vol_target": {
+            "source": "analyst_choice",
+            "note": "The paper says 'volatility-scaled position size' but states NO target volatility. 0.50 annualised is chosen because crypto realised vol is far above equities; the engine treats vol_target as an UPPER BOUND, not an exact setting."
+          },
+          "max_position": {
+            "source": "analyst_choice",
+            "note": "'a capped max allocation' \u2014 no % stated. 20% chosen."
+          },
+          "max_names": {
+            "source": "analyst_choice",
+            "note": "'top liquid crypto names only' \u2014 no count stated. 3 chosen."
+          },
+          "realized_vol_gate": {
+            "source": "analyst_choice",
+            "note": "'Trade only when realized volatility is not extreme' \u2014 NO threshold or lookback stated anywhere in the document. This is a REAL GAP: the rule could not be encoded as a hard filter without inventing a number, so it is NOT in the spec and is flagged here instead."
+          },
+          "stop_loss": {
+            "source": "analyst_choice",
+            "note": "The paper prefers a trailing stop at 1.0-1.5 SD but the engine's signal layer has no per-position stop; it is NOT encoded. See the `trailing_stop` entry in the paper's Strategy 8 \u2014 it is a separate rule."
+          },
+          "additional_conditions": {
+            "source": "analyst_choice",
+            "note": "The paper's entry is a 3-part AND: close>20dMA, 20d return>0, and realised vol not extreme. The engine's signal consumes ONE feature, so only the close>MA condition is encoded. Encoding the rest would require inventing the volatility cutoff, which the paper does not give."
+          },
+          "costs": {
+            "source": "engine_default",
+            "note": "Skill DEFAULT_COSTS for crypto (~10x the ETF cost)."
+          },
+          "period": {
+            "source": "analyst_choice",
+            "note": "2018 onward \u2014 crypto spot history on Yahoo begins 2014-2017 depending on the coin."
+          },
+          "variants_tried": {
+            "source": "analyst_choice",
+            "note": "1 \u2014 no tuning before the run."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "costs"
+          ],
+          "auto_accepted": [
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        },
+        "validation": "FULL gauntlet",
+        "full_gauntlet_note": "This spec was SUPPORTED under --quick and was DOWNGRADED to FRAGILE by the full gauntlet (Monte Carlo probability of profit 81%, below the 90% bar). That is the gauntlet doing its job, and it is the reason the report names the stages that ran."
+      },
+      {
+        "name": "v1_nasdaq_12m_tsm_vol_scaled",
+        "paper": "Trading strategies for retail traders (LeapSpace v1)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat -0.45 below 2.0 - the return series is not distinguishable from noise",
+          "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
+          "edge does not survive 2x cost stress",
+          "only 8/22 profitable years"
+        ],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 166,
+          "final_equity": 91591.255397459,
+          "trade_pnl_basis": "net",
+          "total_return": -0.08408744602541007,
+          "cagr": -0.004025821123975315,
+          "sharpe": -0.09711558964167841,
+          "sortino": -0.13331866480260343,
+          "max_drawdown": 0.14313139837476707,
+          "calmar": -0.028126750452296533,
+          "profit_factor": 0.942828975497915,
+          "expectancy": -50.65508796711648,
+          "win_rate": 0.4759036144578313,
+          "var_95": -0.0036058504892303275,
+          "cvar_95": -0.005282048523152634,
+          "skew": -0.2530973687576972,
+          "kurtosis": 3.2698402876408608,
+          "t_stat": -0.4531647924715222,
+          "sharpe_lag1": -0.06851966785822586,
+          "costs_paid": 2773.299821517281,
+          "turnover_total": 7968306.47748057,
+          "time_in_market": 0.953891015126663,
+          "avg_gross_exposure": 0.7571306231788926
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 252,
+          "purge_bars": 252,
+          "embargo_bars": 252,
+          "purge_bars_requested": 252,
+          "embargo_bars_requested": 252,
+          "oos_sharpe": -0.38394394435312745,
+          "oos_sharpe_live": -0.38394394435312745,
+          "oos_cagr": -0.015196789320854998,
+          "oos_max_drawdown": 0.18538485695832518,
+          "oos_trades_total": 89,
+          "oos_profitable_folds": 0,
+          "final_is_sharpe": -0.0439647708233025,
+          "oos_retention": null,
+          "pbo": 0.3
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\v1_nasdaq_12m_tsm_vol_scaled.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "hypothesis": {
+            "source": "paper",
+            "citation": "v1 \u00a75 Strategy 2 \u2014 Nasdaq Time-Series Momentum (12-month)"
+          },
+          "momentum_lookback": {
+            "source": "paper",
+            "citation": "v1 \u00a75 Strategy 2: '12-month time-series momentum on Nasdaq', 'conventionally built on the past 12-month return'"
+          },
+          "tsm_construction": {
+            "source": "analyst_choice",
+            "note": "skip=0 (a plain trailing 12-month return). The paper does NOT say whether the conventional skip-month or 12-1 construction is meant."
+          },
+          "rebalance": {
+            "source": "analyst_choice",
+            "note": "The paper states no cadence \u2014 'rebalance' appears zero times. Monthly is the 12-month convention and is disclosed as an inference."
+          },
+          "vol_target": {
+            "source": "analyst_choice",
+            "note": "'volatility scaling' / 'scale position size by inverse volatility' with NO target stated. 0.15 annualised is the analyst choice; the engine treats it as an upper bound."
+          },
+          "realized_vol_gate": {
+            "source": "analyst_choice",
+            "note": "'Trade only when realized volatility is not extreme' \u2014 no threshold or lookback anywhere in the document. NOT encoded; flagged rather than invented."
+          },
+          "max_position": {
+            "source": "analyst_choice",
+            "note": "20% per name; the paper states no cap."
+          },
+          "costs": {
+            "source": "engine_default",
+            "note": "Skill DEFAULT_COSTS for US equities."
+          },
+          "period": {
+            "source": "analyst_choice",
+            "note": "2005 onward."
+          },
+          "variants_tried": {
+            "source": "analyst_choice",
+            "note": "1 \u2014 no tuning before the run."
+          },
+          "direction": {
+            "source": "analyst_choice",
+            "citation": "Trading strategies for retail traders (LeapSpace) -> \"Use a 12-month time-series momentum on Nasdaq\"",
+            "note": "Long/short cross-sectional: long the top quartile by 12-month time-series momentum and short the bottom quartile (signal.params.long_rank / short_rank), sized to a 15% annualised volatility target. portfolio.long_only=false and portfolio.net_target=null coincide with the engine defaults, so the intake gate reads the direction as unanswered; it is answered here."
+          },
+          "exit": {
+            "source": "analyst_choice",
+            "citation": "Trading strategies for retail traders (LeapSpace) -> 12-month time-series momentum rebalancing",
+            "note": "Exit is the cross-sectional rank: a name leaves the book when it drops out of the long (or short) rank set at the next rebalance. signal.params.exit does not exist for a cross_sectional signal, so the gate cannot see the rule; it is recorded here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "direction",
+            "exit",
+            "rebalance",
+            "costs"
+          ],
+          "auto_accepted": [
+            "direction",
+            "exit",
+            "rebalance",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "direction": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "exit": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "rebalance": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "v1_sd_band_mean_reversion_1_0_1_5",
+        "paper": "Trading strategies for retail traders (LeapSpace v1)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat 1.70 below 2.0 - the return series is not distinguishable from noise",
+          "OOS Sharpe retains only 32% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+        ],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 496,
+          "final_equity": 241681.17483091328,
+          "trade_pnl_basis": "net",
+          "total_return": 1.416811748309133,
+          "cagr": 0.04136047981259994,
+          "sharpe": 0.36462141155565875,
+          "sortino": 0.5285131522010231,
+          "max_drawdown": 0.3466846495024831,
+          "calmar": 0.11930288771641645,
+          "profit_factor": 1.9516719062930479,
+          "expectancy": 285.6475299010355,
+          "win_rate": 0.7479838709677419,
+          "var_95": -0.008934697699151594,
+          "cvar_95": -0.021374868529122144,
+          "skew": 0.38891591298808,
+          "kurtosis": 44.67433325100357,
+          "t_stat": 1.7014115540866925,
+          "sharpe_lag1": 0.27981276891254403,
+          "costs_paid": 9361.934787667371,
+          "turnover_total": 37447739.15066949,
+          "time_in_market": 0.2598870056497175,
+          "avg_gross_exposure": 0.22449693314541577
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 20,
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "purge_bars_requested": 20,
+          "embargo_bars_requested": 20,
+          "oos_sharpe": 0.2887350629814534,
+          "oos_sharpe_live": 0.2887350629814534,
+          "oos_cagr": 0.031565168537349475,
+          "oos_max_drawdown": 0.3466846495024821,
+          "oos_trades_total": 429,
+          "oos_profitable_folds": 4,
+          "final_is_sharpe": 0.8967377656740266,
+          "oos_retention": 0.32198383299316913,
+          "pbo": 0.3
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\v1_sd_band_mean_reversion_1_0_1_5.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "hypothesis": {
+            "source": "paper",
+            "citation": "v1 \u00a714 Strategy 8 \u2014 Volatility-Band (1.0-1.5 SD) Filter Framework"
+          },
+          "entry_band": {
+            "source": "paper",
+            "citation": "v1 \u00a714: 'Use 1.0 SD as the early warning band and 1.5 SD as the stronger trigger band'; 'Enter band at -1.0 SD (watch) / -1.5 SD (higher-conviction stretch)'"
+          },
+          "zscore_lookback": {
+            "source": "paper",
+            "citation": "v1 \u00a714: rolling window, 'often around a trading month in research examples'; the worked examples use 20-day"
+          },
+          "exit": {
+            "source": "analyst_choice",
+            "note": "The paper says 'exit when the spread reverts to mean'. The engine's time_series_zscore needs an exit |z| level; 0.0 (the mean) is the literal reading of 'reverts to mean'."
+          },
+          "early_warning_band": {
+            "source": "analyst_choice",
+            "note": "The 1.0 SD early-warning band is stated in the paper but the engine's time_series_zscore supports ONE entry level, so 1.5 is used as the entry and the 1.0 band is not separately encoded. It would need a two-level signal."
+          },
+          "rebalance": {
+            "source": "analyst_choice",
+            "note": "The paper states no cadence. Daily bar evaluation is inferred."
+          },
+          "max_position": {
+            "source": "analyst_choice",
+            "note": "25% per name; the paper states no cap."
+          },
+          "costs": {
+            "source": "engine_default",
+            "note": "Skill DEFAULT_COSTS for US equities."
+          },
+          "period": {
+            "source": "analyst_choice",
+            "note": "2005 onward."
+          },
+          "variants_tried": {
+            "source": "analyst_choice",
+            "note": "1 \u2014 no tuning before the run."
+          },
+          "universe": {
+            "source": "analyst_choice",
+            "citation": "Trading strategies for retail traders (LeapSpace) -> mean-reversion model on a broad liquid universe",
+            "note": "Broad US equity universe (the engine's us_equity_broad preset). The paper's mean-reversion setup is applied to a liquid broad index rather than a named ticker list, and names no tickers, so the ticker mapping is the analyst's choice. universe.preset coincides with the engine default, so the intake gate reads the universe as unanswered; it is answered here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "universe",
+            "costs"
+          ],
+          "auto_accepted": [
+            "universe",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "universe": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "tradingview_price_volume_rsi_regime_filtered",
+        "paper": "Free trading indicators for directional edge (LeapSpace)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat 1.86 below 2.0 - the return series is not distinguishable from noise",
+          "OOS Sharpe retains only 25% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+        ],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 179,
+          "final_equity": 224117.51729673898,
+          "trade_pnl_basis": "net",
+          "total_return": 1.2411751729673899,
+          "cagr": 0.0377582858743466,
+          "sharpe": 0.39806146127794767,
+          "sortino": 0.5708608372700995,
+          "max_drawdown": 0.3001601562162608,
+          "calmar": 0.12579379738576071,
+          "profit_factor": 2.8369043857251057,
+          "expectancy": 693.3939513784284,
+          "win_rate": 0.7430167597765364,
+          "var_95": -0.004140648053687164,
+          "cvar_95": -0.015065403884126527,
+          "skew": -0.318788319580961,
+          "kurtosis": 75.76211088816184,
+          "t_stat": 1.8574509011014273,
+          "sharpe_lag1": 0.31830813392546264,
+          "costs_paid": 3279.310042217855,
+          "turnover_total": 13117240.16887139,
+          "time_in_market": 0.2270821942773829,
+          "avg_gross_exposure": 0.1492491721692582
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 14,
+          "purge_bars": 14,
+          "embargo_bars": 14,
+          "purge_bars_requested": 14,
+          "embargo_bars_requested": 14,
+          "oos_sharpe": 0.3280551449464952,
+          "oos_sharpe_live": 0.3280551449464952,
+          "oos_cagr": 0.031239123312999162,
+          "oos_max_drawdown": 0.3001601562162606,
+          "oos_trades_total": 153,
+          "oos_profitable_folds": 5,
+          "final_is_sharpe": 1.3210705606228943,
+          "oos_retention": 0.2483252255593485,
+          "pbo": 0.2
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\tradingview_price_volume_rsi_regime_filtered.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "hypothesis": {
+            "source": "paper",
+            "citation": "Free trading indicators for directional edge (LeapSpace), 'Bottom line'"
+          },
+          "rsi_lookback": {
+            "source": "analyst_choice",
+            "note": "14 trading days \u2014 Wilder's standard RSI period. The paper names RSI but gives no period."
+          },
+          "oversold_overbought": {
+            "source": "analyst_choice",
+            "note": "30/70 \u2014 the conventional RSI overbought/oversold bands. The paper names RSI but gives no thresholds."
+          },
+          "volume_threshold": {
+            "source": "analyst_choice",
+            "note": "1.0 \u2014 volume above its 60-day average. The paper says 'volume confirmation' without a definition."
+          },
+          "rebalance": {
+            "source": "analyst_choice",
+            "note": "Weekly, matching the daily-bar horizon."
+          },
+          "costs": {
+            "source": "engine_default",
+            "note": "Skill DEFAULT_COSTS for US equities."
+          },
+          "variants_tried": {
+            "source": "analyst_choice",
+            "note": "1 \u2014 no tuning before the run."
+          },
+          "universe": {
+            "source": "analyst_choice",
+            "citation": "Trading view directional edge -> price -> volume -> one momentum filter, on liquid index instruments",
+            "note": "Broad US equity universe (the engine's us_equity_broad preset) so the RSI fade is measured on liquid instruments rather than on a ticker list the paper does not name. universe.preset coincides with the engine default, so the intake gate reads the universe as unanswered; it is answered here."
+          },
+          "exit": {
+            "source": "analyst_choice",
+            "citation": "Trading view directional edge -> RSI mean-reversion exit at the neutral band",
+            "note": "Exit is the RSI mean-reversion: the position closes when RSI returns through the neutral band, and the volume confirmation gate can drop the position. signal.params.exit does not exist for the rsi_volume_confirmation signal, so the rule is recorded here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "universe",
+            "exit",
+            "costs"
+          ],
+          "auto_accepted": [
+            "universe",
+            "exit",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "universe": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "exit": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "crypto_ma20_trend_momentum",
+        "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat 1.40 below 2.0 - the return series is not distinguishable from noise",
+          "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)"
+        ],
+        "metrics": {
+          "n_bars": 2124,
+          "n_trades": 1169,
+          "final_equity": 263795.72403560765,
+          "trade_pnl_basis": "net",
+          "total_return": 1.6379572403560765,
+          "cagr": 0.12196916056922591,
+          "sharpe": 0.4837554222448323,
+          "sortino": 0.692575135698244,
+          "max_drawdown": 0.76721917076266,
+          "calmar": 0.15897564244644924,
+          "profit_factor": 1.0698979564802564,
+          "expectancy": 140.11610268229913,
+          "win_rate": 0.25320786997433703,
+          "var_95": -0.04084416905297579,
+          "cvar_95": -0.0671452704464228,
+          "skew": -0.42801539223534024,
+          "kurtosis": 8.841905673823195,
+          "t_stat": 1.4044388408860409,
+          "sharpe_lag1": 0.3405849200784519,
+          "costs_paid": 328383.92594117665,
+          "turnover_total": 164191962.97058868,
+          "time_in_market": 0.777306967984934,
+          "avg_gross_exposure": 0.6002740827910057
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 20,
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "purge_bars_requested": 20,
+          "embargo_bars_requested": 20,
+          "oos_sharpe": 0.32738717625614244,
+          "oos_sharpe_live": 0.32738717625614244,
+          "oos_cagr": 0.05028731600623915,
+          "oos_max_drawdown": 0.6950430590581866,
+          "oos_trades_total": 765,
+          "oos_profitable_folds": 2,
+          "final_is_sharpe": 0.8033272840997497,
+          "oos_retention": 0.4075389728895235,
+          "pbo": 0.5
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\crypto_ma20_trend_momentum.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "features.sma_gap.lookback": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Signal / \"Practical momentum version to test\"",
+            "note": "The paper's trend proxy for crypto is a 20-day moving average (\"close > 20-day moving average\"; \"a shorter, crypto-adapted trend window such as 20-day or 2-4 week lookback for crypto\"). sma_gap is (price / SMA) - 1 over 20 bars, so it is that moving average expressed as a relative gap."
+          },
+          "features.momentum.lookback": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"Practical momentum version to test\" (entry clause \"and 20-day return is positive\")",
+            "note": "Second clause of the paper's entry rule, declared as a feature for reference. It is NOT the traded feature - see additional_conditions."
+          },
+          "features.momentum.skip": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper states no skip. skip=0 measures the trailing 20 bars including the most recent bar (engine default)."
+          },
+          "signal.feature": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The engine's time_series_threshold accepts one feature. sma_gap is chosen as the primary feature because the paper's direction rule is stated relative to the moving average (\"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it\")."
+          },
+          "signal.threshold": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Direction rule",
+            "note": "The paper states the comparison rather than a number: go long when price is above the trend proxy. Because sma_gap = price/SMA - 1, threshold 0.0 reproduces the paper's test exactly (positive = above the 20-day MA)."
+          },
+          "universe.preset": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe (\"Liquid Nasdaq names and top liquid crypto names only\")",
+            "note": "The crypto preset (BTC, ETH, LTC, BCH, XRP, SOL, ADA, DOGE, AVAX, LINK) is the engine's liquid-crypto basket and stands in for the paper's \"top liquid crypto names\". The paper names no tickers, so the ticker mapping is the analyst's choice; the universe REQUIREMENT is the paper's."
+          },
+          "period.start": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper specifies no backtest window. 2021-01-01 is chosen so every symbol in the crypto preset has history (SOL/AVAX/ADA list from 2020-21), giving ~5.8 years of daily bars through 2026 and more than 20 bars of lookback warm-up."
+          },
+          "period.end": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "null = latest available bar (engine default). The paper states no end date."
+          },
+          "period.interval": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "'1d' is the engine default and matches the paper's daily-bar language (\"20-day moving average\", \"20-day return\")."
+          },
+          "portfolio.rebalance": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper gives no rebalance cadence for the crypto momentum rule. daily re-tests the 20-day MA condition on every close and suits the paper's volatility-aware, stop-managed design."
+          },
+          "portfolio.max_position": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper requires \"a capped max allocation\" but states no number. 0.2 is the analyst's cap; with up to 10 names in the book the cap only binds when fewer than 5 names are held, in which case realised gross falls below the 1.0 target (this is expected behaviour of the engine's hard cap, not a defect)."
+          },
+          "portfolio.gross_leverage": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+          },
+          "portfolio.long_only": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper says \"go short or flat when below, if your venue supports it\". The engine's time_series_threshold signal emits only 0/+1, so the short leg cannot be expressed; long_only=true is the encodable subset. See additional_conditions."
+          },
+          "portfolio.max_names": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "null = no cap on concurrent names. The paper states no limit."
+          },
+          "execution.fill_at": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 'open' (decision on bar t-1, fill at the open of bar t). The paper states no execution convention."
+          },
+          "execution.cost_multiplier": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0, i.e. the engine's conservative per-asset-class DEFAULT_COSTS (crypto is already set ~10x the ETF cost). The paper insists costs matter (\"nice-looking indicator results can collapse once transaction costs and out-of-sample testing are included\") but states no fee, spread or slippage numbers, so the engine defaults are retained unchanged."
+          },
+          "execution.max_participation": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 0.10 - at most 10% of a bar's dollar volume per order. The paper's liquidity warning supports keeping the cap but states no number."
+          },
+          "capital": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 100000.0. The paper states no account size."
+          },
+          "volatility_sizing": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "NOT ENCODED. The paper requires \"scale position size by inverse volatility\" / \"volatility-scaled position size with a capped max allocation\", but the fixed portfolio block for these specs has no vol_target field. If the consuming schema allows it, add portfolio.vol_target (the paper gives no target level; 0.15-0.20 annualised is the analyst's suggestion)."
+          },
+          "additional_conditions": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper's entry rule has two clauses - \"close > 20-day moving average\" AND \"20-day return is positive\" - and the engine takes one feature per signal, so only the first is traded (the momentum feature is declared but not enforced). The paper's risk filter (\"Trade only when realized volatility is not extreme\") and its stop-loss overlay (\"Add a stop-loss overlay\", \"Exit: stop-loss plus trend failure exit\") are also not expressible: the engine has no stop primitive and no second gate on a time_series_threshold signal."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "costs"
+          ],
+          "auto_accepted": [
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "nasdaq_12m_timeseries_momentum",
+        "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "verdict": "SUPPORTED",
+        "flags": [],
+        "metrics": {
+          "n_bars": 5487,
+          "n_trades": 71,
+          "final_equity": 566144.4470329253,
+          "trade_pnl_basis": "net",
+          "total_return": 4.661444470329253,
+          "cagr": 0.08287790148934393,
+          "sharpe": 0.6304260057333084,
+          "sortino": 0.873121005649811,
+          "max_drawdown": 0.30961632731662236,
+          "calmar": 0.2676793637067811,
+          "profit_factor": 7.243066721368257,
+          "expectancy": 6565.414746942608,
+          "win_rate": 0.7323943661971831,
+          "var_95": -0.014232799849196967,
+          "cvar_95": -0.022605113507206374,
+          "skew": -0.5403409952484849,
+          "kurtosis": 9.844569352145763,
+          "t_stat": 2.941719976276385,
+          "sharpe_lag1": 0.46148359760252405,
+          "costs_paid": 1940.6913755742717,
+          "turnover_total": 7762765.502297101,
+          "time_in_market": 0.854383087297248,
+          "avg_gross_exposure": 0.7845995700540529
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 252,
+          "purge_bars": 252,
+          "embargo_bars": 252,
+          "purge_bars_requested": 252,
+          "embargo_bars_requested": 252,
+          "oos_sharpe": 0.8981072391590574,
+          "oos_sharpe_live": 0.8981072391590574,
+          "oos_cagr": 0.11813157286299614,
+          "oos_max_drawdown": 0.29676397498982465,
+          "oos_trades_total": 43,
+          "oos_profitable_folds": 4,
+          "final_is_sharpe": 0.5498873434931781,
+          "oos_retention": 1.6332567930256414,
+          "pbo": 0.3
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\nasdaq_12m_timeseries_momentum.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [],
+        "parameter_provenance": {
+          "features.momentum.lookback": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Signal",
+            "note": "The paper states a \"12-month time-series momentum\" for Nasdaq and that it is \"conventionally built on the past 12-month return\". 12 months maps to 252 daily bars."
+          },
+          "features.momentum.skip": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper states no skip. skip=0 measures the trailing 252 bars including the most recent one, the literal reading of \"past 12-month return\". The common 12-1 convention (skip=21) is NOT the paper's statement and would be an analyst substitution."
+          },
+          "signal.feature": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "Only one feature is declared, so the engine would infer it; naming it explicitly is the analyst's clarity choice."
+          },
+          "signal.threshold": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Signal + Direction rule",
+            "note": "The paper's time-series momentum is the sign of the trailing 12-month return and its direction rule is long-above-the-trend-proxy / flat-below. Threshold 0.0 is that sign test: long when the 12-month return is positive, flat otherwise."
+          },
+          "universe.preset": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe (\"Liquid Nasdaq names and top liquid crypto names only\")",
+            "note": "us_equity_style (SPY, IWM, MDY, RSP, QQQ, DIA) is the engine preset that carries the Nasdaq-100 tracker QQQ alongside other liquid large-cap ETFs, and matches the paper's requirement of liquid Nasdaq names. The paper names no tickers, so the ticker mapping is the analyst's choice; the universe REQUIREMENT (liquid Nasdaq names) is the paper's."
+          },
+          "portfolio.rebalance": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper gives no cadence for the 12-month rule and explicitly lists the rebalance cadence as an open question. monthly keeps a 12-month signal fresh on a one-month review and keeps turnover low, which matters because the paper stresses these rules are \"sensitive to transaction costs and turnover\". NOTE: 'monthly' is also the engine's own default value, so the intake gate will read this field as un-supplied until it is recorded as an accepted default (intake.accepted_defaults: [\"rebalance\"])."
+          },
+          "portfolio.max_position": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper requires a capped allocation (\"volatility-scaled position size with a capped max allocation\") but states no number. 0.2 is the analyst's cap; with 6 preset members a 1.0 gross book gives ~0.167 per name, so the cap only binds in a narrow book."
+          },
+          "portfolio.gross_leverage": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+          },
+          "portfolio.long_only": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper's direction rule allows a short leg \"if your venue supports it\"; the engine's time_series_threshold signal emits only 0/+1, so long_only=true is the encodable subset. See additional_conditions."
+          },
+          "portfolio.max_names": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "null = no cap on concurrent names. The paper states no limit."
+          },
+          "execution.fill_at": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 'open'. The paper states no execution convention."
+          },
+          "execution.cost_multiplier": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS). The paper stresses cost sensitivity but states no fee, spread or slippage numbers."
+          },
+          "execution.max_participation": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+          },
+          "capital": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 100000.0. The paper states no account size."
+          },
+          "volatility_sizing": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "NOT ENCODED. The paper's risk filter is \"Trade only when realized volatility is not extreme, and scale position size by inverse volatility\", but the fixed portfolio block for these specs has no vol_target field. If the consuming schema allows it, add portfolio.vol_target (the paper states no level; 0.10-0.15 annualised is the analyst's suggestion)."
+          },
+          "additional_conditions": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "Three of the paper's stated components for this model cannot be encoded: (a) the stop-loss overlay (\"Add a stop-loss overlay\"; \"Stop-loss momentum outperforms other crypto momentum variants and improves downside control\"); (b) the regime filter (\"Avoid broad, always-on exposure; switch off or reduce size in regimes where momentum weakens\"); (c) the optional short leg (\"go short or flat when below, if your venue supports it\"), because time_series_threshold emits only 0/+1. The engine also has no stop-loss primitive, so the volatility-scaled stop the paper describes elsewhere cannot be represented."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "rebalance",
+            "costs"
+          ],
+          "auto_accepted": [
+            "rebalance",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "rebalance": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        },
+        "validation": "FULL gauntlet"
+      },
+      {
+        "name": "sd_band_mean_reversion_crypto",
+        "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat -1.92 below 2.0 - the return series is not distinguishable from noise",
+          "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+          "edge does not survive 2x cost stress",
+          "only 1/6 profitable years",
+          "deflated Sharpe negative (-0.68) \u2014 edge likely snooping artifact"
+        ],
+        "metrics": {
+          "n_bars": 2124,
+          "n_trades": 974,
+          "final_equity": 1219.8115170070478,
+          "trade_pnl_basis": "net",
+          "total_return": -0.9878018848299295,
+          "cagr": -0.40714295521643984,
+          "sharpe": -0.6606191935948359,
+          "sortino": -0.9410479462717342,
+          "max_drawdown": 0.9930564263479791,
+          "calmar": -0.4099897492368394,
+          "profit_factor": 0.6252801067672612,
+          "expectancy": -101.41703129670711,
+          "win_rate": 0.5954825462012321,
+          "var_95": -0.05524522695711375,
+          "cvar_95": -0.08189739254214898,
+          "skew": 1.1953489601372937,
+          "kurtosis": 18.104161150954223,
+          "t_stat": -1.9179097780734249,
+          "sharpe_lag1": -0.4702620123596346,
+          "costs_paid": 12801.46335655633,
+          "turnover_total": 6315667.817335376,
+          "time_in_market": 0.9891713747645952,
+          "avg_gross_exposure": 0.9130584638051934
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 20,
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "purge_bars_requested": 20,
+          "embargo_bars_requested": 20,
+          "oos_sharpe": -0.5527477223080706,
+          "oos_sharpe_live": -0.5527477223080706,
+          "oos_cagr": -0.3309745186180303,
+          "oos_max_drawdown": 0.8878434449279621,
+          "oos_trades_total": 638,
+          "oos_profitable_folds": 2,
+          "final_is_sharpe": -0.6913366113947511,
+          "oos_retention": null,
+          "pbo": 0.5
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\sd_band_mean_reversion_crypto.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "features.zscore.lookback": {
+            "source": "paper",
+            "citation": "Standard deviation based stop-loss strategies -> \"How to do it in practice\" (step 2) and the worked examples",
+            "note": "The paper's volatility unit for every band and stop rule is a rolling standard deviation over \"a rolling window, often around a trading month in research examples\", and every worked example uses a 20-day SD (Nasdaq $100 with 20-day SD $4; BTC $60,000 with 20-day SD $2,000). zscore over 20 bars = (price - SMA) / SD on exactly that window, so the paper's \"1.0 to 1.5 SD\" language maps directly onto |z|."
+          },
+          "signal.entry": {
+            "source": "paper",
+            "citation": "Standard deviation based stop-loss strategies -> \"Why traders use 1.0 to 1.5 SD\" and \"Set the band\"",
+            "note": "The paper reports that \"1 and 1.5 standard deviation thresholds produced better results than the classic pairs-trading setup in one study\" and labels 1.0 SD the first alert zone and 1.5 SD the stronger signal zone. This spec trades the stronger band (|z| > 1.5); the 1.0 SD early-warning band is the paper's alternative and is counted as the second variant."
+          },
+          "signal.exit": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ mean-reversion model setup\" -> Exit",
+            "note": "\"Exit when spread reverts to mean; use tight time stops because crypto mean reversion can be fast.\" Reverting to the mean is z = 0, so exit = 0.0 closes the position as the stretch normalises; the engine's time_series_zscore holds the position until |z| falls below the exit level."
+          },
+          "universe.preset": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ mean-reversion model setup\" -> Universe",
+            "note": "\"Highly liquid pairs or a tightly screened basket; prioritize BTC/ETH-style liquid names and Nasdaq pairs with stable relationships.\" The crypto preset supplies the BTC/ETH-style liquid names; the paper names no tickers, so the ticker mapping is the analyst's choice and the pair structure is dropped (see additional_conditions)."
+          },
+          "portfolio.long_only": {
+            "source": "paper",
+            "citation": "Advanced momentum and mean-reversion trading models -> \"A+ mean-reversion model setup\" -> Practical TradingView-style rules",
+            "note": "\"Enter long when price is stretched below fair value ... Enter short on the opposite setup when the stretch and pressure reverse.\" The model is two-sided, so long_only=false matches the paper. NOTE: false is also the engine's default value, so the intake gate will read this field as un-supplied until it is recorded as an accepted default (intake.accepted_defaults: [\"direction\"])."
+          },
+          "portfolio.rebalance": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper gives no cadence but is emphatic that reversion is a short-horizon edge (\"use tight time stops\", \"shorter holding periods help preserve returns against costs\", \"crypto reversal can switch within about a month\"). daily is the analyst's choice and is the fastest cadence the engine offers."
+          },
+          "portfolio.max_position": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper requires a capped allocation but states no number for the reversion model. 0.2 is the analyst's cap; with up to 10 names the cap binds only when fewer than 5 names are held, in which case realised gross is below the 1.0 target."
+          },
+          "portfolio.gross_leverage": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+          },
+          "portfolio.max_names": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "null = no cap on concurrent names. The paper states no limit."
+          },
+          "execution.fill_at": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 'open'. The paper states no execution convention."
+          },
+          "execution.cost_multiplier": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS; crypto is ~10x the ETF cost). This matters here: the paper says \"shorter holding periods help preserve returns against costs\", but states no fee, spread or slippage numbers."
+          },
+          "execution.max_participation": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+          },
+          "capital": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 100000.0. The paper states no account size."
+          },
+          "period.start": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 20 bars of z-score warm-up."
+          },
+          "period.end": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "null = latest available bar. The paper states no end date."
+          },
+          "period.interval": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "'1d' is the engine default and matches the paper's daily-bar, 20-day-SD language."
+          },
+          "additional_conditions": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper's model is a SPREAD model: \"Use a z-score / s-score or cointegration spread\", \"For Nasdaq: use a cointegration or spread model on stable pairs\", \"For crypto: use dynamic cointegration or Hurst-filtered pairs\". The engine has no pair, cointegration or Hurst machinery, so the z-score here is each symbol's own price against its own 20-day mean - this tests a weaker, single-name version of the paper's claim and the user must know which question was answered. Three further paper components are not encodable: the regime filter (\"only trade mean reversion when the asset/pair is not in a strong trend\"), the time stop (\"use tight time stops\") and the catastrophe stop \"placed beyond the spread-entry zone, not inside it\" - the engine has no stop primitive. The optional buffer zone (\"to avoid noise\") is also not encoded."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "direction",
+            "costs"
+          ],
+          "auto_accepted": [
+            "direction",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "direction": "value supplied by the source paper (or by an explicitly documented analyst choice); recorded as an accepted default so the gate records the decision rather than an unanswered question",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "bollinger20_2_breakout_crypto",
+        "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat 1.92 below 2.0 - the return series is not distinguishable from noise",
+          "OOS Sharpe retains only 35% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+        ],
+        "metrics": {
+          "n_bars": 2124,
+          "n_trades": 654,
+          "final_equity": 290630.30632446904,
+          "trade_pnl_basis": "net",
+          "total_return": 1.9063030632446902,
+          "cagr": 0.13493933749643094,
+          "sharpe": 0.6627055874750487,
+          "sortino": 1.1949517927168793,
+          "max_drawdown": 0.352341664323615,
+          "calmar": 0.38297865725154007,
+          "profit_factor": 1.3081849738650067,
+          "expectancy": 291.48364881417297,
+          "win_rate": 0.37155963302752293,
+          "var_95": -0.012699477087871608,
+          "cvar_95": -0.0288979261662718,
+          "skew": 3.3839777614440805,
+          "kurtosis": 48.86137802278308,
+          "t_stat": 1.9239669972135445,
+          "sharpe_lag1": 0.4568774730152832,
+          "costs_paid": 105240.91766953429,
+          "turnover_total": 52620458.83476709,
+          "time_in_market": 0.2730696798493409,
+          "avg_gross_exposure": 0.11888921824834879
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 20,
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "purge_bars_requested": 20,
+          "embargo_bars_requested": 20,
+          "oos_sharpe": 0.43215192520441925,
+          "oos_sharpe_live": 0.43215192520441925,
+          "oos_cagr": 0.06763737091283128,
+          "oos_max_drawdown": 0.34277403586930655,
+          "oos_trades_total": 414,
+          "oos_profitable_folds": 3,
+          "final_is_sharpe": 1.2361428104211578,
+          "oos_retention": 0.349597086648252,
+          "pbo": 0.8
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\bollinger20_2_breakout_crypto.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "features.bollinger_pct.lookback": {
+            "source": "paper",
+            "citation": "Bollinger Bands indicator settings -> \"Default setup\" (Middle band: 20-period SMA)",
+            "note": "The paper states the default Bollinger configuration as a 20-period moving average with standard-deviation bands, and calls 20 over 2 SD \"the conventional starting point\"."
+          },
+          "features.bollinger_pct.nstd": {
+            "source": "paper",
+            "citation": "Bollinger Bands indicator settings -> \"Default setup\" (Upper band: +2 standard deviations; Lower band: -2 standard deviations)",
+            "note": "The paper states the bands at 2 standard deviations; it also notes studies testing 1.5/2/2.5/3 SD widths."
+          },
+          "signal.feature": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "Only one feature is declared, so the engine would infer it; naming it explicitly is the analyst's clarity choice."
+          },
+          "signal.threshold": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper defines the band but states no trade rule. bollinger_pct = (price - SMA) / (nstd x SD), so with nstd=2 a threshold of 1.0 fires when the close is above the paper's +2 SD upper band (price > SMA + 2 SD). Threshold 0.0 would have been meaningless here - it would reduce to \"price above the 20-day SMA\" and duplicate the momentum spec instead of testing the band. The analyst reads the upper-band break as a volatility-scaled continuation entry, consistent with the paper's momentum direction rule (\"Go long when price is above its trend proxy\") and with its scalping reading of the SD band as an entry filter. A fade of the same band would be the mirror reading and would duplicate the mean-reversion spec."
+          },
+          "universe.preset": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe + Signal",
+            "note": "The paper's momentum model runs on \"top liquid crypto names\" with \"a shorter, crypto-adapted trend window such as 20-day or 2-4 week lookback for crypto\"; the Bollinger section is discussed for crypto/commodity/Nepse contexts. The crypto preset supplies the liquid names; the paper names no tickers, so the ticker mapping is the analyst's choice."
+          },
+          "portfolio.long_only": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper's direction rule allows \"go short or flat when below, if your venue supports it\", but the engine's time_series_threshold signal emits only 0/+1, so long_only=true is the encodable subset. See additional_conditions."
+          },
+          "portfolio.rebalance": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "No cadence stated. daily re-tests the band on every close, consistent with the paper's short-term, cost-sensitive framing of indicator systems."
+          },
+          "portfolio.max_position": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper requires a capped allocation but states no number. 0.2 is the analyst's cap; it binds only when fewer than 5 names are held."
+          },
+          "portfolio.gross_leverage": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+          },
+          "portfolio.max_names": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "null = no cap on concurrent names. The paper states no limit."
+          },
+          "execution.fill_at": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 'open'. The paper states no execution convention."
+          },
+          "execution.cost_multiplier": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS). The paper warns that indicator results \"can collapse once transaction costs and out-of-sample testing are included\" but states no fee, spread or slippage numbers."
+          },
+          "execution.max_participation": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+          },
+          "capital": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 100000.0. The paper states no account size."
+          },
+          "period.start": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 20 bars of band warm-up."
+          },
+          "period.end": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "null = latest available bar. The paper states no end date."
+          },
+          "period.interval": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "'1d' is the engine default and matches the paper's daily-bar, 20-period language."
+          },
+          "additional_conditions": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper's stronger momentum versions require layers the engine cannot carry: a participation confirmation (\"add volume / turnover / order imbalance so the trade only triggers when participation supports continuation\"), an options-implied stage filter (\"Avoid trades when options-implied measures suggest the move is in a late momentum stage\"), a volatility filter (\"Trade only when realized volatility is not extreme\") and a stop-loss overlay (\"Add a stop-loss overlay\"). Only the price/volatility stretch is encoded here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "costs"
+          ],
+          "auto_accepted": [
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "crypto_xs_momentum_volume_confirmed",
+        "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat -0.61 below 2.0 - the return series is not distinguishable from noise",
+          "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
+          "edge does not survive 2x cost stress"
+        ],
+        "metrics": {
+          "n_bars": 2124,
+          "n_trades": 2018,
+          "final_equity": 24107.641570664993,
+          "trade_pnl_basis": "net",
+          "total_return": -0.75892358429335,
+          "cagr": -0.15531200204558004,
+          "sharpe": -0.2101672964565547,
+          "sortino": -0.2454788028310247,
+          "max_drawdown": 0.823781026805811,
+          "calmar": -0.18853554159628827,
+          "profit_factor": 0.8372854842896219,
+          "expectancy": -37.607709826231236,
+          "win_rate": 0.4464816650148662,
+          "var_95": -0.02094960768854184,
+          "cvar_95": -0.041899600674751396,
+          "skew": -13.012947558637505,
+          "kurtosis": 329.4676616115059,
+          "t_stat": -0.6101577380939625,
+          "sharpe_lag1": -0.1297525114328012,
+          "costs_paid": 49390.73490458577,
+          "turnover_total": 24494619.377238315,
+          "time_in_market": 0.9901129943502824,
+          "avg_gross_exposure": 0.9928865978145214
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 20,
+          "purge_bars": 20,
+          "embargo_bars": 20,
+          "purge_bars_requested": 20,
+          "embargo_bars_requested": 20,
+          "oos_sharpe": -0.14905172070327496,
+          "oos_sharpe_live": -0.14905172070327496,
+          "oos_cagr": -0.04831877218701641,
+          "oos_max_drawdown": 0.4414122616917808,
+          "oos_trades_total": 1256,
+          "oos_profitable_folds": 2,
+          "final_is_sharpe": -0.39410029053562257,
+          "oos_retention": null,
+          "pbo": 0.6
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\crypto_xs_momentum_volume_confirmed.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "features.momentum.lookback": {
+            "source": "paper",
+            "citation": "Advanced momentum and mean-reversion trading models -> \"A+ momentum model setup\" -> Signal stack; and Momentum and Mean Reversion Trading Strategies -> Signal (\"20-day or 2-4 week lookback for crypto\")",
+            "note": "The paper specifies a shorter, crypto-adapted trend window for crypto rather than a 12-month one; 20 days is the window it names explicitly (\"20-day moving average and 20-day return is positive\")."
+          },
+          "features.momentum.skip": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper states no skip. skip=0 measures the trailing 20 bars including the most recent bar (engine default)."
+          },
+          "features.volume_ratio.short": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper requires a volume/turnover confirmation (\"volume is rising\"; \"volume-augmented momentum beat pure price momentum\") but states no averaging windows. 10 bars is the analyst's choice. volume_ratio is declared for reference only - it is NOT the traded feature."
+          },
+          "features.volume_ratio.long": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "60 bars is the analyst's choice; the paper states no baseline window for \"volume is rising\"."
+          },
+          "signal.feature": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The engine's cross_sectional signal ranks on a single feature. momentum is chosen as the traded feature (the paper's primary signal is the price trend); ranking on volume_ratio would turn the rule into a volume ranking, which is not what the paper describes."
+          },
+          "signal.long_rank": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper gives no rank cut-offs. 0.75 on the 10-name crypto basket means roughly the top 3 names are long; it is the analyst's choice, documented so it can be varied. NOTE: 0.75/0.25 coincide with the engine's default rank pair, so the intake gate will read the entry/exit rules as un-supplied until they are recorded as accepted defaults (intake.accepted_defaults: [\"signal\"])."
+          },
+          "signal.short_rank": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "0.25 (roughly the bottom 3 names short) is the analyst's choice, matching the paper's \"go short or flat when below, if your venue supports it\"."
+          },
+          "universe.preset": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe (\"Liquid Nasdaq names and top liquid crypto names only\")",
+            "note": "The crypto preset supplies the paper's \"top liquid crypto names\". The paper names no tickers, so the ticker mapping is the analyst's choice; a cross-sectional rule needs at least two instruments, which this preset provides."
+          },
+          "portfolio.long_only": {
+            "source": "paper",
+            "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Direction rule",
+            "note": "\"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" A cross-sectional book long/short matches the paper, so long_only=false."
+          },
+          "portfolio.rebalance": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "No cadence stated for the volume-augmented momentum rule. daily keeps the 20-day momentum rank and the participation filter current; the paper stresses turnover sensitivity, which argues against a longer cadence still being untested - the choice here is the analyst's."
+          },
+          "portfolio.max_position": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper requires a capped allocation but states no number. 0.2 is the analyst's cap; with roughly 3 long and 3 short names a 1.0 gross book gives ~0.167 per name, so the cap does not bind."
+          },
+          "portfolio.gross_leverage": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+          },
+          "portfolio.max_names": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "null = no cap on concurrent names; the rank thresholds already bound the book. The paper states no limit."
+          },
+          "execution.fill_at": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 'open'. The paper states no execution convention."
+          },
+          "execution.cost_multiplier": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS; crypto is ~10x the ETF cost). The paper warns that momentum rules are \"sensitive to transaction costs and turnover\" but states no fee, spread or slippage numbers."
+          },
+          "execution.max_participation": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+          },
+          "capital": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 100000.0. The paper states no account size."
+          },
+          "period.start": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 20 bars of momentum warm-up."
+          },
+          "period.end": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "null = latest available bar. The paper states no end date."
+          },
+          "period.interval": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "'1d' is the engine default and matches the paper's daily-bar language."
+          },
+          "additional_conditions": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper's confirmation layer is \"volume is rising, and order imbalance/turnover is positive\"; order imbalance / CVD is not derivable from the engine's daily OHLCV panel, and volume_ratio is declared but not enforced by the one-feature signal, so this spec tests the paper's momentum leg WITHOUT its volume/flow confirmation - a weaker version of the claim. The paper's other stated components are also missing: the options-implied momentum-stage filter, the volatility filter (\"Trade only when realized volatility is not extreme\"), inverse-volatility sizing and the stop-loss overlay."
+          },
+          "exit": {
+            "source": "analyst_choice",
+            "citation": "Trading strategies for retail traders (LeapSpace 2.0) -> cross-sectional momentum with volume confirmation",
+            "note": "Exit is the cross-sectional rank: a name leaves the book when it drops out of the long rank set at the next rebalance. signal.params.exit does not exist for a cross_sectional signal, so the gate cannot see the rule; it is recorded here."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "direction",
+            "exit",
+            "costs"
+          ],
+          "auto_accepted": [
+            "direction",
+            "exit",
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "direction": "value supplied by the source paper (or by an explicitly documented analyst choice); recorded as an accepted default so the gate records the decision rather than an unanswered question",
+            "exit": "deliberate choice, documented in parameter_provenance; recorded as an accepted default",
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      },
+      {
+        "name": "crypto_rsi_oversold_fade",
+        "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "verdict": "REFUTED",
+        "flags": [
+          "t-stat 1.37 below 2.0 - the return series is not distinguishable from noise"
+        ],
+        "metrics": {
+          "n_bars": 2124,
+          "n_trades": 636,
+          "final_equity": 215593.29784493623,
+          "trade_pnl_basis": "net",
+          "total_return": 1.1559329784493624,
+          "cagr": 0.09542801580414872,
+          "sharpe": 0.4709447661261854,
+          "sortino": 0.7393406535747254,
+          "max_drawdown": 0.4400341307825034,
+          "calmar": 0.21686503188843806,
+          "profit_factor": 1.2422386624798911,
+          "expectancy": 181.7504683096481,
+          "win_rate": 0.6446540880503144,
+          "var_95": -0.013574404945341524,
+          "cvar_95": -0.037490641939174174,
+          "skew": 1.6679735997883616,
+          "kurtosis": 53.4255235405447,
+          "t_stat": 1.367246941420041,
+          "sharpe_lag1": 0.35379054230204243,
+          "costs_paid": 100314.59631671627,
+          "turnover_total": 50157298.15835806,
+          "time_in_market": 0.2843691148775895,
+          "avg_gross_exposure": 0.15916557936309736
+        },
+        "walk_forward": {
+          "n_folds": 5,
+          "mode": "purged_embargoed",
+          "label_horizon": 14,
+          "purge_bars": 14,
+          "embargo_bars": 14,
+          "purge_bars_requested": 14,
+          "embargo_bars_requested": 14,
+          "oos_sharpe": 0.28460097960589986,
+          "oos_sharpe_live": 0.28460097960589986,
+          "oos_cagr": 0.04120680711054292,
+          "oos_max_drawdown": 0.44003413078244114,
+          "oos_trades_total": 411,
+          "oos_profitable_folds": 4,
+          "final_is_sharpe": 0.6731331473380908,
+          "oos_retention": 0.422800423261514,
+          "pbo": 0.5
+        },
+        "report_path": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\crypto_rsi_oversold_fade.md",
+        "provenance": [
+          "strategy-backtest-lab engine (btengine/btvalidate) from C:\\Users\\HP\\AppData\\Local\\hermes\\skills\\research\\strategy-backtest-lab\\scripts",
+          "extensions: {'registered': False, 'reason': 'already registered'}"
+        ],
+        "errors": [],
+        "skipped_stages": [
+          "montecarlo",
+          "sweep",
+          "replication"
+        ],
+        "parameter_provenance": {
+          "features.rsi.lookback": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper names RSI but states no period (\"RSI and simple momentum tools\", \"RSI was found more reliable than MACD or Stochastic\"). 14 bars is the analyst's conventional choice."
+          },
+          "features.rsi.direction": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "-1 inverts the feature so that a single threshold test can express the paper's oversold FADE. With direction -1 the feature value is -RSI, so the test (-RSI > -30) fires exactly when RSI < 30. The engine's threshold signal emits only 0/+1, so without the inversion an oversold fade could not be expressed at all."
+          },
+          "signal.feature": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "Only one feature is declared, so the engine would infer it; naming it explicitly is the analyst's clarity choice."
+          },
+          "signal.threshold": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper states only that RSI works for \"overbought/oversold style signals\"; it gives no threshold. -30 on the inverted RSI (i.e. RSI < 30) is the conventional oversold line and the analyst's choice. EXIT: the signal returns to 0 as soon as RSI is back above 30, which stands in for the paper's \"exit when the stretch normalises\"; the paper states no explicit exit for the RSI setup."
+          },
+          "universe.preset": {
+            "source": "paper",
+            "citation": "Free trading indicators for directional edge -> \"RSI and simple momentum tools\" (\"In crypto, RSI was found more reliable than MACD or Stochastic\")",
+            "note": "The RSI finding the paper reports is a crypto finding, so the crypto preset is the paper-supported universe. The paper names no tickers, so the ticker mapping is the analyst's choice."
+          },
+          "portfolio.long_only": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper frames RSI as a \"Mean reversion and exhaustion setup\" with no short leg; the encoded fade is long-only. The engine's threshold signal emits only 0/+1, so a symmetric oversold/overbought fade could not be expressed anyway."
+          },
+          "portfolio.rebalance": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "No cadence stated. daily matches the paper's \"short-term usefulness\" framing for RSI in crypto and keeps the exhaustion read current."
+          },
+          "portfolio.max_position": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper requires a capped allocation in its momentum/reversion models but states no number for the RSI setup. 0.2 is the analyst's cap."
+          },
+          "portfolio.gross_leverage": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+          },
+          "portfolio.max_names": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "null = no cap on concurrent names. The paper states no limit."
+          },
+          "execution.fill_at": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 'open'. The paper states no execution convention."
+          },
+          "execution.cost_multiplier": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS; crypto is ~10x the ETF cost). The paper warns that indicator results \"can collapse once transaction costs and out-of-sample testing are included\" but states no fee, spread or slippage numbers."
+          },
+          "execution.max_participation": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+          },
+          "capital": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "Engine default 100000.0. The paper states no account size."
+          },
+          "period.start": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 14 bars of RSI warm-up."
+          },
+          "period.end": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "null = latest available bar. The paper states no end date."
+          },
+          "period.interval": {
+            "source": "engine_default",
+            "citation": "not stated in source",
+            "note": "'1d' is the engine default and matches the paper's daily-bar, short-term-indicator framing."
+          },
+          "additional_conditions": {
+            "source": "analyst_choice",
+            "citation": "not stated in source",
+            "note": "The paper's recommended stack is \"price action first, then volume, then one momentum filter\" plus a regime filter (\"Trade only when the regime matches the strategy\", \"Mean-reversion tools work better in some markets/periods, while trend tools work better in others\"). The engine takes one feature per signal, so RSI alone is traded and neither the volume confirmation nor the regime filter is enforced. The paper also states the RSI edge is a lower-confidence one (\"Confidence level: Medium\") and that \"results vary by market, timeframe, and transaction costs\"."
+          }
+        },
+        "intake_gate": {
+          "available": true,
+          "missing_before": [
+            "costs"
+          ],
+          "auto_accepted": [
+            "costs"
+          ],
+          "acceptance_reasons": {
+            "costs": "deliberate choice, documented in parameter_provenance; recorded as an accepted default"
+          },
+          "missing_after": [],
+          "passed": true
+        }
+      }
+    ],
+    "disclosure": {
+      "generated_at": "2026-10-27T15:58:22.016672+00:00",
+      "branches": {
+        "legislative_house": {
+          "title": "Legislative \u2014 Members of Congress",
+          "law": "House: annual Financial Disclosure Report and Periodic Transaction Reports under the STOCK Act (5 U.S.C. 13101-13111 and House rules). Senate: the same regime via the Senate eFD system.",
+          "filings_indexed": 1805,
+          "by_type": {
+            "Campaign Notice Regarding Financial Disclosure Requirement": 197,
+            "Candidate Report": 874,
+            "Financial Disclosure Extension Request": 247,
+            "Periodic Transaction Report": 437,
+            "Amendment Report": 46,
+            "New Filer Report": 2,
+            "Terminated Filer Report": 2
+          },
+          "members": 438,
+          "candidates": 103,
+          "sample": [
+            {
+              "branch": "legislative",
+              "name": "Richard Aaron",
+              "is_member": false,
+              "is_candidate": false,
+              "filing_type": "Campaign Notice Regarding Financial Disclosure Requirement",
+              "filing_type_code": "W",
+              "state_district": "MI04",
+              "year": 2026,
+              "filing_date": "2026-04-15",
+              "doc_id": "8068",
+              "pdf_url": "https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026/8068.pdf",
+              "provenance": "primary \u2014 House Clerk"
+            },
+            {
+              "branch": "legislative",
+              "name": "Abdisallam Abdulle",
+              "is_member": false,
+              "is_candidate": false,
+              "filing_type": "Candidate Report",
+              "filing_type_code": "C",
+              "state_district": "MN02",
+              "year": 2026,
+              "filing_date": "2026-06-11",
+              "doc_id": "10078673",
+              "pdf_url": "https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026/10078673.pdf",
+              "provenance": "primary \u2014 House Clerk"
+            },
+            {
+              "branch": "legislative",
+              "name": "Abdisallam Abdulle",
+              "is_member": false,
+              "is_candidate": false,
+              "filing_type": "Financial Disclosure Extension Request",
+              "filing_type_code": "X",
+              "state_district": "MN02",
+              "year": 2026,
+              "filing_date": "2026-05-20",
+              "doc_id": "30028196",
+              "pdf_url": "https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026/30028196.pdf",
+              "provenance": "primary \u2014 House Clerk"
+            },
+            {
+              "branch": "legislative",
+              "name": "William P. Abel",
+              "is_member": false,
+              "is_candidate": false,
+              "filing_type": "Candidate Report",
+              "filing_type_code": "C",
+              "state_district": "TX31",
+              "year": 2026,
+              "filing_date": "2026-05-13",
+              "doc_id": "10078016",
+              "pdf_url": "https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026/10078016.pdf",
+              "provenance": "primary \u2014 House Clerk"
+            },
+            {
+              "branch": "legislative",
+              "name": "Maad Abu-Ghazalah",
+              "is_member": false,
+              "is_candidate": false,
+              "filing_type": "Candidate Report",
+              "filing_type_code": "C",
+              "state_district": "NC07",
+              "year": 2026,
+              "filing_date": "2026-05-13",
+              "doc_id": "10077852",
+              "pdf_url": "https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026/10077852.pdf",
+              "provenance": "primary \u2014 House Clerk"
+            }
+          ],
+          "provenance": "Live data from house.fd-index fetched 2026-10-27T15:58:24+00:00 (https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml). HTTP 200; 1805 member records"
+        },
+        "executive_oge": {
+          "title": "Executive \u2014 Presidentially Appointed Officials (OGE 278e / 278-T)",
+          "law": "OGE Form 278e (annual public financial disclosure) and Form 278-T (periodic transaction report) under 5 CFR part 2634.",
+          "filings_indexed": 16794,
+          "with_public_pdf": 4492,
+          "request_form_only": 12295,
+          "by_agency": [
+            [
+              "Department of State",
+              3530
+            ],
+            [
+              "Department of Justice",
+              2205
+            ],
+            [
+              "White House Office",
+              699
+            ],
+            [
+              "Department of Defense/Office of The Secretary",
+              476
+            ],
+            [
+              "Department of Health and Human Services",
+              431
+            ],
+            [
+              "Department of Energy",
+              393
+            ],
+            [
+              "Department of The Treasury",
+              349
+            ],
+            [
+              "Department of Transportation",
+              312
+            ],
+            [
+              "Department of Commerce",
+              305
+            ],
+            [
+              "Federal Trade Commission",
+              305
+            ]
+          ],
+          "sample": [
+            {
+              "branch": "executive",
+              "name": "Abbott, James",
+              "agency": "Federal Labor Relations Authority",
+              "title": "Member 2",
+              "level": "n/a",
+              "doc_date": "2020-12-15T03:15:54",
+              "amended": null,
+              "doc_label": "278 Transaction (Request this Document)",
+              "pdf_url": null,
+              "request_only": true,
+              "provenance": "primary \u2014 OGE"
+            },
+            {
+              "branch": "executive",
+              "name": "Aber, Jessica D",
+              "agency": "Department of Justice",
+              "title": "U.S. Attorney Virginia Eastern District",
+              "level": "n/a",
+              "doc_date": "2022-11-15T04:30:23",
+              "amended": null,
+              "doc_label": "278 Transaction (Request this Document)",
+              "pdf_url": null,
+              "request_only": true,
+              "provenance": "primary \u2014 OGE"
+            },
+            {
+              "branch": "executive",
+              "name": "Aber, Jessica D",
+              "agency": "Department of Justice",
+              "title": "U.S. Attorney Virginia Eastern District",
+              "level": "n/a",
+              "doc_date": "2022-11-22T04:30:27",
+              "amended": null,
+              "doc_label": "278 Transaction (Request this Document)",
+              "pdf_url": null,
+              "request_only": true,
+              "provenance": "primary \u2014 OGE"
+            },
+            {
+              "branch": "executive",
+              "name": "Aber, Jessica D",
+              "agency": "Department of Justice",
+              "title": "U.S. Attorney Virginia Eastern District",
+              "level": "n/a",
+              "doc_date": "2023-05-04T04:32:51",
+              "amended": null,
+              "doc_label": "278 Transaction (Request this Document)",
+              "pdf_url": null,
+              "request_only": true,
+              "provenance": "primary \u2014 OGE"
+            },
+            {
+              "branch": "executive",
+              "name": "Aber, Jessica D",
+              "agency": "Department of Justice",
+              "title": "U.S. Attorney Virginia Eastern District",
+              "level": "n/a",
+              "doc_date": "2023-09-26T04:32:37",
+              "amended": null,
+              "doc_label": "278 Transaction (Request this Document)",
+              "pdf_url": null,
+              "request_only": true,
+              "provenance": "primary \u2014 OGE"
+            }
+          ],
+          "provenance": "Live data from oge.pas-index fetched 2026-10-27T16:01:32+00:00 (https://extapps2.oge.gov/201/Presiden.nsf/API.xsp/v3/rest?length=100&start=16700). HTTP 200; 94 rows of 16794"
+        },
+        "judicial": {
+          "title": "Judicial \u2014 Supreme Court Justices and federal judges",
+          "law": "AO Form 10 annual financial disclosure, filed in JEFS under the Judicial Conference regime (5 U.S.C. 13101-13111).",
+          "filings_indexed": 45,
+          "primary_filings": 0,
+          "secondary_filings": 45,
+          "sample": [
+            {
+              "branch": "judicial",
+              "justice": "Chief Justice John G. Roberts Jr.",
+              "year": 2025,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/b787a3f5815fc7813840701c05945f213552b8f0.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            },
+            {
+              "branch": "judicial",
+              "justice": "Chief Justice John G. Roberts Jr.",
+              "year": 2024,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/a55d6ac7468d2665cda232725b952a8d4be40112.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            },
+            {
+              "branch": "judicial",
+              "justice": "Chief Justice John G. Roberts Jr.",
+              "year": 2023,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/539e7de0e51922f8d6f1ab9794f4ad858b6f84a9.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            },
+            {
+              "branch": "judicial",
+              "justice": "Chief Justice John G. Roberts Jr.",
+              "year": 2022,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/6703ae50049b5c66403c5f92ce5c6ace9968fcff.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            },
+            {
+              "branch": "judicial",
+              "justice": "Chief Justice John G. Roberts Jr.",
+              "year": 2021,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/830ebec95a9008d31ef6bb46459512f2f06fe6eb.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            },
+            {
+              "branch": "judicial",
+              "justice": "Justice Clarence Thomas",
+              "year": 2025,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/65249f2a726d7b1eb1314cba8b2dbfed874bee7c.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            },
+            {
+              "branch": "judicial",
+              "justice": "Justice Clarence Thomas",
+              "year": 2024,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/043e88928e168c49c280de5444524e0d7b216402.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            },
+            {
+              "branch": "judicial",
+              "justice": "Justice Clarence Thomas",
+              "year": 2023,
+              "doc_type": "Annual",
+              "url": "https://cdn.sanity.io/files/pito4za5/production/873cc1db8848f1c52a5afbf0eef413dd110bd9a9.pdf",
+              "provenance": "secondary",
+              "text_extracted": false,
+              "text_note": ""
+            }
+          ],
+          "provenance_note": "Judicial records from mirrors are labelled [secondary]. The primary is JEFS, which is registration-gated and TCP-unreachable from this host.",
+          "scotus_disclosure_page": "NOT FOUND on the live site. Verified by live fetch: 11 candidate paths return HTTP 404; the live sitemap's 365 hrefs contain no disclosure link; the on-site search returns no disclosure page. SETTLED by a complete Wayback CDX scan: the domain was partitioned by leading path character (40 partitions), the three that hit the row cap were subdivided by second character (121,743 further unique URLs), and 'reportable' appears in ZERO archived supremecourt.gov URLs. Prefix queries for reportable*, financial* and disclos* each return 0 rows. The only archived disclosure URL is the historical /publicinfo/disclosures/financialdisclosure.aspx (302, 2021-10-05). The one uncovered subtree is /docket*, the court-filing PDF range, excluded as docket noise."
+        }
+      },
+      "sources_unavailable": [
+        {
+          "source": "senate_efd",
+          "url": "https://efdsearch.senate.gov/",
+          "reason": "HTTP 403 from this host on every *.senate.gov path (Akamai geo-block on the egress IP; www.house.gov returns 200 from the same IP). This is a SOURCE AVAILABILITY gap \u2014 it is NOT evidence that Senate filings do not exist.",
+          "at": "2026-10-27T15:58:24.334684+00:00",
+          "disclosure": "SENATE SOURCE UNAVAILABLE \u2014 no Senate data was substituted or estimated."
+        },
+        {
+          "source": "jefs_database",
+          "url": "https://pub.jefs.uscourts.gov/",
+          "reason": "GET failed after 1 attempt(s): https://pub.jefs.uscourts.gov/ -> URLError: <urlopen error [WinError 10051] A socket operation was attempted to an unreachable network>",
+          "at": "2026-10-27T16:01:53+00:00",
+          "disclosure": "SOURCE UNAVAILABLE \u2014 jefs_database could not be reached (GET failed after 1 attempt(s): https://pub.jefs.uscourts.gov/ -> URLError: <urlopen error [WinError 10051] A socket operation was attempted to an unreachable network>). No data was substituted for it."
+        },
+        {
+          "source": "fixthecourt.com",
+          "status": "HTTP 200",
+          "note": "secondary mirror, 0 PDFs indexed"
+        },
+        {
+          "source": "scotusblog.com",
+          "status": "HTTP 200",
+          "note": "secondary mirror, 45 PDFs indexed"
+        }
+      ],
+      "provenance": [
+        "Live data from house.fd-index fetched 2026-10-27T15:58:24+00:00 (https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml). HTTP 200; 1805 member records",
+        "Live data from oge.pas-index fetched 2026-10-27T16:01:32+00:00 (https://extapps2.oge.gov/201/Presiden.nsf/API.xsp/v3/rest?length=100&start=16700). HTTP 200; 94 rows of 16794"
+      ],
+      "coverage": {
+        "legislative_house": true,
+        "legislative_senate": false,
+        "executive_oge": true,
+        "judicial": true
+      },
+      "disclosure": "Coverage is INCOMPLETE by design on this host: the Senate branch is IP-geo-blocked and the primary judicial database (JEFS) is registration-gated and TCP-unreachable. The report states this rather than presenting a partial view as a complete one."
+    }
+  },
+  "gaps": [],
+  "full_gauntlet_overlay": {
+    "applied": 3,
+    "source": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant\\reports\\full_gauntlet_results.json",
+    "note": "Rows marked 'FULL gauntlet' carry the stricter verdict from a complete validation run. Rows without the marker were run with --quick, which skips Monte Carlo, the parameter sweep and replication \u2014 their verdict is a preliminary read for those stages."
+  },
+  "data_quality_validation": {
+    "ok": true,
+    "checks": [
+      {
+        "name": "price_scale",
+        "n_findings": 0
+      },
+      {
+        "name": "notation",
+        "n_findings": 1
+      },
+      {
+        "name": "dates",
+        "n_findings": 0
+      },
+      {
+        "name": "allocations",
+        "n_findings": 0
+      },
+      {
+        "name": "units",
+        "n_findings": 0
+      },
+      {
+        "name": "base_unit_scale",
+        "n_findings": 0
+      },
+      {
+        "name": "missing_not_zero",
+        "n_findings": 0
+      },
+      {
+        "name": "percent_scale",
+        "n_findings": 0
+      }
+    ],
+    "errors": [],
+    "warnings": [
+      {
+        "severity": "WARNING",
+        "category": "notation",
+        "message": "Mixed notation for sp500: S&P 500, SPY. Consider using a consistent term.",
+        "line_number": null,
+        "context": null
+      }
+    ],
+    "n_findings": 1,
+    "vendor_status": "ok"
+  }
+}

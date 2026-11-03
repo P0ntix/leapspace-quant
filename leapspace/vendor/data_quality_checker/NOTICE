@@ -1,0 +1,95 @@
+# NOTICE — Vendored third-party code
+
+## `data_quality_checker/`
+
+**Upstream repository:** https://github.com/tradermonty/claude-trading-skills
+**Path within upstream repo:** `skills/data-quality-checker/`
+**Upstream commit vendored:** `d8e71ce2f0b069eb5b6fca352857c168c35e6c46`
+**Upstream branch:** `main`
+**Licence:** MIT (full text in `LICENSE` in this directory)
+**Copyright:** Copyright (c) 2026 TraderMonty
+
+### Why it is vendored
+
+The package needed a pre-flight validator that catches data-quality
+defects in its own generated reports — wrong price scale, wrong
+weekday, allocation totals that do not sum, mixed notation, mixed
+units. This skill implements exactly those checks in the Python
+standard library, with no dependencies and no network access.
+
+### Modifications to the upstream code
+
+**NONE.** Every file in this directory is byte-identical to the
+upstream commit named above. This was verified by comparing the git
+blob SHA-1 of each local file against the SHA reported by the GitHub
+contents API for that commit:
+
+| File | Verified |
+|---|---|
+| `SKILL.md` | identical |
+| `requirements.txt` | identical |
+| `scripts/check_data_quality.py` | identical |
+| `scripts/tests/conftest.py` | identical |
+| `scripts/tests/test_check_data_quality.py` | identical |
+| `references/common_data_errors.md` | identical |
+| `references/instrument_notation_standard.md` | identical |
+
+The upstream test suite runs unmodified in place and passes:
+
+```
+$ cd leapspace/vendor/data_quality_checker && python -m pytest scripts/tests -q
+51 passed in 1.06s
+```
+
+The upstream code was not changed to run on Python 3.14 — it required
+no changes at all.
+
+### How the package adapts it
+
+All package-specific behaviour lives OUTSIDE this directory, in
+`leapspace/adapter_checks.py` (the loader) and
+`leapspace/reportvalidate.py` (the public API and the package-specific
+checks). The vendored tree carries no `__init__.py` files, so it is
+loaded by file path via `importlib` rather than as a Python package —
+this keeps the vendored checkout unmodified.
+
+The adapter adds three checks the upstream skill does not implement,
+because the upstream skill targets traditional market-analysis
+documents (GLD/GC, SPY/SPX, VIX, USO/CL) rather than memecoins on four
+chains:
+
+| Adapter check | Why it exists |
+|---|---|
+| `base_unit_scale` | Catches a token quantity written in raw base units (1 token = 1e18 base units) compared against a whole-token price. The upstream `price_scale` check only knows ten traditional tickers and four ETF/futures pairs, so it cannot see this class. This error once shipped a +30,833% return. |
+| `missing_not_zero` | `n/a` and `unavailable` mean MISSING, never zero. A report that renders an unavailable value as `0` and computes a return from it is arithmetically wrong in a way no reader can detect. |
+| `percent_scale` | Catches one quantity stated twice in the two percentage scales with values that disagree (e.g. `0.10 (20% of ...)`). Deliberately narrow: a bare co-occurrence of a fraction and a percentage on the same line fires on unrelated numbers (a holding period next to an allocation) and produced 254 false alarms across the shipped reports before it was narrowed to the parenthetical form. |
+
+Adapter decisions worth recording:
+
+1. **Severity.** Upstream emits `ERROR` only for date/weekday
+   mismatches; everything else is `WARNING` or `INFO`. The adapter
+   treats `ERROR` as blocking and escalates `base_unit_scale` and
+   `missing_not_zero` to `ERROR`, because those two change a number.
+   `percent_scale` stays a `WARNING` because it is a readability and
+   ambiguity defect.
+2. **A validator that cannot run is not a clean bill of health.** If
+   the vendored checkout is missing, the adapter returns
+   `ok=False` with a finding saying no checks ran. It never reports
+   zero findings for a check that did not execute.
+3. **The vendor is used unmodified.** If an upstream check misfires on
+   this package's formats, the ADAPTER is what gets fixed — never the
+   vendored source.
+
+### Attribution
+
+The upstream skill is the work of TraderMonty and is used under the
+MIT licence, reproduced in full in `LICENSE` in this directory. The
+MIT licence requires the copyright notice and permission notice to be
+included in all copies or substantial portions of the software; this
+NOTICE file and the adjacent `LICENSE` file satisfy that requirement.
+
+The upstream `SKILL.md` is also a Hermes/Anthropic-style agent skill
+document and remains the authoritative description of what the skill
+does. Where this package's adapter and the upstream skill differ in
+behaviour, the differences are the three adapter checks listed above
+and are deliberate.

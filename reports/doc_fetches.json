@@ -1,0 +1,516 @@
+[
+  {
+    "key": "x_api_pricing",
+    "url": "https://docs.x.com/x-api/getting-started/pricing",
+    "status": 200,
+    "final_url": "https://docs.x.com/x-api/getting-started/pricing",
+    "text_len": 120910,
+    "head": " X API pay-per-usage pricing and credits - X Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content X home page X API Documentation API Reference Changelog Search... \u2318 K Support Developer Console X home page Search or ask... Navigation Pay-per-use X API pay-per-usage pricing and credits Developer Console Forums GitHub Getting Started Overview Developer Guidelines What to Build Make Your First Request Tools & Libraries Agent Resources Products X API Pay-per-use Introduction Pricing Free credits Getting Access Enterprise Fundamentals Apps Developer Console Authentication Counting Char",
+    "keyword_excerpts": [
+      "[pay-per-use] ...umentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content X home page X API Documentation API Reference Changelog Search... \u2318 K Support Developer Console X home page Search or ask... Navigation Pay-per-use X API pay-per-usage pricing and credits Developer Console Forums GitHub Getting Started Overview Developer Guidelines What to Build Make Your First Request Tools & Libraries Agent Resources Products X API Pay-per-use Introduction Pricing Free credits Getting Access Enterprise Fundamentals Apps Developer Console Authentication Counting Characters Rate Limits X IDs Security Partners & Customers Partner Dire...",
+      "[free credit] ...avigation Pay-per-use X API pay-per-usage pricing and credits Developer Console Forums GitHub Getting Started Overview Developer Guidelines What to Build Make Your First Request Tools & Libraries Agent Resources Products X API Pay-per-use Introduction Pricing Free credits Getting Access Enterprise Fundamentals Apps Developer Console Authentication Counting Characters Rate Limits X IDs Security Partners & Customers Partner Directory Customer Directory Success Stories Request Access Resources Tutorials Exhibit Newsletter Livestreams Billing Support Developer Terms Pay-per-use X API pay-per-usage pricing and credits Copy page Copy page The X API uses pay-per-usage pricing wi...",
+      "[$0.005] ...dit incentives \u200b Credit consumption details All prices are per resource fetched (reads) or per request (writes/actions). Purchase credits in the Developer Console. \u200b Read operations Charged per resource returned in the response. Resource Unit cost Posts: Read $0.005 per resource User: Read $0.010 per resource DM Event: Read $0.010 per resource Following/Followers: Read $0.010 per resource List: Read $0.005 per resource Space: Read $0.005 per resource Community: Read $0.005 per resource Note: Read $0.005 per resource Like: Read $0.001 per resource Mute: Read $0.001 per resource Block: Read $0.001 per resource Profile Update: Read $0.005 per resource Pay-per-usage plans are...",
+      "[Owned Reads] ...k.unblock $0.001 profile.update.* $0.005 chat.received $0.010 chat.sent Not billed chat.conversation_join Not billed dm.received $0.010 dm.sent Not billed dm.read Not billed dm.indicate_typing Not billed news.new $0.005 spaces.start $0.005 spaces.end $0.005 \u200b Owned Reads Owned Reads are requests made by your own developer app for your own data (posts, bookmarks, followers, likes, lists, and more). These endpoints are priced at $0.001 per resource (1,000 resources for $1). The following endpoints qualify for Owned Read pricing when {id} matches the authenticated user and that user is the owner of the developer app: Endpoint Description GET /2/users/{id}/tweets Your own pos...",
+      "[cap] ...e Space: Read $0.005 per resource Community: Read $0.005 per resource Note: Read $0.005 per resource Like: Read $0.001 per resource Mute: Read $0.001 per resource Block: Read $0.001 per resource Profile Update: Read $0.005 per resource Pay-per-usage plans are capped at 3 million Post reads per monthly billing cycle . If you need higher volume, upgrade to an Enterprise plan . \u200b Write operations Charged per request. Action Unit cost Post: Create $0.015 per request Post: Create (with URL) $0.200 per request Post: Create (summoned) $0.010 per request DM Interaction: Create $0.015 per request User Interaction: Create $0.015 per request Interaction: Delete $0.010 per request Co..."
+    ],
+    "full_text_file": "doc_x_api_pricing.txt"
+  },
+  {
+    "key": "x_api_free_credits",
+    "url": "https://docs.x.com/x-api/fundamentals/free-credits",
+    "status": 404,
+    "final_url": "https://docs.x.com/x-api/fundamentals/free-credits",
+    "text_len": 138091,
+    "head": " Page Not Found Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content X home page X API Documentation API Reference Changelog Search... \u2318 K Support Developer Console X home page Search or ask... Navigation Page Not Found General Developer Console Forums GitHub Overview Overview Fundamentals Posts Search Post Counts Filtered Stream Timelines Post Lookup Bookmarks Manage Posts Reposts Quotes Hide replies Articles Introduction POST Create Draft Article POST Publish Article Users User Lookup Search Follows Mutes Blocks Affiliates Direct Messages Manage Lookup Blocks Likes Introduction ",
+    "keyword_excerpts": [
+      "[free credit] ...,\"pages\":[{\"group\":\"Pay-per-use\",\"pages\":[{\"title\":\"X API\",\"sidebarTitle\":\"Introduction\",\"mode\":\"wide\",\"href\":\"/x-api/introduction\"},{\"title\":\"X API pay-per-usage pricing and credits\",\"sidebarTitle\":\"Pricing\",\"href\":\"/x-api/getting-started/pricing\"},{\"title\":\"Free credit incentives for X API pay-per-use accounts\",\"sidebarTitle\":\"Free credits\",\"href\":\"/x-api/getting-started/free-credits\"},{\"title\":\"Getting Access\",\"sidebarTitle\":\"Getting Access\",\"href\":\"/x-api/getting-started/getting-access\"}]},{\"group\":\"Enterprise\",\"pages\":[{\"title\":\"X Enterprise API introduction and product overview\",\"sidebarTitle\":\"Introduction\",\"mode\":\"wide\",\"href\":\"/enterprise-api/introduction\"},{\"tit..."
+    ],
+    "full_text_file": "doc_x_api_free_credits.txt"
+  },
+  {
+    "key": "x_api_intro",
+    "url": "https://docs.x.com/x-api/introduction",
+    "status": 200,
+    "final_url": "https://docs.x.com/x-api/introduction",
+    "text_len": 104059,
+    "head": " X API - X Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content X home page X API Documentation API Reference Changelog Search... \u2318 K Support Developer Console X home page Search or ask... Navigation Pay-per-use X API Developer Console Forums GitHub Getting Started Overview Developer Guidelines What to Build Make Your First Request Tools & Libraries Agent Resources Products X API Pay-per-use Introduction Pricing Free credits Getting Access Enterprise Fundamentals Apps Developer Console Authentication Counting Characters Rate Limits X IDs Security Partners & Customers Partner Direc",
+    "keyword_excerpts": [
+      "[pay-per-use] ...umentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content X home page X API Documentation API Reference Changelog Search... \u2318 K Support Developer Console X home page Search or ask... Navigation Pay-per-use X API Developer Console Forums GitHub Getting Started Overview Developer Guidelines What to Build Make Your First Request Tools & Libraries Agent Resources Products X API Pay-per-use Introduction Pricing Free credits Getting Access Enterprise Fundamentals Apps Developer Console Authentication Counting Characters Rate Limits X IDs Security Partners & Customers Partner Directory Customer Directory Success S..."
+    ],
+    "full_text_file": "doc_x_api_intro.txt"
+  },
+  {
+    "key": "x_robots",
+    "url": "https://x.com/robots.txt",
+    "status": 200,
+    "final_url": "https://x.com/robots.txt",
+    "text_len": 2976,
+    "head": "# Google / Bing Search Engine Robots # ================================== # Shared group so Googlebot and Bingbot always get the same rules. User-agent: Googlebot User-agent: Bingbot Allow: /*?s= Allow: /*?t= Allow: /*?ref_src= Allow: /hashtag/*?src= Allow: /search?q=%23 Allow: /i/api/ # Same length as the /*/likes and /*/media rules; RFC 9309 breaks the tie in # favor of Allow, so /i/api/ fetches stay crawlable. Allow: /i/api/* Disallow: /*?lang=en-ss Allow: /*?lang= Disallow: /search/realtime Disallow: /search/users Disallow: /search/*/grid Disallow: /*/analytics Disallow: /*/followers Disallow: /*/following Disallow: /*/verified_followers Disallow: /account/deactivated Disallow: /settings",
+    "keyword_excerpts": [
+      "[Disallow] ...: Bingbot Allow: /*?s= Allow: /*?t= Allow: /*?ref_src= Allow: /hashtag/*?src= Allow: /search?q=%23 Allow: /i/api/ # Same length as the /*/likes and /*/media rules; RFC 9309 breaks the tie in # favor of Allow, so /i/api/ fetches stay crawlable. Allow: /i/api/* Disallow: /*?lang=en-ss Allow: /*?lang= Disallow: /search/realtime Disallow: /search/users Disallow: /search/*/grid Disallow: /*/analytics Disallow: /*/followers Disallow: /*/following Disallow: /*/verified_followers Disallow: /account/deactivated Disallow: /settings/deactivated # Only `*` and `$` are metacharacters here (RFC 9309); regex classes match # literally. /photo is anchored so /status/*/photo/1 media pages ...",
+      "[User-agent] ...# Google / Bing Search Engine Robots # ================================== # Shared group so Googlebot and Bingbot always get the same rules. User-agent: Googlebot User-agent: Bingbot Allow: /*?s= Allow: /*?t= Allow: /*?ref_src= Allow: /hashtag/*?src= Allow: /search?q=%23 Allow: /i/api/ # Same length as the /*/likes and /*/media rules; RFC 9309 breaks the tie in # favor of Allow, so /i/api/ fetches stay crawlable. Allow: /i/api/* Disallow: /*?lang=en-ss Allow: /*?lang= Disallow: /search/realtime Disallow: /search/users Disallow: /search/*/grid Disallow: /*..."
+    ],
+    "full_text_file": "doc_x_robots.txt"
+  },
+  {
+    "key": "x_tos",
+    "url": "https://x.com/en/tos",
+    "status": 200,
+    "final_url": "https://x.com/en/tos",
+    "text_len": 67587,
+    "head": " X Terms of Service Skip to main content Terms of Service <path opacity=\"0\" d=\"M0 0h24v24H0z\" /> <path d=\"M17.207 11.293l-7.5-7.5c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414L15.086 12l-6.793 6.793c-.39.39-.39 1.023 0 1.414.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z\" /> </svg>\" data-icon-arrow-left=\"<svg width=\"28px\" height=\"28px\" viewbox=\"0 0 28 28\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" focusable=\"false\" role=\"none\" class=\"twtr-icon u01b__icon-arrow-left\"> <g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\" stroke-linecap=\"round\"> <g transform=\"translate(-1216.000000, -29",
+    "keyword_excerpts": [
+      "[scrap] ...u must abide by the Services\u00e2\u0080\u0099 acceptable use terms. You may not access the Services in any way other than through the currently available, published interfaces that we provide. For example, this means that, except as required by applicable law, \u00c2 you cannot scrape the Services\u00c2 without X\u00e2\u0080\u0099s express written permission, try to work around any technical limitations we impose, or otherwise attempt to disrupt the operation of the Services. Unless you are a recipient of the X Service in the European Union, EFTA States, or the United Kingdom, any disputes between you and us will be resolved by a court in Texas, based on Texas law\u00c2 except that if the forum selection clause in ...",
+      "[crawl] ...omated or otherwise) other than through our currently available, published interfaces that are provided by us (and only pursuant to the applicable terms and conditions), unless you have been specifically allowed to do so in a separate agreement with us (NOTE: crawling or scraping the Services in any form, for any purpose without our prior written consent is expressly prohibited); (iv) attempt to circumvent, manipulate, or disable systems and Services, including through \"jailbreaking\", \u00e2\u0080\u009cprompt engineering or injection\", or other methods intended to override or manipulate safety, security or other platform controls; (v) forge any TCP/IP packet header or any part of the he...",
+      "[automated] ...technical delivery systems of our providers; (ii) probe, scan, or test the vulnerability of any system or network or breach or circumvent any security or authentication measures; (iii) access or search or attempt to access or search the Services by any means (automated or otherwise) other than through our currently available, published interfaces that are provided by us (and only pursuant to the applicable terms and conditions), unless you have been specifically allowed to do so in a separate agreement with us (NOTE: crawling or scraping the Services in any form, for any purpose without our prior written consent is expressly prohibited); (iv) attempt to circumvent, manipu..."
+    ],
+    "full_text_file": "doc_x_tos.txt"
+  },
+  {
+    "key": "telegram_tos",
+    "url": "https://telegram.org/tos",
+    "status": 200,
+    "final_url": "https://telegram.org/tos",
+    "text_len": 14776,
+    "head": " Terms of Service English Bahasa Indonesia Bahasa Melayu Deutsch Espa\u00f1ol Fran\u00e7ais Italiano Nederlands O\u2018zbek Polski Portugu\u00eas (Brasil) T\u00fcrk\u00e7e \u0411\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f \u0420\u0443\u0441\u0441\u043a\u0438\u0439 \u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430 \u049a\u0430\u0437\u0430\u049b\u0448\u0430 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0641\u0627\u0631\u0633\u06cc \ud55c\uad6d\uc5b4 Follow on X Home FAQ Apps API Safety Terms of Service By signing up for Telegram, you accept our Privacy Policy and agree not to: Use our service to send spam or scam users. Promote violence on publicly viewable Telegram channels, bots, etc. Post illegal pornographic content on publicly viewable Telegram channels, bots, etc. Engage in activities that are recognized as illegal in the majority of countries. This includes child abuse, selling or offering illegal goods and services (drugs, firearms, f",
+    "keyword_excerpts": [
+      "[scrap] ...pecific terms \u2013 such as the Terms of Service for Telegram Stars , Telegram Premium , Telegram Business , Bot Users , Mini App Users , Content Creators , Telegram Gateway API , Telegram API Developers , and Bot Developers . Telegram additionally prohibits data scraping as part of its Content Licensing and AI Scraping Terms , which apply to all users, businesses, and third-party services accessing the platform. Terms of Service for Telegram Stars Telegram users can acquire Telegram Stars, which are used to purchase digital goods and services from bots and mini-apps inside the Telegram app. Should you wish to use Telegram Stars, you in turn accept the Terms of Service for Te..."
+    ],
+    "full_text_file": "doc_telegram_tos.txt"
+  },
+  {
+    "key": "discord_terms",
+    "url": "https://discord.com/terms",
+    "status": 200,
+    "final_url": "https://discord.com/terms",
+    "text_len": 62259,
+    "head": " Terms of Service | Discord Skip to main content Download 1 of 9 Nitro 2 of 9 Discover 3 of 9 Resources Server Directory 1 of 2 Trending Games 2 of 2 Safety 4 of 9 Resources Family Center 1 of 10 Safety Library 2 of 10 Safety News 3 of 10 Teen Charter 4 of 10 Discord Player's Guide 5 of 10 Hubs Parent Hub 6 of 10 Policy Hub 7 of 10 Privacy Hub 8 of 10 Transparency Hub 9 of 10 Wellbeing Hub 10 of 10 Quests 5 of 9 Resources Advertising 1 of 3 Success Stories 2 of 3 Quests FAQ 3 of 3 Support 6 of 9 Resources Help Center 1 of 3 Feedback 2 of 3 Submit a Request 3 of 3 Blog 7 of 9 Collections Featured 1 of 7 Community 2 of 7 Discord HQ 3 of 7 Engineering & Developers 4 of 7 How to Discord 5 of 7 P",
+    "keyword_excerpts": [
+      "[scrap] ...ple through our services; and using our services to plan or cause real-world harm to someone else. Don\u2019t use the services to do harm to Discord. Among other things, this includes trying to gain access to, intentionally overburdening, or attacking our systems; scraping our services without our written consent, including by using any robot, spider, crawler, scraper, or other automatic device, process, or software; selling, licensing, or otherwise commercializing content or data obtained from our services; transmitting viruses or other malicious code to our services; using any unauthorized software designed to modify the services; abusing or defrauding us or our payment syst...",
+      "[crawl] ...one else. Don\u2019t use the services to do harm to Discord. Among other things, this includes trying to gain access to, intentionally overburdening, or attacking our systems; scraping our services without our written consent, including by using any robot, spider, crawler, scraper, or other automatic device, process, or software; selling, licensing, or otherwise commercializing content or data obtained from our services; transmitting viruses or other malicious code to our services; using any unauthorized software designed to modify the services; abusing or defrauding us or our payment systems; copying, dismantling, or reverse engineering any of our services or using our intell...",
+      "[robot] ...ld harm to someone else. Don\u2019t use the services to do harm to Discord. Among other things, this includes trying to gain access to, intentionally overburdening, or attacking our systems; scraping our services without our written consent, including by using any robot, spider, crawler, scraper, or other automatic device, process, or software; selling, licensing, or otherwise commercializing content or data obtained from our services; transmitting viruses or other malicious code to our services; using any unauthorized software designed to modify the services; abusing or defrauding us or our payment systems; copying, dismantling, or reverse engineering any of our services or u..."
+    ],
+    "full_text_file": "doc_discord_terms.txt"
+  },
+  {
+    "key": "reddit_data_api_terms",
+    "url": "https://redditinc.com/policies/data-api-terms",
+    "status": 200,
+    "final_url": "https://redditinc.com/policies/data-api-terms",
+    "text_len": 55414,
+    "head": " Data API Terms Company About Press Careers Brand Investors Values Our values Privacy Transparency Reddit for Good News Newsroom Announcements Product and Community Policy and Safety Life at Reddit Support Support Reddit help center Contact Reddit rules Press inquiries Legal requests Terms & policies Public content policy Privacy policy menu Company About Press Careers Brand Investors Values Our values Privacy Transparency Reddit for Good News Newsroom Announcements Product and Community Policy and Safety Life at Reddit Support Support Reddit help center Contact Reddit rules Press inquiries Legal requests Terms & policies Public content policy Privacy policy Visit Reddit Visit Reddit This is",
+    "keyword_excerpts": [
+      "[rate limit] ...s; Restrictions on Use 3.1 Fees Reddit reserves the right to charge fees for future use or access to the Data APIs, rates to be determined at Reddit's sole discretion. If you are interested in using the Data APIs for commercial purposes, research in excess of rate limits, or for any use that is not expressly permitted under the Data API Terms, then you will need to enter into a separate agreement with Reddit. For more information, please review our Developer Documentation here . 3.2 Restrictions You must not, and must not allow those acting on your behalf to: use the Data APIs to encourage or promote illegal activity or violation of third party rights (including using Use...",
+      "[commercial] ...e applicable third party and Reddit. 3. Fees; Restrictions on Use 3.1 Fees Reddit reserves the right to charge fees for future use or access to the Data APIs, rates to be determined at Reddit's sole discretion. If you are interested in using the Data APIs for commercial purposes, research in excess of rate limits, or for any use that is not expressly permitted under the Data API Terms, then you will need to enter into a separate agreement with Reddit. For more information, please review our Developer Documentation here . 3.2 Restrictions You must not, and must not allow those acting on your behalf to: use the Data APIs to encourage or promote illegal activity or violation..."
+    ],
+    "full_text_file": "doc_reddit_data_api_terms.txt"
+  },
+  {
+    "key": "discord_widget",
+    "url": "https://discord.com/developers/docs/resources/guild#get-guild-widget",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/resources/guild#get-guild-widget",
+    "text_len": 381017,
+    "head": " Guild Resource - Documentation - Discord Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content Documentation - Discord home page Search... \u2318 K Help Center Developer Portal Developer Portal Search... Navigation HTTP API Resources Guild Resource Home Bots & Companion Apps Social SDK Activities Guides Change Log Reference Developer Portal API & SDK Reference Developer Community API Reference API Reference OAuth2 Opcodes and Status Codes Permissions Rate Limits Threads SDK Reference Social SDK Reference Embedded App SDK Reference HTTP API Resources Application Identity Profile Resourc",
+    "keyword_excerpts": [
+      "[widget] ...tion User Voice Webhook Events Overview Using Gateway Gateway Events Webhook Events Link Previews Overview Component Embeds Voice & RPC Voice RPC Certified Devices close On this page Back to top Guild Object Unavailable Guild Object Guild Preview Object Guild Widget Settings Object Guild Widget Object Guild Member Object Integration Object Integration Account Object Integration Application Object Ban Object Welcome Screen Object Guild Onboarding Object Membership Screening Object Incidents Data Object Get Guild Get Guild Preview Modify Guild Get Guild Channels Create Guild Channel Modify Guild Channel Positions List Active Guild Threads Get Guild Member List Guild Members...",
+      "[invite] ... Reference Social SDK Reference Embedded App SDK Reference HTTP API Resources Application Identity Profile Resource Application Role Connection Metadata Application Audit Log Auto Moderation Channel Emoji Entitlement Guild Guild Scheduled Event Guild Template Invite Lobby Message Poll SKU Soundboard Stage Instance Sticker Subscription User Voice Webhook Events Overview Using Gateway Gateway Events Webhook Events Link Previews Overview Component Embeds Voice & RPC Voice RPC Certified Devices close On this page Back to top Guild Object Unavailable Guild Object Guild Preview Object Guild Widget Settings Object Guild Widget Object Guild Member Object Integration Object Integr...",
+      "[member] ...eway Gateway Events Webhook Events Link Previews Overview Component Embeds Voice & RPC Voice RPC Certified Devices close On this page Back to top Guild Object Unavailable Guild Object Guild Preview Object Guild Widget Settings Object Guild Widget Object Guild Member Object Integration Object Integration Account Object Integration Application Object Ban Object Welcome Screen Object Guild Onboarding Object Membership Screening Object Incidents Data Object Get Guild Get Guild Preview Modify Guild Get Guild Channels Create Guild Channel Modify Guild Channel Positions List Active Guild Threads Get Guild Member List Guild Members Search Guild Members Get Guild Member Permission..."
+    ],
+    "full_text_file": "doc_discord_widget.txt"
+  },
+  {
+    "key": "discord_rate_limits",
+    "url": "https://discord.com/developers/docs/topics/rate-limits",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/topics/rate-limits",
+    "text_len": 84495,
+    "head": " Rate Limits - Documentation - Discord Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content Documentation - Discord home page Search... \u2318 K Help Center Developer Portal Developer Portal Search... Navigation API Reference Rate Limits Home Bots & Companion Apps Social SDK Activities Guides Change Log Reference Developer Portal API & SDK Reference Developer Community API Reference API Reference OAuth2 Opcodes and Status Codes Permissions Rate Limits Threads SDK Reference Social SDK Reference Embedded App SDK Reference HTTP API Resources Application Identity Profile Resource Applicati",
+    "keyword_excerpts": [
+      "[50] .../1.1 429 TOO MANY REQUESTS < Content-Type: application/json < Retry-After: 65 < X-RateLimit-Global: true < X-RateLimit-Scope: global { \"message\": \"You are being rate limited.\", \"retry_after\": 64.57, \"global\": true } \u200b Global Rate Limit All bots can make up to 50 requests per second to our API. If no authorization header is provided, then the limit is applied to the IP address. This is independent of any individual rate limit on a route. If your bot gets big enough, based on its functionality, it may be impossible to stay below 50 requests per second during normal operations. Global rate limit issues generally show up as repeatedly getting banned from the Discord API when ...",
+      "[route] ...C Voice RPC Certified Devices close On this page Back to top Header Format Exceeding A Rate Limit Global Rate Limit Invalid Request Limit aka Cloudflare bans API Reference Rate Limits Copy page Copy page Understand Discord\u2019s rate limiting system including per-route and global limits. Copy page Copy page Rate limits exist across Discord\u2019s APIs to prevent spam, abuse, and service overload. Limits are applied to individual bots and users both on a per-route basis and globally. Individuals are determined using a request\u2019s authentication\u2014for example, a bot token for a bot. Because rate limits depend on a variety of factors and are subject to change, rate limits should not be h...",
+      "[bucket] ...rdingly in case you do. Per-route rate limits exist for many individual endpoints, and may include the HTTP method ( GET , POST , PUT , or DELETE ). In some cases, per-route limits will be shared across a set of similar endpoints, indicated in the X-RateLimit-Bucket header. It\u2019s recommended to use this header as a unique identifier for a rate limit, which will allow you to group shared limits as you encounter them. During calculation, per-route rate limits often account for top-level resources within the path using an identifier\u2014for example, guild_id when calling /guilds/{guild.id}/channels . Top-level resources are currently limited to channels ( channel_id ), guilds ( g..."
+    ],
+    "full_text_file": "doc_discord_rate_limits.txt"
+  },
+  {
+    "key": "telegram_bots_api",
+    "url": "https://core.telegram.org/bots/api",
+    "status": 200,
+    "final_url": "https://core.telegram.org/bots/api",
+    "text_len": 492058,
+    "head": " Telegram Bot API Follow on X Home FAQ Apps API Protocol Schema Machine-readable version of this page: /bots/api.md. Telegram Bots Telegram Bot API Telegram Bot API The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram. To learn how to create and set up a bot, please consult our Introduction to Bots and Bot FAQ . Recent changes Subscribe to @BotNews to be the first to know about the latest updates and join the discussion in @BotTalk August 24, 2026 Bot API 10.3 Rich Messages Added the class RichMessageButton representing a button in a RichMessage . Added the class RichTextButton . Added the classes RichBlockButtons and InputRichBlockButtons . Added ",
+    "keyword_excerpts": [
+      "[getChatMemberCount] ...r for the target chat or username of the target supergroup or channel in the format @username return_bots Boolean Optional Pass True to additionally receive all bots that are administrators of the chat. By default, bots other than the current bot are omitted. getChatMemberCount Use this method to get the number of members in a chat. Returns Integer on success. Parameter Type Required Description chat_id Integer or String Yes Unique identifier for the target chat or username of the target supergroup or channel in the format @username getChatMember Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot i...",
+      "[getChat] ...uest_message to the class Update . Added the class SentGuestMessage and the method answerGuestQuery . Chat Management Added the field can_react_to_messages to the classes ChatMemberRestricted and ChatPermissions . Added the parameter return_bots to the method getChatAdministrators . Added the method deleteAllMessageReactions . Added the method deleteMessageReaction . Added the ability to see certain messages sent by other bots in groups. Polls Added the classes InputMediaSticker , InputMediaLocation , and InputMediaVenue . Added the class PollMedia , representing a media in a poll. Added the field media to the class Poll , allowing bots to see media in polls. Added the fi...",
+      "[getMe] ...Making requests All queries to the Telegram Bot API must be served over HTTPS and need to be presented in this form: https://api.telegram.org/bot<token>/METHOD_NAME . Like this for example: https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11/getMe We support GET and POST HTTP methods. We support four ways of passing parameters in Bot API requests: URL query string application/x-www-form-urlencoded application/json (except for uploading files) multipart/form-data (use to upload files) The response contains a JSON object, which always has a Boolean field 'ok' and may have an optional String field 'description' with a human-readable description of the resul..."
+    ],
+    "full_text_file": "doc_telegram_bots_api.txt"
+  },
+  {
+    "key": "reddit_dev_api",
+    "url": "https://www.reddit.com/dev/api",
+    "status": 200,
+    "final_url": "https://www.reddit.com/dev/api",
+    "text_len": 99809,
+    "head": " reddit.com: api documentation jump to content my subreddits edit subscriptions popular - all - users | AskReddit - pics - funny - movies - gaming - worldnews - news - todayilearned - nottheonion - explainlikeimfive - mildlyinteresting - DIY - videos - OldSchoolCool - TwoXChromosomes - tifu - Music - books - LifeProTips - Philippines - dataisbeautiful - aww - science - space - Showerthoughts - askscience - Jokes - Art - IAmA - Futurology - sports - UpliftingNews - food - nosleep - creepy - history - gifs - InternetIsBeautiful - GetMotivated - gadgets - announcements - WritingPrompts - philosophy - Documentaries - EarthPorn - photoshopbattles - listentothis - blog more \u00bb reddit.com api docume",
+    "keyword_excerpts": [
+      "[OAuth] ...etIsBeautiful - GetMotivated - gadgets - announcements - WritingPrompts - philosophy - Documentaries - EarthPorn - photoshopbattles - listentothis - blog more \u00bb reddit.com api documentation Want to join? Log in or sign up in seconds. API methods by section by oauth scope account /api/v1/me /api/v1/me/blocked /api/v1/me/friends /api/v1/me/karma /api/v1/me/prefs /api/v1/me/trophies /prefs/blocked /prefs/friends /prefs/messaging /prefs/trusted /prefs/ where announcements /api/announcements/v1 /api/announcements/v1/hide /api/announcements/v1/read /api/announcements/v1/read_all /api/announcements/v1/unread captcha /api/needs_captcha emoji /api/v1/ subreddit /emoji.json /api/v1..."
+    ],
+    "full_text_file": "doc_reddit_dev_api.txt"
+  },
+  {
+    "key": "coingecko_rate_limits",
+    "url": "https://docs.coingecko.com/reference/overview",
+    "status": 404,
+    "final_url": "https://docs.coingecko.com/reference/overview",
+    "text_len": 62613,
+    "head": " Page Not Found Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content CoinGecko API home page Search... \u2318 K Contact Sales Status Get Free API Key Get Free API Key Search... Navigation Page Not Found Overview AI Integration Pro API Reference Demo API Reference WebSocket Webhooks Changelog CoinGecko API Enterprise Case Studies Newsletter Feedback Endpoint Overview Authentication CoinGecko API Price Search & ID Map Coins Coin Charts Categories RWA Hot Exchanges Derivatives Public Treasury NFTs Trending News & Insights Hot Global Utility Onchain API Price Search & ID Map Pools New & Tr",
+    "keyword_excerpts": [
+      "[rate limit] ...\",\"groups\":[{\"group\":\"Get Started\",\"pages\":[{\"title\":\"Welcome to CoinGecko API\",\"sidebarTitle\":\"Welcome\",\"mode\":\"wide\",\"href\":\"\"},{\"group\":\"API Basics\",\"pages\":[{\"title\":\"Setting Up Your API Key\",\"href\":\"/docs/setting-up-your-api-key\"},{\"title\":\"Errors \\u0026 Rate Limits\",\"href\":\"/docs/errors-and-rate-limits\"},{\"title\":\"API Status\",\"href\":\"/docs/api-status\"}]},{\"title\":\"Data Delivery Methods\",\"href\":\"/docs/data-delivery-methods\"}]},{\"group\":\"Guides\",\"pages\":[{\"group\":\"How-To\",\"root\":{\"title\":\"How-To\",\"sidebarTitle\":\"Overview\",\"mode\":\"wide\",\"href\":\"/docs/how-to\"},\"pages\":[{\"title\":\"Querying Coin Data\",\"href\":\"/docs/querying-coin-data\"},{\"title\":\"Querying Onchain Data\",\"hre...",
+      "[Demo] ...this file to discover all available pages before exploring further. Skip to main content CoinGecko API home page Search... \u2318 K Contact Sales Status Get Free API Key Get Free API Key Search... Navigation Page Not Found Overview AI Integration Pro API Reference Demo API Reference WebSocket Webhooks Changelog CoinGecko API Enterprise Case Studies Newsletter Feedback Endpoint Overview Authentication CoinGecko API Price Search & ID Map Coins Coin Charts Categories RWA Hot Exchanges Derivatives Public Treasury NFTs Trending News & Insights Hot Global Utility Onchain API Price Search & ID Map Pools New & Trending Pools Tokens Charts Trades & Liquidity Events Hot Wallets Hot Hold...",
+      "[free] ... Page Not Found Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content CoinGecko API home page Search... \u2318 K Contact Sales Status Get Free API Key Get Free API Key Search... Navigation Page Not Found Overview AI Integration Pro API Reference Demo API Reference WebSocket Webhooks Changelog CoinGecko API Enterprise Case Studies Newsletter Feedback Endpoint Overview Authentication CoinGecko API Price Search & ID Map Coins Coin Charts Categories RWA Hot Exchanges Derivatives Public Treasury NFTs Trending News & Insights Hot Global Utility Onchain API P..."
+    ],
+    "full_text_file": "doc_coingecko_rate_limits.txt"
+  },
+  {
+    "key": "coingecko_community_data",
+    "url": "https://docs.coingecko.com/reference/coins-id",
+    "status": 200,
+    "final_url": "https://docs.coingecko.com/reference/coins-id",
+    "text_len": 139813,
+    "head": " Coin Data by ID - CoinGecko API Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content CoinGecko API home page Search... \u2318 K Contact Sales Status Get Free API Key Get Free API Key Search... Navigation Coins Coin Data by ID Overview AI Integration Pro API Reference Demo API Reference WebSocket Webhooks Changelog CoinGecko API Enterprise Case Studies Newsletter Feedback Endpoint Overview Authentication CoinGecko API Price Search & ID Map Coins GET Coins List with Market Data GET Coin Data by ID GET Coin Data by Token Address GET Coin Tickers by ID GET Coin Historical Data by ID GET \ud83d\udcbc",
+    "keyword_excerpts": [
+      "[community_data] ...t_updated in the response to check whether the price is stale. The has_supply_breakdown field indicates whether supply breakdown data is available for this coin. When true , use /coins/{id}/supply_breakdown to get the full breakdown. As of 28 August 2026, the community_data and developer_data objects are no longer returned. The community_data and developer_data query params are kept for backward compatibility but have no effect. See the changelog for details. \u200b SDK Examples TypeScript Python const response = await client . coins . getID ( 'bitcoin' ); console . log ( JSON . stringify ( response , null , 2 )); response = client.coins.get_id( \"bitcoin\" ) print (response.mod..."
+    ],
+    "full_text_file": "doc_coingecko_community_data.txt"
+  },
+  {
+    "key": "dexscreener_docs",
+    "url": "https://docs.dexscreener.com/api/reference",
+    "status": 200,
+    "final_url": "https://docs.dexscreener.com/api/reference",
+    "text_len": 15656,
+    "head": " Reference | DEX Screener - Docs DEX Screener - Docs \u2318 Ctrl k DEX Screener - Docs \u2753 FAQ \ud83d\udcf1 Mobile App \ud83d\udd25 Trending \u26a1 Boosting \ud83e\udee7 Metas Token Listing DEX Listing Chain Listing TradingView Charts \ud83e\udd16 API Reference WebSockets API Terms & Conditions \ud83d\udd13 Privacy Disclaimer Terms & Conditions Privacy policy App privacy policy Refund Policy Boosting Terms & Conditions \ud83d\udce7 Contact us Advertise API survey Partnerships Powered by GitBook On this page For the complete documentation index, see llms.txt . This page is also available as Markdown . Copy On this page \ud83e\udd16 API Reference DEX Screener API reference Get the latest token profiles (rate-limit 60 requests per minute) get https://api.dexscreener.com /token-prof",
+    "keyword_excerpts": [
+      "[socials] ...AL_PROPERTY\": 1 }, \"priceChange\": { \"ANY_ADDITIONAL_PROPERTY\": 1 }, \"liquidity\": { \"usd\": 1, \"base\": 1, \"quote\": 1 }, \"fdv\": 1, \"marketCap\": 1, \"pairCreatedAt\": 1, \"info\": { \"imageUrl\": \"https://example.com\", \"websites\": [ { \"url\": \"https://example.com\" } ], \"socials\": [ { \"platform\": \"text\", \"handle\": \"text\" } ] }, \"boosts\": { \"active\": 1 } } ] } Search for pairs matching query (rate-limit 300 requests per minute) get https://api.dexscreener.com /latest/dex/search Query parameters q string Required Example: SOL/USDC Responses 200 Ok application/json schemaVersion string Optional pairs object \u00b7 Pair[] Optional Show properties get /latest/dex/search HTTP Copy GET /latest/d...",
+      "[info] ...t\", \"txns\": { \"ANY_ADDITIONAL_PROPERTY\": { \"buys\": 1, \"sells\": 1 } }, \"volume\": { \"ANY_ADDITIONAL_PROPERTY\": 1 }, \"priceChange\": { \"ANY_ADDITIONAL_PROPERTY\": 1 }, \"liquidity\": { \"usd\": 1, \"base\": 1, \"quote\": 1 }, \"fdv\": 1, \"marketCap\": 1, \"pairCreatedAt\": 1, \"info\": { \"imageUrl\": \"https://example.com\", \"websites\": [ { \"url\": \"https://example.com\" } ], \"socials\": [ { \"platform\": \"text\", \"handle\": \"text\" } ] }, \"boosts\": { \"active\": 1 } } ] } Search for pairs matching query (rate-limit 300 requests per minute) get https://api.dexscreener.com /latest/dex/search Query parameters q string Required Example: SOL/USDC Responses 200 Ok application/json schemaVersion string Optiona...",
+      "[300] ... HTTP Copy GET /orders/v1/{chainId}/{tokenAddress} HTTP/1.1 Host: api.dexscreener.com Accept: */* Test it 200 Ok Copy [ { \"type\": \"tokenProfile\", \"status\": \"processing\", \"paymentTimestamp\": 1 } ] Get one or multiple pairs by chain and pair address (rate-limit 300 requests per minute) get https://api.dexscreener.com /latest/dex/pairs/ {chainId} / {pairId} Path parameters chainId string Required Example: solana pairId string Required Example: JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN Responses 200 Ok application/json schemaVersion string Optional pairs object \u00b7 Pair[] \u00b7 nullable Optional Show properties get /latest/dex/pairs/ {chainId} / {pairId} HTTP Copy GET /latest/dex...",
+      "[rate] ...act us Advertise API survey Partnerships Powered by GitBook On this page For the complete documentation index, see llms.txt . This page is also available as Markdown . Copy On this page \ud83e\udd16 API Reference DEX Screener API reference Get the latest token profiles (rate-limit 60 requests per minute) get https://api.dexscreener.com /token-profiles/latest/v1 Responses 200 Ok application/json url string \u00b7 uri Optional chainId string Optional tokenAddress string Optional icon string \u00b7 uri Optional header string \u00b7 uri \u00b7 nullable Optional description string \u00b7 nullable Optional links object[] \u00b7 nullable Optional Show properties get /token-profiles/latest/v1 HTTP Copy GET /token-profil...",
+      "[token-pairs] ...ple.com\", \"websites\": [ { \"url\": \"https://example.com\" } ], \"socials\": [ { \"platform\": \"text\", \"handle\": \"text\" } ] }, \"boosts\": { \"active\": 1 } } ] } Get the pools of a given token address (rate-limit 300 requests per minute) get https://api.dexscreener.com /token-pairs/v1/ {chainId} / {tokenAddress} Path parameters chainId string Required Example: solana tokenAddress string Required A token addresses Example: JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN Responses 200 Ok application/json chainId string Optional dexId string Optional url string \u00b7 uri Optional pairAddress string Optional labels string[] \u00b7 nullable Optional baseToken object Optional Show properties quoteToke..."
+    ],
+    "full_text_file": "doc_dexscreener_docs.txt"
+  },
+  {
+    "key": "dexscreener_rate",
+    "url": "https://docs.dexscreener.com/api/rate-limits",
+    "status": 404,
+    "final_url": "https://docs.dexscreener.com/api/rate-limits",
+    "text_len": 21,
+    "head": " DEX Screener - Docs ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_dexscreener_rate.txt"
+  },
+  {
+    "key": "lunarcrush_endpoints",
+    "url": "https://lunarcrush.com/developers/api/endpoints",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/en/developers/api/endpoints",
+    "text_len": 46,
+    "head": " LunarCrush API docs | MCP & SDK | LunarCrush ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_lunarcrush_endpoints.txt"
+  },
+  {
+    "key": "lunarcrush_pricing",
+    "url": "https://lunarcrush.com/pricing",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/pricing",
+    "text_len": 930,
+    "head": " content (even charset/viewport) to block the speculative parser from discovering and prefetching resources (fonts, images, modules) that will never be used. Without this early placement, a paid user hitting `/` would download the marketing site's assets (~300KB+ of JS/CSS/fonts) AND THEN redirect to the webapp, wasting 1-2s and 100+ requests (DEV-12444, DEV-12528). CRITICAL: Preserve locale in redirect to avoid extra server redirect. DEV-12667: `/{locale}/home` is the same All Categories surface as `/{locale}` and now ships the SSR ranked table so the bench settle selector matches at HTML parse instead of timing out at 15s. --> tag after React renders. --> with the same absolute URL; kept h",
+    "keyword_excerpts": [
+      "[$] ... bench settle selector matches at HTML parse instead of timing out at 15s. --> tag after React renders. --> with the same absolute URL; kept here so the raw template is correct too. Crawlers don't resolve relative og:image. --> LunarCrush Pricing \u2014 Individual $90/mo, Builder $300/mo, Scale $900/mo Pricing Real-time social media sentiment for research, decisions, and AI ..."
+    ],
+    "full_text_file": "doc_lunarcrush_pricing.txt"
+  },
+  {
+    "key": "santiment_pricing",
+    "url": "https://app.santiment.net/pricing",
+    "status": 200,
+    "final_url": "https://app.santiment.net/pricing",
+    "text_len": 7206,
+    "head": " Pricing for Crypto Analytic Tools - Start a Free Trial Community Charts Screener Social Trends Insights Watchlists Alerts Historical Balance svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> More Tools Pricing svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> Resources Day Log in Sign up Enjoy Santiment Data Now, Pick a Plan Later Try Sanbase free for 14 days and get full access to all our products and features Power your trading decisions with Santiment: tailored crypto analytics for inv",
+    "keyword_excerpts": [
+      "[Free] ... Pricing for Crypto Analytic Tools - Start a Free Trial Community Charts Screener Social Trends Insights Watchlists Alerts Historical Balance svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> More Tools Pricing svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"...",
+      "[$] ...to all our products and features Power your trading decisions with Santiment: tailored crypto analytics for investors, traders, and researchers \u00f0\u009f\u0091\u00a8\u00e2\u0080\u008d\u00f0\u009f\u00a6\u00b1 For individuals \u00f0\u009f\u0092\u00bc For business Free Ideal for new traders and investors to kickstart crypto analysis $0 Free forever Sign up 30-day lag in Sanbase Hidden top 3 tokens in Trending Coins No filters and sorting for Screener Up to 3 simultaneous alerts Sanbase Pro Ideal for advanced traders and analysts to power decisions with real-time data $49 / mo $529 / year, billed monthly Bill annually - 10% \u00f0\u009f\u008e\u0089 Start Free Trial Present-day and full historical data in Sanbase Full access to Trending Coins Access to Google Sheets ...",
+      "[Plan] ...); --loading-size: 2px;\"> More Tools Pricing svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> Resources Day Log in Sign up Enjoy Santiment Data Now, Pick a Plan Later Try Sanbase free for 14 days and get full access to all our products and features Power your trading decisions with Santiment: tailored crypto analytics for investors, traders, and researchers \u00f0\u009f\u0091\u00a8\u00e2\u0080\u008d\u00f0\u009f\u00a6\u00b1 For individuals \u00f0\u009f\u0092\u00bc For business Free Ideal for new traders and investors to kickstart crypto analysis $0 Free forever Sign up 30-day lag in Sanbase Hidden top 3 tokens in Trending Coins No filters and s..."
+    ],
+    "full_text_file": "doc_santiment_pricing.txt"
+  },
+  {
+    "key": "santiment_social_volume",
+    "url": "https://academy.santiment.net/metrics/social-volume/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-volume/",
+    "text_len": 8265,
+    "head": " Social Volume | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoin ETF Volume Bitfinex Derivatives BitMEX Derivatives BTC and S&P 500 Price Divergence Circulation Community Messages Count Community Social Volume Contract Interacting Address Count Contract Transactions Count CrvUSD Savings Daily Active Addresses Daily Active Deposits Daily Aggreg",
+    "keyword_excerpts": [
+      "[Definition] ...Words Trending Words Rank Twitter Followers Unique Social Volume Velocity Whale Transaction Count Whale Transaction Volume XRPL Chain metrics Changelog Labels Data Anomalies AI Toolkit Santiment MCP Connector Santiment Skills for AI Agents Social Trends Skill Definition Access Measuring Unit Data Type Change Metrics Frequency Latency Available Assets Sanbase SanAPI Social Volume for an Asset Social Volume for Arbitrary Search Term Market Social Volume Full List of Metrics Home Metrics Social Volume Social Volume Definition Social Volume is built on top of the Social Data . Twitter social volume can be broken down further by account category \u00e2\u0080\u0094 see Categorized Social Volu...",
+      "[Social Volume] ... Social Volume | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoin E...",
+      "[Unique Social Volume] ...arket Sentiment Total Supply Trading Volume in USD Transacted Coin Acquisition Cost Transaction count Transaction Size Transaction Volume Transaction Volume In Profit Or Loss Trending Coins Trending Stories Trending Words Trending Words Rank Twitter Followers Unique Social Volume Velocity Whale Transaction Count Whale Transaction Volume XRPL Chain metrics Changelog Labels Data Anomalies AI Toolkit Santiment MCP Connector Santiment Skills for AI Agents Social Trends Skill Definition Access Measuring Unit Data Type Change Metrics Frequency Latency Available Assets Sanbase SanAPI Social Volume for an Asset Social Volume for Arbitrary Search Term Market Social Volume Full Lis...",
+      "[documents] ...ist of Metrics Home Metrics Social Volume Social Volume Definition Social Volume is built on top of the Social Data . Twitter social volume can be broken down further by account category \u00e2\u0080\u0094 see Categorized Social Volume . The total number of social data text documents that contain the given search term at least once. Examples of documents are Telegram messages and Reddit posts. If a single short Telegram message includes the word crypto more than once, this message will increase the social volume of the word crypto by 1. If a long Reddit post contains the word crypto 10 times, this again will increase the social volume of the word crypto by 1. Social Volume can be comput..."
+    ],
+    "full_text_file": "doc_santiment_social_volume.txt"
+  },
+  {
+    "key": "santiment_social_dominance",
+    "url": "https://academy.santiment.net/metrics/social-dominance/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-dominance/",
+    "text_len": 7533,
+    "head": " Social Dominance | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoin ETF Volume Bitfinex Derivatives BitMEX Derivatives BTC and S&P 500 Price Divergence Circulation Community Messages Count Community Social Volume Contract Interacting Address Count Contract Transactions Count CrvUSD Savings Daily Active Addresses Daily Active Deposits Daily Agg",
+    "keyword_excerpts": [
+      "[Definition] ...Words Trending Words Rank Twitter Followers Unique Social Volume Velocity Whale Transaction Count Whale Transaction Volume XRPL Chain metrics Changelog Labels Data Anomalies AI Toolkit Santiment MCP Connector Santiment Skills for AI Agents Social Trends Skill Definition Social Dominance for an Asset Social Dominance for a Text Phrase Access Measuring Unit Data Type Change Metrics Frequency Latency Available Assets Sanbase SanAPI Social Dominance for an Asset Social Dominance for Arbitrary Search Term Full List of Metrics Home Metrics Social Dominance Social Dominance Definition Social Dominance shows the share of the discussions in crypto media that refer to a particular ...",
+      "[Social Dominance] ... Social Dominance | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoi...",
+      "[top 100] ...he Social Volume of that asset to the combined social volume of the 100 largest assets by marketcap. Social Dominance of 50% for an asset means that the number of messages/posts that discuss this asset equals half the number of messages/posts that discuss the Top 100 assets. This definition allows the social dominance of an asset to exceed 100%. This can happen for assets whose name and/or ticker is a very common English word. Social Dominance for a Text Phrase Social Dominance for an arbitrary text phrase compares the Social Volume of that search term to the total number of documents available. This essentially computes the percentage of all documents that match this sea...",
+      "[%] ...in a 12-hour period, the metric can be supplemented with new data. Social Dominance for an Asset Social Dominance for an asset compares the Social Volume of that asset to the combined social volume of the 100 largest assets by marketcap. Social Dominance of 50% for an asset means that the number of messages/posts that discuss this asset equals half the number of messages/posts that discuss the Top 100 assets. This definition allows the social dominance of an asset to exceed 100%. This can happen for assets whose name and/or ticker is a very common English word. Social Dominance for a Text Phrase Social Dominance for an arbitrary text phrase compares the Social Volume of t..."
+    ],
+    "full_text_file": "doc_santiment_social_dominance.txt"
+  },
+  {
+    "key": "santiment_unique_social_volume",
+    "url": "https://academy.santiment.net/metrics/unique-social-volume/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/unique-social-volume/",
+    "text_len": 6716,
+    "head": " Unique Social Volume | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoin ETF Volume Bitfinex Derivatives BitMEX Derivatives BTC and S&P 500 Price Divergence Circulation Community Messages Count Community Social Volume Contract Interacting Address Count Contract Transactions Count CrvUSD Savings Daily Active Addresses Daily Active Deposits Daily",
+    "keyword_excerpts": [
+      "[unique] ... Unique Social Volume | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bi..."
+    ],
+    "full_text_file": "doc_santiment_unique_social_volume.txt"
+  },
+  {
+    "key": "nansen_smart_money",
+    "url": "https://docs.nansen.ai/smart-money/overview",
+    "status": 404,
+    "final_url": "https://docs.nansen.ai/smart-money/overview",
+    "text_len": 12,
+    "head": " Nansen API ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_nansen_smart_money.txt"
+  },
+  {
+    "key": "nansen_api_pricing",
+    "url": "https://www.nansen.ai/pricing",
+    "status": 404,
+    "final_url": "https://nansen.ai/pricing",
+    "text_len": 1350,
+    "head": " Nansen AI - Trade Everything Onchain with AI Nansen Sign Up Nansen Sign Up Sign Up Nansen 4 0 4 4 0 4 S o r r y , t h i s p a g e c a n ' t b e r e a c h e d r i g h t n o w . S o r r y , t h i s p a g e c a n ' t b e r e a c h e d r i g h t n o w . 4 0 4 S o r r y , t h i s p a g e c a n ' t b e r e a c h e d r i g h t n o w . Go to App Download App ')\"> Explore Trading Smart Money API Staking Points Trade Hyperliquid Solana Base Robinhood Learn Blog Academy 101 Playbook FAQ Release Notes Company About Us Pricing Referrals Affiliates Brand Careers Contact Us Legal Community The Alpha Room X (Twitter) Telegram Youtube LinkedIn Download App \u00c2\u00a9 2026 Nansen. All Rights Reserved. ')\"> Learn Blo",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_nansen_api_pricing.txt"
+  },
+  {
+    "key": "altcoin_season_index",
+    "url": "https://blockchaincenter.net/altcoin-season-index",
+    "status": 200,
+    "final_url": "https://blockchaincenter.net/altcoin-season-index/",
+    "text_len": 2066,
+    "head": " Blockchain Center Arena Vote Leaderboards Tools \u25be \ud83c\udf08 Rainbow Chart \ud83d\udcc8 Bitcoin Power Law \ud83c\udf0d Bitcoin vs. the World \ud83d\uddfa\ufe0f Crypto Heatmap \ud83c\udf08 Ethereum Rainbow Chart \ud83d\udcca Altcoin Season Index \ud83c\udfad Crypto Sentiment \ud83d\udc93 Bitcoin Pulse \ud83d\udcb1 Crypto Converter EN DE ES EN DE ES Arena Vote Leaderboards Tools \ud83c\udf08 Rainbow Chart \ud83d\udcc8 Bitcoin Power Law \ud83c\udf0d Bitcoin vs. the World \ud83d\uddfa\ufe0f Crypto Heatmap \ud83c\udf08 Ethereum Rainbow Chart \ud83d\udcca Altcoin Season Index \ud83c\udfad Crypto Sentiment \ud83d\udc93 Bitcoin Pulse \ud83d\udcb1 Crypto Converter X Altcoin Season Index If 75% of the Top 50 coins performed better than Bitcoin over the last season (90 days) it is Altcoin Season. Altcoin Season ( 39 ) Month ( 22 ) Year ( 41 ) Altcoin Season Index It is not Altcoin Season! 39 Bitcoin Sea",
+    "keyword_excerpts": [
+      "[index] ... Blockchain Center Arena Vote Leaderboards Tools \u25be \ud83c\udf08 Rainbow Chart \ud83d\udcc8 Bitcoin Power Law \ud83c\udf0d Bitcoin vs. the World \ud83d\uddfa\ufe0f Crypto Heatmap \ud83c\udf08 Ethereum Rainbow Chart \ud83d\udcca Altcoin Season Index \ud83c\udfad Crypto Sentiment \ud83d\udc93 Bitcoin Pulse \ud83d\udcb1 Crypto Converter EN DE ES EN DE ES Arena Vote Leaderboards Tools \ud83c\udf08 Rainbow Chart \ud83d\udcc8 Bitcoin Power Law \ud83c\udf0d Bitcoin vs. the World \ud83d\uddfa\ufe0f Crypto Heatmap \ud83c\udf08 Ethereum Rainbow Chart \ud83d\udcca Altcoin Season Index \ud83c\udfad Crypto Sentiment \ud83d\udc93 Bitcoin Pulse \ud83d\udcb1 Crypto Converter X Altcoin Season Index If 75% of the Top 50 coins performed better than Bitcoin over the last season (90 days) it is Altcoin Season....",
+      "[Bitcoin] ... Blockchain Center Arena Vote Leaderboards Tools \u25be \ud83c\udf08 Rainbow Chart \ud83d\udcc8 Bitcoin Power Law \ud83c\udf0d Bitcoin vs. the World \ud83d\uddfa\ufe0f Crypto Heatmap \ud83c\udf08 Ethereum Rainbow Chart \ud83d\udcca Altcoin Season Index \ud83c\udfad Crypto Sentiment \ud83d\udc93 Bitcoin Pulse \ud83d\udcb1 Crypto Converter EN DE ES EN DE ES Arena Vote Leaderboards Tools \ud83c\udf08 Rainbow Chart \ud83d\udcc8 Bitcoin Power Law \ud83c\udf0d Bitcoin vs. the World \ud83d\uddfa\ufe0f Crypto Heatmap \ud83c\udf08 Ethereum Rainbow Chart \ud83d\udcca Altcoin Season Index \ud83c\udfad Crypto Sentiment \ud83d\udc93 Bitcoin Pulse \ud83d\udcb1 Crypto Converter X Altcoin Season Index If 75% ..."
+    ],
+    "full_text_file": "doc_altcoin_season_index.txt"
+  },
+  {
+    "key": "cmc_altcoin_season",
+    "url": "https://coinmarketcap.com/charts/altcoin-season-index",
+    "status": 200,
+    "final_url": "https://coinmarketcap.com/charts/altcoin-season-index/",
+    "text_len": 7442,
+    "head": " Crypto Altcoin Season Index | CoinMarketCap Markets Cryptocurrencies Ranking Categories Historical Snapshots Token unlocks Yield Real-World Assets Leaderboards Trending Upcoming Recently Added Gainers & Losers Most Visited Community Sentiment Prediction Markets Trending New Crypto Politics Sports Finance Tech NFT Overall NFT Stats Upcoming Sales Dashboards Markets Market Overview Spot Market No. of Cryptocurrencies Chain Ranking New Bitcoin Treasuries BNB Treasuries Exchange Inflows/Outflows Indicators Fear and Greed Index Altcoin Season Index Market Cycle Indicators Bitcoin Dominance CoinMarketCap 20 Index CoinMarketCap 100 Index ETF Flows Crypto ETFs Bitcoin ETFs Ethereum ETFs Solana ETFs",
+    "keyword_excerpts": [
+      "[index] ... Crypto Altcoin Season Index | CoinMarketCap Markets Cryptocurrencies Ranking Categories Historical Snapshots Token unlocks Yield Real-World Assets Leaderboards Trending Upcoming Recently Added Gainers & Losers Most Visited Community Sentiment Prediction Markets Trending New Crypto Politics Sports Finance Tech NFT Overall NFT Stats Upcoming Sales Dashboards Markets Market Overview Spot Market No. of Cryptocurrencies Chain Ranking New Bitco...",
+      "[outperform] ... Yesterday Last Week Last Month Yearly High and Low Yearly High ( ) Yearly Low ( ) Loading... This might take a few seconds Top 100 Coins Performance Over 90 Days About CMC Altcoin Season Index What is the CMC Altcoin Season Index? If 75% of the top 100 coins outperform Bitcoin in the last 90 days, it's Altcoin Season. Remember, stablecoins like Tether and DAl, as well as asset-backed tokens such as WBTC, stETH, and cLINK, aren't included. How can I tell when it's Altcoin Season? During Altcoin Season, several distinct market characteristics emerge: Increased Altcoin Dominance: Altcoins collectively gain prominence in the cryptocurrency market. In the recent Altcoin Seaso..."
+    ],
+    "full_text_file": "doc_cmc_altcoin_season.txt"
+  },
+  {
+    "key": "kaito_mindshare",
+    "url": "https://studio.kaito.ai/blog/what-is-mindshare",
+    "status": 200,
+    "final_url": "https://studio.kaito.ai/blog/what-is-mindshare",
+    "text_len": 25486,
+    "head": " What Is Mindshare? Measuring Attention Across Markets Blog For Creators Brands Sign In Work with Kaito \u2190 Back What Is Mindshare? How to Measure Crypto, AI and Stock Market Attention Learn what mindshare measures, how it differs from mentions and sentiment, and how to investigate attention shifts across crypto, AI and stocks with Kaito. By Kaito \u00b7 October 13, 2026 Watch on X \u2197 Mindshare is a metric that helps measure how much attention is concentrated around a particular brand, company, asset, or topic within a defined period of time. It\u2019s a useful indicator when you\u2019re conducting research, comparing your project with competitors, identifying trending topics to create content around, or simp",
+    "keyword_excerpts": [
+      "[mindshare] ... What Is Mindshare? Measuring Attention Across Markets Blog For Creators Brands Sign In Work with Kaito \u2190 Back What Is Mindshare? How to Measure Crypto, AI and Stock Market Attention Learn what mindshare measures, how it differs from mentions and sentiment, and how to investigate attention shifts across crypto, AI and stocks with Kaito. By Kaito \u00b7 October 13, 2026 Watch on X \u2197 Mindshare is a metric that helps measure how much...",
+      "[attention] ... What Is Mindshare? Measuring Attention Across Markets Blog For Creators Brands Sign In Work with Kaito \u2190 Back What Is Mindshare? How to Measure Crypto, AI and Stock Market Attention Learn what mindshare measures, how it differs from mentions and sentiment, and how to investigate attention shifts across crypto, AI and stocks with Kaito. By Kaito \u00b7 October 13, 2026 Watch on X \u2197 Mindshare is a metric that helps measure how much attention is concent...",
+      "[definition] ...e difference between mindshare, share of voice and sentiment? Mindshare measures attention, share of voice measures visibility relative to competitors, and sentiment measures the tone of discussion. Note that all of these metrics often have somewhat different definitions, therefore, we recommend that you always check out how a tool for online analysis actually defines them. In this case, mindshare refers to attention measured through online activity. Yet, in traditional brand research, it can also be used to measure how well people remember a company. Metric Question it answers What to check Mindshare What is the amount of attention (expressed as a percentage) that any su..."
+    ],
+    "full_text_file": "doc_kaito_mindshare.txt"
+  },
+  {
+    "key": "kaito_docs",
+    "url": "https://docs.kaito.ai/",
+    "status": 200,
+    "final_url": "https://docs.kaito.ai/",
+    "text_len": 1571,
+    "head": " Attention Economy | Kaito AI Kaito AI \u2318 Ctrl k Kaito AI OVERVIEW Attention Economy Why InfoFi What is Kaito Kaito Pro \u2014 AI Platform Kaito Capital Launchpad \u2014 Data-Driven Capital Formation Kaito Studio \u2014 Creator Economy Infrastructure Introducing $KAITO LEGAL Terms of Use Terms of Use - Studio Term of Use - Pulse Privacy Policy MiCA Whitepaper EXTERNAL LINKS Kaito Pro Kaito Kaito Capital Launchpad Kaito Studio X Discord Powered by GitBook On this page For the complete documentation index, see llms.txt . This page is also available as Markdown . Copy On this page OVERVIEW Attention Economy \"The currency of life isn\u2019t money. It\u2019s not even time. It\u2019s attention.\" \u2014 Naval Ravikant The era of GenA",
+    "keyword_excerpts": [
+      "[API] ... Attention Economy | Kaito AI Kaito AI \u2318 Ctrl k Kaito AI OVERVIEW Attention Economy Why InfoFi What is Kaito Kaito Pro \u2014 AI Platform Kaito Capital Launchpad \u2014 Data-Driven Capital Formation Kaito Studio \u2014 Creator Economy Infrastructure Introducing $KAITO LEGAL Terms of Use Terms of Use - Studio Term of Use - Pulse Privacy Policy MiCA Whitepaper EXTERNAL LINKS Kaito Pro Kaito Kaito Capital Launchpad Kaito Studio X Discord Powered by GitBook On this page For the complete documentation index, see llms.txt . This page is also available as Markdown . Copy On t..."
+    ],
+    "full_text_file": "doc_kaito_docs.txt"
+  },
+  {
+    "key": "farcaster_docs",
+    "url": "https://docs.farcaster.xyz/",
+    "status": 200,
+    "final_url": "https://docs.farcaster.xyz/",
+    "text_len": 1075,
+    "head": " Farcaster Docs Farcaster docs Learn Build apps AuthKit Snap Reference Snapchain Search Farcaster Docs Permissionlessly build and distribute social apps Build a mini app Explore Sign In with Farcaster Learn about the protocol Build a Mini App Learn how to build Mini Apps (previously known as Frames v2) that run inside a Farcaster feed. Introduction to Mini Apps - Understand what a mini app is and how it works. Build your first Mini App - Make mini apps that run inside Farcaster. Explore Sign In with Farcaster Allow users to Sign In with Farcaster and leverage social data in your app. Introduction - Learn about Sign In with Farcaster. Add SIWF using AuthKit - a React toolkit to add SIWF to yo",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_farcaster_docs.txt"
+  },
+  {
+    "key": "neynar_pricing",
+    "url": "https://www.neynar.com/pricing",
+    "status": 404,
+    "final_url": "https://neynar.com:443/pricing",
+    "text_len": 204,
+    "head": " Neynar NEYNAR Login NEYNAR Page not found The page you are looking for doesn't exist or has been moved Go back home Neynar \u00c2\u00a9 2023\u00e2\u0080\u00932026 Status Neynar \u00c2\u00a9 2023\u00e2\u0080\u00932026 Status Neynar \u00c2\u00a9 2023\u00e2\u0080\u00932026 Status ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_neynar_pricing.txt"
+  },
+  {
+    "key": "tiktok_research_api",
+    "url": "https://developers.tiktok.com/products/research-api/",
+    "status": 200,
+    "final_url": "https://developers.tiktok.com/products/research-api/",
+    "text_len": 4612,
+    "head": " Research API | TikTok for Developers Products Docs Support Blog Get started Research Tools Through Research Tools, TikTok supports independent research on our platform. Qualified researchers in the U.S., Europe, Canada, and Brazil can apply to study public data about TikTok content and accounts. We are working to expand access to Research Tools in the future. What data is available? Researchers can access public data on: Accounts Includes user profiles, follower and following lists, liked videos, pinned videos, and reposted videos. Content EU-based TikTok Shops For more information, check out the Codebook for Research Tools. Who can apply? To qualify for access, applicants must fulfill the ",
+    "keyword_excerpts": [
+      "[approved] ...oviding information about yourself, your organization, and your research. 03 Wait for approval You can typically expect to hear back from us within 4 weeks of submission. We may need additional time if further information is required. Once your application is approved, read the <tag1>Getting Started</tag> guide to learn more about how to access Research Tools. Working with a team? Once your application is approved, you can add collaborators to your research topic to share access to datasets. Please include information about your collaborators in your application. If your collaborators are affiliated with a different organization, each organization must submit a separate a...",
+      "[researcher] ... Research API | TikTok for Developers Products Docs Support Blog Get started Research Tools Through Research Tools, TikTok supports independent research on our platform. Qualified researchers in the U.S., Europe, Canada, and Brazil can apply to study public data about TikTok content and accounts. We are working to expand access to Research Tools in the future. What data is available? Researchers can access public data on: Accounts Includes user profiles, follower and following lists, liked videos, pinned videos, and reposted videos. Content EU-based TikTok Shops For more information, check out...",
+      "[application] ... in the U.S., UK, Switzerland, Norway, Iceland, and Liechtenstein. Academic institutions or not-for-profit organizations based in Brazil and looking to study online youth safety. Have demonstrable experience and expertise in the research area specified in the application, as well as in data processing and analysis. Be independent of commercial interests and able to conduct research on a not-for-profit or non-commercial basis in pursuit of a public-interest mission. Disclose the funding of the research. Provide a clearly defined research proposal and demonstrate that the requested access is necessary for, and proportionate to, the purpose of the research. Commit to fulfill..."
+    ],
+    "full_text_file": "doc_tiktok_research_api.txt"
+  },
+  {
+    "key": "youtube_quota",
+    "url": "https://developers.google.com/youtube/v3/getting-started",
+    "status": 200,
+    "final_url": "https://developers.google.com/youtube/data/getting-started",
+    "text_len": 21280,
+    "head": " YouTube Data API Overview | Google for Developers Skip to main content YouTube Data API / English Deutsch Espa\u00f1ol Espa\u00f1ol \u2013 Am\u00e9rica Latina Fran\u00e7ais Indonesia Italiano Polski Portugu\u00eas \u2013 Brasil Ti\u00ea\u0301ng Vi\u00ea\u0323t T\u00fcrk\u00e7e \u0420\u0443\u0441\u0441\u043a\u0438\u0439 \u05e2\u05d1\u05e8\u05d9\u05ea \u0627\u0644\u0639\u0631\u0628\u064a\u0651\u0629 \u0641\u0627\u0631\u0633\u06cc \u0939\u093f\u0902\u0926\u0940 \u09ac\u09be\u0982\u09b2\u09be \u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22 \u4e2d\u6587 \u2013 \u7b80\u4f53 \u4e2d\u6587 \u2013 \u7e41\u9ad4 \u65e5\u672c\u8a9e \ud55c\uad6d\uc5b4 Sign in Home Guides Reference Samples YouTube Data API Home Guides Reference Samples Overview Client Libraries Authorize Requests Overview Get Auth Credentials Server-side Web Apps Client-side Web Apps Installed Apps Devices Quickstarts Android Apps Script Go iOS Java JavaScript Node.js PHP Python Ruby Guides and Tutorials Quota costs for API requests Quota and Compliance Audits Upload a Video Send Resumable U",
+    "keyword_excerpts": [
+      "[10,000] ...invalid requests, incur at least a one-point quota cost. You can find the quota available to your application in the API Console . Projects that enable the YouTube Data API have a default quota allocation of 100 search.list calls, 100 videos.insert calls, and 10,000 units per day combined for all other endpoints. Default quota, which is subject to change, helps us optimize quota allocations and scale our infrastructure in a way that is more meaningful to our API users. You can see your quota usage on the Quotas page in the API Console. Note: If you reach the quota limit, you can request additional quota by completing the Quota extension request form for YouTube API Servic...",
+      "[quota] ...s Reference Samples Overview Client Libraries Authorize Requests Overview Get Auth Credentials Server-side Web Apps Client-side Web Apps Installed Apps Devices Quickstarts Android Apps Script Go iOS Java JavaScript Node.js PHP Python Ruby Guides and Tutorials Quota costs for API requests Quota and Compliance Audits Upload a Video Send Resumable Uploads Find MadeForKids video status Subscribe to Push Notifications Work with Channel IDs Move from ClientLogin to OAuth Sample Requests Implementation Guide Overview Activities Captions Channels Comments Pagination Partial responses Playlists Ratings Search requests Subscriptions Videos Tools APIs Explorer Home Products YouTube ...",
+      "[units] ... requests, incur at least a one-point quota cost. You can find the quota available to your application in the API Console . Projects that enable the YouTube Data API have a default quota allocation of 100 search.list calls, 100 videos.insert calls, and 10,000 units per day combined for all other endpoints. Default quota, which is subject to change, helps us optimize quota allocations and scale our infrastructure in a way that is more meaningful to our API users. You can see your quota usage on the Quotas page in the API Console. Note: If you reach the quota limit, you can request additional quota by completing the Quota extension request form for YouTube API Services. Cal..."
+    ],
+    "full_text_file": "doc_youtube_quota.txt"
+  },
+  {
+    "key": "threads_api",
+    "url": "https://developers.facebook.com/docs/threads-api",
+    "status": 404,
+    "final_url": "https://developers.facebook.com/docs/threads-api",
+    "text_len": 42,
+    "head": " Page Not Found - Meta for Developers --> ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_threads_api.txt"
+  },
+  {
+    "key": "pytrends_readme",
+    "url": "https://raw.githubusercontent.com/GeneralMills/pytrends/master/README.md",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/GeneralMills/pytrends/master/README.md",
+    "text_len": 11605,
+    "head": "# pytrends ## Introduction Unofficial API for Google Trends Allows simple interface for automating downloading of reports from Google Trends. Only good until Google changes their backend again :-P. When that happens feel free to contribute! **Looking for maintainers!** Please open an issue with a method of contacting you if you're interested. ## Table of Contents * [Installation](#installation) * [API](#api) * [API Methods](#api-methods) * [Common API Parameters](#common-api-parameters) * [Interest Over Time](#interest-over-time) * [Multirange Interest Over Time](#multirange-interest-over-time) * [Historical Hourly Interest](#historical-hourly-interest) * [Interest by Region](#interest-by-re",
+    "keyword_excerpts": [
+      "[unofficial] ...# pytrends ## Introduction Unofficial API for Google Trends Allows simple interface for automating downloading of reports from Google Trends. Only good until Google changes their backend again :-P. When that happens feel free to contribute! **Looking for maintainers!** Please open an issue with a method of contacting you if you're interested. ## Table of Contents * [Installation](#installation) * [API](#api) * [API Methods](#api-methods) * [Co...",
+      "[API] ...# pytrends ## Introduction Unofficial API for Google Trends Allows simple interface for automating downloading of reports from Google Trends. Only good until Google changes their backend again :-P. When that happens feel free to contribute! **Looking for maintainers!** Please open an issue with a method of contacting you if you're interested. ## Table of Contents * [Installation](#installation) * [API](#api) * [API Methods](#api-methods) * [Common API Pa...",
+      "[Google Trends] ...# pytrends ## Introduction Unofficial API for Google Trends Allows simple interface for automating downloading of reports from Google Trends. Only good until Google changes their backend again :-P. When that happens feel free to contribute! **Looking for maintainers!** Please open an issue with a method of contacting you if you're interested. ## Table of Contents * [Installation](#installation) * [API](#api) * [API Methods](#api-methods) * [Common API Parameters..."
+    ],
+    "full_text_file": "doc_pytrends_readme.txt"
+  },
+  {
+    "key": "vader_readme",
+    "url": "https://raw.githubusercontent.com/cjhutto/vaderSentiment/master/README.rst",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/cjhutto/vaderSentiment/master/README.rst",
+    "text_len": 16752,
+    "head": "==================================== VADER-Sentiment-Analysis ==================================== VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is *specifically attuned to sentiments expressed in social media*. It is fully open-sourced under the `[MIT License] `_ (we sincerely appreciate all attributions and readily accept most contributions, but please don't hold us liable). * `Features and Updates`_ * Introduction_ * `Citation Information`_ * Installation_ * `Resources and Dataset Descriptions`_ * `Python Demo and Code Examples`_ * `Demo, including example of non-English text translations`_ * `Code Examples`_ * `About the ",
+    "keyword_excerpts": [
+      "[heuristic] ...entiment analysis engine. Implements the grammatical and syntactical rules described in the paper, incorporating empirically derived quantifications for the impact of each rule on the perceived intensity of sentiment in sentence-level text. Importantly, these heuristics go beyond what would normally be captured in a typical bag-of-words model. They incorporate **word-order sensitive relationships** between terms. For example, degree modifiers (also called intensifiers, booster words, or degree adverbs) impact sentiment intensity by either increasing or decreasing the intensity. Consider these examples: (a) \"The service here is extremely good\" (b) \"The service here is good...",
+      "[sentiment] ...==================================== VADER-Sentiment-Analysis ==================================== VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is *specifically attuned to sentiments expressed in social media*. It is fully open-sourced under the `[MIT License] `_ (we sincerely appreciate all attributions and readily accept most contributions, but please don't hold us liable). * `Features and ...",
+      "[compound] ...ch utf-8 emoji such as such as \ud83d\udc98 and \ud83d\udc8b and \ud83d\ude01\", # emojis handled \"Not bad at all\" # Capitalized negation ] analyzer = SentimentIntensityAnalyzer() for sentence in sentences: vs = analyzer.polarity_scores(sentence) print(\"{:- = 0.05 #. **neutral sentiment**: (``compound`` score > -0.05) and (``compound`` score `_ by apanimesh061 #. JavaScript `vaderSentiment-js `_ by nimaeskandary #. PHP `php-vadersentiment `_ by abusby #. Scala `Sentiment `_ by ziyasal #. C# `vadersharp `_ by codingupastorm Jordan Andrews #. Rust `vader-sentiment-rust `_ by ckw017 #. Go `GoVader `_ by jonreiter Jon Reiter #. R `R Vader `_ by Katie Roehrick ..."
+    ],
+    "full_text_file": "doc_vader_readme.txt"
+  },
+  {
+    "key": "gdpr_article_5",
+    "url": "https://gdpr-info.eu/art-5-gdpr/",
+    "status": 200,
+    "final_url": "https://gdpr-info.eu/art-5-gdpr/",
+    "text_len": 7983,
+    "head": " Art. 5 GDPR \u2013 Principles relating to processing of personal data - General Data Protection Regulation (GDPR) Search for: General Data Protection Regulation (GDPR) Final text of the GDPR including recitals. Menu and widgets DSGVO GDPR Recitals Key Issues AI Act Data Act Skip to content Search for: GDPR Recitals Key Issues AI Act Data Act GDPR Chapter 1 (Art. 1 \u2013 4) General provisions Art. 1 Subject-matter and objectives Art. 2 Material scope Art. 3 Territorial scope Art. 4 Definitions Chapter 2 (Art. 5 \u2013 11) Principles Art. 5 Principles relating to processing of personal data Art. 6 Lawfulness of processing Art. 7 Conditions for consent Art. 8 Conditions applicable to child\u2019s consent in rela",
+    "keyword_excerpts": [
+      "[data minimisation] ...tatistical purposes shall, in accordance with Article 89 (1), not be considered to be incompatible with the initial purposes (\u2018purpose limitation\u2019); adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed (\u2018data minimisation\u2019); accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that are inaccurate, having regard to the purposes for which they are processed, are erased or rectified without delay (\u2018accuracy\u2019); kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; ...",
+      "[purpose limitation] ...ith those purposes; further processing for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes shall, in accordance with Article 89 (1), not be considered to be incompatible with the initial purposes (\u2018purpose limitation\u2019); adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed (\u2018data minimisation\u2019); accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that are inaccurate, having regard to the purposes for which they are processed, are erased or rectified without delay (\u2018accuracy\u2019); kept in a form which...",
+      "[accuracy] ...ed (\u2018data minimisation\u2019); accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that are inaccurate, having regard to the purposes for which they are processed, are erased or rectified without delay (\u2018accuracy\u2019); kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed; personal data may be stored for longer periods insofar as the personal data will be processed solely for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes in accordance with Article 89( 1) subjec..."
+    ],
+    "full_text_file": "doc_gdpr_article_5.txt"
+  },
+  {
+    "key": "gdpr_article_6",
+    "url": "https://gdpr-info.eu/art-6-gdpr/",
+    "status": 200,
+    "final_url": "https://gdpr-info.eu/art-6-gdpr/",
+    "text_len": 10536,
+    "head": " Art. 6 GDPR \u2013 Lawfulness of processing - General Data Protection Regulation (GDPR) Search for: General Data Protection Regulation (GDPR) Final text of the GDPR including recitals. Menu and widgets DSGVO GDPR Recitals Key Issues AI Act Data Act Skip to content Search for: GDPR Recitals Key Issues AI Act Data Act GDPR Chapter 1 (Art. 1 \u2013 4) General provisions Art. 1 Subject-matter and objectives Art. 2 Material scope Art. 3 Territorial scope Art. 4 Definitions Chapter 2 (Art. 5 \u2013 11) Principles Art. 5 Principles relating to processing of personal data Art. 6 Lawfulness of processing Art. 7 Conditions for consent Art. 8 Conditions applicable to child\u2019s consent in relation to information societ",
+    "keyword_excerpts": [
+      "[consent] ...rovisions Art. 1 Subject-matter and objectives Art. 2 Material scope Art. 3 Territorial scope Art. 4 Definitions Chapter 2 (Art. 5 \u2013 11) Principles Art. 5 Principles relating to processing of personal data Art. 6 Lawfulness of processing Art. 7 Conditions for consent Art. 8 Conditions applicable to child\u2019s consent in relation to information society services Art. 9 Processing of special categories of personal data Art. 10 Processing of personal data relating to criminal convictions and offences Art. 11 Processing which does not require identification Chapter 3 (Art. 12 \u2013 23) Rights of the data subject Art. 12 Transparent information, communication and modalities for the ex..."
+    ],
+    "full_text_file": "doc_gdpr_article_6.txt"
+  },
+  {
+    "key": "eprivacy_art_5",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32002L0058",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32002L0058",
+    "text_len": 0,
+    "head": "",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_eprivacy_art_5.txt"
+  },
+  {
+    "key": "hiq_linkedin",
+    "url": "https://supreme.justia.com/cases/federal/appellate-courts/ca9/17-16783/17-16783-2021-04-15.html",
+    "status": 403,
+    "final_url": "https://supreme.justia.com/cases/federal/appellate-courts/ca9/17-16783/17-16783-2021-04-15.html",
+    "text_len": 60,
+    "head": " Just a moment... Enable JavaScript and cookies to continue ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_hiq_linkedin.txt"
+  },
+  {
+    "key": "twitter_automation_rule",
+    "url": "https://help.x.com/en/rules-and-policies/x-automation",
+    "status": 403,
+    "final_url": "https://help.x.com/en/rules-and-policies/x-automation",
+    "text_len": 60,
+    "head": " Just a moment... Enable JavaScript and cookies to continue ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_twitter_automation_rule.txt"
+  },
+  {
+    "key": "reddit_api_policy",
+    "url": "https://support.reddithelp.com/hc/en-us/articles/14945211791892-Reddit-API-Access",
+    "status": 403,
+    "final_url": "https://support.reddithelp.com/hc/en-us/articles/14945211791892-Reddit-API-Access",
+    "text_len": 60,
+    "head": " Just a moment... Enable JavaScript and cookies to continue ",
+    "keyword_excerpts": [],
+    "full_text_file": "doc_reddit_api_policy.txt"
+  }
+]

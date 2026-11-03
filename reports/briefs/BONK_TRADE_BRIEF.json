@@ -1,0 +1,202 @@
+{
+  "token": {
+    "address": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "chain": "solana",
+    "symbol": "Bonk",
+    "pair_address": "5zpyutJu9ee6jFymDGoK7F6S5Kczqtc9FomP3ueKuyA9",
+    "price_usd": 2.762e-06,
+    "liquidity_usd": 278276.94,
+    "dex": "orca",
+    "url": "https://dexscreener.com/solana/5zpyutju9ee6jfymdgok7f6s5kczqtc9fomp3uekuya9"
+  },
+  "verdict": "WATCH",
+  "confidence": "LOW",
+  "generated_at": "2026-11-03T05:03:44+00:00",
+  "legs": [
+    {
+      "name": "IDENTITY",
+      "verdict": "SUPPORTS",
+      "detail": "Bonk on orca, pool $278,277, price $2.762e-06",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "symbol": "Bonk",
+        "name": "Bonk",
+        "pair_address": "5zpyutJu9ee6jFymDGoK7F6S5Kczqtc9FomP3ueKuyA9",
+        "price_usd": 2.762e-06,
+        "liquidity_usd": 278276.94,
+        "fdv_usd": 245488855,
+        "volume_24h_usd": 170911.72,
+        "txns_24h": {
+          "buys": 5698,
+          "sells": 4372
+        },
+        "price_change_h24": -5.38,
+        "dex": "orca",
+        "quote_symbol": "SOL",
+        "url": "https://dexscreener.com/solana/5zpyutju9ee6jfymdgok7f6s5kczqtc9fomp3uekuya9",
+        "exact_base_match": true
+      }
+    },
+    {
+      "name": "RESEARCH_EDGE",
+      "verdict": "SUPPORTS",
+      "detail": "2 specification(s) survived the FULL validation gauntlet: regime_switch_cross_sectional_sector_rotation, nasdaq_12m_timeseries_momentum. That establishes a non-random PRIOR for the rule - it is not a live signal and not permission to trade it.",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "specs_total": 13,
+        "supported_full_gauntlet": [
+          "regime_switch_cross_sectional_sector_rotation",
+          "nasdaq_12m_timeseries_momentum"
+        ],
+        "supported_quick_only": [
+          "v1_crypto_momentum_20d_ma"
+        ],
+        "refuted": 10
+      }
+    },
+    {
+      "name": "QUALIFIED_WALLETS",
+      "verdict": "CONFLICTS",
+      "detail": "NO qualified wallet holds this token. 0 wallet(s) have passed the consistency gate in total and none of them holds this asset.",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "qualified_wallets_total": 0,
+        "wallets_holding_this_token": 0,
+        "qualified_holding_this_token": 0,
+        "rejected_holding_this_token": 0,
+        "priced_artefact_wallets": 1
+      }
+    },
+    {
+      "name": "NARRATIVE",
+      "verdict": "SUPPORTS",
+      "detail": "narrative specificity 9.0 of 5.0 needed for niche (niche=True)",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "specificity_score": 9.0,
+        "is_niche": true,
+        "niche_threshold": 5.0,
+        "signals": {
+          "community_tag": true,
+          "multi_platform_socials": true,
+          "has_community_channel": true,
+          "has_header_image": true,
+          "has_website": true,
+          "is_verified": true,
+          "launchpad_random_name": false,
+          "trend_keyword_name": false
+        },
+        "reasons": [
+          "Jupiter tags the token 'community'",
+          "has a community channel (telegram/discord)",
+          "social presence on 3 platforms",
+          "has a designed identity header",
+          "has a dedicated website"
+        ],
+        "weights": {
+          "community_tag": 2.0,
+          "multi_platform_socials": 2.0,
+          "has_community_channel": 2.0,
+          "has_header_image": 1.0,
+          "has_website": 1.0,
+          "is_verified": 1.0,
+          "launchpad_random_name": -1.0,
+          "trend_keyword_name": -1.0
+        }
+      }
+    },
+    {
+      "name": "TRACTION",
+      "verdict": "SUPPORTS",
+      "detail": "community size 43,585 (discord 32,581, telegram 11,004); 24h buy/sell 1.303",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "price_usd": "0.000002759",
+        "liquidity_usd": 278055.27,
+        "volume_24h_usd": 170966.88,
+        "market_cap": 242819625,
+        "buys_24h": 5698,
+        "sells_24h": 4373,
+        "buy_sell_ratio_24h": 1.303,
+        "community_members": 43585,
+        "community_by_platform": {
+          "telegram": 11004,
+          "discord": 32581
+        }
+      }
+    },
+    {
+      "name": "HOLDER_RISK",
+      "verdict": "NEUTRAL",
+      "detail": "the top 10 holders control 39.0% of the supply",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "source": "rugcheck",
+        "holders_read": 10,
+        "top10_supply_share": 0.3897,
+        "top1_supply_share": 0.0949,
+        "insider_supply_share": 0.0
+      }
+    },
+    {
+      "name": "LIQUIDITY",
+      "verdict": "SUPPORTS",
+      "detail": "$278,277 of pool depth supports a $1,000 position (1% rule, ANALYST_CHOICE)",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "pool_liquidity_usd": 278276.94,
+        "max_position_usd": 2782.7694,
+        "target_usd": 1000.0,
+        "target_pct_of_pool": 0.00359,
+        "rule": "ANALYST_CHOICE: position <= 1% of pool liquidity"
+      }
+    },
+    {
+      "name": "DATA_QUALITY",
+      "verdict": "SUPPORTS",
+      "detail": "7/7 evidence legs answered (7 live)",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "legs_total": 7,
+        "legs_answered": 7,
+        "legs_unavailable": 0,
+        "legs_live": 7,
+        "answered_fraction": 1.0,
+        "verdict_reason": "a research prior exists but no qualified wallet holds this token - the prior alone is not a signal"
+      }
+    }
+  ],
+  "entry": {
+    "basis": "NOT EVIDENCE-BASED - no qualified wallet holds this token, so there is no reference level",
+    "price_usd": null
+  },
+  "exit": {
+    "basis": "NOT EVIDENCE-BASED - no qualified wallet holds this token, so there is no reference exit",
+    "hold_days_median": null
+  },
+  "sizing": {
+    "position_usd": 0.0,
+    "note": "the verdict is WATCH - position size is zero"
+  },
+  "invalidation": [
+    "Liquidity falls below the level assumed in the sizing calculation.",
+    "A qualified wallet exits - their exit is the reference exit.",
+    "A re-run of the consistency gate returns a different verdict for a qualified wallet.",
+    "Holder concentration rises above the level in the HOLDER_RISK leg.",
+    "Pair 5zpyutJu9ee6jFymDGoK7F6S5Kczqtc9FomP3ueKuyA9 stops printing a price."
+  ],
+  "gaps": [
+    "none - every evidence leg answered"
+  ],
+  "provenance_summary": {
+    "LIVE": 8
+  }
+}

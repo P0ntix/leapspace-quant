@@ -1,0 +1,55 @@
+{
+  "archive": {
+    "status": "ok",
+    "archive_url": "https://eth.drpc.org",
+    "probe_block": 15798766,
+    "providers": [
+      {
+        "url": "https://eth.drpc.org",
+        "http_status": 200,
+        "archive": true,
+        "rpc_error": null
+      }
+    ]
+  },
+  "n_found": 1,
+  "rows": [
+    {
+      "wallet": "0xAf2358e98683265cBd3a48509123d390dDf54534",
+      "token": "0x6982508145454Ce325dDbE47a25d4eC3d2311933",
+      "symbol": "PEPE",
+      "side": "buy",
+      "qty": 2519324010963.419,
+      "block": 17047545,
+      "ts": 1681501619,
+      "pool": "0xa43fe16908251ee70ef74718545e4fe6c5ccec9f",
+      "tx": "0x08153c0546e4f73b178edae90d1e30fb519c7c49ff0dcd00e4b0bcd74dab468c",
+      "token0": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "pool_state_status": "ok",
+      "pool_kind": "v2",
+      "pool_token0": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+      "pool_token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "price_in_quote": 5.178071235577877e-15,
+      "quote_token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "reconstructed_usd": null,
+      "usd_status": "quote_price_unavailable",
+      "reference_usd": null,
+      "reference_http": null,
+      "swap_status": "ok",
+      "swap_price_in_quote": null,
+      "swap_n": null
+    }
+  ],
+  "accuracy": {
+    "n": 0,
+    "median_abs_err_pct": null,
+    "p90_abs_err_pct": null,
+    "max_abs_err_pct": null
+  },
+  "coverage": {
+    "pool_state": 1,
+    "swap_event": 1,
+    "total": 1
+  }
+}

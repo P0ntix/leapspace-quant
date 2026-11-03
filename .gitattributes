@@ -1,0 +1,21 @@
+# Normalise line endings on checkin, and keep the working copy sane on
+# Windows. Without this, every file warns about LF -> CRLF on add.
+
+* text=auto eol=lf
+
+*.py   text eol=lf diff=python
+*.md   text eol=lf diff=markdown
+*.json text eol=lf
+*.txt  text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.sh   text eol=lf
+
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.ttf  binary

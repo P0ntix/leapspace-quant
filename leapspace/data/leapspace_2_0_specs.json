@@ -1,0 +1,938 @@
+[
+  {
+    "name": "crypto_ma20_trend_momentum",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section \"Momentum and Mean Reversion Trading Strategies\", subsection \"A+ momentum model setup\": \"Practical momentum version to test - Entry: long if close > 20-day moving average and 20-day return is positive; short or exit if not. The 20-day moving-average family and trend-following indicators are directly supported in crypto studies.\" Sizing: \"volatility-scaled position size with a capped max allocation. Volatility scaling is consistent with momentum research and improves robustness.\" Exit: \"stop-loss plus trend failure exit. Stop-loss rules materially improved crypto momentum results.\" The paper's claim is that a simple, risk-managed 20-day trend rule on liquid crypto names is one of the two most defensible retail setups in its evidence set (\"the most defensible setup from this evidence is risk-managed trend following for momentum\"), and it warns that the same rule must be liquidity-aware and cost-aware because \"momentum and trend rules are more likely to survive in liquid assets and are sensitive to transaction costs and turnover\".",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "sma_gap",
+        "params": {
+          "lookback": 20
+        }
+      },
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 20,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "time_series_threshold",
+      "params": {
+        "feature": "sma_gap",
+        "threshold": 0.0
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "max_position": 0.2,
+      "rebalance": "daily",
+      "long_only": true,
+      "max_names": null
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 1.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "Distilled from the LeapSpace 2.0 PDF, section \"Momentum and Mean Reversion Trading Strategies\". The paper states the rule, the universe and the risk controls but no backtest window, no cost schedule, no rebalance cadence and no position-size numbers; every such value is an analyst choice and is labelled analyst_choice or engine_default in parameter_provenance. The paper also reports no performance statistics of its own - it is a research synthesis, so no in-sample Sharpe can be attributed to it. ENGINE GATE: this spec holds engine-default values for some fields the intake gate probes - execution.cost_multiplier=1.0 in every case, plus portfolio.rebalance, portfolio.long_only or the signal rank pair in the specs where parameter_provenance says so. To run it without --assume-defaults, add intake.accepted_defaults listing those condition keys (e.g. [\"costs\", \"rebalance\", \"direction\", \"signal\"]) so the gate records a deliberate acceptance of the engine default instead of reading it as an unanswered question. Also note: the paper states no costs, so cost_multiplier=1.0 means the engine's conservative per-asset-class DEFAULT_COSTS, not a measured fee schedule."
+    },
+    "parameter_provenance": {
+      "features.sma_gap.lookback": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Signal / \"Practical momentum version to test\"",
+        "note": "The paper's trend proxy for crypto is a 20-day moving average (\"close > 20-day moving average\"; \"a shorter, crypto-adapted trend window such as 20-day or 2-4 week lookback for crypto\"). sma_gap is (price / SMA) - 1 over 20 bars, so it is that moving average expressed as a relative gap."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"Practical momentum version to test\" (entry clause \"and 20-day return is positive\")",
+        "note": "Second clause of the paper's entry rule, declared as a feature for reference. It is NOT the traded feature - see additional_conditions."
+      },
+      "features.momentum.skip": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper states no skip. skip=0 measures the trailing 20 bars including the most recent bar (engine default)."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The engine's time_series_threshold accepts one feature. sma_gap is chosen as the primary feature because the paper's direction rule is stated relative to the moving average (\"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it\")."
+      },
+      "signal.threshold": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Direction rule",
+        "note": "The paper states the comparison rather than a number: go long when price is above the trend proxy. Because sma_gap = price/SMA - 1, threshold 0.0 reproduces the paper's test exactly (positive = above the 20-day MA)."
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe (\"Liquid Nasdaq names and top liquid crypto names only\")",
+        "note": "The crypto preset (BTC, ETH, LTC, BCH, XRP, SOL, ADA, DOGE, AVAX, LINK) is the engine's liquid-crypto basket and stands in for the paper's \"top liquid crypto names\". The paper names no tickers, so the ticker mapping is the analyst's choice; the universe REQUIREMENT is the paper's."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper specifies no backtest window. 2021-01-01 is chosen so every symbol in the crypto preset has history (SOL/AVAX/ADA list from 2020-21), giving ~5.8 years of daily bars through 2026 and more than 20 bars of lookback warm-up."
+      },
+      "period.end": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "null = latest available bar (engine default). The paper states no end date."
+      },
+      "period.interval": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "'1d' is the engine default and matches the paper's daily-bar language (\"20-day moving average\", \"20-day return\")."
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper gives no rebalance cadence for the crypto momentum rule. daily re-tests the 20-day MA condition on every close and suits the paper's volatility-aware, stop-managed design."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper requires \"a capped max allocation\" but states no number. 0.2 is the analyst's cap; with up to 10 names in the book the cap only binds when fewer than 5 names are held, in which case realised gross falls below the 1.0 target (this is expected behaviour of the engine's hard cap, not a defect)."
+      },
+      "portfolio.gross_leverage": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper says \"go short or flat when below, if your venue supports it\". The engine's time_series_threshold signal emits only 0/+1, so the short leg cannot be expressed; long_only=true is the encodable subset. See additional_conditions."
+      },
+      "portfolio.max_names": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "null = no cap on concurrent names. The paper states no limit."
+      },
+      "execution.fill_at": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 'open' (decision on bar t-1, fill at the open of bar t). The paper states no execution convention."
+      },
+      "execution.cost_multiplier": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0, i.e. the engine's conservative per-asset-class DEFAULT_COSTS (crypto is already set ~10x the ETF cost). The paper insists costs matter (\"nice-looking indicator results can collapse once transaction costs and out-of-sample testing are included\") but states no fee, spread or slippage numbers, so the engine defaults are retained unchanged."
+      },
+      "execution.max_participation": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 0.10 - at most 10% of a bar's dollar volume per order. The paper's liquidity warning supports keeping the cap but states no number."
+      },
+      "capital": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 100000.0. The paper states no account size."
+      },
+      "volatility_sizing": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "NOT ENCODED. The paper requires \"scale position size by inverse volatility\" / \"volatility-scaled position size with a capped max allocation\", but the fixed portfolio block for these specs has no vol_target field. If the consuming schema allows it, add portfolio.vol_target (the paper gives no target level; 0.15-0.20 annualised is the analyst's suggestion)."
+      },
+      "additional_conditions": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper's entry rule has two clauses - \"close > 20-day moving average\" AND \"20-day return is positive\" - and the engine takes one feature per signal, so only the first is traded (the momentum feature is declared but not enforced). The paper's risk filter (\"Trade only when realized volatility is not extreme\") and its stop-loss overlay (\"Add a stop-loss overlay\", \"Exit: stop-loss plus trend failure exit\") are also not expressible: the engine has no stop primitive and no second gate on a time_series_threshold signal."
+      }
+    }
+  },
+  {
+    "name": "nasdaq_12m_timeseries_momentum",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section \"Momentum and Mean Reversion Trading Strategies\", subsection \"A+ momentum model setup\": \"Signal: Use a 12-month time-series momentum on Nasdaq and a shorter, crypto-adapted trend window such as 20-day or 2-4 week lookback for crypto. Time-series momentum is conventionally built on the past 12-month return.\" Direction rule: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Risk filter: \"Trade only when realized volatility is not extreme, and scale position size by inverse volatility.\" Stop rule: \"Add a stop-loss overlay.\" Regime filter: \"Avoid broad, always-on exposure; switch off or reduce size in regimes where momentum weakens.\" The paper's claim is that a risk-managed 12-month time-series momentum rule on liquid Nasdaq names is the higher-frequency-liquid, evidence-backed retail momentum setup - \"the most defensible setup from this evidence is risk-managed trend following for momentum\" - with the caveat that momentum rules \"are sensitive to transaction costs and turnover\".",
+    "universe": {
+      "preset": "us_equity_style"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 252,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "time_series_threshold",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "max_position": 0.2,
+      "rebalance": "monthly",
+      "long_only": true,
+      "max_names": null
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 1.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "Distilled from the LeapSpace 2.0 PDF, section \"Momentum and Mean Reversion Trading Strategies\". The paper gives the signal construction (12-month time-series momentum on Nasdaq) but no test window, no rebalance cadence, no sizing numbers and no shorting convention; those are analyst choices and are labelled as such in parameter_provenance. The paper reports no performance statistics of its own. ENGINE GATE: this spec holds engine-default values for some fields the intake gate probes - execution.cost_multiplier=1.0 in every case, plus portfolio.rebalance, portfolio.long_only or the signal rank pair in the specs where parameter_provenance says so. To run it without --assume-defaults, add intake.accepted_defaults listing those condition keys (e.g. [\"costs\", \"rebalance\", \"direction\", \"signal\"]) so the gate records a deliberate acceptance of the engine default instead of reading it as an unanswered question. Also note: the paper states no costs, so cost_multiplier=1.0 means the engine's conservative per-asset-class DEFAULT_COSTS, not a measured fee schedule."
+    },
+    "parameter_provenance": {
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Signal",
+        "note": "The paper states a \"12-month time-series momentum\" for Nasdaq and that it is \"conventionally built on the past 12-month return\". 12 months maps to 252 daily bars."
+      },
+      "features.momentum.skip": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper states no skip. skip=0 measures the trailing 252 bars including the most recent one, the literal reading of \"past 12-month return\". The common 12-1 convention (skip=21) is NOT the paper's statement and would be an analyst substitution."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Only one feature is declared, so the engine would infer it; naming it explicitly is the analyst's clarity choice."
+      },
+      "signal.threshold": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Signal + Direction rule",
+        "note": "The paper's time-series momentum is the sign of the trailing 12-month return and its direction rule is long-above-the-trend-proxy / flat-below. Threshold 0.0 is that sign test: long when the 12-month return is positive, flat otherwise."
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe (\"Liquid Nasdaq names and top liquid crypto names only\")",
+        "note": "us_equity_style (SPY, IWM, MDY, RSP, QQQ, DIA) is the engine preset that carries the Nasdaq-100 tracker QQQ alongside other liquid large-cap ETFs, and matches the paper's requirement of liquid Nasdaq names. The paper names no tickers, so the ticker mapping is the analyst's choice; the universe REQUIREMENT (liquid Nasdaq names) is the paper's."
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper gives no cadence for the 12-month rule and explicitly lists the rebalance cadence as an open question. monthly keeps a 12-month signal fresh on a one-month review and keeps turnover low, which matters because the paper stresses these rules are \"sensitive to transaction costs and turnover\". NOTE: 'monthly' is also the engine's own default value, so the intake gate will read this field as un-supplied until it is recorded as an accepted default (intake.accepted_defaults: [\"rebalance\"])."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper requires a capped allocation (\"volatility-scaled position size with a capped max allocation\") but states no number. 0.2 is the analyst's cap; with 6 preset members a 1.0 gross book gives ~0.167 per name, so the cap only binds in a narrow book."
+      },
+      "portfolio.gross_leverage": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper's direction rule allows a short leg \"if your venue supports it\"; the engine's time_series_threshold signal emits only 0/+1, so long_only=true is the encodable subset. See additional_conditions."
+      },
+      "portfolio.max_names": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "null = no cap on concurrent names. The paper states no limit."
+      },
+      "execution.fill_at": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 'open'. The paper states no execution convention."
+      },
+      "execution.cost_multiplier": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS). The paper stresses cost sensitivity but states no fee, spread or slippage numbers."
+      },
+      "execution.max_participation": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+      },
+      "capital": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 100000.0. The paper states no account size."
+      },
+      "volatility_sizing": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "NOT ENCODED. The paper's risk filter is \"Trade only when realized volatility is not extreme, and scale position size by inverse volatility\", but the fixed portfolio block for these specs has no vol_target field. If the consuming schema allows it, add portfolio.vol_target (the paper states no level; 0.10-0.15 annualised is the analyst's suggestion)."
+      },
+      "additional_conditions": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Three of the paper's stated components for this model cannot be encoded: (a) the stop-loss overlay (\"Add a stop-loss overlay\"; \"Stop-loss momentum outperforms other crypto momentum variants and improves downside control\"); (b) the regime filter (\"Avoid broad, always-on exposure; switch off or reduce size in regimes where momentum weakens\"); (c) the optional short leg (\"go short or flat when below, if your venue supports it\"), because time_series_threshold emits only 0/+1. The engine also has no stop-loss primitive, so the volatility-scaled stop the paper describes elsewhere cannot be represented."
+      }
+    }
+  },
+  {
+    "name": "sd_band_mean_reversion_crypto",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section \"Momentum and Mean Reversion Trading Strategies\" (\"A+ mean-reversion model setup\"): \"Signal: Use a z-score / s-score or cointegration spread... Entry: Enter when spread is stretched beyond a threshold; optionally use a buffer zone to avoid noise. Exit: Exit when spread reverts to mean; use tight time stops because crypto mean reversion can be fast. Risk filter: Require a regime check: only trade mean reversion when the asset/pair is not in a strong trend.\" Section \"Standard deviation based stop-loss strategies\" supplies the threshold: \"1.0 SD = first alert zone. 1.5 SD = stronger signal zone\" and \"1 and 1.5 standard deviation thresholds produced better results than the classic pairs-trading setup in one study\". The paper's claim is that fading a volatility-normalised stretch of 1.0-1.5 standard deviations from the mean, with a fast exit and a wide catastrophe stop placed beyond the entry zone, is the evidence-backed reversion setup - \"the most defensible setup from this evidence is ... tight, regime-filtered spread trading for reversion\". Section \"Stop loss and trailing stop strategies\" adds the risk overlay: \"use a wide fixed stop plus time stop for mean reversion\".",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 20
+        }
+      }
+    ],
+    "signal": {
+      "type": "time_series_zscore",
+      "params": {
+        "feature": "zscore",
+        "entry": 1.5,
+        "exit": 0.0
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "max_position": 0.2,
+      "rebalance": "daily",
+      "long_only": false,
+      "max_names": null
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 1.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 2,
+      "notes": "Distilled from the LeapSpace 2.0 PDF, sections \"Momentum and Mean Reversion Trading Strategies\" and \"Standard deviation based stop-loss strategies\". The paper's reversion model is a PAIR/SPREAD model (cointegration, Hurst filtering, dynamic hedge ratios); the engine has no pair or spread construction, so this spec computes each symbol's own price z-score against its own 20-day mean - that degradation is documented under parameter_provenance.additional_conditions and must be read as a different question from the one the paper asked. The source documents two entry thresholds (1.0 and 1.5 SD), so variants_tried=2 is recorded; the spec runs the stronger 1.5 SD band. The paper states no window, costs, cadence or sizing numbers. ENGINE GATE: this spec holds engine-default values for some fields the intake gate probes - execution.cost_multiplier=1.0 in every case, plus portfolio.rebalance, portfolio.long_only or the signal rank pair in the specs where parameter_provenance says so. To run it without --assume-defaults, add intake.accepted_defaults listing those condition keys (e.g. [\"costs\", \"rebalance\", \"direction\", \"signal\"]) so the gate records a deliberate acceptance of the engine default instead of reading it as an unanswered question. Also note: the paper states no costs, so cost_multiplier=1.0 means the engine's conservative per-asset-class DEFAULT_COSTS, not a measured fee schedule."
+    },
+    "parameter_provenance": {
+      "features.zscore.lookback": {
+        "source": "paper",
+        "citation": "Standard deviation based stop-loss strategies -> \"How to do it in practice\" (step 2) and the worked examples",
+        "note": "The paper's volatility unit for every band and stop rule is a rolling standard deviation over \"a rolling window, often around a trading month in research examples\", and every worked example uses a 20-day SD (Nasdaq $100 with 20-day SD $4; BTC $60,000 with 20-day SD $2,000). zscore over 20 bars = (price - SMA) / SD on exactly that window, so the paper's \"1.0 to 1.5 SD\" language maps directly onto |z|."
+      },
+      "signal.entry": {
+        "source": "paper",
+        "citation": "Standard deviation based stop-loss strategies -> \"Why traders use 1.0 to 1.5 SD\" and \"Set the band\"",
+        "note": "The paper reports that \"1 and 1.5 standard deviation thresholds produced better results than the classic pairs-trading setup in one study\" and labels 1.0 SD the first alert zone and 1.5 SD the stronger signal zone. This spec trades the stronger band (|z| > 1.5); the 1.0 SD early-warning band is the paper's alternative and is counted as the second variant."
+      },
+      "signal.exit": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ mean-reversion model setup\" -> Exit",
+        "note": "\"Exit when spread reverts to mean; use tight time stops because crypto mean reversion can be fast.\" Reverting to the mean is z = 0, so exit = 0.0 closes the position as the stretch normalises; the engine's time_series_zscore holds the position until |z| falls below the exit level."
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ mean-reversion model setup\" -> Universe",
+        "note": "\"Highly liquid pairs or a tightly screened basket; prioritize BTC/ETH-style liquid names and Nasdaq pairs with stable relationships.\" The crypto preset supplies the BTC/ETH-style liquid names; the paper names no tickers, so the ticker mapping is the analyst's choice and the pair structure is dropped (see additional_conditions)."
+      },
+      "portfolio.long_only": {
+        "source": "paper",
+        "citation": "Advanced momentum and mean-reversion trading models -> \"A+ mean-reversion model setup\" -> Practical TradingView-style rules",
+        "note": "\"Enter long when price is stretched below fair value ... Enter short on the opposite setup when the stretch and pressure reverse.\" The model is two-sided, so long_only=false matches the paper. NOTE: false is also the engine's default value, so the intake gate will read this field as un-supplied until it is recorded as an accepted default (intake.accepted_defaults: [\"direction\"])."
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper gives no cadence but is emphatic that reversion is a short-horizon edge (\"use tight time stops\", \"shorter holding periods help preserve returns against costs\", \"crypto reversal can switch within about a month\"). daily is the analyst's choice and is the fastest cadence the engine offers."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper requires a capped allocation but states no number for the reversion model. 0.2 is the analyst's cap; with up to 10 names the cap binds only when fewer than 5 names are held, in which case realised gross is below the 1.0 target."
+      },
+      "portfolio.gross_leverage": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+      },
+      "portfolio.max_names": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "null = no cap on concurrent names. The paper states no limit."
+      },
+      "execution.fill_at": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 'open'. The paper states no execution convention."
+      },
+      "execution.cost_multiplier": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS; crypto is ~10x the ETF cost). This matters here: the paper says \"shorter holding periods help preserve returns against costs\", but states no fee, spread or slippage numbers."
+      },
+      "execution.max_participation": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+      },
+      "capital": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 100000.0. The paper states no account size."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 20 bars of z-score warm-up."
+      },
+      "period.end": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "null = latest available bar. The paper states no end date."
+      },
+      "period.interval": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "'1d' is the engine default and matches the paper's daily-bar, 20-day-SD language."
+      },
+      "additional_conditions": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper's model is a SPREAD model: \"Use a z-score / s-score or cointegration spread\", \"For Nasdaq: use a cointegration or spread model on stable pairs\", \"For crypto: use dynamic cointegration or Hurst-filtered pairs\". The engine has no pair, cointegration or Hurst machinery, so the z-score here is each symbol's own price against its own 20-day mean - this tests a weaker, single-name version of the paper's claim and the user must know which question was answered. Three further paper components are not encodable: the regime filter (\"only trade mean reversion when the asset/pair is not in a strong trend\"), the time stop (\"use tight time stops\") and the catastrophe stop \"placed beyond the spread-entry zone, not inside it\" - the engine has no stop primitive. The optional buffer zone (\"to avoid noise\") is also not encoded."
+      }
+    }
+  },
+  {
+    "name": "bollinger20_2_breakout_crypto",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section \"Bollinger Bands indicator settings\" states the configuration: \"The standard Bollinger Bands setting is a 20-period moving average with bands set at 2 standard deviations above and below the middle band... If you want the default Bollinger Bands setting, use 20-period SMA + 2 SD bands\" and notes the bands \"let you see whether price is stretched relative to recent volatility\". Section \"Momentum and Mean Reversion Trading Strategies\" supplies the direction: \"Go long when price is above its trend proxy; go short or flat when below\" and \"Practical momentum version to test - Entry: long if close > 20-day moving average and 20-day return is positive\". The analyst's reading, which the paper does not state as a trade rule, is that a close above the 20-period, 2-SD upper band is the volatility-scaled, selective form of the paper's trend-following entry - a continuation trigger rather than a fade - which is why this spec trades the breakout instead of the stretch. Section \"Standard deviation for scalping strategies\" supports the volatility component of the rule: 1.0-1.5 SD bands are \"best as a stretch / stop / exit filter\" and are \"not a standalone signal by itself\".",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "bollinger_pct",
+        "params": {
+          "lookback": 20,
+          "nstd": 2.0
+        }
+      }
+    ],
+    "signal": {
+      "type": "time_series_threshold",
+      "params": {
+        "feature": "bollinger_pct",
+        "threshold": 1.0
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "max_position": 0.2,
+      "rebalance": "daily",
+      "long_only": true,
+      "max_names": null
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 1.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "Distilled from the LeapSpace 2.0 PDF, sections \"Bollinger Bands indicator settings\", \"Momentum and Mean Reversion Trading Strategies\" and \"Standard deviation for scalping strategies\". The paper states the Bollinger configuration (20-period SMA, 2 SD) but never states a trade rule for it; the breakout interpretation is an analyst choice, labelled analyst_choice under signal.threshold. The paper also reports no performance statistics of its own and lists only \"some indicator combinations using RSI/EMA/MACD/Bollinger show short-term usefulness\" for crypto. ENGINE GATE: this spec holds engine-default values for some fields the intake gate probes - execution.cost_multiplier=1.0 in every case, plus portfolio.rebalance, portfolio.long_only or the signal rank pair in the specs where parameter_provenance says so. To run it without --assume-defaults, add intake.accepted_defaults listing those condition keys (e.g. [\"costs\", \"rebalance\", \"direction\", \"signal\"]) so the gate records a deliberate acceptance of the engine default instead of reading it as an unanswered question. Also note: the paper states no costs, so cost_multiplier=1.0 means the engine's conservative per-asset-class DEFAULT_COSTS, not a measured fee schedule."
+    },
+    "parameter_provenance": {
+      "features.bollinger_pct.lookback": {
+        "source": "paper",
+        "citation": "Bollinger Bands indicator settings -> \"Default setup\" (Middle band: 20-period SMA)",
+        "note": "The paper states the default Bollinger configuration as a 20-period moving average with standard-deviation bands, and calls 20 over 2 SD \"the conventional starting point\"."
+      },
+      "features.bollinger_pct.nstd": {
+        "source": "paper",
+        "citation": "Bollinger Bands indicator settings -> \"Default setup\" (Upper band: +2 standard deviations; Lower band: -2 standard deviations)",
+        "note": "The paper states the bands at 2 standard deviations; it also notes studies testing 1.5/2/2.5/3 SD widths."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Only one feature is declared, so the engine would infer it; naming it explicitly is the analyst's clarity choice."
+      },
+      "signal.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper defines the band but states no trade rule. bollinger_pct = (price - SMA) / (nstd x SD), so with nstd=2 a threshold of 1.0 fires when the close is above the paper's +2 SD upper band (price > SMA + 2 SD). Threshold 0.0 would have been meaningless here - it would reduce to \"price above the 20-day SMA\" and duplicate the momentum spec instead of testing the band. The analyst reads the upper-band break as a volatility-scaled continuation entry, consistent with the paper's momentum direction rule (\"Go long when price is above its trend proxy\") and with its scalping reading of the SD band as an entry filter. A fade of the same band would be the mirror reading and would duplicate the mean-reversion spec."
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe + Signal",
+        "note": "The paper's momentum model runs on \"top liquid crypto names\" with \"a shorter, crypto-adapted trend window such as 20-day or 2-4 week lookback for crypto\"; the Bollinger section is discussed for crypto/commodity/Nepse contexts. The crypto preset supplies the liquid names; the paper names no tickers, so the ticker mapping is the analyst's choice."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper's direction rule allows \"go short or flat when below, if your venue supports it\", but the engine's time_series_threshold signal emits only 0/+1, so long_only=true is the encodable subset. See additional_conditions."
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "No cadence stated. daily re-tests the band on every close, consistent with the paper's short-term, cost-sensitive framing of indicator systems."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper requires a capped allocation but states no number. 0.2 is the analyst's cap; it binds only when fewer than 5 names are held."
+      },
+      "portfolio.gross_leverage": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+      },
+      "portfolio.max_names": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "null = no cap on concurrent names. The paper states no limit."
+      },
+      "execution.fill_at": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 'open'. The paper states no execution convention."
+      },
+      "execution.cost_multiplier": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS). The paper warns that indicator results \"can collapse once transaction costs and out-of-sample testing are included\" but states no fee, spread or slippage numbers."
+      },
+      "execution.max_participation": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+      },
+      "capital": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 100000.0. The paper states no account size."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 20 bars of band warm-up."
+      },
+      "period.end": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "null = latest available bar. The paper states no end date."
+      },
+      "period.interval": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "'1d' is the engine default and matches the paper's daily-bar, 20-period language."
+      },
+      "additional_conditions": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper's stronger momentum versions require layers the engine cannot carry: a participation confirmation (\"add volume / turnover / order imbalance so the trade only triggers when participation supports continuation\"), an options-implied stage filter (\"Avoid trades when options-implied measures suggest the move is in a late momentum stage\"), a volatility filter (\"Trade only when realized volatility is not extreme\") and a stop-loss overlay (\"Add a stop-loss overlay\"). Only the price/volatility stretch is encoded here."
+      }
+    }
+  },
+  {
+    "name": "crypto_xs_momentum_volume_confirmed",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section \"Advanced momentum and mean-reversion trading models\", subsection \"A+ momentum model setup\": \"Primary signal: price trend, such as a 12-month time-series momentum rule for liquid Nasdaq names, or a shorter trend window for crypto. Confirmation layer: add volume / turnover / order imbalance so the trade only triggers when participation supports continuation; volume-augmented momentum beat pure price momentum in the UK study, and order-imbalance momentum outperformed plain price momentum in Taiwan.\" And: \"Go long when price is above its trend proxy, volume is rising, and order imbalance/turnover is positive.\" The paper's claim is that a momentum rule that adds participation information is more robust than pure price momentum - \"A pure momentum rule is weaker than a momentum rule that uses volume, order imbalance, and options-implied stage information\" - and that \"the key improvement is not 'more indicators', but using flow data to decide whether to follow the move or fade it\". This spec implements the momentum leg of that claim as a cross-sectional book on liquid crypto names with the volume confirmation carried as a declared-but-unenforced feature.",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 20,
+          "skip": 0
+        }
+      },
+      {
+        "name": "volume_ratio",
+        "params": {
+          "short": 10,
+          "long": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "cross_sectional",
+      "params": {
+        "feature": "momentum",
+        "long_rank": 0.75,
+        "short_rank": 0.25
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "max_position": 0.2,
+      "rebalance": "daily",
+      "long_only": false,
+      "max_names": null
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 1.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "Distilled from the LeapSpace 2.0 PDF, section \"Advanced momentum and mean-reversion trading models\". The engine takes ONE feature per signal, so the paper's confirmation layer (volume rising AND order imbalance positive) cannot be enforced; volume_ratio is declared as a feature for reference only and the spec trades the momentum rank. The paper itself warns against stacking indicators and against adding flow data the trader does not have, and it reports no performance statistics of its own. ENGINE GATE: this spec holds engine-default values for some fields the intake gate probes - execution.cost_multiplier=1.0 in every case, plus portfolio.rebalance, portfolio.long_only or the signal rank pair in the specs where parameter_provenance says so. To run it without --assume-defaults, add intake.accepted_defaults listing those condition keys (e.g. [\"costs\", \"rebalance\", \"direction\", \"signal\"]) so the gate records a deliberate acceptance of the engine default instead of reading it as an unanswered question. Also note: the paper states no costs, so cost_multiplier=1.0 means the engine's conservative per-asset-class DEFAULT_COSTS, not a measured fee schedule."
+    },
+    "parameter_provenance": {
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Advanced momentum and mean-reversion trading models -> \"A+ momentum model setup\" -> Signal stack; and Momentum and Mean Reversion Trading Strategies -> Signal (\"20-day or 2-4 week lookback for crypto\")",
+        "note": "The paper specifies a shorter, crypto-adapted trend window for crypto rather than a 12-month one; 20 days is the window it names explicitly (\"20-day moving average and 20-day return is positive\")."
+      },
+      "features.momentum.skip": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper states no skip. skip=0 measures the trailing 20 bars including the most recent bar (engine default)."
+      },
+      "features.volume_ratio.short": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper requires a volume/turnover confirmation (\"volume is rising\"; \"volume-augmented momentum beat pure price momentum\") but states no averaging windows. 10 bars is the analyst's choice. volume_ratio is declared for reference only - it is NOT the traded feature."
+      },
+      "features.volume_ratio.long": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "60 bars is the analyst's choice; the paper states no baseline window for \"volume is rising\"."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The engine's cross_sectional signal ranks on a single feature. momentum is chosen as the traded feature (the paper's primary signal is the price trend); ranking on volume_ratio would turn the rule into a volume ranking, which is not what the paper describes."
+      },
+      "signal.long_rank": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper gives no rank cut-offs. 0.75 on the 10-name crypto basket means roughly the top 3 names are long; it is the analyst's choice, documented so it can be varied. NOTE: 0.75/0.25 coincide with the engine's default rank pair, so the intake gate will read the entry/exit rules as un-supplied until they are recorded as accepted defaults (intake.accepted_defaults: [\"signal\"])."
+      },
+      "signal.short_rank": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.25 (roughly the bottom 3 names short) is the analyst's choice, matching the paper's \"go short or flat when below, if your venue supports it\"."
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Universe (\"Liquid Nasdaq names and top liquid crypto names only\")",
+        "note": "The crypto preset supplies the paper's \"top liquid crypto names\". The paper names no tickers, so the ticker mapping is the analyst's choice; a cross-sectional rule needs at least two instruments, which this preset provides."
+      },
+      "portfolio.long_only": {
+        "source": "paper",
+        "citation": "Momentum and Mean Reversion Trading Strategies -> \"A+ momentum model setup\" -> Direction rule",
+        "note": "\"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" A cross-sectional book long/short matches the paper, so long_only=false."
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "No cadence stated for the volume-augmented momentum rule. daily keeps the 20-day momentum rank and the participation filter current; the paper stresses turnover sensitivity, which argues against a longer cadence still being untested - the choice here is the analyst's."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper requires a capped allocation but states no number. 0.2 is the analyst's cap; with roughly 3 long and 3 short names a 1.0 gross book gives ~0.167 per name, so the cap does not bind."
+      },
+      "portfolio.gross_leverage": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+      },
+      "portfolio.max_names": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "null = no cap on concurrent names; the rank thresholds already bound the book. The paper states no limit."
+      },
+      "execution.fill_at": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 'open'. The paper states no execution convention."
+      },
+      "execution.cost_multiplier": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS; crypto is ~10x the ETF cost). The paper warns that momentum rules are \"sensitive to transaction costs and turnover\" but states no fee, spread or slippage numbers."
+      },
+      "execution.max_participation": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+      },
+      "capital": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 100000.0. The paper states no account size."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 20 bars of momentum warm-up."
+      },
+      "period.end": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "null = latest available bar. The paper states no end date."
+      },
+      "period.interval": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "'1d' is the engine default and matches the paper's daily-bar language."
+      },
+      "additional_conditions": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper's confirmation layer is \"volume is rising, and order imbalance/turnover is positive\"; order imbalance / CVD is not derivable from the engine's daily OHLCV panel, and volume_ratio is declared but not enforced by the one-feature signal, so this spec tests the paper's momentum leg WITHOUT its volume/flow confirmation - a weaker version of the claim. The paper's other stated components are also missing: the options-implied momentum-stage filter, the volatility filter (\"Trade only when realized volatility is not extreme\"), inverse-volatility sizing and the stop-loss overlay."
+      }
+    }
+  },
+  {
+    "name": "crypto_rsi_oversold_fade",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section \"Free trading indicators for directional edge\", subsection \"Best TradingView edges without paid data\": \"RSI and simple momentum tools - In crypto, RSI was found more reliable than MACD or Stochastic for overbought/oversold style signals, and some indicator combinations using RSI/EMA/MACD/Bollinger show short-term usefulness.\" Best use case: \"Mean reversion and exhaustion setups.\" And: \"Use price action first, then volume, then one momentum filter.\" The paper's claim is that for a retail trader without order-flow or Level 2 data, a single well-chosen oscillator (RSI) applied as an oversold exhaustion fade on liquid crypto is a more defensible edge than stacking many indicators - \"That is more supported than trying to compensate for missing flow data by stacking many indicators\" - with the caveat that \"results vary by market, timeframe, and transaction costs\".",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "rsi",
+        "params": {
+          "lookback": 14,
+          "direction": -1
+        }
+      }
+    ],
+    "signal": {
+      "type": "time_series_threshold",
+      "params": {
+        "feature": "rsi",
+        "threshold": -30.0
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "max_position": 0.2,
+      "rebalance": "daily",
+      "long_only": true,
+      "max_names": null
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 1.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "Distilled from the LeapSpace 2.0 PDF, section \"Free trading indicators for directional edge\". The paper names RSI as the tool and gives the intent (overbought/oversold, mean-reversion/exhaustion, crypto) but states no period, no threshold and no exit; every number in this spec is therefore an analyst choice, labelled analyst_choice in parameter_provenance. The paper reports no performance statistics of its own for the RSI edge. ENGINE GATE: this spec holds engine-default values for some fields the intake gate probes - execution.cost_multiplier=1.0 in every case, plus portfolio.rebalance, portfolio.long_only or the signal rank pair in the specs where parameter_provenance says so. To run it without --assume-defaults, add intake.accepted_defaults listing those condition keys (e.g. [\"costs\", \"rebalance\", \"direction\", \"signal\"]) so the gate records a deliberate acceptance of the engine default instead of reading it as an unanswered question. Also note: the paper states no costs, so cost_multiplier=1.0 means the engine's conservative per-asset-class DEFAULT_COSTS, not a measured fee schedule."
+    },
+    "parameter_provenance": {
+      "features.rsi.lookback": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper names RSI but states no period (\"RSI and simple momentum tools\", \"RSI was found more reliable than MACD or Stochastic\"). 14 bars is the analyst's conventional choice."
+      },
+      "features.rsi.direction": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "-1 inverts the feature so that a single threshold test can express the paper's oversold FADE. With direction -1 the feature value is -RSI, so the test (-RSI > -30) fires exactly when RSI < 30. The engine's threshold signal emits only 0/+1, so without the inversion an oversold fade could not be expressed at all."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Only one feature is declared, so the engine would infer it; naming it explicitly is the analyst's clarity choice."
+      },
+      "signal.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper states only that RSI works for \"overbought/oversold style signals\"; it gives no threshold. -30 on the inverted RSI (i.e. RSI < 30) is the conventional oversold line and the analyst's choice. EXIT: the signal returns to 0 as soon as RSI is back above 30, which stands in for the paper's \"exit when the stretch normalises\"; the paper states no explicit exit for the RSI setup."
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Free trading indicators for directional edge -> \"RSI and simple momentum tools\" (\"In crypto, RSI was found more reliable than MACD or Stochastic\")",
+        "note": "The RSI finding the paper reports is a crypto finding, so the crypto preset is the paper-supported universe. The paper names no tickers, so the ticker mapping is the analyst's choice."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper frames RSI as a \"Mean reversion and exhaustion setup\" with no short leg; the encoded fade is long-only. The engine's threshold signal emits only 0/+1, so a symmetric oversold/overbought fade could not be expressed anyway."
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "No cadence stated. daily matches the paper's \"short-term usefulness\" framing for RSI in crypto and keeps the exhaustion read current."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper requires a capped allocation in its momentum/reversion models but states no number for the RSI setup. 0.2 is the analyst's cap."
+      },
+      "portfolio.gross_leverage": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 - no leverage. The paper states no gross exposure target."
+      },
+      "portfolio.max_names": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "null = no cap on concurrent names. The paper states no limit."
+      },
+      "execution.fill_at": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 'open'. The paper states no execution convention."
+      },
+      "execution.cost_multiplier": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 1.0 (the engine's per-asset-class DEFAULT_COSTS; crypto is ~10x the ETF cost). The paper warns that indicator results \"can collapse once transaction costs and out-of-sample testing are included\" but states no fee, spread or slippage numbers."
+      },
+      "execution.max_participation": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 0.10 (10% of a bar's dollar volume per order). The paper states no number."
+      },
+      "capital": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "Engine default 100000.0. The paper states no account size."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "No window stated. 2021-01-01 gives every symbol in the crypto preset history and ~5.8 years of daily bars through 2026, with 14 bars of RSI warm-up."
+      },
+      "period.end": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "null = latest available bar. The paper states no end date."
+      },
+      "period.interval": {
+        "source": "engine_default",
+        "citation": "not stated in source",
+        "note": "'1d' is the engine default and matches the paper's daily-bar, short-term-indicator framing."
+      },
+      "additional_conditions": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The paper's recommended stack is \"price action first, then volume, then one momentum filter\" plus a regime filter (\"Trade only when the regime matches the strategy\", \"Mean-reversion tools work better in some markets/periods, while trend tools work better in others\"). The engine takes one feature per signal, so RSI alone is traded and neither the volume confirmation nor the regime filter is enforced. The paper also states the RSI edge is a lower-confidence one (\"Confidence level: Medium\") and that \"results vary by market, timeframe, and transaction costs\"."
+      }
+    }
+  }
+]

@@ -1,0 +1,274 @@
+{
+  "n_labelled": 24,
+  "n_verified": 24,
+  "registry": {
+    "0xf8b1378579659d8f7ee5f3c929c2f3e332e41fd6": "Bridge",
+    "0xd19d4b5d358258f05d7b411e21a1460d11b0876f": "Bridge",
+    "0xbd7d6a9ad7865463de44b05f04559f65e3b11704": "Bridge",
+    "0xba8da9dcf11b50b03fd5284f164ef5cdef910705": "Bridge",
+    "0xb8901acb165ed027e32754e0ffe830802919727f": "Bridge",
+    "0xae0ee0a63a2ce6baeeffe56e7714fb4efe48d419": "Bridge",
+    "0xabea9132b05a70803a4e85094fd0e1800777fbef": "Bridge",
+    "0xa4108aa1ec4967f8b52220a4f7e94a8201f2d906": "Bridge",
+    "0xa0c68c638235ee32657e8f720a23cec1bfc77c77": "Bridge",
+    "0x99c9fc46f92e8a1c0dec1b1747d010903e884be1": "Bridge",
+    "0x902f09715b6303d4173037652fa7377e5b98089e": "Bridge",
+    "0x8731d54e9d02c286767d56ac03e8037c07e01e98": "Bridge",
+    "0x765277eebeca2e31912c9946eae1021199b39c61": "Bridge",
+    "0x72ce9c846789fdb6fc1f34ac4ad25dd9ef7031ef": "Bridge",
+    "0x6b7a87899490ece95443e979ca9485cbe7e71522": "Bridge",
+    "0x659a00c33263d9254fed382de81349426c795bb6": "Bridge",
+    "0x4dbd4fc535ac27206064b68ffcf827b0a60bab3f": "Bridge",
+    "0x4d9079bb4165aeb4084c526a32695dcfd2f77381": "Bridge",
+    "0x3ee18b2214aff97000d974cf647e7c347e8fa585": "Bridge",
+    "0x3e4a3a4796d16c0cd582c382691998f7c06420b6": "Bridge",
+    "0x3666f603cc164936c1b87e207f36beba4ac5f18a": "Bridge",
+    "0x150f94b44927f078737562f0fcf3c95c01cc2376": "Bridge",
+    "0x10e6593cdda8c58a1d0f14c5164b376352a55f2f": "Bridge",
+    "0x3b3ae790df4f312e745d270119c6052904fb6790": "OKX DEX: Aggregation Router"
+  },
+  "audit": [
+    {
+      "address": "0xf8b1378579659d8f7ee5f3c929c2f3e332e41fd6",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "TransparentUpgradeableProxy",
+      "code_bytes": 2206,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xd19d4b5d358258f05d7b411e21a1460d11b0876f",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "TransparentUpgradeableProxy",
+      "code_bytes": 2227,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xbd7d6a9ad7865463de44b05f04559f65e3b11704",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "WrappedTokenGatewayV3",
+      "code_bytes": 7907,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xba8da9dcf11b50b03fd5284f164ef5cdef910705",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "AnyswapV6Router",
+      "code_bytes": 17093,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xb8901acb165ed027e32754e0ffe830802919727f",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "L1_ETH_Bridge",
+      "code_bytes": 18447,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xae0ee0a63a2ce6baeeffe56e7714fb4efe48d419",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "Proxy",
+      "code_bytes": 6150,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xabea9132b05a70803a4e85094fd0e1800777fbef",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "Proxy",
+      "code_bytes": 3426,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xa4108aa1ec4967f8b52220a4f7e94a8201f2d906",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "Gravity",
+      "code_bytes": 13549,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0xa0c68c638235ee32657e8f720a23cec1bfc77c77",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "RootChainManagerProxy",
+      "code_bytes": 2949,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x99c9fc46f92e8a1c0dec1b1747d010903e884be1",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "L1ChugSplashProxy",
+      "code_bytes": 1825,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x902f09715b6303d4173037652fa7377e5b98089e",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "OptimizedTransparentUpgradeableProxy",
+      "code_bytes": 1554,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x8731d54e9d02c286767d56ac03e8037c07e01e98",
+      "labels": [
+        "Bridge"
+      ],
+      "name": null,
+      "code_bytes": 20911,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x765277eebeca2e31912c9946eae1021199b39c61",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "AnyswapV4Router",
+      "code_bytes": 18508,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x72ce9c846789fdb6fc1f34ac4ad25dd9ef7031ef",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "TransparentUpgradeableProxy",
+      "code_bytes": 2092,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x6b7a87899490ece95443e979ca9485cbe7e71522",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "AnyswapV4Router",
+      "code_bytes": 18508,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x659a00c33263d9254fed382de81349426c795bb6",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "L1DAIBridge",
+      "code_bytes": 5712,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x4dbd4fc535ac27206064b68ffcf827b0a60bab3f",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "TransparentUpgradeableProxy",
+      "code_bytes": 2092,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x4d9079bb4165aeb4084c526a32695dcfd2f77381",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "Ethereum_SpokePool",
+      "code_bytes": 17282,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x3ee18b2214aff97000d974cf647e7c347e8fa585",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "TokenBridge",
+      "code_bytes": 680,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x3e4a3a4796d16c0cd582c382691998f7c06420b6",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "L1_ERC20_Bridge",
+      "code_bytes": 19373,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x3666f603cc164936c1b87e207f36beba4ac5f18a",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "L1_ERC20_Bridge",
+      "code_bytes": 19299,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x150f94b44927f078737562f0fcf3c95c01cc2376",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "RouterETH",
+      "code_bytes": 2254,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x10e6593cdda8c58a1d0f14c5164b376352a55f2f",
+      "labels": [
+        "Bridge"
+      ],
+      "name": "L1DAITokenBridge",
+      "code_bytes": 6064,
+      "is_contract": true,
+      "http_status": 200
+    },
+    {
+      "address": "0x3b3ae790df4f312e745d270119c6052904fb6790",
+      "labels": [
+        "OKX DEX: Aggregation Router"
+      ],
+      "name": "TransparentUpgradeableProxy",
+      "code_bytes": 2141,
+      "is_contract": true,
+      "http_status": 200
+    }
+  ],
+  "source": "Blockscout curated address labels via https://eth.blockscout.com/api/v2/search (HTTP 200), each entry verified to have contract bytecode over a keyless archive RPC",
+  "note": "A Blockscout 'label' is a curated classification, not a guess. Entries rejected for having no contract code are kept in the audit trail."
+}

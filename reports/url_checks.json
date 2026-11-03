@@ -1,0 +1,443 @@
+[
+  {
+    "url": "https://docs.dexscreener.com/api/reference",
+    "status": 200,
+    "final_url": "https://docs.dexscreener.com/api/reference",
+    "content_type": "text/html",
+    "title": "Reference | DEX Screener - Docs"
+  },
+  {
+    "url": "https://docs.dexscreener.com/api/limits",
+    "status": 404,
+    "final_url": "https://docs.dexscreener.com/api/limits",
+    "content_type": "text/html",
+    "title": "DEX Screener - Docs"
+  },
+  {
+    "url": "https://api.dexscreener.com/latest/dex/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "status": 200,
+    "final_url": "https://api.dexscreener.com/latest/dex/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "content_type": "application/json",
+    "bytes": 45720,
+    "head": "{\"schemaVersion\":\"1.0.0\",\"pairs\":[{\"chainId\":\"solana\",\"dexId\":\"orca\",\"url\":\"https://dexscreener.com/solana/5zpyutju9ee6jfymdgok7f6s5kczqtc9fomp3uekuya9\",\"pairAddress\":\"5zpyutJu9ee6"
+  },
+  {
+    "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report",
+    "status": 200,
+    "final_url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report",
+    "content_type": "application/json",
+    "bytes": 2544496,
+    "head": "{\"mint\":\"DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263\",\"tokenProgram\":\"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA\",\"creator\":\"9AhKqLR67hwapvG8SA2JFXaCshXc9nALJjpKaHZrsbkw\",\"creato"
+  },
+  {
+    "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/info/summary",
+    "status": 404,
+    "final_url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/info/summary",
+    "content_type": "application/json",
+    "bytes": 52,
+    "head": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+    "url": "https://docs.jup.ag/",
+    "status": 200,
+    "final_url": "https://docs.jup.ag/",
+    "content_type": "text/html",
+    "title": "Jupiter User Docs - Jupiter Documentation"
+  },
+  {
+    "url": "https://lite-api.jup.ag/tokens/v2/search?query=bonk",
+    "status": 200,
+    "final_url": "https://lite-api.jup.ag/tokens/v2/search?query=bonk",
+    "content_type": "application/json",
+    "bytes": 29356,
+    "head": "[{\"id\":\"DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263\",\"name\":\"Bonk\",\"symbol\":\"Bonk\",\"icon\":\"https://arweave.net/hQiPZOsRZXGXBJd_82PhVdlM_hACsT_q6wqwf5cSY7I\",\"decimals\":5,\"dev\":\"9Ah"
+  },
+  {
+    "url": "https://docs.coingecko.com/reference/coins-id",
+    "status": 200,
+    "final_url": "https://docs.coingecko.com/reference/coins-id",
+    "content_type": "text/html",
+    "title": "Coin Data by ID - CoinGecko API"
+  },
+  {
+    "url": "https://docs.coingecko.com/reference/overview",
+    "status": 404,
+    "final_url": "https://docs.coingecko.com/reference/overview",
+    "content_type": "text/html",
+    "title": "Page Not Found"
+  },
+  {
+    "url": "https://api.coingecko.com/api/v3/ping",
+    "status": 200,
+    "final_url": "https://api.coingecko.com/api/v3/ping",
+    "content_type": "application/json",
+    "bytes": 34,
+    "head": "{\"gecko_says\":\"(V3) To the Moon!\"}"
+  },
+  {
+    "url": "https://www.reddit.com/dev/api",
+    "status": 200,
+    "final_url": "https://www.reddit.com/dev/api",
+    "content_type": "text/html",
+    "title": "reddit.com: api documentation"
+  },
+  {
+    "url": "https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki",
+    "status": 403,
+    "final_url": "https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki",
+    "content_type": "text/html",
+    "title": "Just a moment..."
+  },
+  {
+    "url": "https://redditinc.com/policies/data-api-terms",
+    "status": 200,
+    "final_url": "https://redditinc.com/policies/data-api-terms",
+    "content_type": "text/html",
+    "title": "Data API Terms"
+  },
+  {
+    "url": "https://www.reddit.com/r/wallstreetcoins/.json?limit=1",
+    "status": 403,
+    "final_url": "https://www.reddit.com/r/wallstreetcoins/.json?limit=1",
+    "content_type": "text/html",
+    "title": null
+  },
+  {
+    "url": "https://discord.com/developers/docs",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/intro",
+    "content_type": "text/html",
+    "title": "Discord Developer Platform - Documentation - Discord"
+  },
+  {
+    "url": "https://discord.com/developers/docs/resources/guild#get-guild-widget",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/resources/guild#get-guild-widget",
+    "content_type": "text/html",
+    "title": "Guild Resource - Documentation - Discord"
+  },
+  {
+    "url": "https://discord.com/api/guilds/222034823891118593/widget.json",
+    "status": 404,
+    "final_url": "https://discord.com/api/guilds/222034823891118593/widget.json",
+    "content_type": "application/json",
+    "bytes": 43,
+    "head": "{\"message\": \"Unknown Guild\", \"code\": 10004}"
+  },
+  {
+    "url": "https://discord.com/terms",
+    "status": 200,
+    "final_url": "https://discord.com/terms",
+    "content_type": "text/html",
+    "title": "Terms of Service | Discord"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api",
+    "status": 200,
+    "final_url": "https://core.telegram.org/bots/api",
+    "content_type": "text/html",
+    "title": "Telegram Bot API"
+  },
+  {
+    "url": "https://core.telegram.org/api",
+    "status": 200,
+    "final_url": "https://core.telegram.org/api",
+    "content_type": "text/html",
+    "title": "Telegram APIs"
+  },
+  {
+    "url": "https://core.telegram.org/api/links",
+    "status": 200,
+    "final_url": "https://core.telegram.org/api/links",
+    "content_type": "text/html",
+    "title": "Deep links"
+  },
+  {
+    "url": "https://telegram.org/tos",
+    "status": 200,
+    "final_url": "https://telegram.org/tos",
+    "content_type": "text/html",
+    "title": "Terms of Service"
+  },
+  {
+    "url": "https://docs.x.com/x-api/introduction",
+    "status": 200,
+    "final_url": "https://docs.x.com/x-api/introduction",
+    "content_type": "text/html",
+    "title": "X API - X"
+  },
+  {
+    "url": "https://docs.x.com/x-api/getting-started/pricing",
+    "status": 200,
+    "final_url": "https://docs.x.com/x-api/getting-started/pricing",
+    "content_type": "text/html",
+    "title": "X API pay-per-usage pricing and credits - X"
+  },
+  {
+    "url": "https://developer.x.com/en/products/x-api",
+    "status": 404,
+    "final_url": "https://docs.x.com/products/x-api",
+    "content_type": "text/html",
+    "title": "Page Not Found"
+  },
+  {
+    "url": "https://x.com/en/tos",
+    "status": 200,
+    "final_url": "https://x.com/en/tos",
+    "content_type": "text/html",
+    "title": "X Terms of Service"
+  },
+  {
+    "url": "https://x.com/robots.txt",
+    "status": 200,
+    "final_url": "https://x.com/robots.txt",
+    "content_type": "text/plain",
+    "bytes": 2998,
+    "head": "# Google / Bing Search Engine Robots # ================================== # Shared group so Googlebot and Bingbot always get the same rules. User-agent: Googlebot User-agent: Bingb"
+  },
+  {
+    "url": "https://help.x.com/en/rules-and-policies/x-automation",
+    "status": 403,
+    "final_url": "https://help.x.com/en/rules-and-policies/x-automation",
+    "content_type": "text/html",
+    "title": "Just a moment..."
+  },
+  {
+    "url": "https://developers.tiktok.com/products/research-api/",
+    "status": 200,
+    "final_url": "https://developers.tiktok.com/products/research-api/",
+    "content_type": "text/html",
+    "title": "Research API | TikTok for Developers"
+  },
+  {
+    "url": "https://developers.tiktok.com/doc/display-api-overview",
+    "status": 200,
+    "final_url": "https://developers.tiktok.com/docs/en/display-api-overview",
+    "content_type": "text/html",
+    "title": "Overview | TikTok for Developers"
+  },
+  {
+    "url": "https://developers.tiktok.com/doc/display-api-get-started",
+    "status": 200,
+    "final_url": "https://developers.tiktok.com/docs/en/display-api-get-started",
+    "content_type": "text/html",
+    "title": "Get Started | TikTok for Developers"
+  },
+  {
+    "url": "https://developers.google.com/youtube/v3/docs",
+    "status": 200,
+    "final_url": "https://developers.google.com/youtube/data/reference/rest",
+    "content_type": "text/html",
+    "title": "API Reference &nbsp;|&nbsp; YouTube Data API &nbsp;|&nbsp; Google for Developers"
+  },
+  {
+    "url": "https://developers.google.com/youtube/v3/getting-started",
+    "status": 200,
+    "final_url": "https://developers.google.com/youtube/data/getting-started",
+    "content_type": "text/html",
+    "title": "YouTube Data API Overview &nbsp;|&nbsp; Google for Developers"
+  },
+  {
+    "url": "https://developers.facebook.com/docs/threads-api",
+    "status": 404,
+    "final_url": "https://developers.facebook.com/docs/threads-api",
+    "content_type": "text/html",
+    "title": "Page Not Found - Meta for Developers"
+  },
+  {
+    "url": "https://developers.facebook.com/docs/threads/reference",
+    "status": 400,
+    "final_url": "https://developers.facebook.com/docs/threads/reference",
+    "content_type": "text/html",
+    "title": "Error"
+  },
+  {
+    "url": "https://www.farcaster.xyz/",
+    "status": 200,
+    "final_url": "https://farcaster.xyz/",
+    "content_type": "text/html",
+    "title": "Farcaster"
+  },
+  {
+    "url": "https://docs.farcaster.xyz/",
+    "status": 200,
+    "final_url": "https://docs.farcaster.xyz/",
+    "content_type": "text/html",
+    "title": "Farcaster Docs"
+  },
+  {
+    "url": "https://www.neynar.com/pricing",
+    "status": 404,
+    "final_url": "https://neynar.com:443/pricing",
+    "content_type": "text/html",
+    "title": "Neynar"
+  },
+  {
+    "url": "https://docs.neynar.com/",
+    "status": 200,
+    "final_url": "https://docs.neynar.com/",
+    "content_type": "text/html",
+    "title": "Neynar Documentation"
+  },
+  {
+    "url": "https://docs.santiment.net/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net#api",
+    "content_type": "text/html",
+    "title": "Crypto Academy: Learn How to Analyze Cryptocurrency Market"
+  },
+  {
+    "url": "https://app.santiment.net/pricing",
+    "status": 200,
+    "final_url": "https://app.santiment.net/pricing",
+    "content_type": "text/html",
+    "title": "Pricing for Crypto Analytic Tools - Start a Free Trial"
+  },
+  {
+    "url": "https://lunarcrush.com/developers/api/endpoints",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/en/developers/api/endpoints",
+    "content_type": "text/html",
+    "title": "LunarCrush API docs | MCP &amp; SDK | LunarCrush"
+  },
+  {
+    "url": "https://lunarcrush.com/pricing",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/pricing",
+    "content_type": "text/html",
+    "title": "LunarCrush Pricing \u2014 Individual $90/mo, Builder $300/mo, Scale $900/mo"
+  },
+  {
+    "url": "https://docs.nansen.ai/",
+    "status": 200,
+    "final_url": "https://docs.nansen.ai/",
+    "content_type": "text/html",
+    "title": "Introduction | Nansen API"
+  },
+  {
+    "url": "https://blockchaincenter.net/altcoin-season-index",
+    "status": 200,
+    "final_url": "https://blockchaincenter.net/altcoin-season-index/",
+    "content_type": "text/html",
+    "title": null
+  },
+  {
+    "url": "https://coinmarketcap.com/altcoin-season-index",
+    "status": 404,
+    "final_url": "https://coinmarketcap.com/altcoin-season-index/",
+    "content_type": "text/html",
+    "title": null
+  },
+  {
+    "url": "https://docs.kaito.ai/",
+    "status": 200,
+    "final_url": "https://docs.kaito.ai/",
+    "content_type": "text/html",
+    "title": "Attention Economy | Kaito AI"
+  },
+  {
+    "url": "https://kaito.ai/",
+    "status": 403,
+    "final_url": "https://kaito.ai/",
+    "content_type": "text/html",
+    "title": "Just a moment..."
+  },
+  {
+    "url": "https://github.com/cjhutto/vaderSentiment",
+    "status": 200,
+    "final_url": "https://github.com/cjhutto/vaderSentiment",
+    "content_type": "text/html",
+    "title": "GitHub - cjhutto/vaderSentiment: VADER Sentiment Analysis. VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is speci"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "status": 200,
+    "final_url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "content_type": "text/html",
+    "title": "Making sure you&#39;re not a bot!"
+  },
+  {
+    "url": "https://ieeexplore.ieee.org/document/8919455",
+    "status": 202,
+    "final_url": "https://ieeexplore.ieee.org/document/8919455",
+    "content_type": "text/html",
+    "title": null
+  },
+  {
+    "url": "https://academic.oup.com/jpe/article/126/5/2431/5097513",
+    "status": 403,
+    "final_url": "https://academic.oup.com/jpe/article/126/5/2431/5097513",
+    "content_type": "text/html",
+    "title": "Just a moment..."
+  },
+  {
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+    "content_type": "text/html",
+    "title": null
+  },
+  {
+    "url": "https://www.dni.gov/index.php/ic-legal-reference-book",
+    "status": 403,
+    "final_url": "https://www.dni.gov/index.php/ic-legal-reference-book",
+    "content_type": "text/html",
+    "title": "Access Denied"
+  },
+  {
+    "url": "https://pypi.org/project/pytrends/",
+    "status": 200,
+    "final_url": "https://pypi.org/project/pytrends/",
+    "content_type": "text/html",
+    "title": "pytrends \u00b7 PyPI"
+  },
+  {
+    "url": "https://github.com/GeneralMills/pytrends",
+    "status": 200,
+    "final_url": "https://github.com/GeneralMills/pytrends",
+    "content_type": "text/html",
+    "title": "GitHub - GeneralMills/pytrends: Pseudo API for Google Trends \u00b7 GitHub"
+  },
+  {
+    "url": "https://trends.google.com/trends/api-alpha",
+    "status": 404,
+    "final_url": "https://trends.google.com/trends/api-alpha",
+    "content_type": "text/html",
+    "title": "Error 404 (Not Found)!!1"
+  },
+  {
+    "url": "https://apewisdom.io/",
+    "status": 200,
+    "final_url": "https://apewisdom.io/",
+    "content_type": "text/html",
+    "title": "Ape Wisdom | Trending Stocks on Reddit"
+  },
+  {
+    "url": "https://apewisdom.io/api/top-tokens",
+    "status": 200,
+    "final_url": "https://apewisdom.io/api/top-tokens",
+    "content_type": "text/html",
+    "title": "Reddit and Walsstreetsbet sentiment API by ApeWisdom"
+  },
+  {
+    "url": "https://pypi.org/project/vaderSentiment/",
+    "status": 200,
+    "final_url": "https://pypi.org/project/vaderSentiment/",
+    "content_type": "text/html",
+    "title": "vaderSentiment \u00b7 PyPI"
+  },
+  {
+    "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/",
+    "status": 403,
+    "final_url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/",
+    "content_type": "text/html",
+    "title": "Just a moment..."
+  },
+  {
+    "url": "https://www.ftc.gov/business-guidance/blog/2023/01/keep-your-ai-claims-check",
+    "status": 404,
+    "final_url": "https://www.ftc.gov/business-guidance/blog/2023/01/keep-your-ai-claims-check",
+    "content_type": "text/html",
+    "title": null
+  }
+]

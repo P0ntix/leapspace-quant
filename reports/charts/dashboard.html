@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>LeapSpace Quant — visual report</title>
+<style>
+  :root { color-scheme: dark; }
+  body { background:#12121f; color:#e0e0e0; font-family: ui-sans-serif,
+          system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+          margin:0; padding:28px 32px; }
+  h1 { font-size:24px; margin:0 0 4px; letter-spacing:-0.2px; }
+  h2 { font-size:16px; margin:0 0 4px; }
+  .sub { color:#8a8aa0; font-size:13px; margin:0 0 22px; }
+  .card { background:#1a1a2e; border:1px solid #2a2a3e; border-radius:12px;
+           padding:18px 20px; margin:0 0 20px; }
+  .note { color:#8a8aa0; font-size:12px; margin:0 0 12px; }
+  img { width:100%; height:auto; border-radius:6px; display:block; }
+  table { width:100%; border-collapse:collapse; font-size:12px;
+           font-variant-numeric: tabular-nums; }
+  th { text-align:left; color:#8a8aa0; font-weight:600; padding:8px 10px;
+        border-bottom:1px solid #2a2a3e; position:sticky; top:0;
+        background:#1a1a2e; }
+  td { padding:7px 10px; border-bottom:1px solid #222233; }
+  code { color:#9fd0ff; font-size:11px; }
+  .scroll { max-height:460px; overflow:auto; }
+  .warn { background:#2a2010; border:1px solid #6b4d12; color:#ffcf7a;
+           padding:10px 14px; border-radius:8px; font-size:12px;
+           margin:0 0 20px; }
+</style></head><body>
+<h1>LeapSpace Quant — visual report</h1>
+<p class="sub">Seven papers · thirteen strategies · three-branch disclosures ·
+on-chain memecoin quant layer</p>
+
+<div class="warn">
+Every figure states its provenance. Live data is fetched at render time;
+simulated data is labelled SYNTHETIC on the chart. A verdict of SUPPORTED
+means "warrants paper trading", never "trade it".
+</div>
+
+<h2 style="margin-bottom:10px">Backtests</h2>
+<div class="card"><div class="scroll"><table><thead><tr><th>Strategy</th><th>Paper</th><th>Verdict</th><th>Validation</th><th>Trades</th><th>Sharpe</th><th>CAGR</th><th>MaxDD</th><th>OOS Sharpe</th><th>OOS folds</th></tr></thead><tbody><tr><td><code>v1_crypto_momentum_20d_ma</code></td><td>Trading strategies for retail traders (LeapSpace v1)</td><td><span style='color:#ffaa00;font-weight:700'>FRAGILE</span></td><td>FULL gauntlet</td><td>1328</td><td>0.7470487846189819</td><td>0.21303102174528044</td><td>0.6518654704542374</td><td>0.7833531133016806</td><td>3/5</td></tr><tr><td><code>bollinger20_2_breakout_crypto</code></td><td>Trading strategies for retail traders (LeapSpace 2.0)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>654</td><td>0.6627055874750487</td><td>0.13493933749643094</td><td>0.352341664323615</td><td>0.43215192520441925</td><td>3/5</td></tr><tr><td><code>nasdaq_12m_timeseries_momentum</code></td><td>Trading strategies for retail traders (LeapSpace 2.0)</td><td><span style='color:#00ff88;font-weight:700'>SUPPORTED</span></td><td>FULL gauntlet</td><td>71</td><td>0.6304260057333084</td><td>0.08287790148934393</td><td>0.30961632731662236</td><td>0.8981072391590574</td><td>4/5</td></tr><tr><td><code>regime_switch_cross_sectional_sector_rotation</code></td><td>Financial market regime identification (LeapSpace)</td><td><span style='color:#00ff88;font-weight:700'>SUPPORTED</span></td><td>FULL gauntlet</td><td>2089</td><td>0.6106875964301612</td><td>0.04705789010660477</td><td>0.1722195550811665</td><td>0.5278948265425338</td><td>5/5</td></tr><tr><td><code>crypto_ma20_trend_momentum</code></td><td>Trading strategies for retail traders (LeapSpace 2.0)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>1169</td><td>0.4837554222448323</td><td>0.12196916056922591</td><td>0.76721917076266</td><td>0.32738717625614244</td><td>2/5</td></tr><tr><td><code>crypto_rsi_oversold_fade</code></td><td>Trading strategies for retail traders (LeapSpace 2.0)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>636</td><td>0.4709447661261854</td><td>0.09542801580414872</td><td>0.4400341307825034</td><td>0.28460097960589986</td><td>4/5</td></tr><tr><td><code>tradingview_price_volume_rsi_regime_filtered</code></td><td>Free trading indicators for directional edge (LeapSpace)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>179</td><td>0.39806146127794767</td><td>0.0377582858743466</td><td>0.3001601562162608</td><td>0.3280551449464952</td><td>5/5</td></tr><tr><td><code>v1_sd_band_mean_reversion_1_0_1_5</code></td><td>Trading strategies for retail traders (LeapSpace v1)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>496</td><td>0.36462141155565875</td><td>0.04136047981259994</td><td>0.3466846495024831</td><td>0.2887350629814534</td><td>4/5</td></tr><tr><td><code>regime_switch_momentum_reversal_us_equity</code></td><td>Financial market regime identification (LeapSpace)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>80</td><td>0.027464016109220866</td><td>-0.01026907516039921</td><td>0.5535072569124422</td><td>-0.08091495692637768</td><td>1/5</td></tr><tr><td><code>v1_nasdaq_12m_tsm_vol_scaled</code></td><td>Trading strategies for retail traders (LeapSpace v1)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>166</td><td>-0.09711558964167841</td><td>-0.004025821123975315</td><td>0.14313139837476707</td><td>-0.38394394435312745</td><td>0/5</td></tr><tr><td><code>regime_switch_momentum_reversal_nasdaq_scalp_proxy</code></td><td>NASDAQ market regime identification (LeapSpace)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>637</td><td>-0.12443978437732625</td><td>-0.03548920316227999</td><td>0.6834744695546048</td><td>0.12471627691257144</td><td>4/5</td></tr><tr><td><code>crypto_xs_momentum_volume_confirmed</code></td><td>Trading strategies for retail traders (LeapSpace 2.0)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>2018</td><td>-0.2101672964565547</td><td>-0.15531200204558004</td><td>0.823781026805811</td><td>-0.14905172070327496</td><td>2/5</td></tr><tr><td><code>sd_band_mean_reversion_crypto</code></td><td>Trading strategies for retail traders (LeapSpace 2.0)</td><td><span style='color:#ff4444;font-weight:700'>REFUTED</span></td><td>--quick</td><td>974</td><td>-0.6606191935948359</td><td>-0.40714295521643984</td><td>0.9930564263479791</td><td>-0.5527477223080706</td><td>2/5</td></tr></tbody></table></div></div>
+
+
+
+
+
+<section class='card'><h2>Backtest verdicts</h2><p class='note'>In-sample vs out-of-sample Sharpe for every paper-derived strategy.</p><img src='verdicts.png' alt='Backtest verdicts'></section><section class='card'><h2>Walk-forward</h2><p class='note'>Out-of-sample Sharpe and fold profitability per strategy.</p><img src='walkforward.png' alt='Walk-forward'></section><section class='card'><h2>Equity curves</h2><p class='note'>Real engine equity curves for the three highest-Sharpe strategies.</p><img src='equity.png' alt='Equity curves'></section><section class='card'><h2>Copy-trade simulation</h2><p class='note'>Friction-aware copy-trading simulation: equity, underwater drawdown and injected rug events. Synthetic inputs, labelled as such on the chart.</p><img src='simulation.png' alt='Copy-trade simulation'></section><section class='card'><h2>Consistency gate</h2><p class='note'>Raw closed trades vs the INDEPENDENT BETS the statistical tests actually use. The collapse IS the finding.</p><img src='edge_gate.png' alt='Consistency gate'></section><section class='card'><h2>Whitelist</h2><p class='note'>Registry status and the promotion/retirement timeline. History is never deleted (GIPS 3.A.9).</p><img src='whitelist.png' alt='Whitelist'></section><section class='card'><h2>Price at a past block</h2><p class='note'>Historical price read from the DEX's own reserves at each trade's block, against the known reference prices.</p><img src='price_accuracy.png' alt='Price at a past block'></section><section class='card'><h2>Criteria coverage</h2><p class='note'>Which of the cited criteria are enforced in code. A documented-but-unenforced criterion is shown as a gap.</p><img src='criteria.png' alt='Criteria coverage'></section><section class='card'><h2>Community size</h2><p class='note'>The community-size series, as it is COLLECTED. There is no keyless source for a historical member count.</p><img src='community.png' alt='Community size'></section>
+</body></html>

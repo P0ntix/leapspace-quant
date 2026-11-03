@@ -1,0 +1,313 @@
+[
+  {
+    "key": "lcr_endpoints_md",
+    "url": "https://lunarcrush.com/developers/api/endpoints.md",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/developers/api/endpoints.md",
+    "text_len": 46,
+    "excerpts": [],
+    "head": " LunarCrush API docs | MCP & SDK | LunarCrush "
+  },
+  {
+    "key": "lcr_social_metrics",
+    "url": "https://lunarcrush.com/developers/api/endpoints",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/en/developers/api/endpoints",
+    "text_len": 46,
+    "excerpts": [],
+    "head": " LunarCrush API docs | MCP & SDK | LunarCrush "
+  },
+  {
+    "key": "lcr_docs_social",
+    "url": "https://lunarcrush.com/developers/api/endpoints/social-metrics",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/en/developers/api/endpoints/social-metrics",
+    "text_len": 46,
+    "excerpts": [],
+    "head": " LunarCrush API docs | MCP & SDK | LunarCrush "
+  },
+  {
+    "key": "lcr_pricing_md",
+    "url": "https://lunarcrush.com/pricing.md",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/pricing.md",
+    "text_len": 2052,
+    "excerpts": [
+      "[Free] ... web every day to give you the clearest picture of what the market is thinking, feeling, and doing. Six layers of processing separate us from any tweet scraper. Every post passes through every layer. 20+ data points per asset, each with full historical time-series. Simple, transparent pricing Start free, then scale as you grow. Every plan includes access to real-time social media sentiment. See full pricing details Ready to build with LunarCrush? Start integrating real-time social media sentiment into your workflows today. Free tier available. Free tier for developers. No credit card required. ...",
+      "[plan] ...est picture of what the market is thinking, feeling, and doing. Six layers of processing separate us from any tweet scraper. Every post passes through every layer. 20+ data points per asset, each with full historical time-series. Simple, transparent pricing Start free, then scale as you grow. Every plan includes access to real-time social media sentiment. See full pricing details Ready to build with LunarCrush? Start integrating real-time social media sentiment into your workflows today. Free tier available. Free tier for developers. No credit card required. ...",
+      "[credit] ...parent pricing Start free, then scale as you grow. Every plan includes access to real-time social media sentiment. See full pricing details Ready to build with LunarCrush? Start integrating real-time social media sentiment into your workflows today. Free tier available. Free tier for developers. No credit card required. ..."
+    ],
+    "head": " content (even charset/viewport) to block the speculative parser from discovering and prefetching resources (fonts, images, modules) that will never be used. Without this early placement, a paid user hitting `/` would download the marketing site's assets (~300KB+ of JS/CSS/fonts) AND THEN redirect to the webapp, wasting 1-2s and 100+ requests (DEV-12444, DEV-12528). CRITICAL: Preserve locale in re"
+  },
+  {
+    "key": "lcr_free_tier",
+    "url": "https://lunarcrush.com/developers/api/endpoints/quick-start",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/en/developers/api/endpoints/quick-start",
+    "text_len": 46,
+    "excerpts": [],
+    "head": " LunarCrush API docs | MCP & SDK | LunarCrush "
+  },
+  {
+    "key": "sant_conv_rate",
+    "url": "https://academy.santiment.net/metrics/conversion-rate/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/conversion-rate/",
+    "text_len": 608,
+    "excerpts": [],
+    "head": " 404: Not found svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Looks like you got lost The page you're looking for is missing or your link is incorrect. Back to home page Behavioral analytics for the crypto market a]:text-mirage hover:[&>a]:underline\"> About us Pricing Team Jobs Contact us Charts Screener Insights Social trends Academy Sanbase SanAPI Sansheets SanR Subscribe to the weekly Digest!"
+  },
+  {
+    "key": "sant_velocity",
+    "url": "https://academy.santiment.net/metrics/velocity/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/velocity/",
+    "text_len": 4393,
+    "excerpts": [
+      "[Definition] ...rending Coins Trending Stories Trending Words Trending Words Rank Twitter Followers Unique Social Volume Velocity Whale Transaction Count Whale Transaction Volume XRPL Chain metrics Changelog Labels Data Anomalies AI Toolkit Santiment MCP Connector Santiment Skills for AI Agents Social Trends Skill Definition Access Measuring Unit Data Type Frequency Latency Available Assets SanAPI Home Metrics Velocity Velocity For a more in-depth explanation of Velocity , please click here . Definition The metric shows the average number of times that a coin/token changes wallets each day. Simply put, a higher velocity means that a coin/token is used in transactions more often within a set time frame. Velocity can be used to explain various noteworthy events in the life of a project. For example, here\u00e2\u0080\u0099s Ethereum: Notice the steep drop off? The increased activity (and subsequent dip) correlates squarely to a huge ETH mixer that operated between March 2017 and March 2018. During that time, coins were...",
+      "[volume] ...For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoin ETF Volume Bitfinex Derivatives BitMEX Derivatives BTC and S&P 500 Price Divergence Circulation Community Messages Count Community Social Volume Contract Interacting Address Count Contract Transactions Count CrvUSD Savings Daily Active Addresses Daily Active Deposits Daily Aggregated Financial Metrics in USD Debt Decentralized Exchange Metrics DeFi Lending and Borrowing Protocols Deprecated Metrics Deribit Derivatives Development Activity Metrics Difficulty Dormant Circulation dYdX Derivatives ETF Flow Metrics ETH 2.0 Metrics Ethena Protocol Ethereum fees Ethereum Spent Exchange Inflow/Outflow Finalized Metrics FTX Derivatives Fully Diluted Valuation in USD Funding Rates Aggregated GHO Savings G...",
+      "[time] ... Velocity | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoin ETF Volume Bitfinex Derivatives BitMEX Derivatives BTC and S&P 500 Price Divergence Circulation Community Messages Count Community Social Volume Contract Interacting Address Count Contract Transactions Count CrvUSD Savings Daily Active Addresses Daily Active Deposits Daily Aggregated Financial Metri..."
+    ],
+    "head": " Velocity | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Deriv"
+  },
+  {
+    "key": "sant_sentiment_balance",
+    "url": "https://academy.santiment.net/metrics/social-sentiment-balance/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-sentiment-balance/",
+    "text_len": 608,
+    "excerpts": [],
+    "head": " 404: Not found svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Looks like you got lost The page you're looking for is missing or your link is incorrect. Back to home page Behavioral analytics for the crypto market a]:text-mirage hover:[&>a]:underline\"> About us Pricing Team Jobs Contact us Charts Screener Insights Social trends Academy Sanbase SanAPI Sansheets SanR Subscribe to the weekly Digest!"
+  },
+  {
+    "key": "sant_community_msgs",
+    "url": "https://academy.santiment.net/metrics/community-messages-count/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/community-messages-count/",
+    "text_len": 4719,
+    "excerpts": [
+      "[Definition] ...rending Coins Trending Stories Trending Words Trending Words Rank Twitter Followers Unique Social Volume Velocity Whale Transaction Count Whale Transaction Volume XRPL Chain metrics Changelog Labels Data Anomalies AI Toolkit Santiment MCP Connector Santiment Skills for AI Agents Social Trends Skill Definition Access Measuring Unit Data Type Frequency Latency Available Assets SanAPI Full List of Metrics Home Metrics Community Messages Count Community Messages Count Definition Community Messages Count is built on top of the Social Data . Community Messages Count returns the number of messages written in the asset\u00e2\u0080\u0099s own community chat (Telegram server) or subreddit (Reddit). Currently telegram and reddit are supported. We constantly update our labels, which helps us keep labels as fresh as possible, but results in historical data changes. Any modifications to labels, social sources, or relevant jobs will prompt recalculation for the previous month\u00e2\u0080\u0099s data. Within a 12-hour period, the ..."
+    ],
+    "head": " Community Messages Count | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Ra"
+  },
+  {
+    "key": "sant_social_trends",
+    "url": "https://academy.santiment.net/metrics/social-trends/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-trends/",
+    "text_len": 608,
+    "excerpts": [],
+    "head": " 404: Not found svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Looks like you got lost The page you're looking for is missing or your link is incorrect. Back to home page Behavioral analytics for the crypto market a]:text-mirage hover:[&>a]:underline\"> About us Pricing Team Jobs Contact us Charts Screener Insights Social trends Academy Sanbase SanAPI Sansheets SanR Subscribe to the weekly Digest!"
+  },
+  {
+    "key": "sant_pricing_page",
+    "url": "https://app.santiment.net/pricing",
+    "status": 200,
+    "final_url": "https://app.santiment.net/pricing",
+    "text_len": 7206,
+    "excerpts": [
+      "[Free] ... Pricing for Crypto Analytic Tools - Start a Free Trial Community Charts Screener Social Trends Insights Watchlists Alerts Historical Balance svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> More Tools Pricing svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> Resources Day Log in Sign up Enjoy Santiment Data Now, Pick a Plan Later Try Sanbase free for 14 days and get full access to all our products and features Power your trading decisions with Santiment: tailored crypto analytics for investors, traders, and researchers \u00f0\u009f\u0091\u00a8\u00e2\u0080\u008d\u00f0\u009f\u00a6\u00b1 ...",
+      "[$] ...se free for 14 days and get full access to all our products and features Power your trading decisions with Santiment: tailored crypto analytics for investors, traders, and researchers \u00f0\u009f\u0091\u00a8\u00e2\u0080\u008d\u00f0\u009f\u00a6\u00b1 For individuals \u00f0\u009f\u0092\u00bc For business Free Ideal for new traders and investors to kickstart crypto analysis $0 Free forever Sign up 30-day lag in Sanbase Hidden top 3 tokens in Trending Coins No filters and sorting for Screener Up to 3 simultaneous alerts Sanbase Pro Ideal for advanced traders and analysts to power decisions with real-time data $49 / mo $529 / year, billed monthly Bill annually - 10% \u00f0\u009f\u008e\u0089 Start Free Trial Present-day and full historical data in Sanbase Full access to Trending Coins Access to Google Sheets plugin Exclusive reports and market insights Sanbase Max Ideal for advanced investment strategies with full API access to real-time data $249 / mo $2700 / year, billed monthly Bill annually - 10% \u00f0\u009f\u008e\u0089 Upgrade Present-day and full historical data in Sanbase and Trending Coins Tech...",
+      "[Sanbase] ...oading-color: var(--black); --loading-size: 2px;\"> More Tools Pricing svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> Resources Day Log in Sign up Enjoy Santiment Data Now, Pick a Plan Later Try Sanbase free for 14 days and get full access to all our products and features Power your trading decisions with Santiment: tailored crypto analytics for investors, traders, and researchers \u00f0\u009f\u0091\u00a8\u00e2\u0080\u008d\u00f0\u009f\u00a6\u00b1 For individuals \u00f0\u009f\u0092\u00bc For business Free Ideal for new traders and investors to kickstart crypto analysis $0 Free forever Sign up 30-day lag in Sanbase Hidden top 3 tokens in Trending Coins No filters and sorting for Screener Up to 3 simultaneous alerts Sanbase Pro Ideal for advanced traders and analysts to power decisions with real-time data $49 / mo $529 / year, billed monthly Bill annually - 10% \u00f0\u009f\u008e\u0089 Start Free Trial Present-day and full historical data in Sanbase Full access to Trending Coins..."
+    ],
+    "head": " Pricing for Crypto Analytic Tools - Start a Free Trial Community Charts Screener Social Trends Insights Watchlists Alerts Historical Balance svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var(--athens)); --loading-color: var(--black); --loading-size: 2px;\"> More Tools Pricing svg]:transition-transform\" style=\"--ghost-active-bg: var(--active-ghost-button-bg, var"
+  },
+  {
+    "key": "nansen_smartmoney_api",
+    "url": "https://docs.nansen.ai/api/smart-money",
+    "status": 200,
+    "final_url": "https://docs.nansen.ai/api/smart-money",
+    "text_len": 4331,
+    "excerpts": [
+      "[Smart Money] ... Smart Money | Nansen API Nansen API \u2318 Ctrl k x-twitter youtube More Nansen API Introduction Getting Started Make Your First API Call API Migration Reference API Endpoints Overview Data Coverage by Chain Search Smart Money Netflows Holdings Historical Holdings DEX Trades Perp Trades Jupiter DCAs PnL Leaderboard Funds Profiler Token God Mode Portfolio Chain Rank Agent Feedback Trading Hyperliquid \ud83c\udd95 Backtesting Data Prediction Market Points Smart Alerts API Changelog Nansen CLI Nansen Connectors & MCP Overview Connectors Manually connecting to Nansen MCP MCP Data Redistribution Guidelines Guides Use case Templates Data Methodology & Technical Reference Data Redistribution Guidelines Frequently ...",
+      "[Smart Traders] ...ons Useful Links Powered by GitBook On this page For the complete documentation index, see llms.txt . This page is also available as Markdown . Copy On this page API Smart Money Overview Smart Money endpoints provide insights into the trading and holding activity of historically profitable traders: Smart Traders on spot markets and Smart HL Perps Traders on Hyperliquid. Funds are not part of Smart Money; for current Fund holdings, use Fund Holdings . Endpoints Endpoint Path Description Netflow /api/v1/smart-money/netflow Net capital flows (inflows vs outflows) DEX Trades /api/v1/smart-money/dex-trades Real-time DEX trading activity Perp Trades /api/v1/smart-money/perp-trades Perpetual trading on Hyperliquid DCAs (deprecated) /api/v1/smart-money/dcas DCA strategies on Jupiter; removal on January 26, 2027 Holdings /api/v1/smart-money/holdings Aggregated token balances Historical Holdings /api/v1/smart-money/historical-holdings Historical balance snapshots Supported Chains Netflow, DEX Tr...",
+      "[token] ...nsen API \u2318 Ctrl k x-twitter youtube More Nansen API Introduction Getting Started Make Your First API Call API Migration Reference API Endpoints Overview Data Coverage by Chain Search Smart Money Netflows Holdings Historical Holdings DEX Trades Perp Trades Jupiter DCAs PnL Leaderboard Funds Profiler Token God Mode Portfolio Chain Rank Agent Feedback Trading Hyperliquid \ud83c\udd95 Backtesting Data Prediction Market Points Smart Alerts API Changelog Nansen CLI Nansen Connectors & MCP Overview Connectors Manually connecting to Nansen MCP MCP Data Redistribution Guidelines Guides Use case Templates Data Methodology & Technical Reference Data Redistribution Guidelines Frequently Asked Questions Useful Links Powered by GitBook On this page For the complete documentation index, see llms.txt . This page is also available as Markdown . Copy On this page API Smart Money Overview Smart Money endpoints provide insights into the trading and holding activity of historically profitable traders: Smart Traders o...",
+      "[wallet] ...na . Perp Trades is Hyperliquid-only and does not accept a chains field. DCAs is Solana/Jupiter-only and does not accept a chains field. Smart Money Labels Filter by these smart money labels. Availability is endpoint-specific. Fund is deprecated in Smart Money and Token Screener label filters. Fund wallets stopped being part of Smart Money on September 9, 2026, so on these endpoints including Fund matches no wallets (on Perp Trades and DCAs, only the rare Smart Money wallets that also carry a Fund label) and excluding it has little or no effect. It is still accepted temporarily. Stop using it. There are two rejection dates: on Holdings we may begin rejecting it after December 22, 2026, the date announced on September 23, 2026; on the other endpoints, after January 27, 2027, which gives them the full 90-day notice. Historical snapshots from before September 9, 2026 can still contain Fund-labelled wallets. See the changelog entry . 30D Smart Trader , 90D Smart Trader and 180D Smart Trade..."
+    ],
+    "head": " Smart Money | Nansen API Nansen API \u2318 Ctrl k x-twitter youtube More Nansen API Introduction Getting Started Make Your First API Call API Migration Reference API Endpoints Overview Data Coverage by Chain Search Smart Money Netflows Holdings Historical Holdings DEX Trades Perp Trades Jupiter DCAs PnL Leaderboard Funds Profiler Token God Mode Portfolio Chain Rank Agent Feedback Trading Hyperliquid \ud83c\udd95"
+  },
+  {
+    "key": "nansen_api_main",
+    "url": "https://www.nansen.ai/api",
+    "status": 200,
+    "final_url": "https://nansen.ai/api",
+    "text_len": 9484,
+    "excerpts": [
+      "[Smart Money] ...reate a New Key and See Everything Go to the API tab in-app and create your first key, with a guided workflow to help you make your first call in less than 5 minutes. View API Docs \u00e2\u0086\u0092 View API Docs \u00e2\u0086\u0092 Interactive API Demo Demo Reset 1 Discover 2 Buyers & sellers 3 Holders 4 Price & volume What is Smart Money buying? Rank tokens by seven-day Smart Money net inflow, then choose one to investigate. POST /api/v1 /smart-money/netflow Response Request 0 1 Run this step to see the answer. No API key needed. No live calls or credits. Recorded API data. Not live. No API key or credits needed. Find tokens \u00e2\u0086\u0092 One Integration. Multiple Capabilities. One Integration. Multiple Capabilities. One Integration. Multiple Capabilities. The same endpoints powering Nansen\u00e2\u0080\u0099s platform - available for your build. Track the Best Wallets, Real-Time See what top-performing funds and traders are buying, selling, and holding before the market catches on. Identify Any Address, Instantly Balances, PnL, counterpa...",
+      "[price] ...m o v e m a r k e t s Create a New Key and See Everything Go to the API tab in-app and create your first key, with a guided workflow to help you make your first call in less than 5 minutes. View API Docs \u00e2\u0086\u0092 View API Docs \u00e2\u0086\u0092 Interactive API Demo Demo Reset 1 Discover 2 Buyers & sellers 3 Holders 4 Price & volume What is Smart Money buying? Rank tokens by seven-day Smart Money net inflow, then choose one to investigate. POST /api/v1 /smart-money/netflow Response Request 0 1 Run this step to see the answer. No API key needed. No live calls or credits. Recorded API data. Not live. No API key or credits needed. Find tokens \u00e2\u0086\u0092 One Integration. Multiple Capabilities. One Integration. Multiple Capabilities. One Integration. Multiple Capabilities. The same endpoints powering Nansen\u00e2\u0080\u0099s platform - available for your build. Track the Best Wallets, Real-Time See what top-performing funds and traders are buying, selling, and holding before the market catches on. Identify Any Address, Instantly B...",
+      "[free] ...CEO S t a r t F r e e . S c a l e W h e n Y o u \u00e2\u0080\u0099 r e R e a d y . S t a r t F r e e . S c a l e W h e n Y o u \u00e2\u0080\u0099 r e R e a d y . S t a r t F r e e . S c a l e W h e n Y o u \u00e2\u0080\u0099 r e R e a d y . Test core endpoints at no cost. Upgrade when you\u00e2\u0080\u0099re ready to build at scale. Pay with card or crypto. Free Plan $0 /month Best for quick experimentation and testing 100 trial credits Daily 10-credit refill Rate limits: 15/sec, 300/min Start for Free \u00e2\u0086\u0092 Pro Plan Popular $49 /month Best for automations and agentic builds 2000 starting credits Bulk credit discounts Rate limits: 75/sec, 1,500/min Start with Pro \u00e2\u0086\u0092 Start without an API key, from $0.01 per query. x402 payments enable pay-per-call access to the Nansen API using USDC on Base or Solana. Start without an API key, from $0.01 per query. x402 payments enable pay-per-call access to the Nansen API using USDC on Base or Solana. M a k e Y o u r F i r s t A P I C a l l i n U n d e r 5 M i n u t e s M a k e Y o u r F i r s t A P I C a l l i ..."
+    ],
+    "head": " Nansen API Nansen Sign Up Nansen Sign Up Sign Up Nansen Surface The Signal O n e A P I t o R e a d & T r a d e E v e r y t h i n g O n e A P I t o R e a d & T r a d e E v e r y t h i n g 5 0 0 M + l a b e l e d a d d r e s s e s , r e a l - t i m e d a t a a c r o s s 3 5 + c h a i n s , s p o t s w a p s a n d p e r p e x e c u t i o n - a l l i n o n e A P I . 5 0 0 M + l a b e l e d a d d r e "
+  },
+  {
+    "key": "nansen_academy_sm",
+    "url": "https://academy.nansen.ai/collections/0901664-smart-money",
+    "status": 200,
+    "final_url": "https://academy.nansen.ai/collections/0901664-smart-money",
+    "text_len": 986,
+    "excerpts": [
+      "[Smart Money] ... Smart Money - Nansen Skip to main content Nansen What's New Nansen Academy More en Search\u2026 Toggle theme Sign in Sign up Open main menu Open navigation : Referral Program Smart Money Referral Program Referral Program FAQ Affiliate Program FAQ Affiliates Learning Hub Power User Playbook Playbook Levels Smart Alerts Smart Money Finding Consistent Winners with Smart Money Leaderboard High-Conviction Entry Signal via Smart Money Live Trades Tracking Smart Money Soaking Up Supply Token God Mode Token Screener Nansen Profiler Other Features Power-Hour Sessions How to Use Nansen Nansen for Beginners Onchain for Beginners Support Exploring Nansen Trading on Nansen Staking on Nansen API, MCP & CLI Nan..."
+    ],
+    "head": " Smart Money - Nansen Skip to main content Nansen What's New Nansen Academy More en Search\u2026 Toggle theme Sign in Sign up Open main menu Open navigation : Referral Program Smart Money Referral Program Referral Program FAQ Affiliate Program FAQ Affiliates Learning Hub Power User Playbook Playbook Levels Smart Alerts Smart Money Finding Consistent Winners with Smart Money Leaderboard High-Conviction "
+  },
+  {
+    "key": "threads_api_root",
+    "url": "https://developers.facebook.com/docs/threads-api",
+    "status": 404,
+    "final_url": "https://developers.facebook.com/docs/threads-api",
+    "text_len": 42,
+    "excerpts": [],
+    "head": " Page Not Found - Meta for Developers --> "
+  },
+  {
+    "key": "threads_profile_api",
+    "url": "https://developers.facebook.com/docs/threads-api/profile-api",
+    "status": 404,
+    "final_url": "https://developers.facebook.com/docs/threads-api/profile-api",
+    "text_len": 42,
+    "excerpts": [],
+    "head": " Page Not Found - Meta for Developers --> "
+  },
+  {
+    "key": "threads_insights",
+    "url": "https://developers.facebook.com/docs/threads-api/insights-api",
+    "status": 404,
+    "final_url": "https://developers.facebook.com/docs/threads-api/insights-api",
+    "text_len": 42,
+    "excerpts": [],
+    "head": " Page Not Found - Meta for Developers --> "
+  },
+  {
+    "key": "threads_meta_docs",
+    "url": "https://developers.facebook.com/docs/threads",
+    "status": 400,
+    "final_url": "https://developers.facebook.com/docs/threads",
+    "text_len": 118,
+    "excerpts": [],
+    "head": " Error Sorry, something went wrong. We're working on getting this fixed as soon as we can. Go Back Meta \u00a9 2026 \u00b7 Help "
+  },
+  {
+    "key": "neynar_home",
+    "url": "https://neynar.com/",
+    "status": 200,
+    "final_url": "https://neynar.com/",
+    "text_len": 6552,
+    "excerpts": [
+      "[free] ...ay work on Farcaste... Show more antimo 42m @neynar i have a half pint of milk in the fridge in the office which is always out of date but like, if it looks and smells fine, is it fine? Build games, commerce, agents, and social apps - reach real users, agents and wallets. Ship in minutes. Start for free Join hundreds of brands building on Farcaster Developer Developer Everything you need to ship fast Everything you need to ship fast Social data Social data Mini apps Mini apps AI Agents AI Agents Conversations Conversations Onchain data Onchain data Clients Clients Data analysis Data analysis Debug Debug Explore Developer tools \u00e2\u0086\u0092 Looking for something specific? Check out our product catalog \u00e2\u0086\u0097 From the blog Neynar is acquiring Farcaster Neynar is acquiring Farcaster Neynar will maintain Farcaster protocol, run the Farcaster client and operate Clanker Read article Jan 21, 2026 Zapper: A New Type of Trading App Feb 9, 2026 A month in Neynar news - Dec '25 Dec 8, 2025 Check out our inde...",
+      "[$] ... Neynar NEYNAR Login NEYNAR Developer Blog Support Build where your users are Build where your users are Build where your users are Access a network of 2.6M+ accounts, thousands of developers and agents, and $500M+ in connected wallets Replay Studio Wallet $10 Deposit Send Swap Tokens Collectibles History token 1,000 $token $1 token 1,000 $token $1 token 1,000 $token $1 token 1,000 $token $1 token 1,000 $token $1 Home Cast Following Home rish now Excited to share that Neynar is acquiring Farcaster from Merkle. This means we will now maintain the Farcaster protocol, run the Farcaster client and operate Clanker. As part of this change - @dish and part of the Clanker team will be joining Neynar. @neynar is the software platform for the @farcaster ecosystem. A significant portion of Farcaster products run on our infrastructure. We\u00e2\u0080\u0099ve been focused on this community throughout Neynar\u00e2\u0080\u0099s lifetime an..."
+    ],
+    "head": " Neynar NEYNAR Login NEYNAR Developer Blog Support Build where your users are Build where your users are Build where your users are Access a network of 2.6M+ accounts, thousands of developers and agents, and $500M+ in connected wallets Replay Studio Wallet $10 Deposit Send Swap Tokens Collectibles History token 1,000 $token $1 token 1,000 $token $1 token 1,000 $token $1 token 1,000 $token $1 token"
+  },
+  {
+    "key": "neynar_docs_api",
+    "url": "https://docs.neynar.com/api-reference",
+    "status": 404,
+    "final_url": "https://docs.neynar.com/api-reference",
+    "text_len": 76318,
+    "excerpts": [
+      "[free] ...on\",\"href\":\"/docs/guide-to-creating-a-farcaster-account-with-wallet-integration\"}]},{\"group\":\"SIWN: Connect Farcaster Accounts\",\"pages\":[{\"title\":\"SIWN: Connect Farcaster accounts - Neynar API\",\"sidebarTitle\":\"Overview\",\"href\":\"/docs/how-to-let-users-connect-farcaster-accounts-with-write-access-for-free-using-sign-in-with-neynar-siwn\"},{\"title\":\"Customize SIWN - Neynar API\",\"href\":\"/docs/how-to-customize-sign-in-with-neynar-button-in-your-app\"},{\"title\":\"SIWN: React Native\",\"href\":\"/docs/sign-in-with-neynar-react-native-implementation\"},{\"title\":\"SIWN: React\",\"href\":\"/docs/react-implementation\"}]},{\"group\":\"Fetch Signers\",\"pages\":[{\"title\":\"Fetch signers\",\"sidebarTitle\":\"Overview\",\"href\":\"/docs/fetch-signers-1\"},{\"title\":\"Fetch Signers - Backend\",\"href\":\"/docs/fetch-signers-backend\"},{\"title\":\"Fetch Signers - Frontend (Wallet Integration)\",\"href\":\"/docs/fetch-signers-frontend-wallet-integration\"}]},{\"group\":\"Add User Verification\",\"pages\":[{\"title\":\"Farcaster Address Verification with ...",
+      "[rate] ...vert a Web App to a Farcaster Mini App\",\"sidebarTitle\":\"Convert Web App to Mini App\",\"href\":\"/docs/convert-web-app-to-mini-app\"},{\"group\":\"How to Build Viral Mini Apps\",\"pages\":[{\"title\":\"How to Build Viral Mini Apps\",\"href\":\"/docs/mini-app-virality-guide\"},{\"title\":\"Common UX Mistakes and Launch Strategies for Mini Apps\",\"sidebarTitle\":\"UX Mistakes \\u0026 Launch Strategy\",\"href\":\"/docs/mini-app-common-mistakes\"}]},{\"title\":\"HTML \\u0026 OpenGraph Metadata in Mini Apps\",\"sidebarTitle\":\"Mini App Metadata\",\"href\":\"/docs/html-metadata-in-frames-and-catalogs\"},{\"title\":\"Solana Integration Guide for Farcaster Mini Apps\",\"sidebarTitle\":\"Solana Integration\",\"href\":\"/docs/solana-miniapp-features\"}]},{\"group\":\"Fetch User Information\",\"pages\":[{\"title\":\"User by Wallet Address\",\"href\":\"/docs/fetching-farcaster-user-based-on-ethereum-address\"},{\"group\":\"Mutual Follows/Followers\",\"pages\":[{\"title\":\"Find Mutual Follows and Followers\",\"sidebarTitle\":\"Overview\",\"href\":\"/docs/how-to-fetch-mutual-followf..."
+    ],
+    "head": " Page Not Found Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content Neynar home page Search... \u2318 K Log in Search... Navigation Page Not Found Home Tutorials REST API Reference Node.js SDK Mini Apps Learn Snapchain Get Help \u2192 Status Blog 404 Page Not Found {\"nav\":{\"global\":{\"anchors\":[{"
+  },
+  {
+    "key": "arxiv_bots",
+    "url": "https://arxiv.org/abs/2007.06829",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2007.06829",
+    "text_len": 4586,
+    "excerpts": [
+      "[bot] ...s CORE? ) IArxiv recommender toggle IArxiv Recommender ( What is IArxiv? ) Author Venue Institution Topic About arXivLabs arXivLabs: experimental projects with community collaborators arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website. Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them. Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs . Which authors of this paper are endorsers? | Disable MathJax ( What is MathJax? ) We gratefully acknowledge support from our major funders , member institutions , , and all contributors. About \u00b7 Help \u00b7 Contact \u00b7 Subscribe \u00b7 Copyright \u00b7 Privacy \u00b7 Accessibility \u00b7 Operational Status (opens in new tab) ..."
+    ],
+    "head": " [2007.06829] Unifying Holographic Inflation with Holographic Dark Energy: a Covariant Approach Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search \u00b7 Advanced search --> General Relativity and Quantum Cosmology arXiv:2007.06829 (gr-qc) [Submitted on 14 Jul 2020] Title: Unifying Holographic Inflation with Holographic Dark Energy: a Covariant Approach Authors: Shinich"
+  },
+  {
+    "key": "arxiv_crypto_twitter",
+    "url": "https://arxiv.org/abs/2407.10962",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2407.10962",
+    "text_len": 5508,
+    "excerpts": [
+      "Abstract: Recent neutrino-nucleus cross-section measurements of observables characterising kinematic imbalance from the T2K, MicroBooNE and MINERvA experiments are used to benchmark predictions from widely used neutrino interaction event generators. Given the different neutrino energy spectra and nuclear targets employed by the three experiments, comparisons of model predictions to their measurements breaks degeneracies that would be present in any single measurement. In particular, the comparison of T2K and MINERvA measurements offers a probe of energy dependence, whilst a comparison of T2K and MicroBooNE investigates scaling with nuclear target. In order to isolate the impact of individual nuclear effects, model comparisons are made following systematic alterations to: the nuclear ground state; final state interactions and multi-nucleon interaction strength. The measurements are furthe"
+    ],
+    "head": " [2407.10962] Benchmarking neutrino interaction models via a comparative analysis of kinematic imbalance measurements from the T2K, MicroBooNE and MINERvA experiments Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search \u00b7 Advanced search --> High Energy Physics - Experiment arXiv:2407.10962 (hep-ex) [Submitted on 15 Jul 2024 ( v1 ), last revised 19 Jul 2024 (this ver"
+  },
+  {
+    "key": "arxiv_astroturf",
+    "url": "https://arxiv.org/abs/1807.02277",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/1807.02277",
+    "text_len": 5244,
+    "excerpts": [
+      "[bot] ...s CORE? ) IArxiv recommender toggle IArxiv Recommender ( What is IArxiv? ) Author Venue Institution Topic About arXivLabs arXivLabs: experimental projects with community collaborators arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website. Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them. Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs . Which authors of this paper are endorsers? | Disable MathJax ( What is MathJax? ) We gratefully acknowledge support from our major funders , member institutions , , and all contributors. About \u00b7 Help \u00b7 Contact \u00b7 Subscribe \u00b7 Copyright \u00b7 Privacy \u00b7 Accessibility \u00b7 Operational Status (opens in new tab) ..."
+    ],
+    "head": " [1807.02277] First-principles study on the chemical decomposition of inorganic perovskites \\ce{CsPbI3} and \\ce{RbPbI3} at finite temperature and pressure Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search \u00b7 Advanced search --> Condensed Matter > Materials Science arXiv:1807.02277 (cond-mat) [Submitted on 6 Jul 2018] Title: First-principles study on the chemical de"
+  },
+  {
+    "key": "pennycook_science",
+    "url": "https://www.pnas.org/doi/10.1073/pnas.1920981117",
+    "status": 403,
+    "final_url": "https://www.pnas.org/doi/10.1073/pnas.1920981117",
+    "text_len": 60,
+    "excerpts": [],
+    "head": " Just a moment... Enable JavaScript and cookies to continue "
+  },
+  {
+    "key": "icwsm_vader",
+    "url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "status": 200,
+    "final_url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "text_len": 1010,
+    "excerpts": [],
+    "head": " Making sure you're not a bot! Making sure you're not a bot! Loading... Anubis could not load its JavaScript. The server may be overloaded. Please reload the page to try again. This is a measure against bots and malicious requests similar to a CAPTCHA. However, instead of having to do work yourself, your browser is given a calculation task that it has to solve to ensure that it is a valid client. "
+  },
+  {
+    "key": "meme_science_direct",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S2666326421000154",
+    "status": 403,
+    "final_url": "https://www.sciencedirect.com/science/article/abs/pii/S2666326421000154",
+    "text_len": 645,
+    "excerpts": [],
+    "head": " ScienceDirect ScienceDirect Help There was a problem providing the content you requested Please contact our support team for more information and provide the details below. Reference number: a5449f2b09897493 IP Address: 210.185.171.144 CPE00001 ::CLOUDFLARE_ERROR_1000S_BOX:: About ScienceDirect Remote access Contact and support Terms and conditions Privacy policy Cookie settings All content on th"
+  },
+  {
+    "key": "ieee_meme_social",
+    "url": "https://ieeexplore.ieee.org/document/8919455",
+    "status": 202,
+    "final_url": "https://ieeexplore.ieee.org/document/8919455",
+    "text_len": 0,
+    "excerpts": [],
+    "head": ""
+  },
+  {
+    "key": "nber_astroturf",
+    "url": "https://www.nber.org/papers/w25277",
+    "status": 200,
+    "final_url": "https://www.nber.org/papers/w25277",
+    "text_len": 6205,
+    "excerpts": [],
+    "head": " Foreseen Risks | NBER Skip to main content NBER: National Bureau of Economic Research Subscribe Media Open Calls Search Research EXPLORE Research Findings Working Papers Books & Chapters Videos Periodicals The Digest The Reporter The Bulletin on the Economics of Alzheimer's Disease and Related Dementias The Bulletin on Health The Bulletin on Entrepreneurship The Bulletin on Retirement and Disabil"
+  },
+  {
+    "key": "arxiv_pumpfun",
+    "url": "https://arxiv.org/abs/2502.02558",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2502.02558",
+    "text_len": 5313,
+    "excerpts": [
+      "Abstract: Effective self-supervised learning (SSL) techniques have been key to unlocking large datasets for representation learning. While many promising methods have been developed using online corpora and captioned photographs, their application to scientific domains, where data encodes highly specialized knowledge, remains a challenge. Liquid Argon Time Projection Chambers (LArTPCs) provide high-resolution 3D imaging for fundamental physics, but analysis of their sparse, complex point cloud data often relies on supervised methods trained on large simulations, introducing potential biases. We introduce the Point-based Liquid Argon Masked Autoencoder (PoLAr-MAE), applying masked point modeling to unlabeled LArTPC images using domain-specific volumetric tokenization and energy prediction. We show this SSL approach learns physically meaningful trajectory representations directly from data"
+    ],
+    "head": " [2502.02558] Particle Trajectory Representation Learning with Masked Point Modeling Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search \u00b7 Advanced search --> High Energy Physics - Experiment arXiv:2502.02558 (hep-ex) [Submitted on 4 Feb 2025 ( v1 ), last revised 6 Jul 2025 (this version, v3)] Title: Particle Trajectory Representation Learning with Masked Point Mode"
+  },
+  {
+    "key": "arxiv_memecoin_social",
+    "url": "https://arxiv.org/abs/2306.13051",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2306.13051",
+    "text_len": 4619,
+    "excerpts": [
+      "Abstract: Kondo lattices are one of the classic models of strongly correlated systems where despite a long history, a full understanding of the excitation spectra is still not available. Here we propose that recent progress in engineering heterostructures can be leveraged to gain insight into and even tune this spectra. We use a strong Kondo coupling expansion to study spin-1 excitations of a Kondo lattice in both one and two-dimension to see whether or not paramagnons in a Kondo insulator fractionalize into spin-1/2 excitations. We show that while paramagnons are stable in the strong Kondo coupling limit, presence of sufficient proximity-induced superconducting pairing can favor fractionalization. Our results can be checked using a neutron scattering study of Kondo lattice heterostructures and paves the way toward engineering strongly correlated electronic systems. Subjects: Strongly Co"
+    ],
+    "head": " [2306.13051] Spin fractionalization in a Kondo-lattice superconductor heterostructure Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search \u00b7 Advanced search --> Condensed Matter > Strongly Correlated Electrons arXiv:2306.13051 (cond-mat) [Submitted on 22 Jun 2023 ( v1 ), last revised 18 Nov 2023 (this version, v2)] Title: Spin fractionalization in a Kondo-lattice su"
+  }
+]

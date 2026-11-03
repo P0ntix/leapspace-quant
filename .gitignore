@@ -1,0 +1,65 @@
+# Local secrets and runtime state - NEVER commit.
+.secrets.env
+*.env
+.env
+.env.*
+*.key
+*.pem
+
+# runtime state written by the package
+leapspace/state/
+leapspace/cache/
+
+# HTTP cache dumps (regenerable, and large)
+data/cache/
+
+# raw scrape dumps (large, and may embed third-party page content)
+reports/doctext/raw_*.html
+reports/doctext/*.txt
+data/_raw/
+
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+
+# The vendored third-party code is COMMITTED (it is MIT and carries its
+# own LICENSE/NOTICE), but never its byte-code or its caches.
+leapspace/vendor/**/__pycache__/
+
+# Windows / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+*.orig
+*.rej
+
+# ---- development scratch: one-off probes, not package code -------------
+# These are the throwaway scripts written while investigating a
+# specific source. They are useful history but they are not part of the
+# package, and a reader of the repository should not have to wade
+# through 80 of them to find the code. The CONCLUSIONS they produced
+# are in the documents and in the reports.
+reports/_*.py
+tools/probe*.py
+tools/live_*.py
+tools/freeprobe/
+tools/check_urls.py
+tools/build_bridge_registry3.py
+scripts/verify_step*.py
+scripts/collect_step*.py
+scripts/fetch_layer_claims*.py
+scripts/map_gt_ids.py
+scripts/build_ranking.py
+scripts/write_json_deliverable.py
+leapspace/tests/debug_*.py
+leapspace/tests/diagnose_*.py
+leapspace/tests/demo_*.py
+
+# runtime state (top level)
+state/
+
+# probe artefacts (the findings they produced are in the documents)
+reports/freeprobe/
+reports/probe_*.json
+reports/probe_*.md

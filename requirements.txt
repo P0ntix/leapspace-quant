@@ -1,0 +1,27 @@
+# leapspace-quant
+#
+# THE CORE PACKAGE IS PURE PYTHON STANDARD LIBRARY.
+# There is nothing to install to use it:
+#
+#     python -m leapspace.cli --help
+#
+# The pins below are only for the OPTIONAL chart layer
+# (leapspace/viz.py, leapspace/viz_memecoin.py). The core - the regime
+# classifier, the consistency gate, the backtest engine, the on-chain
+# scanners, the trade-brief engine - needs none of them.
+#
+# The third-party code under leapspace/vendor/ is VENDORED, not
+# installed. It is imported by path and is optional; the package works
+# with the vendor directory absent.
+
+# ---- optional: charts and the HTML dashboard ----
+matplotlib>=3.7
+numpy>=1.24
+pandas>=2.0
+
+# ---- optional: the vendored purged cross-validation library ----
+# Only needed for the CPCV stage of the full validation gauntlet.
+# The package imports it lazily and raises a clear error if it is
+# missing, so the core works without it.
+# scipy>=1.10
+# scikit-learn>=1.3

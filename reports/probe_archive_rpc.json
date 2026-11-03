@@ -1,0 +1,553 @@
+[
+  {
+    "url": "https://ethereum-rpc.publicnode.com",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 596,
+      "ct": "application/json",
+      "result": "0x191c73d"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 403,
+      "ms": 502,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 403,
+      "ms": 417,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 531,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://ethereum.publicnode.com",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 385,
+      "ct": "application/json",
+      "result": "0x191c73d"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 403,
+      "ms": 282,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 403,
+      "ms": 244,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 314,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://eth.llamarpc.com",
+    "blockNumber": {
+      "http_status": 525,
+      "ms": 730,
+      "ct": "application/json",
+      "result": null
+    }
+  },
+  {
+    "url": "https://eth.drpc.org",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 347,
+      "ct": "application/json",
+      "result": "0x191c73e"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 456,
+      "ct": "application/json",
+      "result": "0x0000000000000000000000000000000000000000000000000000765c143f3c4c000000000000000000000000000000000000000000000cc23a90833b33baac8d0000000000000000000000000000000000000000000000000000000060fd4e14"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 450,
+      "ct": "application/json",
+      "result": "0x210c003d2dc749fa"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 443,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://ethereum.drpc.org",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 413,
+      "ct": "application/json",
+      "result": "0x191c73e"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 415,
+      "ct": "application/json",
+      "result": "0x0000000000000000000000000000000000000000000000000000765c143f3c4c000000000000000000000000000000000000000000000cc23a90833b33baac8d0000000000000000000000000000000000000000000000000000000060fd4e14"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 534,
+      "ct": "application/json",
+      "result": "0x210c003d2dc749fa"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 417,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://eth-mainnet.public.blastapi.io",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 477,
+      "ct": "application/json",
+      "result": "0x191c73e"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 3757,
+      "ct": "application/json",
+      "result": "0x0000000000000000000000000000000000000000000000000000765c143f3c4c000000000000000000000000000000000000000000000cc23a90833b33baac8d0000000000000000000000000000000000000000000000000000000060fd4e14"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 434,
+      "ct": "application/json",
+      "result": "0x210c003d2dc749fa"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 441,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://eth.blastapi.io",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='eth.blastapi.io', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='eth.blastapi.io', port=443): Failed to resolve 'eth.blastapi.",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://rpc.flashbots.net",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 836,
+      "ct": "application/json",
+      "result": "0x191c73e"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 403,
+      "ms": 994,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32601, \"message\": \"rpc method is not whitelisted\"}"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 758,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32603, \"message\": \"insufficient changesets to revert to block #9766905. Available changeset range: 26320858..=26330922\"}"
+    },
+    "eth_call_latest": {
+      "http_status": 403,
+      "ms": 708,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32601, \"message\": \"rpc method is not whitelisted\"}"
+    }
+  },
+  {
+    "url": "https://eth.merkle.io",
+    "blockNumber": {
+      "http_status": 429,
+      "ms": 777,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32005, \"message\": \"Rate limit exceeded\"}"
+    }
+  },
+  {
+    "url": "https://eth-pokt.nodies.app",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 575,
+      "ct": "application/json",
+      "result": "0x191c73f"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 619,
+      "ct": "application/json",
+      "result": "0x0000000000000000000000000000000000000000000000000000765c143f3c4c000000000000000000000000000000000000000000000cc23a90833b33baac8d0000000000000000000000000000000000000000000000000000000060fd4e14"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 541,
+      "ct": "application/json",
+      "result": "0x210c003d2dc749fa"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 519,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://1rpc.io/eth",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 606,
+      "ct": "application/json",
+      "result": "0x191c73f"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 301,
+      "ms": 720,
+      "ct": "text/html",
+      "body_head": "<html>\r <head><title>301 Moved Permanently</title></head>\r <body>\r <center><h1>301 Moved Permanently</h1></center>\r <hr><center>nginx/1.24.0 (Ubuntu)</center>\r </body>\r </html>\r "
+    },
+    "eth_getBalance_2020": {
+      "http_status": 410,
+      "ms": 706,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "\"This endpoint has been discontinued.\""
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 563,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://eth.rpc.blxrbdn.com",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 323,
+      "ct": "application/json",
+      "result": "0x191c73f"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 286,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"historical state 74dc31e3827fb899d812a89c183ccf20c038258ced9f669da8adea2abccfbc23 is not available\"}"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 263,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"historical state cc7a8c6ec136c6a1344aaa92ca930a733eb40a09cf2d095ba4c13bc015b1729c is not available\"}"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 248,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://rpc.payload.de",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='rpc.payload.de', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='rpc.payload.de', port=443): Failed to resolve 'rpc.payload.de'",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://eth-mainnet.g.alchemy.com/v2/demo",
+    "blockNumber": {
+      "http_status": 429,
+      "ms": 342,
+      "ct": "",
+      "body_head": ""
+    }
+  },
+  {
+    "url": "https://eth-mainnet.gateway.tenderly.co",
+    "blockNumber": {
+      "http_status": 404,
+      "ms": 483,
+      "ct": "",
+      "body_head": ""
+    }
+  },
+  {
+    "url": "https://gateway.tenderly.co/public/mainnet",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 477,
+      "ct": "application/json",
+      "result": "0x191c73f"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 449,
+      "ct": "application/json",
+      "result": "0x0000000000000000000000000000000000000000000000000000765c143f3c4c000000000000000000000000000000000000000000000cc23a90833b33baac8d0000000000000000000000000000000000000000000000000000000060fd4e14"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 418,
+      "ct": "application/json",
+      "result": "0x210c003d2dc749fa"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 418,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://virtual.mainnet.rpc.tenderly.co",
+    "blockNumber": {
+      "http_status": 404,
+      "ms": 565,
+      "ct": "text/plain",
+      "body_head": "404 page not found"
+    }
+  },
+  {
+    "url": "https://rpc.mevblocker.io",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 478,
+      "ct": "application/json",
+      "result": "0x191c73f"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 419,
+      "ct": "application/json",
+      "result": "0x0000000000000000000000000000000000000000000000000000765c143f3c4c000000000000000000000000000000000000000000000cc23a90833b33baac8d0000000000000000000000000000000000000000000000000000000060fd4e14"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 424,
+      "ct": "application/json",
+      "result": "0x210c003d2dc749fa"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 403,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://api.securerpc.com/v1",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='api.securerpc.com', port=443): Max retries exceeded with url: /v1 (Caused by NameResolutionError(\"HTTPSConnection(host='api.securerpc.com', port=443): Failed to resolve 'api.sec",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://ethereum.blockpi.network/v1/rpc/public",
+    "blockNumber": {
+      "http_status": 503,
+      "ms": 311,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": 100021, \"message\": \"Apikey not found\"}"
+    }
+  },
+  {
+    "url": "https://rpc.ankr.com/eth",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 271,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"Unauthorized: You must authenticate your request with an API key. Create an account on https://www.ankr.com/rpc/ and generate your personal API key for free.\"}"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 250,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"Unauthorized: You must authenticate your request with an API key. Create an account on https://www.ankr.com/rpc/ and generate your personal API key for free.\"}"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 242,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"Unauthorized: You must authenticate your request with an API key. Create an account on https://www.ankr.com/rpc/ and generate your personal API key for free.\"}"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 292,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"Unauthorized: You must authenticate your request with an API key. Create an account on https://www.ankr.com/rpc/ and generate your personal API key for free.\"}"
+    }
+  },
+  {
+    "url": "https://eth.therpc.io",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "SSLError: HTTPSConnectionPool(host='eth.therpc.io', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1082)')))",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://api.zan.top/eth-mainnet",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 436,
+      "ct": "application/json",
+      "result": "0x191c740"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 347,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "\"cu limit exceeded; Method \\\"eth_call\\\" is not available for unregistered accounts. Please visit https://zan.top/ and register to unlock more.\""
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 840,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"historical state cc7a8c6ec136c6a1344aaa92ca930a733eb40a09cf2d095ba4c13bc015b1729c is not available\"}"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 339,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "\"cu limit exceeded; Method \\\"eth_call\\\" is not available for unregistered accounts. Please visit https://zan.top/ and register to unlock more.\""
+    }
+  },
+  {
+    "url": "https://rpc.gateway.tenderly.co/public/mainnet",
+    "blockNumber": {
+      "http_status": 200,
+      "ms": 1539,
+      "ct": "application/json",
+      "result": "0x191c740"
+    },
+    "eth_call_v2_reserves_2022": {
+      "http_status": 200,
+      "ms": 413,
+      "ct": "application/json",
+      "result": "0x0000000000000000000000000000000000000000000000000000765c143f3c4c000000000000000000000000000000000000000000000cc23a90833b33baac8d0000000000000000000000000000000000000000000000000000000060fd4e14"
+    },
+    "eth_getBalance_2020": {
+      "http_status": 200,
+      "ms": 436,
+      "ct": "application/json",
+      "result": "0x210c003d2dc749fa"
+    },
+    "eth_call_latest": {
+      "http_status": 200,
+      "ms": 420,
+      "ct": "application/json",
+      "result": "0x000000000000000000000000000000000000000000000000000008c4ac39900e0000000000000000000000000000000000000000000000e7de84682510738c55000000000000000000000000000000000000000000000000000000006ae936cb"
+    }
+  },
+  {
+    "url": "https://eth-mainnet.rpcfast.com",
+    "blockNumber": {
+      "http_status": 401,
+      "ms": 775,
+      "ct": "application/json",
+      "result": null,
+      "rpc_error": "{\"code\": -32000, \"message\": \"https://rpcfast.com/ requires api_key\"}"
+    }
+  },
+  {
+    "url": "https://eth.nodeconnect.org",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='eth.nodeconnect.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='eth.nodeconnect.org', port=443): Failed to resolve 'eth.n",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://eth.pokt.network",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='eth.pokt.network', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='eth.pokt.network', port=443): Failed to resolve 'eth.pokt.ne",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://api.etherscan.io",
+    "blockNumber": {
+      "http_status": 405,
+      "ms": 777,
+      "ct": "text/html",
+      "body_head": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\r <html xmlns=\"http://www.w3.org/1999/xhtml\">\r <head>\r <meta http-equiv=\"Content-Type\" cont"
+    }
+  },
+  {
+    "url": "https://rpc.builder0x69.io",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "ConnectTimeout: HTTPSConnectionPool(host='rpc.builder0x69.io', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='rpc.builder0x69.io', port=443) at 0x1c49bf36350>, 'Connecti",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://eth.llamarpc.com/",
+    "blockNumber": {
+      "http_status": 525,
+      "ms": 589,
+      "ct": "application/json",
+      "result": null
+    }
+  },
+  {
+    "url": "https://mainnet.rpc.chainstack.com",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='mainnet.rpc.chainstack.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='mainnet.rpc.chainstack.com', port=443): Failed to ",
+      "ms": null
+    }
+  },
+  {
+    "url": "https://eth.rpc.twilio.com",
+    "blockNumber": {
+      "http_status": null,
+      "transport_error": "SSLError: HTTPSConnectionPool(host='eth.rpc.twilio.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname m",
+      "ms": null
+    }
+  }
+]

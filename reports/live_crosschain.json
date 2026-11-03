@@ -1,0 +1,3883 @@
+{
+  "wallets": {
+    "ethereum": [
+      {
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "nonce": 59
+      },
+      {
+        "address": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "nonce": 6
+      },
+      {
+        "address": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "nonce": 4
+      },
+      {
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "nonce": 19789
+      },
+      {
+        "address": "0x1d48db0a70a43f36f17364563547b81238f73c42",
+        "nonce": 3
+      },
+      {
+        "address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+        "nonce": 1
+      },
+      {
+        "address": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+        "nonce": 1
+      },
+      {
+        "address": "0x57e114b691db790c35207b2e685d4a43181e6061",
+        "nonce": 1
+      },
+      {
+        "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+        "nonce": 1
+      },
+      {
+        "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+        "nonce": 1
+      },
+      {
+        "address": "0x841ed4ac9c0e59248cd37f3e08f4cb0ec9be3a34",
+        "nonce": 29
+      },
+      {
+        "address": "0x1d488fc518e1c63cb8ebcffe86773251a1c2cc48",
+        "nonce": 4
+      },
+      {
+        "address": "0x1d48c9640b2671fa0a89a6b1f3a5fc6e1b172171",
+        "nonce": 4
+      },
+      {
+        "address": "0xff0b4ef09c79e11d307d6ba89d858e6fc73e12d2",
+        "nonce": 1
+      },
+      {
+        "address": "0xff05e313f41ad6aef04d51d825ea0212dc3e12d2",
+        "nonce": 3
+      }
+    ],
+    "base": [
+      {
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "nonce": 8
+      }
+    ],
+    "arbitrum": [
+      {
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "nonce": 2
+      },
+      {
+        "address": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "nonce": 1
+      },
+      {
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "nonce": 1538
+      }
+    ],
+    "optimism": [
+      {
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "nonce": 2
+      },
+      {
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "nonce": 679
+      }
+    ],
+    "polygon": [
+      {
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "nonce": 140
+      }
+    ],
+    "bsc": []
+  },
+  "profiles": [
+    {
+      "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+      "chain": "ethereum",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://eth.drpc.org",
+        "probe_block": 15798803,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "providers": [
+          {
+            "url": "https://eth.drpc.org",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "ethereum",
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "first_tx_block": 24592010,
+        "rpc_calls": 25,
+        "rpc_url": "https://eth.drpc.org",
+        "wallet_first_tx_hash": "0x16c0538b7c548efe47fa6999777c5ca9294db6e95cac4129592f6d4e579114fe",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 4715160392831794,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 24,
+        "first_funder": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "first_funder_evidence": {
+          "kind": "balance_binary_search",
+          "block": 24588396,
+          "tx_hash": "0x9e8f77aaca32c06aa709b7a27cac48f6b07af1112860599b0f1f6ad8b51ac756",
+          "value_wei": 4715160392831794,
+          "rpc_calls": 24,
+          "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+        }
+      },
+      "funder_profile": {
+        "status": "ok",
+        "funder": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "is_contract": false,
+        "contract_code_size": 0,
+        "is_known_bridge": false,
+        "known_bridge_name": null,
+        "http_status": 200,
+        "provenance": "LIVE"
+      },
+      "counterparties": {
+        "0x1d48b72db77aba39497c207c09eeff4439730270": 6,
+        "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34": 1,
+        "0x841ed663f2636863d40be4ee76243377dff13a34": 12,
+        "0x1d48db0a70a43f36f17364563547b81238f73c42": 3,
+        "0x6982508145454ce325ddbe47a25d4ec3d2311933": 3,
+        "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce": 2,
+        "0x57e114b691db790c35207b2e685d4a43181e6061": 1,
+        "0x514910771af9ca656af840dff83e8264ecf986ca": 2,
+        "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984": 2,
+        "0x841ed4ac9c0e59248cd37f3e08f4cb0ec9be3a34": 2,
+        "0x1d488fc518e1c63cb8ebcffe86773251a1c2cc48": 3,
+        "0x1d48c9640b2671fa0a89a6b1f3a5fc6e1b172171": 2,
+        "0xff0b4ef09c79e11d307d6ba89d858e6fc73e12d2": 1,
+        "0xff05e313f41ad6aef04d51d825ea0212dc3e12d2": 1,
+        "0x2efb50e952580f4ff32d8d2122853432bbf2e204": 1,
+        "0x841eaf8c93f8c0a89964b232672f6ef066ad3a34": 1,
+        "0x841eaab1ceeb31f2daa45390b5cc0f15201e3a34": 1,
+        "0x841e60b6db2cdb720ac5b9f4e15c10a42f033a34": 3,
+        "0x8414795b4d79cf5125c77bc49ab8507777313a34": 1,
+        "0x841edd5b7a697e79e1d45480d4b12d8a9cda3a34": 2
+      },
+      "counterparty_source": "blockscout",
+      "counterparty_status": "ok",
+      "timestamps": [
+        "2026-11-02T14:04:47.000000Z",
+        "2026-11-01T12:03:11.000000Z",
+        "2026-11-01T11:30:11.000000Z",
+        "2026-11-01T11:29:47.000000Z",
+        "2026-11-01T10:51:59.000000Z",
+        "2026-11-01T10:50:47.000000Z",
+        "2026-10-31T12:59:47.000000Z",
+        "2026-10-30T19:26:35.000000Z",
+        "2026-10-30T18:57:11.000000Z",
+        "2026-10-30T18:18:35.000000Z",
+        "2026-10-30T18:17:59.000000Z",
+        "2026-10-30T13:00:35.000000Z",
+        "2026-10-30T12:59:59.000000Z",
+        "2026-10-30T12:58:11.000000Z",
+        "2026-10-30T12:57:47.000000Z",
+        "2026-10-30T12:53:59.000000Z",
+        "2026-10-30T12:53:23.000000Z",
+        "2026-10-29T23:16:35.000000Z",
+        "2026-10-29T23:16:35.000000Z",
+        "2026-10-29T19:55:47.000000Z",
+        "2026-10-29T19:42:35.000000Z",
+        "2026-10-29T19:42:11.000000Z",
+        "2026-10-24T17:37:35.000000Z",
+        "2026-10-24T17:31:59.000000Z",
+        "2026-10-24T06:45:35.000000Z",
+        "2026-10-24T01:39:23.000000Z",
+        "2026-10-24T01:36:11.000000Z",
+        "2026-10-24T01:35:11.000000Z",
+        "2026-10-23T17:28:11.000000Z",
+        "2026-10-23T17:27:47.000000Z",
+        "2026-10-23T17:27:11.000000Z",
+        "2026-10-23T11:28:11.000000Z",
+        "2026-10-23T05:02:59.000000Z",
+        "2026-10-13T16:47:35.000000Z",
+        "2026-09-27T14:38:11.000000Z",
+        "2026-09-25T19:07:11.000000Z",
+        "2026-09-22T04:20:59.000000Z",
+        "2026-09-22T04:20:59.000000Z",
+        "2026-09-21T22:24:47.000000Z",
+        "2026-09-21T22:21:59.000000Z",
+        "2026-09-21T22:20:23.000000Z",
+        "2026-09-21T22:19:47.000000Z",
+        "2026-09-21T22:19:11.000000Z",
+        "2026-09-21T14:15:59.000000Z",
+        "2026-09-04T01:01:47.000000Z",
+        "2026-09-04T00:52:59.000000Z",
+        "2026-09-03T19:57:11.000000Z",
+        "2026-09-03T19:50:23.000000Z",
+        "2026-09-03T19:44:59.000000Z",
+        "2026-09-03T18:59:59.000000Z"
+      ],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": true,
+        "counterparties": true,
+        "timing": true,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x1d48b72db77aba39497c207c09eeff4439730270",
+      "chain": "ethereum",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://eth.drpc.org",
+        "probe_block": 15798804,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "providers": [
+          {
+            "url": "https://eth.drpc.org",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "ethereum",
+        "address": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "first_tx_block": 26319434,
+        "rpc_calls": 25,
+        "rpc_url": "https://eth.drpc.org",
+        "wallet_first_tx_hash": "0xad68aad8d1c0199ff2b6c161dbf7f58f4b0f3d83e31752e934f41a894694ff3d",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 200000000000000,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 24,
+        "first_funder": "0x853244c7c9ca8af8f8e31e11aa299951dbd543d4",
+        "first_funder_evidence": {
+          "kind": "balance_binary_search",
+          "block": 26319426,
+          "tx_hash": "0x34bb9cbd6f99bac3cd4ebd18f2e3ab2832cc567bc44b93510ade9bd9a501b7c0",
+          "value_wei": 200000000000000,
+          "rpc_calls": 24,
+          "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+        }
+      },
+      "funder_profile": {
+        "status": "ok",
+        "funder": "0x853244c7c9ca8af8f8e31e11aa299951dbd543d4",
+        "is_contract": false,
+        "contract_code_size": 0,
+        "is_known_bridge": false,
+        "known_bridge_name": null,
+        "http_status": 200,
+        "provenance": "LIVE"
+      },
+      "counterparties": {
+        "0x1d48963dd8fada6ab5c2c7b92eba81ecc5030270": 6,
+        "0x853244c7c9ca8af8f8e31e11aa299951dbd543d4": 1
+      },
+      "counterparty_source": "blockscout",
+      "counterparty_status": "ok",
+      "timestamps": [
+        "2026-11-02T14:04:47.000000Z",
+        "2026-11-01T12:03:11.000000Z",
+        "2026-11-01T11:30:11.000000Z",
+        "2026-11-01T11:29:47.000000Z",
+        "2026-11-01T10:51:59.000000Z",
+        "2026-11-01T10:50:47.000000Z",
+        "2026-11-01T10:49:11.000000Z"
+      ],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": true,
+        "counterparties": true,
+        "timing": true,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+      "chain": "ethereum",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://eth.drpc.org",
+        "probe_block": 15798805,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "providers": [
+          {
+            "url": "https://eth.drpc.org",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "ethereum",
+        "address": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "first_tx_block": 26293928,
+        "rpc_calls": 25,
+        "rpc_url": "https://eth.drpc.org",
+        "wallet_first_tx_hash": "0x8773faebaa616ea9c2c3ea2bd8a281eefdaf2a5c80dc493908ee5f36784758a6",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 2522995821885,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 25,
+        "first_funder": null,
+        "first_funder_evidence": {
+          "kind": "not_found_within_scan",
+          "funded_at_block": 26293924,
+          "rpc_calls": 25,
+          "note": "The wallet's balance was already non-zero before its first transaction, but no inbound native transfer could be located in the funding block. The funder is NOT guessed - it may have been a contract (paymaster, faucet) or the balance may predate the block range this node can serve."
+        }
+      },
+      "funder_profile": {
+        "status": "not_applicable",
+        "is_contract": null,
+        "is_known_bridge": false
+      },
+      "counterparties": {
+        "0xc3cf97b871299f535dcc1b87b9a324b62c0bb7ee": 1,
+        "0xd886e890c05bec13a3164891a6227e2f25f1f0e7": 1,
+        "0x1d48963dd8fada6ab5c2c7b92eba81ecc5030270": 1,
+        "0x08ec37e2eb451ab6fb29fc14d215b0aeef170040": 1
+      },
+      "counterparty_source": "blockscout",
+      "counterparty_status": "ok",
+      "timestamps": [
+        "2026-10-31T19:33:35.000000Z",
+        "2026-10-31T18:15:11.000000Z",
+        "2026-10-31T12:59:47.000000Z",
+        "2026-10-28T21:29:23.000000Z"
+      ],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": false,
+        "counterparties": true,
+        "timing": true,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+      "chain": "ethereum",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://eth.drpc.org",
+        "probe_block": 15798807,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "providers": [
+          {
+            "url": "https://eth.drpc.org",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "ethereum",
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "first_tx_block": 22490750,
+        "rpc_calls": 25,
+        "rpc_url": "https://eth.drpc.org",
+        "wallet_first_tx_hash": "0x2ef07c780b8ef3d0be2fa3fc0bed2fcd29bd1c21b13e298d1ac32df0b535911d",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 20000000000000000,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 25,
+        "first_funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+        "first_funder_evidence": {
+          "kind": "balance_binary_search",
+          "block": 22446683,
+          "tx_hash": "0xfef85b36488202dd1948d9408bc335f2e2c0cb03dcf2ec0c2b98556b01e07500",
+          "value_wei": 20000000000000000,
+          "rpc_calls": 25,
+          "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+        }
+      },
+      "funder_profile": {
+        "status": "ok",
+        "funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+        "is_contract": false,
+        "contract_code_size": 0,
+        "is_known_bridge": false,
+        "known_bridge_name": null,
+        "http_status": 200,
+        "provenance": "LIVE"
+      },
+      "counterparties": {
+        "0x57e114b691db790c35207b2e685d4a43181e6061": 1,
+        "0x232ce3bd40fcd6f80f3d55a522d03f25df784ee2": 3,
+        "0x45804880de22913dafe09f4980848ece6ecbaf78": 1,
+        "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3": 1,
+        "0x1887fa9edadeab7562b01cc3f4fa246ace2c3cdd": 1,
+        "0x514910771af9ca656af840dff83e8264ecf986ca": 1,
+        "0x4a220e6096b25eadb88358cb44068a3248254675": 3,
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": 3,
+        "0x6985884c4392d348587b19cb9eaaf157f13271cd": 2,
+        "0xcb1592591996765ec0efc1f92599a19767ee5ffa": 3,
+        "0xd886e890c05bec13a3164891a6227e2f25f1f0e7": 1,
+        "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce": 2,
+        "0xcf0c122c6b73ff809c693db761e7baebe62b6a2e": 1,
+        "0x56072c95faa701256059aa122697b133aded9279": 2,
+        "0x66e092fd00c4e4eb5bd20f5392c1902d738ae7bc": 1,
+        "0x0d8775f648430679a709e98d2b0cb6250d2887ef": 1,
+        "0x1a720ce7dea32e0074d2e4599cbf0739397677a4": 1,
+        "0xe95b0243a5c5e6fa4b8f34cb525a64e6a1b9aec9": 1,
+        "0xe41d2489571d322189246dafa5ebde1f4699f498": 2,
+        "0xa2cd3d43c775978a96bdbf12d733d5a1ed94fb18": 2,
+        "0xda5e1988097297dcdc1f90d4dfe7909e847cbef6": 1,
+        "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f": 1,
+        "0x526526528f35ac738177003b8773b402b8df8143": 1,
+        "0x58d97b57bb95320f9a05dc918aef65434969c2b2": 1,
+        "0x5a98fcbea516cf06857215779fd812ca3bef1b32": 1,
+        "0x18ec285a48499a67a35bf38ecfa17542e94c603a": 1,
+        "0xc944e90c64b2c07662a292be6244bdf05cda44a7": 1,
+        "0xbb0e17ef65f82ab018d8edd776e8dd940327b28b": 1,
+        "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9": 1,
+        "0x6982508145454ce325ddbe47a25d4ec3d2311933": 2,
+        "0x643c4e15d7d62ad0abec4a9bd4b001aa3ef52d66": 1,
+        "0xca14007eff0db1f8135f4c25b34de49ab0d42766": 1,
+        "0x56a3ba04e95d34268a19b2a4474dc979babdaf76": 1,
+        "0x3c3a81e81dc49a522a592e7622a7e711c06bf354": 1,
+        "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85": 1,
+        "0xec53bf9167f50cdeb3ae105f56099aaab9061f83": 1
+      },
+      "counterparty_source": "blockscout",
+      "counterparty_status": "ok",
+      "timestamps": [
+        "2026-11-02T23:59:35.000000Z",
+        "2026-11-02T23:32:23.000000Z",
+        "2026-11-02T23:30:59.000000Z",
+        "2026-11-02T23:30:11.000000Z",
+        "2026-11-02T23:29:47.000000Z",
+        "2026-11-02T23:29:35.000000Z",
+        "2026-11-02T23:21:23.000000Z",
+        "2026-11-02T23:15:59.000000Z",
+        "2026-11-02T20:13:35.000000Z",
+        "2026-11-02T20:13:35.000000Z",
+        "2026-11-02T19:52:11.000000Z",
+        "2026-11-02T19:09:23.000000Z",
+        "2026-11-02T18:42:47.000000Z",
+        "2026-11-02T18:42:47.000000Z",
+        "2026-11-02T18:42:47.000000Z",
+        "2026-11-02T18:42:47.000000Z",
+        "2026-11-02T18:40:47.000000Z",
+        "2026-11-02T18:40:47.000000Z",
+        "2026-11-02T18:40:47.000000Z",
+        "2026-11-02T18:25:23.000000Z",
+        "2026-11-02T18:24:47.000000Z",
+        "2026-11-02T17:54:35.000000Z",
+        "2026-11-02T17:52:11.000000Z",
+        "2026-11-02T17:45:59.000000Z",
+        "2026-11-02T17:45:11.000000Z",
+        "2026-11-02T17:45:11.000000Z",
+        "2026-11-02T17:45:11.000000Z",
+        "2026-11-02T17:45:11.000000Z",
+        "2026-11-02T17:44:59.000000Z",
+        "2026-11-02T17:44:59.000000Z",
+        "2026-11-02T17:44:59.000000Z",
+        "2026-11-02T17:44:59.000000Z",
+        "2026-11-02T17:44:47.000000Z",
+        "2026-11-02T17:44:47.000000Z",
+        "2026-11-02T17:44:47.000000Z",
+        "2026-11-02T17:44:47.000000Z",
+        "2026-11-02T17:44:47.000000Z",
+        "2026-11-02T17:44:47.000000Z",
+        "2026-11-02T17:44:35.000000Z",
+        "2026-11-02T17:44:35.000000Z",
+        "2026-11-02T17:44:35.000000Z",
+        "2026-11-02T17:44:35.000000Z",
+        "2026-11-02T17:44:23.000000Z",
+        "2026-11-02T17:44:23.000000Z",
+        "2026-11-02T17:44:23.000000Z",
+        "2026-11-02T17:44:23.000000Z",
+        "2026-11-02T17:44:11.000000Z",
+        "2026-11-02T17:44:11.000000Z",
+        "2026-11-02T17:44:11.000000Z",
+        "2026-11-02T17:43:59.000000Z"
+      ],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": true,
+        "counterparties": true,
+        "timing": true,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+      "chain": "base",
+      "archive_provider": {
+        "status": "unavailable",
+        "reason": "no provider answered eth_blockNumber"
+      },
+      "first_funder": {
+        "status": "unavailable",
+        "chain": "base",
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "reason": "no RPC provider answered eth_blockNumber"
+      },
+      "funder_profile": {
+        "status": "not_applicable",
+        "is_contract": null,
+        "is_known_bridge": false
+      },
+      "counterparties": {},
+      "counterparty_source": null,
+      "counterparty_status": "unavailable",
+      "timestamps": [],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": false,
+        "counterparties": false,
+        "timing": false,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+      "chain": "arbitrum",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://arbitrum-one.public.blastapi.io",
+        "probe_block": 312450269,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x0000000000000000000000000000000000000001",
+        "providers": [
+          {
+            "url": "https://arbitrum-one.public.blastapi.io",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "arbitrum",
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "first_tx_block": 438625587,
+        "rpc_calls": 29,
+        "rpc_url": "https://arbitrum-one.public.blastapi.io",
+        "wallet_first_tx_hash": "0xa23ffe5aa6b4bcf37b27aa4292326fb3287a070fbc456aba986dd1b59db238a9",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 4715160392831794,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 29,
+        "first_funder": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "first_funder_evidence": {
+          "kind": "balance_binary_search",
+          "block": 438453005,
+          "tx_hash": "0x8c22b7c8832ced78312159b99dd832a6489ffec637153e786d85d7427a645931",
+          "value_wei": 4715160392831794,
+          "rpc_calls": 29,
+          "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+        }
+      },
+      "funder_profile": {
+        "status": "ok",
+        "funder": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "is_contract": false,
+        "contract_code_size": 0,
+        "is_known_bridge": false,
+        "known_bridge_name": null,
+        "http_status": 200,
+        "provenance": "LIVE"
+      },
+      "counterparties": {},
+      "counterparty_source": "json-rpc",
+      "counterparty_status": "ok",
+      "timestamps": [],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": true,
+        "counterparties": true,
+        "timing": false,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+      "chain": "arbitrum",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://arbitrum-one.public.blastapi.io",
+        "probe_block": 312450333,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x0000000000000000000000000000000000000001",
+        "providers": [
+          {
+            "url": "https://arbitrum-one.public.blastapi.io",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "arbitrum",
+        "address": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "first_tx_block": 519798620,
+        "rpc_calls": 29,
+        "rpc_url": "https://arbitrum-one.public.blastapi.io",
+        "wallet_first_tx_hash": null,
+        "n_txs_from_wallet_in_first_block": 0,
+        "balance_before_first_block_wei": 0,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "first_funder": null,
+        "first_funder_evidence": {
+          "kind": "no_inbound_value_found",
+          "note": "No inbound native transfer to the wallet was found, and its balance was zero before its first transaction. The wallet may have been funded by a contract (e.g. a paymaster or a faucet contract) rather than an EOA."
+        }
+      },
+      "funder_profile": {
+        "status": "not_applicable",
+        "is_contract": null,
+        "is_known_bridge": false
+      },
+      "counterparties": {},
+      "counterparty_source": "json-rpc",
+      "counterparty_status": "ok",
+      "timestamps": [],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": false,
+        "counterparties": true,
+        "timing": false,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+      "chain": "arbitrum",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://arbitrum-one.public.blastapi.io",
+        "probe_block": 312450365,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x0000000000000000000000000000000000000001",
+        "providers": [
+          {
+            "url": "https://arbitrum-one.public.blastapi.io",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "arbitrum",
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "first_tx_block": 338390687,
+        "rpc_calls": 29,
+        "rpc_url": "https://arbitrum-one.public.blastapi.io",
+        "wallet_first_tx_hash": "0xdab46b0fa8193f12de1c15a444c6190b744c42c286aebc10b4fef2e5a5787efc",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 500000000000000000,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 28,
+        "first_funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+        "first_funder_evidence": {
+          "kind": "balance_binary_search",
+          "block": 338333431,
+          "tx_hash": "0xe43314edaa72c60a488e110934a07b6322406fe51da975a251fb8bbe05675e80",
+          "value_wei": 500000000000000000,
+          "rpc_calls": 28,
+          "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+        }
+      },
+      "funder_profile": {
+        "status": "ok",
+        "funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+        "is_contract": false,
+        "contract_code_size": 0,
+        "is_known_bridge": false,
+        "known_bridge_name": null,
+        "http_status": 200,
+        "provenance": "LIVE"
+      },
+      "counterparties": {},
+      "counterparty_source": "json-rpc",
+      "counterparty_status": "ok",
+      "timestamps": [],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": true,
+        "counterparties": true,
+        "timing": false,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+      "chain": "optimism",
+      "archive_provider": {
+        "status": "unavailable",
+        "reason": "no provider answered eth_blockNumber"
+      },
+      "first_funder": {
+        "status": "unavailable",
+        "chain": "optimism",
+        "address": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "reason": "no RPC provider answered eth_blockNumber"
+      },
+      "funder_profile": {
+        "status": "not_applicable",
+        "is_contract": null,
+        "is_known_bridge": false
+      },
+      "counterparties": {
+        "0x4200000000000000000000000000000000000042": 2,
+        "0x841ed663f2636863d40be4ee76243377dff13a34": 1
+      },
+      "counterparty_source": "blockscout",
+      "counterparty_status": "ok",
+      "timestamps": [
+        "2026-03-05T15:31:13.000000Z",
+        "2026-03-05T14:54:33.000000Z",
+        "2026-03-05T02:55:55.000000Z"
+      ],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": false,
+        "counterparties": true,
+        "timing": true,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+      "chain": "optimism",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://optimism.drpc.org",
+        "probe_block": 95422512,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x0000000000000000000000000000000000000001",
+        "providers": [
+          {
+            "url": "https://optimism.drpc.org",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "optimism",
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "first_tx_block": 139374473,
+        "rpc_calls": 27,
+        "rpc_url": "https://optimism.drpc.org",
+        "wallet_first_tx_hash": "0xcf748141e3c68e84d145b6cccaa940a0c76780d52334a2be21390261547844d4",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 500000000000000000,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 7,
+        "first_funder": null,
+        "first_funder_evidence": {
+          "kind": "not_found_within_scan",
+          "funded_at_block": 137196747,
+          "rpc_calls": 7,
+          "note": "The wallet's balance was already non-zero before its first transaction, but no inbound native transfer could be located in the funding block. The funder is NOT guessed - it may have been a contract (paymaster, faucet) or the balance may predate the block range this node can serve."
+        }
+      },
+      "funder_profile": {
+        "status": "not_applicable",
+        "is_contract": null,
+        "is_known_bridge": false
+      },
+      "counterparties": {
+        "0x4200000000000000000000000000000000000042": 17,
+        "0x3cdfec28ecdd264216787711eddd64760a058836": 11,
+        "0x1a72d4774cc2c042c41665bf0b90eae2448677a4": 4,
+        "0xf819d4ec92ab7e8197c9c8472915067503c773aa": 4,
+        "0xe95b9d2f54cb2149ca849bb7196703904a7baec9": 1,
+        "0xad6e626a223fab9dcab8f456055b08f3d4f68862": 3,
+        "0x0b2c639c533813f4aa9d7837caf62653d097ff85": 1,
+        "0x040d2bcf99ee2383baee632cbee72a2660d40f3f": 2,
+        "0xf7f16d04c4adaf19589d831997dc10b76685c12c": 4,
+        "0x18ecb5cb42fb8cb341adb04722642cd3b8ed603a": 2,
+        "0x4e32f1197f9d76ccceac85cd3bbdb11154b1de70": 1
+      },
+      "counterparty_source": "blockscout",
+      "counterparty_status": "ok",
+      "timestamps": [
+        "2026-11-02T18:40:37.000000Z",
+        "2026-11-02T17:43:23.000000Z",
+        "2026-11-02T17:42:35.000000Z",
+        "2026-10-31T07:03:01.000000Z",
+        "2026-10-31T07:02:21.000000Z",
+        "2026-10-30T23:35:17.000000Z",
+        "2026-10-30T17:37:01.000000Z",
+        "2026-10-30T16:34:09.000000Z",
+        "2026-10-30T16:31:13.000000Z",
+        "2026-10-30T16:30:55.000000Z",
+        "2026-10-30T13:31:07.000000Z",
+        "2026-10-30T07:02:57.000000Z",
+        "2026-10-29T19:18:53.000000Z",
+        "2026-10-29T17:18:41.000000Z",
+        "2026-10-29T16:42:03.000000Z",
+        "2026-10-29T16:32:11.000000Z",
+        "2026-10-29T16:31:47.000000Z",
+        "2026-10-29T16:31:03.000000Z",
+        "2026-10-28T18:31:05.000000Z",
+        "2026-10-28T17:29:11.000000Z",
+        "2026-10-28T17:28:33.000000Z",
+        "2026-10-28T17:27:13.000000Z",
+        "2026-10-28T07:02:49.000000Z",
+        "2026-10-28T07:02:27.000000Z",
+        "2026-10-27T19:30:25.000000Z",
+        "2026-10-27T16:54:15.000000Z",
+        "2026-10-27T16:53:53.000000Z",
+        "2026-10-27T16:53:13.000000Z",
+        "2026-10-27T16:47:07.000000Z",
+        "2026-10-27T07:01:59.000000Z",
+        "2026-10-26T21:36:49.000000Z",
+        "2026-10-26T16:42:59.000000Z",
+        "2026-10-26T16:42:43.000000Z",
+        "2026-10-26T16:37:11.000000Z",
+        "2026-10-26T16:37:07.000000Z",
+        "2026-10-26T16:36:51.000000Z",
+        "2026-10-26T16:36:39.000000Z",
+        "2026-10-26T16:36:35.000000Z",
+        "2026-10-26T16:36:11.000000Z",
+        "2026-10-26T07:04:11.000000Z",
+        "2026-10-25T07:02:37.000000Z",
+        "2026-10-24T07:47:03.000000Z",
+        "2026-10-24T07:02:59.000000Z",
+        "2026-10-24T07:02:23.000000Z",
+        "2026-10-23T16:49:37.000000Z",
+        "2026-10-23T16:44:41.000000Z",
+        "2026-10-23T16:44:27.000000Z",
+        "2026-10-23T16:43:45.000000Z",
+        "2026-10-23T16:43:29.000000Z",
+        "2026-10-23T16:43:21.000000Z"
+      ],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": false,
+        "counterparties": true,
+        "timing": true,
+        "sizes": false,
+        "bridge": false
+      }
+    },
+    {
+      "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+      "chain": "polygon",
+      "archive_provider": {
+        "status": "ok",
+        "archive_url": "https://polygon.drpc.org",
+        "probe_block": 57987359,
+        "probe_method": "eth_getTransactionCount",
+        "probe_address": "0x0000000000000000000000000000000000000001",
+        "providers": [
+          {
+            "url": "https://polygon.drpc.org",
+            "http_status": 200,
+            "archive": true,
+            "rpc_error": null
+          }
+        ]
+      },
+      "first_funder": {
+        "status": "ok",
+        "chain": "polygon",
+        "address": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "first_tx_block": 74806841,
+        "rpc_calls": 27,
+        "rpc_url": "https://polygon.drpc.org",
+        "wallet_first_tx_hash": "0x7e388861886b31547dafb2b4715be3785867d09830ffa63c3bfdcb40dac26800",
+        "n_txs_from_wallet_in_first_block": 1,
+        "balance_before_first_block_wei": 1000000000000000000000,
+        "method": "nonce binary search + inbound value scan",
+        "source": "reimplements Nansen 'Address First Funder' (https://docs.nansen.ai/api/profiler/address-first-funder) keylessly",
+        "provenance": "LIVE",
+        "rpc_calls_backsearch": 26,
+        "first_funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+        "first_funder_evidence": {
+          "kind": "balance_binary_search",
+          "block": 71709993,
+          "tx_hash": "0x2726410aad67ba9c3cd9bf5399a9469e8e3653efa2e9029dadc4cb0d5c3a1527",
+          "value_wei": 1000000000000000000000,
+          "rpc_calls": 26,
+          "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+        }
+      },
+      "funder_profile": {
+        "status": "ok",
+        "funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+        "is_contract": false,
+        "contract_code_size": 0,
+        "is_known_bridge": false,
+        "known_bridge_name": null,
+        "http_status": 200,
+        "provenance": "LIVE"
+      },
+      "counterparties": {},
+      "counterparty_source": "json-rpc",
+      "counterparty_status": "ok",
+      "timestamps": [],
+      "sizes": [],
+      "bridge_evidence": [],
+      "signals_available": {
+        "first_funder": true,
+        "counterparties": true,
+        "timing": false,
+        "sizes": false,
+        "bridge": false
+      }
+    }
+  ],
+  "links": {
+    "n_profiles": 11,
+    "n_cross_chain_pairs": 45,
+    "n_confirmed": 0,
+    "n_suggested": 4,
+    "pairs": [
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "arbitrum",
+        "score": 1.0,
+        "label": "SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 1.0,
+            "weight": 0.4,
+            "value": "0x841ed663f2636863d40be4ee76243377dff13a34",
+            "evidence": {
+              "chain_a": "ethereum",
+              "chain_b": "arbitrum",
+              "funder": "0x841ed663f2636863d40be4ee76243377dff13a34",
+              "a_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 24588396,
+                "tx_hash": "0x9e8f77aaca32c06aa709b7a27cac48f6b07af1112860599b0f1f6ad8b51ac756",
+                "value_wei": 4715160392831794,
+                "rpc_calls": 24,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              },
+              "b_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 438453005,
+                "tx_hash": "0x8c22b7c8832ced78312159b99dd832a6489ffec637153e786d85d7427a645931",
+                "value_wei": 4715160392831794,
+                "rpc_calls": 29,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              }
+            },
+            "caveat": "A shared funder is NOT proof of common control: two users withdrawing from the same exchange hot wallet share a funder."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "SUGGESTED: the signals agree but NO on-chain artefact links these wallets. Treat as a lead for review, not a fact.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "arbitrum",
+        "score": 1.0,
+        "label": "SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 1.0,
+            "weight": 0.4,
+            "value": "0x73af3bcf944a6559933396c1577b257e2054d935",
+            "evidence": {
+              "chain_a": "ethereum",
+              "chain_b": "arbitrum",
+              "funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+              "a_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 22446683,
+                "tx_hash": "0xfef85b36488202dd1948d9408bc335f2e2c0cb03dcf2ec0c2b98556b01e07500",
+                "value_wei": 20000000000000000,
+                "rpc_calls": 25,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              },
+              "b_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 338333431,
+                "tx_hash": "0xe43314edaa72c60a488e110934a07b6322406fe51da975a251fb8bbe05675e80",
+                "value_wei": 500000000000000000,
+                "rpc_calls": 28,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              }
+            },
+            "caveat": "A shared funder is NOT proof of common control: two users withdrawing from the same exchange hot wallet share a funder."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "SUGGESTED: the signals agree but NO on-chain artefact links these wallets. Treat as a lead for review, not a fact.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 1.0,
+        "label": "SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 1.0,
+            "weight": 0.4,
+            "value": "0x73af3bcf944a6559933396c1577b257e2054d935",
+            "evidence": {
+              "chain_a": "ethereum",
+              "chain_b": "polygon",
+              "funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+              "a_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 22446683,
+                "tx_hash": "0xfef85b36488202dd1948d9408bc335f2e2c0cb03dcf2ec0c2b98556b01e07500",
+                "value_wei": 20000000000000000,
+                "rpc_calls": 25,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              },
+              "b_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 71709993,
+                "tx_hash": "0x2726410aad67ba9c3cd9bf5399a9469e8e3653efa2e9029dadc4cb0d5c3a1527",
+                "value_wei": 1000000000000000000000,
+                "rpc_calls": 26,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              }
+            },
+            "caveat": "A shared funder is NOT proof of common control: two users withdrawing from the same exchange hot wallet share a funder."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "SUGGESTED: the signals agree but NO on-chain artefact links these wallets. Treat as a lead for review, not a fact.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 1.0,
+        "label": "SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 1.0,
+            "weight": 0.4,
+            "value": "0x73af3bcf944a6559933396c1577b257e2054d935",
+            "evidence": {
+              "chain_a": "arbitrum",
+              "chain_b": "polygon",
+              "funder": "0x73af3bcf944a6559933396c1577b257e2054d935",
+              "a_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 338333431,
+                "tx_hash": "0xe43314edaa72c60a488e110934a07b6322406fe51da975a251fb8bbe05675e80",
+                "value_wei": 500000000000000000,
+                "rpc_calls": 28,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              },
+              "b_funding_evidence": {
+                "kind": "balance_binary_search",
+                "block": 71709993,
+                "tx_hash": "0x2726410aad67ba9c3cd9bf5399a9469e8e3653efa2e9029dadc4cb0d5c3a1527",
+                "value_wei": 1000000000000000000000,
+                "rpc_calls": 26,
+                "note": "The wallet's balance first became non-zero at this block, which contains its earliest inbound native transfer."
+              }
+            },
+            "caveat": "A shared funder is NOT proof of common control: two users withdrawing from the same exchange hot wallet share a funder."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "SUGGESTED: the signals agree but NO on-chain artefact links these wallets. Treat as a lead for review, not a fact.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.168,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 0,
+              "shared_sample": [],
+              "n_a": 36,
+              "n_b": 11,
+              "jaccard": 0.0
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.42000000000000004,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 50,
+              "n_b": 50,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 39,
+              "b_timestamps_within_tolerance_of_a": 3,
+              "a_coverage": 0.78,
+              "b_coverage": 0.06,
+              "jaccard": 0.030927835051546393,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.104,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 0,
+              "shared_sample": [],
+              "n_a": 20,
+              "n_b": 11,
+              "jaccard": 0.0
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.26,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 50,
+              "n_b": 50,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 15,
+              "b_timestamps_within_tolerance_of_a": 11,
+              "a_coverage": 0.3,
+              "b_coverage": 0.22,
+              "jaccard": 0.12359550561797752,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0286,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.047619047619047616,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 1,
+              "shared_sample": [
+                "0x841ed663f2636863d40be4ee76243377dff13a34"
+              ],
+              "n_a": 20,
+              "n_b": 2,
+              "jaccard": 0.047619047619047616
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 50,
+              "n_b": 3,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 0,
+              "b_timestamps_within_tolerance_of_a": 0,
+              "a_coverage": 0.0,
+              "b_coverage": 0.0,
+              "jaccard": 0.0,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "base",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.4,
+            "value": null,
+            "evidence": {
+              "funder_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+              "funder_b": "0x73af3bcf944a6559933396c1577b257e2054d935"
+            },
+            "caveat": "Different first funders."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.4,
+            "value": null,
+            "evidence": {
+              "funder_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+              "funder_b": "0x73af3bcf944a6559933396c1577b257e2054d935"
+            },
+            "caveat": "Different first funders."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "base",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.4,
+            "value": null,
+            "evidence": {
+              "funder_a": "0x853244c7c9ca8af8f8e31e11aa299951dbd543d4",
+              "funder_b": "0x841ed663f2636863d40be4ee76243377dff13a34"
+            },
+            "caveat": "Different first funders."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.4,
+            "value": null,
+            "evidence": {
+              "funder_a": "0x853244c7c9ca8af8f8e31e11aa299951dbd543d4",
+              "funder_b": "0x73af3bcf944a6559933396c1577b257e2054d935"
+            },
+            "caveat": "Different first funders."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 0,
+              "shared_sample": [],
+              "n_a": 2,
+              "n_b": 2,
+              "jaccard": 0.0
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 7,
+              "n_b": 3,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 0,
+              "b_timestamps_within_tolerance_of_a": 0,
+              "a_coverage": 0.0,
+              "b_coverage": 0.0,
+              "jaccard": 0.0,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 0,
+              "shared_sample": [],
+              "n_a": 2,
+              "n_b": 11,
+              "jaccard": 0.0
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 7,
+              "n_b": 50,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 0,
+              "b_timestamps_within_tolerance_of_a": 0,
+              "a_coverage": 0.0,
+              "b_coverage": 0.0,
+              "jaccard": 0.0,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48b72db77aba39497c207c09eeff4439730270",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.4,
+            "value": null,
+            "evidence": {
+              "funder_a": "0x853244c7c9ca8af8f8e31e11aa299951dbd543d4",
+              "funder_b": "0x73af3bcf944a6559933396c1577b257e2054d935"
+            },
+            "caveat": "Different first funders."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "base",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 0,
+              "shared_sample": [],
+              "n_a": 4,
+              "n_b": 2,
+              "jaccard": 0.0
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 4,
+              "n_b": 3,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 0,
+              "b_timestamps_within_tolerance_of_a": 0,
+              "a_coverage": 0.0,
+              "b_coverage": 0.0,
+              "jaccard": 0.0,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 0,
+              "shared_sample": [],
+              "n_a": 4,
+              "n_b": 11,
+              "jaccard": 0.0
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 4,
+              "n_b": 50,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 0,
+              "b_timestamps_within_tolerance_of_a": 0,
+              "a_coverage": 0.0,
+              "b_coverage": 0.0,
+              "jaccard": 0.0,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "base",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.4,
+            "value": null,
+            "evidence": {
+              "funder_a": "0x73af3bcf944a6559933396c1577b257e2054d935",
+              "funder_b": "0x841ed663f2636863d40be4ee76243377dff13a34"
+            },
+            "caveat": "Different first funders."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "ethereum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.3,
+            "evidence": {
+              "n_shared": 0,
+              "shared_sample": [],
+              "n_a": 36,
+              "n_b": 2,
+              "jaccard": 0.0
+            },
+            "caveat": "Shared venues are often SHARED BY EVERYONE - the same routers, the same CEX hot wallets. Only counterparties that are unusual for the token's traffic carry weight."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.2,
+            "evidence": {
+              "status": "ok",
+              "n_a": 50,
+              "n_b": 3,
+              "tolerance_seconds": 3600,
+              "a_timestamps_within_tolerance_of_b": 0,
+              "b_timestamps_within_tolerance_of_a": 0,
+              "a_coverage": 0.0,
+              "b_coverage": 0.0,
+              "jaccard": 0.0,
+              "note": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+            },
+            "caveat": "Timing overlap is CORRELATIONAL, not causal. Market events, airdrops and bot fleets produce it too."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "base",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "base",
+        "wallet_b": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "base",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "arbitrum",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "base",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "base",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "base",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.4,
+            "value": null,
+            "evidence": {
+              "funder_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+              "funder_b": "0x73af3bcf944a6559933396c1577b257e2054d935"
+            },
+            "caveat": "Different first funders."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "arbitrum",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "optimism",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+        "chain_a": "optimism",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      },
+      {
+        "wallet_a": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_a": "optimism",
+        "wallet_b": "0x841ed663f2636863d40be4ee76243377dff13a34",
+        "chain_b": "polygon",
+        "score": 0.0,
+        "label": "NOT_SUGGESTED",
+        "components": [
+          {
+            "signal": "shared_funder",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "first funder unavailable for at least one wallet"
+            },
+            "caveat": "The signal could not be evaluated, so it contributes NOTHING to the score rather than being treated as evidence of independence."
+          },
+          {
+            "signal": "common_counterparties",
+            "score": 0.0,
+            "weight": 0.0,
+            "value": null,
+            "evidence": {
+              "reason": "no counterparty data"
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "correlated_timing",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no timestamps, so no correlation can be computed."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          },
+          {
+            "signal": "similar_sizes",
+            "score": 0.0,
+            "weight": 0.0,
+            "evidence": {
+              "reason": "One wallet has no sizes."
+            },
+            "caveat": "Signal not evaluable; contributes 0."
+          }
+        ],
+        "confirmation": null,
+        "thresholds": {
+          "suggested": 0.45
+        },
+        "weights": {
+          "shared_funder": 0.4,
+          "common_counterparties": 0.3,
+          "correlated_timing": 0.2,
+          "similar_sizes": 0.1
+        },
+        "interpretation": "NOT_SUGGESTED: the signals do not support a link.",
+        "note": "The weights are ANALYST CHOICES. No regulator, standard-setter or vendor publishes a cross-chain link-scoring formula, and none of the four signals is published as a clustering algorithm in its own right."
+      }
+    ],
+    "weights": {
+      "shared_funder": 0.4,
+      "common_counterparties": 0.3,
+      "correlated_timing": 0.2,
+      "similar_sizes": 0.1
+    },
+    "threshold": 0.45,
+    "honesty": "CONFIRMED requires an explicit on-chain artefact (a bridge delivery between the two wallets, a shared bridge funder, or one sender funding both wallets in the same block). SUGGESTED means the statistical signals agree but no artefact exists - it is a lead, not a fact."
+  }
+}

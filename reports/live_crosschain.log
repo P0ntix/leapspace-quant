@@ -1,0 +1,82 @@
+ethereum   0x1d48963DD8FA..   52.0s
+     archive      : https://eth.drpc.org (ok)
+     first_tx_blk : 24592010 (nonce calls 24, balance calls 24)
+     FIRST FUNDER : 0x841ed663f2636863d40be4ee76243377dff13a34
+        evidence  : balance_binary_search block=24588396 tx=0x9e8f77aaca32c06aa709 value_wei=4715160392831794
+     funder is   : contract=False known_bridge=False name=None
+     counterparties: ok (blockscout) n=20 http_note=None
+     bridges     : ok n=0
+arbitrum   0x1d48963DD8FA..   40.0s
+     archive      : https://arbitrum-one.public.blastapi.io (ok)
+     first_tx_blk : 438625587 (nonce calls 29, balance calls 29)
+     FIRST FUNDER : 0x841ed663f2636863d40be4ee76243377dff13a34
+        evidence  : balance_binary_search block=438453005 tx=0x8c22b7c8832ced783121 value_wei=4715160392831794
+     funder is   : contract=False known_bridge=False name=None
+     counterparties: ok (json-rpc) n=0 http_note=Only the latest block's transactions were read; free public 
+     bridges     : ok n=0
+base       0x1d48963DD8FA..   15.9s
+     archive      : None (unavailable)
+     first_tx_blk : None (nonce calls 3, balance calls None)
+     FIRST FUNDER : None
+        evidence  : None block=None tx=None value_wei=None
+     funder is   : contract=None known_bridge=False name=None
+     counterparties: unavailable (None) n=0 http_note=no RPC provider answered
+     bridges     : unavailable n=0
+optimism   0x1d48963DD8FA..    7.6s
+     archive      : None (unavailable)
+     first_tx_blk : None (nonce calls None, balance calls None)
+     FIRST FUNDER : None
+        evidence  : None block=None tx=None value_wei=None
+     funder is   : contract=None known_bridge=False name=None
+     counterparties: ok (blockscout) n=2 http_note=None
+     bridges     : unavailable n=0
+
+========================================================================
+CROSS-CHAIN PAIR SCORING
+========================================================================
+pairs: 6  confirmed: 0  suggested: 1
+
+  0x1d48963DD8FA..(ethereum)  <->  0x1d48963DD8FA..(arbitrum)
+     score=1.0  label=SUGGESTED
+       shared_funder            score=1.000 weight=0.40
+          funder: 0x841ed663f2636863d40be4ee76243377dff13a34
+       common_counterparties    score=0.000 weight=0.00
+       correlated_timing        score=0.000 weight=0.00
+       similar_sizes            score=0.000 weight=0.00
+
+  0x1d48963DD8FA..(ethereum)  <->  0x1d48963DD8FA..(optimism)
+     score=0.0286  label=NOT_SUGGESTED
+       shared_funder            score=0.000 weight=0.00
+       common_counterparties    score=0.048 weight=0.30
+       correlated_timing        score=0.000 weight=0.20
+       similar_sizes            score=0.000 weight=0.00
+
+  0x1d48963DD8FA..(ethereum)  <->  0x1d48963DD8FA..(base)
+     score=0.0  label=NOT_SUGGESTED
+       shared_funder            score=0.000 weight=0.00
+       common_counterparties    score=0.000 weight=0.00
+       correlated_timing        score=0.000 weight=0.00
+       similar_sizes            score=0.000 weight=0.00
+
+  0x1d48963DD8FA..(arbitrum)  <->  0x1d48963DD8FA..(base)
+     score=0.0  label=NOT_SUGGESTED
+       shared_funder            score=0.000 weight=0.00
+       common_counterparties    score=0.000 weight=0.00
+       correlated_timing        score=0.000 weight=0.00
+       similar_sizes            score=0.000 weight=0.00
+
+  0x1d48963DD8FA..(arbitrum)  <->  0x1d48963DD8FA..(optimism)
+     score=0.0  label=NOT_SUGGESTED
+       shared_funder            score=0.000 weight=0.00
+       common_counterparties    score=0.000 weight=0.00
+       correlated_timing        score=0.000 weight=0.00
+       similar_sizes            score=0.000 weight=0.00
+
+  0x1d48963DD8FA..(base)  <->  0x1d48963DD8FA..(optimism)
+     score=0.0  label=NOT_SUGGESTED
+       shared_funder            score=0.000 weight=0.00
+       common_counterparties    score=0.000 weight=0.00
+       correlated_timing        score=0.000 weight=0.00
+       similar_sizes            score=0.000 weight=0.00
+
+wrote C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\live_crosschain.json

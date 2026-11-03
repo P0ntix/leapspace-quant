@@ -1,0 +1,2924 @@
+{
+ "generated_at": "2026-11-02T18:00:26Z",
+ "generated_at_local": "2026-11-03 02:00:26 Malay Peninsula Standard Time",
+ "host_note": "All statuses are from live calls made from this Windows 11 host via Python 3 stdlib urllib with a certifi TLS context.",
+ "sources": [
+  {
+   "name": "gt_networks_p1",
+   "url": "https://api.geckoterminal.com/api/v2/networks?page=1",
+   "fetched_at": "2026-11-02T16:59:23Z",
+   "status": "HTTP 200",
+   "note": "cache 2026-11-02T16:45:22Z"
+  },
+  {
+   "name": "gt_networks_p2",
+   "url": "https://api.geckoterminal.com/api/v2/networks?page=2",
+   "fetched_at": "2026-11-02T16:59:23Z",
+   "status": "HTTP 200",
+   "note": "cache 2026-11-02T16:45:23Z"
+  },
+  {
+   "name": "gt_networks_p3",
+   "url": "https://api.geckoterminal.com/api/v2/networks?page=3",
+   "fetched_at": "2026-11-02T16:59:24Z",
+   "status": "HTTP 200",
+   "note": "cache 2026-11-02T16:45:23Z"
+  },
+  {
+   "name": "cg_meme_markets",
+   "url": "https://api.coingecko.com/api/v3/coins/markets?category=meme-token&vs_currency=usd&per_page=100&page=1",
+   "fetched_at": "2026-11-02T16:59:24Z",
+   "status": "HTTP 200",
+   "note": "cache 2026-11-02T16:45:25Z"
+  },
+  {
+   "name": "cg_list_platform",
+   "url": "https://api.coingecko.com/api/v3/coins/list?include_platform=true",
+   "fetched_at": "2026-11-02T16:59:30Z",
+   "status": "HTTP 200",
+   "note": "cache 2026-11-02T16:45:34Z"
+  },
+  {
+   "name": "cg_categories",
+   "url": "https://api.coingecko.com/api/v3/coins/categories",
+   "fetched_at": "2026-11-02T16:59:36Z",
+   "status": "HTTP 200",
+   "note": "cache 2026-11-02T16:45:43Z"
+  },
+  {
+   "name": "ll_chains",
+   "url": "https://api.llama.fi/v2/chains",
+   "fetched_at": "2026-11-02T16:59:37Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs",
+   "url": "https://api.llama.fi/overview/dexs?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:38Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_protocols",
+   "url": "https://api.llama.fi/protocols",
+   "fetched_at": "2026-11-02T16:59:44Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_ethereum",
+   "url": "https://api.llama.fi/overview/dexs/ethereum?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:44Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_solana",
+   "url": "https://api.llama.fi/overview/dexs/solana?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:45Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_bsc",
+   "url": "https://api.llama.fi/overview/dexs/bsc?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:46Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_base",
+   "url": "https://api.llama.fi/overview/dexs/base?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:47Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_polygon",
+   "url": "https://api.llama.fi/overview/dexs/polygon?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:47Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_arbitrum",
+   "url": "https://api.llama.fi/overview/dexs/arbitrum?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:48Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_avalanche",
+   "url": "https://api.llama.fi/overview/dexs/avalanche?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:49Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_optimism",
+   "url": "https://api.llama.fi/overview/dexs/optimism?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:49Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_tron",
+   "url": "https://api.llama.fi/overview/dexs/tron?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:50Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_near",
+   "url": "https://api.llama.fi/overview/dexs/near?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:51Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_hyperliquid",
+   "url": "https://api.llama.fi/overview/dexs/hyperliquid?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:52Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_monad",
+   "url": "https://api.llama.fi/overview/dexs/monad?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:53Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_unichain",
+   "url": "https://api.llama.fi/overview/dexs/unichain?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:54Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_celo",
+   "url": "https://api.llama.fi/overview/dexs/celo?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:54Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_sui",
+   "url": "https://api.llama.fi/overview/dexs/sui?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:55Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_abstract",
+   "url": "https://api.llama.fi/overview/dexs/abstract?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:56Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_berachain",
+   "url": "https://api.llama.fi/overview/dexs/berachain?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:57Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_zora",
+   "url": "https://api.llama.fi/overview/dexs/zora?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:58Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_blast",
+   "url": "https://api.llama.fi/overview/dexs/blast?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:58Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_linea",
+   "url": "https://api.llama.fi/overview/dexs/linea?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T16:59:59Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_scroll",
+   "url": "https://api.llama.fi/overview/dexs/scroll?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:00Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_mantle",
+   "url": "https://api.llama.fi/overview/dexs/mantle?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:00Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_zksync",
+   "url": "https://api.llama.fi/overview/dexs/zksync?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:01Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_sonic",
+   "url": "https://api.llama.fi/overview/dexs/sonic?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:01Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_aptos",
+   "url": "https://api.llama.fi/overview/dexs/aptos?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:02Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_cardano",
+   "url": "https://api.llama.fi/overview/dexs/cardano?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:03Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_bitcoin",
+   "url": "https://api.llama.fi/overview/dexs/bitcoin?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:04Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_ton",
+   "url": "https://api.llama.fi/overview/dexs/ton?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:05Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_story",
+   "url": "https://api.llama.fi/overview/dexs/story?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:05Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_taiko",
+   "url": "https://api.llama.fi/overview/dexs/taiko?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:06Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_flare",
+   "url": "https://api.llama.fi/overview/dexs/flare?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:07Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_sei",
+   "url": "https://api.llama.fi/overview/dexs/sei?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:08Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_injective",
+   "url": "https://api.llama.fi/overview/dexs/injective?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:09Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_xrpl",
+   "url": "https://api.llama.fi/overview/dexs/xrpl?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:10Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_dogechain",
+   "url": "https://api.llama.fi/overview/dexs/dogechain?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:10Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_plasma",
+   "url": "https://api.llama.fi/overview/dexs/plasma?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:11Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_soneium",
+   "url": "https://api.llama.fi/overview/dexs/soneium?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:12Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_worldchain",
+   "url": "https://api.llama.fi/overview/dexs/worldchain?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:19Z",
+   "status": "HTTP 500",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_swellchain",
+   "url": "https://api.llama.fi/overview/dexs/swellchain?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:19Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_bob",
+   "url": "https://api.llama.fi/overview/dexs/bob?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:20Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_ink",
+   "url": "https://api.llama.fi/overview/dexs/ink?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:21Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_hyperevm",
+   "url": "https://api.llama.fi/overview/dexs/hyperevm?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:29Z",
+   "status": "HTTP 500",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_ronin",
+   "url": "https://api.llama.fi/overview/dexs/ronin?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:30Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_fraxtal",
+   "url": "https://api.llama.fi/overview/dexs/fraxtal?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:31Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_boba",
+   "url": "https://api.llama.fi/overview/dexs/boba?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:31Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_harmony",
+   "url": "https://api.llama.fi/overview/dexs/harmony?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:32Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_kava",
+   "url": "https://api.llama.fi/overview/dexs/kava?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:33Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_evmos",
+   "url": "https://api.llama.fi/overview/dexs/evmos?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:33Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_cronos",
+   "url": "https://api.llama.fi/overview/dexs/cronos?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:34Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_manta",
+   "url": "https://api.llama.fi/overview/dexs/manta?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:35Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_mode",
+   "url": "https://api.llama.fi/overview/dexs/mode?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:35Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_metis",
+   "url": "https://api.llama.fi/overview/dexs/metis?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:36Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_shimmer",
+   "url": "https://api.llama.fi/overview/dexs/shimmer?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:43Z",
+   "status": "HTTP 500",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_arc",
+   "url": "https://api.llama.fi/overview/dexs/arc?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:44Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_robinhood",
+   "url": "https://api.llama.fi/overview/dexs/robinhood?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:45Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_litecoin",
+   "url": "https://api.llama.fi/overview/dexs/litecoin?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:45Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "ll_dexs_zcash",
+   "url": "https://api.llama.fi/overview/dexs/zcash?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "fetched_at": "2026-11-02T17:00:51Z",
+   "status": "HTTP 500",
+   "note": ""
+  },
+  {
+   "name": "ankr.abstract",
+   "url": "https://rpc.ankr.com/abstract",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.arbitrum",
+   "url": "https://rpc.ankr.com/arbitrum",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.avalanche",
+   "url": "https://rpc.ankr.com/avalanche",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.base",
+   "url": "https://rpc.ankr.com/base",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.berachain",
+   "url": "https://rpc.ankr.com/berachain",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.blast",
+   "url": "https://rpc.ankr.com/blast",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.bsc",
+   "url": "https://rpc.ankr.com/bsc",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.celo",
+   "url": "https://rpc.ankr.com/celo",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.eth",
+   "url": "https://rpc.ankr.com/eth",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.fantom",
+   "url": "https://rpc.ankr.com/fantom",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.hyperliquid",
+   "url": "https://rpc.ankr.com/hyperliquid",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.linea",
+   "url": "https://rpc.ankr.com/linea",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.mantle",
+   "url": "https://rpc.ankr.com/mantle",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.monad",
+   "url": "https://rpc.ankr.com/monad",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.optimism",
+   "url": "https://rpc.ankr.com/optimism",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.polygon",
+   "url": "https://rpc.ankr.com/polygon",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.scroll",
+   "url": "https://rpc.ankr.com/scroll",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.solana",
+   "url": "https://rpc.ankr.com/solana",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.soneium",
+   "url": "https://rpc.ankr.com/soneium",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.sonic",
+   "url": "https://rpc.ankr.com/sonic",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.unichain",
+   "url": "https://rpc.ankr.com/unichain",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.worldchain",
+   "url": "https://rpc.ankr.com/worldchain",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.zksync",
+   "url": "https://rpc.ankr.com/zksync",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "ankr.zora",
+   "url": "https://rpc.ankr.com/zora",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>",
+   "note": "rpc.ankr.com/<chain> pattern - cert hostname mismatch on this host"
+  },
+  {
+   "name": "subquery.abstract",
+   "url": "https://rpc.subquery.network/public/abstract",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.arbitrum",
+   "url": "https://rpc.subquery.network/public/arbitrum",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.avalanche",
+   "url": "https://rpc.subquery.network/public/avalanche",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.base",
+   "url": "https://rpc.subquery.network/public/base",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.berachain",
+   "url": "https://rpc.subquery.network/public/berachain",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.blast",
+   "url": "https://rpc.subquery.network/public/blast",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.bsc",
+   "url": "https://rpc.subquery.network/public/bsc",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.celo",
+   "url": "https://rpc.subquery.network/public/celo",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.ethereum",
+   "url": "https://rpc.subquery.network/public/ethereum",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.fantom",
+   "url": "https://rpc.subquery.network/public/fantom",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.hyperliquid",
+   "url": "https://rpc.subquery.network/public/hyperliquid",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.linea",
+   "url": "https://rpc.subquery.network/public/linea",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.mantle",
+   "url": "https://rpc.subquery.network/public/mantle",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.monad",
+   "url": "https://rpc.subquery.network/public/monad",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.optimism",
+   "url": "https://rpc.subquery.network/public/optimism",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.polygon",
+   "url": "https://rpc.subquery.network/public/polygon",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.scroll",
+   "url": "https://rpc.subquery.network/public/scroll",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.soneium",
+   "url": "https://rpc.subquery.network/public/soneium",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.sonic",
+   "url": "https://rpc.subquery.network/public/sonic",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.unichain",
+   "url": "https://rpc.subquery.network/public/unichain",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.worldchain",
+   "url": "https://rpc.subquery.network/public/worldchain",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.zksync",
+   "url": "https://rpc.subquery.network/public/zksync",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "subquery.zora",
+   "url": "https://rpc.subquery.network/public/zora",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "rpc.subquery.network/public/<chain> pattern"
+  },
+  {
+   "name": "solana.rpc",
+   "url": "https://api.blockeden.xyz/solana/67nCBdZQSH9z3YqDDjdm",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 402",
+   "note": "getSlot"
+  },
+  {
+   "name": "solana.rpc",
+   "url": "https://api.mainnet-beta.solana.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "getSlot"
+  },
+  {
+   "name": "solana.rpc",
+   "url": "https://solana-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "getSlot"
+  },
+  {
+   "name": "solana.rpc",
+   "url": "https://solana.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 400",
+   "note": "getSlot"
+  },
+  {
+   "name": "eth_getcode.arbitrum",
+   "url": "https://arbitrum-one-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "eth_getCode on the same publicnode host"
+  },
+  {
+   "name": "eth_getcode.avalanche",
+   "url": "https://avalanche-c-chain-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "eth_getCode on the same publicnode host"
+  },
+  {
+   "name": "eth_getcode.base",
+   "url": "https://base-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "eth_getCode on the same publicnode host"
+  },
+  {
+   "name": "eth_getcode.bsc",
+   "url": "https://bsc-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "eth_getCode on the same publicnode host"
+  },
+  {
+   "name": "eth_getcode.ethereum",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "eth_getCode on the same publicnode host"
+  },
+  {
+   "name": "eth_getcode.optimism",
+   "url": "https://optimism-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "eth_getCode on the same publicnode host"
+  },
+  {
+   "name": "eth_getcode.polygon",
+   "url": "https://polygon-bor-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "eth_getCode on the same publicnode host"
+  },
+  {
+   "name": "rugcheck.base chain-prefixed",
+   "url": "https://api.rugcheck.xyz/v1/tokens/base/0x532f27101965dd16442E59d40670FaF5eBB142E4/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+   "name": "rugcheck.base plain holders/top",
+   "url": "https://api.rugcheck.xyz/v1/tokens/0x532f27101965dd16442E59d40670FaF5eBB142E4/holders/top",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+   "name": "rugcheck.base plain report/summary",
+   "url": "https://api.rugcheck.xyz/v1/tokens/0x532f27101965dd16442E59d40670FaF5eBB142E4/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 400",
+   "note": "{\"error\":\"decode: base58: invalid base58 character\"}"
+  },
+  {
+   "name": "rugcheck.bsc chain-prefixed",
+   "url": "https://api.rugcheck.xyz/v1/tokens/bsc/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+   "name": "rugcheck.bsc chain-prefixed holders",
+   "url": "https://api.rugcheck.xyz/v1/tokens/bsc/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/holders/top",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+   "name": "rugcheck.bsc plain report/summary",
+   "url": "https://api.rugcheck.xyz/v1/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 400",
+   "note": "{\"error\":\"decode: base58: invalid base58 character\"}"
+  },
+  {
+   "name": "rugcheck.bsc with 0x prefix",
+   "url": "https://api.rugcheck.xyz/v1/tokens/0x0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 400",
+   "note": "{\"error\":\"decode: base58: invalid base58 character\"}"
+  },
+  {
+   "name": "rugcheck.ethereum chain-prefixed",
+   "url": "https://api.rugcheck.xyz/v1/tokens/ethereum/0x6982508145454Ce325dDbE47a25d4ec3d2311933/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+   "name": "rugcheck.solana chain-prefixed",
+   "url": "https://api.rugcheck.xyz/v1/tokens/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+   "name": "rugcheck.solana holders/top",
+   "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/holders/top",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "{\"code\":\"PAGE_NOT_FOUND\",\"message\":\"Page not found\"}"
+  },
+  {
+   "name": "rugcheck.solana report",
+   "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "json keys=['mint', 'tokenProgram', 'creator', 'creatorBalance', 'token', 'token_extensions', 'tokenMeta', 'topHolders']"
+  },
+  {
+   "name": "rugcheck.solana report/summary",
+   "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report/summary",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "json keys=['tokenProgram', 'tokenType', 'risks', 'score', 'score_normalised', 'lpLockedPct']"
+  },
+  {
+   "name": "jupiter.search 0x1",
+   "url": "https://lite-api.jup.ag/tokens/v2/search?query=0x1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "list len=20"
+  },
+  {
+   "name": "jupiter.search a BSC token symbol",
+   "url": "https://lite-api.jup.ag/tokens/v2/search?query=cake",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "list len=20"
+  },
+  {
+   "name": "jupiter.search a Base token symbol",
+   "url": "https://lite-api.jup.ag/tokens/v2/search?query=brett",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "list len=20"
+  },
+  {
+   "name": "jupiter.search a solana mint",
+   "url": "https://lite-api.jup.ag/tokens/v2/search?query=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "list len=1"
+  },
+  {
+   "name": "jupiter.search an Ethereum token symbol",
+   "url": "https://lite-api.jup.ag/tokens/v2/search?query=shiba",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "list len=20"
+  },
+  {
+   "name": "jupiter.search bonk",
+   "url": "https://lite-api.jup.ag/tokens/v2/search?query=bonk",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "list len=20"
+  },
+  {
+   "name": "jupiter.search pepe",
+   "url": "https://lite-api.jup.ag/tokens/v2/search?query=pepe",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "list len=20"
+  },
+  {
+   "name": "geckoterminal.pools.abstract",
+   "url": "https://api.geckoterminal.com/api/v2/networks/abstract/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=abstract pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.aptos",
+   "url": "https://api.geckoterminal.com/api/v2/networks/aptos/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=aptos pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.arbitrum",
+   "url": "https://api.geckoterminal.com/api/v2/networks/arbitrum/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=arbitrum pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.arc",
+   "url": "https://api.geckoterminal.com/api/v2/networks/arc/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=arc pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.avalanche",
+   "url": "https://api.geckoterminal.com/api/v2/networks/avax/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=avax pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.base",
+   "url": "https://api.geckoterminal.com/api/v2/networks/base/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=base pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.berachain",
+   "url": "https://api.geckoterminal.com/api/v2/networks/berachain/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=berachain pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.bitcoin",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "NO GT ID",
+   "note": "gt_id=None pools=0"
+  },
+  {
+   "name": "geckoterminal.pools.blast",
+   "url": "https://api.geckoterminal.com/api/v2/networks/blast/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=blast pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.bob",
+   "url": "https://api.geckoterminal.com/api/v2/networks/bob-network/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=bob-network pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.bsc",
+   "url": "https://api.geckoterminal.com/api/v2/networks/bsc/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=bsc pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.cardano",
+   "url": "https://api.geckoterminal.com/api/v2/networks/cardano/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=cardano pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.celo",
+   "url": "https://api.geckoterminal.com/api/v2/networks/celo/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=celo pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.cronos",
+   "url": "https://api.geckoterminal.com/api/v2/networks/cro/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=cro pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.ethereum",
+   "url": "https://api.geckoterminal.com/api/v2/networks/eth/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=eth pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.evmos",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "NO GT ID",
+   "note": "gt_id=None pools=0"
+  },
+  {
+   "name": "geckoterminal.pools.flare",
+   "url": "https://api.geckoterminal.com/api/v2/networks/flare/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=flare pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.hyperevm",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "NO GT ID",
+   "note": "gt_id=None pools=0"
+  },
+  {
+   "name": "geckoterminal.pools.hyperliquid",
+   "url": "https://api.geckoterminal.com/api/v2/networks/hyperliquid/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=hyperliquid pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.injective",
+   "url": "https://api.geckoterminal.com/api/v2/networks/injective/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=injective pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.ink",
+   "url": "https://api.geckoterminal.com/api/v2/networks/ink/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=ink pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.linea",
+   "url": "https://api.geckoterminal.com/api/v2/networks/linea/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=linea pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.manta",
+   "url": "https://api.geckoterminal.com/api/v2/networks/manta-pacific/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=manta-pacific pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.mantle",
+   "url": "https://api.geckoterminal.com/api/v2/networks/mantle/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=mantle pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.metis",
+   "url": "https://api.geckoterminal.com/api/v2/networks/metis/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=metis pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.mode",
+   "url": "https://api.geckoterminal.com/api/v2/networks/mode/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=mode pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.monad",
+   "url": "https://api.geckoterminal.com/api/v2/networks/monad/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=monad pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.near",
+   "url": "https://api.geckoterminal.com/api/v2/networks/near/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=near pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.optimism",
+   "url": "https://api.geckoterminal.com/api/v2/networks/optimism/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=optimism pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.plasma",
+   "url": "https://api.geckoterminal.com/api/v2/networks/plasma/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=plasma pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.polygon",
+   "url": "https://api.geckoterminal.com/api/v2/networks/polygon_pos/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=polygon_pos pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.polygon_zkevm",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "NO GT ID",
+   "note": "gt_id=None pools=0"
+  },
+  {
+   "name": "geckoterminal.pools.robinhood",
+   "url": "https://api.geckoterminal.com/api/v2/networks/robinhood/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=robinhood pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.ronin",
+   "url": "https://api.geckoterminal.com/api/v2/networks/ronin/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=ronin pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.scroll",
+   "url": "https://api.geckoterminal.com/api/v2/networks/scroll/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=scroll pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.sei",
+   "url": "https://api.geckoterminal.com/api/v2/networks/sei-network/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=sei-network pools=5"
+  },
+  {
+   "name": "geckoterminal.pools.shimmer",
+   "url": "https://api.geckoterminal.com/api/v2/networks/shimmerevm/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=shimmerevm pools=0"
+  },
+  {
+   "name": "geckoterminal.pools.solana",
+   "url": "https://api.geckoterminal.com/api/v2/networks/solana/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=solana pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.soneium",
+   "url": "https://api.geckoterminal.com/api/v2/networks/soneium/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=soneium pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.sonic",
+   "url": "https://api.geckoterminal.com/api/v2/networks/sonic/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=sonic pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.story",
+   "url": "https://api.geckoterminal.com/api/v2/networks/story/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=story pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.sui",
+   "url": "https://api.geckoterminal.com/api/v2/networks/sui-network/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=sui-network pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.swellchain",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "NO GT ID",
+   "note": "gt_id=None pools=0"
+  },
+  {
+   "name": "geckoterminal.pools.taiko",
+   "url": "https://api.geckoterminal.com/api/v2/networks/taiko/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=taiko pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.ton",
+   "url": "https://api.geckoterminal.com/api/v2/networks/ton/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=ton pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.tron",
+   "url": "https://api.geckoterminal.com/api/v2/networks/tron/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=tron pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.unichain",
+   "url": "https://api.geckoterminal.com/api/v2/networks/unichain/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=unichain pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.worldchain",
+   "url": "https://api.geckoterminal.com/api/v2/networks/world-chain/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=world-chain pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.xrpl",
+   "url": "https://api.geckoterminal.com/api/v2/networks/xrpl/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=xrpl pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.zksync",
+   "url": "https://api.geckoterminal.com/api/v2/networks/zksync/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=zksync pools=20"
+  },
+  {
+   "name": "geckoterminal.pools.zora",
+   "url": "https://api.geckoterminal.com/api/v2/networks/zora-network/pools?page=1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "gt_id=zora-network pools=20"
+  },
+  {
+   "name": "dexscreener.tokenpairs.abstract",
+   "url": "https://api.dexscreener.com/token-pairs/v1/abstract/0x84a71ccd554cc1b02749b35d22f684cc8ec987e1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=20"
+  },
+  {
+   "name": "dexscreener.tokenpairs.aptos",
+   "url": "https://api.dexscreener.com/token-pairs/v1/aptos/0xbae207659db88bea0cbead6da0ed00aac12edcdda169e591cd41c94180b46f3b",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=7"
+  },
+  {
+   "name": "dexscreener.tokenpairs.arbitrum",
+   "url": "https://api.dexscreener.com/token-pairs/v1/arbitrum/0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.arc",
+   "url": "https://api.dexscreener.com/token-pairs/v1/arc/0x171a4217b86a807a64eb94757db6849fb4bdbaa0",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.avalanche",
+   "url": "https://api.dexscreener.com/token-pairs/v1/avalanche/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.base",
+   "url": "https://api.dexscreener.com/token-pairs/v1/base/0x4200000000000000000000000000000000000006",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.berachain",
+   "url": "https://api.dexscreener.com/token-pairs/v1/berachain/0x118d2ceee9785eaf70c15cd74cd84c9f8c3eec9a",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=11"
+  },
+  {
+   "name": "dexscreener.tokenpairs.bitcoin",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "SKIPPED (no token address available from GeckoTerminal)",
+   "note": "pairs=None"
+  },
+  {
+   "name": "dexscreener.tokenpairs.blast",
+   "url": "https://api.dexscreener.com/token-pairs/v1/blast/0x04c0599ae5a44757c0af6f9ec3b93da8976c150a",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.bob",
+   "url": "https://api.dexscreener.com/token-pairs/v1/bob/0x05d032ac25d322df992303dca074ee7392c117b9",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.bsc",
+   "url": "https://api.dexscreener.com/token-pairs/v1/bsc/0x8c907e0a72c3d55627e853f4ec6a96b0c8771145",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=8"
+  },
+  {
+   "name": "dexscreener.tokenpairs.cardano",
+   "url": "https://api.dexscreener.com/token-pairs/v1/cardano/507411245fdcdf6fb3511617c108a76e9778214b9c202c7108b3d0270014df104d455045",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=1"
+  },
+  {
+   "name": "dexscreener.tokenpairs.celo",
+   "url": "https://api.dexscreener.com/token-pairs/v1/celo/0x48065fbbe25f71c9282ddf5e1cd6d6a887483d5e",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=28"
+  },
+  {
+   "name": "dexscreener.tokenpairs.cronos",
+   "url": "https://api.dexscreener.com/token-pairs/v1/cronos/0x3d7f2c478aafdb65542bcb44bceec05849999d2d",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=14"
+  },
+  {
+   "name": "dexscreener.tokenpairs.ethereum",
+   "url": "https://api.dexscreener.com/token-pairs/v1/ethereum/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.evmos",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "SKIPPED (no token address available from GeckoTerminal)",
+   "note": "pairs=None"
+  },
+  {
+   "name": "dexscreener.tokenpairs.flare",
+   "url": "https://api.dexscreener.com/token-pairs/v1/flare/0xad552a648c74d49e10027ab8a618a3ad4901c5be",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.hyperevm",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "SKIPPED (no token address available from GeckoTerminal)",
+   "note": "pairs=None"
+  },
+  {
+   "name": "dexscreener.tokenpairs.hyperliquid",
+   "url": "https://api.dexscreener.com/token-pairs/v1/hyperliquid/0x0d01dc56dcaaca66ad901c959b4011ec",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=3"
+  },
+  {
+   "name": "dexscreener.tokenpairs.injective",
+   "url": "https://api.dexscreener.com/token-pairs/v1/injective/0xa00C59fF5a080D2b954d0c75e46E22a0c371235a",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.ink",
+   "url": "https://api.dexscreener.com/token-pairs/v1/ink/0x0200c29006150606b650577bbe7b6248f58470c1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.linea",
+   "url": "https://api.dexscreener.com/token-pairs/v1/linea/0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.manta",
+   "url": "https://api.dexscreener.com/token-pairs/v1/manta/0x0dc808adce2099a9f62aa87d9670745aba741746",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.mantle",
+   "url": "https://api.dexscreener.com/token-pairs/v1/mantle/0xcda86a272531e8640cd7f1a92c01839911b90bb0",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.metis",
+   "url": "https://api.dexscreener.com/token-pairs/v1/metis/0xbb06dca3ae6887fabf931640f67cab3e3a16f4dc",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=18"
+  },
+  {
+   "name": "dexscreener.tokenpairs.mode",
+   "url": "https://api.dexscreener.com/token-pairs/v1/mode/0xdfc7c877a950e49d2610114102175a06c2e3167a",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.monad",
+   "url": "https://api.dexscreener.com/token-pairs/v1/monad/0x0000000000000000000000000000000000000000",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.near",
+   "url": "https://api.dexscreener.com/token-pairs/v1/near/17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.optimism",
+   "url": "https://api.dexscreener.com/token-pairs/v1/optimism/0x4200000000000000000000000000000000000042",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.plasma",
+   "url": "https://api.dexscreener.com/token-pairs/v1/plasma/0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.polygon",
+   "url": "https://api.dexscreener.com/token-pairs/v1/polygon/0xeb51d9a39ad5eef215dc0bf39a8821ff804a0f01",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=11"
+  },
+  {
+   "name": "dexscreener.tokenpairs.polygon_zkevm",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "SKIPPED (no token address available from GeckoTerminal)",
+   "note": "pairs=None"
+  },
+  {
+   "name": "dexscreener.tokenpairs.robinhood",
+   "url": "https://api.dexscreener.com/token-pairs/v1/robinhood/0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.ronin",
+   "url": "https://api.dexscreener.com/token-pairs/v1/ronin/0x0b7007c13325c48911f73a2dad5fa5dcbf808adc",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.scroll",
+   "url": "https://api.dexscreener.com/token-pairs/v1/scroll/0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.sei",
+   "url": "https://api.dexscreener.com/token-pairs/v1/sei/sei1eavtmc4y00a0ed8l9c7l0m7leesv3yetcptklv2kalz4tsgz02mqlvyea6",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.shimmer",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "SKIPPED (no token address available from GeckoTerminal)",
+   "note": "pairs=None"
+  },
+  {
+   "name": "dexscreener.tokenpairs.solana",
+   "url": "https://api.dexscreener.com/token-pairs/v1/solana/SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.soneium",
+   "url": "https://api.dexscreener.com/token-pairs/v1/soneium/0x3f99231dd03a9f0e7e3421c92b7b90fbe012985a",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=3"
+  },
+  {
+   "name": "dexscreener.tokenpairs.sonic",
+   "url": "https://api.dexscreener.com/token-pairs/v1/sonic/0x29219dd400f2bf60e5a23d13be72b486d4038894",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.story",
+   "url": "https://api.dexscreener.com/token-pairs/v1/story/0xf1815bd50389c46847f0bda824ec8da914045d14",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.sui",
+   "url": "https://api.dexscreener.com/token-pairs/v1/sui/:magma::MAGMA",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.swellchain",
+   "url": "",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "SKIPPED (no token address available from GeckoTerminal)",
+   "note": "pairs=None"
+  },
+  {
+   "name": "dexscreener.tokenpairs.taiko",
+   "url": "https://api.dexscreener.com/token-pairs/v1/taiko/0x07d83526730c7438048d55a4fc0b850e2aab6f0b",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "dexscreener.tokenpairs.ton",
+   "url": "https://api.dexscreener.com/token-pairs/v1/ton/EQCM4DEzDVFLq7kaSodQX-8-u_aF9M9DDe1EePWsuMozqGkt",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=5"
+  },
+  {
+   "name": "dexscreener.tokenpairs.tron",
+   "url": "https://api.dexscreener.com/token-pairs/v1/tron/TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.unichain",
+   "url": "https://api.dexscreener.com/token-pairs/v1/unichain/0x078d782b760474a361dda0af3839290b0ef57ad6",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.worldchain",
+   "url": "https://api.dexscreener.com/token-pairs/v1/worldchain/0x79a02482a880bce3f13e09da970dc34db4cd24d1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=30"
+  },
+  {
+   "name": "dexscreener.tokenpairs.xrpl",
+   "url": "https://api.dexscreener.com/token-pairs/v1/xrpl/4A6F6B6B61000000000000000000000000000000.rKMwfvWZekbcQMFWVbRm3GidhC2tbJVmv2",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=1"
+  },
+  {
+   "name": "dexscreener.tokenpairs.zksync",
+   "url": "https://api.dexscreener.com/token-pairs/v1/zksync/0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=27"
+  },
+  {
+   "name": "dexscreener.tokenpairs.zora",
+   "url": "https://api.dexscreener.com/token-pairs/v1/zora/0xcccccccc7021b32ebb4e8c08314bd62f7c653ec4",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "pairs=0"
+  },
+  {
+   "name": "rpc.abstract",
+   "url": "https://abstract.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.aptos",
+   "url": "https://fullnode.mainnet.aptoslabs.com/v1",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.arbitrum",
+   "url": "https://arbitrum-one-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.arc",
+   "url": "https://rpc.arc.network",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.arc",
+   "url": "https://arc-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.avalanche",
+   "url": "https://avalanche-c-chain-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.base",
+   "url": "https://base-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.berachain",
+   "url": "https://berachain-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.bitcoin",
+   "url": "https://btc-mainnet.public.blastapi.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.bitcoin",
+   "url": "https://bitcoin-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "{'code': -32601, 'message': 'Method not found'}"
+  },
+  {
+   "name": "rpc.blast",
+   "url": "https://rpc.blast.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.bob",
+   "url": "https://bob.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.bsc",
+   "url": "https://bsc-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.bsc-testnet",
+   "url": "https://data-seed-prebsc-1-s1.binance.org:8545",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.cardano",
+   "url": "https://api.koios.rest/api/v1/tip",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.celo",
+   "url": "https://celo-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.conflux",
+   "url": "https://www.confluxrpc.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.conflux",
+   "url": "https://conflux-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.core",
+   "url": "https://rpc.core.network",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "<!DOCTYPE html>\n<html lang=\"en-US\">\n<head>\n\t<meta charset=\"UTF-8\" />\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n\t<link rel=\"pingb"
+  },
+  {
+   "name": "rpc.core",
+   "url": "https://core.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.cronos",
+   "url": "https://evm.cronos.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.dogechain",
+   "url": "https://rpc.dogechain.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.dogechain",
+   "url": "https://dogechain.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.ethereum",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.evmos",
+   "url": "https://evmos-evm-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.evmos",
+   "url": "https://evmos-json-rpc.stakely.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.fantom",
+   "url": "https://rpc3.fantom.network",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.flare",
+   "url": "https://flare-api.flare.network/ext/C/rpc",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.fraxtal",
+   "url": "https://rpc.frax.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.harmony",
+   "url": "https://api.harmony.one",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.hedera",
+   "url": "https://mainnet-public.mirrornode.hedera.com/api/v1/network/supply",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.hyperevm",
+   "url": "https://rpc.hyperliquid.xyz/evm",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.hyperliquid",
+   "url": "https://rpc.hyperliquid.xyz/evm",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.injective",
+   "url": "https://rpc.injective.network",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.injective",
+   "url": "https://injective.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.ink",
+   "url": "https://ink-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.kava",
+   "url": "https://evm.kava.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.linea",
+   "url": "https://linea-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.litecoin",
+   "url": "https://litecoin-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.litecoin",
+   "url": "https://api.blockchair.com/litecoin/stats",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.manta",
+   "url": "https://pacific-rpc.manta.network/http",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.mantle",
+   "url": "https://mantle-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.metis",
+   "url": "https://andromeda.metis.io/?owner=1088",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.mode",
+   "url": "https://mainnet.mode.network",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.monad",
+   "url": "https://rpc.monad.xyz",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.morph",
+   "url": "https://rpc.morph.network",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.near",
+   "url": "https://rpc.near.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.near",
+   "url": "https://near-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.near",
+   "url": "https://near.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.opbnb",
+   "url": "https://opbnb-mainnet-rpc.bnbchain.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.optimism",
+   "url": "https://optimism-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.plasma",
+   "url": "https://rpc.plasma.to",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.polygon",
+   "url": "https://polygon-bor-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.polygon_zkevm",
+   "url": "https://zkevm-rpc.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.robinhood",
+   "url": "https://rpc.robinhoodchain.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1082)>",
+   "note": "URLError: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1082)>"
+  },
+  {
+   "name": "rpc.robinhood",
+   "url": "https://robinhood-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.ronin",
+   "url": "https://api.roninchain.com/rpc",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.rootstock",
+   "url": "https://public-node.rsk.co",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.scroll",
+   "url": "https://scroll-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.sei",
+   "url": "https://evm-rpc.sei-apis.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.shimmer",
+   "url": "https://shimmer-json-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.solana",
+   "url": "https://api.mainnet-beta.solana.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.soneium",
+   "url": "https://soneium-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.sonic",
+   "url": "https://sonic-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.sophon",
+   "url": "https://rpc.sophon.network",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.sophon",
+   "url": "https://sophon.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 400",
+   "note": "HTTPError 400 Bad Request"
+  },
+  {
+   "name": "rpc.stable",
+   "url": "https://rpc.stable.chain",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.stable",
+   "url": "https://stable.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.story",
+   "url": "https://story-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.sui",
+   "url": "https://sui-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "{'code': -32000, 'message': 'Sui JSON-RPC endpoint has been deprecated. Please use the gRPC endpoint instead: https://sui-grpc.publicnode.com:443'}"
+  },
+  {
+   "name": "rpc.sui",
+   "url": "https://sui.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 400",
+   "note": "HTTPError 400 Bad Request"
+  },
+  {
+   "name": "rpc.sui",
+   "url": "https://sui-mainnet-endpoint.blockvision.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.sui",
+   "url": "https://sui-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": "{'code': -32000, 'message': 'Sui JSON-RPC endpoint has been deprecated. Please use the gRPC endpoint instead: https://sui-grpc.publicnode.com:443'}"
+  },
+  {
+   "name": "rpc.sui",
+   "url": "https://sui-rpc.publicnode.com/sui_getChainIdentifier",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.swellchain",
+   "url": "https://rpc.swellchain.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+   "note": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "name": "rpc.swellchain",
+   "url": "https://swellchain-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.taiko",
+   "url": "https://taiko-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.ton",
+   "url": "https://toncenter.com/api/v2/jsonRPC",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.tron",
+   "url": "https://api.trongrid.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 405",
+   "note": "HTTPError 405 Not Allowed"
+  },
+  {
+   "name": "rpc.tron",
+   "url": "https://tron-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 405",
+   "note": "HTTPError 405 Method Not Allowed"
+  },
+  {
+   "name": "rpc.tron",
+   "url": "https://tron.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.unichain",
+   "url": "https://unichain-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.worldchain",
+   "url": "https://worldchain.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.worldsepolia",
+   "url": "https://worldsepolia-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.xrpl",
+   "url": "https://xrpl-rpc.publicnode.com",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 404",
+   "note": "HTTPError 404 Not Found"
+  },
+  {
+   "name": "rpc.xrpl",
+   "url": "https://xrpl.drpc.org",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.zksync",
+   "url": "https://mainnet.era.zksync.io",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  },
+  {
+   "name": "rpc.zora",
+   "url": "https://rpc.zora.energy",
+   "fetched_at": "2026-11-02T18:00:26Z",
+   "status": "HTTP 200",
+   "note": ""
+  }
+ ],
+ "chains": [
+  {
+   "rank": 1,
+   "name": "Ethereum",
+   "chain_id": "ethereum",
+   "layer": "L1",
+   "geckoterminal_id": "eth",
+   "dex_volume_24h_usd": 1189207435.5400002,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/ethereum?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 40.69,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 10,
+   "share_occurrence_pct": 13.16,
+   "share_weighted_mcap_usd": 5455920806.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://ethereum-rpc.publicnode.com",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x191be5e)",
+   "rpc_attempts": [
+    {
+     "url": "https://ethereum-rpc.publicnode.com",
+     "status": 200,
+     "error": null
+    }
+   ],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/eth/pools?page=1",
+   "geckoterminal_probe_token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/ethereum/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+   "dexscreener_pairs": 30,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://ethereum.org/en/layer-2/",
+   "layer_citation_note": "Ethereum is the settlement layer (parent chain) for the Ethereum L2s listed here.",
+   "memecoin_dex_protocols_24h": [
+    "1776.MEME(ethereum)"
+   ],
+   "memecoin_dex_volume_24h_usd": 0.0,
+   "defillama_launchpad_count": 32,
+   "notes": "DefiLlama launchpads on this chain: 32; memecoin DEX protocols (24h): 1776.MEME(ethereum); RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 2,
+   "name": "Solana",
+   "chain_id": "solana",
+   "layer": "L1",
+   "geckoterminal_id": "solana",
+   "dex_volume_24h_usd": 905602298.19,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/solana?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 27.23,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 16,
+   "share_occurrence_pct": 21.05,
+   "share_weighted_mcap_usd": 3651778041.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://api.mainnet-beta.solana.com",
+   "rpc_method": "getSlot",
+   "rpc_status": "HTTP 200 (getSlot -> 464583749)",
+   "rpc_attempts": [],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/solana/pools?page=1",
+   "geckoterminal_probe_token": "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/solana/SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb",
+   "dexscreener_pairs": 30,
+   "rugcheck_status": "HTTP 200",
+   "layer_citation_url": "https://solana.com/docs",
+   "layer_citation_note": "Solana is its own proof-of-stake L1; it does not settle to Ethereum.",
+   "memecoin_dex_protocols_24h": [
+    "BONKbot(solana)",
+    "pump.fun(solana)",
+    "moonshot.money(solana)",
+    "PumpSwap(solana)",
+    "boop.fun(solana)",
+    "pump.fun Mobile App(solana)",
+    "copypump(solana)"
+   ],
+   "memecoin_dex_volume_24h_usd": 239732851.19,
+   "defillama_launchpad_count": 17,
+   "notes": "DefiLlama launchpads on this chain: 17; memecoin DEX protocols (24h): BONKbot(solana), pump.fun(solana), moonshot.money(solana), PumpSwap(solana); CoinGecko chain-native meme category 'Solana Meme' market_cap=$2,764,862,129; RugCheck: works for Solana mints; /holders/top is NOT a valid path (HTTP 404) - top holders are in /report -> topHolders"
+  },
+  {
+   "rank": 3,
+   "name": "BNB Smart Chain",
+   "chain_id": "bsc",
+   "layer": "L1",
+   "geckoterminal_id": "bsc",
+   "dex_volume_24h_usd": 571919025.99,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/bsc?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 26.36,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 21,
+   "share_occurrence_pct": 27.63,
+   "share_weighted_mcap_usd": 3534880625.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://bsc-rpc.publicnode.com",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x7d338aa)",
+   "rpc_attempts": [
+    {
+     "url": "https://bsc-rpc.publicnode.com",
+     "status": 200,
+     "error": null
+    }
+   ],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/bsc/pools?page=1",
+   "geckoterminal_probe_token": "0x8c907e0a72c3d55627e853f4ec6a96b0c8771145",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/bsc/0x8c907e0a72c3d55627e853f4ec6a96b0c8771145",
+   "dexscreener_pairs": 8,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://docs.bnbchain.org/newl1/overview/",
+   "layer_citation_note": "BNB Smart Chain is a general-purpose EVM L1; the BNB Chain docs describe BSC as 'general-purpose EVM L1'.",
+   "memecoin_dex_protocols_24h": [
+    "BabyDogeSwap(bsc)",
+    "four.meme(bsc)",
+    "BabyDoge Algebra(bsc)"
+   ],
+   "memecoin_dex_volume_24h_usd": 404967.0,
+   "defillama_launchpad_count": 34,
+   "notes": "DefiLlama launchpads on this chain: 34; memecoin DEX protocols (24h): BabyDogeSwap(bsc), four.meme(bsc), BabyDoge Algebra(bsc); CoinGecko chain-native meme category 'Four.meme Ecosystem (BNB Memes)' market_cap=$686,746,904; RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 4,
+   "name": "Base",
+   "chain_id": "base",
+   "layer": "L2",
+   "geckoterminal_id": "base",
+   "dex_volume_24h_usd": 566993409.77,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/base?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 1.0,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 5,
+   "share_occurrence_pct": 6.58,
+   "share_weighted_mcap_usd": 133628561.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://base-rpc.publicnode.com",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x32f3793)",
+   "rpc_attempts": [
+    {
+     "url": "https://base-rpc.publicnode.com",
+     "status": 200,
+     "error": null
+    }
+   ],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/base/pools?page=1",
+   "geckoterminal_probe_token": "0x4200000000000000000000000000000000000006",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/base/0x4200000000000000000000000000000000000006",
+   "dexscreener_pairs": 30,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://docs.base.org/base-chain/overview",
+   "layer_citation_note": "Base is an Ethereum L2 built on the OP Stack; it settles to Ethereum and is a separate token network.",
+   "memecoin_dex_protocols_24h": [
+    "PumpBox(base)"
+   ],
+   "memecoin_dex_volume_24h_usd": 1323.0,
+   "defillama_launchpad_count": 28,
+   "notes": "DefiLlama launchpads on this chain: 28; memecoin DEX protocols (24h): PumpBox(base); CoinGecko chain-native meme category 'Base Meme' market_cap=$221,067,617; RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 5,
+   "name": "Robinhood Chain",
+   "chain_id": "robinhood",
+   "layer": "L2",
+   "geckoterminal_id": "robinhood",
+   "dex_volume_24h_usd": 370172250.90000004,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/robinhood?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 1.16,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 4,
+   "share_occurrence_pct": 5.26,
+   "share_weighted_mcap_usd": 155689394.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://robinhood-rpc.publicnode.com",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x6390cce)",
+   "rpc_attempts": [],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/robinhood/pools?page=1",
+   "geckoterminal_probe_token": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/robinhood/0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+   "dexscreener_pairs": 30,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://docs.robinhood.com/chain/",
+   "layer_citation_note": "Robinhood Chain docs: 'a permissionless, Ethereum-compatible Layer-2 blockchain ... built on Arbitrum Dedicated Blockchains, a modular Layer-2 framework.'",
+   "memecoin_dex_protocols_24h": null,
+   "memecoin_dex_volume_24h_usd": null,
+   "defillama_launchpad_count": 53,
+   "notes": "DefiLlama launchpads on this chain: 53; CoinGecko chain-native meme category 'Robinhood Chain Meme' market_cap=$330,224,986; RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 6,
+   "name": "Polygon PoS",
+   "chain_id": "polygon",
+   "layer": "sidechain-L1",
+   "geckoterminal_id": "polygon_pos",
+   "dex_volume_24h_usd": 172040317.73000002,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/polygon?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 1.89,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 2,
+   "share_occurrence_pct": 2.63,
+   "share_weighted_mcap_usd": 253029036.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://polygon-bor-rpc.publicnode.com",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x5c25d93)",
+   "rpc_attempts": [
+    {
+     "url": "https://polygon-bor-rpc.publicnode.com",
+     "status": 200,
+     "error": null
+    }
+   ],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/polygon_pos/pools?page=1",
+   "geckoterminal_probe_token": "0xeb51d9a39ad5eef215dc0bf39a8821ff804a0f01",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/polygon/0xeb51d9a39ad5eef215dc0bf39a8821ff804a0f01",
+   "dexscreener_pairs": 11,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://docs.polygon.technology/pos/overview",
+   "layer_citation_note": "Polygon PoS is a standalone EVM chain with its own staking and validator set (a sidechain of Ethereum), not a rollup.",
+   "memecoin_dex_protocols_24h": [
+    "Polycat(polygon)",
+    "OVERDOG(polygon)"
+   ],
+   "memecoin_dex_volume_24h_usd": 7819.0,
+   "defillama_launchpad_count": 13,
+   "notes": "Polygon PoS is a standalone EVM sidechain with its own validator set, not an Ethereum rollup; Polygon zkEVM (polygon_zkevm) is a separate L2 network and is NOT merged into this row.; DefiLlama launchpads on this chain: 13; memecoin DEX protocols (24h): Polycat(polygon), OVERDOG(polygon); RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 7,
+   "name": "Hyperliquid",
+   "chain_id": "hyperliquid",
+   "layer": "L1",
+   "geckoterminal_id": "hyperliquid",
+   "dex_volume_24h_usd": 161045309.7,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/hyperliquid?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 0.53,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 2,
+   "share_occurrence_pct": 2.63,
+   "share_weighted_mcap_usd": 71366950.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://rpc.hyperliquid.xyz/evm",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x2fe1c23)",
+   "rpc_attempts": [
+    {
+     "url": "https://hyperliquid-mainnet-rpc.publicnode.com",
+     "status": 404,
+     "error": "HTTPError 404 Not Found"
+    },
+    {
+     "url": "https://rpc.ankr.com/hyperliquid",
+     "status": null,
+     "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'rpc.ankr.com'. (_ssl.c:1082)>"
+    }
+   ],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/hyperliquid/pools?page=1",
+   "geckoterminal_probe_token": "0x0d01dc56dcaaca66ad901c959b4011ec",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/hyperliquid/0x0d01dc56dcaaca66ad901c959b4011ec",
+   "dexscreener_pairs": 3,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://hyperliquid.gitbook.io/Hyperliquid-docs",
+   "layer_citation_note": "Hyperliquid docs: 'Hyperliquid is a layer one blockchain (L1) written and optimized from first principles.'",
+   "memecoin_dex_protocols_24h": [
+    "HyperCat(hyperliquid)"
+   ],
+   "memecoin_dex_volume_24h_usd": 0.0,
+   "defillama_launchpad_count": 4,
+   "notes": "DefiLlama launchpads on this chain: 4; memecoin DEX protocols (24h): HyperCat(hyperliquid); RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 8,
+   "name": "TRON",
+   "chain_id": "tron",
+   "layer": "L1",
+   "geckoterminal_id": "tron",
+   "dex_volume_24h_usd": 122247912,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/tron?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 0.0,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 0,
+   "share_occurrence_pct": 0.0,
+   "share_weighted_mcap_usd": 0.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://tron.drpc.org",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x539863c)",
+   "rpc_attempts": [],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/tron/pools?page=1",
+   "geckoterminal_probe_token": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/tron/TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+   "dexscreener_pairs": 30,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://developers.tron.network/docs",
+   "layer_citation_note": "TRON is a standalone delegated-proof-of-stake L1.",
+   "memecoin_dex_protocols_24h": null,
+   "memecoin_dex_volume_24h_usd": null,
+   "defillama_launchpad_count": 1,
+   "notes": "DefiLlama launchpads on this chain: 1; CoinGecko chain-native meme category 'TRON Meme' market_cap=$5,970,445; RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 9,
+   "name": "NEAR",
+   "chain_id": "near",
+   "layer": "L1",
+   "geckoterminal_id": "near",
+   "dex_volume_24h_usd": 89765583.3,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/near?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 0.0,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 0,
+   "share_occurrence_pct": 0.0,
+   "share_weighted_mcap_usd": 0.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://near.drpc.org",
+   "rpc_method": "status",
+   "rpc_status": "HTTP 200 (status -> {'chain_id': 'mainnet'...)",
+   "rpc_attempts": [],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/near/pools?page=1",
+   "geckoterminal_probe_token": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/near/17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+   "dexscreener_pairs": 30,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://near.org/",
+   "layer_citation_note": "NEAR is a standalone sharded proof-of-stake L1.",
+   "memecoin_dex_protocols_24h": [
+    "Meme Cooking(near)"
+   ],
+   "memecoin_dex_volume_24h_usd": 6.3,
+   "defillama_launchpad_count": 1,
+   "notes": "DefiLlama launchpads on this chain: 1; memecoin DEX protocols (24h): Meme Cooking(near); RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  },
+  {
+   "rank": 10,
+   "name": "Arbitrum One",
+   "chain_id": "arbitrum",
+   "layer": "L2",
+   "geckoterminal_id": "arbitrum",
+   "dex_volume_24h_usd": 81109246.89,
+   "dex_volume_source": "https://api.llama.fi/overview/dexs/arbitrum?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+   "memecoin_mcap_share_pct": 0.0,
+   "share_method": "market-cap-weighted home-chain attribution over the CoinGecko top-40 meme-token sample: each token's market cap is assigned to its home chain (asset_platform_id from /coins/{id}; where that is null but token contracts exist, the first `platforms` entry is used; native coins with no contract anywhere are unattributed). Bridged copies are therefore not double-counted. The denominator is the ATTRIBUTED market cap, not the full sample market cap - see unattributed_market_cap_usd",
+   "share_sample_size": 40,
+   "share_occurrence_count": 2,
+   "share_occurrence_pct": 2.63,
+   "share_weighted_mcap_usd": 0.0,
+   "share_denominator_mcap_usd": 13408789133.0,
+   "rpc_url": "https://arbitrum-one-rpc.publicnode.com",
+   "rpc_method": "eth_blockNumber",
+   "rpc_status": "HTTP 200 (eth_blockNumber -> 0x1f0848a5)",
+   "rpc_attempts": [
+    {
+     "url": "https://arbitrum-one-rpc.publicnode.com",
+     "status": 200,
+     "error": null
+    }
+   ],
+   "geckoterminal_status": "HTTP 200",
+   "geckoterminal_url": "https://api.geckoterminal.com/api/v2/networks/arbitrum/pools?page=1",
+   "geckoterminal_probe_token": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+   "dexscreener_status": "HTTP 200",
+   "dexscreener_url": "https://api.dexscreener.com/token-pairs/v1/arbitrum/0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+   "dexscreener_pairs": 30,
+   "rugcheck_status": "HTTP 400 (EVM address rejected: base58 decode error)",
+   "layer_citation_url": "https://docs.arbitrum.io/get-started/arbitrum-introduction",
+   "layer_citation_note": "Arbitrum docs: 'An Arbitrum chain that settles to Ethereum is a child chain, also called layer 2.'",
+   "memecoin_dex_protocols_24h": [
+    "Ducata(arbitrum)"
+   ],
+   "memecoin_dex_volume_24h_usd": 0.0,
+   "defillama_launchpad_count": 11,
+   "notes": "DefiLlama launchpads on this chain: 11; memecoin DEX protocols (24h): Ducata(arbitrum); RugCheck is Solana-only: /v1/tokens/{0x...}/report/summary returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404."
+  }
+ ],
+ "methodology": {
+  "ranking": "Primary rank = DefiLlama measured per-chain DEX 24h volume (total24h from /api/v2/overview/dexs/{chain}). This is a MEASURED number, not an estimate.",
+  "share_method": "SAMPLED market-cap share over the CoinGecko top-40 meme-token list (per_page=100&page=1 of /coins/markets?category=meme-token, then the top 40 by market cap). Each token's market cap is assigned to its home chain so bridged copies are not double-counted.",
+  "share_sample_size": 40,
+  "sample_total_market_cap_usd": 25145482665.0,
+  "share_denominator_market_cap_usd": 13408789133.0,
+  "unattributed_market_cap_usd": 11736693532.0,
+  "unattributed": [
+   {
+    "id": "dogecoin",
+    "market_cap": 11736693532.0,
+    "reason": "native coin: no token contract on any chain (platforms empty); its market cap is the chain's own native asset, not a memecoin token"
+   }
+  ],
+  "sample_ids": [
+   "dogecoin",
+   "shiba-inu",
+   "memecore",
+   "pepe",
+   "pump-fun",
+   "bianrensheng",
+   "official-trump",
+   "pudgy-penguins",
+   "spx6900",
+   "ape-and-pepe",
+   "bonk",
+   "floki",
+   "binance-peg-dogecoin",
+   "dogwifcoin",
+   "coco-2",
+   "non-playable-coin",
+   "useless-3",
+   "build-on",
+   "fartcoin",
+   "cash-cat",
+   "baby-claw",
+   "yzy",
+   "cheems-token",
+   "dog-go-to-the-moon-rune",
+   "melania-meme",
+   "apes-2-2",
+   "ordinals",
+   "purr-2",
+   "niu-lai",
+   "moolah",
+   "baby-doge-coin",
+   "artificial-inu-3",
+   "banana-for-scale-2",
+   "turbo",
+   "marscoin-4",
+   "memetoon",
+   "comedian",
+   "gekko",
+   "mubarak",
+   "toshi"
+  ],
+  "per_coin_detail_success": 39,
+  "per_coin_detail_rate_limited": {
+   "spx6900": "HTTP 429"
+  },
+  "caveat": "A chain appearing in the ranked list does NOT mean the free endpoints for it work. Step 2 establishes that independently."
+ },
+ "coverage_gaps": {
+  "not_on_geckoterminal": [
+   "bitcoin",
+   "evmos",
+   "hyperevm",
+   "polygon_zkevm",
+   "swellchain"
+  ],
+  "no_public_rpc_found": [
+   "bitcoin",
+   "conflux",
+   "dogechain",
+   "evmos",
+   "shimmer",
+   "sophon",
+   "swellchain"
+  ],
+  "no_public_rpc_found_detail": {
+   "swellchain": [
+    [
+     "https://rpc.swellchain.io",
+     "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+    ],
+    [
+     "https://swellchain-rpc.publicnode.com",
+     "HTTP 404",
+     "HTTPError 404 Not Found"
+    ]
+   ],
+   "shimmer": [
+    [
+     "https://shimmer-json-rpc.publicnode.com",
+     "HTTP 404",
+     "HTTPError 404 Not Found"
+    ]
+   ],
+   "evmos": [
+    [
+     "https://evmos-evm-rpc.publicnode.com",
+     "HTTP 404",
+     "HTTPError 404 Not Found"
+    ],
+    [
+     "https://evmos-json-rpc.stakely.io",
+     "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+    ]
+   ],
+   "bitcoin": [
+    [
+     "https://btc-mainnet.public.blastapi.io",
+     "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+    ],
+    [
+     "https://bitcoin-rpc.publicnode.com",
+     "HTTP 200",
+     "{'code': -32601, 'message': 'Method not found'}"
+    ]
+   ],
+   "sophon": [
+    [
+     "https://rpc.sophon.network",
+     "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+    ],
+    [
+     "https://sophon.drpc.org",
+     "HTTP 400",
+     "HTTPError 400 Bad Request"
+    ]
+   ],
+   "conflux": [
+    [
+     "https://www.confluxrpc.io",
+     "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+    ],
+    [
+     "https://conflux-rpc.publicnode.com",
+     "HTTP 404",
+     "HTTPError 404 Not Found"
+    ]
+   ],
+   "dogechain": [
+    [
+     "https://rpc.dogechain.io",
+     "ERROR URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+    ],
+    [
+     "https://dogechain.drpc.org",
+     "HTTP 404",
+     "HTTPError 404 Not Found"
+    ]
+   ]
+  },
+  "geckoterminal_429_or_error": [],
+  "dexscreener_no_pairs": [
+   "blast",
+   "bob",
+   "flare",
+   "injective",
+   "mode",
+   "monad",
+   "ronin",
+   "sei",
+   "story",
+   "sui",
+   "taiko",
+   "zora"
+  ],
+  "dexscreener_skipped": [
+   "bitcoin",
+   "evmos",
+   "hyperevm",
+   "polygon_zkevm",
+   "shimmer",
+   "swellchain"
+  ],
+  "rugcheck_solana_only": "RugCheck served HTTP 200 for the Solana mint report/summary; every EVM address returned HTTP 400 'decode: base58: invalid base58 character', and the chain-prefixed /v1/tokens/{chain}/{addr} form returned HTTP 404.",
+  "jupiter_solana_only": "Jupiter's /tokens/v2/search returned only Solana SPL mints; 0 of 4083 verified-tag results had a 0x-prefixed id, and exact EVM address queries returned 0 results.",
+  "ankr_pattern_unusable": "rpc.ankr.com/<chain> failed TLS hostname verification on this host for all 24 chains tried, and rpc.subquery.network/public/<chain> returned HTTP 404 for all 22.",
+  "sui_json_rpc_deprecated": "Sui's JSON-RPC endpoint returns HTTP 200 with a deprecation error ('Sui JSON-RPC has been deprecated'); the working free endpoint is the GraphQL gateway."
+ }
+}

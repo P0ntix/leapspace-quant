@@ -1,0 +1,11 @@
+archive provider: https://eth.drpc.org (probe 15798862)
+DexScreener HTTP 200: 8
+found 1 trades whose counterparty is a real pool
+
+  blk  17047545 buy  pool=0xa43fe16908 kind=v2 recon=None ref=None err=n/a swap=ok
+
+=== ACCURACY ON REAL TRADES: n=0 ===
+  priced from POOL STATE: 1/1
+  priced from SWAP EVENT: 1/1
+
+wrote C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\live_pool_trades.json

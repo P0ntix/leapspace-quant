@@ -1,0 +1,482 @@
+[
+  {
+    "source": "arxiv_api",
+    "url": "https://export.arxiv.org/api/query?id_list=2512.00377,2512.11850,2608.20271,2412.04913,2209.02911,1910.07783,2004.08836,1708.08134,1011.3768&max_results=40",
+    "ids": "2512.00377,2512.11850,2608.20271,2412.04913,2209.02911,1910.07783,2004.08836,1708.08134,1011.3768",
+    "papers": [
+      {
+        "id": "1011.3768v1",
+        "title": "Detecting and Tracking the Spread of Astroturf Memes in Microblog Streams",
+        "published": "2010-11-16",
+        "authors": [
+          "Jacob Ratkiewicz",
+          "Michael Conover",
+          "Mark Meiss",
+          "Bruno Gon\u00e7alves",
+          "Snehal Patil",
+          "Alessandro Flammini"
+        ],
+        "summary": "Online social media are complementing and in some cases replacing person-to-person social interaction and redefining the diffusion of information. In particular, microblogs have become crucial grounds on which public relations, marketing, and political battles are fought. We introduce an extensible framework that will enable the real-time analysis of meme diffusion in social media by mining, visualizing, mapping, classifying, and modeling massive streams of public microblogging events. We describe a Web service that leverages this framework to track political memes in Twitter and help detect astroturfing, smear campaigns, and other misinformation in the context of U.S. political elections. We present some cases of abusive behaviors uncovered by our service. Finally, we discuss promising preliminary results on the detection of suspicious memes via supervised learning based on features extracted from the topology of the diffusion networks, sentiment analysis, and crowdsourced annotations.",
+        "abs_url": "https://arxiv.org/abs/1011.3768v1"
+      },
+      {
+        "id": "2512.11850v3",
+        "title": "The Memecoin Phenomenon: An In-Depth Study of Solana's Blockchain Trends",
+        "published": "2025-12-04",
+        "authors": [
+          "Davide Mancino"
+        ],
+        "summary": "This paper analyzes the emerging memecoin phenomenon on the Solana blockchain, focusing on the Pump$.$fun platform during Q4 2024. Using on-chain data, it is explored how retail-focused token creation platforms are reshaping blockchain ecosystems and influencing market participation. This study finds that Pump$.$fun accounted for up to 71.1% of all tokens minted on Solana and contributed 40-67.4% of total DEX transactions. Despite this activity, fewer than 2% of tokens successfully transitioned to major decentralized exchanges, highlighting a highly speculative market structure. The platform experienced rapid growth, with daily active users rising from 60,000 to peaks of 260,000, underscoring strong retail adoption. This reflects a broader shift towards accessible, socially-driven market participation enabled by memecoins. However, while memecoins lower entry barriers and encourage retail engagement, they introduce significant risks. The volatile and speculative nature of these platforms raises concerns about long-term sustainability and the resilience of the blockchain ecosystem. These findings reveal the dual impact of memecoins: they democratize token creation and alter market dynamics but may jeopardize market efficiency and stability. This paper highlights the need to critically assess the implications of retail-driven speculative trading and its potential to disrupt emerging blockchain economies.",
+        "abs_url": "https://arxiv.org/abs/2512.11850v3"
+      },
+      {
+        "id": "2512.00377v2",
+        "title": "Measuring Memecoin Fragility",
+        "published": "2025-11-29",
+        "authors": [
+          "Yuexin Xiang",
+          "Qishuang Fu",
+          "Yuquan Li",
+          "Qin Wang",
+          "Tsz Hon Yuen",
+          "Jiangshan Yu"
+        ],
+        "summary": "Memecoins, emerging from internet culture and community-driven narratives, have rapidly evolved into a unique class of crypto assets. Unlike technology-driven cryptocurrencies, their market dynamics are primarily shaped by viral social media diffusion, celebrity influence, and speculative capital inflows. To capture the distinctive vulnerabilities of these ecosystems, we present the first Memecoin Ecosystem Fragility Framework (ME2F). ME2F formalizes memecoin risks in three dimensions: i) Volatility Dynamics Score capturing persistent and extreme price swings together with spillover from base chains; ii) Whale Dominance Score quantifying ownership concentration among top holders; and iii) Sentiment Amplification Score measuring the impact of attention-driven shocks on market stability. We apply ME2F to representative tokens (over 65% market share) and show that fragility is not evenly distributed across the ecosystem. Politically themed tokens such as TRUMP, MELANIA, and LIBRA concentrate the highest risks, combining volatility, ownership concentration, and sensitivity to sentiment shocks. Established memecoins such as DOGE, SHIB, and PEPE fall into an intermediate range. Benchmark tokens ETH and SOL remain consistently resilient due to deeper liquidity and institutional participation. Our findings provide the first ecosystem-level evidence of memecoin fragility and highlight governance implications for enhancing market resilience in the Web3 era.",
+        "abs_url": "https://arxiv.org/abs/2512.00377v2"
+      },
+      {
+        "id": "2004.08836v1",
+        "title": "Trollthrottle -- Raising the Cost of Astroturfing",
+        "published": "2020-04-19",
+        "authors": [
+          "Ilkan Esiyok",
+          "Lucjan Hanzlik",
+          "Robert Kuennemann",
+          "Lena Marie Budde",
+          "Michael Backes"
+        ],
+        "summary": "Astroturfing, i.e., the fabrication of public discourse by private or state-controlled sponsors via the creation of fake online accounts, has become incredibly widespread in recent years. It gives a disproportionally strong voice to wealthy and technology-savvy actors, permits targeted attacks on public forums and could in the long run harm the trust users have in the internet as a communication platform. Countering these efforts without deanonymising the participants has not yet proven effective; however, we can raise the cost of astroturfing. Following the principle `one person, one voice', we introduce Trollthrottle, a protocol that limits the number of comments a single person can post on participating websites. Using direct anonymous attestation and a public ledger, the user is free to choose any nickname, but the number of comments is aggregated over all posts on all websites, no matter which nickname was used. We demonstrate the deployability of Trollthrottle by retrofitting it to the popular news aggregator website Reddit and by evaluating the cost of deployment for the scenario of a national newspaper (168k comments per day), an international newspaper (268k c/d) and Reddit itself (4.9M c/d).",
+        "abs_url": "https://arxiv.org/abs/2004.08836v1"
+      },
+      {
+        "id": "1708.08134v1",
+        "title": "Measuring social spam and the effect of bots on information diffusion in social media",
+        "published": "2017-08-27",
+        "authors": [
+          "Emilio Ferrara"
+        ],
+        "summary": "Bots have been playing a crucial role in online platform ecosystems, as efficient and automatic tools to generate content and diffuse information to the social media human population. In this chapter, we will discuss the role of social bots in content spreading dynamics in social media. In particular, we will first investigate some differences between diffusion dynamics of content generated by bots, as opposed to humans, in the context of political communication, then study the characteristics of bots behind the diffusion dynamics of social media spam campaigns.",
+        "abs_url": "https://arxiv.org/abs/1708.08134v1"
+      },
+      {
+        "id": "2209.02911v1",
+        "title": "Social Media Engagement and Cryptocurrency Performance",
+        "published": "2022-09-07",
+        "authors": [
+          "Khizar Qureshi",
+          "Tauhid Zaman"
+        ],
+        "summary": "We study the problem of predicting the future performance of cryptocurrencies using social media data. We propose a new model to measure the engagement of users with topics discussed on social media based on interactions with social media posts. This model overcomes the limitations of previous volume and sentiment based approaches. We use this model to estimate engagement coefficients for 48 cryptocurrencies created between 2019 and 2021 using data from Twitter from the first month of the cryptocurrencies' existence. We find that the future returns of the cryptocurrencies are dependent on the engagement coefficients. Cryptocurrencies whose engagement coefficients are too low or too high have lower returns. Low engagement coefficients signal a lack of interest, while high engagement coefficients signal artificial activity which is likely from automated accounts known as bots. We measure the amount of bot posts for the cryptocurrencies and find that generally, cryptocurrencies with more bot posts have lower future returns. While future returns are dependent on both the bot activity and engagement coefficient, the dependence is strongest for the engagement coefficient, especially for short-term returns. We show that simple investment strategies which select cryptocurrencies with engagement coefficients exceeding a fixed threshold perform well for holding times of a few months.",
+        "abs_url": "https://arxiv.org/abs/2209.02911v1"
+      },
+      {
+        "id": "1910.07783v4",
+        "title": "Ephemeral Astroturfing Attacks: The Case of Fake Twitter Trends",
+        "published": "2019-10-17",
+        "authors": [
+          "Tu\u011frulcan Elmas",
+          "Rebekah Overdorf",
+          "Ahmed Furkan \u00d6zkalay",
+          "Karl Aberer"
+        ],
+        "summary": "We uncover a previously unknown, ongoing astroturfing attack on the popularity mechanisms of social media platforms: ephemeral astroturfing attacks. In this attack, a chosen keyword or topic is artificially promoted by coordinated and inauthentic activity to appear popular, and, crucially, this activity is removed as part of the attack. We observe such attacks on Twitter trends and find that these attacks are not only successful but also pervasive. We detected over 19,000 unique fake trends promoted by over 108,000 accounts, including not only fake but also compromised accounts, many of which remained active and continued participating in the attacks. Trends astroturfed by these attacks account for at least 20% of the top 10 global trends. Ephemeral astroturfing threatens the integrity of popularity mechanisms on social media platforms and by extension the integrity of the platforms.",
+        "abs_url": "https://arxiv.org/abs/1910.07783v4"
+      },
+      {
+        "id": "2412.04913v3",
+        "title": "Bridging Culture and Finance: A Multimodal Analysis of Memecoins in the Web3 Ecosystem",
+        "published": "2024-12-06",
+        "authors": [
+          "Hou-Wan Long",
+          "Nga-Man Wong",
+          "Wei Cai"
+        ],
+        "summary": "Memecoins, driven by social media engagement and cultural narratives, have rapidly grown within the Web3 ecosystem. Unlike traditional cryptocurrencies, they are shaped by humor, memes, and community sentiment. This paper introduces the Coin-Meme dataset, an open-source collection of visual, textual, community, and financial data from the Pump.fun platform on the Solana blockchain. We also propose a multimodal framework to analyze memecoins, uncovering patterns in cultural themes, community interaction, and financial behavior. Through clustering, sentiment analysis, and word cloud visualizations, we identify distinct thematic groups centered on humor, animals, and political satire. Additionally, we provide financial insights by analyzing metrics such as Market Entry Time and Market Capitalization, offering a comprehensive view of memecoins as both cultural artifacts and financial instruments within Web3. The Coin-Meme dataset is publicly available at https://github.com/hwlongCUHK/Coin-Meme.git.",
+        "abs_url": "https://arxiv.org/abs/2412.04913v3"
+      },
+      {
+        "id": "2608.20271v1",
+        "title": "Catching the Rug: Early Prediction of Fraudulent Memecoins on Solana via Machine Learning",
+        "published": "2026-08-20",
+        "authors": [
+          "Jianghai Li",
+          "Pavel Kuznetsov",
+          "Yury Yanovich",
+          "Konstantin Nott-Whaley",
+          "Igor Vodolazov"
+        ],
+        "summary": "The rapid proliferation of memecoins on blockchain platforms has increased the risk of fraudulent activities, particularly rug pulls. While previous studies have focused on Ethereum-based tokens, this paper shifts the spotlight to Solana, the leading blockchain for memecoins by trading volume and token count. Unlike Ethereum, where rug pulls often exploit smart contract backdoors, Solana memecoin rug pulls are predominantly driven by liquidity manipulation and social dynamics. This research pioneers large-scale rug pull early detection in the Solana ecosystem by assembling a dataset of 6.4 million tokens over 7 months. Market analysis reveals that a vast majority of these memecoins exhibit rug pull characteristics within one hour of launch, highlighting the urgency of short-horizon prediction. Despite the absence of code-level features, we demonstrate that classic machine learning models, particularly Gradient Boosting (XGBoost), achieve robust performance in detecting potential rug pulls using only the first 5 minutes of trading data. Furthermore, we evaluate cross-platform generalization between PumpFun and Raydium, revealing that multi-source data fusion significantly mitigates domain shift and improves detection reliability. This study advances the understanding of DeFi fraud on high-throughput chains and provides a practical framework for protecting investors.",
+        "abs_url": "https://arxiv.org/abs/2608.20271v1"
+      }
+    ],
+    "status": 200
+  },
+  {
+    "key": "lcr_api_docs_root",
+    "url": "https://lunarcrush.com/developers/api",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/en/developers/api",
+    "text_len": 2372,
+    "excerpts": [
+      "[Galaxy Score] ... covers social sentiment, mention and engagement volume, creators, topics, trending data, and price and market metrics for both crypto and stocks. Endpoints are organized into 9 groups: AI & MCP Server Topics Categories Creators Posts Coins Stocks Searches System For example, /public/coins/list/v1 returns every tracked coin with price, market cap, Galaxy Score, AltRank, sentiment, and 24-hour social volume; /public/topic/<topic>/posts/v1 returns the top social posts for a topic; and /public/category/<category>/creators/v1 returns the most influential creators in a category. Authentication All requests use HTTPS and return JSON. Authenticate every call with an Authorization: Bearer <API_KEY> header. The base URL is https://lunarcrush.com/api4 . The same key powers the webapp, the CLI, and the MCP server. You can hold up to five active keys at once; generate, label, rotate, and revoke them on the API Keys page . Keep keys secret \u2014 if one leaks, delete it and generate a new one. Code samples Fetch the list of tracked coins with curl: curl -H \"Authorization: Bearer <API_KEY>\" \\ \"https://...",
+      "[sentiment] ... LunarCrush API docs | MCP & SDK | LunarCrush Build with LunarCrush: API, MCP, and SDKs The LunarCrush API v4 is a JSON-over-HTTPS API rooted at https://lunarcrush.com/api4 . Authenticate every request with an Authorization: Bearer <API_KEY> header. What the API returns One API covers social sentiment, mention and engagement volume, creators, topics, trending data, and price and market metrics for both crypto and stocks. Endpoints are organized into 9 groups: AI & MCP Server Topics Categories Creators Posts Coins Stocks Searches System For example, /public/coins/list/v1 returns every tracked coin with price, market cap, Galaxy Score, AltRank, sentiment, and 24-hour social volume; /public/topic/<topic>/posts/v1 returns the top social posts for a topic; and /public/category/<category>/creators/v1 returns the most influential creators in a category. Authentication All requests use HTTPS and return JSON. Authenticate every call with an Authorization: Bearer <API_KEY> header. The base URL is https://lunarcrush.com/api4 . The same ke...",
+      "[free] ...ess are set by your subscription tier and match the plans on the pricing page : Plan API access and rate limit Hobby Market data endpoints, 4 requests/min, 100 per day Individual Limited endpoints, 10 requests/min, 2,000/day Builder All endpoints, 100 requests/min, 20,000/day Scale All endpoints, 500 requests/min, 100,000/day Enterprise Custom The free Hobby tier is limited to market-data endpoints; social, creator, and AI endpoints unlock on paid plans. Enterprise limits are custom \u2014 talk to sales . ..."
+    ],
+    "head": " LunarCrush API docs | MCP & SDK | LunarCrush Build with LunarCrush: API, MCP, and SDKs The LunarCrush API v4 is a JSON-over-HTTPS API rooted at https://lunarcrush.com/api4 . Authenticate every request with an Authorization: Bearer <API_KEY> header. What the API returns One API covers social sentiment, mention and engagement volume, creators, topics, trending data, and price and market metrics for"
+  },
+  {
+    "key": "lcr_social_score",
+    "url": "https://lunarcrush.com/glossary/social-volume",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/glossary/social-volume",
+    "text_len": 831,
+    "excerpts": [],
+    "head": " content (even charset/viewport) to block the speculative parser from discovering and prefetching resources (fonts, images, modules) that will never be used. Without this early placement, a paid user hitting `/` would download the marketing site's assets (~300KB+ of JS/CSS/fonts) AND THEN redirect to the webapp, wasting 1-2s and 100+ requests (DEV-12444, DEV-12528). CRITICAL: Preserve locale in re"
+  },
+  {
+    "key": "lcr_alt_rank",
+    "url": "https://lunarcrush.com/glossary/alt-rank",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/glossary/alt-rank",
+    "text_len": 831,
+    "excerpts": [],
+    "head": " content (even charset/viewport) to block the speculative parser from discovering and prefetching resources (fonts, images, modules) that will never be used. Without this early placement, a paid user hitting `/` would download the marketing site's assets (~300KB+ of JS/CSS/fonts) AND THEN redirect to the webapp, wasting 1-2s and 100+ requests (DEV-12444, DEV-12528). CRITICAL: Preserve locale in re"
+  },
+  {
+    "key": "lcr_galaxy",
+    "url": "https://lunarcrush.com/glossary/galaxy-score",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/glossary/galaxy-score",
+    "text_len": 831,
+    "excerpts": [],
+    "head": " content (even charset/viewport) to block the speculative parser from discovering and prefetching resources (fonts, images, modules) that will never be used. Without this early placement, a paid user hitting `/` would download the marketing site's assets (~300KB+ of JS/CSS/fonts) AND THEN redirect to the webapp, wasting 1-2s and 100+ requests (DEV-12444, DEV-12528). CRITICAL: Preserve locale in re"
+  },
+  {
+    "key": "lcr_pricing_page",
+    "url": "https://lunarcrush.com/pricing",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/pricing",
+    "text_len": 930,
+    "excerpts": [
+      "[$] ...s the same All Categories surface as `/{locale}` and now ships the SSR ranked table so the bench settle selector matches at HTML parse instead of timing out at 15s. --> tag after React renders. --> with the same absolute URL; kept here so the raw template is correct too. Crawlers don't resolve relative og:image. --> LunarCrush Pricing \u2014 Individual $90/mo, Builder $300/mo, Scale $900/mo Pricing Real-time social media sentiment for research, decisions, and AI ...",
+      "[Individual] ...le}/home` is the same All Categories surface as `/{locale}` and now ships the SSR ranked table so the bench settle selector matches at HTML parse instead of timing out at 15s. --> tag after React renders. --> with the same absolute URL; kept here so the raw template is correct too. Crawlers don't resolve relative og:image. --> LunarCrush Pricing \u2014 Individual $90/mo, Builder $300/mo, Scale $900/mo Pricing Real-time social media sentiment for research, decisions, and AI ...",
+      "[Builder] ...me All Categories surface as `/{locale}` and now ships the SSR ranked table so the bench settle selector matches at HTML parse instead of timing out at 15s. --> tag after React renders. --> with the same absolute URL; kept here so the raw template is correct too. Crawlers don't resolve relative og:image. --> LunarCrush Pricing \u2014 Individual $90/mo, Builder $300/mo, Scale $900/mo Pricing Real-time social media sentiment for research, decisions, and AI ..."
+    ],
+    "head": " content (even charset/viewport) to block the speculative parser from discovering and prefetching resources (fonts, images, modules) that will never be used. Without this early placement, a paid user hitting `/` would download the marketing site's assets (~300KB+ of JS/CSS/fonts) AND THEN redirect to the webapp, wasting 1-2s and 100+ requests (DEV-12444, DEV-12528). CRITICAL: Preserve locale in re"
+  },
+  {
+    "key": "sant_conv",
+    "url": "https://academy.santiment.net/metrics/conversion-rate/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/conversion-rate/",
+    "text_len": 608,
+    "excerpts": [],
+    "head": " 404: Not found svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Looks like you got lost The page you're looking for is missing or your link is incorrect. Back to home page Behavioral analytics for the crypto market a]:text-mirage hover:[&>a]:underline\"> About us Pricing Team Jobs Contact us Charts Screener Insights Social trends Academy Sanbase SanAPI Sansheets SanR Subscribe to the weekly Digest!"
+  },
+  {
+    "key": "sant_social_vol_rate",
+    "url": "https://academy.santiment.net/metrics/social-volume-rate/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-volume-rate/",
+    "text_len": 608,
+    "excerpts": [],
+    "head": " 404: Not found svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Looks like you got lost The page you're looking for is missing or your link is incorrect. Back to home page Behavioral analytics for the crypto market a]:text-mirage hover:[&>a]:underline\"> About us Pricing Team Jobs Contact us Charts Screener Insights Social trends Academy Sanbase SanAPI Sansheets SanR Subscribe to the weekly Digest!"
+  },
+  {
+    "key": "sant_twitter_followers",
+    "url": "https://academy.santiment.net/metrics/twitter-followers/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/twitter-followers/",
+    "text_len": 9748,
+    "excerpts": [
+      "Twitter Followers | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Binance Derivatives Bitcoin ETF Volume Bitfinex Derivatives BitMEX Derivatives BTC and S&P 500 Price Divergence Circulation Community Messages Count Community Social Volume Contract Interacting Address Count Contract Transactions Count CrvUSD Savings Daily Active Addresses Daily Active Deposits Daily Aggregated Financial"
+    ],
+    "head": " Twitter Followers | Santiment Academy svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Getting started Introduction For Traders For Developers For AI Guides Education and Use Cases Sanbase Santiment Queries SanAPI Sansheets Products and Plans SAN tokens Glossary Youtube Videos Resources Metrics Active Addresses 24h Active Deposits Active Withdrawals Amount in Top Holders Annual Inflation Rate Bina"
+  },
+  {
+    "key": "sant_trending_words",
+    "url": "https://academy.santiment.net/metrics/trending-words/",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/trending-words/",
+    "text_len": 608,
+    "excerpts": [],
+    "head": " 404: Not found svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Looks like you got lost The page you're looking for is missing or your link is incorrect. Back to home page Behavioral analytics for the crypto market a]:text-mirage hover:[&>a]:underline\"> About us Pricing Team Jobs Contact us Charts Screener Insights Social trends Academy Sanbase SanAPI Sansheets SanR Subscribe to the weekly Digest!"
+  },
+  {
+    "key": "threads_meta",
+    "url": "https://developers.facebook.com/docs/threads-api/",
+    "status": 404,
+    "final_url": "https://developers.facebook.com/docs/threads-api/",
+    "text_len": 42,
+    "excerpts": [],
+    "head": " Page Not Found - Meta for Developers --> "
+  },
+  {
+    "key": "threads_api_alt",
+    "url": "https://developers.facebook.com/docs/threads/overview",
+    "status": 400,
+    "final_url": "https://developers.facebook.com/docs/threads/overview",
+    "text_len": 118,
+    "excerpts": [],
+    "head": " Error Sorry, something went wrong. We're working on getting this fixed as soon as we can. Go Back Meta \u00a9 2026 \u00b7 Help "
+  },
+  {
+    "key": "reddit_api_wiki_alt",
+    "url": "https://support.reddithelp.com/hc/en-us/articles/16160319875092",
+    "status": 403,
+    "final_url": "https://support.reddithelp.com/hc/en-us/articles/16160319875092",
+    "text_len": 60,
+    "excerpts": [],
+    "head": " Just a moment... Enable JavaScript and cookies to continue "
+  },
+  {
+    "key": "reddit_api_home",
+    "url": "https://redditinc.com/ads/reddit-ads-data-api",
+    "status": 404,
+    "final_url": "https://redditinc.com/ads/reddit-ads-data-api",
+    "text_len": 1282,
+    "excerpts": [],
+    "head": " Company About Press Careers Brand Investors Values Our values Privacy Transparency Reddit for Good News Newsroom Announcements Product and Community Policy and Safety Life at Reddit Support Support Reddit help center Contact Reddit rules Press inquiries Legal requests Terms & policies Public content policy Privacy policy menu Company About Press Careers Brand Investors Values Our values Privacy T"
+  },
+  {
+    "key": "praw_docs_root",
+    "url": "https://praw.readthedocs.io/en/stable/",
+    "status": 200,
+    "final_url": "https://praw.readthedocs.io/en/stable/",
+    "text_len": 3712,
+    "excerpts": [
+      "[OAuth] ... PRAW 8.0.3 documentation Contents Menu Expand Light mode Dark mode Auto light/dark, in light mode Auto light/dark, in dark mode Skip to content PRAW 8.0.3 documentation PRAW 8.0.3 documentation Getting Started Quick Start Installing PRAW Authenticating via OAuth Configuring PRAW Configuration Options praw.ini Files Keyword Arguments to Reddit PRAW Environment Variables Running Multiple Instances of PRAW Logging in PRAW Ratelimits Frequently Asked Questions Code Overview The Reddit Instance reddit.announcements reddit.drafts reddit.front reddit.inbox reddit.live reddit.multireddit reddit.redditors reddit.subreddit reddit.subreddits reddit.user Working with PRAW\u2019s Models Announcement Comment Draft LiveThread LiveUpdate Message ModmailConversation MoreComments Multireddit Redditor Submission Subreddit WikiPage Exceptions in PRAW Other Classes Collection CollectionModeration SubredditCollections SubredditCollectionsModeration SubmissionFlair SubredditFlair SubredditFlairTemplates SubredditLinkFla..."
+    ],
+    "head": " PRAW 8.0.3 documentation Contents Menu Expand Light mode Dark mode Auto light/dark, in light mode Auto light/dark, in dark mode Skip to content PRAW 8.0.3 documentation PRAW 8.0.3 documentation Getting Started Quick Start Installing PRAW Authenticating via OAuth Configuring PRAW Configuration Options praw.ini Files Keyword Arguments to Reddit PRAW Environment Variables Running Multiple Instances "
+  },
+  {
+    "key": "praw_quickstart",
+    "url": "https://praw.readthedocs.io/en/stable/getting_started/quickstart.html",
+    "status": 404,
+    "final_url": "https://praw.readthedocs.io/en/stable/getting_started/quickstart.html",
+    "text_len": 197,
+    "excerpts": [],
+    "head": " Documentation page not found - Read the Docs Community 404 Documentation page not found praw.readthedocs.io The documentation page you requested does not exist or may have been removed. Hosted by "
+  },
+  {
+    "key": "gdpr_art5_eu",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_5/oj",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_5/oj",
+    "text_len": 0,
+    "excerpts": [],
+    "head": ""
+  },
+  {
+    "key": "gdpr_art6_eu",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_6/oj",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_6/oj",
+    "text_len": 0,
+    "excerpts": [],
+    "head": ""
+  },
+  {
+    "key": "gdpr_art4_eu",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_4/oj",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_4/oj",
+    "text_len": 0,
+    "excerpts": [],
+    "head": ""
+  },
+  {
+    "key": "ico_intro",
+    "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/",
+    "status": 403,
+    "final_url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/",
+    "text_len": 60,
+    "excerpts": [],
+    "head": " Just a moment... Enable JavaScript and cookies to continue "
+  },
+  {
+    "key": "ccpa_oag",
+    "url": "https://oag.ca.gov/privacy/ccpa",
+    "status": 200,
+    "final_url": "https://oag.ca.gov/privacy/ccpa",
+    "text_len": 45035,
+    "excerpts": [
+      "[personal information] ...each Human Trafficking Appointments Contact Contact Us Contact Us - En espa\u00f1ol Cont\u00e1ctenos/Formularios Service on the Attorney General --> --> California Consumer Privacy Act (CCPA) Home Privacy California Consumer Privacy Act (CCPA) Updated on August 28, 2026 The California Consumer Privacy Act of 2018 (CCPA) gives consumers more control over the personal information that businesses collect about them and the CCPA regulations provide guidance on how to implement the law. This landmark law secures new privacy rights for California consumers, including: The right to know about the personal information a business collects about them and how it is used and shared; The right to delete personal information collected from them (with some exceptions); The right to opt-out of the sale or sharing of their personal information including via the GPC ; The right to non-discrimination for exercising their CCPA rights. In November of 2020, California voters approved Proposition 24, the CPRA , which amended the CCPA and added new additional privacy protections that began on January 1, 2023. As of J...",
+      "[right to delete] ...ers more control over the personal information that businesses collect about them and the CCPA regulations provide guidance on how to implement the law. This landmark law secures new privacy rights for California consumers, including: The right to know about the personal information a business collects about them and how it is used and shared; The right to delete personal information collected from them (with some exceptions); The right to opt-out of the sale or sharing of their personal information including via the GPC ; The right to non-discrimination for exercising their CCPA rights. In November of 2020, California voters approved Proposition 24, the CPRA , which amended the CCPA and added new additional privacy protections that began on January 1, 2023. As of January 1, 2023, consumers have new rights in addition to those above, such as: The right to correct inaccurate personal information that a business has about them; and The right to limit the use and disclosure of sensitive personal information collected about them. Businesses that are subject to the CCPA have several respo..."
+    ],
+    "head": " California Consumer Privacy Act (CCPA) | State of California - Department of Justice - Office of the Attorney General Skip to main content Subscribe to Our Newsletter Subscribe Subscribe State of California Department of Justice --> Rob Bonta Attorney General Search Search Translate Website | Traducir Sitio Web \u00d7 Google\u2122 Translate Disclaimer This Google\u2122 translation feature is provided for inform"
+  },
+  {
+    "key": "x_tos_fetch",
+    "url": "https://x.com/en/tos",
+    "status": 200,
+    "final_url": "https://x.com/en/tos",
+    "text_len": 67587,
+    "excerpts": [
+      "[scrape] ...e User Agreement, including all applicable policies and rules, and all applicable laws. You must abide by the Services\u00e2\u0080\u0099 acceptable use terms. You may not access the Services in any way other than through the currently available, published interfaces that we provide. For example, this means that, except as required by applicable law, \u00c2 you cannot scrape the Services\u00c2 without X\u00e2\u0080\u0099s express written permission, try to work around any technical limitations we impose, or otherwise attempt to disrupt the operation of the Services. Unless you are a recipient of the X Service in the European Union, EFTA States, or the United Kingdom, any disputes between you and us will be resolved by a court in Texas, based on Texas law\u00c2 except that if the forum selection clause in these Terms is unenforceable for any reason, then the dispute will be arbitrated. To the extent permitted by applicable law, you agree to waive any right to bring a class action or other representative action. We have broad enforcement rights. X reserves the right to take enforcement actions against you if you do violate these t...",
+      "[crawl] ...ures; (iii) access or search or attempt to access or search the Services by any means (automated or otherwise) other than through our currently available, published interfaces that are provided by us (and only pursuant to the applicable terms and conditions), unless you have been specifically allowed to do so in a separate agreement with us (NOTE: crawling or scraping the Services in any form, for any purpose without our prior written consent is expressly prohibited); (iv) attempt to circumvent, manipulate, or disable systems and Services, including through \"jailbreaking\", \u00e2\u0080\u009cprompt engineering or injection\", or other methods intended to override or manipulate safety, security or other platform controls; (v) forge any TCP/IP packet header or any part of the header information in any email or posting; (vi) in any way use the Services to send altered, deceptive or false source-identifying information; (vii) engage in any conduct that violates our Authenticity Policy , including the misuse of X reporting features or forms, or any other conduct that violates our Rules and Policies ; or (...",
+      "[automated] ...ccess, tamper with, or use non-public areas of the Services, our computer systems, or the technical delivery systems of our providers; (ii) probe, scan, or test the vulnerability of any system or network or breach or circumvent any security or authentication measures; (iii) access or search or attempt to access or search the Services by any means (automated or otherwise) other than through our currently available, published interfaces that are provided by us (and only pursuant to the applicable terms and conditions), unless you have been specifically allowed to do so in a separate agreement with us (NOTE: crawling or scraping the Services in any form, for any purpose without our prior written consent is expressly prohibited); (iv) attempt to circumvent, manipulate, or disable systems and Services, including through \"jailbreaking\", \u00e2\u0080\u009cprompt engineering or injection\", or other methods intended to override or manipulate safety, security or other platform controls; (v) forge any TCP/IP packet header or any part of the header information in any email or posting; (vi) in any way use the S..."
+    ],
+    "head": " X Terms of Service Skip to main content Terms of Service <path opacity=\"0\" d=\"M0 0h24v24H0z\" /> <path d=\"M17.207 11.293l-7.5-7.5c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414L15.086 12l-6.793 6.793c-.39.39-.39 1.023 0 1.414.195.195.45.293.707.293s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.023 0-1.414z\" /> </svg>\" data-icon-arrow-left=\"<svg width=\"28px\" height=\"28px\" viewbox=\"0 0 28 28\" version=\"1.1\""
+  },
+  {
+    "key": "x_automation_fetch",
+    "url": "https://help.x.com/en/rules-and-policies/x-automation",
+    "status": 403,
+    "final_url": "https://help.x.com/en/rules-and-policies/x-automation",
+    "text_len": 60,
+    "excerpts": [],
+    "head": " Just a moment... Enable JavaScript and cookies to continue "
+  },
+  {
+    "key": "tg_ai_scraping",
+    "url": "https://telegram.org/tos/content-licensing",
+    "status": 200,
+    "final_url": "https://telegram.org/tos/content-licensing",
+    "text_len": 2473,
+    "excerpts": [
+      "[scraping] ...able privacy and data protection laws. Furthermore, you must adhere to any stipulated conditions or limitations in regard to copyright placed on the use of the content by its rightful owners, as agreed between you and them, and Telegram will not be liable if you fail to do so. Large Language Models and AI For clarity, Telegram firmly prohibits the scraping, indexing, harvesting, aggregation or use of data obtained from its platform to train, fine-tune, validate or otherwise engage in the development, enhancement, benchmarking or deployment of artificial intelligence, machine learning models and similar technologies. Exceptions may be granted in instances where all relevant users individually provide explicit, informed, affirmative and continued consent that is strictly limited to the specific content and chat, channel, or non-global context window for which it was requested. Notably, consent obtained in one context is non-transferable and does not grant a license to data in other chats or the broader platform. Telegram Telegram is a cloud-based mobile and desktop messaging app with a...",
+      "[AI] ... Terms of Service for Content Licensing English Bahasa Indonesia Bahasa Melayu Deutsch Espa\u00f1ol Fran\u00e7ais Italiano Nederlands O\u2018zbek Polski Portugu\u00eas (Brasil) T\u00fcrk\u00e7e \u0411\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f \u0420\u0443\u0441\u0441\u043a\u0438\u0439 \u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430 \u049a\u0430\u0437\u0430\u049b\u0448\u0430 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0641\u0627\u0631\u0633\u06cc \ud55c\uad6d\uc5b4 Follow on X Home FAQ Apps API Safety Terms of Service for Content Licensing Telegram provides a platform where users can upload, share and view content in public and private chats. Access to user-generated content for any purpose other than ordinary, legitimate, and intended use of the Telegram platform as its user is prohibited. As a limited exception, Telegram permits access to data required to launch and operate a legitimate third-party Telegram Client, Telegram Bot, or Telegram Mini App, provided that it operates in full compliance with the Telegram Terms of Service, and, by extension, the Telegram API Terms of Service...",
+      "[data] ...ety Terms of Service for Content Licensing Telegram provides a platform where users can upload, share and view content in public and private chats. Access to user-generated content for any purpose other than ordinary, legitimate, and intended use of the Telegram platform as its user is prohibited. As a limited exception, Telegram permits access to data required to launch and operate a legitimate third-party Telegram Client, Telegram Bot, or Telegram Mini App, provided that it operates in full compliance with the Telegram Terms of Service, and, by extension, the Telegram API Terms of Service and the Terms of Service for Bot Developers . Any such data is licensed on a retractable, limited, non-exclusive, non-transferable and non-sublicensable basis solely to the extent strictly required to operate the relevant service and without limitation to any other stipulations contained herein and pursuant to applicable privacy and data protection laws. Furthermore, you must adhere to any stipulated conditions or limitations in regard to copyright placed on the use of the content by its rightful ..."
+    ],
+    "head": " Terms of Service for Content Licensing English Bahasa Indonesia Bahasa Melayu Deutsch Espa\u00f1ol Fran\u00e7ais Italiano Nederlands O\u2018zbek Polski Portugu\u00eas (Brasil) T\u00fcrk\u00e7e \u0411\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f \u0420\u0443\u0441\u0441\u043a\u0438\u0439 \u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430 \u049a\u0430\u0437\u0430\u049b\u0448\u0430 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0641\u0627\u0631\u0633\u06cc \ud55c\uad6d\uc5b4 Follow on X Home FAQ Apps API Safety Terms of Service for Content Licensing Telegram provides a platform where users can upload, share and view content in public and private chats."
+  },
+  {
+    "key": "tg_api_tos",
+    "url": "https://core.telegram.org/api/terms",
+    "status": 200,
+    "final_url": "https://core.telegram.org/api/terms",
+    "text_len": 4196,
+    "excerpts": [
+      "[scrap] ... from disappearing, preventing last seen and online statuses from being displayed correctly, tampering with the 'read' statuses of messages (e.g. implementing a 'ghost mode'), preventing typing statuses from being sent/displayed, etc. 1.5. Your use of the Telegram API is further subject to the Telegram Terms of Service for Content Licensing and AI Scraping . As such, you are prohibited from using, accessing or aggregating data obtained from the Telegram platform to train, fine-tune or otherwise engage in the development, enhancement or deployment of artificial intelligence, machine learning models and similar technologies. 2. Transparency 2.1. You must obtain your own api_id for your application. 2.2. We offer our API free of charge, but your users must be aware of the fact that your app uses the Telegram API and is part of the Telegram ecosystem. This fact must be featured prominently in the app's description in the app stores and in the in-app intro if your app has it. 2.3. To avoid confusion, the title of your app must not include the word \u201cTelegram\u201d. An exception can be made if t...",
+      "[data] ...layed correctly, tampering with the 'read' statuses of messages (e.g. implementing a 'ghost mode'), preventing typing statuses from being sent/displayed, etc. 1.5. Your use of the Telegram API is further subject to the Telegram Terms of Service for Content Licensing and AI Scraping . As such, you are prohibited from using, accessing or aggregating data obtained from the Telegram platform to train, fine-tune or otherwise engage in the development, enhancement or deployment of artificial intelligence, machine learning models and similar technologies. 2. Transparency 2.1. You must obtain your own api_id for your application. 2.2. We offer our API free of charge, but your users must be aware of the fact that your app uses the Telegram API and is part of the Telegram ecosystem. This fact must be featured prominently in the app's description in the app stores and in the in-app intro if your app has it. 2.3. To avoid confusion, the title of your app must not include the word \u201cTelegram\u201d. An exception can be made if the word \u201cTelegram\u201d is preceded with the word \u201cUnofficial\u201d in the title. 2.4....",
+      "[API] ... Telegram API Terms of Service Follow on X Home FAQ Apps API Protocol Schema Machine-readable version of this page: /api/terms.md. API Telegram API Terms of Service Telegram API Terms of Service We welcome all developers to use our API and source code to create Telegram-like messaging applications on our platform free of charge. In order to ensure consistency and security across the Telegram ecosystem, all third-party client apps must comply with the following Terms of Service. 1. Privacy & Security 1.1. Telegram is a privacy-oriented platform. All client apps must, therefore, guard their users' privacy with utmost care and comply with our Security Guidelines . 1.2. Developers are welcome to add new features or improve and extend existing Telegram fe..."
+    ],
+    "head": " Telegram API Terms of Service Follow on X Home FAQ Apps API Protocol Schema Machine-readable version of this page: /api/terms.md. API Telegram API Terms of Service Telegram API Terms of Service We welcome all developers to use our API and source code to create Telegram-like messaging applications on our platform free of charge. In order to ensure consistency and security across the Telegram ecosy"
+  },
+  {
+    "key": "discord_dev_policy",
+    "url": "https://discord.com/developers/docs/policies",
+    "status": 200,
+    "final_url": "https://support-dev.discord.com/hc/en-us/articles/8563934450327-Discord-Developer-Policy",
+    "text_len": 12489,
+    "excerpts": [
+      "[scrap] ...n-related service. 18. Do not sell, license, or otherwise commercialize API Data or any of Discord\u2019s services (as defined in our Terms of Service , e.g., Nitro subscriptions). 19. Do not attempt to re-identify, de-anonymize, unscramble, unencrypt, or reverse hash or reverse engineer API Data from the form in which you obtain it. 20. Do not mine or scrape any data, content, or information available on or through Discord services (as defined in our Terms of Service). 21. Do not use message content obtained through the APIs to train machine learning or AI models (including large language models) unless express permission is granted by Discord. Note that we require developers to notify Discord and affected users of potential unauthorized access to API Data, as described in Section 5 of the Developer Terms. For the avoidance of doubt, the above policies apply in addition to the terms relating to API Data described in the Developer Terms (including Section 5 (User Privacy and Security)), and use of data includes how you access, collect, store, retain, transmit, share, and otherwise process...",
+      "[rate] ...ere developers can come to build cool experiences to further the way that people connect. As Discord continues to grow and support our developers, it\u2019s important to be transparent about the responsibilities and our expectations of developers and their Applications. This document sets forth the rules developers will need to follow to develop and operate their Applications. Introduction This Discord Developer Policy is incorporated into the Discord Developer Terms of Service (\u201cDeveloper Terms\u201d), and you agree that it applies to your access to and use of our APIs in addition to the Developer Terms and other Terms. Capitalized terms not otherwise defined herein (including \u201cAPI Data\u201d and \u201cApplication\u201d) have the meaning assigned to them in the Developer Terms. For clarity, the term \u201cincluding\u201d as used herein means \u201cincluding without limitation.\u201d As described in the Developer Terms (including Section 9), we may take enforcement actions for any Enforcement Reason, including if we believe you or your Application have violated this Developer Policy. If you come across an Application that you b..."
+    ],
+    "head": " Discord Developer Policy \u2013 Developers --> Feedback Submit a request Sign in Articles in this section Discord Social SDK Terms Discord Developer Policy Discord Developer Terms of Service App Directory Inclusion Guidelines Developers Developer Policies + Terms General Articles in this section Discord Social SDK Terms Discord Developer Policy Discord Developer Terms of Service App Directory Inclusio"
+  },
+  {
+    "key": "farcaster_hub_docs",
+    "url": "https://docs.farcaster.xyz/reference/hubs/",
+    "status": 404,
+    "final_url": "https://docs.farcaster.xyz/reference/hubs",
+    "text_len": 157,
+    "excerpts": [],
+    "head": " 404: This page could not be found. Farcaster Docs Farcaster docs Learn Build apps AuthKit Snap Reference Snapchain Search 404 This page could not be found. "
+  },
+  {
+    "key": "farcaster_hub_get",
+    "url": "https://docs.farcaster.xyz/reference/hubs/hub-http-api/",
+    "status": 404,
+    "final_url": "https://docs.farcaster.xyz/reference/hubs/hub-http-api",
+    "text_len": 157,
+    "excerpts": [
+      "[cast] ... 404: This page could not be found. Farcaster Docs Farcaster docs Learn Build apps AuthKit Snap Reference Snapchain Search 404 This page could not be found. ..."
+    ],
+    "head": " 404: This page could not be found. Farcaster Docs Farcaster docs Learn Build apps AuthKit Snap Reference Snapchain Search 404 This page could not be found. "
+  },
+  {
+    "key": "apewisdom_api_doc",
+    "url": "https://apewisdom.io/api",
+    "status": 200,
+    "final_url": "https://apewisdom.io/api",
+    "text_len": 1758,
+    "excerpts": [
+      "[mentions] ... Reddit and Walsstreetsbet sentiment API by ApeWisdom APE Wisdom Charts --> API Data export --> Methodology Sign in Dark mode Light mode Stocks 7K Cryptos 26 All 7K 4chan 332 API V1.0 List stocks by mentions Call: https://apewisdom.io/api/v1.0/filter/{filter} List of supported filters: all # All subreddits combined all-stocks # Only subreddits focusing on stocks such as r/wallstreetbets or r/stocks all-crypto # Only subreddits focusing on cryptocurrencies such as r/CryptoCurrency or r/SatoshiStreetBets 4chan CryptoCurrency CryptoCurrencies Bitcoin SatoshiStreetBets CryptoMoonShots CryptoMarkets stocks wallstreetbets options WallStreetbetsELITE Wallstreetbetsnew SPACs investing Daytrading Pagination API response are split up in pages containing each 100 results. To navigate to another page use: https://apewisdom.io/api/v1.0/filter/{filter}/page/{pageNbr} Example Query: https://apewisdom.io/api/v1.0/filter/all-stocks/page/4 Response: { \"...",
+      "[rank] ...streetbetsnew SPACs investing Daytrading Pagination API response are split up in pages containing each 100 results. To navigate to another page use: https://apewisdom.io/api/v1.0/filter/{filter}/page/{pageNbr} Example Query: https://apewisdom.io/api/v1.0/filter/all-stocks/page/4 Response: { \"count\":817, \"pages\":9, \"current_page\":4, \"results\": [ { \"rank\":301, \"ticker\":\"ABC\", \"name\":\"AmerisourceBergen\", \"mentions\":\"2\", \"upvotes\":\"2\", \"rank_24h_ago\":\"119\", \"mentions_24h_ago\":\"23\" }, [...] ] } What is ApeWisdom? Apewisdom is a stock sentiment tracker that tracks the most popular stock and crypto boards on Reddit and 4Chan. ApeWisdom is not only a WSB tracker, it tracks many different discussion boards including: WallStreetBets (WSB) r/stocks r/investing 4chan /biz and many more Learn more We also run Companies Market Cap , a website that ranks companies by Market Cap, Earnings and Revenue. For inquiries: hel (nospam) lo@8market (nospam) cap.com Privacy To learn more read our Privacy-Policy . Sign In No account? Sign Up \u2192 E-Mail Password Forgot your Passwort? Log in OR Continue with Googl..."
+    ],
+    "head": " Reddit and Walsstreetsbet sentiment API by ApeWisdom APE Wisdom Charts --> API Data export --> Methodology Sign in Dark mode Light mode Stocks 7K Cryptos 26 All 7K 4chan 332 API V1.0 List stocks by mentions Call: https://apewisdom.io/api/v1.0/filter/{filter} List of supported filters: all # All subreddits combined all-stocks # Only subreddits focusing on stocks such as r/wallstreetbets or r/stock"
+  },
+  {
+    "key": "apewisdom_home",
+    "url": "https://apewisdom.io/",
+    "status": 200,
+    "final_url": "https://apewisdom.io/",
+    "text_len": 4980,
+    "excerpts": [
+      "[API] ... Ape Wisdom | Trending Stocks on Reddit APE Wisdom Charts --> API Data export --> Methodology Sign in Dark mode Light mode Stocks 7K Cryptos 26 All 7K 4chan 332 Subreddits: r/WSB 1.5K r/WSBnew 50 r/WSBElite 74 r/stocks 297 r/StockMarket 203 r/investing 265 r/SPACs 42 r/options 82 r/Daytrading 92 r/Shortsqueeze 49 r/SqueezePlays 34 Trending Stocks on Reddit in the past 24 hours # Name Symbol Mentions 24h Trend (30 days) Upvotes 1 SPDR S&P 500 ETF Trust SPY 102 229% 264 2 Apple AAPL 74 335% 165 3 Alphabet (Google) GOOG 60 13% 159 4 Invesco QQQ ETF QQQ 57 138% 122 5 AMD AMD 45 221% 171 6 Reddit RDDT 43 -45% 709 7 Tesla TSLA 39 333% 62 8 Micron Technology MU 36 350% 104 9 Sandisk SNDK 36 414% 142 10 Lumentum LITE 35 3,400% 143 11 NVIDIA NVDA 33 10% 82 12 Marvell Technology Group MRVL 33 1,000% 69 13 Alpha..."
+    ],
+    "head": " Ape Wisdom | Trending Stocks on Reddit APE Wisdom Charts --> API Data export --> Methodology Sign in Dark mode Light mode Stocks 7K Cryptos 26 All 7K 4chan 332 Subreddits: r/WSB 1.5K r/WSBnew 50 r/WSBElite 74 r/stocks 297 r/StockMarket 203 r/investing 265 r/SPACs 42 r/options 82 r/Daytrading 92 r/Shortsqueeze 49 r/SqueezePlays 34 Trending Stocks on Reddit in the past 24 hours # Name Symbol Mentio"
+  },
+  {
+    "key": "pytrends_pypi",
+    "url": "https://pypi.org/project/pytrends/",
+    "status": 200,
+    "final_url": "https://pypi.org/project/pytrends/",
+    "text_len": 17281,
+    "excerpts": [
+      "[unofficial] ...down\" aria-label=\"Release files. Focus will be moved to the release files panel.\"> Release files project-tabs#tabKeydown\" aria-label=\"Release security. Focus will be moved to the security panel.\"> Security project-tabs#tabKeydown\" aria-label=\"Release history. Focus will be moved to the release history panel.\"> Release history pytrends Introduction Unofficial API for Google Trends Allows simple interface for automating downloading of reports from Google Trends. Only good until Google changes their backend again :-P. When that happens feel free to contribute! Looking for maintainers! Please open an issue with a method of contacting you if you're interested. Table of Contents Installation API API Methods Common API Parameters Interest Over Time Multirange Interest Over Time Historical Hourly Interest Interest by Region Related Topics Related Queries Trending Searches Realtime Search Trends Top Charts Suggestions Caveats Credits Installation pip install pytrends Requirements Written for Python 3.3+ Requires Requests, lxml, Pandas back to top API Connect to Google from pytrends.request im...",
+      "[API] ...ase try enabling it if you encounter problems. Search PyPI search-focus#focusSearchField\" data-search-focus-target=\"searchField\"> Search Blog Docs Log in Register Blog Docs Log in Register Deutsch English espa\u00f1ol Esperanto fran\u00e7ais portugu\u00eas (Brasil) \u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430 \u05e2\u05d1\u05e8\u05d9\u05ea \u4e2d\u6587 (\u7b80\u4f53) \u4e2d\u6587 (\u7e41\u9ad4) \u65e5\u672c\u8a9e \ud55c\uad6d\uc5b4 Search PyPI Search pytrends 4.9.2 Pseudo API for Google Trends pip install pytrends Copy PIP instructions project-tabs#tabKeydown\" aria-label=\"Project description. Focus will be moved to the description.\"> Description project-tabs#tabKeydown\" aria-label=\"Metadata. Focus will be moved to the metadata panel.\"> Metadata project-tabs#tabKeydown\" aria-label=\"Release files. Focus will be moved to the release files panel.\"> Release files project-tabs#tabKeydown\" aria-label=\"Release security. Focus will be moved to the security panel.\"> Security project-tabs#tabKeydown\" aria-label=\"Release history. Focus will be moved to the release history panel.\"> Release history pytrends Introduction Unofficial API for Google Trends Allows simple interface for automating downloading of reports from Goo...",
+      "[Trends] ... pytrends \u00b7 PyPI Skip to main content Switch to mobile version Warning You are using an unsupported browser, upgrade to a newer version. Warning Some features may not work without JavaScript. Please try enabling it if you encounter problems. Search PyPI search-focus#focusSearchField\" data-search-focus-target=\"searchField\"> Search Blog Docs Log in Register Blog Docs Log in Register Deutsch English espa\u00f1ol Esperanto fran\u00e7ais portugu\u00eas (Brasil) \u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430 \u05e2\u05d1\u05e8\u05d9\u05ea \u4e2d\u6587 (\u7b80\u4f53) \u4e2d\u6587 (\u7e41\u9ad4) \u65e5\u672c\u8a9e \ud55c\uad6d\uc5b4 Search PyPI Search pytrends 4.9.2 Pseudo API for Google Trends pip install pytrends Copy PIP instructions project-tabs#tabKeydown\" aria-label=\"Project description. Focus will be moved to the description.\"> Description project-tabs#tabKeydown\" aria-l..."
+    ],
+    "head": " pytrends \u00b7 PyPI Skip to main content Switch to mobile version Warning You are using an unsupported browser, upgrade to a newer version. Warning Some features may not work without JavaScript. Please try enabling it if you encounter problems. Search PyPI search-focus#focusSearchField\" data-search-focus-target=\"searchField\"> Search Blog Docs Log in Register Blog Docs Log in Register Deutsch English "
+  },
+  {
+    "key": "vader_github",
+    "url": "https://github.com/cjhutto/vaderSentiment",
+    "status": 200,
+    "final_url": "https://github.com/cjhutto/vaderSentiment",
+    "text_len": 24501,
+    "excerpts": [
+      "[heuristic] ...ach context-free candidate feature. vaderSentiment.py The Python code for the rule-based sentiment analysis engine. Implements the grammatical and syntactical rules described in the paper, incorporating empirically derived quantifications for the impact of each rule on the perceived intensity of sentiment in sentence-level text. Importantly, these heuristics go beyond what would normally be captured in a typical bag-of-words model. They incorporate word-order sensitive relationships between terms. For example, degree modifiers (also called intensifiers, booster words, or degree adverbs) impact sentiment intensity by either increasing or decreasing the intensity. Consider these examples: \"The service here is extremely good\" \"The service here is good\" \"The service here is marginally good\" From Table 3 in the paper, we see that for 95% of the data, using a degree modifier increases the positive sentiment intensity of example (a) by 0.227 to 0.36, with a mean difference of 0.293 on a rating scale from 1 to 4. Likewise, example (c) reduces the perceived sentiment intensity by 0.293, on av...",
+      "[valence] ... GitHub - cjhutto/vaderSentiment: VADER Sentiment Analysis. VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media, and works well on texts from other domains. \u00b7 GitHub Skip to content Navigation Menu Sign in Products Platform GitHub Repository hosting, code review, and collaboration Copilot AI coding agent for tasks, projects and automated work Build & Ship Actions CI/CD and automation Code Quality Quality analysis, fixes, and enforcement Codespaces Cloud development environments Secure Code Security Vulnerability detection and remediation Secret Protection Secret scanning and leak prevention All Features Developers Learn Documentation Training Certifications Build Build with Copilot C...",
+      "[compound] ...y_scores(sentence) print(\"{:-<65} {}\".format(sentence, str(vs))) Again, for a more complete demo , go to the install directory and run python vaderSentiment.py . (Be sure you are set to handle UTF-8 encoding in your terminal or IDE.) Output for the above example code VADER is smart, handsome, and funny.----------------------------- {'pos': 0.746, 'compound': 0.8316, 'neu': 0.254, 'neg': 0.0} VADER is smart, handsome, and funny!----------------------------- {'pos': 0.752, 'compound': 0.8439, 'neu': 0.248, 'neg': 0.0} VADER is very smart, handsome, and funny.------------------------ {'pos': 0.701, 'compound': 0.8545, 'neu': 0.299, 'neg': 0.0} VADER is VERY SMART, handsome, and FUNNY.------------------------ {'pos': 0.754, 'compound': 0.9227, 'neu': 0.246, 'neg': 0.0} VADER is VERY SMART, handsome, and FUNNY!!!---------------------- {'pos': 0.767, 'compound': 0.9342, 'neu': 0.233, 'neg': 0.0} VADER is VERY SMART, uber handsome, and FRIGGIN FUNNY!!!--------- {'pos': 0.706, 'compound': 0.9469, 'neu': 0.294, 'neg': 0.0} VADER is not smart, handsome, nor funny.------------------------- {'po..."
+    ],
+    "head": " GitHub - cjhutto/vaderSentiment: VADER Sentiment Analysis. VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media, and works well on texts from other domains. \u00b7 GitHub Skip to content Navigation Menu Sign in Products Platform GitHub Repository hosting, code review, and collabo"
+  },
+  {
+    "key": "vader_paper",
+    "url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "status": 200,
+    "final_url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "text_len": 1010,
+    "excerpts": [],
+    "head": " Making sure you're not a bot! Making sure you're not a bot! Loading... Anubis could not load its JavaScript. The server may be overloaded. Please reload the page to try again. This is a measure against bots and malicious requests similar to a CAPTCHA. However, instead of having to do work yourself, your browser is given a calculation task that it has to solve to ensure that it is a valid client. "
+  },
+  {
+    "key": "discord_invite_api",
+    "url": "https://discord.com/developers/docs/resources/invite",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/resources/invite",
+    "text_len": 107977,
+    "excerpts": [
+      "[approximate_member_count] ...ect the user whose stream to display for this voice channel stream invite target_application? partial application object the embedded application to open for this voice channel embedded application invite approximate_presence_count? integer approximate count of online members, returned from the GET /invites/<code> endpoint when with_counts is true approximate_member_count? integer approximate count of total members, returned from the GET /invites/<code> endpoint when with_counts is true expires_at ?ISO8601 timestamp the expiration date of this invite guild_scheduled_event? guild scheduled event object guild scheduled event data, only included if guild_scheduled_event_id contains a valid guild scheduled event id flags? integer guild invite flags for guild invites roles?* array of partial role objects the roles assigned to the user upon accepting the invite. * This is a partial role object that only contains id , name , position , color , colors , icon , and unicode_emoji . Invite Types Type Value GUILD 0 GROUP_DM 1 FRIEND 2 Invite Target Types Type Value STREAM 1 EMBEDDED_APPLICATION ...",
+      "[invite] ... Invite Resource - Documentation - Discord Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content Documentation - Discord home page Search... \u2318 K Help Center Developer Portal Developer Portal Search... Navigation HTTP API Resources Invite Resource Home Bots & Companion Apps Social SDK Activities Guides Change Log Reference Developer Portal API & SDK Reference Developer Community API Reference API Reference OAuth2 Opcodes and Status Codes Permissions Rate Limits Threads SDK Reference Social SDK Reference Embedded App SDK Reference HTTP API Resources Application Identity Profile Resource Application Role Connection Metadata Applicatio...",
+      "[GET] ...t Guild Template Invite Lobby Message Poll SKU Soundboard Stage Instance Sticker Subscription User Voice Webhook Events Overview Using Gateway Gateway Events Webhook Events Link Previews Overview Component Embeds Voice & RPC Voice RPC Certified Devices close On this page Back to top Invite Object Invite Metadata Object Invite Stage Instance Object Get Invite Delete Invite Get Target Users Add Target User Remove Target User Update Target Users Bulk-Add Target Users Bulk-Delete Target Users Get Target Users Job Status HTTP API Resources Invite Resource Copy page Copy page Copy page Copy page \u200b Invite Object Represents a code that when used, adds a user to a guild or group DM channel. Invite Structure Field Type Description type integer the type of invite code string the invite code (unique ID) guild? partial guild object the guild this invite is for channel ?partial channel object the channel this invite is for inviter? user object the user who created the invite target_type? integer the type of target for this voice channel invite target_user? user object the user whose stream to disp..."
+    ],
+    "head": " Invite Resource - Documentation - Discord Documentation Index Fetch the complete documentation index at: /llms.txt Use this file to discover all available pages before exploring further. Skip to main content Documentation - Discord home page Search... \u2318 K Help Center Developer Portal Developer Portal Search... Navigation HTTP API Resources Invite Resource Home Bots & Companion Apps Social SDK Act"
+  },
+  {
+    "key": "tg_getchatmembercount",
+    "url": "https://core.telegram.org/bots/api#getchatmembercount",
+    "status": 200,
+    "final_url": "https://core.telegram.org/bots/api#getchatmembercount",
+    "text_len": 492058,
+    "excerpts": [
+      "[getChatMemberCount] ...bjects. Parameter Type Required Description chat_id Integer or String Yes Unique identifier for the target chat or username of the target supergroup or channel in the format @username return_bots Boolean Optional Pass True to additionally receive all bots that are administrators of the chat. By default, bots other than the current bot are omitted. getChatMemberCount Use this method to get the number of members in a chat. Returns Integer on success. Parameter Type Required Description chat_id Integer or String Yes Unique identifier for the target chat or username of the target supergroup or channel in the format @username getChatMember Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success. Parameter Type Required Description chat_id Integer or String Yes Unique identifier for the target chat or username of the target supergroup or channel in the format @username user_id Integer Yes Unique identifier of the target user getUserPersonalChatMessag...",
+      "[subscribers] ...t sticker Sticker The sticker that represents the gift star_count Integer The number of Telegram Stars that must be paid to send the sticker upgrade_star_count Integer Optional . The number of Telegram Stars that must be paid to upgrade the gift to a unique one is_premium True Optional . True , if the gift can only be purchased by Telegram Premium subscribers has_colors True Optional . True , if the gift can be used (after being upgraded) to customize a user's appearance total_count Integer Optional . The total number of gifts of this type that can be sent by all users; for limited gifts only remaining_count Integer Optional . The number of remaining gifts of this type that can be sent by all users; for limited gifts only personal_total_count Integer Optional . The total number of gifts of this type that can be sent by the bot; for limited gifts only personal_remaining_count Integer Optional . The number of remaining gifts of this type that can be sent by the bot; for limited gifts only background GiftBackground Optional . Background of the gift unique_gift_variant_count Integer Opti..."
+    ],
+    "head": " Telegram Bot API Follow on X Home FAQ Apps API Protocol Schema Machine-readable version of this page: /bots/api.md. Telegram Bots Telegram Bot API Telegram Bot API The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram. To learn how to create and set up a bot, please consult our Introduction to Bots and Bot FAQ . Recent changes Subscribe to @BotNews to be"
+  }
+]

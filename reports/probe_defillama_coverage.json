@@ -1,0 +1,842 @@
+{
+  "n_tokens": 17,
+  "n_with_current": 15,
+  "n_with_any_historical": 15,
+  "n_with_5_of_5_historical": 8,
+  "n_with_chart_points": 15,
+  "tokens": [
+    {
+      "symbol": "PEPE",
+      "address": "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+      "market_cap": 1990969865,
+      "liquidity": 31148422.04,
+      "dex": "uniswap",
+      "pair_created_at": 1681492871000,
+      "current_http": 200,
+      "current_price": 4.8130351e-06,
+      "dl_symbol": "PEPE",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 4.286623409176833e-06,
+          "symbol": "PEPE"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 3.967091644304906e-06,
+          "symbol": "PEPE"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 9.36e-06,
+          "symbol": "PEPE"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 2.027e-05,
+          "symbol": "PEPE"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 9.23762e-07,
+          "symbol": "PEPE"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793670178,
+      "chart_last_ts": 1793670178
+    },
+    {
+      "symbol": "SHIB",
+      "address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      "market_cap": 4648420218,
+      "liquidity": 23851.16,
+      "dex": "uniswap",
+      "pair_created_at": 1738942211000,
+      "current_http": 200,
+      "current_price": 4.568811800000001e-06,
+      "dl_symbol": "SHIB",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 5.7065051178491846e-06,
+          "symbol": "SHIB"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 6.2408697166095364e-06,
+          "symbol": "SHIB"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 1.196e-05,
+          "symbol": "SHIB"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 2.929e-05,
+          "symbol": "SHIB"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 8.885702065519268e-06,
+          "symbol": "SHIB"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793668318,
+      "chart_last_ts": 1793668318
+    },
+    {
+      "symbol": "FLOKI",
+      "address": "0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E",
+      "market_cap": 125185280,
+      "liquidity": 6767878.29,
+      "dex": "uniswap",
+      "pair_created_at": 1642898407000,
+      "current_http": 200,
+      "current_price": 2.2375000000000002e-05,
+      "dl_symbol": "FLOKI",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 2.730169077086185e-05,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 3.20467979938282e-05,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 8.258e-05,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 0.00022674,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 2.809e-05,
+          "symbol": "FLOKI"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793670123,
+      "chart_last_ts": 1793670123
+    },
+    {
+      "symbol": "BONK",
+      "address": "0x1151CB3d861920e07a38e03eEAd12C32178567F6",
+      "market_cap": 246402030,
+      "liquidity": 41458.34,
+      "dex": "pancakeswap",
+      "pair_created_at": 1702019867000,
+      "current_http": 200,
+      "current_price": 2.793e-06,
+      "dl_symbol": "Bonk",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 3.8618529712451695e-06,
+          "symbol": "Bonk"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 6.503806123820726e-06,
+          "symbol": "Bonk"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 1.935e-05,
+          "symbol": "Bonk"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 4.216e-05,
+          "symbol": "Bonk"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 1.004e-05,
+          "symbol": "Bonk"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793670123,
+      "chart_last_ts": 1793670123
+    },
+    {
+      "symbol": "MOG",
+      "address": "0xaaeE1A9723aaDB7afA2810263653A34bA2C21C7a",
+      "market_cap": 36323977,
+      "liquidity": 4805480.48,
+      "dex": "uniswap",
+      "pair_created_at": 1689822407000,
+      "current_http": 200,
+      "current_price": 9.296547050000001e-08,
+      "dl_symbol": "Mog",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 1.1693887134117208e-07,
+          "symbol": "Mog"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 1.469099631884815e-07,
+          "symbol": "Mog"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 6.68402e-07,
+          "symbol": "Mog"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 2.206403857876259e-06,
+          "symbol": "Mog"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 6.0944e-08,
+          "symbol": "Mog"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793668978,
+      "chart_last_ts": 1793668978
+    },
+    {
+      "symbol": "BRETT",
+      "address": "0x240D6FAF8c3B1A7394e371792A3bf9D28DD65515",
+      "market_cap": 510738,
+      "liquidity": 100091.38,
+      "dex": "uniswap",
+      "pair_created_at": 1689229583000,
+      "current_http": 200,
+      "current_price": 0.007329961879121902,
+      "dl_symbol": "BRETT",
+      "dl_confidence": 0.99,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 0.007578671936328171,
+          "symbol": "BRETT"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 0.011196558788378205,
+          "symbol": "BRETT"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 0.064176,
+          "symbol": "BRETT"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 0.291185,
+          "symbol": "BRETT"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 4,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793664487,
+      "chart_last_ts": 1793664487
+    },
+    {
+      "symbol": "TURBO",
+      "address": "0xA35923162C49cF95e6BF26623385eb431ad920D3",
+      "market_cap": 51725940,
+      "liquidity": 69227.03,
+      "dex": "uniswap",
+      "pair_created_at": 1682969567000,
+      "current_http": 200,
+      "current_price": 0.00074940819725,
+      "dl_symbol": "turbo",
+      "dl_confidence": 0.9,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 0.0010359924270742246,
+          "symbol": "turbo"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 0.001276371305209042,
+          "symbol": "turbo"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 0.00349505,
+          "symbol": "turbo"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 0.00749707,
+          "symbol": "turbo"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 0.00031416,
+          "symbol": "turbo"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793668978,
+      "chart_last_ts": 1793668978
+    },
+    {
+      "symbol": "TRUMP",
+      "address": "0x576e2BeD8F7b46D34016198911Cdf9886f78bea7",
+      "market_cap": 930777,
+      "liquidity": 494114.37,
+      "dex": "uniswap",
+      "pair_created_at": 1691792927000,
+      "current_http": 200,
+      "current_price": 0.02080912404016422,
+      "dl_symbol": "TRUMP",
+      "dl_confidence": 0.94,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 0.03151652648214719,
+          "symbol": "TRUMP"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 0.039744343037676086,
+          "symbol": "TRUMP"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 0.12453270297569852,
+          "symbol": "TRUMP"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 1.4269256703714621,
+          "symbol": "TRUMP"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 4,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793669690,
+      "chart_last_ts": 1793669690
+    },
+    {
+      "symbol": "GOAT",
+      "address": "0x5200B34E6a519F289f5258dE4554eBd3dB12E822",
+      "market_cap": 43505,
+      "liquidity": 31939.95,
+      "dex": "uniswap",
+      "pair_created_at": 1728790943000,
+      "current_http": 200,
+      "current_price": 4.2577051999617794e-07,
+      "dl_symbol": "GOAT",
+      "dl_confidence": 0.99,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 5.274556898917767e-07,
+          "symbol": "GOAT"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 6.84e-06,
+          "symbol": "GOAT"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 2,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793664487,
+      "chart_last_ts": 1793664487
+    },
+    {
+      "symbol": "NEIRO",
+      "address": "0x812Ba41e071C7b7fA4EBcFB62dF5F45f6fA853Ee",
+      "market_cap": 26809413,
+      "liquidity": 70643.13,
+      "dex": "uniswap",
+      "pair_created_at": 1723851647000,
+      "current_http": 200,
+      "current_price": 6.117423600000001e-05,
+      "dl_symbol": "Neiro",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 8.931513990122337e-05,
+          "symbol": "Neiro"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 0.00011604339999781223,
+          "symbol": "Neiro"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 0.00027226,
+          "symbol": "Neiro"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 0.00182169,
+          "symbol": "Neiro"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 4,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793668987,
+      "chart_last_ts": 1793668987
+    },
+    {
+      "symbol": "MUMU",
+      "address": "0x6732134e844368265477797E8C7262Af41CE301F",
+      "market_cap": 38813,
+      "liquidity": 30037.27,
+      "dex": "uniswap",
+      "pair_created_at": 1681843559000,
+      "current_http": 200,
+      "current_price": null,
+      "dl_symbol": null,
+      "dl_confidence": null,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 0,
+      "chart_http": 200,
+      "chart_n_points": 0,
+      "chart_first_ts": null,
+      "chart_last_ts": null
+    },
+    {
+      "symbol": "WOJAK",
+      "address": "0x8De39B057CC6522230AB19C0205080a8663331Ef",
+      "market_cap": 12575224,
+      "liquidity": 790824.52,
+      "dex": "uniswap",
+      "pair_created_at": 1769458703000,
+      "current_http": 200,
+      "current_price": 4.091557937367572e-08,
+      "dl_symbol": "wojak",
+      "dl_confidence": 0.99,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 5.877283379489551e-08,
+          "symbol": "wojak"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 1.5753144939415828e-08,
+          "symbol": "wojak"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 2,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793668960,
+      "chart_last_ts": 1793668960
+    },
+    {
+      "symbol": "MOODENG",
+      "address": "0x28561B8A2360F463011c16b6Cc0B0cbEF8dbBcad",
+      "market_cap": 1097713,
+      "liquidity": 395132.62,
+      "dex": "uniswap",
+      "pair_created_at": 1726431167000,
+      "current_http": 200,
+      "current_price": 2.688234391978771e-06,
+      "dl_symbol": "MOODENG",
+      "dl_confidence": 0.99,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 4.046679747103096e-06,
+          "symbol": "MOODENG"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 4.677383919185387e-06,
+          "symbol": "MOODENG"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 1.775e-05,
+          "symbol": "MOODENG"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 0.00015743,
+          "symbol": "MOODENG"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 4,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793668978,
+      "chart_last_ts": 1793668978
+    },
+    {
+      "symbol": "BABYDOGE",
+      "address": "0xAC57De9C1A09FeC648E93EB98875B212DB0d460B",
+      "market_cap": 79339672,
+      "liquidity": 913964.54,
+      "dex": "uniswap",
+      "pair_created_at": 1703772275000,
+      "current_http": 200,
+      "current_price": 3.1465886e-10,
+      "dl_symbol": "babydoge",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 4.088076154304866e-10,
+          "symbol": "babydoge"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 4.395881448509605e-10,
+          "symbol": "babydoge"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 1.21e-09,
+          "symbol": "babydoge"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 2.401e-09,
+          "symbol": "babydoge"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 1.13e-09,
+          "symbol": "babydoge"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793668978,
+      "chart_last_ts": 1793668978
+    },
+    {
+      "symbol": "DOGE",
+      "address": "0x1121AcC14c63f3C872BFcA497d10926A6098AAc5",
+      "market_cap": 449569,
+      "liquidity": 344456.87,
+      "dex": "uniswap",
+      "pair_created_at": 1724119115000,
+      "current_http": 200,
+      "current_price": 0.0004510447492330799,
+      "dl_symbol": "DOGE",
+      "dl_confidence": 0.99,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 0.0009264532559397455,
+          "symbol": "DOGE"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 0.0020796419616066846,
+          "symbol": "DOGE"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 0.00563965,
+          "symbol": "DOGE"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 0.267045,
+          "symbol": "DOGE"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 4,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793664487,
+      "chart_last_ts": 1793664487
+    },
+    {
+      "symbol": "FLOKI",
+      "address": "0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E",
+      "market_cap": 125185280,
+      "liquidity": 6767878.29,
+      "dex": "uniswap",
+      "pair_created_at": 1642898407000,
+      "current_http": 200,
+      "current_price": 2.2375000000000002e-05,
+      "dl_symbol": "FLOKI",
+      "dl_confidence": 0.999,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": 2.730169077086185e-05,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": 3.20467979938282e-05,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": 8.258e-05,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": 0.00022674,
+          "symbol": "FLOKI"
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": 2.809e-05,
+          "symbol": "FLOKI"
+        }
+      ],
+      "n_hist_prices": 5,
+      "chart_http": 200,
+      "chart_n_points": 1,
+      "chart_first_ts": 1793670123,
+      "chart_last_ts": 1793670123
+    },
+    {
+      "symbol": "GIGA",
+      "address": "0x93025BB139fa2756A6130De833df9D07bBD2E3b1",
+      "market_cap": 13838418,
+      "liquidity": 6919209.75,
+      "dex": "uniswap",
+      "pair_created_at": 1793627135000,
+      "current_http": 200,
+      "current_price": null,
+      "dl_symbol": null,
+      "dl_confidence": null,
+      "historical": [
+        {
+          "ts": 1791078179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1776390179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1759110179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1733190179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        },
+        {
+          "ts": 1707270179,
+          "http": 200,
+          "price": null,
+          "symbol": null
+        }
+      ],
+      "n_hist_prices": 0,
+      "chart_http": 200,
+      "chart_n_points": 0,
+      "chart_first_ts": null,
+      "chart_last_ts": null
+    }
+  ]
+}

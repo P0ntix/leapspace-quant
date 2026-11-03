@@ -1,0 +1,148 @@
+{
+  "token": {
+    "address": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "chain": "solana",
+    "symbol": null,
+    "pair_address": null,
+    "price_usd": null,
+    "liquidity_usd": null,
+    "dex": null,
+    "url": null
+  },
+  "verdict": "AVOID",
+  "confidence": "MEDIUM",
+  "generated_at": "2026-11-03T05:00:29+00:00",
+  "legs": [
+    {
+      "name": "IDENTITY",
+      "verdict": "UNAVAILABLE",
+      "detail": "could not measure: HttpError: GET failed after 3 attempt(s): https://api.dexscreener.com/latest/dex/tokens/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263 -> HTTPError: HTTP Error 404: Not Found",
+      "provenance": "UNAVAILABLE",
+      "blocking": false,
+      "metrics": {}
+    },
+    {
+      "name": "RESEARCH_EDGE",
+      "verdict": "NEUTRAL",
+      "detail": "3 specification(s) look supported under quick validation only - not enough to rely on.",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "specs_total": 13,
+        "supported_full_gauntlet": [],
+        "supported_quick_only": [
+          "regime_switch_cross_sectional_sector_rotation",
+          "v1_crypto_momentum_20d_ma",
+          "nasdaq_12m_timeseries_momentum"
+        ]
+      }
+    },
+    {
+      "name": "QUALIFIED_WALLETS",
+      "verdict": "CONFLICTS",
+      "detail": "NO qualified wallet holds this token. 0 wallet(s) have passed the consistency gate in total and none of them holds this asset.",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "qualified_wallets_total": 0,
+        "wallets_holding_this_token": 0,
+        "qualified_holding_this_token": 0,
+        "rejected_holding_this_token": 0,
+        "priced_artefact_wallets": 1
+      }
+    },
+    {
+      "name": "NARRATIVE",
+      "verdict": "UNAVAILABLE",
+      "detail": "the token profile could not be retrieved",
+      "provenance": "UNAVAILABLE",
+      "blocking": false,
+      "metrics": {}
+    },
+    {
+      "name": "TRACTION",
+      "verdict": "SUPPORTS",
+      "detail": "community size 43,585 (discord 32,581, telegram 11,004); 24h buy/sell 1.294",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "price_usd": "0.000002765",
+        "liquidity_usd": 278537.37,
+        "volume_24h_usd": 171265.14,
+        "market_cap": 243366247,
+        "buys_24h": 5688,
+        "sells_24h": 4394,
+        "buy_sell_ratio_24h": 1.294,
+        "community_members": 43585,
+        "community_by_platform": {
+          "telegram": 11004,
+          "discord": 32581
+        }
+      }
+    },
+    {
+      "name": "HOLDER_RISK",
+      "verdict": "NEUTRAL",
+      "detail": "the top 10 holders control 39.0% of the supply",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "source": "rugcheck",
+        "holders_read": 10,
+        "top10_supply_share": 0.3897,
+        "top1_supply_share": 0.0949,
+        "insider_supply_share": 0.0
+      }
+    },
+    {
+      "name": "LIQUIDITY",
+      "verdict": "UNAVAILABLE",
+      "detail": "no liquidity figure to assess",
+      "provenance": "UNAVAILABLE",
+      "blocking": false,
+      "metrics": {}
+    },
+    {
+      "name": "DATA_QUALITY",
+      "verdict": "NEUTRAL",
+      "detail": "4/7 evidence legs answered - partial coverage, treat the brief as indicative",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "legs_total": 7,
+        "legs_answered": 4,
+        "legs_unavailable": 3,
+        "legs_live": 4,
+        "answered_fraction": 0.571,
+        "verdict_reason": "no qualified-wallet evidence and no supported research edge for this asset"
+      }
+    }
+  ],
+  "entry": {
+    "basis": "NOT EVIDENCE-BASED - no qualified wallet holds this token, so there is no reference level",
+    "price_usd": null
+  },
+  "exit": {
+    "basis": "NOT EVIDENCE-BASED - no qualified wallet holds this token, so there is no reference exit",
+    "hold_days_median": null
+  },
+  "sizing": {
+    "position_usd": 0.0,
+    "note": "the verdict is AVOID - position size is zero"
+  },
+  "invalidation": [
+    "Liquidity falls below the level assumed in the sizing calculation.",
+    "A qualified wallet exits - their exit is the reference exit.",
+    "A re-run of the consistency gate returns a different verdict for a qualified wallet.",
+    "Holder concentration rises above the level in the HOLDER_RISK leg."
+  ],
+  "gaps": [
+    "IDENTITY: could not measure: HttpError: GET failed after 3 attempt(s): https://api.dexscreener.com/latest/dex/tokens/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263 -> HTTPError: HTTP Error 404: Not Found",
+    "NARRATIVE: the token profile could not be retrieved",
+    "LIQUIDITY: no liquidity figure to assess"
+  ],
+  "provenance_summary": {
+    "UNAVAILABLE": 3,
+    "LIVE": 5
+  }
+}

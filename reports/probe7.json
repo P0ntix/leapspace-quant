@@ -1,0 +1,103 @@
+[
+  {
+    "key": "lcr_pricing_raw",
+    "status": 200,
+    "bytes": 23668,
+    "prices_found": [
+      "$300",
+      "$90",
+      "$900"
+    ],
+    "plan_words": [
+      "Builder",
+      "Enterprise",
+      "Free",
+      "Individual",
+      "Scale"
+    ],
+    "free_snips": [
+      "Free-Lgt",
+      "free plan or a free trial?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"There is a free account with market data and 1-hour and 24-hour social media sentiment on Discover",
+      "free trial: the daily plan is the low-cost way to try one",
+      "31 requests to wsrv",
+      "10 requests/min, 2,000/day"
+    ],
+    "tier_tokens": [
+      "0",
+      "15",
+      "240",
+      "300",
+      "45",
+      "5",
+      "72",
+      "720",
+      "90",
+      "900"
+    ]
+  },
+  {
+    "key": "sant_conv_raw",
+    "status": 200,
+    "bytes": 24929,
+    "text": " 404: Not found svg]:fill-rhino\" href=\"/\"> Academy Chat with AI Looks like you got lost The page you're looking for is missing or your link is incorrect. Back to home page Behavioral analytics for the crypto market a]:text-mirage hover:[&>a]:underline\"> About us Pricing Team Jobs Contact us Charts Screener Insights Social trends Academy Sanbase SanAPI Sansheets SanR Subscribe to the weekly Digest! Subscribe Hold SAN Tokens \u00e2\u0080\u0094 Get 20% Off Discover all the benefits of holding SAN tokens on Academy. \u00c2\u00a9 2016\u00e2\u0080\u00942026 Santiment a]:text-mirage hover:[&>a]:underline\"> Terms Privacy Media Kit Status Changelog "
+  },
+  {
+    "key": "dexscreener_socials_shape",
+    "status": 200,
+    "info_keys": [
+      "header",
+      "imageUrl",
+      "openGraph",
+      "socials",
+      "websites"
+    ],
+    "socials": [
+      {
+        "url": "https://twitter.com/bonk_inu",
+        "type": "twitter"
+      },
+      {
+        "url": "https://t.me/Official_Bonk_Inu",
+        "type": "telegram"
+      },
+      {
+        "url": "https://discord.gg/qaQa6M6mN2",
+        "type": "discord"
+      }
+    ],
+    "socials_field_names": [
+      "type",
+      "url"
+    ],
+    "boosts": null,
+    "has_header": true
+  },
+  {
+    "key": "tg_preview_detail",
+    "status": 200,
+    "bytes": 10952,
+    "text": " Telegram: View @Official_Bonk_Inu Download Bonk Inu 11 012 members, 324 online The official Bonk Inu telegram View in Telegram If you have Telegram , you can view and join Bonk Inu right away. ",
+    "subscriber_matches": [
+      [
+        "11 012 ",
+        "members"
+      ]
+    ],
+    "has_message_dates": 0,
+    "has_message_text": 0,
+    "view_count_mentions": 3
+  },
+  {
+    "key": "sant_free_plan_detail",
+    "status": 200,
+    "free_plan_text": "Free Ideal for new traders and investors to kickstart crypto analysis $0 Free forever Sign up 30-day lag in Sanbase Hidden top 3 tokens in Trending Coins No filters and sorting for Screener Up to 3 simultaneous alerts Sanbase Pro Ideal for advanced traders and analysts to power decisions with real-time data $49 / mo $529 / year, billed monthly Bill annually - 10% \u00f0\u009f\u008e\u0089 Start Free Trial Present-day and full historical data in Sanbase Full access to Trending Coins Access to Google Sheets plugin Exclusive reports and market insights Sanbase Max Ideal for advanced investment strategies with full API access to real-time data $249 / mo $2700 / year, billed monthly Bill annually - 10% \u00f0\u009f\u008e\u0089 Upgrade Present-day and full historical data in Sanbase and Trending Coins Technical support included Full access to screener, 20 alerts Access to Google Sheets plugin Exclusive reports and market insights Hol"
+  },
+  {
+    "key": "discord_invite_second",
+    "status": 404,
+    "guild": null,
+    "members": null,
+    "online": null,
+    "error_msg": "Unknown Invite"
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "_note": "OPERATOR CONFIG for the on-chain memecoin quant layer. Every number here is a POLICY CHOICE, not a market fact, and every registry is EMPTY by default - an empty registry does NOT mean a wallet is clean. The addresses below are placeholders for the operator to fill in; the code reports the registries as empty until they are populated.",
+  "_authority_note": "Each threshold now carries its AUTHORITY. Research in AUTHORITATIVE_TRADER_STANDARDS.md established that most of these numbers are NOT industry standards: no regulator, exchange, professional body or academic text publishes a win-rate threshold, a profit-factor band, a max-drawdown band, or a constant minimum trade count. They are kept because they are operable, and they are labelled so a reader is never told a vendor convention is a standard. What IS citable here is the NIST sample-size formula, the Wilson interval, the Sharpe definition, and the GIPS retention and fee-basis rules.",
+  "version": "2.0.0",
+  "chains": {
+    "targets": [
+      "ethereum",
+      "solana",
+      "bsc",
+      "base",
+      "robinhood",
+      "polygon",
+      "hyperliquid",
+      "tron",
+      "near",
+      "arbitrum"
+    ],
+    "note": "The top 10 memecoin networks by measured DEX 24h volume (DefiLlama per-chain total24h). L1 and L2 TOKEN NETWORKS are kept separate: Base, Robinhood Chain and Arbitrum each have their own token economy even though they settle on Ethereum. `landscape` prints the full registry with the layer split and the per-source reachability matrix.",
+    "registry": "leapspace/data/chain_registry.json",
+    "evidence": "CHAIN_LANDSCAPE.md"
+  },
+  "thresholds": {
+    "min_trades": 30,
+    "min_win_rate": 0.55,
+    "min_profit_factor": 1.5,
+    "max_single_trade_pnl_share": 0.4,
+    "min_distinct_tokens": 10,
+    "max_bot_probability": 0.3,
+    "_min_trades_meaning": "VALIDITY FLOOR for the normal approximation, NOT a quality standard. NIST/SEMATECH e-Handbook 7.2.4: the approximation is 'valid for large N, (N > 30)'. The research is explicit that 'N > 30' is a validity condition, not a claim that 30 trades makes a win rate meaningful. Below this floor a wallet has a SAMPLE, not a profile.",
+    "_min_trades_authority": "ACADEMIC-OR-PROFESSIONAL-GUILD - https://www.itl.nist.gov/div898/handbook/prc/section2/prc24.htm",
+    "qualification_sample_size": {
+      "method": "computed",
+      "formula": "N >= [(z_{1-alpha} * sqrt(p0(1-p0)) + z_{1-beta} * sqrt(p1(1-p1))) / delta]^2, plus the Fleiss/Levin/Paik continuity correction N = N' + 1/delta",
+      "p0": 0.5,
+      "p1": 0.55,
+      "alpha": 0.05,
+      "beta": 0.2,
+      "delta": 0.05,
+      "one_sided": true,
+      "n_required": 637,
+      "n_without_correction": 617,
+      "authority": "ACADEMIC-OR-PROFESSIONAL-GUILD - NIST/SEMATECH e-Handbook 7.2.4.2 'Sample sizes required'",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+      "note": "This is the gate `traders` applies to qualify a wallet. It is 21x the old hard-coded floor of 30. NIST: 'taking the value of the proportion defective to be 0.5 leads to the largest possible sample size.' The sample size is a function of the CLAIM, not a constant."
+    },
+    "_min_win_rate_authority": "NONE - NOT STANDARDISED. No regulator, exchange, professional body or academic text publishes a win-rate threshold for trader quality. Win rate is only meaningful WITH its confidence interval, which is reported alongside it as a Wilson score interval (NIST 7.2.4.1).",
+    "_min_profit_factor_authority": "NONE for the THRESHOLD - ANALYTICS-VENDOR-CONVENTION. The definition (gross profit / gross loss) is uncontested; the bands are not. No regulator, exchange, CFA Institute, GIPS or professional body publishes an interpretation band.",
+    "_max_single_trade_pnl_share_authority": "NONE - analyst choice. An anti-lucky-hit / anti-survivorship guard, not a standard.",
+    "note": "A wallet must clear ALL criteria. The trade-count GATE is the computed NIST sample size, not the 30-trade validity floor."
+  },
+  "consensus": {
+    "min_wallets": 3,
+    "window_seconds": 3600,
+    "profiled_only": true,
+    "note": "Trigger a trade only when >=N profiled wallets act on the same token within the window. Counts DISTINCT wallets, only from the qualified pool, and the window is reported with every count.",
+    "_authority": "NONE - analyst choice. No authority publishes a consensus threshold for copy-trading entry."
+  },
+  "registries": {
+    "deployers": [],
+    "cabals": [],
+    "exchanges": [],
+    "insiders": [],
+    "note": "The DEPLOYER registry is DERIVED, not hand-maintained: `leapspace/deployers.py` finds each token's creator on-chain (EVM: binary-search for the first block with code, then scan for the creation tx; Solana: the mint's oldest-tx signer, cross-checked against RugCheck) and seeds the registry with the evidence. The CABAL, EXCHANGE and INSIDER registries remain hand-maintained and are EMPTY by default - the anti-insider filter can only exclude a wallet it has been told about. With those lists empty the filter reports 'unknown' for every funding source and NO wallet is excluded for insider reasons - which is the honest result, not a clean bill of health.",
+    "_authority": "NONE for the EXCLUSION RULE. No regulator, exchange, professional body, standard-setter or analytics vendor publishes a rule for excluding deployer-funded, sniper or bundler wallets from a copy-trading universe. The COMPONENT definitions are published - GMGN's insider / sniper / 'first 70 buyers' labels (https://docs.gmgn.ai/index/insider-traders-snipers-first-70-buyers) and Nansen's first-funder METHOD (https://docs.nansen.ai/api/profiler/address-first-funder) - but the COMBINATION is a construction and is labelled as one."
+  },
+  "friction": {
+    "slippage_bps": 100.0,
+    "priority_fee_usd": 0.0,
+    "latency_seconds": 2.0,
+    "failed_tx_rate": 0.05,
+    "mev_penalty_bps": 0.0,
+    "gas_usd": 0.0,
+    "note": "Slippage 100bps = 1.00% per side. failed_tx_rate 5% means 1 in 20 orders never fills (the gas is still burned). Latency 2s means the fill uses the price AT the shifted time, never the price seen when the decision was made.",
+    "_authority": "NONE for the numbers - analyst choice. But the fee BASIS of any risk measure derived from them must be DISCLOSED: GIPS 2.B.7 'The firm should use gross-of-fees returns when calculating risk measures' and 4.C.42 require the basis to be stated. A Sharpe computed after modelled slippage, gas and MEV is a NET-OF-FEES Sharpe and is labelled as such wherever it appears."
+  },
+  "kill_switch": {
+    "max_drawdown_pct": 0.2,
+    "drawdown_window_seconds": 900,
+    "min_liquidity_usd": 1000.0,
+    "max_slippage_bps": 500.0,
+    "note": "CODE-ENFORCED. Once halted, trading stays halted across restarts until an explicit reset with an actor and a reason. No LLM prompt can clear it.",
+    "_authority": "NONE for max_drawdown_pct - analyst choice. CFA Institute lists maximum drawdown as an APPRAISAL RATIO and warns it 'must be used with care', but publishes NO numerical band. This 20% must never be described as an industry standard. The 15-minute window is also far shorter than GIPS's annual measurement basis."
+  },
+  "rug": {
+    "rug_probability": 0.05,
+    "min_drop_pct": 0.8,
+    "max_drop_pct": 0.99,
+    "liquidity_vanish_probability": 0.02,
+    "seed": 42,
+    "note": "Injected rug events are SYNTHETIC by construction and every injection is logged with its before/after price so the output is auditable. This is a stress test, not a claim about history.",
+    "_authority": "NONE - stress-test parameters, not market facts. Correctly framed."
+  },
+  "copy_trade": {
+    "start_usd": 1000.0,
+    "position_pct": 0.1,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.5,
+    "max_concurrent_positions": 10,
+    "seed": 42,
+    "note": "Finite bankroll. When funds are locked in open positions the trade is recorded with skipped=true and a reason - never silently dropped.",
+    "_authority": "NONE - analyst choice."
+  },
+  "pool": {
+    "stale_days": 30,
+    "demote_if_unprofitable": true,
+    "min_trades_for_promotion": 30,
+    "retain_history_on_retirement": true,
+    "note": "The trusted pool is re-evaluated periodically: a wallet that stops trading, turns unprofitable, or is revealed to be cabal-funded leaves the FORWARD cohort, with the reason and a timestamp logged. Its HISTORY IS RETAINED in the reported record - it is never silently dropped and never retroactively restated. GIPS 3.A.9: 'Terminated portfolios must be included in the historical performance of the composite up to the last full measurement period that each portfolio was under management.'",
+    "_authority": "ACADEMIC-OR-PROFESSIONAL-GUILD for the retention rule - CFA Institute GIPS 3.A.9 (https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf). NONE for stale_days and the staleness window - analyst choice. GIPS publishes NO re-evaluation cadence for a copy-trading wallet pool; its published cadence is the annual reporting period."
+  }
+}

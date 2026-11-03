@@ -1,0 +1,759 @@
+{
+  "version": "1.0.0",
+  "compiled": "2026-11-03",
+  "title": "Consistency criteria for on-chain memecoin traders",
+  "purpose": "Distinguish a CONSISTENTLY profitable trader from a one-shot winner. Every threshold below is either CITED (a source publishes it, with the URL) or ANALYST_CHOICE (this spec's operating parameter, with the formula it comes from cited separately).",
+  "companion_document": {
+    "file": "AUTHORITATIVE_CONSISTENCY_STANDARDS.md",
+    "related_file": "AUTHORITATIVE_TRADER_STANDARDS.md",
+    "note": "AUTHORITATIVE_TRADER_STANDARDS.md establishes what must exist before you may say a wallet is profitable (NIST sample size, Wilson interval, rule of three, Sharpe, Sortino, GIPS track record, vendor labels). This file establishes what must exist before you may say a wallet is CONSISTENTLY profitable. Where a criterion is fully specified in the trader-standards document it is referenced, not restated."
+  },
+  "data_contract": {
+    "closed_trades": [
+      "timestamp (int unix seconds, UTC, trade CLOSE time)",
+      "token (str token/mint/contract address)",
+      "chain (str)",
+      "buy_price (float, price per unit in USD at entry)",
+      "sell_price (float, price per unit in USD at exit)",
+      "size (float, units bought)",
+      "realised_pnl (float, USD, after fees/gas/slippage; negative means loss)"
+    ],
+    "return_series": [
+      "per_day: list of {date: 'YYYY-MM-DD', return: float, pnl_usd: float} for the wallet, chronologically ordered, including days with zero activity",
+      "per_token: list of {token: str, total_realised_pnl: float, n_closed_trades: int, first_trade_ts: int, last_trade_ts: int}"
+    ],
+    "derived_from_closed_trades": [
+      "entry_ts and exit_ts per trade (exit_ts == timestamp; entry_ts inferred as the matched buy event time, or the first buy for that token if only the close is available)",
+      "holding_interval per trade = [entry_ts, exit_ts]",
+      "non_overlapping_trade_set (greedy chronological selection of non-overlapping holding intervals)"
+    ],
+    "unavailable_is_null": "If the win count, the per-token buy events or the holding times cannot be established, the corresponding metric is null and every criterion that depends on it evaluates to FAIL with reason 'insufficient_data'. A null is never coerced to 0."
+  },
+  "tag_definitions": {
+    "REGULATORY": "A binding rule or guidance document from a regulator (SEC, FINRA, CFTC, CFTC/CFTC-regulated exchange rules).",
+    "EXCHANGE-OR-FIRM-STANDARD": "A rule published by an exchange or a commercial firm's own published standard (including commercial marketing objectives, which are labelled as such).",
+    "ANALYTICS-VENDOR-CONVENTION": "A threshold published by a commercial analytics/on-chain data vendor for its own product. Not a regulator, exchange, professional body or academic standard. Stated plainly as such.",
+    "ACADEMIC-OR-PROFESSIONAL-GUILD": "A peer-reviewed academic paper, a professional body's standard or curriculum, or a national statistical authority (NIST).",
+    "ANALYST_CHOICE": "This spec's own operating parameter. No source publishes it. The formula it derives from is cited separately. Used as a WEIGHT-SOURCE label on derived_scoring components and as the threshold_source qualifier inside a criterion.",
+    "ANALYST-CHOICE-UNSTANDARDISED": "NO AUTHORITY EXISTS for this criterion. It is the JSON-level marker of a negative research finding, equivalent to the 'NOT STANDARDISED' rows in AUTHORITATIVE_TRADER_STANDARDS.md section 8. The four classification tags above describe where an AUTHORITY comes from; this tag says there is none, and the criterion's threshold is this spec's own operating choice (threshold field is null so it must be supplied from config). Any number published for such a criterion in the research is labelled an analyst choice, never a standard."
+  },
+  "criteria": [
+    {
+      "key": "min_independent_bets",
+      "label": "Minimum independent bets (non-overlapping closed trades)",
+      "formula": "n_bets = len(non_overlapping_trade_set(trades)); required = ceil(((z_{1-alpha}*sqrt(p0*(1-p0)) + z_{1-beta}*sqrt(p1*(1-p1)))/delta)**2); required_cc = ceil(required + 1/delta); pass = n_bets >= required_cc",
+      "threshold": 637,
+      "threshold_source": "NIST/SEMATECH e-Handbook 7.2.4.2 'Sample sizes required', with the Fleiss/Levin/Paik continuity correction. The value 637 is this spec's arithmetic from that formula at p0=0.50, p1=0.55, alpha=0.05 one-sided, beta=0.20, delta=0.05 (the parameters are ANALYST_CHOICE; the formula is CITED).",
+      "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+      "requires": [
+        "closed_trades with entry and exit timestamps",
+        "the claimed win rate p1 (default 0.55)",
+        "alpha (default 0.05, one-sided), beta (default 0.20), delta (default 0.05)"
+      ],
+      "note": "THE criterion that rejects a one-shot winner. N is a count of INDEPENDENT Bernoulli trials, so the input must be the count of NON-OVERLAPPING trades, not raw trades. A wallet with 30 raw trades whose holding intervals overlap has far fewer independent bets. Raw trade count alone is not evidence. See AUTHORITATIVE_CONSISTENCY_STANDARDS.md section 2.2-2.3. Companion note: 'min_trades' in the existing package was 30, which is ~21x smaller than this figure."
+    },
+    {
+      "key": "min_independent_bets_table",
+      "label": "Required independent bets by claimed win rate (lookup table)",
+      "formula": "{0.55: 637, 0.60: 630, 0.65: 620}",
+      "threshold": null,
+      "threshold_source": "NIST 7.2.4.2 formula, this spec's arithmetic. Values include the continuity correction N = N' + 1/delta.",
+      "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+      "requires": [
+        "closed_trades"
+      ],
+      "note": "Provided so the code can look up the requirement from the wallet's own claimed win rate rather than hard-coding one number. NIST's own caveat: 'taking the value of the proportion defective to be 0.5 leads to the largest possible sample size'."
+    },
+    {
+      "key": "min_observations_for_period_statistic",
+      "label": "Minimum return observations before any period-based statistic is presented",
+      "formula": "pass = len(per_day_returns) >= 36",
+      "threshold": 36,
+      "threshold_source": "CFA Institute GIPS for Firms 2020, provision 4.C.36: 'the firm must disclose if the three-year annualized ex post standard deviation of the composite and/or benchmark is not presented because 36 monthly returns are not available.' The mapping of '36 monthly returns' to '36 daily on-chain return observations' is an ANALYST ADAPTATION; the 36 figure is CITED.",
+      "authority": "CFA Institute (GIPS)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+      "requires": [
+        "per_day return series"
+      ],
+      "note": "This is a PRESENTATION floor, not a skill threshold: a wallet with fewer than 36 daily observations may not have a period-based statistic (Sharpe, Sortino, Calmar, consistency ratio) reported at all. Same floor as the package's existing NIST validity floor of N>30 for the normal approximation."
+    },
+    {
+      "key": "wilson_lower_bound_above_chance",
+      "label": "Wilson score lower bound of the win rate exceeds 0.50",
+      "formula": "z = 1.959963984540054; p = wins/n; denom = 1 + z*z/n; centre = (p + z*z/(2*n))/denom; half = (z/denom)*sqrt(p*(1-p)/n + z*z/(4*n*n)); lower = max(0.0, centre - half); pass = lower > 0.50",
+      "threshold": 0.5,
+      "threshold_source": "NIST/SEMATECH e-Handbook 7.2.4.1 'Confidence intervals' (Wilson score interval). The 0.50 comparison point is 'better than a coin flip' and is ANALYST_CHOICE; the interval method is CITED.",
+      "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+      "requires": [
+        "closed_trades",
+        "wins (count of closed trades with realised_pnl > 0)",
+        "n (count of closed trades)"
+      ],
+      "note": "NIST: the Wilson interval 'was recommended by Agresti and Coull for virtually all combinations of n and p' and 'the lower limit cannot be negative', which the naive Wald interval cannot guarantee. Implemented in the package already as leapspace.traders.wilson_interval. Worked values: 60/100 -> lower 0.5020 (passes, marginally); 55/100 -> 0.4524 (fails); 30/50 -> 0.4618 (fails)."
+    },
+    {
+      "key": "bayes_posterior_prob_above_chance",
+      "label": "Posterior probability that the true win rate exceeds 0.50 (Beta-Binomial)",
+      "formula": "alpha = 1.0; beta = 1.0; post_a = alpha + wins; post_b = beta + n - wins; P_theta_gt_half = 1.0 - regularized_incomplete_beta(post_a, post_b, 0.5); pass = P_theta_gt_half >= 0.95",
+      "threshold": 0.95,
+      "threshold_source": "Model CITED: Bayes Rules! Ch.3 Eq. (3.10), posterior pi|(Y=y) ~ Beta(alpha+y, beta+n-y), with the uniform Beta(1,1) prior (the source states Beta(1,1) is 'equivalently, Unif(0,1)'). The 0.95 threshold is ANALYST_CHOICE - no source publishes a posterior-probability bar for trader skill.",
+      "authority": "Barber, Bay & Solberg, 'Bayes Rules! An Introduction to Applied Bayesian Modeling' (CRC Press), Chapter 3 'The Beta-Binomial Bayesian Model'",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.bayesrulesbook.com/chapter-3.html",
+      "requires": [
+        "closed_trades",
+        "wins",
+        "n"
+      ],
+      "note": "Prior sensitivity: Jeffreys Beta(0.5,0.5) changes 60/100 from 0.9770 to 0.9775 - negligible at these n. Worked values with Beta(1,1): 30/50 -> 0.9196 (FAILS a 0.95 bar despite a 60% headline win rate); 55/100 -> 0.8401; 60/100 -> 0.9770; 65/100 -> 0.9987."
+    },
+    {
+      "key": "deflated_sharpe_ratio",
+      "label": "Deflated Sharpe Ratio (selection-adjusted)",
+      "formula": "ALL FOUR QUANTITIES MUST BE ON THE SAME PER-OBSERVATION SCALE. SR_hat = mean(r)/stdev(r) over per-observation returns; g3 = skew(r), g4 = non-excess kurtosis(r) over the SAME per-observation returns; T = len(r); maxZ = (1-GAMMA)*Zinv(1-1/N) + GAMMA*Zinv(1-1/(N*exp(1))) with GAMMA=0.5772156649; V_per = variance across the screened candidates' PER-OBSERVATION SR estimates (if the stored variance is annualised, V_per = V_ann / periods_per_year); SR0 = sqrt(V_per)*maxZ; denom = sqrt(1 - g3*SR_hat + ((g4-1)/4)*SR_hat^2); DSR = NormalCDF((SR_hat - SR0)*sqrt(T-1)/denom); pass = DSR >= 0.95",
+      "threshold": 0.95,
+      "threshold_source": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio', Eqs. (1) and (2) (both CITED, transcribed from the printed equations). The 0.95 acceptance bar is the paper's own framing ('DSR would have been 0.9505, above the 95% confidence level') and is CITED; N and V_trials are inputs.",
+      "authority": "David H. Bailey and Marcos Lopez de Prado (Journal of Portfolio Management, forthcoming 2014; SSRN 2460551)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "http://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+      "requires": [
+        "per_day return series (per-observation returns, not annualised)",
+        "N = number of candidate wallets screened before this one was selected",
+        "V_trials = variance across the screened candidates' estimated SR"
+      ],
+      "note": "THE multiple-testing criterion. Under a null of zero skill, the expected maximum SR across N independent trials is already SR0 - at N=100 with V=0.5 it is 1.789, at N=1000 it is 2.302. A wallet selected as the best of many will clear a naive Sharpe bar with no skill at all. If N is unknown the verdict must be 'indeterminate', not 'pass'. UNIT TRAP: mixing an annualised V_trials with a per-observation SR_hat silently drives DSR to 0 (or to 1); this spec's implementation was validated against the source paper's own published worked example and reproduces its printed DSR = 0.9505 at N = 46, 0.90 at N = 100, and 0.95 at N = 88 for Normal returns, to 4 decimal places, only when all four quantities are on the per-observation scale. Worked SR0 values in AUTHORITATIVE_CONSISTENCY_STANDARDS.md section 1.3."
+    },
+    {
+      "key": "deflated_sharpe_trial_count",
+      "label": "Number of independent trials N implied by the screened universe",
+      "formula": "M = number of candidate wallets screened; N = M * (1 - rho_bar) where rho_bar is the weighted average pairwise correlation of the candidates' return series; if rho_bar is unavailable, N = M and the DSR verdict is CONSERVATIVE (it understates the deflation)",
+      "threshold": null,
+      "threshold_source": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio', Appendix A.3 'Estimating the number of independent trials', Eqs. (7)-(9): 'It is critical to understand that the N used to compute E[max{SR_n}] corresponds to the number of independent trials... using M instead of N will overstate E[max{SR_n}]' (CITED).",
+      "authority": "David H. Bailey and Marcos Lopez de Prado",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "http://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+      "requires": [
+        "the full list of candidate wallets that were screened (M)",
+        "the per-day return series of each screened candidate (to compute rho_bar)"
+      ],
+      "note": "The trial count is the number of wallets SCREENED, not the number that passed. N=M is always conservative for the deflation (it overstates E[max SR] and therefore overstates the required SR0 - i.e. it makes the test HARDER, not easier). Correlated candidates (same deployer, same cluster, same token) inflate the effective trial count and make selection bias worse than N=M implies."
+    },
+    {
+      "key": "probability_of_backtest_overfitting",
+      "label": "Probability of Backtest Overfitting (PBO) via CSCV",
+      "formula": "M = matrix of candidate wallets x time buckets (T rows x N cols); partition rows into S disjoint blocks; form all combinations of S/2 blocks; for each combination c: pick the IS-best candidate n*, compute its OOS relative rank omega_bar = r_bar_n*/(N+1), then lambda_c = ln(omega_bar/(1-omega_bar)); f(lambda) = relative frequency of each lambda across all combinations; PBO = integral of f(lambda) over (-inf, 0]; pass = PBO <= 0.05",
+      "threshold": 0.05,
+      "threshold_source": "Bailey, Borwein, Lopez de Prado & Zhu, 'The Probability of Backtest Overfitting', Section 3.1: 'a customary approach would be to reject models for which PBO is estimated to be greater than 0.05' (CITED).",
+      "authority": "Bailey, Borwein, Lopez de Prado & Zhu (Journal of Computational Finance, 2016; SSRN 2326253)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+      "requires": [
+        "per-day return series for ALL screened candidates (not just the winner)",
+        "a common time-bucketing across candidates"
+      ],
+      "note": "The direct test of 'is this the best of many or genuinely good'. Requires the FULL screened universe, so it cannot be run on a single wallet in isolation - a wallet screened alone has N=1 and PBO is undefined. This is the computational reason the SEC's extracted-performance rule (206(4)-1(d)(5)) matters."
+    },
+    {
+      "key": "bonferroni_alpha_per_test",
+      "label": "Bonferroni-adjusted significance level for a screen of N wallets",
+      "formula": "alpha_per_test = alpha_family / N; a wallet-level test is significant at family level alpha_family only if its p-value <= alpha_per_test",
+      "threshold": null,
+      "threshold_source": "NIST/SEMATECH e-Handbook 7.4.7.3 'Bonferroni's method': 'one can construct each interval with confidence coefficient (1 - alpha/g), and the Bonferroni inequality insures that the overall confidence coefficient is at least 1 - alpha' (CITED). alpha_family=0.05 is ANALYST_CHOICE.",
+      "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section4/prc473.htm",
+      "requires": [
+        "N = number of candidate wallets screened",
+        "a per-wallet p-value"
+      ],
+      "note": "Controls the family-wise error rate across the screen. Strict: at N=100, alpha_per_test = 0.0005. Harvey-Liu-Zhu argue this is too stringent and prefer FDR - see bh_fdr_procedure."
+    },
+    {
+      "key": "bh_fdr_procedure",
+      "label": "Benjamini-Hochberg false-discovery-rate procedure across the screen",
+      "formula": "order the N per-wallet p-values ascending as P_(1)..P_(N); k = max{ i : P_(i) <= (i/N)*q_star }; reject all wallets with rank <= k",
+      "threshold": null,
+      "threshold_source": "Benjamini & Hochberg (1995), J. R. Statist. Soc. B 57(1), procedure (1): 'let k be the largest i for which P_(i) <= (i/m) q*; then reject all H_(i), i = 1, 2, ..., k' (CITED). q_star = 0.05 is ANALYST_CHOICE.",
+      "authority": "Yoav Benjamini and Yosef Hochberg (Tel Aviv University)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.math.tau.ac.il/~yekutiel/eBayes/bh_1995.pdf",
+      "requires": [
+        "N = number of candidate wallets screened",
+        "a per-wallet p-value per candidate"
+      ],
+      "note": "Controls the expected proportion of falsely rejected wallets rather than the probability of any false rejection - more powerful than Bonferroni when most candidates are genuinely skilled. For CORRELATED candidates (same cluster/deployer) use the Benjamini-Hochberg-Yekutieli variant, which controls FDR under arbitrary dependence - see Harvey, Liu & Zhu, Table 3."
+    },
+    {
+      "key": "multiple_testing_t_statistic_hurdle",
+      "label": "Minimum t-statistic for a newly discovered signal",
+      "formula": "pass = t_statistic > 3.0",
+      "threshold": 3.0,
+      "threshold_source": "Harvey, Liu & Zhu, '...and the Cross-Section of Expected Returns', RFS 29(1) 2016: 'We argue that a newly discovered factor today should have a t-statistic that exceeds 3.0' (CITED).",
+      "authority": "Campbell R. Harvey, Yan Liu, Heqing Zhu (Review of Financial Studies, 2016)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://people.duke.edu/~charvey/Research/Published_Papers/P118_and_the_cross.PDF",
+      "requires": [
+        "per_day return series",
+        "a t-statistic for the wallet's mean return against a null of zero"
+      ],
+      "note": "The hurdle a data-mined wallet must clear, higher than the naive 2.0 (p=0.05). Apply to the wallet's daily mean return. Harvey-Liu also note the multiple-testing haircut on a Sharpe ratio is NONLINEAR: high Sharpes are mildly penalised, marginal Sharpes heavily."
+    },
+    {
+      "key": "consistency_ratio",
+      "label": "Consistency ratio (positive periods / total periods)",
+      "formula": "pass = (n_periods_with_positive_return / n_periods_total) >= threshold, where periods are calendar days by default (or calendar months if the wallet's history is long enough)",
+      "threshold": null,
+      "threshold_source": "DEFINITION CITED: 'Consistency Ratio - A measure of how consistently the manager is able to exhibit positive excess returns. To calculate the consistency ratio, the number of months the manager had positive excess returns is divided by the total number of months.' NO MINIMUM IS PUBLISHED BY ANY AUTHORITY - the source says only 'The higher the number, the better.' The threshold field is null and the code must supply it from config, labelled ANALYST_CHOICE.",
+      "authority": "Principal Financial Group / Marietta Board of Pensions (institutional pension plan reporting convention)",
+      "tag": "ANALYTICS-VENDOR-CONVENTION",
+      "url": "https://www.mariettaga.gov/DocumentCenter/View/8820/March-31-2016-Supplemental-Pension-Report",
+      "requires": [
+        "per_day (or per_month) return series"
+      ],
+      "note": "The cleanest published definition of the metric located, but it is a pension plan's reporting convention, NOT a regulator/exchange/professional-body/academic standard. It is tagged ANALYTICS-VENDOR-CONVENTION accordingly. For a wallet the natural benchmark is the day-level series: what fraction of days did the wallet make money, and (crucially) what fraction of its CLOSED TRADES were profitable - these can diverge sharply."
+    },
+    {
+      "key": "min_periods_with_positive_return",
+      "label": "Minimum number of periods required for a consistency ratio to be reported",
+      "formula": "pass = n_periods_total >= min_periods and n_periods_with_positive_return >= 1",
+      "threshold": null,
+      "threshold_source": "The 36-observation floor is CITED (GIPS 4.C.36, '36 monthly returns are not available'); the day/month period choice is ANALYST_CHOICE. On-chain analogue (36 daily observations) is an ANALYST ADAPTATION of a GIPS disclosure rule for composites.",
+      "authority": "CFA Institute (GIPS)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+      "requires": [
+        "per_day return series"
+      ],
+      "note": "A consistency ratio computed over 5 periods is meaningless. Pair this with min_observations_for_period_statistic."
+    },
+    {
+      "key": "sortino_ratio",
+      "label": "Sortino ratio (excess return over downside risk)",
+      "formula": "MAR = 0.0 (or configured); downside_dev = sqrt(sum(min(0, r_i - MAR)^2) / n); Sortino = (mean(r) - MAR) / downside_dev; pass = Sortino >= threshold",
+      "threshold": null,
+      "threshold_source": "DEFINITION CITED (CFA Institute, 'The Sortino Ratio'): 'S = (Mean portfolio return - MAR) / Downside deviation' and 'it is calculated in the same way as the Sharpe ratio except that the MAR replaces the risk-free rate in the numerator and downside deviation replaces standard deviation in the denominator'. NO BAND IS PUBLISHED - CFA Institute publishes no interpretation threshold. The threshold field is null; any threshold used is ANALYST_CHOICE.",
+      "authority": "CFA Institute (Deborah Kidd, CFA, Investment Performance Measurement, H17004, 2012)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://rpc.cfainstitute.org/sites/default/files/-/media/documents/code/gips/the-sortino-ratio.pdf",
+      "requires": [
+        "per_day return series"
+      ],
+      "note": "Differs from Sharpe by penalising downside volatility only. The source's own caveat: 'several variations of the downside deviation calculation exist, and which one an investor uses matters a great deal' - so the exact downside-deviation convention must be disclosed with any published Sortino."
+    },
+    {
+      "key": "calmar_ratio",
+      "label": "Calmar ratio (return per unit of maximum drawdown)",
+      "formula": "CR = E(R_p - R_f) / MAXDD(T) where MAXDD(T) = max over t of (peak(t) - equity(t))/peak(t); pass = CR >= threshold",
+      "threshold": null,
+      "threshold_source": "FORMULA CITED (peer-reviewed): 'CR(R_p,T) = E(R_p - R_f)/MAXDD(T)' (Wang, Kresta & Tichy, Computational Management Science 21, art. 17, 2024). NO BAND IS PUBLISHED. NOTE: the original 36-month window from Terry W. Young (1991) could NOT be verified against the primary source - it is recorded in AUTHORITATIVE_CONSISTENCY_STANDARDS.md section 5.2 as UNVERIFIED against the primary, and is therefore NOT used as a threshold here.",
+      "authority": "Anlan Wang, Ales Kresta, Tomas Tichy - Computational Management Science (Springer), open access",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://link.springer.com/article/10.1007/s10287-023-00497-5",
+      "requires": [
+        "per_day return series"
+      ],
+      "note": "Differs from Sharpe by using the single WORST peak-to-trough loss as the risk measure. A wallet with one enormous drawdown (or one enormous lucky win followed by a collapse) can have an acceptable Sharpe and a poor Calmar - the metric is directly sensitive to the single-lucky-trade failure mode."
+    },
+    {
+      "key": "max_drawdown",
+      "label": "Maximum drawdown ceiling",
+      "formula": "pass = max_drawdown <= threshold (threshold expressed as a positive fraction, e.g. 0.20 = 20%)",
+      "threshold": null,
+      "threshold_source": "NO NUMERICAL THRESHOLD IS PUBLISHED BY CFA INSTITUTE. The source lists maximum drawdown as an APPRAISAL RATIO that 'measure investment skill' and that 'must be used with care, noting the assumptions of each ratio'. The threshold field is null and any ceiling is ANALYST_CHOICE.",
+      "authority": "CFA Institute (Refresher Reading, Portfolio Performance Evaluation, 2026 curriculum)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-performance-evaluation",
+      "requires": [
+        "per_day return series"
+      ],
+      "note": "MUST NOT be attributed to CFA Institute as a standard - they publish the metric and explicitly no band. The package's existing kill_switch.max_drawdown_pct = 0.20 is an analyst choice. Corroborating peer-reviewed finding: 'Maximum drawdowns for mutual funds are persistent, indicative of manager skill, and predictive of subsequent performance' (Financial Analysts Journal, 2022)."
+    },
+    {
+      "key": "drawdown_duration",
+      "label": "Maximum drawdown duration ceiling (longest time underwater)",
+      "formula": "drawdown_series[t] = (peak[t] - equity[t]) / peak[t]; duration = longest contiguous run of t where drawdown_series[t] > 0; pass = duration_days <= threshold_days",
+      "threshold": null,
+      "threshold_source": "NO NUMERICAL THRESHOLD IS PUBLISHED. CFA Institute lists 'drawdown duration' among the appraisal ratios that 'measure investment skill' and 'must be used with care' (CITED for the metric and its status). The threshold field is null; any ceiling in days is ANALYST_CHOICE.",
+      "authority": "CFA Institute (Refresher Reading, Portfolio Performance Evaluation, 2026 curriculum)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-performance-evaluation",
+      "requires": [
+        "per_day return series"
+      ],
+      "note": "Duration is the decay detector's memory: a wallet that made its money in one week and then sat underwater for a year has a good win rate and a catastrophic duration. CFA Institute also notes drawdown 'reflects only factual returns from a past period and has no direct predictive value' - i.e. drawdown is a DESCRIPTION of the record, not evidence about the future."
+    },
+    {
+      "key": "track_record_length_minimum",
+      "label": "Minimum track-record length before a performance claim is publishable",
+      "formula": "pass = (history_days >= required_days) OR (history_is_complete_since_first_observed_trade AND claim_is_scoped_to_life_of_record)",
+      "threshold": 1825,
+      "threshold_source": "CITED: GIPS 1.A.3 (five years to claim compliance), 4.A.1(a) and 6.A.1(a) (build up to 10 years), 8.C.1(a) (one-, three-, five-year presentations); SEC 17 CFR 275.206(4)-1(d)(2) (one-, five-, ten-year periods, 'if the relevant portfolio did not exist for a particular prescribed period, then the life of the portfolio must be substituted for that period'). 1825 days = 5 years, the SEC/GIPS figure expressed in days for code.",
+      "authority": "CFA Institute (GIPS) and U.S. Securities and Exchange Commission",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+      "requires": [
+        "per_day return series spanning first to last observation"
+      ],
+      "note": "On-chain the FIVE-YEAR bar is often unreachable: per Nansen's published chain-coverage table a Base wallet's maximum possible history as of 2026-11-03 is ~3.4 years, Monad ~1.5 years, Sonic ~1.9 years. The correct on-chain rule is therefore the SEC's LIFE-OF-PORTFOLIO substitution - the wallet's ENTIRE observed history must be shown - not a demand for 5 years that the chain cannot supply. The URL above is the GIPS source; the SEC rule is at https://www.ecfr.gov/current/title-17/chapter-II/part-275/section-275.206(4)-1"
+    },
+    {
+      "key": "chain_coverage_ceiling",
+      "label": "Maximum attainable track-record length for the wallet's chain",
+      "formula": "required_days = min(1825, days_between(chain_index_start_date[chain], as_of_date)); pass = history_days >= required_days OR life-substitution applies",
+      "threshold": null,
+      "threshold_source": "CITED (vendor table): Nansen 'Data Coverage by Chain' publishes the earliest indexed data per chain - Ethereum 30 Jul 2015, Tron 25 Jun 2018, TON 15 Nov 2019, Solana 17 Mar 2020, Polygon 30 May 2020, BNB Chain 29 Aug 2020, Avalanche 23 Sep 2020, Arbitrum 29 May 2021, Optimism 11 Nov 2021, Sui 12 Apr 2023, Base 15 Jun 2023, Linea 06 Jul 2023, Sonic 01 Dec 2024, HyperEVM 18 Feb 2025, Monad 14 May 2025, Robinhood 30 Apr 2026, Arc 15 Jul 2026. Nansen: 'Chains that onboarded before mid-2023 ... offer 3+ years of history; newer chains offer proportionally less.'",
+      "authority": "Nansen",
+      "tag": "ANALYTICS-VENDOR-CONVENTION",
+      "url": "https://docs.nansen.ai/api/data-coverage.md",
+      "requires": [
+        "wallet chain",
+        "as_of date"
+      ],
+      "note": "A VENDOR-published coverage table, not a standard. It exists to stop the code demanding an impossible bar on a young chain. It also caps the maximum attainable history: a consistency claim on a chain with 2 years of coverage can only ever be a 2-year claim."
+    },
+    {
+      "key": "single_trade_pnl_concentration",
+      "label": "Maximum share of total PnL contributed by one trade",
+      "formula": "share = max(trade.realised_pnl for trade in trades) / total_realised_pnl if total_realised_pnl > 0 else 1.0; pass = share <= threshold",
+      "threshold": null,
+      "threshold_source": "NO AUTHORITY LOCATED PUBLISHES A CONCENTRATION LIMIT. This is an ANALYST_CHOICE and the threshold field is null so it must be supplied from config. The package's existing operator_config value is 0.40 and is labelled a policy choice there.",
+      "authority": "NONE - analyst choice (no citable authority located)",
+      "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+      "url": null,
+      "requires": [
+        "closed_trades",
+        "total realised PnL"
+      ],
+      "note": "The most direct fluke test available from the trade ledger: if one trade carries more than X% of the PnL, the wallet is a one-shot winner by construction. If total realised PnL <= 0 the wallet is failing regardless."
+    },
+    {
+      "key": "distinct_tokens_minimum",
+      "label": "Minimum distinct tokens traded (independence of the bet set)",
+      "formula": "pass = len(set(trade.token for trade in trades)) >= threshold",
+      "threshold": null,
+      "threshold_source": "NO AUTHORITY LOCATED PUBLISHES A DISTINCT-TOKEN MINIMUM for a trader. ANALYST_CHOICE. Related CITED concept: Grinold's breadth counts only INDEPENDENT bets, and the GMGN vendor convention scores token_num (diversity) at 10% of its published composite score - see crypto_vendor_composite_weights.",
+      "authority": "NONE for a trader threshold; the 'breadth = independent bets' concept is from Grinold via CFA Institute's 'Analysis of Active Portfolio Management' refresher reading",
+      "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+      "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/analysis-active-portfolio-management",
+      "requires": [
+        "closed_trades"
+      ],
+      "note": "A wallet whose trades are all one token has ONE bet, not N bets, no matter how many round trips it shows. Pairs with min_independent_bets, which is the stricter and properly cited version of the same concern."
+    },
+    {
+      "key": "edge_decay_split_half",
+      "label": "Edge decay: recent performance materially worse than early performance",
+      "formula": "split trades by exit timestamp at the median; early = mean realised PnL per trade over the first half, recent = over the second half; decay = (early - recent) / abs(early) if abs(early) > 0 else 0.0; pass = decay <= threshold",
+      "threshold": null,
+      "threshold_source": "NO AUTHORITY LOCATED PUBLISHES A DECAY THRESHOLD. ANALYST_CHOICE, threshold field null. Supporting CITED concept: Bailey & Lopez de Prado's performance-degradation statistic in 'The Probability of Backtest Overfitting' Section 3.2 measures the decline from IS to OOS performance of the selected strategy, and CFA Institute notes appraisal ratios 'help identify manager skill (as opposed to luck)'.",
+      "authority": "NONE for a numeric threshold; the IS/OOS degradation concept is from Bailey, Borwein, Lopez de Prado & Zhu (PBO paper, Section 3.2)",
+      "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+      "url": "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+      "requires": [
+        "closed_trades with exit timestamps",
+        "sufficient trades in both halves"
+      ],
+      "note": "Two implementations are offered: (a) split-half by TIME (this formula) and (b) first-half vs second-half realised PnL. The time split is the right one for a decaying edge. Must be evaluated on the SAME metric as the headline verdict, and the two halves must both be above the sample-size floor or the comparison is meaningless."
+    },
+    {
+      "key": "posterior_split_half_stability",
+      "label": "Bayesian split-half posterior stability (does the skill claim survive removing the early history?)",
+      "formula": "post_full = Beta(1+wins_full, 1+n_full-wins_full); post_early = Beta(1+wins_early, 1+n_early-wins_early); p_full = 1 - BetaCDF(0.5, post_full); p_early = 1 - BetaCDF(0.5, post_early); pass = p_full >= 0.95 AND (p_full - p_early) <= threshold",
+      "threshold": null,
+      "threshold_source": "MODEL CITED: Bayes Rules! Ch.3 Eq. (3.10) posterior; Ch.4 'Sequential analysis: Evolving with data' and 'Proving data order invariance' establish that the posterior is order-invariant, which is what makes a time-split holdout legitimate. The comparison rule and any stability band are ANALYST_CHOICE - no source publishes a split-half posterior stability bar for traders.",
+      "authority": "Barber, Bay & Solberg, 'Bayes Rules!' (CRC Press), Chapters 3-4",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.bayesrulesbook.com/chapter-3.html",
+      "requires": [
+        "closed_trades with exit timestamps",
+        "wins and n in each half"
+      ],
+      "note": "A wallet whose posterior P(theta>0.5) collapses when the first half is removed was one lucky trade, not a skill. Stronger than the raw split-half PnL comparison because it accounts for sample size in each half."
+    },
+    {
+      "key": "survivorship_retention",
+      "label": "Retention of degraded/terminated wallets in the reported record",
+      "formula": "pass = every wallet ever admitted to the pool has its full evaluation history retained in the report; forward_eligible may be False while history remains present",
+      "threshold": "history retained; forward cohort only excludes",
+      "threshold_source": "CITED: CFA Institute GIPS 3.A.9 'Terminated portfolios must be included in the historical performance of the composite up to the last full measurement period that each portfolio was under management and for which the firm has discretion'; 3.A.6 'Any change to a composite definition must not be applied retroactively'; 3.A.7 timely and consistent inclusion.",
+      "authority": "CFA Institute (GIPS for Firms, 2020)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+      "requires": [
+        "pool evaluation history"
+      ],
+      "note": "A pool that drops decayed wallets from its HISTORY (not just from its forward cohort) reproduces exactly the survivorship bias GIPS forbids. A 'top memecoin wallets of 2026' list presented without the wallets that decayed is a survivorship-selected sample and cannot support a skill claim. Already implemented in leapspace.traders.pool_report."
+    },
+    {
+      "key": "pre_listing_returns_excluded",
+      "label": "No performance recorded before the wallet's first observed on-chain activity",
+      "formula": "pass = min(trade.exit_ts for trade in trades) >= wallet.first_observed_activity_ts AND no synthetic or backfilled history rows are present in the return series",
+      "threshold": "no backfilled history",
+      "threshold_source": "CITED: Jorion & Schwarz, 'The Fix Is In: Properly Backing out Backfill Bias', RFS 32(12) 2019: 'the best practice for empirical tests is to remove returns prior to the listing date'. Aggarwal & Jorion (FAJ 2010): 'the resulting survivorship bias is substantial, averaging more than 5 percent a year' and 'What would normally be termed the backfill period actually represents hidden survivorship'.",
+      "authority": "Philippe Jorion and Christopher Schwarz (Review of Financial Studies, 2019); Rajesh K. Aggarwal and Philippe Jorion (Financial Analysts Journal, 2010)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://ideas.repec.org/a/oup/rfinst/v32y2019i12p5048-5099..html",
+      "requires": [
+        "closed_trades with exit timestamps",
+        "wallet first-observed-activity timestamp"
+      ],
+      "note": "A wallet's on-chain history BEGINS at its listing, so unlike a hedge fund database the listing date is knowable rather than inferred. The rule is simply: compute performance only from observed activity."
+    },
+    {
+      "key": "cross_chain_comparability_report",
+      "label": "Per-chain maximum attainable history reported alongside every verdict",
+      "formula": "report = {chain: chain_index_start_date, max_attainable_days: (as_of - chain_index_start_date).days, wallet_history_days: history_days, achievable: wallet_history_days >= max_attainable_days}",
+      "threshold": null,
+      "threshold_source": "CITED (vendor table): Nansen 'Data Coverage by Chain' per-chain earliest indexed dates, and Nansen 'Smart Money' supported-chains list (Netflow/DEX Trades/Holdings cover 18 chains; Historical Holdings covers only arc, base, bnb, ethereum, monad, robinhood, solana). VENDOR CONVENTION, not a standard.",
+      "authority": "Nansen",
+      "tag": "ANALYTICS-VENDOR-CONVENTION",
+      "url": "https://docs.nansen.ai/api/data-coverage.md",
+      "requires": [
+        "wallet chain",
+        "wallet history span"
+      ],
+      "note": "Prevents the same wallet being judged against different bars on different chains, and makes explicit when a chain simply cannot supply a long enough record."
+    },
+    {
+      "key": "fee_basis_disclosure",
+      "label": "Fee basis of every published risk measure must be disclosed",
+      "formula": "pass = every published Sharpe/Sortino/Calmar carries an explicit fee_basis label of 'gross' or 'net'",
+      "threshold": "gross-of-fees preferred; net must be labelled",
+      "threshold_source": "CITED: CFA Institute GIPS 2.B.7 'The firm should use gross-of-fees returns when calculating risk measures' and 4.C.42 'The firm must disclose if gross-of-fees or net-of-fees returns are used to calculate presented risk measures'.",
+      "authority": "CFA Institute (GIPS for Firms, 2020)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+      "requires": [
+        "the risk measures being published"
+      ],
+      "note": "An on-chain Sharpe computed after modelled slippage, gas and MEV is a NET-OF-FEES Sharpe and must be labelled as one. Already recorded in leapspace.traders.CRITERIA['fee_basis']."
+    },
+    {
+      "key": "crypto_vendor_win_rate_band",
+      "label": "Vendor-published win-rate band for a wallet (GMGN)",
+      "formula": "pass = win_rate > 0.6 (strong) or >= 0.5 (acceptable); report the band the verdict is judged against",
+      "threshold": 0.6,
+      "threshold_source": "CITED (vendor): GMGN's own published workflow documentation - 'winrate | % of profitable trades (0-1) | > 0.6 strong, > 0.5 acceptable'. This is GMGN's product-documentation threshold and is tagged ANALYTICS-VENDOR-CONVENTION, NOT a professional standard.",
+      "authority": "GMGN (commercial on-chain analytics platform)",
+      "tag": "ANALYTICS-VENDOR-CONVENTION",
+      "url": "https://raw.githubusercontent.com/GMGNAI/gmgn-skills/HEAD/docs/workflow-smart-money-profile.md",
+      "requires": [
+        "closed_trades",
+        "wins",
+        "n"
+      ],
+      "note": "The only numeric wallet-quality band published by any crypto vendor located in this research. It is a VENDOR CONVENTION and must be reported as such wherever it is used. Note it is a RAW win rate with no sample-size condition attached - which is precisely why it must be paired with min_independent_bets and wilson_lower_bound_above_chance."
+    },
+    {
+      "key": "crypto_vendor_composite_weights",
+      "label": "Vendor-published composite smart-money score and its weights (GMGN)",
+      "formula": "composite = 0.40*winrate_normalised + 0.40*pnl_ratio_normalised + 0.10*token_diversity_normalised + 0.10*recency_normalised, where recency compares 7d winrate against 30d winrate",
+      "threshold": null,
+      "threshold_source": "CITED (vendor): GMGN's published leaderboard scoring - 'winrate x 40%', 'pnl x 40%', 'token_num (diversity) x 10%', 'Recency (7d winrate vs 30d winrate improvement) x 10%'. VENDOR CONVENTION, not a standard. The normalisation of each component is not specified by the source and must be documented by the implementing code.",
+      "authority": "GMGN (commercial on-chain analytics platform)",
+      "tag": "ANALYTICS-VENDOR-CONVENTION",
+      "url": "https://raw.githubusercontent.com/GMGNAI/gmgn-skills/HEAD/docs/workflow-smart-money-profile.md",
+      "requires": [
+        "closed_trades",
+        "per-day return series (for 7d vs 30d win rate)",
+        "per_token series"
+      ],
+      "note": "Included because it is the only PUBLISHED composite wallet-quality score located, and because its 10% recency term is a de facto consistency signal (it rewards a wallet whose recent win rate exceeds its 30-day win rate) - i.e. the opposite of the decay the fluke tests reject. A wallet that passes the decay tests but fails the recency term is one the vendor would down-rank."
+    },
+    {
+      "key": "crypto_vendor_pnl_ratio",
+      "label": "Vendor-published PnL ratio band (GMGN)",
+      "formula": "pnl_ratio = realised_profit / total_cost; pass = pnl_ratio > 1.0 (net positive); '2.0 = doubled money' per the source",
+      "threshold": 1.0,
+      "threshold_source": "CITED (vendor): GMGN - 'pnl | realized_profit / total_cost multiplier | > 1.0 = net positive' and '2.0 = doubled money'. VENDOR CONVENTION, not a standard.",
+      "authority": "GMGN (commercial on-chain analytics platform)",
+      "tag": "ANALYTICS-VENDOR-CONVENTION",
+      "url": "https://raw.githubusercontent.com/GMGNAI/gmgn-skills/HEAD/docs/workflow-wallet-analysis.md",
+      "requires": [
+        "closed_trades",
+        "total cost basis"
+      ],
+      "note": "Net of costs by construction (realised_profit over total_cost), so it is already a net-of-fee measure and must be labelled net in any published comparison."
+    },
+    {
+      "key": "vendor_label_not_a_standard",
+      "label": "Vendor 'smart money' labels are cohort tags, not verified skill",
+      "formula": "never treat a vendor label (Nansen 'Smart Trader', Birdeye 'stronger-performing wallets', GMGN 'smart money') as evidence of skill; the criterion's own metrics must be computed from the wallet's own trade ledger",
+      "threshold": "label is context only; no threshold",
+      "threshold_source": "CITED (vendor): Nansen Smart Money label definition is 'Historically profitable traders' with NO published selection threshold; the PnL Leaderboard schema exposes win_rate, n_trades and avg_trade_roi as sortable fields but publishes no bar. GMGN's own warning: 'a lot of smart money also has a disorderly situation.' Birdeye publishes 'stronger-performing wallets' with no numeric criterion.",
+      "authority": "Nansen; Birdeye; GMGN",
+      "tag": "ANALYTICS-VENDOR-CONVENTION",
+      "url": "https://docs.nansen.ai/api/smart-money",
+      "requires": [
+        "none - this is a handling rule"
+      ],
+      "note": "A guard against the most common way a consistency claim is faked: relabelling a vendor's cohort as a skill finding. Any claim that 'a Nansen Smart Money wallet is a consistently profitable trader' is an INFERENCE, not a Nansen statement. See AUTHORITATIVE_CONSISTENCY_STANDARDS.md section 8.1."
+    }
+  ],
+  "derived_scoring": {
+    "name": "consistency_score",
+    "range": [0.0, 100.0],
+    "purpose": "A single ordered number summarising how much evidence a wallet has that its profitability is a repeatable property rather than a fluke. It does NOT replace the hard gates; a wallet that fails any hard gate is not qualified regardless of score.",
+    "hard_gates": [
+      "min_independent_bets",
+      "wilson_lower_bound_above_chance",
+      "bayes_posterior_prob_above_chance",
+      "deflated_sharpe_ratio",
+      "single_trade_pnl_concentration",
+      "survivorship_retention",
+      "pre_listing_returns_excluded"
+    ],
+    "components": [
+      {
+        "key": "sample_sufficiency",
+        "weight": 0.25,
+        "weight_source": "CITED",
+        "weight_citation": "Grinold's fundamental law as published by CFA Institute: value added scales with 'breadth of the strategy measured by the number of independent decisions per year'; Harvey & Liu (Backtesting, JPM 2015) apply a multiple-testing haircut whose magnitude grows with the number of trials. Breadth (independent bets) is therefore the first-order quantity. The specific 0.25 is an ANALYST_CHOICE.",
+        "formula": "score = 100 * min(1.0, n_independent_bets / n_required_independent_bets)"
+      },
+      {
+        "key": "edge_strength",
+        "weight": 0.25,
+        "weight_source": "ANALYST_CHOICE",
+        "weight_citation": "No source publishes composite-score weights. The equal split reflects the two published facts it balances: NIST's sample-size formula (sample sufficiency) and CFA Institute's appraisal-ratio family (edge strength).",
+        "formula": "score = 100 * clamp((posterior_prob_above_chance - 0.5) / (0.95 - 0.5), 0.0, 1.0)"
+      },
+      {
+        "key": "selection_adjusted_strength",
+        "weight": 0.20,
+        "weight_source": "CITED",
+        "weight_citation": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio': 'The Deflated Sharpe Ratio (DSR) corrects for two leading sources of performance inflation: Selection bias under multiple testing and non-Normally distributed returns. In doing so, DSR helps separate legitimate empirical findings from statistical flukes.' Selection adjustment is the specific problem this whole document addresses, so it carries the second-largest weight.",
+        "formula": "score = 100 * clamp(dsr, 0.0, 1.0)"
+      },
+      {
+        "key": "consistency_of_returns",
+        "weight": 0.15,
+        "weight_source": "CITED",
+        "weight_citation": "CFA Institute, Portfolio Performance Evaluation (2026): 'Investment performance appraisal ratios ... measure investment skill' and appraisal ratios 'help identify manager skill (as opposed to luck)'. The consistency-ratio DEFINITION is from the Marietta Board of Pensions glossary (ANALYTICS-VENDOR-CONVENTION). The 0.15 is an ANALYST_CHOICE.",
+        "formula": "score = 100 * clamp((consistency_ratio - 0.30) / (0.70 - 0.30), 0.0, 1.0)"
+      },
+      {
+        "key": "drawdown_adjusted_quality",
+        "weight": 0.10,
+        "weight_source": "ANALYST_CHOICE",
+        "weight_citation": "CFA Institute publishes Sortino and maximum drawdown as appraisal ratios with no bands (CITED for the metrics); the weighting between them and the scaling are ANALYST_CHOICE.",
+        "formula": "score = 100 * 0.5*clamp(sortino / (2 * sortino_ref), 0.0, 1.0) + 100 * 0.5*clamp(1.0 - max_drawdown / max_drawdown_ref, 0.0, 1.0)"
+      },
+      {
+        "key": "stability_no_decay",
+        "weight": 0.05,
+        "weight_source": "ANALYST_CHOICE",
+        "weight_citation": "CFA Institute notes appraisal ratios 'often are based on investment return data, which are often limited and subject to error' and GIPS 4.C.38 requires material-error corrections to be disclosed for at least a year (CITED). Kept small because it is also enforced as a hard fluke test.",
+        "formula": "score = 100 * clamp(1.0 - max(0.0, decay_ratio) / decay_ref, 0.0, 1.0)"
+      }
+    ],
+    "total_formula": "consistency_score = sum(component.weight * component.score for component in components)",
+    "reference_values": {
+      "sortino_ref": 2.0,
+      "max_drawdown_ref": 0.5,
+      "decay_ref": 0.5,
+      "note": "Reference points for scaling are ANALYST_CHOICE. sortino_ref and max_drawdown_ref must be disclosed with every published score. Note that CFA Institute publishes NO interpretation band for Sortino, maximum drawdown or drawdown duration, so these are scaling constants, not standards."
+    },
+    "rounding": "round to 1 decimal place",
+    "weight_disclosure_rule": "Every published consistency_score must be accompanied by the per-component breakdown, the fee basis (gross or net) of every risk measure used, the number of independent bets, the trial count N used for the deflation, and the chain coverage ceiling for the wallet's chain."
+  },
+  "fluke_tests": [
+    {
+      "key": "single_lucky_win_carries_pnl",
+      "rejects_when": "max(trade.realised_pnl) / total_realised_pnl > 0.40 (configurable) OR len(distinct tokens) == 1",
+      "test_formula": "total = sum(t.realised_pnl for t in trades); worst = max(t.realised_pnl for t in trades); share = worst/total if total > 0 else 1.0; fail if share > threshold",
+      "threshold": 0.40,
+      "threshold_source": "ANALYST_CHOICE - no authority located publishes a single-trade concentration limit. The 0.40 figure is carried from the package's existing operator_config.json, where it is already labelled a POLICY CHOICE. The one-token condition is grounded in the CITED 'breadth counts only independent bets' concept (Grinold via CFA Institute) and in GMGN's published token-diversity term (ANALYTICS-VENDOR-CONVENTION).",
+      "authority": "NONE for the numeric threshold; the independence concept is from CFA Institute 'Analysis of Active Portfolio Management' (2026) and Grinold (1989)",
+      "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+      "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/analysis-active-portfolio-management",
+      "requires": [
+        "closed_trades"
+      ],
+      "severity": "REJECT",
+      "note": "The purest one-shot-winner test and the only one computable from the trade ledger alone. A wallet whose entire profit is one trade has demonstrated luck, not skill, regardless of its headline PnL."
+    },
+    {
+      "key": "win_rate_indistinguishable_from_chance",
+      "rejects_when": "wilson_lower_bound_above_chance fails OR bayes_posterior_prob_above_chance < 0.95 OR n_independent_bets < n_required_independent_bets",
+      "test_formula": "reject if wilson_lower <= 0.50, or posterior_prob_above_chance < 0.95, or n_independent_bets < required_n",
+      "threshold": 0.95,
+      "threshold_source": "CITED for the methods: NIST 7.2.4.1 (Wilson interval) and NIST 7.2.4.2 (sample size); Bayes Rules! Ch.3 Eq. (3.10) for the posterior. The 0.95 probability bar is ANALYST_CHOICE.",
+      "authority": "NIST/SEMATECH e-Handbook; Barber, Bay & Solberg 'Bayes Rules!'",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+      "requires": [
+        "closed_trades",
+        "wins",
+        "n",
+        "non-overlapping trade set"
+      ],
+      "severity": "REJECT",
+      "note": "Three independent ways of saying the same thing, each with a published method. The sample-size arm is what makes this bite: a 60% win rate on 12 trades gives posterior 0.76 and Wilson lower bound 0.31 - clearly not distinguishable from chance."
+    },
+    {
+      "key": "sharpe_inflated_by_selection",
+      "rejects_when": "deflated_sharpe_ratio < 0.95 OR probability_of_backtest_overfitting > 0.05 OR the trial count N is unknown",
+      "test_formula": "reject if DSR < 0.95, or PBO > 0.05, or N (number of wallets screened) is not recorded",
+      "threshold": 0.95,
+      "threshold_source": "CITED: Bailey & Lopez de Prado (DSR) and Bailey, Borwein, Lopez de Prado & Zhu (PBO, 'reject models for which PBO is estimated to be greater than 0.05').",
+      "authority": "Bailey & Lopez de Prado; Bailey, Borwein, Lopez de Prado & Zhu",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "http://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+      "requires": [
+        "per_day return series",
+        "N = number of wallets screened",
+        "V_trials across screened candidates"
+      ],
+      "severity": "REJECT",
+      "note": "UNKNOWN N IS AN AUTOMATIC REJECT, not a pass. A wallet with no recorded screen count has an unquantifiable selection bias, so no Sharpe claim can be substantiated for it. This is the on-chain equivalent of the SEC's extracted-performance rule: 'Any extracted performance, unless the advertisement provides, or offers to provide promptly, the performance results of the total portfolio from which the performance was extracted.'"
+    },
+    {
+      "key": "edge_decays",
+      "rejects_when": "recent half's mean realised PnL per trade is materially worse than the early half's, OR the posterior P(theta>0.5) computed on the early half falls materially below that computed on the full history",
+      "test_formula": "split trades by exit timestamp at the median; decay = (mean_pnl_early - mean_pnl_recent)/abs(mean_pnl_early); reject if decay > threshold OR (posterior_early - posterior_full) > threshold",
+      "threshold": 0.50,
+      "threshold_source": "ANALYST_CHOICE - no authority located publishes a decay threshold. Supporting CITED concept: Bailey, Borwein, Lopez de Prado & Zhu Section 3.2 (performance degradation from IS to OOS) and CFA Institute's appraisal-ratio caution that they 'are often based on investment return data, which are often limited and subject to error'.",
+      "authority": "NONE for the numeric threshold; the degradation concept is from the PBO paper",
+      "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+      "url": "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+      "requires": [
+        "closed_trades with exit timestamps",
+        "sufficient trades in both halves to satisfy min_independent_bets in each"
+      ],
+      "severity": "REJECT",
+      "note": "Both halves must independently clear the sample-size floor, otherwise the comparison is noise. A wallet that made 90% of its money in week one and lost steadily since is exactly the decayed edge this rejects, and no amount of headline PnL compensates."
+    },
+    {
+      "key": "no_independent_bets",
+      "rejects_when": "the wallet's trades are all one token, OR the count of non-overlapping independent bets is below the NIST requirement, OR fewer than 36 return observations exist",
+      "test_formula": "reject if len(set(t.token for t in trades)) == 1, or n_independent_bets < required_n, or len(per_day_returns) < 36",
+      "threshold": 36,
+      "threshold_source": "CITED: NIST 7.2.4.2 for the sample-size requirement (with the independent-bet count as its input); CFA Institute GIPS 4.C.36 for the 36-observation presentation floor (mapped to daily on-chain observations as an ANALYST ADAPTATION); Grinold via CFA Institute for 'counting only independent bets as breadth'; GMGN's published token_num diversity term (ANALYTICS-VENDOR-CONVENTION).",
+      "authority": "NIST; CFA Institute (GIPS and Refresher Reading); GMGN (vendor)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+      "requires": [
+        "closed_trades",
+        "per_day return series"
+      ],
+      "severity": "REJECT",
+      "note": "A wallet trading one token repeatedly has ONE bet, not N bets - no matter how many round trips it shows. Overlapping positions in the same token are not independent observations, which is why n_independent_bets (non-overlapping) rather than the raw trade count is the input to the sample-size formula."
+    },
+    {
+      "key": "survivorship_selected_universe",
+      "rejects_when": "the pool's reported history omits wallets that were admitted and later decayed, OR the screened universe's results are not published alongside the selected wallet's",
+      "test_formula": "reject if any wallet ever admitted to the pool has no retained evaluation history, or if the screen's full candidate list (with its metrics) is not available for publication",
+      "threshold": "history retained; universe disclosed",
+      "threshold_source": "CITED: CFA Institute GIPS 3.A.9 ('Terminated portfolios must be included in the historical performance of the composite up to the last full measurement period'), 3.A.6 (no retroactive changes), 3.A.5 (must not exclude portfolios from composites); SEC 17 CFR 275.206(4)-1(d)(5) (extracted performance requires the total portfolio's results); FINRA Rule 2214 (must explain 'how selection works, and discloses selectivity').",
+      "authority": "CFA Institute (GIPS); U.S. SEC; FINRA",
+      "tag": "REGULATORY",
+      "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-275/section-275.206(4)-1",
+      "requires": [
+        "pool evaluation history",
+        "the full screened candidate list"
+      ],
+      "severity": "REJECT",
+      "note": "The failure mode that cannot be fixed by any amount of per-wallet statistics: a list of surviving winners from a survivorship-selected universe. Aggarwal & Jorion measure the bias at 'more than 5 percent a year' in a professional hedge fund database."
+    },
+    {
+      "key": "backfilled_or_pre_listing_performance",
+      "rejects_when": "any performance record contains observations before the wallet's first observed on-chain activity, or any vendor-supplied history row is carried forward across a dormant period",
+      "test_formula": "reject if min(trade.exit_ts) < wallet.first_observed_activity_ts, or if any per_day row precedes the wallet's first observed activity",
+      "threshold": "no pre-listing performance",
+      "threshold_source": "CITED: Jorion & Schwarz, 'The Fix Is In: Properly Backing out Backfill Bias', RFS 32(12) 2019 - 'the best practice for empirical tests is to remove returns prior to the listing date'; Aggarwal & Jorion, FAJ 66(2) 2010 - 'What would normally be termed the backfill period actually represents hidden survivorship'.",
+      "authority": "Jorion and Schwarz (Review of Financial Studies, 2019); Aggarwal and Jorion (Financial Analysts Journal, 2010)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://ideas.repec.org/a/oup/rfinst/v32y2019i12p5048-5099..html",
+      "requires": [
+        "closed_trades with exit timestamps",
+        "wallet first-observed-activity timestamp"
+      ],
+      "severity": "REJECT",
+      "note": "Unlike a hedge fund database, a wallet's listing date is knowable rather than inferred - so this is checkable rather than modelled. Also covers a vendor carrying a 'smart money' label across a dormancy."
+    },
+    {
+      "key": "insufficient_history",
+      "rejects_when": "the wallet has no closed trades, or the trades cannot be priced (win count unknown), or the per_day return series is empty",
+      "test_formula": "reject if n_closed_trades == 0 or wins is None or len(per_day_returns) == 0",
+      "threshold": 0,
+      "threshold_source": "CITED (principle): Hanley & Lippman-Hand, JAMA 1983;249(13):1743-1745 - with zero events in n trials the 95% upper confidence limit on the event rate is approximately 3/n (rule of three), i.e. a zero-numerator sample bounds rather than proves. Companion document section 2.4.",
+      "authority": "JAMA (Hanley & Lippman-Hand)",
+      "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6827763/",
+      "requires": [
+        "closed_trades"
+      ],
+      "severity": "REJECT",
+      "note": "A wallet with no history has a SAMPLE, not a profile. Null is never coerced to zero: a win count that cannot be established yields 'insufficient_data', not 0 wins. The package already implements this in leapspace.traders.qualify_wallet."
+    }
+  ],
+  "verdict_semantics": {
+    "QUALIFIED": "All hard gates pass, all fluke tests return PASS, and consistency_score >= min_score.",
+    "NOT_QUALIFIED": "Any hard gate fails, any fluke test returns REJECT, or consistency_score < min_score.",
+    "INDETERMINATE": "A required input is unknown (e.g. the trial count N, the win count, the per-token history). INDETERMINATE is never reported as QUALIFIED and never as a numeric score.",
+    "min_score": 60.0,
+    "min_score_source": "ANALYST_CHOICE - no source publishes a composite consistency score or a passing band."
+  },
+  "provenance": {
+    "compiled": "2026-11-03",
+    "fetched": "All URLs below were requested from this host on 2026-11-03 and returned HTTP 200, except where an explicit 403/404 is disclosed with a working substitute.",
+    "sources_fetched_and_quoted": [
+      "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio' (PDF, 22pp) - http://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+      "Bailey, Borwein, Lopez de Prado & Zhu, 'The Probability of Backtest Overfitting' (PDF, 34pp) - https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+      "Bailey, Borwein, Lopez de Prado & Zhu, 'Pseudo-Mathematics and Financial Charlatanism' (PDF, 34pp) - http://www.davidhbailey.com/dhbpapers/backtest-pseudo.pdf",
+      "Benjamini & Hochberg (1995) JRSS-B verbatim reprint (PDF, 13pp) - https://www.math.tau.ac.il/~yekutiel/eBayes/bh_1995.pdf",
+      "Harvey, Liu & Zhu, '...and the Cross-Section of Expected Returns' (PDF, 64pp) - https://people.duke.edu/~charvey/Research/Published_Papers/P118_and_the_cross.PDF",
+      "Harvey & Liu, 'Backtesting' (PDF, 17pp) - https://people.duke.edu/~charvey/Research/Published_Papers/P120_Backtesting.PDF",
+      "NIST e-Handbook 7.4.7.3, 7.4.7, 7.2.4.2, 7.2.4.1, 7.2.4 (all HTTP 200)",
+      "CFA Institute, 'The Sharpe Ratio and the Information Ratio' (PDF, 4pp) - https://rpc.cfainstitute.org/sites/default/files/-/media/documents/code/gips/sharpe-ratio-and-the-information-ratio.pdf",
+      "CFA Institute, 'The Sortino Ratio' (PDF, 3pp) - https://rpc.cfainstitute.org/sites/default/files/-/media/documents/code/gips/the-sortino-ratio.pdf",
+      "GIPS for Firms 2020 (PDF, 146pp) - https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+      "CFA Institute Refresher Reading 'Portfolio Performance Evaluation' (2026) - https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-performance-evaluation",
+      "CFA Institute Refresher Reading 'Analysis of Active Portfolio Management' (2026) - https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/analysis-active-portfolio-management",
+      "CFA Institute RPC, 'The Statistics of Sharpe Ratios' (FAJ 2002) landing page + abstract - https://rpc.cfainstitute.org/research/financial-analysts-journal/2002/the-statistics-of-sharpe-ratios",
+      "CFA Institute RPC, 'Hidden Survivorship in Hedge Fund Returns' (FAJ 2010) landing page + abstract - https://rpc.cfainstitute.org/research/financial-analysts-journal/2010/hidden-survivorship-in-hedge-fund-returns",
+      "CFA Institute RPC, 'Performance Drawdowns in Asset Management' (CFA Institute Journal Review 2018) - https://rpc.cfainstitute.org/research/cfa-digest/2018/01/dig-v48-n1-3",
+      "CFA Institute RPC, 'Maximum Drawdown as Predictor of Mutual Fund Performance and Flows' (FAJ 2022) - https://rpc.cfainstitute.org/research/financial-analysts-journal/2022/maximum-drawdown-as-predictor-of-mutual-fund-performance-flows",
+      "Barber, Bay & Solberg, 'Bayes Rules!' Chapter 3 - https://www.bayesrulesbook.com/chapter-3.html",
+      "Avellaneda, Lee & Ou, 'The Fundamental Law of Active Management' (PDF, 33pp) - https://math.nyu.edu/inmemoriam/avellaneda/FundamentalLawFT.pdf",
+      "Wang, Kresta & Tichy, 'Evaluation of strategy portfolios' (Computational Management Science, open access) - https://link.springer.com/article/10.1007/s10287-023-00497-5",
+      "Molyboga & L'Ahelec, 'A simulation-based methodology for evaluating hedge fund investments' (Journal of Asset Management, open access) - https://link.springer.com/article/10.1057/jam.2016.3",
+      "Jorion & Schwarz, 'The Fix Is In: Properly Backing out Backfill Bias' (RePEc record + publisher abstract) - https://ideas.repec.org/a/oup/rfinst/v32y2019i12p5048-5099..html",
+      "Marietta Board of Pensions / Principal, 'Investment Option Performance Results and Statistics' (PDF, 28pp) - https://www.mariettaga.gov/DocumentCenter/View/8820/March-31-2016-Supplemental-Pension-Report",
+      "Nansen API docs: Smart Money - https://docs.nansen.ai/api/smart-money ; PnL Leaderboard (incl. OpenAPI schema) - https://docs.nansen.ai/api/smart-money/pnl-leaderboard.md ; Data Coverage - https://docs.nansen.ai/api/data-coverage.md",
+      "GMGN Tutorial 'Track Smart Money' - https://docs.gmgn.ai/index/track-smart-money",
+      "GMGN Skills workflows - https://raw.githubusercontent.com/GMGNAI/gmgn-skills/HEAD/docs/workflow-smart-money-profile.md and .../workflow-wallet-analysis.md",
+      "Birdeye 'Smart Money API' - https://data.birdeye.so/docs/data-api/smart-money/index",
+      "Arkham 'How Arkham Labels Wallets' - https://arkm.com/llms/guides/how-arkham-labels-wallets.md",
+      "CryptoQuant llms.txt (45,957 chars, full) - https://docs.cryptoquant.com/llms.txt ; Dune llms.txt (35,405 chars, full) - https://docs.dune.com/llms.txt",
+      "Lopez de Prado, 'Advances in Financial Machine Learning' SSRN reprint (PDF, 61pp - front matter, TOC and ch.1 body) - https://www.smallake.kr/wp-content/uploads/2018/07/SSRN-id3104847.pdf",
+      "17 CFR 275.206(4)-1 (eCFR, HTTP 200) - https://www.ecfr.gov/current/title-17/chapter-II/part-275/section-275.206(4)-1",
+      "PubMed record 6827763 (Hanley & Lippman-Hand) - https://pubmed.ncbi.nlm.nih.gov/6827763/"
+    ],
+    "fetched_but_not_fully_verifiable": [
+      "Calmar's original 36-month window (Terry W. Young, 1991) - the archive.org full text of 'Investment Analysis and Portfolio Management' located for this research contains ZERO occurrences of 'Calmar', 'drawdown' or 'Terry W. Young'. The 36-month window is therefore UNVERIFIED against the primary source and is NOT used as a threshold in this spec.",
+      "Affagharwal & Jorion (FAJ 2010) and Lo (2002) - publisher landing pages and abstracts fetched; full texts are behind CFA Institute's member paywall. Only abstract wording is quoted.",
+      "Jorion & Schwarz (RFS 2019) - abstract only; publisher full text subscriber-restricted and the SSRN copy (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3010469) returns 403 from this host.",
+      "JSTOR (BH 1995 at stable/2346101, Lo 2002 at stable/4480405) returns HTTP 200 but serves a JavaScript 'Client Challenge' bot-wall (3,036 bytes) instead of the article; doi.org for BH 1995 returns HTTP 403. Both are given as canonical publisher records and are marked bot-walled here, not as working fetch targets. The BH 1995 working URL is the verbatim reprint PDF that was fetched.",
+      "GitHub (github.com/GMGNAI/gmgn-skills/blob/main/docs/workflow-smart-money-profile.md) returned HTTP 429 only when many URLs were requested in parallel; requested individually it returns 200.",
+      "Lopez de Prado AFML - the fetched PDF contains the front matter, table of contents and chapter 1 body; the section TITLES and PAGE NUMBERS for 4.2, 4.3, 4.4, 7.4.1 and 7.4.2 are verified from the retrieved body, but the chapter 4 and 7 body text is NOT in the retrieved PDF and is therefore quoted only by title.",
+      "GMGN's gmgn-skills repository is GMGN's own published tooling documentation, distinct from GMGN's product UI documentation - cited as GMGN-published vendor material with that distinction noted.",
+      "Wikipedia 'Calmar ratio' - fetched, used only as a secondary pointer to the UNVERIFIED 36-month attribution."
+    ],
+    "not_found_and_excluded": [
+      "Any published CryptoQuant or Dune definition of a smart-money or consistently-profitable wallet: a case-insensitive search of both full documentation indexes for 'smart money', 'smart_money', 'sniper', 'insider', 'win rate', 'win_rate', 'profit factor', 'profitable', 'skilled' and 'consistency' returned ZERO relevant matches. NO CryptoQuant or Dune definition is asserted anywhere in this spec.",
+      "Any published numeric threshold from Nansen, Birdeye or Arkham that constitutes 'consistently profitable'. Nansen publishes label vocabulary and per-wallet fields (win_rate, n_trades, avg_trade_roi) but NO selection bar. Birdeye publishes endpoint semantics only. Arkham publishes attribution-confidence bands (>=98% verified, >=80% prediction), which are NOT performance bands.",
+      "Any professional body, regulator or academic source publishing a minimum consistency ratio, a minimum win rate, a profit-factor band, a Sortino/Calmar/drawdown band, a single-trade concentration limit or a decay threshold. Where such a number is used in this spec it is tagged ANALYST_CHOICE with the threshold field set to null so it must be supplied from config."
+    ],
+    "computed_not_published": "All numeric tables (expected max SR by trial count; required independent bets by claimed win rate; posterior P(theta>0.5) by wins and n) are this spec's arithmetic from the published formulas. The DSR implementation was validated against the source paper's own worked example, reproducing its printed DSR = 0.9505 at N = 46 and 0.95 at N = 88 for Normal returns.",
+    "not_done": "No URL was constructed from memory. No formula was paraphrased and presented as an author's. No source is cited for a threshold it does not publish."
+  }
+}

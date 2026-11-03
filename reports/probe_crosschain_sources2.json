@@ -1,0 +1,269 @@
+{
+  "routescan": [
+    {
+      "net": "mainnet",
+      "action": "txlist",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/mainnet/evm/all/etherscan/api?module=account&action=txlist&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "mainnet",
+      "action": "txlistinternal",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/mainnet/evm/all/etherscan/api?module=account&action=txlistinternal&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "base",
+      "action": "txlist",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/base/evm/all/etherscan/api?module=account&action=txlist&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "base",
+      "action": "txlistinternal",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/base/evm/all/etherscan/api?module=account&action=txlistinternal&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "arbitrum",
+      "action": "txlist",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/arbitrum/evm/all/etherscan/api?module=account&action=txlist&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "arbitrum",
+      "action": "txlistinternal",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/arbitrum/evm/all/etherscan/api?module=account&action=txlistinternal&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "optimism",
+      "action": "txlist",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/optimism/evm/all/etherscan/api?module=account&action=txlist&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "optimism",
+      "action": "txlistinternal",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/optimism/evm/all/etherscan/api?module=account&action=txlistinternal&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "bsc",
+      "action": "txlist",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/bsc/evm/all/etherscan/api?module=account&action=txlist&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "bsc",
+      "action": "txlistinternal",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/bsc/evm/all/etherscan/api?module=account&action=txlistinternal&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "polygon",
+      "action": "txlist",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/polygon/evm/all/etherscan/api?module=account&action=txlist&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    },
+    {
+      "net": "polygon",
+      "action": "txlistinternal",
+      "http_status": 200,
+      "url": "https://api.routescan.io/v2/network/polygon/evm/all/etherscan/api?module=account&action=txlistinternal&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "status_field": "0",
+      "message": "An error occurred",
+      "result_type": "NoneType",
+      "result": "None"
+    }
+  ],
+  "chains": {
+    "ethereum": {
+      "rpcs": [
+        "https://eth.drpc.org",
+        "https://eth-mainnet.public.blastapi.io",
+        "https://rpc.mevblocker.io"
+      ],
+      "blockscout": "https://eth.blockscout.com",
+      "blockscout_address_http": 200,
+      "blockscout_ct": "application/json",
+      "coin_balance": "284801589312834980397555",
+      "is_contract": false,
+      "creation_tx": null,
+      "first_tx": {
+        "ok": true,
+        "first_tx_block": 24592010,
+        "rpc": "https://eth.drpc.org",
+        "calls": 24,
+        "latest": 26331040,
+        "lower_bound": 24592009,
+        "seconds": 13.79
+      },
+      "bs_tx_http": 422,
+      "bs_tx_n": 0
+    },
+    "optimism": {
+      "rpcs": [
+        "https://optimism-rpc.publicnode.com",
+        "https://optimism.drpc.org"
+      ],
+      "blockscout": "https://optimism.blockscout.com",
+      "blockscout_address_http": 200,
+      "blockscout_ct": "application/json",
+      "coin_balance": "4714348051861759",
+      "is_contract": false,
+      "creation_tx": null,
+      "first_tx": {
+        "ok": false,
+        "reason": "nonce call failed",
+        "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://optimism-rpc.publicnode.com",
+        "seconds": 0.57
+      },
+      "bs_tx_http": 422,
+      "bs_tx_n": 0
+    },
+    "gnosis": {
+      "rpcs": [
+        "https://gnosis-rpc.publicnode.com",
+        "https://gnosis.drpc.org"
+      ],
+      "blockscout": "https://gnosis.blockscout.com",
+      "blockscout_address_http": 200,
+      "blockscout_ct": "application/json",
+      "coin_balance": "0",
+      "is_contract": false,
+      "creation_tx": null,
+      "first_tx": {
+        "ok": false,
+        "reason": "nonce call failed",
+        "rpc_error": "{\"code\": -32002, \"message\": \"No state available for block 24540336 (0xc156e40a00efd91bc198e8fbedf041b72a66c155abae8a3b9bcc3ea2dffef9f7)\"}",
+        "calls": 1,
+        "rpc": "https://gnosis-rpc.publicnode.com",
+        "seconds": 0.61
+      },
+      "bs_tx_http": 422,
+      "bs_tx_n": 0
+    },
+    "base": {
+      "rpcs": [
+        "https://base-rpc.publicnode.com",
+        "https://base.drpc.org",
+        "https://base-mainnet.public.blastapi.io"
+      ],
+      "blockscout": "https://base.blockscout.com",
+      "blockscout_address_http": 403,
+      "blockscout_ct": "text/html",
+      "first_tx": {
+        "ok": false,
+        "reason": "nonce call failed",
+        "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://base-rpc.publicnode.com",
+        "seconds": 0.88
+      },
+      "bs_tx_http": 403
+    },
+    "arbitrum": {
+      "rpcs": [
+        "https://arbitrum-one-rpc.publicnode.com",
+        "https://arbitrum.drpc.org",
+        "https://arbitrum-one-rpc.chainstack.com"
+      ],
+      "blockscout": "https://arbitrum.blockscout.com",
+      "blockscout_address_http": 403,
+      "blockscout_ct": "text/html",
+      "first_tx": {
+        "ok": false,
+        "reason": "nonce call failed",
+        "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://arbitrum-one-rpc.publicnode.com",
+        "seconds": 1.17
+      },
+      "bs_tx_http": 403
+    },
+    "polygon": {
+      "rpcs": [
+        "https://polygon-bor-rpc.publicnode.com",
+        "https://polygon.drpc.org"
+      ],
+      "blockscout": "https://polygon.blockscout.com",
+      "blockscout_address_http": 403,
+      "blockscout_ct": "text/html",
+      "first_tx": {
+        "ok": false,
+        "reason": "nonce call failed",
+        "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://polygon-bor-rpc.publicnode.com",
+        "seconds": 0.87
+      },
+      "bs_tx_http": 403
+    },
+    "bsc": {
+      "rpcs": [
+        "https://bsc-rpc.publicnode.com",
+        "https://bsc.drpc.org",
+        "https://bsc-dataseed.binance.org"
+      ],
+      "blockscout": "https://bsc.blockscout.com",
+      "blockscout_address_http": 404,
+      "blockscout_ct": "text/plain",
+      "first_tx": {
+        "ok": false,
+        "reason": "nonce call failed",
+        "rpc_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+        "calls": 1,
+        "rpc": "https://bsc-rpc.publicnode.com",
+        "seconds": 0.92
+      },
+      "bs_tx_http": 404
+    }
+  }
+}

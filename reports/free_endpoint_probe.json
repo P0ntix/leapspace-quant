@@ -1,0 +1,508 @@
+[
+  {
+    "name": "dexscreener.token-pairs.v1.solana",
+    "url": "https://api.dexscreener.com/token-pairs/v1/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "note": "documented per-token pair endpoint; NO key",
+    "status": 200,
+    "elapsed_s": 0.31,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 45656,
+    "extracted": [
+      {
+        "symbol": "Bonk",
+        "socials": [
+          {
+            "url": "https://twitter.com/bonk_inu",
+            "type": "twitter"
+          },
+          {
+            "url": "https://t.me/Official_Bonk_Inu",
+            "type": "telegram"
+          },
+          {
+            "url": "https://discord.gg/qaQa6M6mN2",
+            "type": "discord"
+          }
+        ],
+        "websites": [
+          {
+            "url": "https://www.bonkcoin.com",
+            "label": "Website"
+          }
+        ],
+        "image": true,
+        "has_header": true
+      },
+      {
+        "symbol": "Bonk",
+        "socials": [
+          {
+            "url": "https://twitter.com/bonk_inu",
+            "type": "twitter"
+          },
+          {
+            "url": "https://t.me/Official_Bonk_Inu",
+            "type": "telegram"
+          },
+          {
+            "url": "https://discord.gg/qaQa6M6mN2",
+            "type": "discord"
+          }
+        ],
+        "websites": [
+          {
+            "url": "https://www.bonkcoin.com",
+            "label": "Website"
+          }
+        ],
+        "image": true,
+        "has_header": true
+      },
+      {
+        "symbol": "Bonk",
+        "socials": [
+          {
+            "url": "https://twitter.com/bonk_inu",
+            "type": "twitter"
+          },
+          {
+            "url": "https://t.me/Official_Bonk_Inu",
+            "type": "telegram"
+          },
+          {
+            "url": "https://discord.gg/qaQa6M6mN2",
+            "type": "discord"
+          }
+        ],
+        "websites": [
+          {
+            "url": "https://www.bonkcoin.com",
+            "label": "Website"
+          }
+        ],
+        "image": true,
+        "has_header": true
+      }
+    ]
+  },
+  {
+    "name": "dexscreener.latest.dex.tokens",
+    "url": "https://api.dexscreener.com/latest/dex/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "note": "documented token endpoint; NO key",
+    "status": 200,
+    "elapsed_s": 0.46,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 45677,
+    "extracted": [
+      {
+        "symbol": null,
+        "socials": null,
+        "websites": null,
+        "image": false,
+        "has_header": false
+      }
+    ]
+  },
+  {
+    "name": "dexscreener.token-profiles",
+    "url": "https://api.dexscreener.com/token-profiles/latest/v1",
+    "note": "profile descriptions; NO key",
+    "status": 200,
+    "elapsed_s": 0.22,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 22699,
+    "extracted": {
+      "body_head": "[{\"url\":\"https://dexscreener.com/solana/6xmlja6vmhett4hkixxav1pynpotrjwphrvjvsfa5e5o\",\"chainId\":\"solana\",\"tokenAddress\":\"6XmLjA6vMheTT4HkiXXAV1PyNPoTRjWphrVjVSFa5E5o\",\"icon\":\"https://cdn.dexscreener.c"
+    }
+  },
+  {
+    "name": "dexscreener.token-boosts",
+    "url": "https://api.dexscreener.com/token-boosts/latest/v1",
+    "note": "paid-boost metadata incl. links; NO key",
+    "status": 200,
+    "elapsed_s": 0.3,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 24277,
+    "extracted": {
+      "body_head": "[{\"url\":\"https://dexscreener.com/solana/paprbywjspuictq7v8cyrsvtas7jfsye7siemvdjj3t\",\"chainId\":\"solana\",\"tokenAddress\":\"paprbywJSpuiCTq7v8CYrSvtas7JFSYe7SiEMVdJj3t\",\"description\":\"Practice the trenche"
+    }
+  },
+  {
+    "name": "rugcheck.report",
+    "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report",
+    "note": "NO key",
+    "status": 200,
+    "elapsed_s": 2.73,
+    "rate_limit_headers": {
+      "X-Rate-Limit-Limit": "15",
+      "X-Rate-Limit-Remaining": "14"
+    },
+    "content_type": "application/json",
+    "bytes": 2545777,
+    "extracted": {
+      "top_level_keys": [
+        "creator",
+        "creatorBalance",
+        "creatorTokens",
+        "deployPlatform",
+        "detectedAt",
+        "events",
+        "fileMeta",
+        "freezeAuthority",
+        "graphInsidersDetected",
+        "insiderNetworks",
+        "knownAccounts",
+        "launchpad",
+        "lockerOwners",
+        "lockerScanStatus",
+        "lockers",
+        "markets",
+        "mint",
+        "mintAuthority",
+        "price",
+        "risks",
+        "rugged",
+        "score",
+        "score_normalised",
+        "token",
+        "tokenMeta",
+        "tokenProgram",
+        "tokenType",
+        "token_extensions",
+        "topHolders",
+        "totalHolders",
+        "totalLPProviders",
+        "totalMarketLiquidity",
+        "totalStableLiquidity",
+        "transferFee",
+        "validation",
+        "verification"
+      ],
+      "socials": null,
+      "markets_count": 1281,
+      "has_socials_key": false
+    }
+  },
+  {
+    "name": "jupiter.tokens.v2.search",
+    "url": "https://lite-api.jup.ag/tokens/v2/search?query=bonk",
+    "note": "NO key",
+    "status": 200,
+    "elapsed_s": 0.35,
+    "rate_limit_headers": {
+      "x-ratelimit-remaining": "4",
+      "x-ratelimit-reset": "1793637693"
+    },
+    "content_type": "application/json",
+    "bytes": 29171,
+    "extracted": [
+      {
+        "id": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        "name": "Bonk",
+        "tags": [
+          "community",
+          "moonshot-verified",
+          "strict",
+          "verified",
+          "meme",
+          "birdeye-trending"
+        ],
+        "organicScore": 82.28606468813427,
+        "socials": null,
+        "info_keys": [],
+        "info_socials": null,
+        "website": null
+      },
+      {
+        "id": "BonK1YhkXEGLZzwtcvRTip3gAL9nCeQD7ppZBLXhtTs",
+        "name": "Bonk SOL",
+        "tags": [
+          "strict",
+          "verified",
+          "yield",
+          "community",
+          "lst",
+          "original-lst"
+        ],
+        "organicScore": 0,
+        "socials": null,
+        "info_keys": [],
+        "info_socials": null,
+        "website": null
+      },
+      {
+        "id": "CKfatsPMUf8SkiURsDXs7eK6GWb4Jsd6UDbs7twMCWxo",
+        "name": "BonkEarn",
+        "tags": [
+          "verified",
+          "meme",
+          "community",
+          "strict",
+          "token-2022"
+        ],
+        "organicScore": 0,
+        "socials": null,
+        "info_keys": [],
+        "info_socials": null,
+        "website": null
+      }
+    ]
+  },
+  {
+    "name": "jupiter.tokens.v1.token",
+    "url": "https://lite-api.jup.ag/tokens/v1/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "note": "NO key",
+    "status": 404,
+    "elapsed_s": 0.26,
+    "rate_limit_headers": {},
+    "content_type": "",
+    "bytes": 0,
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "name": "coingecko.coins.pepe",
+    "url": "https://api.coingecko.com/api/v3/coins/0x6982508145454ce325ddbe47a25d4ec3d2311933?localization=false&tickers=false&market_data=false&community_data=true&developer_data=false&sparkline=false",
+    "note": "community_data = free social counts",
+    "status": 429,
+    "elapsed_s": 0.23,
+    "rate_limit_headers": {
+      "Retry-After": "31"
+    },
+    "content_type": "application/json",
+    "bytes": 187,
+    "extracted": {
+      "id": null,
+      "links": null,
+      "community_data": null,
+      "sentiment_votes_up_percentage": null
+    }
+  },
+  {
+    "name": "coingecko.coins.bonk.link",
+    "url": "https://api.coingecko.com/api/v3/coins/bonk?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false",
+    "note": "links only; NO key",
+    "status": 429,
+    "elapsed_s": 0.22,
+    "rate_limit_headers": {
+      "Retry-After": "31"
+    },
+    "content_type": "application/json",
+    "bytes": 187,
+    "extracted": {
+      "id": null,
+      "links": null,
+      "community_data": null,
+      "sentiment_votes_up_percentage": null
+    }
+  },
+  {
+    "name": "reddit.public.json.search",
+    "url": "https://www.reddit.com/r/wallstreetcoins/search.json?q=bonk&restrict_sr=1&sort=new&limit=25",
+    "note": "public JSON; no OAuth token",
+    "status": 403,
+    "elapsed_s": 0.62,
+    "rate_limit_headers": {
+      "Retry-After": "0"
+    },
+    "content_type": "text/html",
+    "bytes": 189908,
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "name": "reddit.public.json.sub",
+    "url": "https://www.reddit.com/r/CryptoCurrency/new.json?limit=25",
+    "note": "public JSON listing; no token",
+    "status": 403,
+    "elapsed_s": 0.72,
+    "rate_limit_headers": {
+      "Retry-After": "0"
+    },
+    "content_type": "text/html",
+    "bytes": 189908,
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "name": "reddit.oauth.endpoint.check",
+    "url": "https://oauth.reddit.com/r/CryptoCurrency/new.json?limit=1",
+    "note": "OAuth host WITHOUT a token - shows what happens",
+    "status": 403,
+    "elapsed_s": 0.6,
+    "rate_limit_headers": {
+      "Retry-After": "0"
+    },
+    "content_type": "text/html",
+    "bytes": 189908,
+    "extracted": {
+      "body_head": "<body class=theme-beta><div><style>.theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56:3.5re"
+    }
+  },
+  {
+    "name": "discord.widget.json",
+    "url": "https://discord.com/api/guilds/222034823891118593/widget.json",
+    "note": "Widget API; no key; needs widget ENABLED + guild id",
+    "status": 404,
+    "elapsed_s": 0.26,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 43,
+    "extracted": {
+      "name": null,
+      "instant_invite": null,
+      "member_count": null,
+      "presence_count": null,
+      "channels": 0,
+      "online_members": 0
+    }
+  },
+  {
+    "name": "telegram.public_preview.channel",
+    "url": "https://t.me/s/durov",
+    "note": "public channel preview; NO key",
+    "status": 200,
+    "elapsed_s": 2.22,
+    "rate_limit_headers": {},
+    "content_type": "text/html",
+    "bytes": 148112,
+    "extracted": {
+      "chars": 147618,
+      "title": "Pavel Durov \u2013 Telegram",
+      "subscribers_str": "102",
+      "members_str": ".",
+      "n_posts_in_preview": 20
+    }
+  },
+  {
+    "name": "telegram.public_preview.bonk",
+    "url": "https://t.me/s/bonk_inu",
+    "note": "token's own tg channel preview; NO key",
+    "status": 200,
+    "elapsed_s": 0.94,
+    "rate_limit_headers": {},
+    "content_type": "text/html",
+    "bytes": 38534,
+    "extracted": {
+      "chars": 38522,
+      "title": "bonk_inu \u2013 Telegram",
+      "subscribers_str": "2",
+      "members_str": null,
+      "n_posts_in_preview": 5
+    }
+  },
+  {
+    "name": "apewisdom.top-tokens",
+    "url": "https://apewisdom.io/api/top-tokens",
+    "note": "NO key",
+    "status": 200,
+    "elapsed_s": 0.71,
+    "rate_limit_headers": {},
+    "content_type": "text/html",
+    "bytes": 13670,
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "name": "lunarcrush.v4.coins.list",
+    "url": "https://lunarcrush.com/api4/public/coins/list/v1",
+    "note": "expects Bearer token",
+    "status": 401,
+    "elapsed_s": 0.29,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 56,
+    "extracted": {
+      "keys": [
+        "error"
+      ],
+      "data_sample": "null"
+    }
+  },
+  {
+    "name": "santiment.available_metrics",
+    "url": "https://api.santiment.net/available_metrics",
+    "note": "metric catalogue; NO key",
+    "status": 200,
+    "elapsed_s": 4.5,
+    "rate_limit_headers": {},
+    "content_type": "text/html",
+    "bytes": 5072500,
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "name": "santiment.graphql",
+    "url": "https://api.santiment.net/graphql",
+    "note": "without key",
+    "status": 200,
+    "elapsed_s": 0.46,
+    "rate_limit_headers": {
+      "x-ratelimit-limit": "100",
+      "x-ratelimit-remaining": "100"
+    },
+    "content_type": "application/json",
+    "bytes": 273,
+    "extracted": {
+      "body_head": "{\"errors\":[{\"message\":\"Field \\\"getAvailableMetricsForSelector\\\" must not have a selection since type \\\"[String]\\\" has no subfields.\",\"locations\":[{\"line\":1,\"column\":2}]},{\"message\":\"Cannot query field"
+    }
+  },
+  {
+    "name": "neynar.user.search",
+    "url": "https://api.neynar.com/v2/farcaster/user/search?q=bonk",
+    "note": "expects x-api-key",
+    "status": 402,
+    "elapsed_s": 0.92,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 475,
+    "extracted": {
+      "body_head": "{\"x402Version\":1,\"error\":\"X-PAYMENT header or API key required\",\"accepts\":[{\"scheme\":\"exact\",\"network\":\"base\",\"maxAmountRequired\":\"10000\",\"resource\":\"http://api.neynar.com/farcaster/user/search\",\"desc"
+    }
+  },
+  {
+    "name": "nansen.smartmoney",
+    "url": "https://api.nansen.ai/api/beta/defi/token/screener/v1",
+    "note": "expects API key",
+    "status": 401,
+    "elapsed_s": 0.59,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 96,
+    "extracted": {
+      "body_head": "{   \"message\":\"No API key found in request\",   \"request_id\":\"32b2fa6c47f6c1021b9c6d4bc453af12\" }"
+    }
+  },
+  {
+    "name": "google.trends.explore",
+    "url": "https://trends.google.com/trends/api/explore?hl=en-US&tz=0&req=%7B%22comparisonItem%22:%5B%7B%22keyword%22:%22bonk%22,%22geo%22:%22%22,%22time%22:%22now%22-d%22%7D%5D,%22category%22:0,%22property%22:%22%22%7D",
+    "note": "unofficial alpha endpoint",
+    "status": 400,
+    "elapsed_s": 0.49,
+    "rate_limit_headers": {},
+    "content_type": "text/html",
+    "bytes": 1695,
+    "extracted": {
+      "body_head": "<html lang=\"en\" dir=ltr><meta charset=utf-8><meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\"><title>Error 400 (Bad Request)!!1</title><style nonce=\"G3rmqgnZ2bRrIDHmmF"
+    }
+  },
+  {
+    "name": "farcaster.hub.pinata.casts",
+    "url": "https://hub.pinata.cloud/v1/cast?limit=3",
+    "note": "public hub",
+    "status": null,
+    "error": "ConnectionError: HTTPSConnectionPool(host='hub.pinata.cloud', port=443): Max retries exceeded with url: /v1/cast?limit=3 (Caused by NameResolutionError(\"HTTPSConnection(host='hub.pinata.cloud', port=4"
+  },
+  {
+    "name": "farcaster.warpcast.search",
+    "url": "https://client.warpcast.com/v2/search-casts?limit=3&q=bonk",
+    "note": "public warpcast client",
+    "status": 200,
+    "elapsed_s": 0.7,
+    "rate_limit_headers": {},
+    "content_type": "application/json",
+    "bytes": 17773,
+    "extracted": {
+      "body_head": "{\"result\":{\"casts\":[{\"hash\":\"0x708bb6379f95d457548e8c0b0fcf1e474e0cdffc\",\"threadHash\":\"0x708bb6379f95d457548e8c0b0fcf1e474e0cdffc\",\"author\":{\"fid\":1371361,\"displayName\":\"frust.base.eth\",\"profile\":{\"bi"
+    }
+  }
+]

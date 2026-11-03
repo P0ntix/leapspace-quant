@@ -1,0 +1,309 @@
+{
+  "routescan_native": [
+    {
+      "name": "rs.mainnet.txs",
+      "url": "https://api.routescan.io/v2/network/mainnet/evm/all/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": null,
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "items",
+        "link"
+      ],
+      "n_items": 25,
+      "item0": "{\"type\": \"evm_tx\", \"id\": \"0x8a2579a3b082d09d07b5ac605a7e8cbf0d059a3815ad67cc6907f82ad1cabc86\", \"chainId\": \"43114\", \"timestamp\": \"2026-11-02T23:40:28.000Z\", \"blockNumber\": 99261283, \"blockHash\": \"0xeb62a29c307dea813d1bd7df124b9f61b1084bb87d126c0e84870387b352e60c\", \"from\": \"0x841ec8423841faC410A151Df1f11a0E506C73a34\", \"to\": \"0x1d48963DD8FAdA6aB5C2C7b"
+    },
+    {
+      "name": "rs.base.txs",
+      "url": "https://api.routescan.io/v2/network/base/evm/all/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": null,
+      "http_status": 400,
+      "ct": "application/json",
+      "json_keys": [
+        "code",
+        "context",
+        "error",
+        "message",
+        "statusCode"
+      ],
+      "body": "{\"statusCode\": 400, \"code\": \"bad_request\", \"error\": \"Bad Request\", \"message\": \"params validation error\", \"context\": {\"errors\": [{\"instancePath\": \"/networkId\", \"schemaPath\": \"#/properties/networkId/enum\", \"keyword\": \"enum\", \"params\": {\"allowedValues\":"
+    },
+    {
+      "name": "rs.arbitrum.txs",
+      "url": "https://api.routescan.io/v2/network/arbitrum/evm/all/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": null,
+      "http_status": 400,
+      "ct": "application/json",
+      "json_keys": [
+        "code",
+        "context",
+        "error",
+        "message",
+        "statusCode"
+      ],
+      "body": "{\"statusCode\": 400, \"code\": \"bad_request\", \"error\": \"Bad Request\", \"message\": \"params validation error\", \"context\": {\"errors\": [{\"instancePath\": \"/networkId\", \"schemaPath\": \"#/properties/networkId/enum\", \"keyword\": \"enum\", \"params\": {\"allowedValues\":"
+    },
+    {
+      "name": "rs.mainnet.token",
+      "url": "https://api.routescan.io/v2/network/mainnet/evm/all/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/token-transfers",
+      "params": null,
+      "http_status": 404,
+      "ct": "application/json",
+      "json_keys": [
+        "code",
+        "error",
+        "message",
+        "statusCode"
+      ],
+      "body": "{\"statusCode\": 404, \"code\": \"notfound\", \"error\": \"Not Found\", \"message\": \"/v2/network/mainnet/evm/all/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/token-transfers Not Found\"}"
+    },
+    {
+      "name": "rs.mainnet.root",
+      "url": "https://api.routescan.io/v2/network/mainnet/evm/all",
+      "params": null,
+      "http_status": 404,
+      "ct": "application/json",
+      "json_keys": [
+        "code",
+        "error",
+        "message",
+        "statusCode"
+      ],
+      "body": "{\"statusCode\": 404, \"code\": \"notfound\", \"error\": \"Not Found\", \"message\": \"/v2/network/mainnet/evm/all Not Found\"}"
+    },
+    {
+      "name": "rs.mainnet.txs.page2",
+      "url": "https://api.routescan.io/v2/network/mainnet/evm/all/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions?limit=10&sort=asc",
+      "params": null,
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "items",
+        "link"
+      ],
+      "n_items": 10,
+      "item0": "{\"type\": \"evm_tx\", \"id\": \"0x8a2579a3b082d09d07b5ac605a7e8cbf0d059a3815ad67cc6907f82ad1cabc86\", \"chainId\": \"43114\", \"timestamp\": \"2026-11-02T23:40:28.000Z\", \"blockNumber\": 99261283, \"blockHash\": \"0xeb62a29c307dea813d1bd7df124b9f61b1084bb87d126c0e84870387b352e60c\", \"from\": \"0x841ec8423841faC410A151Df1f11a0E506C73a34\", \"to\": \"0x1d48963DD8FAdA6aB5C2C7b"
+    }
+  ],
+  "bs_sort": [
+    {
+      "name": "bs.tx.sort=asc",
+      "url": "https://eth.blockscout.com/api/v2/addresses/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": {
+        "sort": "asc"
+      },
+      "http_status": 422,
+      "ct": "application/json",
+      "json_keys": [
+        "errors"
+      ],
+      "body": "{\"errors\": [{\"title\": \"Invalid value\", \"source\": {\"pointer\": \"/sort\"}, \"detail\": \"Invalid value for enum\"}]}"
+    },
+    {
+      "name": "bs.tx.sort=timestamp_asc",
+      "url": "https://eth.blockscout.com/api/v2/addresses/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": {
+        "sort": "timestamp_asc"
+      },
+      "http_status": 422,
+      "ct": "application/json",
+      "json_keys": [
+        "errors"
+      ],
+      "body": "{\"errors\": [{\"title\": \"Invalid value\", \"source\": {\"pointer\": \"/sort\"}, \"detail\": \"Invalid value for enum\"}]}"
+    },
+    {
+      "name": "bs.tx.filter=from",
+      "url": "https://eth.blockscout.com/api/v2/addresses/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": {
+        "filter": "from"
+      },
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "items",
+        "next_page_params"
+      ],
+      "n_items": 50,
+      "item0": "{\"priority_fee\": \"433860\", \"raw_input\": \"0xa9059cbb000000000000000000000000841ed663f2636863d40be4ee76243377dff13a340000000000000000000000000000000000000025dd85d670d35ec9bec0000000\", \"is_pending_update\": false, \"result\": \"success\", \"hash\": \"0x69e4f88d4de4f923a70ef408f103e97ee731deb264103e529d8a9891986f2835\", \"max_fee_per_gas\": \"260430930\", \"revert_r"
+    },
+    {
+      "name": "bs.tx.no_params",
+      "url": "https://eth.blockscout.com/api/v2/addresses/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": null,
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "items",
+        "next_page_params"
+      ],
+      "n_items": 50,
+      "item0": "{\"priority_fee\": \"21000000000000\", \"raw_input\": \"0x\", \"is_pending_update\": false, \"result\": \"success\", \"hash\": \"0xb1725fc631596796c0111cdca8d3c45c1b173fda488097fabd71e3555eabdede\", \"max_fee_per_gas\": \"1263009438\", \"revert_reason\": null, \"confirmation_duration\": [0, 12121.0], \"transaction_burnt_fee\": \"4754398383000\", \"type\": 2, \"token_transfers_over"
+    },
+    {
+      "name": "bs.internal.filter=to",
+      "url": "https://eth.blockscout.com/api/v2/addresses/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/internal-transactions",
+      "params": {
+        "filter": "to"
+      },
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "items",
+        "next_page_params"
+      ],
+      "n_items": 0
+    },
+    {
+      "name": "bs.internal.nofilter",
+      "url": "https://eth.blockscout.com/api/v2/addresses/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/internal-transactions",
+      "params": null,
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "items",
+        "next_page_params"
+      ],
+      "n_items": 0
+    }
+  ],
+  "others": [
+    {
+      "name": "4everland.bs.arbitrum",
+      "url": "https://api.4everland.io/v1/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions?chain=42161",
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='api.4everland.io', port=443): Max retries exceeded with url: /v1/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/t"
+    },
+    {
+      "name": "bitquery.noKey",
+      "url": "https://api.bitquery.io/graphql",
+      "http_status": null,
+      "transport_error": "ConnectionError: HTTPSConnectionPool(host='api.bitquery.io', port=443): Max retries exceeded with url: /graphql (Caused by NameResolutionError(\"HTTPSConnection("
+    },
+    {
+      "name": "covalent.noKey",
+      "url": "https://api.covalenthq.com/v1/42161/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions_v2/",
+      "params": null,
+      "http_status": 401,
+      "ct": "text/html",
+      "body_head": "<html>\r <head><title>401 Authorization Required</title></head>\r <body>\r <center><h1>401 Authorization Required</h1></center>\r <hr><center>nginx/1.19.1"
+    },
+    {
+      "name": "oklink.noKey",
+      "url": "https://www.oklink.com/api/v5/explorer/address/transaction-list?chainShortName=arb&addressDetail=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+      "params": null,
+      "http_status": 401,
+      "ct": "application/json",
+      "json_keys": [
+        "code",
+        "msg"
+      ],
+      "body": "{\"msg\": \"Request header OK-ACCESS-KEY can not be blank.\", \"code\": 401}"
+    },
+    {
+      "name": "evmtrace.noKey",
+      "url": "https://api.evmtrace.com/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+      "params": null,
+      "http_status": 404,
+      "ct": "application/json",
+      "json_keys": [
+        "error"
+      ],
+      "body": "{\"error\": {\"code\": \"404\", \"message\": \"The deployment could not be found on Vercel.\"}}"
+    },
+    {
+      "name": "debank.noKey",
+      "url": "https://api.debank.com/user/total_balance?id=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&chain_id=arb",
+      "params": null,
+      "http_status": 429,
+      "ct": "application/json",
+      "json_keys": [
+        "error_code",
+        "error_msg"
+      ],
+      "body": "{\"error_code\": 429, \"error_msg\": \"Request too fast, please try again later.\"}"
+    },
+    {
+      "name": "arkham.noKey",
+      "url": "https://api.arkhamintelligence.com/intelligence/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270",
+      "params": null,
+      "http_status": 400,
+      "ct": "application/json",
+      "json_keys": [
+        "message"
+      ],
+      "body": "{\"message\": \"invalid timestamp format, please sign up for an api key :)\"}"
+    },
+    {
+      "name": "snowtrace.noKey",
+      "url": "https://api.snowtrace.io/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/first_tx",
+      "params": null,
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "message",
+        "result",
+        "status"
+      ],
+      "body": "{\"status\": \"0\", \"message\": \"NOTOK\", \"result\": \"Error! Missing Or invalid Action name\"}"
+    },
+    {
+      "name": "tenderly.noKey",
+      "url": "https://api.tenderly.co/api/v1/account/address/0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270/transactions",
+      "params": null,
+      "http_status": 404,
+      "ct": "text/plain",
+      "body_head": "404 page not found"
+    },
+    {
+      "name": "etherscanV2.noKey",
+      "url": "https://api.etherscan.io/v2/api?chainid=42161&module=account&action=txlist&address=0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270&page=1&offset=3&sort=asc",
+      "params": null,
+      "http_status": 200,
+      "ct": "application/json",
+      "json_keys": [
+        "message",
+        "result",
+        "status"
+      ],
+      "body": "{\"status\": \"0\", \"message\": \"NOTOK\", \"result\": \"Missing/Invalid API Key\"}"
+    }
+  ],
+  "rpc": {
+    "base": {
+      "url": "https://base-rpc.publicnode.com",
+      "http_status": 200,
+      "latest_block": 53440379
+    },
+    "arbitrum": {
+      "url": "https://arbitrum-one-rpc.publicnode.com",
+      "http_status": 200,
+      "latest_block": 520738297
+    },
+    "polygon": {
+      "url": "https://polygon-bor-rpc.publicnode.com",
+      "http_status": 200,
+      "latest_block": 96643101
+    },
+    "bsc": {
+      "url": "https://bsc-rpc.publicnode.com",
+      "http_status": 200,
+      "latest_block": 131346715
+    },
+    "optimism": {
+      "url": "https://optimism-rpc.publicnode.com",
+      "http_status": 200,
+      "latest_block": 159035665
+    },
+    "gnosis": {
+      "url": "https://gnosis-rpc.publicnode.com",
+      "http_status": 200,
+      "latest_block": 49080685
+    },
+    "ethereum": {
+      "url": "https://eth.drpc.org",
+      "http_status": 200,
+      "latest_block": 26331048
+    }
+  }
+}

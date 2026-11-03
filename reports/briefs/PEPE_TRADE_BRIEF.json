@@ -1,0 +1,170 @@
+{
+  "token": {
+    "address": "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+    "chain": "ethereum",
+    "symbol": "PEPE",
+    "pair_address": "0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f",
+    "price_usd": 4.698e-06,
+    "liquidity_usd": 30731470.34,
+    "dex": "uniswap",
+    "url": "https://dexscreener.com/ethereum/0xa43fe16908251ee70ef74718545e4fe6c5ccec9f"
+  },
+  "verdict": "WATCH",
+  "confidence": "LOW",
+  "generated_at": "2026-11-03T05:09:14+00:00",
+  "legs": [
+    {
+      "name": "IDENTITY",
+      "verdict": "SUPPORTS",
+      "detail": "PEPE on uniswap, pool $30,731,470, price $4.698e-06",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "symbol": "PEPE",
+        "name": "Pepe",
+        "pair_address": "0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f",
+        "price_usd": 4.698e-06,
+        "liquidity_usd": 30731470.34,
+        "fdv_usd": 1943955333,
+        "volume_24h_usd": 1995962.94,
+        "txns_24h": {
+          "buys": 427,
+          "sells": 579
+        },
+        "price_change_h24": -4.29,
+        "dex": "uniswap",
+        "quote_symbol": "WETH",
+        "url": "https://dexscreener.com/ethereum/0xa43fe16908251ee70ef74718545e4fe6c5ccec9f",
+        "exact_base_match": true
+      }
+    },
+    {
+      "name": "RESEARCH_EDGE",
+      "verdict": "SUPPORTS",
+      "detail": "2 specification(s) survived the FULL validation gauntlet: regime_switch_cross_sectional_sector_rotation, nasdaq_12m_timeseries_momentum. That establishes a non-random PRIOR for the rule - it is not a live signal and not permission to trade it.",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "specs_total": 13,
+        "supported_full_gauntlet": [
+          "regime_switch_cross_sectional_sector_rotation",
+          "nasdaq_12m_timeseries_momentum"
+        ],
+        "supported_quick_only": [
+          "v1_crypto_momentum_20d_ma"
+        ],
+        "refuted": 10
+      }
+    },
+    {
+      "name": "QUALIFIED_WALLETS",
+      "verdict": "CONFLICTS",
+      "detail": "NO qualified wallet holds this token. 0 wallet(s) have passed the consistency gate in total and none of them holds this asset.",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "qualified_wallets_total": 0,
+        "wallets_holding_this_token": 0,
+        "qualified_holding_this_token": 0,
+        "rejected_holding_this_token": 0,
+        "priced_artefact_wallets": 1
+      }
+    },
+    {
+      "name": "NARRATIVE",
+      "verdict": "UNAVAILABLE",
+      "detail": "the token profile could not be retrieved: SourceUnavailable: jupiter returned no profile for mint 0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+      "provenance": "UNAVAILABLE",
+      "blocking": false,
+      "metrics": {}
+    },
+    {
+      "name": "TRACTION",
+      "verdict": "UNAVAILABLE",
+      "detail": "community size could not be measured on any platform - UNMEASURED, not zero",
+      "provenance": "UNAVAILABLE",
+      "blocking": false,
+      "metrics": {
+        "price_usd": "0.000004698",
+        "liquidity_usd": 30731470.34,
+        "volume_24h_usd": 1995962.94,
+        "market_cap": 1943955333,
+        "buys_24h": 427,
+        "sells_24h": 579,
+        "buy_sell_ratio_24h": 0.737,
+        "community_members": null,
+        "community_by_platform": {}
+      }
+    },
+    {
+      "name": "HOLDER_RISK",
+      "verdict": "SUPPORTS",
+      "detail": "the top 10 holders control 0.0% of the supply; insider-flagged share 0.0%",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "source": "blockscout",
+        "holders_read": 50,
+        "top10_supply_share": 0.0,
+        "top1_supply_share": 0.0,
+        "insider_supply_share": 0.0
+      }
+    },
+    {
+      "name": "LIQUIDITY",
+      "verdict": "SUPPORTS",
+      "detail": "$30,731,470 of pool depth supports a $1,000 position (1% rule, ANALYST_CHOICE)",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "pool_liquidity_usd": 30731470.34,
+        "max_position_usd": 307314.7034,
+        "target_usd": 1000.0,
+        "target_pct_of_pool": 3e-05,
+        "rule": "ANALYST_CHOICE: position <= 1% of pool liquidity"
+      }
+    },
+    {
+      "name": "DATA_QUALITY",
+      "verdict": "SUPPORTS",
+      "detail": "5/7 evidence legs answered (5 live)",
+      "provenance": "LIVE",
+      "blocking": false,
+      "metrics": {
+        "legs_total": 7,
+        "legs_answered": 5,
+        "legs_unavailable": 2,
+        "legs_live": 5,
+        "answered_fraction": 0.714,
+        "verdict_reason": "a research prior exists but no qualified wallet holds this token - the prior alone is not a signal"
+      }
+    }
+  ],
+  "entry": {
+    "basis": "NOT EVIDENCE-BASED - no qualified wallet holds this token, so there is no reference level",
+    "price_usd": null
+  },
+  "exit": {
+    "basis": "NOT EVIDENCE-BASED - no qualified wallet holds this token, so there is no reference exit",
+    "hold_days_median": null
+  },
+  "sizing": {
+    "position_usd": 0.0,
+    "note": "the verdict is WATCH - position size is zero"
+  },
+  "invalidation": [
+    "Liquidity falls below the level assumed in the sizing calculation.",
+    "A qualified wallet exits - their exit is the reference exit.",
+    "A re-run of the consistency gate returns a different verdict for a qualified wallet.",
+    "Holder concentration rises above the level in the HOLDER_RISK leg.",
+    "Pair 0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f stops printing a price."
+  ],
+  "gaps": [
+    "NARRATIVE: the token profile could not be retrieved: SourceUnavailable: jupiter returned no profile for mint 0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+    "TRACTION: community size could not be measured on any platform - UNMEASURED, not zero"
+  ],
+  "provenance_summary": {
+    "LIVE": 6,
+    "UNAVAILABLE": 2
+  }
+}

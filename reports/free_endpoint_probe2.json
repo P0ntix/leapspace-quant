@@ -1,0 +1,538 @@
+[
+  {
+    "name": "coingecko.pepe.retry1",
+    "url": "https://api.coingecko.com/api/v3/coins/0x6982508145454ce325ddbe47a25d4ec3d2311933?localization=false&tickers=false&market_data=false&community_data=true&developer_data=false&sparkline=false",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "retry after backoff",
+    "status": 404,
+    "bytes": 26,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "id": null,
+      "links": null,
+      "community_data": null,
+      "sentiment_up_pct": null
+    }
+  },
+  {
+    "name": "coingecko.pepe.retry2",
+    "url": "https://api.coingecko.com/api/v3/coins/0x6982508145454ce325ddbe47a25d4ec3d2311933?localization=false&tickers=false&market_data=false&community_data=true&developer_data=false&sparkline=false",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "2nd retry",
+    "status": 404,
+    "bytes": 26,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "id": null,
+      "links": null,
+      "community_data": null,
+      "sentiment_up_pct": null
+    }
+  },
+  {
+    "name": "coingecko.ping",
+    "url": "https://api.coingecko.com/api/v3/ping",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "public ping",
+    "status": 200,
+    "bytes": 34,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "head": "{\"gecko_says\":\"(V3) To the Moon!\"}"
+    }
+  },
+  {
+    "name": "reddit.browserUA.json",
+    "url": "https://www.reddit.com/r/wallstreetcoins/new.json?limit=10",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl_headers": {
+      "Retry-After": "0"
+    },
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<body class=theme-beta><div><style>.theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56:3.5re"
+  },
+  {
+    "name": "reddit.oldUA.json",
+    "url": "https://www.reddit.com/r/wallstreetcoins/new.json?limit=10",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+    "note": "",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl_headers": {
+      "Retry-After": "0"
+    },
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<body class=theme-beta><div><style>.theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56:3.5re"
+  },
+  {
+    "name": "reddit.pyUA.json",
+    "url": "https://www.reddit.com/r/wallstreetcoins/new.json?limit=10",
+    "ua": "python-requests/2.31",
+    "note": "",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl_headers": {
+      "Retry-After": "0"
+    },
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<body class=theme-beta><div><style>.theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56:3.5re"
+  },
+  {
+    "name": "reddit.old.reddit.com",
+    "url": "https://old.reddit.com/r/wallstreetcoins/new.json?limit=10",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+    "note": "",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl_headers": {
+      "Retry-After": "0"
+    },
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<body class=theme-beta><div><style>.theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56:3.5re"
+  },
+  {
+    "name": "reddit.search.json",
+    "url": "https://www.reddit.com/search.json?q=bonk&sort=new&limit=10",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+    "note": "",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl_headers": {
+      "Retry-After": "0"
+    },
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<body class=theme-beta><div><style>.theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56:3.5re"
+  },
+  {
+    "name": "reddit.api.reddit.com",
+    "url": "https://api.reddit.com/r/wallstreetcoins/new?limit=10",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+    "note": "",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl_headers": {
+      "Retry-After": "0"
+    },
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<body class=theme-beta><div><style>.theme-light,:root{--rem360:22.5rem;--rem320:20rem;--rem192:12rem;--rem144:9rem;--rem128:8rem;--rem96:6rem;--rem90:5.625rem;--rem88:5.5rem;--rem64:4rem;--rem56:3.5re"
+  },
+  {
+    "name": "reddit.rate-limit-header.endpoint",
+    "url": "https://www.reddit.com/api/v1/me",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+    "note": "json endpoint w/o auth - shows behaviour",
+    "status": 200,
+    "bytes": 1594,
+    "ct": "application/json",
+    "rl_headers": {
+      "x-ratelimit-used": "10",
+      "x-ratelimit-remaining": "90.0",
+      "x-ratelimit-reset": "438"
+    },
+    "extracted": {
+      "head": "{\"features\": {\"modmail_harassment_filter\": true, \"mod_service_mute_writes\": true, \"promoted_trend_blanks\": true, \"show_amp_link\": true, \"mweb_comments_banner\": {\"owner\": \"ads\", \"variant\": \"control_1\","
+    }
+  },
+  {
+    "name": "discord.widget.MEE6",
+    "url": "https://discord.com/api/guilds/102860784329052160/widget.json",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "widget must be ENABLED by the guild",
+    "status": 403,
+    "bytes": 45,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "name": null,
+      "member_count": null,
+      "presence_count": null,
+      "channels": 0,
+      "instant_invite": null
+    }
+  },
+  {
+    "name": "discord.widget.duck",
+    "url": "https://discord.com/api/guilds/222034823891118593/widget.json",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "widget must be ENABLED by the guild",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "name": null,
+      "member_count": null,
+      "presence_count": null,
+      "channels": 0,
+      "instant_invite": null
+    }
+  },
+  {
+    "name": "discord.widget.misc",
+    "url": "https://discord.com/api/guilds/450503428371213316/widget.json",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "widget must be ENABLED by the guild",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "name": null,
+      "member_count": null,
+      "presence_count": null,
+      "channels": 0,
+      "instant_invite": null
+    }
+  },
+  {
+    "name": "discord.widget.test",
+    "url": "https://discord.com/api/guilds/274465718049349632/widget.json",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "widget must be ENABLED by the guild",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "name": null,
+      "member_count": null,
+      "presence_count": null,
+      "channels": 0,
+      "instant_invite": null
+    }
+  },
+  {
+    "name": "discord.widget.example",
+    "url": "https://discord.com/api/guilds/381868290251558912/widget.json",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "widget must be ENABLED by the guild",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "name": null,
+      "member_count": null,
+      "presence_count": null,
+      "channels": 0,
+      "instant_invite": null
+    }
+  },
+  {
+    "name": "apewisdom.api.v1.filter",
+    "url": "https://apewisdom.io/api/v1.0/filter/all/page/1",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 12456,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "n": 100,
+      "sample": [
+        {
+          "rank": 1,
+          "ticker": "SPY",
+          "name": "SPDR S&amp;P 500 ETF Trust",
+          "mentions": 102,
+          "upvotes": 264,
+          "rank_24h_ago": 3,
+          "mentions_24h_ago": 29
+        },
+        {
+          "rank": 2,
+          "ticker": "AAPL",
+          "name": "Apple",
+          "mentions": 74,
+          "upvotes": 165,
+          "rank_24h_ago": 12,
+          "mentions_24h_ago": 17
+        },
+        {
+          "rank": 3,
+          "ticker": "GOOG",
+          "name": "Alphabet (Google)",
+          "mentions": 60,
+          "upvotes": 159,
+          "rank_24h_ago": 2,
+          "mentions_24h_ago": 54
+        }
+      ]
+    }
+  },
+  {
+    "name": "apewisdom.api.top-tokens.json",
+    "url": "https://apewisdom.io/api/top-tokens.json",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 13680,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<!DOCTYPE html> <html lang=\"en-US\"> <head> <title>Reddit and Walsstreetsbet sentiment API by ApeWisdom</title> <meta charset=\"utf-8\"/> <meta name=\"robots\" content=\"INDEX,FOLLOW\" /> <meta name=\"descrip"
+  },
+  {
+    "name": "apewisdom.api.filter.all.page.1.v2",
+    "url": "https://apewisdom.io/api/filter/all/page/1",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 13684,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<!DOCTYPE html> <html lang=\"en-US\"> <head> <title>Reddit and Walsstreetsbet sentiment API by ApeWisdom</title> <meta charset=\"utf-8\"/> <meta name=\"robots\" content=\"INDEX,FOLLOW\" /> <meta name=\"descrip"
+  },
+  {
+    "name": "santiment.available_metrics",
+    "url": "https://api.santiment.net/available_metrics",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 5072500,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": "<!DOCTYPE html> <html lang=\"en\" style=\"scrollbar-gutter: stable;\">   <head>     <meta charset=\"utf-8\">     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">     <meta name=\"csrf-tok"
+  },
+  {
+    "name": "santiment.graphql.simple",
+    "url": "https://api.santiment.net/graphql",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "no auth header",
+    "status": 200,
+    "bytes": 101,
+    "ct": "application/json",
+    "rl_headers": {
+      "x-ratelimit-limit": "100",
+      "x-ratelimit-limit-hour": "500",
+      "x-ratelimit-limit-minute": "100",
+      "x-ratelimit-limit-month": "1000",
+      "x-ratelimit-remaining": "100",
+      "x-ratelimit-remaining-hour": "500",
+      "x-ratelimit-remaining-minute": "100",
+      "x-ratelimit-remaining-month": "1000"
+    },
+    "extracted": {
+      "head": "{\"errors\":[{\"message\":\"syntax error before: \\\"\\\\\\\"query\\\\\\\"\\\"\",\"locations\":[{\"line\":1,\"column\":2}]}]}"
+    }
+  },
+  {
+    "name": "santiment.graphql.with_fake_key",
+    "url": "https://api.santiment.net/graphql",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "fake key -> shows the auth error text",
+    "status": 400,
+    "bytes": 53,
+    "ct": "",
+    "rl_headers": {},
+    "extracted": {
+      "head": "{\"errors\":{\"details\":\"Invalid JSON Web Token (JWT)\"}}"
+    }
+  },
+  {
+    "name": "jupiter.tokens.v2.by_address",
+    "url": "https://lite-api.jup.ag/tokens/v2/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "v2 single-token",
+    "status": 404,
+    "bytes": 13,
+    "ct": "text/plain",
+    "rl_headers": {
+      "x-ratelimit-remaining": "4",
+      "x-ratelimit-current": "1",
+      "x-ratelimit-reset": "1793637780"
+    },
+    "extracted_error": "JSONDecodeError: Extra data: line 1 column 5 (char 4)",
+    "body_head": "404 Not Found"
+  },
+  {
+    "name": "jupiter.tokens.v1.search",
+    "url": "https://lite-api.jup.ag/tokens/v1/search?query=bonk",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 404,
+    "bytes": 0,
+    "ct": "",
+    "rl_headers": {},
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": ""
+  },
+  {
+    "name": "jupiter.token.api.jup.ag",
+    "url": "https://token.jup.ag/token/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": null,
+    "error": "ConnectionError: HTTPSConnectionPool(host='token.jup.ag', port=443): Max retries exceeded with url: /token/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263 (Caused by NameResolutionError(\"HTTPSConnection("
+  },
+  {
+    "name": "jupiter.token.2.jup.ag",
+    "url": "https://token.jup.ag/token/v2/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": null,
+    "error": "ConnectionError: HTTPSConnectionPool(host='token.jup.ag', port=443): Max retries exceeded with url: /token/v2/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263 (Caused by NameResolutionError(\"HTTPSConnecti"
+  },
+  {
+    "name": "telegram.preview.bonk",
+    "url": "https://t.me/s/bonk_inu",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 38534,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted": {
+      "title": "bonk_inu \u2013 Telegram",
+      "chars": 38522,
+      "n_messages_in_preview": 0,
+      "subs_str": [
+        "249"
+      ],
+      "n_datetimes": 5,
+      "first_dates": [
+        "2022-12-30T03:11:08+00:00",
+        "2022-12-30T03:11:36+00:00",
+        "2023-07-17T15:21:21+00:00"
+      ]
+    }
+  },
+  {
+    "name": "telegram.preview.official_bonk",
+    "url": "https://t.me/s/Official_Bonk_Inu",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 10951,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted": {
+      "title": "Telegram: View @Official_Bonk_Inu",
+      "chars": 10951,
+      "n_messages_in_preview": 0,
+      "subs_str": [
+        "11 012"
+      ],
+      "n_datetimes": 0,
+      "first_dates": []
+    }
+  },
+  {
+    "name": "telegram.preview.wif",
+    "url": "https://t.me/s/wifcoin",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 9590,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted": {
+      "title": "Telegram: Contact @wifcoin",
+      "chars": 9590,
+      "n_messages_in_preview": 0,
+      "subs_str": [],
+      "n_datetimes": 0,
+      "first_dates": []
+    }
+  },
+  {
+    "name": "farcaster.warpcast.search",
+    "url": "https://client.warpcast.com/v2/search-casts?limit=5&q=bonk",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 23458,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "n_casts": 5,
+      "sample": [
+        {
+          "hash": "0x708bb6379f",
+          "author": "frust.base.eth",
+          "fid": 1371361,
+          "text": "biggest airdrops in crypto history \ud83e\ude82\n\n\u2022 Hyperliquid -$23.8B \n\u2022 Uniswap"
+        },
+        {
+          "hash": "0xb17b7df3e4",
+          "author": "Jacek.degen.eth \ud83c\udfa9",
+          "fid": 15983,
+          "text": "I\u2019m genuinely disappointed by @base.base.eth 's forced push around cre"
+        },
+        {
+          "hash": "0xda6a118277",
+          "author": "mcclick",
+          "fid": 303,
+          "text": "Why are we seeing strong competition among stablecoin issuers to be th"
+        }
+      ],
+      "next": false
+    }
+  },
+  {
+    "name": "farcaster.warpcast.byfid",
+    "url": "https://client.warpcast.com/v2/user-by-fid?fid=3",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "",
+    "status": 200,
+    "bytes": 1520,
+    "ct": "application/json",
+    "rl_headers": {},
+    "extracted": {
+      "head": "{\"result\":{\"user\":{\"fid\":3,\"displayName\":\"Dan Romero\",\"profile\":{\"bio\":{\"text\":\"Interested in technology and other stuff.\",\"mentions\":[],\"channelMentions\":[]},\"location\":{\"placeId\":\"\",\"description\":\"\""
+    }
+  },
+  {
+    "name": "google.trends.explore.json",
+    "url": "https://trends.google.com/trends/api/explore?hl=en-US&tz=0&req=%7B%22comparisonItem%22%3A%20%5B%7B%22keyword%22%3A%20%22bonk%22%2C%20%22geo%22%3A%20%22%22%2C%20%22time%22%3A%20%22now-7-d%22%7D%5D%2C%20%22category%22%3A%200%2C%20%22property%22%3A%20%22%22%7D",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "pytrends-style explore",
+    "status": 400,
+    "bytes": 1695,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted": {
+      "head": "<html lang=\"en\" dir=ltr><meta charset=utf-8><meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\"><title>Error 400 (Bad Request)!!1</title><style nonce=\"FWD8xCyP1HeaWD2m-JAWXg\">*{margin:0;padding:0}html,code{font:15px/22p"
+    }
+  },
+  {
+    "name": "google.trends.daily.rss",
+    "url": "https://trends.google.com/trending/rss?geo=US",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "official trending RSS - no key",
+    "status": 200,
+    "bytes": 21450,
+    "ct": "text/xml",
+    "rl_headers": {},
+    "extracted": {
+      "head": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?> <rss xmlns:atom=\"http://www.w3.org/2005/Atom\" xmlns:ht=\"https://trends.google.com/trending/rss\" version=\"2.0\"> \t<channel> \t\t<title>Daily Search "
+    }
+  },
+  {
+    "name": "neynar.docs.free_tier",
+    "url": "https://docs.neynar.com/",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "note": "doc page - free tier check",
+    "status": 200,
+    "bytes": 187160,
+    "ct": "text/html",
+    "rl_headers": {},
+    "extracted": {
+      "head": "<!doctype html> <html   lang=\"en\"   class=\"dark\"   data-banner-state=\"visible\"   data-assistant-state=\"closed\"   data-page-mode=\"none\"   data-current-path=\"/\" >   <head>     <meta charset=\"utf-8\" />  "
+    }
+  }
+]

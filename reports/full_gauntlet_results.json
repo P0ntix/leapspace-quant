@@ -1,0 +1,30 @@
+{
+  "_note": "Results from the FULL validation gauntlet (not --quick). The quick run skips Monte Carlo, the parameter sweep and cross-market replication, and can produce a MORE favourable verdict than the full gauntlet. This file records the stricter verdicts so the consolidated report never presents a quick-run verdict as if it were a full one.",
+  "results": [
+    {
+      "name": "regime_switch_cross_sectional_sector_rotation",
+      "verdict": "SUPPORTED",
+      "flags": [],
+      "metrics": {"n_bars": 5487, "n_trades": 2089, "sharpe": 0.6106875964301612, "cagr": 0.04705789010660477, "max_drawdown": 0.1722195550811665, "profit_factor": 1.3370990008960282, "win_rate": 0.6160842508377214, "t_stat": 2.8496157920915226},
+      "walk_forward": {"oos_sharpe": 0.5278948265425338, "oos_retention": 0.5431986924947647, "oos_profitable_folds": 5, "n_folds": 5},
+      "skipped_stages": []
+    },
+    {
+      "name": "nasdaq_12m_timeseries_momentum",
+      "verdict": "SUPPORTED",
+      "flags": [],
+      "metrics": {"n_bars": 5487, "n_trades": 71, "sharpe": 0.6304260057333084, "t_stat": 2.941719976276385},
+      "walk_forward": {"oos_sharpe": 0.8981072391590574, "oos_retention": 1.6332567930256414, "oos_profitable_folds": 4, "n_folds": 5},
+      "skipped_stages": []
+    },
+    {
+      "name": "v1_crypto_momentum_20d_ma",
+      "verdict": "FRAGILE",
+      "flags": ["Monte Carlo prob(profitable) 81%"],
+      "metrics": {"n_bars": 5487, "n_trades": 1328, "sharpe": 0.7470487846189819, "t_stat": 2.670401903981252},
+      "walk_forward": {"oos_sharpe": 0.7833531133016806, "oos_retention": 0.7195372611195282, "oos_profitable_folds": 3, "n_folds": 5},
+      "skipped_stages": [],
+      "note": "This spec was SUPPORTED under --quick and was DOWNGRADED to FRAGILE by the full gauntlet (Monte Carlo probability of profit 81%, below the 90% bar). That is the gauntlet doing its job, and it is the reason the report names the stages that ran."
+    }
+  ]
+}

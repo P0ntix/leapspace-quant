@@ -1,0 +1,759 @@
+[
+  {
+    "id": "DS-REF",
+    "url": "https://docs.dexscreener.com/api/reference",
+    "purpose": "DexScreener endpoint list + rate limits",
+    "status": 200,
+    "final_url": "https://docs.dexscreener.com/api/reference",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "DS-PAIRS",
+    "url": "https://api.dexscreener.com/token-pairs/v1/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "purpose": "DexScreener token-pairs live",
+    "status": 200,
+    "final_url": "https://api.dexscreener.com/token-pairs/v1/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "bytes": 45595,
+    "content_type": "application/json; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "RUG-REPORT",
+    "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report",
+    "purpose": "RugCheck report live",
+    "status": 200,
+    "final_url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report",
+    "bytes": 400000,
+    "content_type": "application/json; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "JUP-DOCS",
+    "url": "https://docs.jup.ag/",
+    "purpose": "Jupiter docs",
+    "status": 200,
+    "final_url": "https://docs.jup.ag/",
+    "bytes": 231440,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "JUP-SEARCH",
+    "url": "https://lite-api.jup.ag/tokens/v2/search?query=bonk",
+    "purpose": "Jupiter token search live",
+    "status": 200,
+    "final_url": "https://lite-api.jup.ag/tokens/v2/search?query=bonk",
+    "bytes": 29269,
+    "content_type": "application/json",
+    "verified": true
+  },
+  {
+    "id": "CG-DOCS",
+    "url": "https://docs.coingecko.com/reference/coins-id",
+    "purpose": "CoinGecko coins-id docs (community_data removal)",
+    "status": 200,
+    "final_url": "https://docs.coingecko.com/reference/coins-id",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "CG-PING",
+    "url": "https://api.coingecko.com/api/v3/ping",
+    "purpose": "CoinGecko public ping",
+    "status": 200,
+    "final_url": "https://api.coingecko.com/api/v3/ping",
+    "bytes": 34,
+    "content_type": "application/json; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "REDDIT-DEV",
+    "url": "https://www.reddit.com/dev/api",
+    "purpose": "Reddit API reference",
+    "status": 200,
+    "final_url": "https://www.reddit.com/dev/api",
+    "bytes": 301645,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "REDDIT-TERMS",
+    "url": "https://redditinc.com/policies/data-api-terms",
+    "purpose": "Reddit Data API Terms",
+    "status": 200,
+    "final_url": "https://redditinc.com/policies/data-api-terms",
+    "bytes": 400000,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "DISC-DOCS",
+    "url": "https://discord.com/developers/docs",
+    "purpose": "Discord developer docs",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/intro",
+    "bytes": 217118,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "DISC-INVITE",
+    "url": "https://discord.com/developers/docs/resources/invite",
+    "purpose": "Discord Invite resource (with_counts)",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/resources/invite",
+    "bytes": 312272,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "DISC-INVITE-LIVE",
+    "url": "https://discord.com/api/v9/invites/qaQa6M6mN2?with_counts=true",
+    "purpose": "Discord public invite live",
+    "status": 200,
+    "final_url": "https://discord.com/api/v9/invites/qaQa6M6mN2?with_counts=true",
+    "bytes": 1962,
+    "content_type": "application/json",
+    "verified": true
+  },
+  {
+    "id": "DISC-RATE",
+    "url": "https://discord.com/developers/docs/topics/rate-limits",
+    "purpose": "Discord rate limits",
+    "status": 200,
+    "final_url": "https://docs.discord.com/developers/topics/rate-limits",
+    "bytes": 252602,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "DISC-TERMS",
+    "url": "https://discord.com/terms",
+    "purpose": "Discord Terms of Service",
+    "status": 200,
+    "final_url": "https://discord.com/terms",
+    "bytes": 134719,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "DISC-DEVPOL",
+    "url": "https://discord.com/developers/docs/policies",
+    "purpose": "Discord Developer Policy",
+    "status": 200,
+    "final_url": "https://support-dev.discord.com/hc/en-us/articles/8563934450327-Discord-Developer-Policy",
+    "bytes": 56979,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TG-BOTS",
+    "url": "https://core.telegram.org/bots/api",
+    "purpose": "Telegram Bot API",
+    "status": 200,
+    "final_url": "https://core.telegram.org/bots/api",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TG-MEMBERCOUNT",
+    "url": "https://core.telegram.org/bots/api#getchatmembercount",
+    "purpose": "Telegram getChatMemberCount",
+    "status": 200,
+    "final_url": "https://core.telegram.org/bots/api#getchatmembercount",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TG-LINKS",
+    "url": "https://core.telegram.org/api/links",
+    "purpose": "Telegram public link previews",
+    "status": 200,
+    "final_url": "https://core.telegram.org/api/links",
+    "bytes": 116494,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TG-TOS",
+    "url": "https://telegram.org/tos",
+    "purpose": "Telegram ToS",
+    "status": 200,
+    "final_url": "https://telegram.org/tos",
+    "bytes": 25201,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TG-CONTENTLIC",
+    "url": "https://telegram.org/tos/content-licensing",
+    "purpose": "Telegram Content Licensing / AI scraping terms",
+    "status": 200,
+    "final_url": "https://telegram.org/tos/content-licensing",
+    "bytes": 8342,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TG-PREVIEW-LIVE",
+    "url": "https://t.me/s/Official_Bonk_Inu",
+    "purpose": "Telegram public channel preview live",
+    "status": 200,
+    "final_url": "https://t.me/Official_Bonk_Inu",
+    "bytes": 10952,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "X-PRICING",
+    "url": "https://docs.x.com/x-api/getting-started/pricing",
+    "purpose": "X API pay-per-use pricing",
+    "status": 200,
+    "final_url": "https://docs.x.com/x-api/getting-started/pricing",
+    "bytes": 290211,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "X-FREECREDITS",
+    "url": "https://docs.x.com/x-api/getting-started/free-credits",
+    "purpose": "X API free credits",
+    "status": 200,
+    "final_url": "https://docs.x.com/x-api/getting-started/free-credits",
+    "bytes": 250455,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "X-INTRO",
+    "url": "https://docs.x.com/x-api/introduction",
+    "purpose": "X API introduction",
+    "status": 200,
+    "final_url": "https://docs.x.com/x-api/introduction",
+    "bytes": 268392,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "X-TOS",
+    "url": "https://x.com/en/tos",
+    "purpose": "X Terms of Service",
+    "status": 200,
+    "final_url": "https://x.com/en/tos",
+    "bytes": 170638,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "X-ROBOTS",
+    "url": "https://x.com/robots.txt",
+    "purpose": "X robots.txt",
+    "status": 200,
+    "final_url": "https://x.com/robots.txt",
+    "bytes": 2998,
+    "content_type": "text/plain;charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TT-RESEARCH",
+    "url": "https://developers.tiktok.com/products/research-api/",
+    "purpose": "TikTok Research API",
+    "status": 200,
+    "final_url": "https://developers.tiktok.com/products/research-api/",
+    "bytes": 366034,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "TT-DISPLAY",
+    "url": "https://developers.tiktok.com/doc/display-api-overview",
+    "purpose": "TikTok Display API",
+    "status": 200,
+    "final_url": "https://developers.tiktok.com/docs/en/display-api-overview",
+    "bytes": 215552,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "YT-DOCS",
+    "url": "https://developers.google.com/youtube/v3/docs",
+    "purpose": "YouTube Data API",
+    "status": 200,
+    "final_url": "https://developers.google.com/youtube/data/reference/rest",
+    "bytes": 129415,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "YT-QUOTA",
+    "url": "https://developers.google.com/youtube/v3/getting-started",
+    "purpose": "YouTube quota",
+    "status": 200,
+    "final_url": "https://developers.google.com/youtube/data/getting-started",
+    "bytes": 132659,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "FC-DOCS",
+    "url": "https://docs.farcaster.xyz/",
+    "purpose": "Farcaster docs",
+    "status": 200,
+    "final_url": "https://docs.farcaster.xyz/",
+    "bytes": 18929,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "FC-WARPCAST-LIVE",
+    "url": "https://client.warpcast.com/v2/search-casts?limit=5&q=bonk",
+    "purpose": "Farcaster public client live",
+    "status": 200,
+    "final_url": "https://client.warpcast.com/v2/search-casts?limit=5&q=bonk",
+    "bytes": 23458,
+    "content_type": "application/json; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "THREADS-DOCS",
+    "url": "https://developers.facebook.com/docs/threads-api",
+    "purpose": "Threads API",
+    "status": 404,
+    "final_url": "https://developers.facebook.com/docs/threads-api",
+    "error": "HTTPError 404",
+    "verified": false
+  },
+  {
+    "id": "SANT-ACADEMY",
+    "url": "https://academy.santiment.net/metrics/",
+    "purpose": "Santiment metric index",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/",
+    "bytes": 280527,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-VOL",
+    "url": "https://academy.santiment.net/metrics/social-volume/",
+    "purpose": "Santiment Social Volume",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-volume/",
+    "bytes": 297183,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-UNIQ",
+    "url": "https://academy.santiment.net/metrics/unique-social-volume/",
+    "purpose": "Santiment Unique Social Volume",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/unique-social-volume/",
+    "bytes": 285425,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-DOM",
+    "url": "https://academy.santiment.net/metrics/social-dominance/",
+    "purpose": "Santiment Social Dominance",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-dominance/",
+    "bytes": 294634,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-SENTRATIO",
+    "url": "https://academy.santiment.net/metrics/sentiment-ratio/",
+    "purpose": "Santiment Sentiment Ratio",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/sentiment-ratio/",
+    "bytes": 290405,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-CATVOL",
+    "url": "https://academy.santiment.net/metrics/social-volume-categorized/",
+    "purpose": "Santiment Categorized Social Volume",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/social-volume-categorized/",
+    "bytes": 282193,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-COMMUNITY",
+    "url": "https://academy.santiment.net/metrics/community-social-volume/",
+    "purpose": "Santiment Community Social Volume",
+    "status": 200,
+    "final_url": "https://academy.santiment.net/metrics/community-social-volume/",
+    "bytes": 277485,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-PRICING",
+    "url": "https://app.santiment.net/pricing",
+    "purpose": "Santiment pricing",
+    "status": 200,
+    "final_url": "https://app.santiment.net/pricing",
+    "bytes": 99341,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "SANT-AVAILMETRICS",
+    "url": "https://api.santiment.net/available_metrics",
+    "purpose": "Santiment metric catalogue",
+    "status": 200,
+    "final_url": "https://api.santiment.net/available_metrics",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "LCR-API",
+    "url": "https://lunarcrush.com/developers/api",
+    "purpose": "LunarCrush API overview",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/en/developers/api",
+    "bytes": 296121,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "LCR-PRICING",
+    "url": "https://lunarcrush.com/pricing",
+    "purpose": "LunarCrush pricing",
+    "status": 200,
+    "final_url": "https://lunarcrush.com/pricing",
+    "bytes": 24067,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "NAN-API",
+    "url": "https://www.nansen.ai/api",
+    "purpose": "Nansen API + pricing",
+    "status": 200,
+    "final_url": "https://nansen.ai/api",
+    "bytes": 400000,
+    "content_type": "text/html",
+    "verified": true
+  },
+  {
+    "id": "NAN-SMART",
+    "url": "https://docs.nansen.ai/api/smart-money",
+    "purpose": "Nansen Smart Money endpoints",
+    "status": 200,
+    "final_url": "https://docs.nansen.ai/api/smart-money",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ASI-BC",
+    "url": "https://blockchaincenter.net/altcoin-season-index",
+    "purpose": "Altcoin Season Index (Blockchain Center)",
+    "status": 200,
+    "final_url": "https://blockchaincenter.net/altcoin-season-index/",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ASI-CMC",
+    "url": "https://coinmarketcap.com/charts/altcoin-season-index",
+    "purpose": "CMC Altcoin Season Index",
+    "status": 200,
+    "final_url": "https://coinmarketcap.com/charts/altcoin-season-index/",
+    "bytes": 400000,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "KAITO-MIND",
+    "url": "https://studio.kaito.ai/blog/what-is-mindshare",
+    "purpose": "Kaito mindshare definition",
+    "status": 200,
+    "final_url": "https://studio.kaito.ai/blog/what-is-mindshare",
+    "bytes": 62638,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "KAITO-DOCS",
+    "url": "https://docs.kaito.ai/",
+    "purpose": "Kaito docs",
+    "status": 200,
+    "final_url": "https://docs.kaito.ai/",
+    "bytes": 321345,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "APEW-API",
+    "url": "https://apewisdom.io/api",
+    "purpose": "ApeWisdom API docs",
+    "status": 200,
+    "final_url": "https://apewisdom.io/api",
+    "bytes": 14015,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "APEW-LIVE",
+    "url": "https://apewisdom.io/api/v1.0/filter/all-crypto/page/1",
+    "purpose": "ApeWisdom live",
+    "status": 200,
+    "final_url": "https://apewisdom.io/api/v1.0/filter/all-crypto/page/1",
+    "bytes": 603,
+    "content_type": "application/json",
+    "verified": true
+  },
+  {
+    "id": "VADER-GH",
+    "url": "https://github.com/cjhutto/vaderSentiment",
+    "purpose": "VADER implementation",
+    "status": 200,
+    "final_url": "https://github.com/cjhutto/vaderSentiment",
+    "bytes": 305813,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "VADER-PAPER",
+    "url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "purpose": "VADER ICWSM paper",
+    "status": 200,
+    "final_url": "https://ojs.aaai.org/index.php/ICWSM/article/view/14550",
+    "bytes": 7086,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "PYTRENDS-PYPI",
+    "url": "https://pypi.org/project/pytrends/",
+    "purpose": "pytrends",
+    "status": 200,
+    "final_url": "https://pypi.org/project/pytrends/",
+    "bytes": 3038,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "PYTRENDS-GH",
+    "url": "https://github.com/GeneralMills/pytrends",
+    "purpose": "pytrends repo",
+    "status": 200,
+    "final_url": "https://github.com/GeneralMills/pytrends",
+    "bytes": 329526,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TRENDS-RSS",
+    "url": "https://trends.google.com/trending/rss?geo=US",
+    "purpose": "Google Trends official RSS",
+    "status": 200,
+    "final_url": "https://trends.google.com/trending/rss?geo=US",
+    "bytes": 21390,
+    "content_type": "text/xml; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "TRENDS-HELP",
+    "url": "https://support.google.com/trends/answer/4365533",
+    "purpose": "Google Trends help",
+    "status": 200,
+    "final_url": "https://support.google.com/trends/answer/4365533",
+    "bytes": 400000,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "GDPR-ART5",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_5/oj",
+    "purpose": "GDPR Art.5",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_5/oj",
+    "bytes": 2035,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "GDPR-ART6",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_6/oj",
+    "purpose": "GDPR Art.6",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_6/oj",
+    "bytes": 2035,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "GDPR-ART4",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_4/oj",
+    "purpose": "GDPR Art.4",
+    "status": 202,
+    "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679/art_4/oj",
+    "bytes": 2035,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "CCPA",
+    "url": "https://oag.ca.gov/privacy/ccpa",
+    "purpose": "CCPA/CPRA",
+    "status": 200,
+    "final_url": "https://oag.ca.gov/privacy/ccpa",
+    "bytes": 122428,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-ENGAGE",
+    "url": "https://arxiv.org/abs/2209.02911",
+    "purpose": "Social Media Engagement and Cryptocurrency Performance",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2209.02911",
+    "bytes": 42835,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-ASTRO",
+    "url": "https://arxiv.org/abs/1910.07783",
+    "purpose": "Ephemeral Astroturfing Attacks: Fake Twitter Trends",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/1910.07783",
+    "bytes": 41621,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-BOTS",
+    "url": "https://arxiv.org/abs/1708.08134",
+    "purpose": "Bots on information diffusion (Ferrara)",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/1708.08134",
+    "bytes": 41068,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-MEME-FRAG",
+    "url": "https://arxiv.org/abs/2512.00377",
+    "purpose": "Measuring Memecoin Fragility",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2512.00377",
+    "bytes": 44054,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-MEME-SOL",
+    "url": "https://arxiv.org/abs/2512.11850",
+    "purpose": "Memecoin Phenomenon: Solana",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2512.11850",
+    "bytes": 42823,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-RUG",
+    "url": "https://arxiv.org/abs/2608.20271",
+    "purpose": "Catching the Rug: Solana ML",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2608.20271",
+    "bytes": 42331,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-MULTIMODAL",
+    "url": "https://arxiv.org/abs/2412.04913",
+    "purpose": "Bridging Culture and Finance: Multimodal Memecoins",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2412.04913",
+    "bytes": 41193,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-ASTRO2",
+    "url": "https://arxiv.org/abs/2004.08836",
+    "purpose": "Trollthrottle - Raising the Cost of Astroturfing",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2004.08836",
+    "bytes": 42007,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-MEME-ASTRO",
+    "url": "https://arxiv.org/abs/1011.3768",
+    "purpose": "Detecting Astroturf Memes in Microblog Streams",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/1011.3768",
+    "bytes": 43647,
+    "content_type": "text/html; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "ARXIV-API",
+    "url": "https://export.arxiv.org/api/query?search_query=all:memecoin&max_results=1",
+    "purpose": "arXiv API",
+    "status": 200,
+    "final_url": "https://export.arxiv.org/api/query?search_query=all:memecoin&max_results=1",
+    "bytes": 3420,
+    "content_type": "application/atom+xml; charset=utf-8",
+    "verified": true
+  },
+  {
+    "id": "IEEE-MEME-SOCIAL",
+    "url": "https://ieeexplore.ieee.org/document/8919455",
+    "purpose": "Social Media Analysis in the Era of Memecoin",
+    "status": 202,
+    "final_url": "https://ieeexplore.ieee.org/document/8919455",
+    "bytes": 2060,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "IEEE-MEME-NET",
+    "url": "https://ieeexplore.ieee.org/document/10411759",
+    "purpose": "Identifying Networked Patterns in Memecoin Twitter Accounts",
+    "status": 202,
+    "final_url": "https://ieeexplore.ieee.org/document/10411759",
+    "bytes": 2060,
+    "content_type": "text/html; charset=UTF-8",
+    "verified": true
+  },
+  {
+    "id": "DNI-ADM",
+    "url": "https://www.dni.gov/index.php/ic-legal-reference-book",
+    "purpose": "ICD 203 Analytic Standards",
+    "status": 403,
+    "final_url": "https://www.dni.gov/index.php/ic-legal-reference-book",
+    "error": "HTTPError 403",
+    "verified": false
+  },
+  {
+    "id": "NYT-FTC",
+    "url": "https://www.ftc.gov/business-guidance/blog/2023/01/keep-your-ai-claims-check",
+    "purpose": "FTC claims check",
+    "status": 404,
+    "final_url": "https://www.ftc.gov/business-guidance/blog/2023/01/keep-your-ai-claims-check",
+    "error": "HTTPError 404",
+    "verified": false
+  }
+]

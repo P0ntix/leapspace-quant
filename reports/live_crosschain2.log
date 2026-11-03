@@ -1,0 +1,138 @@
+candidate addresses from the whale's counterparty set: 15
+
+ethereum: archive=https://eth.drpc.org (ok)
+    EXISTS  0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270  nonce=59
+    EXISTS  0x1d48b72db77aba39497c207c09eeff4439730270  nonce=6
+    EXISTS  0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34  nonce=4
+    EXISTS  0x841ed663f2636863d40be4ee76243377dff13a34  nonce=19789
+    EXISTS  0x1d48db0a70a43f36f17364563547b81238f73c42  nonce=3
+    EXISTS  0x6982508145454ce325ddbe47a25d4ec3d2311933  nonce=1
+    EXISTS  0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce  nonce=1
+    EXISTS  0x57e114b691db790c35207b2e685d4a43181e6061  nonce=1
+    EXISTS  0x514910771af9ca656af840dff83e8264ecf986ca  nonce=1
+    EXISTS  0x1f9840a85d5af5bf1d1762f925bdaddc4201f984  nonce=1
+    EXISTS  0x841ed4ac9c0e59248cd37f3e08f4cb0ec9be3a34  nonce=29
+    EXISTS  0x1d488fc518e1c63cb8ebcffe86773251a1c2cc48  nonce=4
+    EXISTS  0x1d48c9640b2671fa0a89a6b1f3a5fc6e1b172171  nonce=4
+    EXISTS  0xff0b4ef09c79e11d307d6ba89d858e6fc73e12d2  nonce=1
+    EXISTS  0xff05e313f41ad6aef04d51d825ea0212dc3e12d2  nonce=3
+
+base: archive=https://base.drpc.org (ok)
+    EXISTS  0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270  nonce=8
+
+arbitrum: archive=https://arbitrum-one.public.blastapi.io (ok)
+    EXISTS  0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270  nonce=2
+    EXISTS  0x841e10dbbfb00871e0fe035b8c13bad7b1f63a34  nonce=1
+    EXISTS  0x841ed663f2636863d40be4ee76243377dff13a34  nonce=1538
+
+optimism: archive=https://optimism.drpc.org (ok)
+    EXISTS  0x1d48963DD8FAdA6aB5C2C7b92Eba81ECC5030270  nonce=2
+    EXISTS  0x841ed663f2636863d40be4ee76243377dff13a34  nonce=679
+
+polygon: archive=https://polygon.drpc.org (ok)
+    EXISTS  0x841ed663f2636863d40be4ee76243377dff13a34  nonce=140
+
+bsc: archive=None (no_archive_provider)
+
+========================================================================
+PROFILES
+========================================================================
+  ethereum   0x1d48963DD8FAdA..  30.3s | funder=0x841ed663f2636863d40be4ee76243377dff13a34
+       blk=24592010 ev=balance_binary_search tx=0x9e8f77aaca32c06aa7 bridge=False cps=ok/blockscout
+  ethereum   0x1d48b72db77aba..  24.7s | funder=0x853244c7c9ca8af8f8e31e11aa299951dbd543d4
+       blk=26319434 ev=balance_binary_search tx=0x34bb9cbd6f99bac3cd bridge=False cps=ok/blockscout
+  ethereum   0x841e10dbbfb008..  28.0s | funder=None
+       blk=26293928 ev=not_found_within_scan tx=None bridge=False cps=ok/blockscout
+  ethereum   0x841ed663f26368..  36.3s | funder=0x73af3bcf944a6559933396c1577b257e2054d935
+       blk=22490750 ev=balance_binary_search tx=0xfef85b36488202dd19 bridge=False cps=ok/blockscout
+  base       0x1d48963DD8FAdA..   8.2s | funder=None
+       blk=None ev=None tx=None bridge=False cps=unavailable/None
+  arbitrum   0x1d48963DD8FAdA..  30.7s | funder=0x841ed663f2636863d40be4ee76243377dff13a34
+       blk=438625587 ev=balance_binary_search tx=0x8c22b7c8832ced7831 bridge=False cps=ok/json-rpc
+  arbitrum   0x841e10dbbfb008..  17.2s | funder=None
+       blk=519798620 ev=no_inbound_value_found tx=None bridge=False cps=ok/json-rpc
+  arbitrum   0x841ed663f26368..  30.1s | funder=0x73af3bcf944a6559933396c1577b257e2054d935
+       blk=338390687 ev=balance_binary_search tx=0xe43314edaa72c60a48 bridge=False cps=ok/json-rpc
+  optimism   0x1d48963DD8FAdA..   8.2s | funder=None
+       blk=None ev=None tx=None bridge=False cps=ok/blockscout
+  optimism   0x841ed663f26368..  35.8s | funder=None
+       blk=139374473 ev=not_found_within_scan tx=None bridge=False cps=ok/blockscout
+  polygon    0x841ed663f26368..  29.1s | funder=0x73af3bcf944a6559933396c1577b257e2054d935
+       blk=74806841 ev=balance_binary_search tx=0x2726410aad67ba9c3c bridge=False cps=ok/json-rpc
+
+========================================================================
+CROSS-CHAIN PAIR SCORING
+========================================================================
+profiles=11 pairs=45 confirmed=0 suggested=4
+
+  0x1d48963DD8FA..(ethereum ) <-> 0x1d48963DD8FA..(arbitrum )
+     score=1.0  label=SUGGESTED
+       shared_funder            score=1.000 w=0.40  funder=0x841ed663f2636863d40be4ee76243377dff13a34
+       common_counterparties    score=0.000 w=0.00
+       correlated_timing        score=0.000 w=0.00
+       similar_sizes            score=0.000 w=0.00
+
+  0x841ed663f263..(ethereum ) <-> 0x841ed663f263..(arbitrum )
+     score=1.0  label=SUGGESTED
+       shared_funder            score=1.000 w=0.40  funder=0x73af3bcf944a6559933396c1577b257e2054d935
+       common_counterparties    score=0.000 w=0.00
+       correlated_timing        score=0.000 w=0.00
+       similar_sizes            score=0.000 w=0.00
+
+  0x841ed663f263..(ethereum ) <-> 0x841ed663f263..(polygon  )
+     score=1.0  label=SUGGESTED
+       shared_funder            score=1.000 w=0.40  funder=0x73af3bcf944a6559933396c1577b257e2054d935
+       common_counterparties    score=0.000 w=0.00
+       correlated_timing        score=0.000 w=0.00
+       similar_sizes            score=0.000 w=0.00
+
+  0x841ed663f263..(arbitrum ) <-> 0x841ed663f263..(polygon  )
+     score=1.0  label=SUGGESTED
+       shared_funder            score=1.000 w=0.40  funder=0x73af3bcf944a6559933396c1577b257e2054d935
+       common_counterparties    score=0.000 w=0.00
+       correlated_timing        score=0.000 w=0.00
+       similar_sizes            score=0.000 w=0.00
+
+  0x841ed663f263..(ethereum ) <-> 0x841ed663f263..(optimism )
+     score=0.168  label=NOT_SUGGESTED
+       shared_funder            score=0.000 w=0.00
+       common_counterparties    score=0.000 w=0.30
+       correlated_timing        score=0.420 w=0.20
+       similar_sizes            score=0.000 w=0.00
+
+  0x1d48963DD8FA..(ethereum ) <-> 0x841ed663f263..(optimism )
+     score=0.104  label=NOT_SUGGESTED
+       shared_funder            score=0.000 w=0.00
+       common_counterparties    score=0.000 w=0.30
+       correlated_timing        score=0.260 w=0.20
+       similar_sizes            score=0.000 w=0.00
+
+  0x1d48963DD8FA..(ethereum ) <-> 0x1d48963DD8FA..(optimism )
+     score=0.0286  label=NOT_SUGGESTED
+       shared_funder            score=0.000 w=0.00
+       common_counterparties    score=0.048 w=0.30
+       correlated_timing        score=0.000 w=0.20
+       similar_sizes            score=0.000 w=0.00
+
+  0x1d48963DD8FA..(ethereum ) <-> 0x1d48963DD8FA..(base     )
+     score=0.0  label=NOT_SUGGESTED
+       shared_funder            score=0.000 w=0.00
+       common_counterparties    score=0.000 w=0.00
+       correlated_timing        score=0.000 w=0.00
+       similar_sizes            score=0.000 w=0.00
+
+  0x1d48963DD8FA..(ethereum ) <-> 0x841e10dbbfb0..(arbitrum )
+     score=0.0  label=NOT_SUGGESTED
+       shared_funder            score=0.000 w=0.00
+       common_counterparties    score=0.000 w=0.00
+       correlated_timing        score=0.000 w=0.00
+       similar_sizes            score=0.000 w=0.00
+
+  0x1d48963DD8FA..(ethereum ) <-> 0x841ed663f263..(arbitrum )
+     score=0.0  label=NOT_SUGGESTED
+       shared_funder            score=0.000 w=0.40
+       common_counterparties    score=0.000 w=0.00
+       correlated_timing        score=0.000 w=0.00
+       similar_sizes            score=0.000 w=0.00
+
+wrote C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\live_crosschain.json

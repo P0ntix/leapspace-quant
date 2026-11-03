@@ -1,0 +1,2512 @@
+{
+  "status": "ok",
+  "generated_at": "2026-11-03T04:37:50+00:00",
+  "package_root": "C:\\Users\\HP\\AppData\\Local\\hermes\\projects\\leapspace-quant",
+  "provenance": "DERIVED-FROM-ARTEFACT",
+  "sections": {
+    "consistency_gate": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "consistency_gate",
+      "source_files": [
+        "reports\\pepe_priced_edge.json"
+      ],
+      "partial": false,
+      "n_total_declared": 15,
+      "n_wallets_scored": 15,
+      "verdict_distribution": {
+        "FLUKE": 15
+      },
+      "realised_pnl_usd": {
+        "min": -55762.774063357356,
+        "max": 146013.43606049241,
+        "n_with_value": 15,
+        "note": "gross of gas, DEX fees and MEV - none of these are observable from ERC-20 transfers alone"
+      },
+      "totals": {
+        "n_trades_priced": 236,
+        "n_unpriced": 779,
+        "n_closed_trades": 88
+      },
+      "decisive_test_counts": {
+        "skill_not_distinguishable": 2,
+        "deflated_sharpe": 9,
+        "largest_win_share": 4
+      },
+      "wallets": [
+        {
+          "address": "0x3f9a8345729eA842708E080e238C92731e5699b8",
+          "verdict": "FLUKE",
+          "reason": "rejected by: skill_not_distinguishable, deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "skill_not_distinguishable",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "rejected by: skill_not_distinguishable, deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "skill_not_distinguishable",
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 29,
+          "n_unpriced": 173,
+          "n_closed": 20,
+          "n_bets_closed": 1,
+          "wins_over_bets": 0,
+          "losses_over_bets": 1,
+          "realised_pnl_usd": 81475.3532736716,
+          "win_rate": 0.0,
+          "skill_p": 0.5,
+          "independent_bets": 2,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 3,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 3
+          },
+          "median_hold_days": 28.99,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xbf45fB5D20BC3D0954188773e803b4E30E87E0b8",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 6,
+          "n_unpriced": 0,
+          "n_closed": 0,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.0,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": null,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0x262190CCE7b2515FC32Aba9569E8c1cBee031CCC",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 25,
+          "n_unpriced": 34,
+          "n_closed": 0,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.0,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": null,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0x59779b3aa3540F45b3e7255b4B5b25a8764bE686",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 16,
+          "n_unpriced": 0,
+          "n_closed": 0,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.0,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": null,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0x72132bF09a9ee6517F3f1d997b4b3cd2115E5991",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "DSR = n/a after deflating for 15 trial(s) scanned; threshold > 0.95",
+          "decisive_authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 2,
+          "n_unpriced": 0,
+          "n_closed": 0,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.0,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": null,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xd4Bb423838a66347f5D6860437Cef53e540B5f13",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "DSR = n/a after deflating for 15 trial(s) scanned; threshold > 0.95",
+          "decisive_authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 25,
+          "n_unpriced": 21,
+          "n_closed": 5,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": -55762.774063357356,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": 319.83,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0x4879675Da42274a69F15f1cF969B2Cc6a455B7f9",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "DSR = n/a after deflating for 15 trial(s) scanned; threshold > 0.95",
+          "decisive_authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 11,
+          "n_unpriced": 0,
+          "n_closed": 1,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.9624818371069013,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 3,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 3,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1,
+            "unknown": 2
+          },
+          "median_hold_days": 0.07,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xaDFffc33cdC9970349CBcEa3D73Ec343d6ed116D",
+          "verdict": "FLUKE",
+          "reason": "rejected by: largest_win_share, skill_not_distinguishable, deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "largest_win_share",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "largest win carries 100.0% of total PnL (threshold 0.5)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "largest_win_share",
+            "skill_not_distinguishable",
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 25,
+          "n_unpriced": 63,
+          "n_closed": 13,
+          "n_bets_closed": 2,
+          "wins_over_bets": 1,
+          "losses_over_bets": 1,
+          "realised_pnl_usd": 146013.43606049241,
+          "win_rate": 0.5,
+          "skill_p": 0.75,
+          "independent_bets": 2,
+          "deflated_sharpe": 0.13194675686527824,
+          "largest_win_share": 1.0,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": 142.0,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xAf2358e98683265cBd3a48509123d390dDf54534",
+          "verdict": "FLUKE",
+          "reason": "rejected by: largest_win_share, deflated_sharpe (also insufficient: insufficient_independent_bets, too_few_closed_trades)",
+          "decisive_test": "largest_win_share",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "largest win carries 100.0% of total PnL (threshold 0.5)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "largest_win_share",
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 8,
+          "n_unpriced": 15,
+          "n_closed": 2,
+          "n_bets_closed": 1,
+          "wins_over_bets": 1,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 5470.391165627898,
+          "win_rate": 1.0,
+          "skill_p": 1.0,
+          "independent_bets": 3,
+          "deflated_sharpe": null,
+          "largest_win_share": 1.0,
+          "n_meme_tokens": 4,
+          "entry_class_breakdown": {
+            "early (<10k blocks)": 1,
+            "unknown": 1,
+            "very early (<1000 blocks)": 1,
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": 2.62,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xEd0203625D3Ef97f8f52AaaD9EAabacE4418cAF3",
+          "verdict": "FLUKE",
+          "reason": "rejected by: largest_win_share, deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "largest_win_share",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "largest win carries 100.0% of total PnL (threshold 0.5)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "largest_win_share",
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 25,
+          "n_unpriced": 174,
+          "n_closed": 18,
+          "n_bets_closed": 1,
+          "wins_over_bets": 1,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 107298.83327901659,
+          "win_rate": 1.0,
+          "skill_p": 1.0,
+          "independent_bets": 2,
+          "deflated_sharpe": null,
+          "largest_win_share": 1.0,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": 191.78,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xE8f2C2D63443A0E403ba35c95dAfe513eedBAe12",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "DSR = n/a after deflating for 15 trial(s) scanned; threshold > 0.95",
+          "decisive_authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 2,
+          "n_unpriced": 0,
+          "n_closed": 0,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.0,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 2,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 2,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 2
+          },
+          "median_hold_days": null,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xcbC9fAD51b83a50DbDc058704fe1355d7B13068d",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "DSR = n/a after deflating for 15 trial(s) scanned; threshold > 0.95",
+          "decisive_authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 2,
+          "n_unpriced": 0,
+          "n_closed": 0,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.0,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 2,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 2,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 2
+          },
+          "median_hold_days": null,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0xa5F7f1dCE1D1E4c59A28668c51355CDa047D1459",
+          "verdict": "FLUKE",
+          "reason": "rejected by: largest_win_share, deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "largest_win_share",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "largest win carries 83.3% of total PnL (threshold 0.5)",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "largest_win_share",
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 25,
+          "n_unpriced": 176,
+          "n_closed": 13,
+          "n_bets_closed": 3,
+          "wins_over_bets": 3,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 110286.90520922022,
+          "win_rate": 1.0,
+          "skill_p": 1.0,
+          "independent_bets": 4,
+          "deflated_sharpe": 0.29553125737835473,
+          "largest_win_share": 0.8325274491759574,
+          "n_meme_tokens": 2,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 2
+          },
+          "median_hold_days": 107.19,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0x442689F3F26cBcCc2E288DaEa986b9d67346149a",
+          "verdict": "FLUKE",
+          "reason": "rejected by: skill_not_distinguishable, deflated_sharpe (also insufficient: insufficient_independent_bets, too_few_closed_trades)",
+          "decisive_test": "skill_not_distinguishable",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "P(win rate > 0.5) = 0.5 (threshold 0.95); 1W/2L over 3 closed trades",
+          "decisive_authority": "ANALYST_CHOICE",
+          "all_rejected_by": [
+            "skill_not_distinguishable",
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 24,
+          "n_unpriced": 123,
+          "n_closed": 16,
+          "n_bets_closed": 3,
+          "wins_over_bets": 1,
+          "losses_over_bets": 2,
+          "realised_pnl_usd": -0.0005184873514949938,
+          "win_rate": 0.3333333333333333,
+          "skill_p": 0.5,
+          "independent_bets": 3,
+          "deflated_sharpe": 0.0027439676873383667,
+          "largest_win_share": null,
+          "n_meme_tokens": 3,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 2,
+            "unknown": 1
+          },
+          "median_hold_days": 171.13,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        },
+        {
+          "address": "0x80374c1F677FF6ae77bF3617DFB12e215741E213",
+          "verdict": "FLUKE",
+          "reason": "rejected by: deflated_sharpe (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "decisive_test": "deflated_sharpe",
+          "decisive_binding": "REJECT",
+          "decisive_detail": "DSR = n/a after deflating for 15 trial(s) scanned; threshold > 0.95",
+          "decisive_authority": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio'",
+          "all_rejected_by": [
+            "deflated_sharpe",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ],
+          "n_trades_priced": 11,
+          "n_unpriced": 0,
+          "n_closed": 0,
+          "n_bets_closed": 0,
+          "wins_over_bets": 0,
+          "losses_over_bets": 0,
+          "realised_pnl_usd": 0.0,
+          "win_rate": null,
+          "skill_p": null,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "largest_win_share": null,
+          "n_meme_tokens": 1,
+          "entry_class_breakdown": {
+            "late (>=100k blocks)": 1
+          },
+          "median_hold_days": null,
+          "blocks_priced": null,
+          "blocks_skipped": null
+        }
+      ],
+      "survivorship_note": "SURVIVORSHIP-SELECTED SAMPLE. The wallets in this file are the ones that still hold the token, so the universe contains winners by construction. Wallets that bought and then sold out entirely are absent, and a wallet that was admitted to the scan and later decayed may be missing from the screened universe. A verdict produced on this sample cannot be read as 'the gate found no good traders' - it can only be read as 'these particular wallets failed the gate'.",
+      "price_cap_note": "HISTORY MAY BE TRUNCATED. Prices are read per trade, and the per-wallet block cap limits how many distinct blocks a single wallet scan prices. Where the cap bites, the most RECENT blocks are priced and the number of blocks skipped is reported rather than hidden, so a wallet's early history can be missing from the PnL.",
+      "upstream_provenance": "the artefacts in this package are fetched live and cached to disk; the sections below report what those files contain"
+    },
+    "criteria_coverage": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "criteria_coverage",
+      "source_files": [
+        "leapspace\\data\\consistency_criteria.json",
+        "leapspace\\edge.py",
+        "leapspace\\pbo.py",
+        "leapspace\\traders.py",
+        "leapspace\\priced.py"
+      ],
+      "spec_version": "1.0.0",
+      "spec_compiled": "2026-11-03",
+      "n_criteria": 31,
+      "n_fluke_tests": 8,
+      "rows": [
+        {
+          "key": "min_independent_bets",
+          "label": "Minimum independent bets (non-overlapping closed trades)",
+          "threshold": 637,
+          "threshold_source": "NIST/SEMATECH e-Handbook 7.2.4.2 'Sample sizes required', with the Fleiss/Levin/Paik continuity correction. The value 637 is this spec's arithmetic from that formula at p0=0.50, p1=0.55, alpha=0.05 one-sided, beta=0.20, delta=0.05 (the parameters are ANALYST_CHOICE; the formula is CITED).",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+          "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge; edge.py:n_required_independent_bets",
+          "gap": "",
+          "applied_threshold": 5.0,
+          "applied_threshold_key": "min_independent_bets",
+          "threshold_matches_spec": false,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 859,
+              "kind": "gate",
+              "code": "n_eff < ch[\"min_independent_bets\"],"
+            },
+            {
+              "file": "edge.py",
+              "function": "n_required_independent_bets",
+              "line": 478,
+              "kind": "impl",
+              "code": "def n_required_independent_bets(p0: float = 0.50, p1: float = 0.55,"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "min_independent_bets_table",
+          "label": "Required independent bets by claimed win rate (lookup table)",
+          "threshold": null,
+          "threshold_source": "NIST 7.2.4.2 formula, this spec's arithmetic. Values include the continuity correction N = N' + 1/delta.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+          "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:n_required_independent_bets; edge.py:nist_sample_size_table; traders.py:required_sample_size",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "nist_sample_size_table",
+              "line": 505,
+              "kind": "impl",
+              "code": "def nist_sample_size_table() -> List[Dict[str, Any]]:"
+            },
+            {
+              "file": "edge.py",
+              "function": "n_required_independent_bets",
+              "line": 478,
+              "kind": "impl",
+              "code": "def n_required_independent_bets(p0: float = 0.50, p1: float = 0.55,"
+            },
+            {
+              "file": "traders.py",
+              "function": "required_sample_size",
+              "line": 118,
+              "kind": "impl",
+              "code": "def required_sample_size(p0: float = 0.50, p1: float = 0.55,"
+            }
+          ],
+          "note": "a sample-size table is computed and reported; it is not a rejection test on its own"
+        },
+        {
+          "key": "min_observations_for_period_statistic",
+          "label": "Minimum return observations before any period-based statistic is presented",
+          "threshold": 36,
+          "threshold_source": "CFA Institute GIPS for Firms 2020, provision 4.C.36: 'the firm must disclose if the three-year annualized ex post standard deviation of the composite and/or benchmark is not presented because 36 monthly returns are not available.' The mapping of '36 monthly returns' to '36 daily on-chain return observations' is an ANALYST ADAPTATION; the 36 figure is CITED.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (GIPS)",
+          "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": 36.0,
+          "applied_threshold_key": "min_observations_for_period_statistic",
+          "threshold_matches_spec": true,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 842,
+              "kind": "gate",
+              "code": "n_obs < ch[\"min_observations_for_period_statistic\"],"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "wilson_lower_bound_above_chance",
+          "label": "Wilson score lower bound of the win rate exceeds 0.50",
+          "threshold": 0.5,
+          "threshold_source": "NIST/SEMATECH e-Handbook 7.2.4.1 'Confidence intervals' (Wilson score interval). The 0.50 comparison point is 'better than a coin flip' and is ANALYST_CHOICE; the interval method is CITED.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+          "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge; traders.py:wilson_interval",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "traders.py",
+              "function": "wilson_interval",
+              "line": 152,
+              "kind": "impl",
+              "code": "def wilson_interval(wins: int, n: int, confidence: float = 0.95"
+            },
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 602,
+              "kind": "impl",
+              "code": "from .traders import wilson_interval"
+            }
+          ],
+          "note": "the Wilson interval is computed and reported, but no test compares its lower bound to the threshold, so it cannot reject a wallet"
+        },
+        {
+          "key": "bayes_posterior_prob_above_chance",
+          "label": "Posterior probability that the true win rate exceeds 0.50 (Beta-Binomial)",
+          "threshold": 0.95,
+          "threshold_source": "Model CITED: Bayes Rules! Ch.3 Eq. (3.10), posterior pi|(Y=y) ~ Beta(alpha+y, beta+n-y), with the uniform Beta(1,1) prior (the source states Beta(1,1) is 'equivalently, Unif(0,1)'). The 0.95 threshold is ANALYST_CHOICE - no source publishes a posterior-probability bar for trader skill.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "Barber, Bay & Solberg, 'Bayes Rules! An Introduction to Applied Bayesian Modeling' (CRC Press), Chapter 3 'The Beta-Binomial Bayesian Model'",
+          "url": "https://www.bayesrulesbook.com/chapter-3.html",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:binomial_tail_p; edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": 0.95,
+          "applied_threshold_key": "min_bayesian_skill",
+          "threshold_matches_spec": true,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 732,
+              "kind": "gate",
+              "code": "skill_p is not None and skill_p < ch[\"min_bayesian_skill\"],"
+            },
+            {
+              "file": "edge.py",
+              "function": "binomial_tail_p",
+              "line": 162,
+              "kind": "impl",
+              "code": "def binomial_tail_p(wins: int, n: int) -> float:"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "deflated_sharpe_ratio",
+          "label": "Deflated Sharpe Ratio (selection-adjusted)",
+          "threshold": 0.95,
+          "threshold_source": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio', Eqs. (1) and (2) (both CITED, transcribed from the printed equations). The 0.95 acceptance bar is the paper's own framing ('DSR would have been 0.9505, above the 95% confidence level') and is CITED; N and V_trials are inputs.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "David H. Bailey and Marcos Lopez de Prado (Journal of Portfolio Management, forthcoming 2014; SSRN 2460551)",
+          "url": "http://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": 0.95,
+          "applied_threshold_key": "min_deflated_sharpe",
+          "threshold_matches_spec": true,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 747,
+              "kind": "gate",
+              "code": "or dsr <= ch[\"min_deflated_sharpe\"],"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "deflated_sharpe_trial_count",
+          "label": "Number of independent trials N implied by the screened universe",
+          "threshold": null,
+          "threshold_source": "Bailey & Lopez de Prado, 'The Deflated Sharpe Ratio', Appendix A.3 'Estimating the number of independent trials', Eqs. (7)-(9): 'It is critical to understand that the N used to compute E[max{SR_n}] corresponds to the number of independent trials... using M instead of N will overstate E[max{SR_n}]' (CITED).",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "David H. Bailey and Marcos Lopez de Prado",
+          "url": "http://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge; priced.py:realised_pnl_and_edge",
+          "gap": "",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 649,
+              "kind": "gate",
+              "code": "n_trials_known = trials_scanned is not None and int(trials_scanned) >= 1"
+            },
+            {
+              "file": "priced.py",
+              "function": "realised_pnl_and_edge",
+              "line": 354,
+              "kind": "impl",
+              "code": "edge = evaluate_edge(gate_trades, trials_scanned=trials_scanned)"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "probability_of_backtest_overfitting",
+          "label": "Probability of Backtest Overfitting (PBO) via CSCV",
+          "threshold": 0.05,
+          "threshold_source": "Bailey, Borwein, Lopez de Prado & Zhu, 'The Probability of Backtest Overfitting', Section 3.1: 'a customary approach would be to reject models for which PBO is estimated to be greater than 0.05' (CITED).",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "Bailey, Borwein, Lopez de Prado & Zhu (Journal of Computational Finance, 2016; SSRN 2326253)",
+          "url": "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge; pbo.py:probability_of_backtest_overfitting",
+          "gap": "",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "pbo.py",
+              "function": "probability_of_backtest_overfitting",
+              "line": 221,
+              "kind": "impl",
+              "code": "def probability_of_backtest_overfitting("
+            },
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 784,
+              "kind": "gate",
+              "code": "test(\"probability_of_backtest_overfitting\","
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "bonferroni_alpha_per_test",
+          "label": "Bonferroni-adjusted significance level for a screen of N wallets",
+          "threshold": null,
+          "threshold_source": "NIST/SEMATECH e-Handbook 7.4.7.3 'Bonferroni's method': 'one can construct each interval with confidence coefficient (1 - alpha/g), and the Bonferroni inequality insures that the overall confidence coefficient is at least 1 - alpha' (CITED). alpha_family=0.05 is ANALYST_CHOICE.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "National Institute of Standards and Technology (NIST/SEMATECH e-Handbook of Statistical Methods)",
+          "url": "https://www.itl.nist.gov/div898/handbook/prc/section4/prc473.htm",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "pbo.py:bonferroni_alpha",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "pbo.py",
+              "function": "bonferroni_alpha",
+              "line": 495,
+              "kind": "impl",
+              "code": "def bonferroni_alpha(n_tests: int, family_alpha: float = 0.05) -> float:"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "bh_fdr_procedure",
+          "label": "Benjamini-Hochberg false-discovery-rate procedure across the screen",
+          "threshold": null,
+          "threshold_source": "Benjamini & Hochberg (1995), J. R. Statist. Soc. B 57(1), procedure (1): 'let k be the largest i for which P_(i) <= (i/m) q*; then reject all H_(i), i = 1, 2, ..., k' (CITED). q_star = 0.05 is ANALYST_CHOICE.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "Yoav Benjamini and Yosef Hochberg (Tel Aviv University)",
+          "url": "https://www.math.tau.ac.il/~yekutiel/eBayes/bh_1995.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "pbo.py:benjamini_hochberg",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "pbo.py",
+              "function": "benjamini_hochberg",
+              "line": 534,
+              "kind": "impl",
+              "code": "def benjamini_hochberg(pvalues: Sequence[float],"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "multiple_testing_t_statistic_hurdle",
+          "label": "Minimum t-statistic for a newly discovered signal",
+          "threshold": 3.0,
+          "threshold_source": "Harvey, Liu & Zhu, '...and the Cross-Section of Expected Returns', RFS 29(1) 2016: 'We argue that a newly discovered factor today should have a t-statistic that exceeds 3.0' (CITED).",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "Campbell R. Harvey, Yan Liu, Heqing Zhu (Review of Financial Studies, 2016)",
+          "url": "https://people.duke.edu/~charvey/Research/Published_Papers/P118_and_the_cross.PDF",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "pbo.py:harvey_liu_zhu_hurdle; pbo.py:multiple_testing_t_statistic_hurdle",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "pbo.py",
+              "function": "multiple_testing_t_statistic_hurdle",
+              "line": 634,
+              "kind": "impl",
+              "code": "def multiple_testing_t_statistic_hurdle(n_tests: int,"
+            },
+            {
+              "file": "pbo.py",
+              "function": "harvey_liu_zhu_hurdle",
+              "line": 712,
+              "kind": "impl",
+              "code": "def harvey_liu_zhu_hurdle(n_tests: int, alpha: float = 0.05) -> Dict[str, Any]:"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "consistency_ratio",
+          "label": "Consistency ratio (positive periods / total periods)",
+          "threshold": null,
+          "threshold_source": "DEFINITION CITED: 'Consistency Ratio - A measure of how consistently the manager is able to exhibit positive excess returns. To calculate the consistency ratio, the number of months the manager had positive excess returns is divided by the total number of months.' NO MINIMUM IS PUBLISHED BY ANY AUTHORITY - the source says only 'The higher the number, the better.' The threshold field is null and the code must supply it from config, labelled ANALYST_CHOICE.",
+          "tag": "ANALYTICS-VENDOR-CONVENTION",
+          "authority": "Principal Financial Group / Marietta Board of Pensions (institutional pension plan reporting convention)",
+          "url": "https://www.mariettaga.gov/DocumentCenter/View/8820/March-31-2016-Supplemental-Pension-Report",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": 0.5,
+          "applied_threshold_key": "min_consistency_ratio",
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 900,
+              "kind": "gate",
+              "code": "and consistency_ratio < ch[\"min_consistency_ratio\"]:"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "min_periods_with_positive_return",
+          "label": "Minimum number of periods required for a consistency ratio to be reported",
+          "threshold": null,
+          "threshold_source": "The 36-observation floor is CITED (GIPS 4.C.36, '36 monthly returns are not available'); the day/month period choice is ANALYST_CHOICE. On-chain analogue (36 daily observations) is an ANALYST ADAPTATION of a GIPS disclosure rule for composites.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (GIPS)",
+          "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": 3.0,
+          "applied_threshold_key": "min_periods_with_positive_return",
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 852,
+              "kind": "gate",
+              "code": "n_periods_positive < ch[\"min_periods_with_positive_return\"],"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "sortino_ratio",
+          "label": "Sortino ratio (excess return over downside risk)",
+          "threshold": null,
+          "threshold_source": "DEFINITION CITED (CFA Institute, 'The Sortino Ratio'): 'S = (Mean portfolio return - MAR) / Downside deviation' and 'it is calculated in the same way as the Sharpe ratio except that the MAR replaces the risk-free rate in the numerator and downside deviation replaces standard deviation in the denominator'. NO BAND IS PUBLISHED - CFA Institute publishes no interpretation threshold. The threshold field is null; any threshold used is ANALYST_CHOICE.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (Deborah Kidd, CFA, Investment Performance Measurement, H17004, 2012)",
+          "url": "https://rpc.cfainstitute.org/sites/default/files/-/media/documents/code/gips/the-sortino-ratio.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 1016,
+              "kind": "impl",
+              "code": "\"sortino_per_trade\": sortino,"
+            }
+          ],
+          "note": "computed and reported; CFA Institute publishes the definition and no band, so there is nothing to gate on"
+        },
+        {
+          "key": "calmar_ratio",
+          "label": "Calmar ratio (return per unit of maximum drawdown)",
+          "threshold": null,
+          "threshold_source": "FORMULA CITED (peer-reviewed): 'CR(R_p,T) = E(R_p - R_f)/MAXDD(T)' (Wang, Kresta & Tichy, Computational Management Science 21, art. 17, 2024). NO BAND IS PUBLISHED. NOTE: the original 36-month window from Terry W. Young (1991) could NOT be verified against the primary source - it is recorded in AUTHORITATIVE_CONSISTENCY_STANDARDS.md section 5.2 as UNVERIFIED against the primary, and is therefore NOT used as a threshold here.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "Anlan Wang, Ales Kresta, Tomas Tichy - Computational Management Science (Springer), open access",
+          "url": "https://link.springer.com/article/10.1007/s10287-023-00497-5",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 1017,
+              "kind": "impl",
+              "code": "\"calmar\": calmar,"
+            }
+          ],
+          "note": "computed and reported; no published band exists"
+        },
+        {
+          "key": "max_drawdown",
+          "label": "Maximum drawdown ceiling",
+          "threshold": null,
+          "threshold_source": "NO NUMERICAL THRESHOLD IS PUBLISHED BY CFA INSTITUTE. The source lists maximum drawdown as an APPRAISAL RATIO that 'measure investment skill' and that 'must be used with care, noting the assumptions of each ratio'. The threshold field is null and any ceiling is ANALYST_CHOICE.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (Refresher Reading, Portfolio Performance Evaluation, 2026 curriculum)",
+          "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-performance-evaluation",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge; traders.py:<module>",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 638,
+              "kind": "impl",
+              "code": "maxdd = 0.0"
+            },
+            {
+              "file": "traders.py",
+              "function": "<module>",
+              "line": 283,
+              "kind": "impl",
+              "code": "\"max_drawdown\": {"
+            }
+          ],
+          "note": "the drawdown is an input to the Calmar ratio only; traders.py declares a 0.20 ceiling in its registry but the qualification gate never checks it"
+        },
+        {
+          "key": "drawdown_duration",
+          "label": "Maximum drawdown duration ceiling (longest time underwater)",
+          "threshold": null,
+          "threshold_source": "NO NUMERICAL THRESHOLD IS PUBLISHED. CFA Institute lists 'drawdown duration' among the appraisal ratios that 'measure investment skill' and 'must be used with care' (CITED for the metric and its status). The threshold field is null; any ceiling in days is ANALYST_CHOICE.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (Refresher Reading, Portfolio Performance Evaluation, 2026 curriculum)",
+          "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-performance-evaluation",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:drawdown_duration",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "drawdown_duration",
+              "line": 402,
+              "kind": "impl",
+              "code": "def drawdown_duration(returns: Sequence[float]) -> Dict[str, Any]:"
+            }
+          ],
+          "note": "computed and reported; CFA Institute publishes no band"
+        },
+        {
+          "key": "track_record_length_minimum",
+          "label": "Minimum track-record length before a performance claim is publishable",
+          "threshold": 1825,
+          "threshold_source": "CITED: GIPS 1.A.3 (five years to claim compliance), 4.A.1(a) and 6.A.1(a) (build up to 10 years), 8.C.1(a) (one-, three-, five-year presentations); SEC 17 CFR 275.206(4)-1(d)(2) (one-, five-, ten-year periods, 'if the relevant portfolio did not exist for a particular prescribed period, then the life of the portfolio must be substituted for that period'). 1825 days = 5 years, the SEC/GIPS figure expressed in days for code.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (GIPS) and U.S. Securities and Exchange Commission",
+          "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "traders.py:<module>",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "traders.py",
+              "function": "<module>",
+              "line": 326,
+              "kind": "impl",
+              "code": "\"track_record_length\": {"
+            }
+          ],
+          "note": "declared in the traders.py criteria registry and never checked by the qualification gate"
+        },
+        {
+          "key": "chain_coverage_ceiling",
+          "label": "Maximum attainable track-record length for the wallet's chain",
+          "threshold": null,
+          "threshold_source": "CITED (vendor table): Nansen 'Data Coverage by Chain' publishes the earliest indexed data per chain - Ethereum 30 Jul 2015, Tron 25 Jun 2018, TON 15 Nov 2019, Solana 17 Mar 2020, Polygon 30 May 2020, BNB Chain 29 Aug 2020, Avalanche 23 Sep 2020, Arbitrum 29 May 2021, Optimism 11 Nov 2021, Sui 12 Apr 2023, Base 15 Jun 2023, Linea 06 Jul 2023, Sonic 01 Dec 2024, HyperEVM 18 Feb 2025, Monad 14 May 2025, Robinhood 30 Apr 2026, Arc 15 Jul 2026. Nansen: 'Chains that onboarded before mid-2023 ... offer 3+ years of history; newer chains offer proportionally less.'",
+          "tag": "ANALYTICS-VENDOR-CONVENTION",
+          "authority": "Nansen",
+          "url": "https://docs.nansen.ai/api/data-coverage.md",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 941,
+              "kind": "impl",
+              "code": "\"chain_coverage_ceiling\": {"
+            }
+          ],
+          "note": "reported as a comparability caveat, explicitly not a disqualification"
+        },
+        {
+          "key": "single_trade_pnl_concentration",
+          "label": "Maximum share of total PnL contributed by one trade",
+          "threshold": null,
+          "threshold_source": "NO AUTHORITY LOCATED PUBLISHES A CONCENTRATION LIMIT. This is an ANALYST_CHOICE and the threshold field is null so it must be supplied from config. The package's existing operator_config value is 0.40 and is labelled a policy choice there.",
+          "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+          "authority": "NONE - analyst choice (no citable authority located)",
+          "url": null,
+          "analyst_choice": true,
+          "published_standard": false,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge; traders.py:qualify_wallet",
+          "gap": "",
+          "applied_threshold": 0.5,
+          "applied_threshold_key": "max_largest_win_share",
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 727,
+              "kind": "gate",
+              "code": "and largest_win_share > ch[\"max_largest_win_share\"],"
+            },
+            {
+              "file": "traders.py",
+              "function": "qualify_wallet",
+              "line": 431,
+              "kind": "gate",
+              "code": "and single <= crit.get(\"max_single_trade_pnl_share\", 0.40),"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "distinct_tokens_minimum",
+          "label": "Minimum distinct tokens traded (independence of the bet set)",
+          "threshold": null,
+          "threshold_source": "NO AUTHORITY LOCATED PUBLISHES A DISTINCT-TOKEN MINIMUM for a trader. ANALYST_CHOICE. Related CITED concept: Grinold's breadth counts only INDEPENDENT bets, and the GMGN vendor convention scores token_num (diversity) at 10% of its published composite score - see crypto_vendor_composite_weights.",
+          "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+          "authority": "NONE for a trader threshold; the 'breadth = independent bets' concept is from Grinold via CFA Institute's 'Analysis of Active Portfolio Management' refresher reading",
+          "url": "https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/analysis-active-portfolio-management",
+          "analyst_choice": true,
+          "published_standard": false,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge; traders.py:qualify_wallet",
+          "gap": "",
+          "applied_threshold": 2.0,
+          "applied_threshold_key": "min_distinct_tokens",
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 865,
+              "kind": "gate",
+              "code": "distinct_tokens < ch[\"min_distinct_tokens\"],"
+            },
+            {
+              "file": "traders.py",
+              "function": "qualify_wallet",
+              "line": 437,
+              "kind": "gate",
+              "code": "and distinct >= crit.get(\"min_distinct_tokens\", 10),"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "edge_decay_split_half",
+          "label": "Edge decay: recent performance materially worse than early performance",
+          "threshold": null,
+          "threshold_source": "NO AUTHORITY LOCATED PUBLISHES A DECAY THRESHOLD. ANALYST_CHOICE, threshold field null. Supporting CITED concept: Bailey & Lopez de Prado's performance-degradation statistic in 'The Probability of Backtest Overfitting' Section 3.2 measures the decline from IS to OOS performance of the selected strategy, and CFA Institute notes appraisal ratios 'help identify manager skill (as opposed to luck)'.",
+          "tag": "ANALYST-CHOICE-UNSTANDARDISED",
+          "authority": "NONE for a numeric threshold; the IS/OOS degradation concept is from Bailey, Borwein, Lopez de Prado & Zhu (PBO paper, Section 3.2)",
+          "url": "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+          "analyst_choice": true,
+          "published_standard": false,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": 0.5,
+          "applied_threshold_key": "max_edge_decay_ratio",
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 871,
+              "kind": "gate",
+              "code": "and decay[\"ratio\"] < ch[\"max_edge_decay_ratio\"],"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "posterior_split_half_stability",
+          "label": "Bayesian split-half posterior stability (does the skill claim survive removing the early history?)",
+          "threshold": null,
+          "threshold_source": "MODEL CITED: Bayes Rules! Ch.3 Eq. (3.10) posterior; Ch.4 'Sequential analysis: Evolving with data' and 'Proving data order invariance' establish that the posterior is order-invariant, which is what makes a time-split holdout legitimate. The comparison rule and any stability band are ANALYST_CHOICE - no source publishes a split-half posterior stability bar for traders.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "Barber, Bay & Solberg, 'Bayes Rules!' (CRC Press), Chapters 3-4",
+          "url": "https://www.bayesrulesbook.com/chapter-3.html",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:posterior_split_half_stability",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "posterior_split_half_stability",
+              "line": 438,
+              "kind": "impl",
+              "code": "def posterior_split_half_stability(bets: Sequence[Dict[str, Any]]"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "survivorship_retention",
+          "label": "Retention of degraded/terminated wallets in the reported record",
+          "threshold": "history retained; forward cohort only excludes",
+          "threshold_source": "CITED: CFA Institute GIPS 3.A.9 'Terminated portfolios must be included in the historical performance of the composite up to the last full measurement period that each portfolio was under management and for which the firm has discretion'; 3.A.6 'Any change to a composite definition must not be applied retroactively'; 3.A.7 timely and consistent inclusion.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (GIPS for Firms, 2020)",
+          "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 811,
+              "kind": "gate",
+              "code": "test(\"survivorship_selected_universe\", True,"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "pre_listing_returns_excluded",
+          "label": "No performance recorded before the wallet's first observed on-chain activity",
+          "threshold": "no backfilled history",
+          "threshold_source": "CITED: Jorion & Schwarz, 'The Fix Is In: Properly Backing out Backfill Bias', RFS 32(12) 2019: 'the best practice for empirical tests is to remove returns prior to the listing date'. Aggarwal & Jorion (FAJ 2010): 'the resulting survivorship bias is substantial, averaging more than 5 percent a year' and 'What would normally be termed the backfill period actually represents hidden survivorship'.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "Philippe Jorion and Christopher Schwarz (Review of Financial Studies, 2019); Rajesh K. Aggarwal and Philippe Jorion (Financial Analysts Journal, 2010)",
+          "url": "https://ideas.repec.org/a/oup/rfinst/v32y2019i12p5048-5099..html",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "gate",
+          "implemented": true,
+          "gated": true,
+          "where": "edge.py:evaluate_edge",
+          "gap": "",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 830,
+              "kind": "gate",
+              "code": "test(\"backfilled_or_pre_listing_performance\", bool(pre_listing),"
+            }
+          ],
+          "note": ""
+        },
+        {
+          "key": "cross_chain_comparability_report",
+          "label": "Per-chain maximum attainable history reported alongside every verdict",
+          "threshold": null,
+          "threshold_source": "CITED (vendor table): Nansen 'Data Coverage by Chain' per-chain earliest indexed dates, and Nansen 'Smart Money' supported-chains list (Netflow/DEX Trades/Holdings cover 18 chains; Historical Holdings covers only arc, base, bnb, ethereum, monad, robinhood, solana). VENDOR CONVENTION, not a standard.",
+          "tag": "ANALYTICS-VENDOR-CONVENTION",
+          "authority": "Nansen",
+          "url": "https://docs.nansen.ai/api/data-coverage.md",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 951,
+              "kind": "impl",
+              "code": "\"cross_chain_comparability_report\": {"
+            }
+          ],
+          "note": "reported as a comparability caveat, explicitly not a disqualification"
+        },
+        {
+          "key": "fee_basis_disclosure",
+          "label": "Fee basis of every published risk measure must be disclosed",
+          "threshold": "gross-of-fees preferred; net must be labelled",
+          "threshold_source": "CITED: CFA Institute GIPS 2.B.7 'The firm should use gross-of-fees returns when calculating risk measures' and 4.C.42 'The firm must disclose if gross-of-fees or net-of-fees returns are used to calculate presented risk measures'.",
+          "tag": "ACADEMIC-OR-PROFESSIONAL-GUILD",
+          "authority": "CFA Institute (GIPS for Firms, 2020)",
+          "url": "https://www.gipsstandards.org/wp-content/uploads/2021/03/2020_gips_standards_firms.pdf",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": true,
+          "enforcement_kind": "disclosure",
+          "implemented": true,
+          "gated": false,
+          "where": "priced.py:realised_pnl_and_edge",
+          "gap": "DISCLOSED, not gated: the required label is attached to every result, so the criterion is satisfied on every run, but no threshold can reject a wallet on it",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "priced.py",
+              "function": "realised_pnl_and_edge",
+              "line": 363,
+              "kind": "disclosure",
+              "code": "\"fee_basis\": (\"GROSS of gas, DEX fees and MEV - none of these are \""
+            }
+          ],
+          "note": "the fee basis is disclosed on every result: gross of gas, DEX fees and MEV"
+        },
+        {
+          "key": "crypto_vendor_win_rate_band",
+          "label": "Vendor-published win-rate band for a wallet (GMGN)",
+          "threshold": 0.6,
+          "threshold_source": "CITED (vendor): GMGN's own published workflow documentation - 'winrate | % of profitable trades (0-1) | > 0.6 strong, > 0.5 acceptable'. This is GMGN's product-documentation threshold and is tagged ANALYTICS-VENDOR-CONVENTION, NOT a professional standard.",
+          "tag": "ANALYTICS-VENDOR-CONVENTION",
+          "authority": "GMGN (commercial on-chain analytics platform)",
+          "url": "https://raw.githubusercontent.com/GMGNAI/gmgn-skills/HEAD/docs/workflow-smart-money-profile.md",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 963,
+              "kind": "impl",
+              "code": "\"win_rate_band\": {"
+            }
+          ],
+          "note": "vendor context only; never a verdict input"
+        },
+        {
+          "key": "crypto_vendor_composite_weights",
+          "label": "Vendor-published composite smart-money score and its weights (GMGN)",
+          "threshold": null,
+          "threshold_source": "CITED (vendor): GMGN's published leaderboard scoring - 'winrate x 40%', 'pnl x 40%', 'token_num (diversity) x 10%', 'Recency (7d winrate vs 30d winrate improvement) x 10%'. VENDOR CONVENTION, not a standard. The normalisation of each component is not specified by the source and must be documented by the implementing code.",
+          "tag": "ANALYTICS-VENDOR-CONVENTION",
+          "authority": "GMGN (commercial on-chain analytics platform)",
+          "url": "https://raw.githubusercontent.com/GMGNAI/gmgn-skills/HEAD/docs/workflow-smart-money-profile.md",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "not-implemented",
+          "implemented": false,
+          "gated": false,
+          "where": "",
+          "gap": "NOT IMPLEMENTED: no recognisable implementation token for this criterion was found in edge.py, pbo.py, traders.py, priced.py",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [],
+          "note": "vendor context only; never a verdict input"
+        },
+        {
+          "key": "crypto_vendor_pnl_ratio",
+          "label": "Vendor-published PnL ratio band (GMGN)",
+          "threshold": 1.0,
+          "threshold_source": "CITED (vendor): GMGN - 'pnl | realized_profit / total_cost multiplier | > 1.0 = net positive' and '2.0 = doubled money'. VENDOR CONVENTION, not a standard.",
+          "tag": "ANALYTICS-VENDOR-CONVENTION",
+          "authority": "GMGN (commercial on-chain analytics platform)",
+          "url": "https://raw.githubusercontent.com/GMGNAI/gmgn-skills/HEAD/docs/workflow-wallet-analysis.md",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 977,
+              "kind": "impl",
+              "code": "\"pnl_ratio\": {"
+            }
+          ],
+          "note": "vendor context only; the profit ratio is not computed here, so the band is reported and never applied"
+        },
+        {
+          "key": "vendor_label_not_a_standard",
+          "label": "Vendor 'smart money' labels are cohort tags, not verified skill",
+          "threshold": "label is context only; no threshold",
+          "threshold_source": "CITED (vendor): Nansen Smart Money label definition is 'Historically profitable traders' with NO published selection threshold; the PnL Leaderboard schema exposes win_rate, n_trades and avg_trade_roi as sortable fields but publishes no bar. GMGN's own warning: 'a lot of smart money also has a disorderly situation.' Birdeye publishes 'stronger-performing wallets' with no numeric criterion.",
+          "tag": "ANALYTICS-VENDOR-CONVENTION",
+          "authority": "Nansen; Birdeye; GMGN",
+          "url": "https://docs.nansen.ai/api/smart-money",
+          "analyst_choice": false,
+          "published_standard": true,
+          "enforced": false,
+          "enforcement_kind": "computed-only",
+          "implemented": true,
+          "gated": false,
+          "where": "edge.py:evaluate_edge",
+          "gap": "computed or reported in code, but NOT enforced: no gate in the four enforcement modules can reject a wallet on this criterion",
+          "applied_threshold": null,
+          "applied_threshold_key": null,
+          "threshold_matches_spec": null,
+          "hits": [
+            {
+              "file": "edge.py",
+              "function": "evaluate_edge",
+              "line": 962,
+              "kind": "impl",
+              "code": "\"vendor_context\": {"
+            }
+          ],
+          "note": "a vendor label is context, never a standard, and never a verdict input"
+        }
+      ],
+      "fluke_tests": [
+        {
+          "key": "single_lucky_win_carries_pnl",
+          "rejects_when": "max(trade.realised_pnl) / total_realised_pnl > 0.40 (configurable) OR len(distinct tokens) == 1",
+          "threshold": 0.4,
+          "authority": "NONE for the numeric threshold; the independence concept is from CFA Institute 'Analysis of Active Portfolio Management' (2026) and Grinold (1989)",
+          "analyst_choice": true,
+          "published_standard": false,
+          "severity": "REJECT"
+        },
+        {
+          "key": "win_rate_indistinguishable_from_chance",
+          "rejects_when": "wilson_lower_bound_above_chance fails OR bayes_posterior_prob_above_chance < 0.95 OR n_independent_bets < n_required_independent_bets",
+          "threshold": 0.95,
+          "authority": "NIST/SEMATECH e-Handbook; Barber, Bay & Solberg 'Bayes Rules!'",
+          "analyst_choice": false,
+          "published_standard": true,
+          "severity": "REJECT"
+        },
+        {
+          "key": "sharpe_inflated_by_selection",
+          "rejects_when": "deflated_sharpe_ratio < 0.95 OR probability_of_backtest_overfitting > 0.05 OR the trial count N is unknown",
+          "threshold": 0.95,
+          "authority": "Bailey & Lopez de Prado; Bailey, Borwein, Lopez de Prado & Zhu",
+          "analyst_choice": false,
+          "published_standard": true,
+          "severity": "REJECT"
+        },
+        {
+          "key": "edge_decays",
+          "rejects_when": "recent half's mean realised PnL per trade is materially worse than the early half's, OR the posterior P(theta>0.5) computed on the early half falls materially below that computed on the full history",
+          "threshold": 0.5,
+          "authority": "NONE for the numeric threshold; the degradation concept is from the PBO paper",
+          "analyst_choice": true,
+          "published_standard": false,
+          "severity": "REJECT"
+        },
+        {
+          "key": "no_independent_bets",
+          "rejects_when": "the wallet's trades are all one token, OR the count of non-overlapping independent bets is below the NIST requirement, OR fewer than 36 return observations exist",
+          "threshold": 36,
+          "authority": "NIST; CFA Institute (GIPS and Refresher Reading); GMGN (vendor)",
+          "analyst_choice": false,
+          "published_standard": true,
+          "severity": "REJECT"
+        },
+        {
+          "key": "survivorship_selected_universe",
+          "rejects_when": "the pool's reported history omits wallets that were admitted and later decayed, OR the screened universe's results are not published alongside the selected wallet's",
+          "threshold": "history retained; universe disclosed",
+          "authority": "CFA Institute (GIPS); U.S. SEC; FINRA",
+          "analyst_choice": false,
+          "published_standard": true,
+          "severity": "REJECT"
+        },
+        {
+          "key": "backfilled_or_pre_listing_performance",
+          "rejects_when": "any performance record contains observations before the wallet's first observed on-chain activity, or any vendor-supplied history row is carried forward across a dormant period",
+          "threshold": "no pre-listing performance",
+          "authority": "Jorion and Schwarz (Review of Financial Studies, 2019); Aggarwal and Jorion (Financial Analysts Journal, 2010)",
+          "analyst_choice": false,
+          "published_standard": true,
+          "severity": "REJECT"
+        },
+        {
+          "key": "insufficient_history",
+          "rejects_when": "the wallet has no closed trades, or the trades cannot be priced (win count unknown), or the per_day return series is empty",
+          "threshold": 0,
+          "authority": "JAMA (Hanley & Lippman-Hand)",
+          "analyst_choice": false,
+          "published_standard": true,
+          "severity": "REJECT"
+        }
+      ],
+      "n_enforced": 14,
+      "n_gated": 13,
+      "n_disclosed": 1,
+      "n_implemented_not_gated": 16,
+      "n_not_implemented": 1,
+      "n_analyst_choice": 3,
+      "n_published_standard": 28,
+      "enforcement_modules": [
+        "edge.py",
+        "pbo.py",
+        "traders.py",
+        "priced.py"
+      ],
+      "enforcement_modules_missing": [],
+      "scan_method": "each criterion key is matched against a list of specific implementation tokens in the four enforcement modules; a token inside a gate function marks the criterion ENFORCED, a token outside one marks it implemented but not gated",
+      "analyst_choice_note": "a criterion whose authority starts with NONE, or names an analyst choice, has NO published standard behind it. It is reported as an operating parameter of this package and is never presented as a published standard."
+    },
+    "whitelist": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "whitelist",
+      "source_files": [
+        "leapspace\\state\\whitelist.json",
+        "reports\\pepe_priced_edge.json"
+      ],
+      "registry_source": "leapspace\\state\\whitelist.json",
+      "state_file_present": true,
+      "embedded_present": true,
+      "state_and_embedded_agree": false,
+      "source_divergence_note": "the state registry and the copy embedded in the priced-edge file DISAGREE on which wallets they hold. The state registry is the live record and is what is tabulated below; the embedded copy is the snapshot the last gate run wrote. A disagreement means one of them is stale, and neither can be preferred without saying which run produced it.",
+      "status_counts": {
+        "WHITELISTED": 0,
+        "WATCH": 0,
+        "FLUKE": 1,
+        "RETIRED": 1
+      },
+      "status_counts_embedded": {
+        "WHITELISTED": 0,
+        "WATCH": 0,
+        "FLUKE": 11,
+        "RETIRED": 0
+      },
+      "n_entries": 2,
+      "n_entries_embedded": 11,
+      "n_events": 3,
+      "n_rejected_candidates": 2,
+      "entries": [
+        {
+          "key": "ethereum:0xbad",
+          "address": "0xBAD",
+          "chain": "ethereum",
+          "status": "FLUKE",
+          "first_seen": 1793680376,
+          "last_evaluated_at": 1793680376,
+          "promoted_at": null,
+          "promoted_reason": null,
+          "retired_at": null,
+          "retired_reason": null,
+          "rejected_at": 1793680376,
+          "rejected_reason": "rejected by: largest_win_share, deflated_sharpe (also insufficient: min_observations_for_period_statistic, insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "n_history_entries": 1,
+          "last_verdict": "FLUKE",
+          "last_n_closed_trades": 1,
+          "last_win_rate": 1.0,
+          "last_bayesian_skill_p": 1.0,
+          "last_deflated_sharpe": null,
+          "last_independent_bets": 1,
+          "last_total_realised_pnl_usd": 498100.0,
+          "trials_scanned": 1
+        },
+        {
+          "key": "ethereum:0xgood",
+          "address": "0xGOOD",
+          "chain": "ethereum",
+          "status": "RETIRED",
+          "first_seen": 1793680376,
+          "last_evaluated_at": 1793680376,
+          "promoted_at": 1793680376,
+          "promoted_reason": "edge verdict CONSISTENT: edge survives the fluke tests at 1 trial(s) scanned; 80 closed trades, 80 independent bets, skill p=0.9908419512415418",
+          "retired_at": 1793680376,
+          "retired_reason": "retired: no longer qualifying - rejected by: skill_not_distinguishable, deflated_sharpe",
+          "rejected_at": 1793680376,
+          "rejected_reason": "rejected by: skill_not_distinguishable, deflated_sharpe",
+          "n_history_entries": 2,
+          "last_verdict": "FLUKE",
+          "last_n_closed_trades": 80,
+          "last_win_rate": 0.25,
+          "last_bayesian_skill_p": 4.290279933524806e-06,
+          "last_deflated_sharpe": 3.2229774404868294e-13,
+          "last_independent_bets": 80,
+          "last_total_realised_pnl_usd": -520000.0,
+          "trials_scanned": 1
+        }
+      ],
+      "promotions": [
+        {
+          "ts": 1793680376,
+          "key": "ethereum:0xgood",
+          "reason": "edge verdict CONSISTENT: edge survives the fluke tests at 1 trial(s) scanned; 80 closed trades, 80 independent bets, skill p=0.9908419512415418"
+        }
+      ],
+      "retirements": [
+        {
+          "ts": 1793680376,
+          "key": "ethereum:0xgood",
+          "reason": "retired: no longer qualifying - rejected by: skill_not_distinguishable, deflated_sharpe"
+        }
+      ],
+      "watches": [],
+      "rejections": [
+        {
+          "ts": 1793680376,
+          "key": "ethereum:0xbad",
+          "reason": "rejected by: largest_win_share, deflated_sharpe (also insufficient: min_observations_for_period_statistic, insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "trials_scanned": 1,
+          "n_closed_trades": 1,
+          "rejected_by": [
+            "largest_win_share",
+            "deflated_sharpe",
+            "min_observations_for_period_statistic",
+            "insufficient_independent_bets",
+            "single_token_only",
+            "too_few_closed_trades"
+          ]
+        },
+        {
+          "ts": 1793680376,
+          "key": "ethereum:0xgood",
+          "reason": "rejected by: skill_not_distinguishable, deflated_sharpe",
+          "trials_scanned": 1,
+          "n_closed_trades": 80,
+          "rejected_by": [
+            "skill_not_distinguishable",
+            "deflated_sharpe"
+          ]
+        }
+      ],
+      "candidates_examined": 1,
+      "candidates_examined_note": "this is the N the Deflated Sharpe is corrected for: the number of candidate wallets that were screened before this one was chosen. An unknown N is treated as an automatic rejection of the selection-bias test, not as N=1.",
+      "retention_rule": "a retired or rejected wallet leaves the forward cohort and its history is RETAINED (CFA Institute GIPS 3.A.9), so the scan's selection bias stays visible instead of being edited away."
+    },
+    "price_method": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "price_method",
+      "source_files": [
+        "leapspace\\priceatblock.py",
+        "reports\\pepe_priced_edge.json",
+        "README.md",
+        "reports\\probe_pool_vs_llama.json"
+      ],
+      "method": "Uniswap V2 pair reserves read at each trade's own block, via a keyless archive RPC. The package asks the V2 factory, AT that block, which pair existed for (token, USDC), then reads that pair's getReserves() at the same block and takes reserve(quote) / reserve(token) with decimals applied. A token whose deep pair is quoted in WETH is priced in WETH and multiplied by the WETH/USD price read from the deep WETH/USDC pair at the same block. No price API is required for the pool route.",
+      "liquidity_floor": {
+        "stable_quote_min": "10_000.0",
+        "weth_quote_min": "30.0",
+        "rejection_status": "insufficient_liquidity",
+        "note": "a pair whose quote side holds less than the floor is REJECTED and the price is reported as unavailable rather than as a number, so a nearly-empty pool cannot manufacture a price"
+      },
+      "per_wallet_block_cap": {
+        "max_blocks": "40",
+        "source": "leapspace\\priceatblock.py",
+        "consequence": "the cap limits how many DISTINCT blocks one wallet scan prices. When it bites, the most RECENT blocks are priced - those are the trades that decide whether the wallet has a live edge - and the number of blocks NOT priced is reported rather than hidden. A wallet's EARLY history can therefore be missing from its realised PnL, and its PnL can be incomplete without the PnL itself being wrong.",
+        "blocks_priced_recorded": null,
+        "blocks_skipped_recorded": null
+      },
+      "measured_accuracy_vs_defillama": [
+        {
+          "token": "PEPE",
+          "date": "2024-01-01",
+          "pool_price_usd": 1.237e-06,
+          "reference_usd": 1.29e-06,
+          "pct_error": 4.1,
+          "note": "",
+          "found_in_readme": true,
+          "readme_file": "README.md"
+        },
+        {
+          "token": "PEPE",
+          "date": "2025-01-01",
+          "pool_price_usd": 1.8291e-05,
+          "reference_usd": 1.984e-05,
+          "pct_error": 7.8,
+          "note": "",
+          "found_in_readme": true,
+          "readme_file": "README.md"
+        },
+        {
+          "token": "PEPE",
+          "date": "2023-06-01",
+          "pool_price_usd": 1.6065e-06,
+          "reference_usd": 1.26e-06,
+          "pct_error": 27.5,
+          "note": "the pool was new and shallow",
+          "found_in_readme": true,
+          "readme_file": "README.md"
+        },
+        {
+          "token": "SHIB",
+          "date": "2024-01-01",
+          "pool_price_usd": 9.7679e-06,
+          "reference_usd": null,
+          "pct_error": null,
+          "note": "no reference figure or error percentage is recorded for this row, so none is stated here",
+          "found_in_readme": true,
+          "readme_file": "README.md"
+        }
+      ],
+      "measured_accuracy_note": "the pool-derived price is compared against DefiLlama's historical index price. The percentage errors above are the measured ones recorded in the package README's verification table; the third row is large because the pool was new and shallow, which is exactly the case the liquidity floor targets.",
+      "independent_pool_vs_index_probe": {
+        "source_file": "reports\\probe_pool_vs_llama.json",
+        "n_samples": 7,
+        "max_abs_pct_error": 0.9664612995281985,
+        "median_abs_pct_error": 0.12221884391682147,
+        "note": "pool-derived price against the reference index at fixed blocks; pct_error is already in percent"
+      },
+      "priced_totals": {
+        "n_trades_priced": 236,
+        "n_unpriced": 779,
+        "source_file": "reports\\pepe_priced_edge.json"
+      },
+      "fee_basis": "the realised PnL is GROSS of gas, DEX fees and MEV. None of those are observable from ERC-20 transfers alone, so a net figure would need per-swap gas and fee logs. Every PnL number in this report is on that gross basis."
+    },
+    "new_meme_path": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "new_meme_path",
+      "source_files": [
+        "reports\\launch_scan.json"
+      ],
+      "token": "0x93025BB139fa2756A6130De833df9D07bBD2E3b1",
+      "chain": "ethereum",
+      "launch": {
+        "creator": "0x2F0F35765563Ba038BA80ffB80d76Eb6106B946A",
+        "creation_tx": "0x1624a2bcc79436636f5572b7015dda5dfd7d6cb406ae0d7481618d4bdc35277f",
+        "launch_block": 26327462,
+        "launch_timestamp": 1793626895,
+        "status": "ok"
+      },
+      "window_blocks": 1000,
+      "n_buyers_in_window": 2,
+      "candidates_scanned": 2,
+      "n_in_window": 2,
+      "buyers": [
+        {
+          "address": "0x2F0F35765563Ba038BA80ffB80d76Eb6106B946A",
+          "is_deployer": true,
+          "entry_lag_blocks": 0,
+          "entry_class": "sniper (<10 blocks)",
+          "n_buys": 5,
+          "bought_tokens": 10000719520.116606,
+          "first_block": 26327462,
+          "last_block": 26327823,
+          "first_timestamp": "2026-11-02T13:41:35.000000Z",
+          "edge_verdict": "FLUKE",
+          "edge_reason": "rejected by: skill_not_distinguishable (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "skill_p": 0.5,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "prior_meme_tokens": 1
+        },
+        {
+          "address": "0x211D2FfE82fe134571F031850703041752EFCE49",
+          "is_deployer": false,
+          "entry_lag_blocks": 20,
+          "entry_class": "very early (<100 blocks)",
+          "n_buys": 2,
+          "bought_tokens": 5000719830.556544,
+          "first_block": 26327482,
+          "last_block": 26327819,
+          "first_timestamp": "2026-11-02T13:45:35.000000Z",
+          "edge_verdict": "FLUKE",
+          "edge_reason": "rejected by: skill_not_distinguishable (also insufficient: insufficient_independent_bets, single_token_only, too_few_closed_trades)",
+          "skill_p": 0.5,
+          "independent_bets": 1,
+          "deflated_sharpe": null,
+          "prior_meme_tokens": 1
+        }
+      ],
+      "deployer_found_in_window": true,
+      "insider_detection_result": "THE DEPLOYER WAS FOUND INSIDE THE LAUNCH WINDOW - the deployer address appears among the wallets that bought within the window. That is a positive insider-detection result: the deployer took its own token.",
+      "screen_note": "candidates_scanned is the number of wallets examined; it enters the Deflated Sharpe, so a wider screen raises the bar for every one of them.",
+      "early_note": "Only buyers INSIDE the window are listed. A wallet that bought after it is not an early buyer and is not here.",
+      "verdict_summary": {
+        "0x2F0F35765563Ba038BA80ffB80d76Eb6106B946A": "FLUKE",
+        "0x211D2FfE82fe134571F031850703041752EFCE49": "FLUKE"
+      },
+      "edge_verdicts": [
+        "FLUKE"
+      ]
+    },
+    "social_edge": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "social_edge",
+      "source_files": [
+        "leapspace\\state\\narrative_cohort.json",
+        "leapspace\\state\\social_series\\ethereum_0x240D6FAF8c3B1A7394e371792A3bf9D28DD65515.json",
+        "leapspace\\state\\social_series\\ethereum_0xA35923162C49cF95e6BF26623385eb431ad920D3.json",
+        "leapspace\\state\\social_series\\ethereum_0xC4441c2BE5d8fA8126822B9929CA0b81Ea0DE38E.json",
+        "leapspace\\state\\social_series\\ethereum_0xb131f4A55907B10d1F0A50d8ab8FA09EC342cd74.json",
+        "leapspace\\state\\social_series\\solana_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263.json",
+        "leapspace\\state\\holder_series\\solana_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263.json"
+      ],
+      "cohort_snapshots": 20,
+      "cohort_distinct_mints": 36,
+      "cohort_max_snapshot_n": 6,
+      "specificity_split": {
+        "n_niche": 9,
+        "n_generic": 27,
+        "basis": "distinct mints across all stored snapshots, counted from the is_niche flag each row carries",
+        "per_snapshot": [
+          {
+            "ts": 1793626509,
+            "n": 0,
+            "n_rows": 0,
+            "n_niche": 0,
+            "n_generic": 0
+          },
+          {
+            "ts": 1793626522,
+            "n": 6,
+            "n_rows": 6,
+            "n_niche": 2,
+            "n_generic": 4
+          },
+          {
+            "ts": 1793626530,
+            "n": 3,
+            "n_rows": 3,
+            "n_niche": 0,
+            "n_generic": 3
+          },
+          {
+            "ts": 1793626533,
+            "n": 1,
+            "n_rows": 1,
+            "n_niche": 0,
+            "n_generic": 1
+          },
+          {
+            "ts": 1793626744,
+            "n": 6,
+            "n_rows": 6,
+            "n_niche": 2,
+            "n_generic": 4
+          },
+          {
+            "ts": 1793626754,
+            "n": 5,
+            "n_rows": 5,
+            "n_niche": 2,
+            "n_generic": 3
+          },
+          {
+            "ts": 1793626761,
+            "n": 3,
+            "n_rows": 3,
+            "n_niche": 3,
+            "n_generic": 0
+          },
+          {
+            "ts": 1793626775,
+            "n": 5,
+            "n_rows": 5,
+            "n_niche": 0,
+            "n_generic": 5
+          },
+          {
+            "ts": 1793626776,
+            "n": 0,
+            "n_rows": 0,
+            "n_niche": 0,
+            "n_generic": 0
+          },
+          {
+            "ts": 1793626794,
+            "n": 6,
+            "n_rows": 6,
+            "n_niche": 2,
+            "n_generic": 4
+          },
+          {
+            "ts": 1793626802,
+            "n": 3,
+            "n_rows": 3,
+            "n_niche": 0,
+            "n_generic": 3
+          },
+          {
+            "ts": 1793626804,
+            "n": 1,
+            "n_rows": 1,
+            "n_niche": 0,
+            "n_generic": 1
+          },
+          {
+            "ts": 1793635575,
+            "n": 6,
+            "n_rows": 6,
+            "n_niche": 2,
+            "n_generic": 4
+          },
+          {
+            "ts": 1793635584,
+            "n": 5,
+            "n_rows": 5,
+            "n_niche": 2,
+            "n_generic": 3
+          },
+          {
+            "ts": 1793635594,
+            "n": 4,
+            "n_rows": 4,
+            "n_niche": 2,
+            "n_generic": 2
+          },
+          {
+            "ts": 1793635604,
+            "n": 5,
+            "n_rows": 5,
+            "n_niche": 0,
+            "n_generic": 5
+          },
+          {
+            "ts": 1793635604,
+            "n": 0,
+            "n_rows": 0,
+            "n_niche": 0,
+            "n_generic": 0
+          },
+          {
+            "ts": 1793635615,
+            "n": 5,
+            "n_rows": 5,
+            "n_niche": 2,
+            "n_generic": 3
+          },
+          {
+            "ts": 1793635625,
+            "n": 4,
+            "n_rows": 4,
+            "n_niche": 0,
+            "n_generic": 4
+          },
+          {
+            "ts": 1793635627,
+            "n": 1,
+            "n_rows": 1,
+            "n_niche": 0,
+            "n_generic": 1
+          }
+        ]
+      },
+      "community_size_series": [
+        {
+          "kind": "social_series",
+          "file": "leapspace\\state\\social_series\\ethereum_0x240D6FAF8c3B1A7394e371792A3bf9D28DD65515.json",
+          "chain": "ethereum",
+          "mint": "0x240D6FAF8c3B1A7394e371792A3bf9D28DD65515",
+          "n_snapshots": 4,
+          "first_ts": 1793678205,
+          "last_ts": 1793678629,
+          "span_seconds": 424,
+          "telegram_members": 2013,
+          "discord_members": null,
+          "holder_count": null,
+          "provenance": null,
+          "source": "leapspace/scripts/collect_community_sizes.py",
+          "member_counts_constant": true,
+          "holder_count_constant": true
+        },
+        {
+          "kind": "social_series",
+          "file": "leapspace\\state\\social_series\\ethereum_0xA35923162C49cF95e6BF26623385eb431ad920D3.json",
+          "chain": "ethereum",
+          "mint": "0xA35923162C49cF95e6BF26623385eb431ad920D3",
+          "n_snapshots": 4,
+          "first_ts": 1793678193,
+          "last_ts": 1793678616,
+          "span_seconds": 423,
+          "telegram_members": null,
+          "discord_members": 236,
+          "holder_count": null,
+          "provenance": null,
+          "source": "leapspace/scripts/collect_community_sizes.py",
+          "member_counts_constant": true,
+          "holder_count_constant": true
+        },
+        {
+          "kind": "social_series",
+          "file": "leapspace\\state\\social_series\\ethereum_0xC4441c2BE5d8fA8126822B9929CA0b81Ea0DE38E.json",
+          "chain": "ethereum",
+          "mint": "0xC4441c2BE5d8fA8126822B9929CA0b81Ea0DE38E",
+          "n_snapshots": 4,
+          "first_ts": 1793678200,
+          "last_ts": 1793678624,
+          "span_seconds": 424,
+          "telegram_members": 16803,
+          "discord_members": 20021,
+          "holder_count": null,
+          "provenance": null,
+          "source": "leapspace/scripts/collect_community_sizes.py",
+          "member_counts_constant": true,
+          "holder_count_constant": true
+        },
+        {
+          "kind": "social_series",
+          "file": "leapspace\\state\\social_series\\ethereum_0xb131f4A55907B10d1F0A50d8ab8FA09EC342cd74.json",
+          "chain": "ethereum",
+          "mint": "0xb131f4A55907B10d1F0A50d8ab8FA09EC342cd74",
+          "n_snapshots": 4,
+          "first_ts": 1793678196,
+          "last_ts": 1793678620,
+          "span_seconds": 424,
+          "telegram_members": null,
+          "discord_members": 132347,
+          "holder_count": null,
+          "provenance": null,
+          "source": "leapspace/scripts/collect_community_sizes.py",
+          "member_counts_constant": true,
+          "holder_count_constant": true
+        },
+        {
+          "kind": "social_series",
+          "file": "leapspace\\state\\social_series\\solana_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263.json",
+          "chain": "solana",
+          "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "n_snapshots": 7,
+          "first_ts": 1793671933,
+          "last_ts": 1793678632,
+          "span_seconds": 6699,
+          "telegram_members": 11004,
+          "discord_members": 32581,
+          "holder_count": null,
+          "provenance": null,
+          "source": "leapspace/scripts/collect_community_sizes.py",
+          "member_counts_constant": true,
+          "holder_count_constant": true
+        },
+        {
+          "kind": "holder_series",
+          "file": "leapspace\\state\\holder_series\\solana_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263.json",
+          "chain": "solana",
+          "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "n_snapshots": 3,
+          "first_ts": 1793639260,
+          "last_ts": 1793639260,
+          "span_seconds": 0,
+          "telegram_members": null,
+          "discord_members": null,
+          "holder_count": 2101361,
+          "provenance": "LIVE",
+          "source": "rugcheck.report:topHolders",
+          "member_counts_constant": true,
+          "holder_count_constant": true
+        }
+      ],
+      "n_series_stored": 6,
+      "n_series_with_constant_counts": 6,
+      "measured_lead_times": null,
+      "measured_lead_times_note": "NO WALLET HAS YET BEEN MEASURED AGAINST A REAL MEMBER-COUNT SERIES. No artefact on disk records a lead time between a wallet's buy and a community-size event.",
+      "why_not_measurable": "A member-count series only becomes a SERIES over time: the endpoints expose the CURRENT count, so the series has to be sampled repeatedly, and a lead time needs at least two observations that bracket the wallet's purchase. The stored series cover minutes, not days, and their member counts do not move, so no threshold crossing can be located inside them. Until the series has been collected over a real interval, the honest answer is NOT YET MEASURABLE - not 'no effect' and not a lead time computed from a flat line.",
+      "lead_time_artefacts_found": [
+        "reports\\memecoin_report.json"
+      ],
+      "narrative_classifier_note": "the specificity score is a weighted classifier over free signals that separate a community footprint from a trend clone. Its weights and keyword list are analyst choices and are re-scorable; it measures the PRESENCE of a community footprint, not attention, sentiment or community size."
+    },
+    "keyed_source": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "keyed_source",
+      "source_files": [
+        "leapspace\\etherscan.py",
+        "leapspace\\priced.py"
+      ],
+      "free_tier_actions": [
+        {
+          "action": "account.tokentx",
+          "note": "OK - ERC-20 transfers (1,000 per page)"
+        },
+        {
+          "action": "account.txlist",
+          "note": "OK - transactions"
+        },
+        {
+          "action": "account.tokenbalance",
+          "note": "OK - one address's ERC-20 balance"
+        },
+        {
+          "action": "account.balancemulti",
+          "note": "OK - up to 20 addresses' ERC-20 balances"
+        },
+        {
+          "action": "account.balance",
+          "note": "OK - native balance"
+        },
+        {
+          "action": "contract.getsourcecode",
+          "note": "OK - verified source, compiler, proxy"
+        }
+      ],
+      "pro_only_actions": [
+        {
+          "action": "token.tokenholderlist",
+          "note": "PRO ONLY - returns NOTOK"
+        },
+        {
+          "action": "token.tokeninfo",
+          "note": "PRO ONLY - returns NOTOK"
+        }
+      ],
+      "n_free_tier_actions": 6,
+      "n_pro_only_actions": 2,
+      "free_tier_note": "these actions were verified live against Etherscan V2 on the date recorded in the adapter's own source comment; anything not listed as working returns HTTP 200 with status=0 and message=NOTOK.",
+      "http_error_convention": "Etherscan signals failure in the JSON BODY, not the HTTP status. A bad key, a bad parameter and a rate limit all return HTTP 200 with {\"status\":\"0\",\"message\":\"NOTOK\"}. Every response must therefore be checked for status == \"1\"; an HTTP 200 is never proof of data.",
+      "url_separator_rule": "the DefiLlama historical-price endpoint separates chain from token with a COLON: https://coins.llama.fi/prices/historical/{unix_ts}/{chain}:{token}. The comma form returns {\"coins\": {}} and looks like a dead endpoint - it is not.",
+      "url_separator_rule_source_line": "Note the COLON between chain and token. The comma form returns",
+      "api_key_source": "the process environment (ETHERSCAN_API_KEY), optionally loaded from the gitignored .secrets.env beside the package",
+      "api_key_configured": true,
+      "api_key_presence_note": "presence was read through the package's own accessor, which returns a boolean",
+      "api_key_handling": "the key is read from the environment at call time. It is never a literal in source, never written into any artefact, report, chart or log, and no fingerprint or hash of it is produced. This section reports only WHETHER one is configured, never its value.",
+      "holder_list_workaround": "Etherscan's own tokenholderlist action is Pro-only and returns NOTOK on the free tier, so it is not used. Holder balances are read with the free-tier balance actions, or reconstructed by netting the token's transfer tape."
+    },
+    "source_reliability": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "source_reliability",
+      "source_files": [
+        "data\\free_data_sources.json"
+      ],
+      "generated_at": "2026-11-03T02:09:34.907081+00:00",
+      "n_sources": 156,
+      "n_live_probed": 156,
+      "n_verified_ok": 67,
+      "n_verified_ok_recomputed": 67,
+      "n_needs_key": 30,
+      "n_needs_key_recomputed": 30,
+      "n_usable_as_fallback": 51,
+      "live_status_counts": {
+        "ok": 67,
+        "http_403": 8,
+        "http_404": 56,
+        "error": 3,
+        "dns_fail": 3,
+        "http_401": 10,
+        "http_402": 3,
+        "http_429": 1,
+        "http_400": 1,
+        "http_525": 1,
+        "http_503": 1,
+        "conn_fail": 2
+      },
+      "live_status_counts_recomputed": {
+        "ok": 67,
+        "http_403": 8,
+        "http_404": 56,
+        "error": 3,
+        "dns_fail": 3,
+        "http_401": 10,
+        "http_402": 3,
+        "http_429": 1,
+        "http_400": 1,
+        "http_525": 1,
+        "http_503": 1,
+        "conn_fail": 2
+      },
+      "host_facts": {
+        "ssl": "certifi's CA bundle is required - the Windows CA store mis-validates some chains (valid Let's Encrypt certs read as expired). leapspace/http.py already builds the context with certifi.where().",
+        "network_filter": "The host sits behind a Sangfor NGAF URL filter. Blocked hosts are answered with HTTP 200 + an HTML block page, so a status code alone is not proof of data. See tools/freeprobe/validate.py.",
+        "coin_gecko": "api.coingecko.com fails the TLS handshake (WinError 10054) from this host; pro-api.coingecko.com and www.coingecko.com answer normally.",
+        "reddit": "All reddit.com .json paths return HTTP 403; .rss works.",
+        "discord_widget": "The widget endpoint only returns data for guilds that have the widget enabled."
+      },
+      "host_traps": [
+        {
+          "trap": "URL filter",
+          "host_fact": "network_filter",
+          "detail": "The host sits behind a Sangfor NGAF URL filter. Blocked hosts are answered with HTTP 200 + an HTML block page, so a status code alone is not proof of data. See tools/freeprobe/validate.py."
+        },
+        {
+          "trap": "TLS",
+          "host_fact": "coin_gecko",
+          "detail": "api.coingecko.com fails the TLS handshake (WinError 10054) from this host; pro-api.coingecko.com and www.coingecko.com answer normally."
+        },
+        {
+          "trap": "path",
+          "host_fact": "reddit",
+          "detail": "All reddit.com .json paths return HTTP 403; .rss works."
+        },
+        {
+          "trap": "CA bundle",
+          "host_fact": "ssl",
+          "detail": "certifi's CA bundle is required - the Windows CA store mis-validates some chains (valid Let's Encrypt certs read as expired). leapspace/http.py already builds the context with certifi.where()."
+        },
+        {
+          "trap": "widget",
+          "host_fact": "discord_widget",
+          "detail": "The widget endpoint only returns data for guilds that have the widget enabled."
+        },
+        {
+          "trap": "HTTP 200 + NOTOK",
+          "source": "Etherscan API V2 tokenholderlist",
+          "live_status": "error",
+          "http_status": 200,
+          "api_level_error": "\"message\":\"NOTOK\"",
+          "detail": "Live probe with NO key returned HTTP 200 whose body was {status:'0', message:'NOTOK', result:'Missing/Invalid API Key'}. Etherscan signals failure in the JSON body, not the HTTP status - the caller must check body['status']. A placeholder key produced the same NOTOK payload. Chains 56/8453/10/100 answered 'Free API access is not supported for this chain'; chains 534352/324/81457/25/31 answered 'Missing or unsupported chainid'.",
+          "usable_as_fallback": false
+        },
+        {
+          "trap": "docs page at a JSON path",
+          "source": "ApeWisdom v1.0 JSON API",
+          "live_status": "ok",
+          "http_status": 200,
+          "api_level_error": null,
+          "detail": "Live probe returned HTTP 200 application/json with {count:640, pages:7, current_page:1, results:[{rank, ticker, name, mentions, upvotes, rank_24h_ago, mentions_24h_ago}]}. CRITICAL PATH NOTE: the commonly quoted '/api/' and '/api/top-tokens/' return the DOCS HTML page with HTTP 200 - a silent false positive. The working path is '/api/v1.0/filter/{filter}' (filters: all, all-stocks, crypto). The 'crypto' filter probed empty (count:0), so use 'all'.",
+          "usable_as_fallback": true
+        },
+        {
+          "trap": "403 on .json",
+          "source": "Reddit public JSON",
+          "live_status": "http_403",
+          "http_status": 403,
+          "api_level_error": null,
+          "detail": "CONFIRMED BLOCKED from this host: HTTP 403 with a 189,908-byte Cloudflare/Reddit block page ('You've been blocked by network security'). The same 403 came back for old.reddit.com, oauth.reddit.com, api.reddit.com, www.reddit.com/search.json and a deep-link comments .json. ALL .json paths are blocked.",
+          "usable_as_fallback": false
+        },
+        {
+          "trap": ".rss works",
+          "source": "Reddit public RSS (WORKS where .json is blocked)",
+          "live_status": "ok",
+          "http_status": 200,
+          "api_level_error": null,
+          "detail": "THE WORKING REDDIT PATH. Live probe returned HTTP 200 with an Atom feed (12,878 bytes, title 'newest submissions : CryptoCurrency'). NOTE /r/wallstreetcoins/top.rss returned HTTP 404 with feed title 'WallStreetCoins: banned' - the subreddit is banned, and RSS reports that as 404 rather than 403.",
+          "usable_as_fallback": true
+        },
+        {
+          "trap": "TLS handshake failure",
+          "source": "CoinGecko public API (api.coingecko.com)",
+          "live_status": "conn_fail",
+          "http_status": null,
+          "api_level_error": null,
+          "detail": "IMPORTANT HOST FACT: api.coingecko.com is UNREACHABLE from this host. Four separate live probes all failed with ConnectionResetError (WinError 10054) during the TLS handshake, and the raw TLS handshake to the resolved Cloudflare IPs (104.20.41.132, 172.66.172.219) fails the same way. Plain HTTP does not help - it 302s to the local URL filter at 192.168.8.1/urlfilter and returns a 'Sangfor NGAF' block page WITH HTTP 200 (a false positive). pro-api.coingecko.com answers normally (HTTP 401 'API Key Missing') and www.coingecko.com answers (HTTP 404 on API paths), so the block is hostname-specific. Do not treat any 200 from this host as CoinGecko data.",
+          "usable_as_fallback": false
+        }
+      ],
+      "interpretation_rule": "a status code alone is not proof of data on this host. A blocked host can answer HTTP 200 with an HTML block page, a JSON endpoint can answer HTTP 200 with an API-level error, and a docs page can answer HTTP 200 at a path that is supposed to return JSON. Every count below is therefore reported with the shape of the response, not just its status."
+    },
+    "gaps": {
+      "status": "ok",
+      "provenance": "DERIVED-FROM-ARTEFACT",
+      "available": true,
+      "section": "gaps",
+      "source_files": [],
+      "n_gaps": 16,
+      "gaps": [
+        {
+          "id": "survivorship-selected-sample",
+          "area": "consistency gate",
+          "gap": "The wallets scored are the ones that still hold the token. Wallets that bought and sold out entirely are absent, so the sample cannot show what fraction of the universe is skilled.",
+          "what_would_close_it": "a scan over a published, non-survivorship-selected wallet universe with the admission rule recorded"
+        },
+        {
+          "id": "price-cap-truncates-history",
+          "area": "consistency gate / price method",
+          "gap": "The per-wallet block cap means a wallet's early history may not be priced at all, so its realised PnL can be incomplete. The blocks skipped are reported, but the un-priced history is gone.",
+          "what_would_close_it": "an uncapped per-wallet price pass, or a per-wallet record of which blocks were skipped and why"
+        },
+        {
+          "id": "gross-of-fees-pnl",
+          "area": "consistency gate",
+          "gap": "Realised PnL is GROSS of gas, DEX fees and MEV. None of those are observable from ERC-20 transfers alone, so every PnL figure overstates what a wallet kept.",
+          "what_would_close_it": "per-swap gas and fee logs, joined to the transfer tape"
+        },
+        {
+          "id": "criteria-not-implemented",
+          "area": "criteria coverage",
+          "gap": "These criteria in the specification have no implementation token in the four enforcement modules: crypto_vendor_composite_weights.",
+          "what_would_close_it": "an implementation in edge.py, pbo.py, traders.py or priced.py"
+        },
+        {
+          "id": "criteria-computed-not-gated",
+          "area": "criteria coverage",
+          "gap": "These criteria are computed or reported but CANNOT reject a wallet, so their presence in the code is not evidence that the standard is applied: min_independent_bets_table, wilson_lower_bound_above_chance, bonferroni_alpha_per_test, bh_fdr_procedure, multiple_testing_t_statistic_hurdle, sortino_ratio, calmar_ratio, max_drawdown, drawdown_duration, track_record_length_minimum, chain_coverage_ceiling, posterior_split_half_stability, cross_chain_comparability_report, crypto_vendor_win_rate_band, crypto_vendor_pnl_ratio, vendor_label_not_a_standard.",
+          "what_would_close_it": "a gate that compares the quantity against the threshold"
+        },
+        {
+          "id": "analyst-choice-thresholds",
+          "area": "criteria coverage",
+          "gap": "3 of the 31 criteria have NO published standard behind them. Their thresholds are this package's operating choices.",
+          "what_would_close_it": "a published source, or the explicit acceptance that the number is an analyst choice"
+        },
+        {
+          "id": "enforced-value-differs-from-published",
+          "area": "criteria coverage",
+          "gap": "For these criteria the gate compares against a different number from the one the specification publishes: min_independent_bets. The published threshold is in the table; the value the code actually applies is named beside it.",
+          "what_would_close_it": "aligning the gate's threshold with the published one, or recording the substitution as an analyst choice"
+        },
+        {
+          "id": "no-whitelisted-wallet",
+          "area": "whitelist",
+          "gap": "No wallet holds WHITELISTED status. The forward cohort is empty, so this package has not identified a consistently profitable memecoin trader.",
+          "what_would_close_it": "a wallet that passes every hard gate with a non-trivial sample"
+        },
+        {
+          "id": "whitelist-copies-disagree",
+          "area": "whitelist",
+          "gap": "The state whitelist registry and the whitelist embedded in the priced-edge result file hold different sets of wallets, so one of them is stale. The report cannot say which without knowing which run produced each.",
+          "what_would_close_it": "re-running the gate so both copies are written by the same run, or recording the run identifier in each"
+        },
+        {
+          "id": "price-accuracy-not-uniform",
+          "area": "price method",
+          "gap": "The measured error against the reference index ranges from a few percent to roughly a quarter on a young, shallow pool. The price is the price of the pool the wallet traded, which is not always the price of the token.",
+          "what_would_close_it": "a depth-weighted reference price, or the liquidity depth at each trade's block reported beside the price"
+        },
+        {
+          "id": "one-launch-window-only",
+          "area": "launch scan",
+          "gap": "The scan covers ONE token over ONE window of 1000 blocks, with 2 buyer(s) inside it. That is a case study, not a rate.",
+          "what_would_close_it": "the same scan run over a large, published set of launches"
+        },
+        {
+          "id": "launch-window-buyers-only",
+          "area": "launch scan",
+          "gap": "Only buyers INSIDE the window are listed. A wallet that bought after the window is not an early buyer and is not in this file, so the file cannot be read as the set of buyers of the token.",
+          "what_would_close_it": "the full buyer set with entry lags, or an explicit statement of the screened universe"
+        },
+        {
+          "id": "no-lead-time-measured",
+          "area": "social edge",
+          "gap": "No wallet has been measured against a real member-count series, so no lead time is reported. The series must be collected over time before a lead time can mean anything.",
+          "what_would_close_it": "a member-count series spanning days around a wallet's purchase"
+        },
+        {
+          "id": "specificity-classifier-is-a-heuristic",
+          "area": "social edge",
+          "gap": "The narrative specificity score is a weighted classifier over free signals whose weights and keyword list are analyst choices. It measures the presence of a community footprint; it does not measure attention, sentiment or size, and it is not a forward test of the paper's outperformance claim.",
+          "what_would_close_it": "two cohort snapshots separated in time and a forward-return test on them"
+        },
+        {
+          "id": "pro-only-actions-unavailable",
+          "area": "keyed source",
+          "gap": "The Etherscan holder-list and token-info actions are Pro-only, so on the free tier the holder set is reconstructed from the transfer tape rather than read from the vendor.",
+          "what_would_close_it": "a Pro subscription, or a full transfer tape for the token"
+        },
+        {
+          "id": "http-200-is-not-data",
+          "area": "free-data catalogue",
+          "gap": "On this host a blocked host can answer HTTP 200 with an HTML block page, and a JSON endpoint can answer HTTP 200 with an API-level error. Counts of 'working' sources are therefore counts of well-shaped responses, not of reachable data.",
+          "what_would_close_it": "response-shape validation on every probe, which the catalogue partly does but not for every host"
+        }
+      ],
+      "note": "This section exists so the report cannot be read as claiming more than it delivers. Every entry says what is missing and what would close it."
+    }
+  }
+}

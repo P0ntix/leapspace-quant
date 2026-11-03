@@ -1,0 +1,401 @@
+[
+  {
+    "name": "cg.coins.pepe.bare",
+    "url": "https://api.coingecko.com/api/v3/coins/pepe",
+    "note": "no query args",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 200,
+    "bytes": 98891,
+    "ct": "application/json",
+    "rl": {},
+    "body_head": "{\"id\":\"pepe\",\"symbol\":\"pepe\",\"name\":\"Pepe\",\"web_slug\":\"pepe\",\"asset_platform_id\":\"ethereum\",\"platforms\":{\"ethereum\":\"0x6982508145454ce325ddbe47a25d4ec3d2311933\",\"avalanche\":\"0xa659d083b677d6bffe1cb704e1473b896727be6d\",\"binance-smart-chain\":\"0x25d887ce7a35172c62febfd67a1856f20faebb00\",\"arbitrum-one\":\"0x25d887ce7a35172c62febfd67a1856f20faebb00\"},\"detail_platforms\":{\"ethereum\":{\"decimal_place\":18,\"co"
+  },
+  {
+    "name": "cg.coins.pepe.community_data",
+    "url": "https://api.coingecko.com/api/v3/coins/pepe?localization=false&tickers=false&market_data=false&community_data=true&developer_data=false&sparkline=false",
+    "note": "community_data only",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 429,
+    "bytes": 187,
+    "ct": "application/json",
+    "rl": {
+      "Retry-After": "53"
+    },
+    "body_head": "{\"status\":{\"error_code\":429,\"error_message\":\"You've exceeded the Rate Limit. Please visit https://www.coingecko.com/en/api/pricing to subscribe to our API plans for higher rate limits.\"}}"
+  },
+  {
+    "name": "cg.coins.pepe.links_only",
+    "url": "https://api.coingecko.com/api/v3/coins/pepe?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false",
+    "note": "links only",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 429,
+    "bytes": 187,
+    "ct": "application/json",
+    "rl": {
+      "Retry-After": "45"
+    },
+    "body_head": "{\"status\":{\"error_code\":429,\"error_message\":\"You've exceeded the Rate Limit. Please visit https://www.coingecko.com/en/api/pricing to subscribe to our API plans for higher rate limits.\"}}"
+  },
+  {
+    "name": "cg.coins.pepe.extracted",
+    "url": "https://api.coingecko.com/api/v3/coins/pepe?localization=false&tickers=false&market_data=false&community_data=true&developer_data=false&sparkline=false",
+    "note": "community_data extractor",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 429,
+    "bytes": 187,
+    "ct": "application/json",
+    "rl": {
+      "Retry-After": "36"
+    },
+    "extracted": {
+      "id": null,
+      "symbol": null,
+      "links": null,
+      "community_data": null,
+      "sentiment_up_pct": null,
+      "watchlist_users": null
+    }
+  },
+  {
+    "name": "cg.coins.bonk.extracted",
+    "url": "https://api.coingecko.com/api/v3/coins/bonk?localization=false&tickers=false&market_data=false&community_data=true&developer_data=false&sparkline=false",
+    "note": "bonk extractor",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 429,
+    "bytes": 187,
+    "ct": "application/json",
+    "rl": {
+      "Retry-After": "28"
+    },
+    "extracted": {
+      "id": null,
+      "symbol": null,
+      "links": null,
+      "community_data": null,
+      "sentiment_up_pct": null,
+      "watchlist_users": null
+    }
+  },
+  {
+    "name": "cg.coins.list.links",
+    "url": "https://api.coingecko.com/api/v3/coins/list?include_platform=false",
+    "note": "free coin list",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 429,
+    "bytes": 187,
+    "ct": "application/json",
+    "rl": {
+      "Retry-After": "28"
+    },
+    "extracted_error": "KeyError: slice(None, 5, None)",
+    "body_head": "{\"status\":{\"error_code\":429,\"error_message\":\"You've exceeded the Rate Limit. Please visit https://www.coingecko.com/en/api/pricing to subscribe to our API plans for higher rate limits.\"}}"
+  },
+  {
+    "name": "reddit.json.block_characterisation",
+    "url": "https://www.reddit.com/r/CryptoCurrency/new.json?limit=5",
+    "note": "what exactly does the 403 say?",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl": {
+      "Retry-After": "0"
+    },
+    "extracted": {
+      "title": null,
+      "block_messages": [],
+      "len": 189908
+    }
+  },
+  {
+    "name": "reddit.r.wallstreetcoins.json",
+    "url": "https://www.reddit.com/r/wallstreetcoins.json?limit=5",
+    "note": "subreddit root json",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl": {
+      "Retry-After": "0"
+    },
+    "extracted": {
+      "title": null,
+      "block_messages": [],
+      "len": 189908
+    }
+  },
+  {
+    "name": "reddit.oauth.tokenless_listing",
+    "url": "https://oauth.reddit.com/r/CryptoCurrency/new?limit=5&raw_json=1",
+    "note": "oauth host, no token, listing",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 403,
+    "bytes": 189908,
+    "ct": "text/html",
+    "rl": {
+      "Retry-After": "0"
+    },
+    "extracted": {
+      "title": null,
+      "block_messages": [],
+      "len": 189908
+    }
+  },
+  {
+    "name": "discord.widget.probe.386888",
+    "url": "https://discord.com/api/guilds/386888357195204618/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.widget.probe.197038",
+    "url": "https://discord.com/api/guilds/197038850483367943/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.widget.probe.594347",
+    "url": "https://discord.com/api/guilds/594347584854552586/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.widget.probe.247927",
+    "url": "https://discord.com/api/guilds/247927372909690880/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.widget.probe.128265",
+    "url": "https://discord.com/api/guilds/1282650834252882024/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.widget.probe.112485",
+    "url": "https://discord.com/api/guilds/1124850862506390016/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.widget.probe.441969",
+    "url": "https://discord.com/api/guilds/441969581561190409/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.widget.probe.809835",
+    "url": "https://discord.com/api/guilds/809835744278450186/widget.json",
+    "note": "200 => widget enabled",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 43,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "status": 404,
+      "name": null,
+      "members": 0
+    }
+  },
+  {
+    "name": "discord.api.invite.bonk",
+    "url": "https://discord.com/api/v9/invites/qaQa6M6mN2?with_counts=true",
+    "note": "public invite metadata, NO key",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 200,
+    "bytes": 1962,
+    "ct": "application/json",
+    "rl": {},
+    "extracted": {
+      "code": "qaQa6M6mN2",
+      "guild_name": "Bonk",
+      "approx_member_count": 32586,
+      "approx_presence": 2120,
+      "expires_at": null,
+      "nsfw": null
+    }
+  },
+  {
+    "name": "jup.arch_query_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "url": "https://lite-api.jup.ag/tokens/v2/search?query=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "note": "jupiter shape discovery",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 200,
+    "bytes": 2514,
+    "ct": "application/json",
+    "rl": {
+      "x-ratelimit-remaining": "4",
+      "x-ratelimit-current": "1",
+      "x-ratelimit-reset": "1793637858"
+    },
+    "extracted": {
+      "keys": "list",
+      "sample": "[{\"id\": \"DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263\", \"name\": \"Bonk\", \"symbol\": \"Bonk\", \"icon\": \"https://arweave.net/hQiPZOsRZXGXBJd_82PhVdlM_hACsT_q6wqwf5cSY7I\", \"decimals\": 5, \"dev\": \"9AhKqLR67hwapvG8SA2JFXaCshXc9nALJjpKaHZrsbkw\", \"circSupply\": 87994306777732.61, \"totalSupply\": 87994306777732.61, \"tokenProgram\": \"TokenkegQfeZyiNwAJbNbGKPFXCWuBv"
+    }
+  },
+  {
+    "name": "jup._tokens_v1_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "url": "https://lite-api.jup.ag/tokens/v1/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "note": "jupiter shape discovery",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 404,
+    "bytes": 0,
+    "ct": "",
+    "rl": {},
+    "extracted_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+    "body_head": ""
+  },
+  {
+    "name": "jup.s_lite_api_jup_ag_tokens_v2_toporganicscore_24h_limit_3",
+    "url": "https://lite-api.jup.ag/tokens/v2/toporganicscore/24h?limit=3",
+    "note": "jupiter shape discovery",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 200,
+    "bytes": 7673,
+    "ct": "application/json",
+    "rl": {
+      "x-ratelimit-remaining": "3",
+      "x-ratelimit-current": "2",
+      "x-ratelimit-reset": "1793637858"
+    },
+    "extracted": {
+      "keys": "list",
+      "sample": "[{\"id\": \"So11111111111111111111111111111111111111112\", \"name\": \"Wrapped SOL\", \"symbol\": \"SOL\", \"icon\": \"https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png\", \"decimals\": 9, \"circSupply\": 589983693.0786384, \"totalSupply\": 636639246.9984534, \"tokenProgram\": \"TokenkegQfeZyiN"
+    }
+  },
+  {
+    "name": "jup.https_lite_api_jup_ag_tokens_v2_recent",
+    "url": "https://lite-api.jup.ag/tokens/v2/recent",
+    "note": "jupiter shape discovery",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 200,
+    "bytes": 42598,
+    "ct": "application/json",
+    "rl": {
+      "x-ratelimit-remaining": "2",
+      "x-ratelimit-current": "3",
+      "x-ratelimit-reset": "1793637858"
+    },
+    "extracted": {
+      "keys": "list",
+      "sample": "[{\"id\": \"D9AqMo1bvPokWve8tJevLeB266BtDmVimz6tdBUDmMxT\", \"name\": \"NAFO\", \"symbol\": \"NAFO\", \"icon\": \"https://desperate-moccasin-minnow.myfilebase.com/ipfs/QmbT94TMqGzsWkXXRsPY3bz2agSiMXCUrG8mPY6eSTaQzu\", \"decimals\": 6, \"twitter\": \"https://x.com/Bymotionn/status/2117296671118025159\", \"website\": \"https://x.com/Official_NAFO\", \"dev\": \"47oeafMuMYNxW5Ntyj"
+    }
+  },
+  {
+    "name": "jup.https_lite_api_jup_ag_tokens_v2_tag_query_community",
+    "url": "https://lite-api.jup.ag/tokens/v2/tag?query=community",
+    "note": "jupiter shape discovery",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 200,
+    "bytes": 48,
+    "ct": "application/json",
+    "rl": {
+      "x-ratelimit-remaining": "1",
+      "x-ratelimit-current": "4",
+      "x-ratelimit-reset": "1793637858"
+    },
+    "extracted": {
+      "keys": [
+        "message",
+        "status"
+      ],
+      "sample": "{\"status\": 400, \"message\": \"Invalid tag provided.\"}"
+    }
+  },
+  {
+    "name": "trends.explore.pytrends_shape",
+    "url": "https://trends.google.com/trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A%20%5B%7B%22keyword%22%3A%20%22bonk%22%2C%20%22geo%22%3A%20%22%22%2C%20%22time%22%3A%20%22today%207-d%22%7D%5D%2C%20%22category%22%3A%200%2C%20%22property%22%3A%20%22%22%7D",
+    "note": "pytrends shape + referer",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 400,
+    "bytes": 1695,
+    "ct": "text/html",
+    "rl": {},
+    "extracted": {
+      "status": 400,
+      "head": "<html lang=\"en\" dir=ltr><meta charset=utf-8><meta name=viewport content=\"initial-scale=1, minimum-scale=1, width=device-width\"><title>Error 400 (Bad Request)!!1</title><style nonce=\"p-8GRDR3DBbFHho65M"
+    }
+  },
+  {
+    "name": "trends.daily.rss.parsed",
+    "url": "https://trends.google.com/trending/rss?geo=US",
+    "note": "OFFICIAL no-key Google Trends RSS",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "status": 200,
+    "bytes": 21669,
+    "ct": "text/xml",
+    "rl": {},
+    "extracted": {
+      "n_items": 10,
+      "first": [
+        "hillary clinton",
+        "murray state basketball",
+        "apple new hardware lineup november 6"
+      ]
+    }
+  }
+]

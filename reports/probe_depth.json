@@ -1,0 +1,520 @@
+{
+  "archive_depth": [
+    {
+      "url": "https://eth.drpc.org",
+      "blocks": {
+        "11M_2021-08": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 254894243889306,
+            "reserve1": 721659753876959076337929,
+            "ts": 1601957801,
+            "price_r1_per_r0": 2831212438.796214
+          }
+        },
+        "12M_2022-01": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 131447219188192,
+            "reserve1": 74491511240158664062533,
+            "ts": 1615234776,
+            "price_r1_per_r0": 566702830.9934022
+          }
+        },
+        "13M_2022-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 153021002093049,
+            "reserve1": 48155737626499450544058,
+            "ts": 1628632395,
+            "price_r1_per_r0": 314700184.73161554
+          }
+        },
+        "15M_2022-11": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 53859723139014,
+            "reserve1": 48144123790618381448011,
+            "ts": 1655778500,
+            "price_r1_per_r0": 893879897.3466047
+          }
+        },
+        "17M_2023-06": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 35663384132940,
+            "reserve1": 19100619174988580008293,
+            "ts": 1680911699,
+            "price_r1_per_r0": 535580670.1850976
+          }
+        },
+        "19M_2024-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 49422826860781,
+            "reserve1": 19269716861587999119523,
+            "ts": 1705173431,
+            "price_r1_per_r0": 389895076.5375846
+          }
+        },
+        "21M_2025-02": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 44263199746992,
+            "reserve1": 16783011073107162258475,
+            "ts": 1729345547,
+            "price_r1_per_r0": 379163982.02205634
+          }
+        }
+      }
+    },
+    {
+      "url": "https://eth-mainnet.public.blastapi.io",
+      "blocks": {
+        "11M_2021-08": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 254894243889306,
+            "reserve1": 721659753876959076337929,
+            "ts": 1601957801,
+            "price_r1_per_r0": 2831212438.796214
+          }
+        },
+        "12M_2022-01": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 131447219188192,
+            "reserve1": 74491511240158664062533,
+            "ts": 1615234776,
+            "price_r1_per_r0": 566702830.9934022
+          }
+        },
+        "13M_2022-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 153021002093049,
+            "reserve1": 48155737626499450544058,
+            "ts": 1628632395,
+            "price_r1_per_r0": 314700184.73161554
+          }
+        },
+        "15M_2022-11": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 53859723139014,
+            "reserve1": 48144123790618381448011,
+            "ts": 1655778500,
+            "price_r1_per_r0": 893879897.3466047
+          }
+        },
+        "17M_2023-06": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 35663384132940,
+            "reserve1": 19100619174988580008293,
+            "ts": 1680911699,
+            "price_r1_per_r0": 535580670.1850976
+          }
+        },
+        "19M_2024-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 49422826860781,
+            "reserve1": 19269716861587999119523,
+            "ts": 1705173431,
+            "price_r1_per_r0": 389895076.5375846
+          }
+        },
+        "21M_2025-02": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 44263199746992,
+            "reserve1": 16783011073107162258475,
+            "ts": 1729345547,
+            "price_r1_per_r0": 379163982.02205634
+          }
+        }
+      }
+    },
+    {
+      "url": "https://gateway.tenderly.co/public/mainnet",
+      "blocks": {
+        "11M_2021-08": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 254894243889306,
+            "reserve1": 721659753876959076337929,
+            "ts": 1601957801,
+            "price_r1_per_r0": 2831212438.796214
+          }
+        },
+        "12M_2022-01": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 131447219188192,
+            "reserve1": 74491511240158664062533,
+            "ts": 1615234776,
+            "price_r1_per_r0": 566702830.9934022
+          }
+        },
+        "13M_2022-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 153021002093049,
+            "reserve1": 48155737626499450544058,
+            "ts": 1628632395,
+            "price_r1_per_r0": 314700184.73161554
+          }
+        },
+        "15M_2022-11": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 53859723139014,
+            "reserve1": 48144123790618381448011,
+            "ts": 1655778500,
+            "price_r1_per_r0": 893879897.3466047
+          }
+        },
+        "17M_2023-06": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 35663384132940,
+            "reserve1": 19100619174988580008293,
+            "ts": 1680911699,
+            "price_r1_per_r0": 535580670.1850976
+          }
+        },
+        "19M_2024-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 49422826860781,
+            "reserve1": 19269716861587999119523,
+            "ts": 1705173431,
+            "price_r1_per_r0": 389895076.5375846
+          }
+        },
+        "21M_2025-02": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 44263199746992,
+            "reserve1": 16783011073107162258475,
+            "ts": 1729345547,
+            "price_r1_per_r0": 379163982.02205634
+          }
+        }
+      }
+    },
+    {
+      "url": "https://rpc.mevblocker.io",
+      "blocks": {
+        "11M_2021-08": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 254894243889306,
+            "reserve1": 721659753876959076337929,
+            "ts": 1601957801,
+            "price_r1_per_r0": 2831212438.796214
+          }
+        },
+        "12M_2022-01": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 131447219188192,
+            "reserve1": 74491511240158664062533,
+            "ts": 1615234776,
+            "price_r1_per_r0": 566702830.9934022
+          }
+        },
+        "13M_2022-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 153021002093049,
+            "reserve1": 48155737626499450544058,
+            "ts": 1628632395,
+            "price_r1_per_r0": 314700184.73161554
+          }
+        },
+        "15M_2022-11": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 53859723139014,
+            "reserve1": 48144123790618381448011,
+            "ts": 1655778500,
+            "price_r1_per_r0": 893879897.3466047
+          }
+        },
+        "17M_2023-06": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 35663384132940,
+            "reserve1": 19100619174988580008293,
+            "ts": 1680911699,
+            "price_r1_per_r0": 535580670.1850976
+          }
+        },
+        "19M_2024-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 49422826860781,
+            "reserve1": 19269716861587999119523,
+            "ts": 1705173431,
+            "price_r1_per_r0": 389895076.5375846
+          }
+        },
+        "21M_2025-02": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 44263199746992,
+            "reserve1": 16783011073107162258475,
+            "ts": 1729345547,
+            "price_r1_per_r0": 379163982.02205634
+          }
+        }
+      }
+    },
+    {
+      "url": "https://eth-pokt.nodies.app",
+      "blocks": {
+        "11M_2021-08": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 254894243889306,
+            "reserve1": 721659753876959076337929,
+            "ts": 1601957801,
+            "price_r1_per_r0": 2831212438.796214
+          }
+        },
+        "12M_2022-01": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 131447219188192,
+            "reserve1": 74491511240158664062533,
+            "ts": 1615234776,
+            "price_r1_per_r0": 566702830.9934022
+          }
+        },
+        "13M_2022-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 153021002093049,
+            "reserve1": 48155737626499450544058,
+            "ts": 1628632395,
+            "price_r1_per_r0": 314700184.73161554
+          }
+        },
+        "15M_2022-11": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 53859723139014,
+            "reserve1": 48144123790618381448011,
+            "ts": 1655778500,
+            "price_r1_per_r0": 893879897.3466047
+          }
+        },
+        "17M_2023-06": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 35663384132940,
+            "reserve1": 19100619174988580008293,
+            "ts": 1680911699,
+            "price_r1_per_r0": 535580670.1850976
+          }
+        },
+        "19M_2024-04": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 49422826860781,
+            "reserve1": 19269716861587999119523,
+            "ts": 1705173431,
+            "price_r1_per_r0": 389895076.5375846
+          }
+        },
+        "21M_2025-02": {
+          "http_status": 200,
+          "raw_len": 194,
+          "rpc_error": null,
+          "decoded": {
+            "reserve0": 44263199746992,
+            "reserve1": 16783011073107162258475,
+            "ts": 1729345547,
+            "price_r1_per_r0": 379163982.02205634
+          }
+        }
+      }
+    }
+  ],
+  "defillama": [
+    {
+      "name": "pepe_chart",
+      "http_status": 200,
+      "n_points": 1,
+      "first": {
+        "timestamp": 1793668913,
+        "price": 4.808970180301843e-06
+      },
+      "last": {
+        "timestamp": 1793668913,
+        "price": 4.808970180301843e-06
+      },
+      "chain": null
+    },
+    {
+      "name": "hist_1600000000",
+      "http_status": 200,
+      "price": null,
+      "symbol": null,
+      "confidence": null
+    },
+    {
+      "name": "hist_1650000000",
+      "http_status": 200,
+      "price": null,
+      "symbol": null,
+      "confidence": null
+    },
+    {
+      "name": "hist_1700000000",
+      "http_status": 200,
+      "price": 1.16e-06,
+      "symbol": "PEPE",
+      "confidence": 0.99
+    },
+    {
+      "name": "hist_1750000000",
+      "http_status": 200,
+      "price": 1.128e-05,
+      "symbol": "PEPE",
+      "confidence": 0.99
+    },
+    {
+      "name": "hist_1760000000",
+      "http_status": 200,
+      "price": 9.157230261146588e-06,
+      "symbol": "PEPE",
+      "confidence": 0.99
+    },
+    {
+      "name": "small_token_chart",
+      "token": "0x5026F006B85729a8b14553FAE6af249aD16c9aaB",
+      "symbol": "WOJAK",
+      "http_status": 200,
+      "n_points": 1,
+      "first": {
+        "timestamp": 1793668987,
+        "price": 2.19605213341379e-05
+      },
+      "last": {
+        "timestamp": 1793668987,
+        "price": 2.19605213341379e-05
+      }
+    }
+  ],
+  "gecko": [
+    {
+      "name": "pool",
+      "pool": "0xA43fe16908251ee70EF74718545e4FE6C5cCEc9f",
+      "dex": "uniswap"
+    },
+    {
+      "name": "ohlcv_day?before_timestamp=1700000000",
+      "http_status": 401,
+      "n": 0,
+      "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"You can only access data from the past 180 days with Public API. To access data beyond 180 days, please upgrade to the Analyst plan or above. Learn more: https://docs.coingecko.com/reference/pool-ohlcv-contract-add"
+    },
+    {
+      "name": "ohlcv_day?aggregate=1&limit=1000",
+      "http_status": 200,
+      "n": 184,
+      "body": "{\"data\":{\"id\":\"3b5edb48-5948-4cb3-846c-e2d494185a7a\",\"type\":\"ohlcv_request_response\",\"attributes\":{\"ohlcv_list\":[[1793664000,4.77051590847102e-06,4.85069549821953e-06,4.74313723687821e-06,4.81994348396187e-06,183907.0728742622],[1793577600,4.87443982"
+    },
+    {
+      "name": "ohlcv_day?aggregate=1&limit=1000&before_timestamp=1700000000",
+      "http_status": 401,
+      "n": 0,
+      "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"You can only access data from the past 180 days with Public API. To access data beyond 180 days, please upgrade to the Analyst plan or above. Learn more: https://docs.coingecko.com/reference/pool-ohlcv-contract-add"
+    },
+    {
+      "name": "ohlcv_day?before_timestamp=1700000000&currency=usd",
+      "http_status": 401,
+      "n": 0,
+      "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"You can only access data from the past 180 days with Public API. To access data beyond 180 days, please upgrade to the Analyst plan or above. Learn more: https://docs.coingecko.com/reference/pool-ohlcv-contract-add"
+    }
+  ],
+  "v3_decode": {
+    "raw": "0x0000000000000000000000000000000000005db89eb66140e7f9b2eb40521a6600000000000000000000000000000000000000000000000000000000000313f800000000000000000000000000000000000000000000000000000000000002c200000000000000000000000000000000000000000000000000000000000005a000000000000000000000000000000000000000000000000000000000000005a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+    "decoded": {
+      "sqrtPriceX96": 1900891194157547785974963193911910,
+      "tick": 201720,
+      "raw_ratio": 575645813.0438628
+    },
+    "http_status": 200
+  }
+}

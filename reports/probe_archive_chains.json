@@ -1,0 +1,134 @@
+{
+  "base": [
+    {
+      "url": "https://base.drpc.org",
+      "latest": 53440486,
+      "old_block": 37408340,
+      "nonce_old_http": 200,
+      "nonce_old_result": "0x0",
+      "nonce_old_error": null,
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    }
+  ],
+  "arbitrum": [
+    {
+      "url": "https://arbitrum.drpc.org",
+      "latest": 520739007,
+      "old_block": 364517304,
+      "nonce_old_http": 400,
+      "nonce_old_result": null,
+      "nonce_old_error": "{\"message\": \"Unknown state. First available state is 1\", \"code\": 27}",
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    },
+    {
+      "url": "https://arbitrum-one.public.blastapi.io",
+      "latest": 520739009,
+      "old_block": 364517306,
+      "nonce_old_http": 200,
+      "nonce_old_result": "0x0",
+      "nonce_old_error": null,
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    }
+  ],
+  "bsc": [
+    {
+      "url": "https://bsc.drpc.org",
+      "http_status": 429,
+      "rpc_error": "{\"message\": \"You reached Public endpoint rate limit, please upgrade to paid plan\", \"code\": 15}"
+    },
+    {
+      "url": "https://bsc-dataseed.binance.org",
+      "latest": 131347198,
+      "old_block": 91943038,
+      "nonce_old_http": 200,
+      "nonce_old_result": null,
+      "nonce_old_error": "{\"code\": -32000, \"message\": \"missing trie node\"}",
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    },
+    {
+      "url": "https://bsc-dataseed1.binance.org",
+      "latest": 131347203,
+      "old_block": 91943042,
+      "nonce_old_http": 200,
+      "nonce_old_result": null,
+      "nonce_old_error": "{\"code\": -32000, \"message\": \"missing trie node\"}",
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    },
+    {
+      "url": "https://bsc-rpc.publicnode.com",
+      "latest": 131347208,
+      "old_block": 91943045,
+      "nonce_old_http": 403,
+      "nonce_old_result": null,
+      "nonce_old_error": "{\"code\": -32602, \"message\": \"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"}",
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    },
+    {
+      "url": "https://bsc.llamarpc.com",
+      "http_status": null,
+      "transport_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "url": "https://1rpc.io/bnb",
+      "latest": 131347211,
+      "old_block": 91943047,
+      "nonce_old_http": 200,
+      "nonce_old_result": null,
+      "nonce_old_error": "{\"code\": -32603, \"message\": \"state at block #91943048 is pruned\"}",
+      "nonce_old_transport": null,
+      "block_old_ok": false
+    },
+    {
+      "url": "https://api.zan.top/bsc-mainnet",
+      "latest": 131347220,
+      "old_block": 91943054,
+      "nonce_old_http": 200,
+      "nonce_old_result": "0x4",
+      "nonce_old_error": null,
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    }
+  ],
+  "optimism": [
+    {
+      "url": "https://optimism.drpc.org",
+      "latest": 159035779,
+      "old_block": 111325045,
+      "nonce_old_http": 200,
+      "nonce_old_result": "0x0",
+      "nonce_old_error": null,
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    }
+  ],
+  "polygon": [
+    {
+      "url": "https://polygon.drpc.org",
+      "latest": 96643255,
+      "old_block": 67650278,
+      "nonce_old_http": 200,
+      "nonce_old_result": "0x0",
+      "nonce_old_error": null,
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    }
+  ],
+  "gnosis": [
+    {
+      "url": "https://gnosis.drpc.org",
+      "latest": 49080729,
+      "old_block": 34356510,
+      "nonce_old_http": 200,
+      "nonce_old_result": "0x0",
+      "nonce_old_error": null,
+      "nonce_old_transport": null,
+      "block_old_ok": true
+    }
+  ]
+}

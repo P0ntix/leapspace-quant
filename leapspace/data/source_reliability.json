@@ -1,0 +1,179 @@
+{
+  "_note": "SOURCE RELIABILITY REGISTER for the seven LeapSpace documents. Every finding here was established by reading the papers themselves, not inferred from the backtests. A spec that depends on a defective section must be flagged in 'impacts_specs'. As of 2026-10-27 NO spec in the package depends on a defective section — the affected sections are the intraday/scalping ones, which the package does not implement because the underlying data (Level-2, CVD, premium flow, 0DTE greeks) is not available here.",
+  "generated": "2026-10-27",
+  "documents": [
+    {
+      "key": "leapspace_v1",
+      "title": "Trading strategies for retail traders (LeapSpace v1)",
+      "file": "C:/Users/HP/Downloads/Trading_strategies_for_retail_traders_LeapSpace.pdf",
+      "structure": "15 conversation turns (user prompt -> synthesis -> confidence level -> numbered reference list); 54 pages; ~124,900 chars text layer; 260 reference entries, 187 unique DOIs",
+      "canonical_url": "https://www.sciencedirect.com/leapspace/conversation/db6e5076-9683-4fd2-b954-92a92e870570",
+      "no_version_label": "The PDF contains no 'v1' / 'version' / 'revised' / '2.0' string anywhere. The existence of the 2.0 sibling cannot be confirmed from this file alone; the relationship is inferred from internal draft artefacts (see stale_content_markers).",
+      "defects": [
+        {
+          "id": "D1",
+          "severity": "high",
+          "finding": "Citation numbers are SECTION-SCOPED, not global. 38 numbers resolve to different papers in different sections.",
+          "evidence": "[130] = Kitapbayev & Leung in section 7, Berkman et al. in section 11, Leung & Li in section 13. [131] = Miori & Cucuringu / Gerety & Mulherin / Dolvin & Foltice. [128] = Dudler / Kaminski & Lo / Samarasekara.",
+          "impact": "Any automated citation resolver must key on (section, reference_number), never on the number alone. Keying on the number silently mis-attributes.",
+          "impacts_specs": "None. This package's parameter_provenance cites at SECTION-and-QUOTE level, never by reference number."
+        },
+        {
+          "id": "D2",
+          "severity": "high",
+          "finding": "ZERO numeric performance results anywhere in the document.",
+          "evidence": "A regex sweep for %, CAGR, annualized, win rate, bps, Sharpe ratio, Sortino, Calmar and information coefficient returned no numeric performance match. 'Sharpe'/'alpha' appear only in one qualitative sentence; 'drawdown' only inside two reference titles.",
+          "impact": "The papers cannot be used to calibrate, validate or rank anything. Every backtest number in this package is INDEPENDENT evidence, not a reproduction of a published result.",
+          "impacts_specs": "All. Documented in each spec's parameter_provenance and in the report's validation note."
+        },
+        {
+          "id": "D3",
+          "severity": "high",
+          "finding": "Section 9 MIS-CITES an on-chain Bitcoin paper as support for US-equity intraday options-flow and gamma claims, at stated Confidence: High.",
+          "evidence": "In section 9, reference [8] = Grobys, Nasman & Sandretto (2026), 'Using on-chain data to predict Bitcoin cycles' — cited for premarket levels, value area, premium flow, CVD divergence and 0DTE gamma at the NY open.",
+          "impact": "Those section-9 claims are unsupported by their own citation. This is the single clearest indication that the section's Confidence rating is not calibrated.",
+          "impacts_specs": "None. Section 9 is an intraday-scalping section; the package implements no scalp spec."
+        },
+        {
+          "id": "D4",
+          "severity": "medium",
+          "finding": "Section 10 is a self-citing regeneration: 14 literal '[turn 9 summary]' citations stand in for real references.",
+          "impact": "Section 10's uncited items are prior-conversation assertions, not evidence.",
+          "impacts_specs": "None."
+        },
+        {
+          "id": "D5",
+          "severity": "medium",
+          "finding": "Duplicate reference entries within a single section: section 1 [1]=[26], [28]=[34]; section 2 [42]=[53].",
+          "impact": "260 entries resolve to 187 unique DOIs; naive entry counts overstate the evidence breadth by ~39%.",
+          "impacts_specs": "None. The package never counts references."
+        },
+        {
+          "id": "D6",
+          "severity": "medium",
+          "finding": "Sections 9, 10 and 11 answer the same three scalping questions with different evidence sets (Confidence High / Medium / High).",
+          "impact": "Redundant and partly contradictory. Section 11 is the best sourced of the three.",
+          "impacts_specs": "None."
+        },
+        {
+          "id": "D7",
+          "severity": "high",
+          "finding": "The word 'rebalance' appears ZERO times in the document. No rebalance cadence is stated for any strategy.",
+          "impact": "Every rebalance cadence in this package is an ANALYST CHOICE, recorded as such in parameter_provenance. It is not a paper rule.",
+          "impacts_specs": "All momentum and mean-reversion specs: portfolio.rebalance is tagged analyst_choice."
+        },
+        {
+          "id": "D8",
+          "severity": "medium",
+          "finding": "No momentum take-profit rule. 'Take-profit' appears twice: as a cited relationship, and as an offer to the user.",
+          "impacts_specs": "None — the engine has no take-profit primitive."
+        },
+        {
+          "id": "D9",
+          "severity": "medium",
+          "finding": "The on-chain signal set is ranked #2 in the document's own priority order but is never operationalized — no strategy section implements an on-chain rule.",
+          "impact": "A ranking is not a specification. The paper's on-chain features (active users, hashrate, wallet activity, transaction volume) have no stated lookbacks or thresholds.",
+          "impacts_specs": "None. See scope_exclusions.on_chain_feature_set."
+        },
+        {
+          "id": "D10",
+          "severity": "low",
+          "finding": "Forward-dated and current-year references appear (e.g. Rathore et al. 2027, several 2026 DOIs).",
+          "impact": "DOIs should be verified to resolve to the claimed content before being relied on.",
+          "impacts_specs": "None."
+        }
+      ],
+      "stale_content_markers": [
+        {"id": "F1", "strength": "strongest", "finding": "Section 9 (Intraday scalping strategies and analysis) is the clearest earlier-draft artefact, including the mis-citation D3 at Confidence High. Section 10 explicitly states the supplied source set has no direct gamma evidence — i.e. the document itself retracts the gamma support section 9 asserted."},
+        {"id": "F2", "finding": "Section 10's Medium confidence plus [turn 9 summary] self-citations mark it as a degraded regeneration; section 11 re-sources the same claims against [42][43] and restores High."},
+        {"id": "F3", "finding": "The subtitle claims 'charm surface, Vanna exposure' but section 1's body text says charm/vanna are 'not directly tested in the retrieved evidence... would be an inference rather than a directly supported finding'. The document contradicts its own subtitle."},
+        {"id": "F4", "finding": "Section 1's overall ranking (order flow > on-chain > options flow > indicators) at Confidence Medium-High."},
+        {"id": "F5", "finding": "Section 4's 'A+' setups without flow (bare 20-day MA momentum, z-score reversion) are superseded within the same document by section 7's flow-augmented versions."},
+        {"id": "F6", "finding": "Section 13's momentum row hedges ('one empirical result suggests thresholds around 1.0 to 1.5 standard deviations'); section 14 states the same band more firmly. Section 14 is the later, firmer statement."},
+        {"id": "F7", "finding": "Section 8 hedges the intraday volume shape ('tends to follow'); section 12 restates it as 'a pronounced intraday seasonality pattern'."}
+      ]
+    },
+    {
+      "key": "leapspace_2_0",
+      "title": "Trading strategies for retail traders (LeapSpace 2.0)",
+      "file": "C:/Users/HP/Downloads/Trading_strategies_for_retail_traders_LeapSpace 2.0.pdf",
+      "structure": "26 conversation turns, each with its own local reference list and a stated confidence level; 75 pages; complete text layer, 0 raster objects; ~160 numbered references",
+      "defects": [
+        {
+          "id": "D2",
+          "severity": "high",
+          "finding": "ZERO numeric performance results. No original data, no backtests, no charts, no result tables.",
+          "evidence": "Programmatic scan for %, bps, CAGR, drawdown, win rate, annualized, Sharpe, ATR, rebalance, look-ahead, risk per trade confirmed the absence of every numeric performance family.",
+          "impact": "Every backtest number in this package is INDEPENDENT evidence, not a reproduction.",
+          "impacts_specs": "All."
+        },
+        {
+          "id": "D1",
+          "severity": "high",
+          "finding": "Citation numbers are section-scoped and collide: 34 numbers map to different papers in different sections.",
+          "evidence": "[131] = Dolvin & Foltice (2023) in one section, Gerety & Mulherin (1992) in another, Miori & Cucuringu (2023) in a third.",
+          "impacts_specs": "None. This package cites by section and quoted phrase."
+        },
+        {
+          "id": "D8",
+          "severity": "medium",
+          "finding": "The document reports no performance statistics of its own — it is a research synthesis, not a test result.",
+          "impacts_specs": "All — recorded in each spec's intake.notes."
+        },
+        {
+          "id": "D18",
+          "severity": "medium",
+          "finding": "18 instances of a self-referential marker ('[turn 9 summary]' and similar) — some sections cite the model's own earlier turns rather than primary literature.",
+          "impacts_specs": "None."
+        },
+        {
+          "id": "D19",
+          "severity": "medium",
+          "finding": "Per-section reference lists are truncated: each section lists only the references it cites, so no single global bibliography is recoverable from the PDF text alone.",
+          "impacts_specs": "None."
+        }
+      ],
+      "stale_content_markers": [
+        {"id": "F3", "finding": "The subtitle still claims 'charm surface, Vanna exposure' while the body calls charm/vanna untested. The 2.0 subtitle carries the same unresolved contradiction as v1."}
+      ]
+    }
+  ],
+  "scope_exclusions": [
+    {
+      "id": "charm_vanna",
+      "why": "The papers' own subtitle promises 'charm surface, Vanna exposure', but both documents' body text says charm and vanna are NOT directly tested in the retrieved evidence and 'would be an inference rather than a directly supported finding'. The subtitle contradicts the body.",
+      "decision": "Not implemented. Implementing an explicitly untested surface would be inventing a rule, which the papers themselves decline to do.",
+      "if_wanted": "Requires live charm/vanna surfaces: a full option chain with dealer-side open interest per strike and expiry, plus a defined net-charm/net-vanna sign convention. The Nasdaq chain this package already fetches has OI and volume but not the dealer-sign and greeks needed for a defensible charm/vanna estimate."
+    },
+    {
+      "id": "on_chain_feature_set",
+      "why": "The papers rank on-chain signals #2 but never operationalize them: 'active users, hashrate, wallet activity, transaction volume' with no lookbacks or thresholds. A ranking is not a specification.",
+      "decision": "Not implemented as a trading signal. The package's wallet tracking and meme-coin screening come from the MEME-COIN paper's concrete rules, not from these four features.",
+      "if_wanted": "Needs a definition per feature, a lookback, a threshold, and a source for hashrate/active users that is not the Solana RPC."
+    },
+    {
+      "id": "intraday_scalping_stack",
+      "why": "Opening range, CVD divergence, premium-flow spikes, value-area/POC construction and 0DTE greeks are all required, and all are unavailable here: no Level-2, no trade-by-trade CVD, no intraday option greeks, and CBOE is unreachable from this host (Yahoo options return 401).",
+      "decision": "Not implemented. The 'NASDAQ daily proxy' spec tests only the regime-conditional switching logic, explicitly NOT the gamma/order-flow/spread legs.",
+      "if_wanted": "A paid intraday feed (CBOE or equivalent) plus a session-level bar builder. The 5-15 minute opening range, the value-area percentage, the CVD divergence rule and the premium-flow sign convention would still all need values — the papers state a range for the opening range and nothing for the rest."
+    },
+    {
+      "id": "pairs_cointegration",
+      "why": "The papers' reversion model is a PAIR/SPREAD model (cointegration, Hurst, dynamic hedge ratios). The backtest engine has no pair construction: no s-score, no hedge-ratio estimator, no pair universe screen.",
+      "decision": "The SD-band mean-reversion specs compute single-name price z-scores — a weaker question than the papers' — and this is recorded in each spec's additional_conditions. variants_tried reflects the papers' own 1.0 vs 1.5 SD alternatives.",
+      "if_wanted": "A pair universe with a formation window, a cointegration test, a hedge-ratio estimator (OLS/Kalman/dynamic) and a Hurst cutoff. The z-score entry threshold is the single most important missing value in both documents."
+    },
+    {
+      "id": "gamma_computation_spec",
+      "why": "The papers give the gamma SIGN rule (negative -> continuation, positive -> dampening) but no computation spec: strikes, expiries, OI source, dealer sign convention, or a magnitude threshold. The scalp sections contain no stop, target or R-multiple for any setup.",
+      "decision": "The package computes gamma under a STATED assumed dealer book from a single aggregate open-interest snapshot, and states that assumption with every number. Only the SIGN is used as a regime switch, matching the papers.",
+      "if_wanted": "Live per-expiry dealer-side OI, which no free endpoint provides."
+    }
+  ],
+  "how_to_use_this_register": [
+    "A spec that depends on a defective section must be flagged in that defect's 'impacts_specs'.",
+    "As of 2026-10-27 no spec in this package depends on a defective section: the defective material is in the intraday/scalping and on-chain sections, which are not implemented (see scope_exclusions).",
+    "D2 (no numeric results) and D7 (no rebalance cadence) apply to EVERY spec, and are recorded per spec in parameter_provenance rather than once here.",
+    "When a new spec is distilled from a paper, check it against this register before running it."
+  ]
+}
