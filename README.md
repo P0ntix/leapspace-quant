@@ -25,6 +25,9 @@ is a projection.
 | Backtest specifications | 13 (6 new in LeapSpace 2.0) |
 | Specifications surviving the **full** validation gauntlet | **2** |
 | Specifications refuted under quick validation | 10 |
+| **Paper-concept matrix (the 5 attached research papers)** | **96 specs: 48 real + 48 inverted negative controls, 8 concepts × 6 asset classes** |
+| **Paper concepts earning a SUPPORTED verdict** | **0** |
+| Negative controls that survived (validation failing to discriminate) | **0** |
 | Memecoin wallets screened against the consistency gate | 15 |
 | Wallets that passed the gate | **0** |
 | Chains in the registry | 52 |
@@ -36,6 +39,16 @@ wallet has ever passed the consistency gate. All fifteen PEPE top-holder
 wallets scored FLUKE. A system that trades memecoins today has no
 evidence-backed basis for doing so, and this package says so out loud
 rather than manufacturing a signal.
+
+**The second most important fact:** the paper-concept matrix found no
+SUPPORTED concept either. Of the 96 specs, 0 earned a SUPPORTED
+verdict. The single FRAGILE row carries a *negative* Sharpe. That is
+not a disappointing result — it is the result, and it is reported
+rather than dressed up. The negative controls all failed, which is what
+makes the finding meaningful: the validation discriminates.
+
+See `reports/PAPER_CONCEPT_REPORT.md` for the full matrix and
+`reports/charts/paper_concepts.html` for the visual presentation.
 
 ---
 
@@ -245,12 +258,50 @@ reports/
   full_gauntlet_results.json            FULL gauntlet verdicts
   pepe_priced_edge.json                 15 wallets, priced at the block
   gate_crosscheck.md                    independent gate cross-check
+  PAPER_CONCEPT_REPORT.md               the 96-spec research matrix
+  paper_concept_results.json            the raw matrix rows
   briefs/                               per-token trade briefs
   charts/                               PNG charts
   charts/dashboard.html                 self-contained dashboard
+  charts/paper_concepts.html            the matrix dashboard (inline SVG)
 ```
 
 State that persists between runs lives in `leapspace/state/`.
+
+---
+
+## The edge-finding layer
+
+Four modules exist to answer one question: **is there an edge that
+survives an industry-standard backtest?** They are new, and they are
+the ones that matter for that question.
+
+| Module | What it does |
+|---|---|
+| `leapspace/leading.py` | Measures the **volatility risk premium** — implied minus realised volatility — from a real, timestamped external series, aligned with a one-bar publication lag. Sources: Deribit DVOL (crypto), ^VIX / ^VXN / ^VXD (equities). Also a live dealer-gamma proxy and the live option-flow tape. |
+| `leapspace/cryptoderivs.py` | The **crypto-native leading indicators**: perpetual-swap funding rate, annualised funding, funding z-score, open interest and open-interest change, from Bybit and Binance. All keyless, all with real history. Funding is the crypto analogue of the implied-volatility risk premium: it says how crowded the market is and what it costs to hold that crowding. |
+| `leapspace/portfolio.py` | The **risk layer the engine lacked**. The backtest's portfolio block assumes zero correlation between assets, which overstates a diversified book's risk and makes risk parity impossible. This adds a shrunk covariance estimate, equal-risk-contribution sizing, a forward-weighted volatility estimate, a drawdown-responsive de-risking slope, and caps applied last — plus a risk report showing concentration, effective number of names, and per-name risk shares. |
+| `leapspace/paperspecs.py` + `paperrun.py` + `paperreport.py` | The **matrix**: 8 testable claims from the research papers × 6 asset classes, each with an inverted-polarity negative control, run through the full gauntlet and rendered as a markdown report and an HTML dashboard. |
+
+Two properties the leading layer holds to, because getting them wrong
+is worse than not having the feature at all:
+
+* **A measurement published after a bar never reaches that bar.** The
+  alignment enforces a one-bar publication lag, and the realised side
+  is shifted so no bar uses its own close.
+* **A missing measurement is `None`, never `0`.** A zero premium reads
+  as "options are fairly priced", which is a claim the data does not
+  support.
+
+`leapspace/tests/test_leading_causality.py` asserts the first property
+directly, by truncation: cut the panel at bar *k* and the values at
+bars ≤ *k* must be bit-identical. It also proves the old
+whole-panel z-score would have failed the same test.
+
+`LEADING_DATA_SOURCES.md` documents every source with its licensing,
+timestamp semantics and — importantly — whether it was verified on this
+host or is a known gap. ^V2TX is listed as a gap because the Yahoo
+chart API 404s it.
 
 ---
 
