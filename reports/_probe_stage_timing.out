@@ -1,0 +1,11 @@
+spec: c3_vol_regime_filter_us_equity_style
+   [stage run_spec                    46.69s cumulative]
+   [stage run_spec                    90.41s cumulative]
+   [stage walk_forward                55.04s cumulative]
+   [stage run_spec                   136.03s cumulative]
+   [stage run_spec                   177.33s cumulative]
+   [stage run_spec                   227.31s cumulative]
+   [stage run_spec                   253.44s cumulative]
+   [stage run_spec                   280.40s cumulative]
+   [stage run_spec                   306.97s cumulative]
+   [stage cost_stress                171.32s cumulative]

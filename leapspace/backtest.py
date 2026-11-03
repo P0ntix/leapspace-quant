@@ -983,15 +983,446 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
             sig[s] = row
         return sig
 
+    # ------------------------------------------------------------------
+    # THE LEADING FEATURES
+    # ------------------------------------------------------------------
+    # The regime model above is built from LAGGING inputs (realised
+    # volatility, trend, drawdown, liquidity). The papers are explicit
+    # that forward-looking option and volatility-index signals detect
+    # stress transitions EARLIER, so these features add the implied
+    # side of the picture.
+    #
+    # The important property is the ALIGNMENT: the implied series is
+    # timestamped, and a bar may only use a measurement published
+    # before it. The realised side is shifted one bar so no bar uses
+    # its own close. Without that, "leading" would be an illusion.
+
+    def _leading_series(panel):
+        """Resolve + cache the leading series for this panel, once."""
+        cached = getattr(panel, "_leading_series_cache", None)
+        if cached is not None:
+            return cached
+        from .leadingcache import series_for_panel
+        series, info = series_for_panel(panel)
+        try:
+            panel._leading_series_cache = (series, info)
+        except Exception:  # noqa: BLE001
+            pass
+        return series, info
+
+    def _leading_aligned(panel):
+        """The leading series aligned to the panel's bar grid."""
+        from .leading import align_to_bars
+        from .leadingcache import panel_date_timestamps
+        series, info = _leading_series(panel)
+        if not series:
+            return [None] * panel.n, info
+        ts = panel_date_timestamps(list(panel.dates))
+        aligned = align_to_bars(series, ts, max_lag_bars=1)
+        return aligned, info
+
+    def f_leading_iv_level(panel, sym, **kw):
+        """The implied-volatility level, percent. LEADING.
+
+        For a crypto universe this is Deribit's DVOL for the asset; for
+        a Nasdaq-like universe it is ^VXN; otherwise ^VIX.
+
+        A daily index print describes the session that has just
+        finished, so it is carried to the NEXT bar (max_lag_bars=1).
+        """
+        aligned, _info = _leading_aligned(panel)
+        return list(aligned)
+
+    def f_leading_vrp_score(panel, sym, lookback=20, rv_window=None, **kw):
+        """The VOLATILITY RISK PREMIUM: implied minus realised.
+
+        This is the cleanest directional leading signal available: it
+        compares what the market has EXPENSED against what the market
+        has DELIVERED, and the gap is a statement about the future
+        distribution rather than the past one.
+
+        Positive = options are rich relative to realised movement.
+        Negative = options are cheap relative to realised movement.
+
+        None wherever either side is unavailable. A missing leading
+        series produces None everywhere, never zero - a zero premium
+        would read as "options are fairly priced", which is a claim
+        the data does not support.
+
+        The window parameter is named `lookback` because the intake
+        gate recognises that name as the feature's horizon; `rv_window`
+        is accepted as an alias.
+        """
+        from .leading import realized_vol_series, volatility_risk_premium
+        window = int(rv_window if rv_window is not None else lookback)
+        aligned, _info = _leading_aligned(panel)
+        closes = btengine._close_series(panel, sym)
+        if len(closes) != panel.n:
+            return [None] * panel.n
+        rv = realized_vol_series(closes, window=max(2, window))
+        # Shift the realised series by one bar: bar T must not use
+        # bar T's own close.
+        rv_shifted = [None] + list(rv[:-1]) if panel.n > 1 else [None] * panel.n
+        return [volatility_risk_premium(a, b)
+                for a, b in zip(aligned, rv_shifted)]
+
+    def f_leading_vrp_zscore(panel, sym, lookback=20, rv_window=None, **kw):
+        """The risk premium's z-score over the panel. LEADING.
+
+        A level is not comparable across regimes - a 5-point premium
+        means something different when the premium's own history ranges
+        over 30 points than when it ranges over 2. The z-score is the
+        comparable version, and it is what the signal consumes.
+        """
+        window = int(rv_window if rv_window is not None else lookback)
+        raw = f_leading_vrp_score(panel, sym, lookback=window)
+        vals = [v for v in raw if v is not None]
+        if len(vals) < 3:
+            return [None] * panel.n
+        m = sum(vals) / len(vals)
+        var = sum((v - m) ** 2 for v in vals) / (len(vals) - 1)
+        sd = var ** 0.5
+        if sd <= 0:
+            return [None] * panel.n
+        return [None if v is None else (v - m) / sd for v in raw]
+
+    def sig_leading_vrp_switch(panel, features, feature=None,
+                               vrp_z_feature=None,
+                               exposure_cap=1.0, invert_vrp=False, **kw):
+        """Direction conditioned on the VOLATILITY RISK PREMIUM.
+
+        The papers' own reasoning, applied to a leading signal:
+
+          "Momentum belongs to orderly trend states. Reversal belongs
+           to stressed, illiquid, high-volatility, or rebound states."
+
+        The volatility risk premium separates those states in a
+        FORWARD-LOOKING way. When the premium is ELEVATED the market
+        has priced calm; a volatility shock is the disruptive event, and
+        trend-following into it is the momentum-crash setup the
+        literature warns about. When the premium is DEPRESSED the
+        market is priced for movement, and the risk is that a
+        low-volatility drift continues - the orderly-trend state where
+        momentum works.
+
+        So: follow the directional signal when the premium is DEPRESSED
+        (cheap options, market not paying for protection), and stand
+        aside when it is ELEVATED.
+
+        The position size is the CONFIDENCE in that reading, scaled by
+        `exposure_cap`, so an ambiguous reading means a smaller
+        position rather than a binary bet - which is what the regime
+        paper asks for: "Translate state probabilities into explicit
+        position-sizing and turnover controls rather than signal
+        switching alone."
+        """
+        if feature is None:
+            raise ValueError("leading_vrp_switch requires a feature name")
+        if vrp_z_feature is None:
+            vrp_z_feature = "leading_vrp_zscore"
+        vals = features.get(feature) or {}
+        zvals = features.get(vrp_z_feature) or {}
+        sig: Dict[str, List[float]] = {}
+        for s in panel.symbols:
+            row: List[float] = []
+            v = vals.get(s) or []
+            z = zvals.get(s) or []
+            for i in range(panel.n):
+                d = v[i] if i < len(v) else None
+                zz = z[i] if i < len(z) else None
+                if d is None or zz is None:
+                    row.append(0.0)
+                    continue
+                # A negative premium means the market is NOT paying for
+                # protection: conditions favour the directional signal.
+                # A positive premium means protection is expensive, so
+                # the shock risk is priced and the trend signal is
+                # vulnerable - stand aside, progressively.
+                #
+                # `invert_vrp` flips the reading. It exists ONLY for the
+                # NEGATIVE CONTROL: if a spec with the premium inverted
+                # still performs well, the premium was never the thing
+                # doing the work, and every other verdict is suspect.
+                z = -float(zz) if invert_vrp else float(zz)
+                if z <= 0:
+                    size = 1.0
+                else:
+                    size = max(0.0, 1.0 - z)
+                row.append(float(d) * size * float(exposure_cap))
+            sig[s] = row
+        return sig
+
+    # ------------------------------------------------------------------
+    # THE PAPER-CONCEPT SIGNALS
+    # ------------------------------------------------------------------
+    # One signal per testable claim in the research papers. Every one
+    # of them supports `invert_signal`, which flips the polarity and
+    # produces the NEGATIVE CONTROL twin. A control that performs as
+    # well as its twin means the concept was never the thing doing the
+    # work, which voids the whole matrix.
+
+    def _invert(v: float, invert: bool) -> float:
+        return -float(v) if invert else float(v)
+
+    def sig_vol_regime_momentum(panel, features, feature=None,
+                                vol_feature=None, orderly_max_ratio=1.5,
+                                invert_signal=False, **kw):
+        """Momentum PERMITTED ONLY when the volatility state is orderly.
+
+        The papers: momentum 'weakens sharply in downturns, crisis
+        periods, and rebound-after-crash states', and 'use volatility and
+        liquidity filters to decide whether momentum or reversal should
+        dominate'.
+
+        `vol_feature` is a short/long volatility ratio: above 1 means
+        near-term volatility is running hot relative to the longer run,
+        which is the state momentum does not survive.
+        """
+        if feature is None:
+            raise ValueError("vol_regime_momentum requires a feature name")
+        if vol_feature is None:
+            vol_feature = "vol_ratio"
+        vals = features.get(feature) or {}
+        vols = features.get(vol_feature) or {}
+        sig: Dict[str, List[float]] = {}
+        for s in panel.symbols:
+            row: List[float] = []
+            v = vals.get(s) or []
+            r = vols.get(s) or []
+            for i in range(panel.n):
+                d = v[i] if i < len(v) else None
+                rr = r[i] if i < len(r) else None
+                if d is None or rr is None:
+                    row.append(0.0)
+                    continue
+                try:
+                    if float(rr) > float(orderly_max_ratio):
+                        row.append(0.0)     # not orderly: no position
+                        continue
+                except (TypeError, ValueError):
+                    row.append(0.0)
+                    continue
+                row.append(_invert(d, invert_signal))
+            sig[s] = row
+        return sig
+
+    def sig_volume_confirmed_momentum(panel, features, feature=None,
+                                      volume_feature=None,
+                                      min_volume_ratio=1.0,
+                                      invert_signal=False, **kw):
+        """Momentum PERMITTED ONLY when volume confirms it.
+
+        The papers: 'volume carries information that price alone does
+        not', and in crypto 'trade-flow imbalance and order-book
+        features often matter more than broad technical rules'.
+        """
+        if feature is None:
+            raise ValueError("volume_confirmed_momentum requires a feature")
+        if volume_feature is None:
+            volume_feature = "volume_ratio"
+        vals = features.get(feature) or {}
+        vols = features.get(volume_feature) or {}
+        sig: Dict[str, List[float]] = {}
+        for s in panel.symbols:
+            row: List[float] = []
+            v = vals.get(s) or []
+            r = vols.get(s) or []
+            for i in range(panel.n):
+                d = v[i] if i < len(v) else None
+                rr = r[i] if i < len(r) else None
+                if d is None or rr is None:
+                    row.append(0.0)
+                    continue
+                try:
+                    if float(rr) < float(min_volume_ratio):
+                        row.append(0.0)     # no volume confirmation
+                        continue
+                except (TypeError, ValueError):
+                    row.append(0.0)
+                    continue
+                row.append(_invert(d, invert_signal))
+            sig[s] = row
+        return sig
+
+    def sig_rsi_confirmed_reversion(panel, features, feature=None,
+                                    rsi_feature=None, entry=-2.0, exit=-0.5,
+                                    oversold=30.0, invert_signal=False, **kw):
+        """Long a stretched-DOWN move, but only when RSI confirms exhaustion.
+
+        The papers: 'In crypto, RSI was found more reliable than MACD or
+        Stochastic for overbought/oversold style signals'.
+
+        The position is LONG, not short: the papers describe reversal as
+        LIQUIDITY PROVISION - buying the dislocation - so a short leg
+        would be a different hypothesis.
+        """
+        if feature is None:
+            raise ValueError("rsi_confirmed_reversion requires a feature")
+        if rsi_feature is None:
+            rsi_feature = "rsi"
+        vals = features.get(feature) or {}
+        rsis = features.get(rsi_feature) or {}
+        sig: Dict[str, List[float]] = {}
+        for s in panel.symbols:
+            row: List[float] = []
+            z = vals.get(s) or []
+            r = rsis.get(s) or []
+            in_pos = False
+            for i in range(panel.n):
+                zz = z[i] if i < len(z) else None
+                rr = r[i] if i < len(r) else None
+                if zz is None or rr is None:
+                    row.append(0.0)
+                    continue
+                try:
+                    zz = float(zz)
+                    rr = float(rr)
+                except (TypeError, ValueError):
+                    row.append(0.0)
+                    continue
+                if not in_pos:
+                    if zz <= float(entry) and rr <= float(oversold):
+                        in_pos = True
+                        row.append(_invert(1.0, invert_signal))
+                    else:
+                        row.append(0.0)
+                else:
+                    if zz >= float(exit):
+                        in_pos = False
+                    row.append(0.0)
+            sig[s] = row
+        return sig
+
+    def sig_rebound_danger_momentum(panel, features, feature=None,
+                                    trailing_feature=None,
+                                    recent_feature=None,
+                                    trailing_max=0.0, recent_min=0.0,
+                                    invert_signal=False, **kw):
+        """Momentum DISABLED in the rebound-after-crash state.
+
+        The papers: 'momentum losses often arrive after the market has
+        already begun rebounding', and the crash dummy is 'negative
+        trailing market returns, a positive current return, and elevated
+        short-versus-long volatility'.
+
+        Here the third component (the volatility term) is omitted
+        because it needs a term structure this engine does not carry;
+        the two return components are used, and the omission is stated.
+        """
+        if feature is None:
+            raise ValueError("rebound_danger_momentum requires a feature")
+        if trailing_feature is None:
+            trailing_feature = "momentum"
+        if recent_feature is None:
+            recent_feature = "return"
+        vals = features.get(feature) or {}
+        trail = features.get(trailing_feature) or {}
+        recent = features.get(recent_feature) or {}
+        sig: Dict[str, List[float]] = {}
+        for s in panel.symbols:
+            row: List[float] = []
+            v = vals.get(s) or []
+            tr = trail.get(s) or []
+            rc = recent.get(s) or []
+            for i in range(panel.n):
+                d = v[i] if i < len(v) else None
+                t = tr[i] if i < len(tr) else None
+                rr = rc[i] if i < len(rc) else None
+                if d is None or t is None or rr is None:
+                    row.append(0.0)
+                    continue
+                try:
+                    danger = (float(t) <= float(trailing_max)
+                              and float(rr) >= float(recent_min))
+                except (TypeError, ValueError):
+                    row.append(0.0)
+                    continue
+                if danger:
+                    row.append(0.0)     # rebound-danger state: no position
+                    continue
+                row.append(_invert(d, invert_signal))
+            sig[s] = row
+        return sig
+
+    def sig_liquidity_gated_reversion(panel, features, feature=None,
+                                      volume_feature=None, vol_feature=None,
+                                      entry=-2.0, exit=-0.5,
+                                      max_volume_ratio=0.8,
+                                      min_volatility=0.30,
+                                      invert_signal=False, **kw):
+        """Reversion PERMITTED ONLY in thin liquidity and high volatility.
+
+        The papers: 'Reversal is stronger in illiquid stocks, lower-
+        turnover environments, and more volatile conditions; profits are
+        especially concentrated where liquidity is scarce.'
+        """
+        if feature is None:
+            raise ValueError("liquidity_gated_reversion requires a feature")
+        if volume_feature is None:
+            volume_feature = "volume_ratio"
+        if vol_feature is None:
+            vol_feature = "volatility"
+        vals = features.get(feature) or {}
+        vols = features.get(volume_feature) or {}
+        vs = features.get(vol_feature) or {}
+        sig: Dict[str, List[float]] = {}
+        for s in panel.symbols:
+            row: List[float] = []
+            z = vals.get(s) or []
+            vr = vols.get(s) or []
+            vv = vs.get(s) or []
+            in_pos = False
+            for i in range(panel.n):
+                zz = z[i] if i < len(z) else None
+                rv = vr[i] if i < len(vr) else None
+                vol = vv[i] if i < len(vv) else None
+                if zz is None or rv is None or vol is None:
+                    row.append(0.0)
+                    continue
+                try:
+                    zz = float(zz)
+                    rv = float(rv)
+                    vol = float(vol)
+                except (TypeError, ValueError):
+                    row.append(0.0)
+                    continue
+                thin = rv <= float(max_volume_ratio)
+                hot = vol >= float(min_volatility)
+                if not in_pos:
+                    if zz <= float(entry) and thin and hot:
+                        in_pos = True
+                        row.append(_invert(1.0, invert_signal))
+                    else:
+                        row.append(0.0)
+                else:
+                    if zz >= float(exit):
+                        in_pos = False
+                    row.append(0.0)
+            sig[s] = row
+        return sig
+
     btengine.FEATURES["regime_momentum_score"] = f_regime_momentum_score
+    btengine.FEATURES["leading_iv_level"] = f_leading_iv_level
+    btengine.FEATURES["leading_vrp_score"] = f_leading_vrp_score
+    btengine.FEATURES["leading_vrp_zscore"] = f_leading_vrp_zscore
     btengine.SIGNALS["regime_switch"] = sig_regime_switch
     btengine.SIGNALS["regime_switch_cross_sectional"] = sig_regime_switch_cross_sectional
     btengine.SIGNALS["rsi_volume_confirmation"] = sig_rsi_volume_confirmation
+    btengine.SIGNALS["leading_vrp_switch"] = sig_leading_vrp_switch
+    btengine.SIGNALS["vol_regime_momentum"] = sig_vol_regime_momentum
+    btengine.SIGNALS["volume_confirmed_momentum"] = sig_volume_confirmed_momentum
+    btengine.SIGNALS["rsi_confirmed_reversion"] = sig_rsi_confirmed_reversion
+    btengine.SIGNALS["rebound_danger_momentum"] = sig_rebound_danger_momentum
+    btengine.SIGNALS["liquidity_gated_reversion"] = sig_liquidity_gated_reversion
     return {
         "registered": True,
-        "features": ["regime_momentum_score"],
+        "features": ["regime_momentum_score", "leading_iv_level",
+                     "leading_vrp_score", "leading_vrp_zscore"],
         "signals": ["regime_switch", "regime_switch_cross_sectional",
-                    "rsi_volume_confirmation"],
+                    "rsi_volume_confirmation", "leading_vrp_switch",
+                    "vol_regime_momentum", "volume_confirmed_momentum",
+                    "rsi_confirmed_reversion", "rebound_danger_momentum",
+                    "liquidity_gated_reversion"],
     }
 
 

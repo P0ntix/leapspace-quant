@@ -1,0 +1,265 @@
+{
+  "ok": [
+    {
+      "symbol": "SPY",
+      "bars": "cached"
+    },
+    {
+      "symbol": "IWM",
+      "bars": "cached"
+    },
+    {
+      "symbol": "MDY",
+      "bars": "cached"
+    },
+    {
+      "symbol": "RSP",
+      "bars": "cached"
+    },
+    {
+      "symbol": "QQQ",
+      "bars": "cached"
+    },
+    {
+      "symbol": "DIA",
+      "bars": "cached"
+    },
+    {
+      "symbol": "BTC-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "ETH-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "LTC-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "BCH-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "XRP-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "SOL-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "ADA-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "DOGE-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "AVAX-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "LINK-USD",
+      "bars": "cached"
+    },
+    {
+      "symbol": "EURUSD=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "GBPUSD=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "USDJPY=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "AUDUSD=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "USDCHF=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "USDCAD=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "NZDUSD=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "USDSEK=X",
+      "bars": "cached"
+    },
+    {
+      "symbol": "GC=F",
+      "bars": "cached"
+    },
+    {
+      "symbol": "SI=F",
+      "bars": 6571,
+      "s": 3.1
+    },
+    {
+      "symbol": "CL=F",
+      "bars": 6578,
+      "s": 2.0
+    },
+    {
+      "symbol": "NG=F",
+      "bars": 6575,
+      "s": 1.7
+    },
+    {
+      "symbol": "HG=F",
+      "bars": 6574,
+      "s": 1.6
+    },
+    {
+      "symbol": "PL=F",
+      "bars": 6597,
+      "s": 2.0
+    },
+    {
+      "symbol": "PA=F",
+      "bars": 6608,
+      "s": 1.5
+    },
+    {
+      "symbol": "ZC=F",
+      "bars": 6581,
+      "s": 1.3
+    },
+    {
+      "symbol": "ZS=F",
+      "bars": 6573,
+      "s": 1.4
+    },
+    {
+      "symbol": "ZW=F",
+      "bars": 6593,
+      "s": 2.7
+    },
+    {
+      "symbol": "KC=F",
+      "bars": 6729,
+      "s": 2.9
+    },
+    {
+      "symbol": "SB=F",
+      "bars": 6692,
+      "s": 8.9
+    },
+    {
+      "symbol": "CT=F",
+      "bars": 6731,
+      "s": 7.9
+    },
+    {
+      "symbol": "ES=F",
+      "bars": 6597,
+      "s": 1.6
+    },
+    {
+      "symbol": "NQ=F",
+      "bars": 6597,
+      "s": 1.2
+    },
+    {
+      "symbol": "YM=F",
+      "bars": 6188,
+      "s": 2.5
+    },
+    {
+      "symbol": "RTY=F",
+      "bars": 2347,
+      "s": 0.9
+    },
+    {
+      "symbol": "ZN=F",
+      "bars": 6559,
+      "s": 1.9
+    },
+    {
+      "symbol": "ZB=F",
+      "bars": 6565,
+      "s": 1.8
+    },
+    {
+      "symbol": "ZF=F",
+      "bars": 6571,
+      "s": 1.3
+    },
+    {
+      "symbol": "ZT=F",
+      "bars": 6625,
+      "s": 1.3
+    },
+    {
+      "symbol": "^TNX",
+      "bars": "cached"
+    },
+    {
+      "symbol": "^TYX",
+      "bars": 12456,
+      "s": 2.7
+    },
+    {
+      "symbol": "^FVX",
+      "bars": 14230,
+      "s": 2.7
+    },
+    {
+      "symbol": "^IRX",
+      "bars": 14230,
+      "s": 2.8
+    },
+    {
+      "symbol": "TLT",
+      "bars": "cached"
+    },
+    {
+      "symbol": "IEF",
+      "bars": 6106,
+      "s": 1.3
+    },
+    {
+      "symbol": "SHY",
+      "bars": 6106,
+      "s": 4.3
+    },
+    {
+      "symbol": "LQD",
+      "bars": 6106,
+      "s": 1.4
+    },
+    {
+      "symbol": "HYG",
+      "bars": 4924,
+      "s": 1.4
+    },
+    {
+      "symbol": "EMB",
+      "bars": 4748,
+      "s": 1.7
+    },
+    {
+      "symbol": "TIP",
+      "bars": 5764,
+      "s": 1.5
+    },
+    {
+      "symbol": "BND",
+      "bars": 4925,
+      "s": 1.3
+    }
+  ],
+  "failed": {
+    "LBS=F": "RuntimeError: HTTP failed after 3 tries: https://query1.finance.yahoo.com/v8/finance/chart/LBS%3DF?period1=0&period2=9999999999&interval=1d&includePrePost=false&events=div%2C"
+  }
+}

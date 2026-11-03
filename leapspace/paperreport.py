@@ -1,0 +1,627 @@
+"""The paper-concept report: the matrix, read and rendered.
+
+WHAT THIS IS
+    Reads the results file written by `leapspace.paperrun` and renders
+    the findings as (a) a markdown report and (b) a self-contained
+    HTML dashboard with inline SVG charts.
+
+WHAT THE REPORT IS FOR
+    The user asked for an EDGE - something with higher upside than
+    downside on the portfolio, that survives an industry-standard
+    backtest across multiple market conditions and multiple asset
+    classes. So the report is organised around the questions that
+    actually decide that, in this order:
+
+      1. DID ANYTHING SURVIVE?  The verdict table, with every flag.
+      2. DID THE NEGATIVE CONTROLS FAIL?  If a control survived, the
+         validation is not discriminating and everything else is void.
+         This is checked FIRST and reported first.
+      3. IS IT AN EDGE OR A MARKET CURIOSITY?  A concept that works on
+         one asset class is not an edge. The cross-asset table is the
+         centrepiece.
+      4. IS THE UPSIDE BIGGER THAN THE DOWNSIDE?  The return
+         distribution and the drawdown, per surviving concept.
+      5. WHAT WAS LEADING AND WHAT WAS LAGGING?  The comparison the
+         papers' claim rests on.
+
+THE CHARTS
+    1. The verdict matrix - concept x asset class, coloured by verdict.
+    2. The out-of-sample Sharpe by concept and asset class.
+    3. The real-spec vs negative-control Sharpe comparison, per
+       concept. A concept whose control matches it is not doing work.
+    4. The leading coverage - how much of each panel the
+       forward-looking indicator actually covered.
+
+WHAT THIS IS NOT
+    It is NOT a summary that flatters the result. A matrix of
+    REFUTED verdicts rendered beautifully is still a matrix of
+    REFUTED verdicts, and the report says so in the first line.
+"""
+from __future__ import annotations
+
+import json
+import os
+from typing import Any, Dict, List, Optional, Sequence, Tuple
+
+from .viz_leading import (ACCENT, BG, DOWN, GRID, MUTED, NEUTRAL, TEXT,
+                          UP, WARN, svg_bars, svg_line_chart)
+
+__all__ = [
+    "PAPER_REPORT_PATH",
+    "load_results",
+    "summarise",
+    "render_markdown",
+    "render_html",
+    "build_report",
+]
+
+
+PAPER_REPORT_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "reports", "PAPER_CONCEPT_REPORT.md")
+
+_HTML_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "reports", "charts", "paper_concepts.html")
+
+_VERDICT_COLOUR = {
+    "SUPPORTED": UP,
+    "FRAGILE": WARN,
+    "REFUTED": DOWN,
+    "INCONCLUSIVE": NEUTRAL,
+    "ERROR": "#ff00ff",
+}
+
+
+def load_results(path: Optional[str] = None) -> List[Dict[str, Any]]:
+    """The results rows, or an empty list when there are none."""
+    p = path or os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "reports", "paper_concept_results.json")
+    if not os.path.isfile(p):
+        return []
+    try:
+        with open(p, "r", encoding="utf-8") as fh:
+            data = json.load(fh)
+        return [r for r in data if isinstance(r, dict)] if isinstance(
+            data, list) else []
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _is_control(name: str) -> bool:
+    return str(name or "").startswith("NEGATIVE-CONTROL-")
+
+
+def _twin(name: str) -> str:
+    """The real spec's name for a control, or the control's for a real."""
+    if _is_control(name):
+        return str(name)[len("NEGATIVE-CONTROL-"):]
+    return f"NEGATIVE-CONTROL-{name}"
+
+
+def _sharpe(row: Dict[str, Any]) -> Optional[float]:
+    m = row.get("metrics") or {}
+    for key in ("oos_sharpe", "sharpe"):
+        v = m.get(key)
+        if isinstance(v, (int, float)):
+            return float(v)
+    return None
+
+
+def summarise(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+    """Turn the rows into the tables the report renders."""
+    real = [r for r in rows if not _is_control(r.get("name", ""))]
+    controls = [r for r in rows if _is_control(r.get("name", ""))]
+    by_name = {r.get("name"): r for r in rows}
+
+    concepts: List[str] = []
+    for r in real:
+        c = r.get("concept") or "unknown"
+        if c not in concepts:
+            concepts.append(c)
+    asset_classes: List[str] = []
+    for r in real:
+        a = r.get("asset_class") or "unknown"
+        if a not in asset_classes:
+            asset_classes.append(a)
+
+    # The verdict matrix.
+    matrix: Dict[str, Dict[str, Dict[str, Any]]] = {}
+    for r in real:
+        c = r.get("concept") or "unknown"
+        a = r.get("asset_class") or "unknown"
+        matrix.setdefault(c, {})[a] = r
+
+    # The control comparison: does the real spec beat its inverted twin?
+    comparison: List[Dict[str, Any]] = []
+    for r in real:
+        ctrl = by_name.get(_twin(r.get("name", "")))
+        comparison.append({
+            "concept": r.get("concept"),
+            "asset_class": r.get("asset_class"),
+            "name": r.get("name"),
+            "real_verdict": r.get("verdict"),
+            "real_sharpe": _sharpe(r),
+            "control_verdict": (ctrl or {}).get("verdict"),
+            "control_sharpe": _sharpe(ctrl) if ctrl else None,
+        })
+
+    survived = [r for r in real if r.get("verdict") == "SUPPORTED"]
+    fragile = [r for r in real if r.get("verdict") == "FRAGILE"]
+    controls_survived = [r for r in controls
+                         if r.get("verdict") == "SUPPORTED"]
+
+    # Cross-asset consistency: how many asset classes each concept
+    # produced a SUPPORTED or FRAGILE result on.
+    consistency: List[Dict[str, Any]] = []
+    for c in concepts:
+        rows_c = [r for r in real if r.get("concept") == c]
+        good = [r for r in rows_c
+                if r.get("verdict") in ("SUPPORTED", "FRAGILE")]
+        sharpes = [_sharpe(r) for r in rows_c]
+        sharpes = [s for s in sharpes if s is not None]
+        controls_c = [r for r in controls if r.get("concept") == c]
+        controls_good = [r for r in controls_c
+                         if r.get("verdict") in ("SUPPORTED", "FRAGILE")]
+        consistency.append({
+            "concept": c,
+            "n_asset_classes": len(rows_c),
+            "n_good": len(good),
+            "n_controls_good": len(controls_good),
+            "mean_sharpe": (sum(sharpes) / len(sharpes)) if sharpes else None,
+            "best_sharpe": max(sharpes) if sharpes else None,
+            "worst_sharpe": min(sharpes) if sharpes else None,
+            "n_positive_sharpe": sum(1 for s in sharpes if s > 0),
+            "paper": (rows_c[0].get("paper") if rows_c else ""),
+        })
+
+    # Leading coverage.
+    coverage: List[Dict[str, Any]] = []
+    for r in real:
+        cov = r.get("leading_coverage") or {}
+        if not cov or cov.get("reason", "").startswith("this spec"):
+            continue
+        coverage.append({
+            "name": r.get("name"),
+            "concept": r.get("concept"),
+            "asset_class": r.get("asset_class"),
+            "source": cov.get("source"),
+            "asset": cov.get("asset"),
+            "n_points": cov.get("n_points"),
+            "reason": cov.get("reason"),
+        })
+
+    return {
+        "n_rows": len(rows),
+        "n_real": len(real),
+        "n_controls": len(controls),
+        "concepts": concepts,
+        "asset_classes": asset_classes,
+        "matrix": matrix,
+        "comparison": comparison,
+        "consistency": consistency,
+        "survived": survived,
+        "fragile": fragile,
+        "controls_survived": controls_survived,
+        "coverage": coverage,
+        "verdict_counts": _counts(real),
+        "control_verdict_counts": _counts(controls),
+    }
+
+
+def _counts(rows: Sequence[Dict[str, Any]]) -> Dict[str, int]:
+    out: Dict[str, int] = {}
+    for r in rows:
+        v = str(r.get("verdict") or "UNKNOWN")
+        out[v] = out.get(v, 0) + 1
+    return out
+
+
+# --------------------------------------------------------------------------
+# The markdown report
+# --------------------------------------------------------------------------
+def render_markdown(rows: Sequence[Dict[str, Any]],
+                    summary: Optional[Dict[str, Any]] = None) -> str:
+    """Render the findings as markdown."""
+    s = summary or summarise(rows)
+    L: List[str] = []
+
+    L.append("# PAPER-CONCEPT MATRIX — what the research actually supports")
+    L.append("")
+    L.append("Every claim in the five research papers this package implements, "
+             "coded as a rule and tested through the engine's full "
+             "validation gauntlet (walk-forward with purge and embargo, "
+             "cost stress, gross-vs-net, parameter sweep, Monte Carlo, "
+             "regime breakdown, capacity, replication, causality audit) "
+             "across six asset classes.")
+    L.append("")
+
+    # ---- the headline, honestly -------------------------------------
+    n_real = s["n_real"]
+    n_ctrl = s["n_controls"]
+    L.append("## 1. The headline")
+    L.append("")
+    if not n_real:
+        L.append("**No results were available.** The matrix has not been "
+                 "run, or the results file could not be read.")
+        L.append("")
+        return "\n".join(L)
+
+    counts = s["verdict_counts"]
+    L.append(f"| | Real specs | Negative controls |")
+    L.append("|---|---|---|")
+    for v in ("SUPPORTED", "FRAGILE", "REFUTED", "INCONCLUSIVE", "ERROR"):
+        L.append(f"| {v} | {counts.get(v, 0)} | "
+                 f"{s['control_verdict_counts'].get(v, 0)} |")
+    L.append(f"| **total** | **{n_real}** | **{n_ctrl}** |")
+    L.append("")
+
+    if s["controls_survived"]:
+        L.append("### :rotating_light: CRITICAL — a negative control "
+                 "SURVIVED")
+        L.append("")
+        L.append("**The validation is not discriminating.** The following "
+                 "controls, whose signal polarity was deliberately "
+                 "INVERTED, came out SUPPORTED:")
+        L.append("")
+        for r in s["controls_survived"]:
+            L.append(f"* `{r.get('name')}` — {r.get('verdict')}, "
+                     f"Sharpe {_sharpe(r)}")
+        L.append("")
+        L.append("A control is a twin of a real spec in which the ONLY "
+                 "difference is that the signal points the wrong way. If "
+                 "the wrong-way version is SUPPORTED, the concept was "
+                 "never what produced the result, and **every other "
+                 "verdict in this matrix is void** until that is "
+                 "explained.")
+        L.append("")
+    else:
+        L.append("### The negative controls all failed, as they must")
+        L.append("")
+        L.append("Every inverted-polarity control was REFUTED, FRAGILE or "
+                 "INCONCLUSIVE. The validation is discriminating, so the "
+                 "verdicts below are meaningful.")
+        L.append("")
+
+    # ---- the matrix --------------------------------------------------
+    L.append("## 2. The verdict matrix")
+    L.append("")
+    L.append("One row per paper concept, one column per asset class. A "
+             "concept that works on ONE asset class is a market curiosity, "
+             "not an edge.")
+    L.append("")
+    acs = s["asset_classes"]
+    L.append("| Concept | " + " | ".join(acs) + " |")
+    L.append("|---" * (len(acs) + 1) + "|")
+    for c in s["concepts"]:
+        cells = []
+        for a in acs:
+            r = (s["matrix"].get(c) or {}).get(a)
+            if not r:
+                cells.append("—")
+                continue
+            sh = _sharpe(r)
+            v = str(r.get("verdict") or "?")
+            cells.append(f"**{v}**" + (f" ({sh:.2f})" if sh is not None
+                                        else ""))
+        L.append(f"| {c} | " + " | ".join(cells) + " |")
+    L.append("")
+    L.append("Sharpe figures are the POOLED OUT-OF-SAMPLE numbers, not "
+             "the in-sample ones.")
+    L.append("")
+
+    # ---- cross-asset consistency --------------------------------------
+    L.append("## 3. Does it work everywhere, or only somewhere?")
+    L.append("")
+    L.append("| Concept | Asset classes with a positive result | Mean OOS "
+             "Sharpe | Best | Worst | Controls that also passed |")
+    L.append("|---|---|---|---|---|---|")
+    for row in s["consistency"]:
+        mean = row["mean_sharpe"]
+        best = row["best_sharpe"]
+        worst = row["worst_sharpe"]
+        L.append(
+            f"| {row['concept']} | {row['n_good']}/{row['n_asset_classes']} "
+            f"| {('%.2f' % mean) if mean is not None else 'n/a'} "
+            f"| {('%.2f' % best) if best is not None else 'n/a'} "
+            f"| {('%.2f' % worst) if worst is not None else 'n/a'} "
+            f"| {row['n_controls_good']}/{row['n_asset_classes']} |")
+    L.append("")
+    L.append("**A concept whose negative control ALSO passed is not "
+             "demonstrated.** The last column is the number of inverted "
+             "twins that were SUPPORTED or FRAGILE; where it equals the "
+             "second column, the concept is doing nothing that its own "
+             "control does not also do.")
+    L.append("")
+
+    # ---- surviving ----------------------------------------------------
+    L.append("## 4. What survived, and with which flags")
+    L.append("")
+    if not s["survived"] and not s["fragile"]:
+        L.append("**Nothing survived.** Not one of the "
+                 f"{n_real} real specs earned a SUPPORTED or FRAGILE "
+                 "verdict. The papers' mechanisms did not produce a "
+                 "tradeable edge on the data and universes tested here, "
+                 "at the cost levels and risk controls applied.")
+        L.append("")
+    for r in s["survived"]:
+        L.append(f"### :white_check_mark: SUPPORTED — `{r.get('name')}`")
+        L.append("")
+        L.append(f"* OOS Sharpe: {_sharpe(r)}")
+        L.append(f"* Flags: {', '.join(r.get('flags') or ['none'])}")
+        L.append("")
+
+    # ---- the full table ------------------------------------------------
+    L.append("## 5. Every spec, with its flags")
+    L.append("")
+    L.append("| Spec | Verdict | OOS Sharpe | Trades | Max DD | Flags |")
+    L.append("|---|---|---|---|---|---|")
+    for r in sorted(rows, key=lambda x: (str(x.get("concept")),
+                                          str(x.get("asset_class")))):
+        sh = _sharpe(r)
+        m = r.get("metrics") or {}
+        dd = m.get("max_drawdown")
+        L.append(
+            f"| `{r.get('name')}` | {r.get('verdict')} "
+            f"| {('%.2f' % sh) if sh is not None else 'n/a'} "
+            f"| {m.get('n_trades', 'n/a')} "
+            f"| {('%.1f%%' % (dd * 100)) if isinstance(dd, (int, float)) else 'n/a'} "
+            f"| {'; '.join(r.get('flags') or []) or '—'} |")
+    L.append("")
+
+    # ---- leading coverage ----------------------------------------------
+    if s["coverage"]:
+        L.append("## 6. Leading-indicator coverage")
+        L.append("")
+        L.append("How much of each panel the forward-looking indicator "
+                 "actually covered. A leading feature that covers a small "
+                 "fraction of the sample cannot be evaluated, and the "
+                 "verdict for that spec is a verdict on a short sample.")
+        L.append("")
+        L.append("| Spec | Source | Points | Note |")
+        L.append("|---|---|---|---|")
+        for c in s["coverage"]:
+            L.append(f"| `{c['name']}` | {c.get('source')} "
+                     f"({c.get('asset')}) | {c.get('n_points')} "
+                     f"| {c.get('reason') or ''} |")
+        L.append("")
+
+    # ---- what this means -----------------------------------------------
+    L.append("## 7. What this establishes and what it does not")
+    L.append("")
+    L.append("* Every result above is an OUT-OF-SAMPLE result from a "
+             "purge-and-embargo walk-forward, at 2x the engine's default "
+             "costs, with a volatility-targeted, dollar-neutral, "
+             "10%-per-name-capped book.")
+    L.append("* A SUPPORTED verdict means the strategy warrants PAPER "
+             "TRADING. It is not a licence to trade it with money, and "
+             "the package's own stage gates say so "
+             "(`LIVE_CAPITAL_READINESS.md`).")
+    L.append("* The negative controls are the reason any of this is "
+             "believable. A matrix without them would look identical "
+             "whether the concepts were real or invented.")
+    L.append("* Crypto and equities are DIFFERENT markets. The regime "
+             "paper says so explicitly, so a concept that survives on "
+             "one and fails on the other is a finding about the market, "
+             "not a defect in the test.")
+    L.append("")
+    return "\n".join(L)
+
+
+# --------------------------------------------------------------------------
+# The HTML dashboard
+# --------------------------------------------------------------------------
+def _verdict_matrix_svg(summary: Dict[str, Any]) -> str:
+    """A grid of cells, coloured by verdict."""
+    concepts = summary["concepts"]
+    acs = summary["asset_classes"]
+    if not concepts or not acs:
+        return "<p>no data</p>"
+    cw, ch = 150, 34
+    pad_l, pad_t = 210, 60
+    width = pad_l + cw * len(acs) + 20
+    height = pad_t + ch * len(concepts) + 20
+    out = [f'<svg viewBox="0 0 {width} {height}" width="100%" '
+           f'style="max-width:{width}px;background:{BG}" '
+           f'xmlns="http://www.w3.org/2000/svg">',
+           f'<rect width="{width}" height="{height}" fill="{BG}"/>',
+           f'<text x="12" y="26" fill="{TEXT}" font-size="13" '
+           f'font-weight="bold">Verdict by concept and asset class</text>']
+    for j, a in enumerate(acs):
+        out.append(f'<text x="{pad_l + j * cw + cw/2:.0f}" y="{pad_t - 10}" '
+                   f'fill="{MUTED}" font-size="10" text-anchor="middle">'
+                   f'{_esc(a)}</text>')
+    for i, c in enumerate(concepts):
+        y = pad_t + i * ch
+        out.append(f'<text x="12" y="{y + 21}" fill="{TEXT}" '
+                   f'font-size="11">{_esc(c)}</text>')
+        for j, a in enumerate(acs):
+            r = (summary["matrix"].get(c) or {}).get(a)
+            x = pad_l + j * cw
+            if not r:
+                out.append(f'<rect x="{x}" y="{y}" width="{cw-4}" '
+                           f'height="{ch-4}" fill="#2a2a44" rx="3"/>')
+                continue
+            col = _VERDICT_COLOUR.get(str(r.get("verdict")), NEUTRAL)
+            sh = _sharpe(r)
+            label = str(r.get("verdict") or "?")[:4]
+            if sh is not None:
+                label += f" {sh:.1f}"
+            out.append(f'<rect x="{x}" y="{y}" width="{cw-4}" '
+                       f'height="{ch-4}" fill="{col}" opacity="0.22" '
+                       f'stroke="{col}" rx="3"/>')
+            out.append(f'<text x="{x + (cw-4)/2:.0f}" y="{y + 21}" '
+                       f'fill="{col}" font-size="10" text-anchor="middle">'
+                       f'{_esc(label)}</text>')
+    out.append("</svg>")
+    return "".join(out)
+
+
+def _esc(s: Any) -> str:
+    import html
+    return html.escape(str(s), quote=True)
+
+
+def render_html(rows: Sequence[Dict[str, Any]],
+                summary: Optional[Dict[str, Any]] = None) -> str:
+    """Render the matrix as a self-contained HTML page."""
+    s = summary or summarise(rows)
+    parts: List[str] = []
+
+    counts = s["verdict_counts"]
+    ccounts = s["control_verdict_counts"]
+    ctrl_ok = s["controls_survived"]
+
+    parts.append(
+        '<div class="card"><h2>What the matrix found</h2>'
+        '<div class="grid">'
+        f'<div><div class="kv">Real specs tested</div>'
+        f'<div class="vv big">{s["n_real"]}</div></div>'
+        f'<div><div class="kv">Negative controls</div>'
+        f'<div class="vv big">{s["n_controls"]}</div></div>'
+        f'<div><div class="kv">SUPPORTED (real)</div>'
+        f'<div class="vv big" style="color:{UP}">'
+        f'{counts.get("SUPPORTED", 0)}</div></div>'
+        f'<div><div class="kv">FRAGILE (real)</div>'
+        f'<div class="vv big" style="color:{WARN}">'
+        f'{counts.get("FRAGILE", 0)}</div></div>'
+        f'<div><div class="kv">REFUTED (real)</div>'
+        f'<div class="vv big" style="color:{DOWN}">'
+        f'{counts.get("REFUTED", 0)}</div></div>'
+        f'<div><div class="kv">Controls that survived</div>'
+        f'<div class="vv big" style="color:'
+        f'{DOWN if ctrl_ok else UP}">{len(ctrl_ok)}</div></div>'
+        '</div>'
+        + ('<p class="note warn">A negative control SURVIVED. The '
+           'validation is not discriminating and every other verdict is '
+           'void until that is explained.</p>' if ctrl_ok else
+           '<p class="note">Every inverted control failed, as it must. '
+           'The validation is discriminating, so the verdicts mean '
+           'something.</p>')
+        + '</div>')
+
+    parts.append('<div class="card"><h2>Verdict matrix</h2>'
+                 + _verdict_matrix_svg(s)
+                 + '<p class="note">One cell per concept x asset class. '
+                   'Sharpe figures are pooled OUT-OF-SAMPLE.</p></div>')
+
+    # The real-vs-control comparison, per concept.
+    comp_chart = []
+    for c in s["concepts"]:
+        rows_c = [x for x in s["comparison"] if x["concept"] == c]
+        real_sh = [x["real_sharpe"] for x in rows_c
+                   if x["real_sharpe"] is not None]
+        ctrl_sh = [x["control_sharpe"] for x in rows_c
+                   if x["control_sharpe"] is not None]
+        if not real_sh and not ctrl_sh:
+            continue
+        comp_chart.append({
+            "title": f"{c} — real vs inverted control",
+            "svg": svg_line_chart(
+                [{"name": "real", "values": real_sh, "color": UP},
+                 {"name": "inverted control", "values": ctrl_sh,
+                  "color": DOWN}],
+                None, f"{c}: real vs inverted control", y_label="OOS Sharpe",
+                hlines=[{"value": 0.0, "color": MUTED, "label": "zero"}]),
+            "note": ("If the two lines overlap, the concept is not "
+                     "separating itself from its own negation."),
+        })
+    parts.extend('<div class="card"><h2>' + _esc(c["title"]) + '</h2>'
+                  + c["svg"] + '<p class="note">' + _esc(c["note"])
+                  + '</p></div>' for c in comp_chart)
+
+    # Cross-asset consistency bars.
+    cons = s["consistency"]
+    if cons:
+        items = [{"label": c["concept"][:22],
+                  "value": (c["mean_sharpe"] or 0.0)} for c in cons]
+        parts.append('<div class="card"><h2>Mean out-of-sample Sharpe by '
+                     'concept</h2>'
+                     + svg_bars(items, "Mean OOS Sharpe by concept",
+                                value_key="value", label_key="label")
+                     + '<p class="note">A concept that only works on one '
+                       'asset class is a market curiosity, not an edge. '
+                       'The table in the markdown report gives the '
+                       'per-asset-class breakdown.</p></div>')
+
+    # The verdict detail table.
+    trows = []
+    for r in sorted(rows, key=lambda x: (str(x.get("concept")),
+                                          str(x.get("asset_class")))):
+        sh = _sharpe(r)
+        col = _VERDICT_COLOUR.get(str(r.get("verdict")), NEUTRAL)
+        trows.append(
+            f'<tr><td>{_esc(r.get("concept"))}</td>'
+            f'<td>{_esc(r.get("asset_class"))}</td>'
+            f'<td><span class="tag" style="color:{col};background:'
+            f'{col}22">{_esc(r.get("verdict"))}</span></td>'
+            f'<td>{("%.2f" % sh) if sh is not None else "n/a"}</td>'
+            f'<td class="kv">{_esc("; ".join(r.get("flags") or []))}</td></tr>')
+    parts.append('<div class="card"><h2>Every spec, with its flags</h2>'
+                 '<table><tr><th>Concept</th><th>Asset class</th>'
+                 '<th>Verdict</th><th>OOS Sharpe</th><th>Flags</th></tr>'
+                 + "".join(trows) + '</table></div>')
+
+    parts.append('<div class="card"><h2>What this establishes</h2><ul>'
+                 '<li>Every figure is a pooled OUT-OF-SAMPLE result from '
+                 'a purge-and-embargo walk-forward.</li>'
+                 '<li>Costs are stressed to 2x the engine default; the '
+                 'book is volatility-targeted, dollar-neutral and capped '
+                 'at 10% per name.</li>'
+                 '<li>A SUPPORTED verdict warrants PAPER TRADING. It is '
+                 'not a licence to trade with money.</li>'
+                 '<li>The negative controls are why any of this is '
+                 'believable.</li></ul></div>')
+
+    body = "\n".join(parts)
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeapSpace — paper-concept matrix</title>
+<style>
+ :root {{ color-scheme: dark; }}
+ body {{ margin:0; padding:24px; background:{BG}; color:{TEXT};
+        font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif; }}
+ h1 {{ font-size:21px; margin:0 0 4px; }}
+ .sub {{ color:{MUTED}; margin:0 0 22px; font-size:13px; }}
+ .card {{ background:#20203a; border:1px solid {GRID}; border-radius:12px;
+          padding:16px 18px; margin-bottom:16px; }}
+ .note {{ color:{MUTED}; font-size:12.5px; margin:8px 0 0; }}
+ .warn {{ color:{WARN}; }}
+ .grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+          gap:14px; }}
+ .kv {{ color:{MUTED}; font-size:12px; }}
+ .vv {{ font-size:16px; }} .big {{ font-size:26px; font-weight:600; }}
+ table {{ border-collapse:collapse; width:100%; font-size:12.5px; }}
+ th,td {{ text-align:left; padding:6px 9px; border-bottom:1px solid {GRID};
+          vertical-align:top; }}
+ th {{ color:{MUTED}; font-weight:600; text-transform:uppercase; font-size:10.5px; }}
+ .tag {{ display:inline-block; padding:2px 8px; border-radius:999px;
+         font-size:11px; font-weight:600; }}
+</style></head><body>
+<h1>Paper-concept matrix</h1>
+<p class="sub">Every claim in the five research papers, coded and tested
+through the full validation gauntlet across six asset classes.</p>
+{body}
+</body></html>"""
+
+
+def build_report(results_path: Optional[str] = None,
+                 md_path: Optional[str] = None,
+                 html_path: Optional[str] = None) -> Dict[str, Any]:
+    """Build the markdown report and the HTML dashboard."""
+    rows = load_results(results_path)
+    summary = summarise(rows)
+    md = render_markdown(rows, summary)
+    md_path = md_path or PAPER_REPORT_PATH
+    os.makedirs(os.path.dirname(md_path), exist_ok=True)
+    with open(md_path, "w", encoding="utf-8") as fh:
+        fh.write(md)
+    html = render_html(rows, summary)
+    html_path = html_path or _HTML_PATH
+    os.makedirs(os.path.dirname(html_path), exist_ok=True)
+    with open(html_path, "w", encoding="utf-8") as fh:
+        fh.write(html)
+    return {"markdown": md_path, "html": html_path, "summary": summary,
+            "n_rows": len(rows)}

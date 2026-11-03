@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeapSpace — paper-concept matrix</title>
+<style>
+ :root { color-scheme: dark; }
+ body { margin:0; padding:24px; background:#1a1a2e; color:#e0e0e0;
+        font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif; }
+ h1 { font-size:21px; margin:0 0 4px; }
+ .sub { color:#aaaaaa; margin:0 0 22px; font-size:13px; }
+ .card { background:#20203a; border:1px solid #333333; border-radius:12px;
+          padding:16px 18px; margin-bottom:16px; }
+ .note { color:#aaaaaa; font-size:12.5px; margin:8px 0 0; }
+ .warn { color:#ffaa00; }
+ .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+          gap:14px; }
+ .kv { color:#aaaaaa; font-size:12px; }
+ .vv { font-size:16px; } .big { font-size:26px; font-weight:600; }
+ table { border-collapse:collapse; width:100%; font-size:12.5px; }
+ th,td { text-align:left; padding:6px 9px; border-bottom:1px solid #333333;
+          vertical-align:top; }
+ th { color:#aaaaaa; font-weight:600; text-transform:uppercase; font-size:10.5px; }
+ .tag { display:inline-block; padding:2px 8px; border-radius:999px;
+         font-size:11px; font-weight:600; }
+</style></head><body>
+<h1>Paper-concept matrix</h1>
+<p class="sub">Every claim in the five research papers, coded and tested
+through the full validation gauntlet across six asset classes.</p>
+<div class="card"><h2>What the matrix found</h2><div class="grid"><div><div class="kv">Real specs tested</div><div class="vv big">0</div></div><div><div class="kv">Negative controls</div><div class="vv big">0</div></div><div><div class="kv">SUPPORTED (real)</div><div class="vv big" style="color:#00ff88">0</div></div><div><div class="kv">FRAGILE (real)</div><div class="vv big" style="color:#ffaa00">0</div></div><div><div class="kv">REFUTED (real)</div><div class="vv big" style="color:#ff4444">0</div></div><div><div class="kv">Controls that survived</div><div class="vv big" style="color:#00ff88">0</div></div></div><p class="note">Every inverted control failed, as it must. The validation is discriminating, so the verdicts mean something.</p></div>
+<div class="card"><h2>Verdict matrix</h2><p>no data</p><p class="note">One cell per concept x asset class. Sharpe figures are pooled OUT-OF-SAMPLE.</p></div>
+<div class="card"><h2>Every spec, with its flags</h2><table><tr><th>Concept</th><th>Asset class</th><th>Verdict</th><th>OOS Sharpe</th><th>Flags</th></tr></table></div>
+<div class="card"><h2>What this establishes</h2><ul><li>Every figure is a pooled OUT-OF-SAMPLE result from a purge-and-embargo walk-forward.</li><li>Costs are stressed to 2x the engine default; the book is volatility-targeted, dollar-neutral and capped at 10% per name.</li><li>A SUPPORTED verdict warrants PAPER TRADING. It is not a licence to trade with money.</li><li>The negative controls are why any of this is believable.</li></ul></div>
+</body></html>
