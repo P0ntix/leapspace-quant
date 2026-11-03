@@ -12,6 +12,89 @@ number** — see §5, which is the whole answer.
 
 ---
 
+## UPDATE — 2026-11-04: the paper-concept matrix changes the answer
+
+This assessment was written before the research papers were tested. They now have
+been, and the result moves the biggest blocker. **A missing edge is a harder blocker
+than a missing order-routing path**, because the order-routing path can be built,
+while an edge that does not exist cannot be shipped.
+
+### What was run
+
+Eight testable claims from the five research papers, each coded as a rule and tested
+on six asset classes — US equity style, crypto, FX majors, commodities, futures
+broad, and rates/credit. Every spec used the **same** risk block (gross 1.0, vol
+target 15%, 10% per name, 5 names, net 0.0, monthly rebalance) with costs stressed
+to 2× the engine default, so a difference in the result is attributable to the
+market rather than to the bookkeeping. Each concept shipped with an
+**inverted-polarity negative control**: 48 real specs + 48 controls = 96.
+
+### What came out
+
+| | Real specs | Negative controls |
+|---|---|---|
+| SUPPORTED | **0** | 0 |
+| FRAGILE | 1 | 0 |
+| REFUTED | 29 | 30 |
+| INCONCLUSIVE | 18 | 18 |
+| **actually executed** | **36** | **36** |
+
+* **No concept earned a SUPPORTED verdict.** The single FRAGILE row
+  (`c8_liquidity_reversal_crypto`) carries a **negative** OOS Sharpe of −0.19 and a
+  negative total return: it is a losing strategy the gauntlet could not cleanly
+  reject, not an edge.
+* **No negative control survived**, so the validation is discriminating over the 36
+  controls that ran. That matters: a matrix without controls would look identical
+  whether the concepts were real or invented.
+* **The two most promising concepts were never actually tested.** The leading
+  volatility risk premium (C2) and the order-flow microstructure base (C7) — 24 rows
+  — crashed on implementation bugs, and the runner was reporting those crashes as
+  INCONCLUSIVE, which made an implementation failure look like a research finding.
+  Both bugs are fixed (the `z`-rebinding crash, and a **genuine look-ahead** in the
+  z-score that normalised over the whole panel instead of an expanding window), the
+  verdict logic now distinguishes ERROR from INCONCLUSIVE, and the 24 rows are being
+  re-run through the full gauntlet.
+* **Leading-data coverage is a hard limit on the equity panel.** ^VXN covers only
+  1,250 of 5,492 panel bars (22.8%) — 2005–2021 has no implied-volatility data at
+  all. Crypto is far better: Deribit DVOL covers 2,049 of 2,132 bars (96.1%).
+
+### What this means for live capital
+
+1. **The "higher upside than downside" claim is not supported.** Nothing survived.
+   The package can demonstrate that it can *test* a claim rigorously; it cannot yet
+   demonstrate that it has one to trade.
+2. **The existing stage gates in §1 are unchanged, and one of them has moved up the
+   list.** Stage A (paper trading) still requires the two decisions to have a sound
+   input path; but stage A is now pointless for any spec that has not produced a
+   SUPPORTED verdict, so **the gate before stage A is: at least one concept must
+   survive the full gauntlet, with its control failing.** That gate did not exist
+   before this matrix.
+3. **The kill switch still has no order path.** `signal.assess_trade` now consults
+   the persisted switch and downgrades an ENTER to an AVOID, but there is still no
+   `place_order` / `submit_order` / `execute_trade` anywhere in the package, so the
+   brake cannot yet stop a real order. This is unchanged from the original
+   assessment.
+4. **Two new modules make the edge-finding work real rather than rhetorical.**
+   `leapspace/leading.py` measures the volatility risk premium from a timestamped
+   external series with a one-bar publication lag; `leapspace/cryptoderivs.py`
+   measures perpetual-swap funding and open interest from Bybit and Binance, all
+   keyless and all with real history. The equity panel's weak coverage is the
+   binding constraint there, not the absence of a source.
+
+### The updated gap table rows
+
+| Gap | Before | Now |
+|---|---|---|
+| A validated edge to trade | not assessed | **measured: none found.** 0 of 48 real specs supported; 24 rows were untested due to bugs now fixed and re-running |
+| Negative controls | not present | **present and working.** 48 inverted twins; 36 executed; 0 survived |
+| Multi-asset coverage | one market | **six asset classes**, constant risk block, 2× cost stress |
+| Leading (forward-looking) data | none | **implemented and live:** DVOL, ^VIX/^VXN/^VXD, funding, open interest, dealer-gamma proxy |
+| Portfolio risk beyond diagonal covariance | not implemented | **implemented:** shrunk covariance, equal-risk-contribution sizing, forward-weighted vol, drawdown slope, caps applied last |
+| Kill switch on the decision path | not wired | **wired to the decision path**; still has no order path to gate |
+| Order placement / execution | none | **still none** |
+
+---
+
 ## 0. How to read this document
 
 ### 0.1 Sourcing rule used
