@@ -43,6 +43,9 @@ jobs:
       - name: Report validator suite
         run: python leapspace/tests/test_reportvalidate.py
 
+      - name: Copy-trade simulator suite
+        run: python leapspace/tests/test_friction_sim.py
+
       - name: Offline check scripts
         run: |
           set -e
@@ -73,6 +76,7 @@ jobs:
           for t in leapspace/tests/test_*.py; do
             case "$t" in
               *test_reportvalidate*) continue ;;
+              *test_friction_sim*) continue ;;
             esac
             echo "--- $t"
             timeout 600 python "$t" || echo "FAILED (informational): $t"
