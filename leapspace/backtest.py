@@ -674,7 +674,8 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
         return out
 
     def sig_regime_switch(panel, features, feature=None, n_states=4,
-                          momentum_lookback=60, reversal_lookback=5, **kw):
+                          momentum_lookback=60, reversal_lookback=5,
+                          invert_signal=False, **kw):
         """Regime-conditioned momentum/reversal switching.
 
         The regime state is derived CAUSALLY from the inputs the papers
@@ -813,6 +814,12 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
                     # Ambiguous posterior: stand aside.
                     row.append(0.0)
             sig[s] = row
+        # THE NEGATIVE CONTROL. The inverted twin flips the polarity of
+        # the position. Without this the control was BYTE-IDENTICAL to
+        # its twin - it tested nothing, and a control that cannot fail
+        # is not evidence that the validation discriminates.
+        if invert_signal:
+            sig = {s: [-v for v in row] for s, row in sig.items()}
         return sig
 
     def sig_regime_switch_cross_sectional(panel, features, feature=None,
@@ -1192,7 +1199,8 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
 
     def sig_leading_vrp_switch(panel, features, feature=None,
                                vrp_z_feature=None,
-                               exposure_cap=1.0, invert_vrp=False, **kw):
+                               exposure_cap=1.0, invert_vrp=False,
+                               invert_signal=False, **kw):
         """Direction conditioned on the VOLATILITY RISK PREMIUM.
 
         The papers' own reasoning, applied to a leading signal:
@@ -1224,6 +1232,12 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
             raise ValueError("leading_vrp_switch requires a feature name")
         if vrp_z_feature is None:
             vrp_z_feature = "leading_vrp_zscore"
+        # The negative control sets `invert_signal`. This signal
+        # originally read a differently-named flag (`invert_vrp`), so
+        # the control was a NO-OP and its twin produced identical
+        # numbers. Both names are honoured now; `invert_signal` is the
+        # one the control builder uses.
+        invert_vrp = bool(invert_vrp) or bool(invert_signal)
         vals = features.get(feature) or {}
         zvals = features.get(vrp_z_feature) or {}
         sig: Dict[str, List[float]] = {}
@@ -1273,6 +1287,31 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
 
     def _invert(v: float, invert: bool) -> float:
         return -float(v) if invert else float(v)
+
+    def sig_paper_cross_sectional(panel, features, long_rank=0.8,
+                                  short_rank=0.2, invert_signal=False, **kw):
+        """Cross-sectional selection, with the NEGATIVE CONTROL honoured.
+
+        The engine's own `sig_cross_sectional` takes `**kw` and
+        ignores `invert_signal`, so the C7 negative control was a
+        BYTE-IDENTICAL duplicate of its twin - it could not fail, and
+        so it proved nothing.
+
+        This wrapper calls the engine's implementation unchanged and
+        then negates the positions when the control asks for it. The
+        engine's signal is not modified; the wrapper lives here so the
+        shared skill stays untouched.
+
+        Negating a cross-sectional book swaps the long leg and the
+        short leg, which is exactly the polarity flip a negative
+        control needs.
+        """
+        sig = btengine.SIGNALS["cross_sectional"](
+            panel, features, long_rank=long_rank, short_rank=short_rank,
+            **kw)
+        if not invert_signal:
+            return sig
+        return {s: [-v for v in row] for s, row in sig.items()}
 
     def sig_vol_regime_momentum(panel, features, feature=None,
                                 vol_feature=None, orderly_max_ratio=1.5,
@@ -1525,6 +1564,7 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     btengine.SIGNALS["rsi_confirmed_reversion"] = sig_rsi_confirmed_reversion
     btengine.SIGNALS["rebound_danger_momentum"] = sig_rebound_danger_momentum
     btengine.SIGNALS["liquidity_gated_reversion"] = sig_liquidity_gated_reversion
+    btengine.SIGNALS["paper_cross_sectional"] = sig_paper_cross_sectional
     return {
         "registered": True,
         "features": ["regime_momentum_score", "leading_iv_level",
@@ -1551,6 +1591,7 @@ class BacktestResult:
     flags: List[str] = field(default_factory=list)
     metrics: Dict[str, Any] = field(default_factory=dict)
     walk_forward: Dict[str, Any] = field(default_factory=dict)
+    stage_ledger: Dict[str, Any] = field(default_factory=dict)
     report_path: Optional[str] = None
     provenance: List[str] = field(default_factory=list)
     errors: List[str] = field(default_factory=list)
@@ -1566,6 +1607,7 @@ class BacktestResult:
             "flags": self.flags,
             "metrics": self.metrics,
             "walk_forward": self.walk_forward,
+            "stage_ledger": self.stage_ledger,
             "report_path": self.report_path,
             "provenance": self.provenance,
             "errors": self.errors,
@@ -1938,6 +1980,80 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
     base = (gauntlet.get("scorecard") or {}).get("base") or {}
     wf = (gauntlet.get("scorecard") or {}).get("walk_forward") or {}
     flags = list(gauntlet.get("flags") or [])
+    sc = gauntlet.get("scorecard") or {}
+
+    # The STAGE LEDGER. Each gauntlet stage records its own result in
+    # the scorecard, and a stage that did not run is recorded as
+    # absent. Without this the results file cannot say what was
+    # actually validated, and a partial validation looks like a
+    # complete one.
+    stage_ledger: Dict[str, Any] = {}
+    for key in ("gross_vs_net", "cost_stress", "parameter_sensitivity",
+                "monte_carlo", "subperiod", "capacity", "replication",
+                "causality"):
+        val = sc.get(key)
+        if isinstance(val, dict):
+            stage_ledger[key] = {
+                "status": val.get("status") or ("ran" if val else "ran"),
+                "passed": val.get("passed"),
+                "note": val.get("note") or val.get("reason")
+                        or val.get("error"),
+            }
+        elif val is not None:
+            stage_ledger[key] = {"status": str(val)[:160]}
+    for label in (sc.get("skipped_stages") or []):
+        stage_ledger.setdefault(str(label), {"status": "SKIPPED"})
+    stage_ledger["skipped_stages"] = list(sc.get("skipped_stages") or [])
+
+    # The TRUE OUT-OF-SAMPLE NUMBERS. `base` is the IN-SAMPLE run and
+    # `base["sharpe"]` is its Sharpe. The pooled OUT-OF-SAMPLE Sharpe
+    # lives on the walk-forward block as `oos_sharpe`. Reporting
+    # `base["sharpe"]` as the out-of-sample result is how an in-sample
+    # number ends up presented as evidence, so the two are kept
+    # separate and labelled.
+    oos_sharpe = wf.get("oos_sharpe")
+    oos_sharpe_live = wf.get("oos_sharpe_live")
+    fold_sharpes = list(wf.get("oos_sharpes") or [])
+    fold_info = list(wf.get("fold_info") or [])
+
+    fold_table: List[Dict[str, Any]] = []
+    for i, f in enumerate(fold_info):
+        if not isinstance(f, dict):
+            continue
+        fold_table.append({
+            "fold": i,
+            "oos_sharpe": f.get("oos_sharpe"),
+            "in_sample_sharpe": f.get("is_sharpe"),
+            "oos_trades": f.get("oos_trades"),
+            "start": f.get("start"),
+            "end": f.get("end"),
+        })
+    if not fold_table and fold_sharpes:
+        for i, s in enumerate(fold_sharpes):
+            fold_table.append({"fold": i, "oos_sharpe": s,
+                               "in_sample_sharpe": None,
+                               "oos_trades": None, "start": None,
+                               "end": None})
+
+    metrics: Dict[str, Any] = {
+        k: v for k, v in base.items() if not isinstance(v, (list, dict))}
+    metrics.update({
+        "in_sample_sharpe": base.get("sharpe"),
+        "oos_sharpe": oos_sharpe,
+        "oos_sharpe_live": oos_sharpe_live,
+        "oos_profitable_folds": wf.get("oos_profitable_folds"),
+        "oos_retention": wf.get("oos_retention"),
+        "pbo": wf.get("pbo"),
+        "oos_max_drawdown": wf.get("oos_max_drawdown"),
+        "oos_cagr": wf.get("oos_cagr"),
+        "n_oos_trades": wf.get("oos_trades_total"),
+        "deflated_sharpe": sc.get("deflated_sharpe"),
+    })
+    # The pooled OOS Sharpe wins over the in-sample one under BOTH
+    # historical key names, so a consumer reading `oos_sharpe` can
+    # never accidentally pick up the in-sample number.
+    metrics["oos_sharpe"] = oos_sharpe if oos_sharpe is not None \
+        else metrics.get("oos_sharpe")
 
     # SAFETY NET. If the gauntlet itself recorded an error, the spec did
     # not complete its evaluation and its verdict must not be reported
@@ -1973,8 +2089,11 @@ def run_spec(spec: Dict[str, Any], quick: bool = False,
         paper=spec.get("paper", ""),
         verdict=verdict,
         flags=flags,
-        metrics={k: v for k, v in base.items() if not isinstance(v, (list, dict))},
-        walk_forward={k: v for k, v in wf.items() if not isinstance(v, (list, dict))},
+        metrics=metrics,
+        walk_forward={**{k: v for k, v in wf.items()
+                         if not isinstance(v, (list, dict))},
+                      "folds": fold_table},
+        stage_ledger=stage_ledger,
         report_path=report_path,
         provenance=[f"strategy-backtest-lab engine (btengine/btvalidate) from {SKILL_SCRIPTS}",
                     f"extensions: {reg}"],

@@ -249,12 +249,27 @@ def run_matrix(specs: Sequence[Dict[str, Any]],
 
 def _row_from_result(res: BacktestResult, spec: Dict[str, Any],
                       elapsed: float) -> Dict[str, Any]:
-    """Turn a BacktestResult into the row the report consumes."""
+    """Turn a BacktestResult into the row the report consumes.
+
+    The OUT-OF-SAMPLE Sharpe is the result. The in-sample Sharpe is
+    kept beside it and never substituted for it.
+
+    This used to do `m.get("oos_sharpe") or m.get("sharpe_oos") or
+    m.get("sharpe")` - the last fallback is the IN-SAMPLE Sharpe, so
+    every row in the results file reported the in-sample number under
+    the out-of-sample key. A report that labels that "pooled OOS
+    Sharpe" is reporting the wrong number, and it looked right.
+    """
     m = dict(res.metrics or {})
-    stages = m.get("validation") or m.get("stages") or {}
+
+    # The stage ledger: what ran, what was skipped, what errored.
+    ledger = dict(res.stage_ledger or {})
+    stages = m.get("validation") or m.get("stages") or ledger
     stage_summary: Dict[str, Any] = {}
     if isinstance(stages, dict):
         for k, v in stages.items():
+            if k == "skipped_stages":
+                continue
             if isinstance(v, dict):
                 stage_summary[k] = {
                     "status": v.get("status"),
@@ -263,6 +278,19 @@ def _row_from_result(res: BacktestResult, spec: Dict[str, Any],
                 }
             else:
                 stage_summary[k] = {"status": str(v)[:120]}
+
+    # The fold table.
+    wf = dict(res.walk_forward or {})
+    folds = wf.get("folds") or []
+    if not folds:
+        # Fall back to the flat per-fold Sharpe list.
+        raw = wf.get("oos_sharpes") or []
+        folds = [{"fold": i, "oos_sharpe": s} for i, s in enumerate(raw)]
+
+    oos = m.get("oos_sharpe")
+    is_sharpe = m.get("in_sample_sharpe")
+    if is_sharpe is None:
+        is_sharpe = m.get("sharpe")
 
     row: Dict[str, Any] = {
         "name": res.name,
@@ -274,15 +302,26 @@ def _row_from_result(res: BacktestResult, spec: Dict[str, Any],
         "asset_class": spec.get("asset_class", ""),
         "elapsed_s": round(elapsed, 1),
         "metrics": {
-            "oos_sharpe": m.get("oos_sharpe") or m.get("sharpe_oos")
-            or m.get("sharpe"),
-            "in_sample_sharpe": m.get("sharpe"),
+            "oos_sharpe": oos,
+            "oos_sharpe_live": m.get("oos_sharpe_live"),
+            "in_sample_sharpe": is_sharpe,
             "n_trades": m.get("n_trades") or m.get("trades"),
             "max_drawdown": m.get("max_drawdown") or m.get("max_drawdown_pct"),
             "total_return": m.get("total_return") or m.get("total_return_pct"),
+            "oos_max_drawdown": m.get("oos_max_drawdown"),
+            "oos_cagr": m.get("oos_cagr"),
+            "oos_profitable_folds": m.get("oos_profitable_folds"),
+            "oos_retention": m.get("oos_retention"),
+            "pbo": m.get("pbo"),
+            "n_oos_trades": m.get("n_oos_trades"),
+            "deflated_sharpe": m.get("deflated_sharpe"),
         },
-        "walk_forward": m.get("walk_forward") or m.get("folds"),
+        "walk_forward": {
+            **{k: v for k, v in wf.items() if k != "folds"},
+            "folds": folds,
+        },
         "stages": stage_summary,
+        "skipped_stages": list(res.skipped_stages or []),
     }
     cov = leading_coverage_for(spec)
     row["leading_coverage"] = cov

@@ -614,7 +614,7 @@ def _c7_session_drift(asset_class: str) -> Dict[str, Any]:
             "the retail-trader evidence supports."),
         asset_class=asset_class,
         features=[{"name": "session_drift", "params": {"lookback": 1}}],
-        signal={"type": "cross_sectional", "params": {
+        signal={"type": "paper_cross_sectional", "params": {
             "long_rank": 0.75, "short_rank": 0.25}},
         provenance={
             "signal.type": _prov(
