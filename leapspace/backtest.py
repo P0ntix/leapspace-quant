@@ -1616,16 +1616,41 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     btengine.SIGNALS["ensemble_blend"] = sig_ensemble_blend
     btengine.SIGNALS["trend_long_short"] = sig_trend_long_short
     btengine.SIGNALS["pairs_mean_reversion"] = sig_pairs_mean_reversion
+
+    # ---- the stop-loss family (RET-74, 76, 77, 86, 87, 89-92, 95) ----
+    # The engine had NO stop support, so ten claims were not merely
+    # untested - they were unimplementable. The stop lives in the
+    # SIGNAL because it needs the entry price and the position state.
+    #
+    # The engine's signal contract is `fn(panel, features, feature=...,
+    # **params)`, and it calls the signal ONCE for the whole panel, so
+    # the stop can track its own state across bars.
+    #
+    # `invert_signal` is honoured: the position polarity flips and the
+    # stop moves to the correct side. A stop-based inverted control is
+    # NOT a bitwise mirror of the original - a long is stopped out when
+    # the price falls and a short when it rises - but it trades, and it
+    # can fail, which is what a control has to do.
+    from .stops import sig_stop_momentum, sig_stop_reversion
+    btengine.SIGNALS["stop_momentum"] = sig_stop_momentum
+    btengine.SIGNALS["stop_reversion"] = sig_stop_reversion
     return {
         "registered": True,
         "features": ["regime_momentum_score", "leading_iv_level",
                      "leading_vrp_score", "leading_vrp_zscore",
                      "session_drift"],
+        # This list was STALE - it named nine signals while fourteen
+        # were actually registered, and four of the missing ones were
+        # the paper-derived ones. A registry that reports less than it
+        # holds is a registry that misleads whoever reads it.
         "signals": ["regime_switch", "regime_switch_cross_sectional",
                     "rsi_volume_confirmation", "leading_vrp_switch",
                     "vol_regime_momentum", "volume_confirmed_momentum",
                     "rsi_confirmed_reversion", "rebound_danger_momentum",
-                    "liquidity_gated_reversion"],
+                    "liquidity_gated_reversion", "paper_cross_sectional",
+                    "ensemble_blend", "trend_long_short",
+                    "pairs_mean_reversion", "stop_momentum",
+                    "stop_reversion"],
     }
 
 
