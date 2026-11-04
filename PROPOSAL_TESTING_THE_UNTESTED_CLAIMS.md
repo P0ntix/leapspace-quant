@@ -415,7 +415,172 @@ been bitten by it three times.
 
 ---
 
-## 7. THE DATA-SOURCE PROBE LOG
+## 7. WHAT THE IMPLEMENTATION AND THE FIRST RUN CHANGED
+
+The proposal above was written from the inventory. Two of its phases
+have now been BUILT and one has been RUN. Building and running them
+changed seven things. The changes are recorded here rather than
+quietly absorbed, because each one invalidates a claim the proposal
+would otherwise have made.
+
+### 7.0 The Phase A result, and what it means
+
+**The paper's own long/short rule was tested for the first time, on six
+markets, with its inverted twin. One concept is FRAGILE with its
+control REFUTED** — the first genuine discrimination in the project.
+
+| Spec | Verdict | OOS Sharpe | OOS max DD | Folds profitable |
+|---|---|---|---|---|
+| `paper_trend_longshort_us_equity_style` | **FRAGILE** | **+0.77** | **3.4%** | **5 / 5** |
+| `..._CONTROL` | REFUTED | −0.88 | 20.4% | 0 / 5 |
+
+All five of the real rule's walk-forward folds are positive
+(+0.157, +1.183, +0.344, +1.617, +0.442); all five of the control's
+are negative. It stays FRAGILE because there are only **6 trades**
+(gate needs ≥ 30), the t-stat is 0.97 (needs ≥ 2.0), PBO is 0.6 and
+Monte Carlo could not run.
+
+**And the run produced a finding that cuts against the paper:** on
+crypto, the *inverted* pairs control scored **+0.97** against the real
+rule's **−1.43** — trading the spread reversion the wrong way was
+better by 2.4 Sharpe points. The pair-selection criterion picks the
+most *stable* spreads, and on crypto the most stable spreads were the
+*trending* ones. That is a finding about the implementation, and it is
+reported as one.
+
+Full detail: `reports/PHASE_A_RESULTS.md`.
+
+### 7.1 The ratchet is redundant with a plain trailing stop — unless the band can move
+
+The proposal said the ratchet (RET-92) is a distinct control. It is
+not, in the default design.
+
+A trailing stop's band is proportional to the running extreme, and
+the running extreme is **monotonic in the position's favour** — a
+long's only rises, a short's only falls. So the band can never
+loosen, and the ratchet has nothing to reject. In `vol_mode="entry"`
+the ratcheted stop and the plain trailing stop produce **identical
+signals**. The first draft of the test asserted they differed; it was
+wrong.
+
+The ratchet only binds when the band is recomputed from the CURRENT
+volatility (`vol_mode="current"`), because a volatility spike then
+*widens* the band and pushes the stop **away** from the price —
+loosening it exactly when the market is most dangerous. The ratchet is
+what prevents that.
+
+This is not a small correction. It changes what the claim means:
+RET-92 and RET-90 are not independent controls; they are one
+mechanism with two regimes, and only one of the regimes has any
+effect.
+
+### 7.2 A stop-based inverted control is not a bitwise mirror
+
+The proposal implied the inverted twin is the exact opposite. It is
+not, and it cannot be: a long is stopped out when the price *falls*
+and a short when it *rises*, so the two exit on different bars and
+re-enter on different schedules.
+
+The control is the **polarity-flipped position with the stop on the
+correct side**. It still trades, and it can still fail — which is
+what a control has to do — but asserting exact negation is asserting
+something false. The test now asserts the invariant that actually
+holds: wherever both hold a position, their signs are opposite, and
+their FIRST entry is the same bar (the entry trigger is not
+inverted).
+
+### 7.3 A volatility-normalised band needs a series with volatility
+
+A constant-return series has a realised volatility of exactly zero, so
+a band measured in units of volatility is **undefined** and the entry
+is correctly refused. The first test fixture had constant returns and
+was therefore testing the refusal path instead of the stop.
+
+The fixture now has realistic daily noise. This is worth stating
+plainly because it is a general rule for this project: **a synthetic
+fixture that is too clean can test the wrong branch.**
+
+### 7.4 The Coin Metrics status vocabulary is not what it looks like
+
+The proposal said to carry the per-observation availability status
+through to provenance. Implementing that surfaced two things:
+
+1. The status values are `flash` / `available` / unusable — **not**
+   `AVAILABLE`. The first implementation filtered on a value the API
+   never sends, and silently dropped **every** exchange-flow
+   observation: 2,133 rows fetched, 0 usable.
+2. `flash` is the **best** status, not a bad one. It means the value
+   was published in real time and **never revised** — exactly what a
+   point-in-time backtest wants. A series of `flash` observations has
+   no revision risk at all.
+
+A filter that silently drops 100% of the data while reporting
+"2,133 rows fetched" is the exact failure mode this package's
+provenance layer exists to prevent, and it survived a live probe
+because the probe checked the row count rather than the value count.
+
+### 7.5 The signal registry under-reported itself
+
+`register_extensions` returned **nine** signal names while
+**fourteen** were actually registered — and four of the missing ones
+were the paper-derived signals. A registry that reports less than it
+holds misleads whoever reads it. Now returns all fifteen.
+
+### 7.6 The trade-count gate is structurally hostile to low-turnover rules
+
+This is the most consequential finding, and it changes how Phase A's
+FRAGILE verdict should be read.
+
+A 12-month time-series momentum on five ETFs generated **6 trades in
+15 years**. The gate requires **≥ 30**. The trade counts across the
+whole run:
+
+| Rule class | Trade counts produced | Gate threshold |
+|---|---|---|
+| Trend (252 / 20 / 60-day momentum) | 6, 8, 10, 12, 13, 15 | 30 |
+| Pairs mean-reversion | 190, 321, 491, 502, 647, 880 | 30 |
+
+**The gate is calibrated for the second class and structurally rejects
+the first.** It will refuse a 12-month momentum on daily bars
+essentially every time, on a criterion that has nothing to do with
+whether the signal works.
+
+This is **not** a reason to lower the gate. A gate that refuses a
+6-trade result is doing its job — 6 trades cannot be distinguished
+from luck, and FRAGILE is the correct verdict. But the verdict must
+be read for what it is: *"6 trades is too few to distinguish from
+luck"*, not *"the paper's rule fails"*.
+
+**The fix is more names, not more windows.** Independence comes from
+breadth: the same 12-month signal on a universe with many more
+independent names produces more independent trades, and the gate stays
+unchanged. A shorter window would also raise the count, but it would
+be testing a different rule from the one the paper states.
+
+Note also that the equity row generated 6 trades but **30
+out-of-sample** trades — the in-sample window held most of the
+positions and the out-of-sample window re-traded them. So the 30 OOS
+trades are not 30 independent bets either. They are the same few
+positions, re-entered.
+
+### 7.7 The replication stage is untested on every row in the matrix
+
+The stage ledger says it on all 120 rows (the original 96 and Phase
+A's 24):
+
+> `replication: SKIPPED — the gauntlet only runs cross-market
+> replication when alternative universes are supplied, and the matrix
+> runner supplies none, so NO spec in this matrix was tested for
+> whether it transfers to a different market.`
+
+Testing on six markets is **breadth, not replication** — it is the
+same universe each time. Whether a surviving concept transfers to a
+*different* universe is untested everywhere, and it is the one stage
+that decides whether a concept is an edge or a market curiosity.
+
+---
+
+## 8. THE DATA-SOURCE PROBE LOG
 
 Everything quoted above was fetched on 2026-11-04 from this host:
 

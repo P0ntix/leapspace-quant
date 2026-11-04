@@ -1,0 +1,1626 @@
+====================================================================================================
+MODULE leapspace/adapter_checks.py  (331 lines)
+  DOC: Adapter over the vendored `data_quality_checker` skill.
+  local: leapspace.provenance
+  third: -
+  std  : __future__, argparse, dataclasses, datetime, importlib.util, json, pathlib, sys, typing
+  [f] _vendor_root(package_root: Optional[str]=None) -> Path  :: Resolve the vendored skill directory.
+  [f] _load_vendor_module(package_root: Optional[str]=None)  :: Import the vendored checker as a standalone module.
+  [F] vendor_available(package_root: Optional[str]=None) -> bool  :: True when the vendored checker can be imported.
+  [F] run_vendor_checks(content: str, checks: Optional[Sequence[str]]=None, as_of: Optional[date]=None, filepath: Optional[str]=None, package_root: Optional[str]=None) -> List[VendorFinding]  :: Run the vendored checks over ``content``.
+  [F] check_token_activity(content: str, report_location: Optional[str]=None, tags: Optional[List[str]]=None, skip_checks: Optional[List[str]]=None, as_of: Optional[date]=None, package_root: Optional[str]=None) -> Dict[str, Any]  :: Audit a generated research document for data-quality defects.
+  [F] main() -> int  :: Audit every generated markdown report in ``reports/``.
+  [C] class AdapterUnavailable(RuntimeError)  :: Raised when the vendored checker cannot be imported.
+  [C] class VendorFinding  :: One finding from the vendored checker, in this package's shape.
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/alerts.py  (753 lines)
+  DOC: Alerts — price, information and action — derived from the research papers.
+  local: .provenance
+  third: -
+  std  : __future__, dataclasses, datetime, hashlib, json, os, typing
+  [f] _t(key: str) -> Any  :: 
+  [F] price_alerts_from_bars(symbol: str, bars: Sequence[Dict[str, Any]], provenance: str='') -> List[Alert]  :: Drawdown and volatility-expansion alerts from real OHLCV.
+  [F] regime_transition_alerts(regime_result: Any, symbol: str='MARKET', provenance: str='') -> List[Alert]  :: Alert on a regime STATE CHANGE, with the posterior probabilities.
+  [F] gamma_alerts(gamma: Any, flow: Any=None, provenance: str='') -> List[Alert]  :: Gamma-state and option-flow pressure alerts.
+  [F] disclosure_alerts(disclosure_report: Dict[str, Any], assets_by_filing: Optional[Dict[str, List[Dict[str, Any]]]]=None, provenance: str='') -> List[Alert]  :: Alerts from US officials' disclosures, all three branches.
+  [F] onchain_alerts(wallet_profiles: Sequence[Any], concentration: Optional[Dict[str, Any]]=None, provenance: str='') -> List[Alert]  :: Alerts from wallet behaviour and holder concentration.
+  [F] memecoin_alerts(screen: Dict[str, Any], provenance: str='') -> List[Alert]  :: Alerts from a meme-coin screen result.
+  [F] action_alerts(regime_result: Any=None, gamma: Any=None, flow: Any=None, symbol: str='MARKET', provenance: str='') -> List[Alert]  :: The ACTION layer: what the papers say to DO, given the current state.
+  [C] class Alert  :: 
+       [M] fingerprint(self) -> str  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+       [M] render(self) -> str  :: 
+  [C] class AlertEngine  :: Collects alerts, suppresses repeats against a state file, renders.
+       [m] __init__(self, state_path: Optional[str]=None)  :: 
+       [M] add(self, alerts: Sequence[Alert]) -> None  :: 
+       [M] add_gap(self, gap: Dict[str, Any]) -> None  :: 
+       [M] new_alerts(self) -> List[Alert]  :: Alerts not seen in a previous run.
+       [M] render(self, only_new: bool=True, show_thresholds: bool=True) -> str  :: 
+       [M] save_state(self) -> Optional[str]  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/archviz.py  (450 lines)
+  DOC: The architecture diagram: the project's flow, drawn.
+  local: -
+  third: -
+  std  : __future__, ast, html, os, typing
+  [f] _module_files() -> List[str]  :: 
+  [F] module_inventory() -> Dict[str, Any]  :: Read the real shape of the package: modules, sizes, APIs, edges.
+  [f] _edges(mods: Dict[str, Dict[str, Any]]) -> List[Tuple[str, str]]  :: The real dependency edges, as (dependent, dependency) pairs.
+  [f] _layer_of(mods: Dict[str, Dict[str, Any]], name: str) -> str  :: 
+  [F] render_architecture(mods: Optional[Dict[str, Dict[str, Any]]]=None) -> str  :: Render the architecture page.
+  [F] build_architecture(out_path: Optional[str]=None) -> Dict[str, Any]  :: Generate the architecture page.
+====================================================================================================
+MODULE leapspace/backtest.py  (2291 lines)
+  DOC: Strategy backtesting.
+  local: ., .ensemble, .leading, .leadingcache, .provenance, .regime, .specs_2_0, .trend
+  third: -
+  std  : __future__, btengine, btvalidate, dataclasses, datetime, importlib.util, intake, json, os, sys, typing
+  [f] _load_skill_modules() -> Tuple[Any, Any, Any]  :: Import btengine / btvalidate / intraday from the skill's scripts dir.
+  [F] register_extensions(btengine: Any) -> Dict[str, Any]  :: Register the paper-derived features and signals with the engine.
+  [f] _merge_provenance_additions(spec: Dict[str, Any]) -> Dict[str, Any]  :: Fold the documented additions above into a spec's provenance table.
+  [F] all_specs() -> List[Dict[str, Any]]  :: Every paper-derived spec: the hand-built ones plus the LeapSpace 2.0 set.
+  [F] apply_intake_gate(spec: Dict[str, Any]) -> Dict[str, Any]  :: Run the backtest lab's INTAKE GATE against a spec.
+  [f] _normalise_stage(name: str) -> str  :: Put a stage name into one canonical snake_case form.
+  [f] _stage_entry(val: Dict[str, Any]) -> Dict[str, Any]  :: Normalise one scorecard stage entry into the ledger's shape.
+  [F] run_spec(spec: Dict[str, Any], quick: bool=False, n_variants: Optional[int]=None, walk_forward_folds: int=5, alt_universes: Optional[List[Dict[str, Any]]]=None, out_dir: Optional[str]=None, verbose: bool=True) -> BacktestResult  :: Run one spec through the full validation gauntlet.
+  [F] run_all_specs(specs: Optional[Sequence[Dict[str, Any]]]=None, quick: bool=False, out_dir: Optional[str]=None, verbose: bool=True) -> List[BacktestResult]  :: 
+  [F] spec_catalog() -> List[Dict[str, Any]]  :: A compact catalogue of the paper-derived specs, with provenance.
+  [C] class BacktestResult  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/backtestviz.py  (899 lines)
+  DOC: The backtest outcome visualisation: equity, drawdown, and the P&L shape.
+  local: .viz_leading
+  third: -
+  std  : __future__, datetime, html, json, math, os, typing
+  [f] _load_json(path: str) -> Any  :: 
+  [f] _scorecard_dirs() -> List[str]  :: Every raw scorecard file the workers left behind.
+  [f] _extract_walk_forward(entry: Any) -> Dict[str, Any]  :: The walk-forward block, whatever shape the scorecard is in.
+  [f] _extract_scorecard(entry: Any) -> Dict[str, Any]  :: 
+  [F] collect_outcomes(results_path: Optional[str]=None, scorecard_paths: Optional[Sequence[str]]=None) -> Dict[str, Any]  :: Gather the outcome data for every spec that has any.
+  [f] _now() -> str  :: 
+  [F] outcome_statistics(rets: Sequence[float]) -> Dict[str, Any]  :: The shape of the out-of-sample P&L.
+  [f] _esc(v: Any) -> str  :: 
+  [f] _equity_curve(path: Sequence[float]) -> List[float]  :: The cumulative path from a return series.
+  [f] _downsample(values: Sequence[float], max_points: int=600) -> List[float]  :: Reduce a long series to at most `max_points` points.
+  [f] _svg_equity(series: Sequence[Dict[str, Any]], title: str, height: int=340) -> str  :: Cumulative equity, log-ish scale, with a zero reference.
+  [f] _svg_drawdown(series: Sequence[Dict[str, Any]], title: str, height: int=280) -> str  :: The underwater plot.
+  [f] _svg_fold_bars(specs: Sequence[Dict[str, Any]], title: str, height: int=300) -> str  :: One bar per fold, grouped by spec.
+  [f] _svg_pnl_histogram(specs: Sequence[Dict[str, Any]], title: str, height: int=300) -> str  :: The distribution of out-of-sample returns, wins and losses apart.
+  [F] render_backtest_dashboard(data: Dict[str, Any]) -> str  :: Render the outcomes dashboard.
+  [f] _page(body: Any) -> str  :: 
+  [F] build_backtest_dashboard(results_path: Optional[str]=None, scorecard_paths: Optional[Sequence[str]]=None, out_path: Optional[str]=None, json_path: Optional[str]=None) -> Dict[str, Any]  :: Collect the outcomes and render the dashboard.
+====================================================================================================
+MODULE leapspace/biasaudit.py  (832 lines)
+  DOC: Bias auditor — look-ahead, survivorship and overfitting (operator brief,
+  local: .backtest, .models
+  third: -
+  std  : __future__, json, os, re, shutil, tempfile, typing
+  [f] _significant_digits(x: float) -> int  :: Number of significant digits in a float, ignoring trailing zeros.
+  [f] _walk_params(obj: Any, path: str='') -> Iterable[Tuple[str, Any]]  :: Yield (dotted_path, value) for every scalar in a nested structure.
+  [f] _strings(obj: Any) -> Iterable[str]  :: Yield every string in a nested structure.
+  [f] _audit_look_ahead(spec: Dict[str, Any], name: str) -> List[BiasFinding]  :: 
+  [f] _audit_survivorship(spec: Dict[str, Any], name: str, universe: Optional[Sequence[str]]) -> List[BiasFinding]  :: 
+  [F] specificity_score(spec: Dict[str, Any]) -> Dict[str, Any]  :: How specific-to-sample this spec's rules are. Higher = more suspicious.
+  [f] _audit_overfitting(spec: Dict[str, Any], name: str) -> List[BiasFinding]  :: 
+  [F] audit_spec(spec: Dict[str, Any], price_series: Optional[Any]=None, universe: Optional[Sequence[str]]=None) -> List[BiasFinding]  :: Audit one strategy spec for look-ahead, survivorship and overfitting.
+  [F] audit_report(findings: Sequence[BiasFinding]) -> str  :: A flat, readable summary of the findings.
+  [f] _load_package_specs() -> List[Dict[str, Any]]  :: The package's own specs, so results can be mapped back to their universe.
+  [F] audit_backtest_results(results: Any, specs: Optional[Sequence[Dict[str, Any]]]=None) -> List[BiasFinding]  :: Audit the STORED backtest results for hidden bias.
+  [f] _selftest() -> int  :: 
+====================================================================================================
+MODULE leapspace/chainregistry.py  (261 lines)
+  DOC: The multi-chain memecoin registry.
+  local: .http, .provenance
+  third: -
+  std  : __future__, json, os, time, typing
+  [F] load_registry(path: Optional[str]=None) -> Dict[str, Any]  :: 
+  [F] chains(path: Optional[str]=None) -> List[Dict[str, Any]]  :: All registered chains, in rank order.
+  [F] chain(chain_id: str, path: Optional[str]=None) -> Optional[Dict[str, Any]]  :: 
+  [F] top_chains(n: int=10, path: Optional[str]=None) -> List[Dict[str, Any]]  :: The top n chains, ranked by the BEST available measurement.
+  [F] layer_split(path: Optional[str]=None) -> Dict[str, List[Dict[str, Any]]]  :: Chains grouped by layer. L1 and L2 are NEVER merged.
+  [F] screenable_chains(path: Optional[str]=None) -> List[Dict[str, Any]]  :: Chains the package can actually screen: RPC + DexScreener both work.
+  [F] chain_health(path: Optional[str]=None) -> Dict[str, Any]  :: A matrix of what works where, by capability rather than by chain.
+  [f] _num(v: Any) -> Optional[float]  :: Coerce a value to float. GeckoTerminal returns NUMBERS AS STRINGS.
+  [f] _gt_pools(network_id: str, pages: int=2) -> List[Dict[str, Any]]  :: Top pools of a GeckoTerminal network, with the token address.
+  [F] discover_memecoins(chain_id: str, limit: int=20, pages: int=2, meme_only: bool=True) -> Dict[str, Any]  :: Find memecoin candidates on a chain from the chain's top pools.
+====================================================================================================
+MODULE leapspace/chains.py  (784 lines)
+  DOC: Multi-chain on-chain data layer: Solana, Ethereum, Base, BSC, Arbitrum.
+  local: .http, .models, .provenance
+  third: -
+  std  : __future__, certifi, json, ssl, sys, time, typing
+  [f] _ssl_context()  :: TLS context that works on this host.
+  [f] _post_json(url: str, payload: Any, timeout: int=30, retries: int=3) -> Tuple[Any, int]  :: 
+  [F] dexscreener_pairs(chain: str, token_address: str) -> List[Dict[str, Any]]  :: Real pairs for a token, from DexScreener. Works on all five chains.
+  [F] dexscreener_token_profiles(chain: str, token_address: str) -> List[Dict[str, Any]]  :: 
+  [F] dexscreener_boosted_tokens() -> List[Dict[str, Any]]  :: Tokens DexScreener is currently boosting - a real traction signal.
+  [f] _pool_snapshot(chain: str, token_address: str) -> Dict[str, Any]  :: Flatten the best DexScreener pair for a token into scalars.
+  [f] _f(v) -> Optional[float]  :: 
+  [F] fetch_token_events(chain: str, token_address: Optional[str]=None, limit: int=50) -> Dict[str, Any]  :: Detect real token / liquidity events on a chain.
+  [F] fetch_wallet_trades(chain: str, wallet: str, limit: int=100, token_address: Optional[str]=None, blocks: int=5000) -> List[WalletTrade]  :: Real trades for one wallet.
+  [f] _solana_wallet_trades(wallet: str, limit: int) -> List[WalletTrade]  :: 
+  [f] _solana_transfers_from_deltas(tx: Dict[str, Any], owner: str) -> List[WalletTrade]  :: Derive token transfers from pre/post token balance deltas.
+  [f] _evm_wallet_trades(chain: str, wallet: str, limit: int, token_address: Optional[str], blocks: int=5000) -> List[WalletTrade]  :: 
+  [f] _int_from_data(data) -> Optional[float]  :: 
+  [F] chain_health(targets: Optional[List[str]]=None) -> Dict[str, Any]  :: Check, live, which chains and data sources are reachable right now.
+  [C] class EVMClient  :: Minimal JSON-RPC client for the EVM chains.
+       [m] __init__(self, chain: str='ethereum', min_interval: float=0.35, timeout: int=30)  :: 
+       [m] _throttle(self) -> None  :: 
+       [M] rpc(self, method: str, params: Optional[List[Any]]=None) -> Any  :: 
+       [M] chain_id(self) -> str  :: 
+       [M] block_number(self) -> int  :: 
+       [M] get_block_by_number(self, block: int, full: bool=False) -> Optional[Dict[str, Any]]  :: 
+       [M] get_transaction(self, tx_hash: str) -> Optional[Dict[str, Any]]  :: 
+       [M] get_transaction_receipt(self, tx_hash: str) -> Optional[Dict[str, Any]]  :: 
+       [M] get_code(self, address: str, block: Optional[int]=None) -> str  :: 
+       [M] eth_call(self, to: str, data: str='0x', block: Optional[int]=None) -> str  :: 
+       [M] get_logs(self, address: Optional[str]=None, topics: Optional[List[Any]]=None, from_block: int=0, to_block: Optional[int]=None, depth: int=0) -> List[Dict[str, Any]]  :: eth_getLogs, chunked to stay inside host span limits.
+  [C] class SolanaClient  :: Minimal JSON-RPC client for Solana.
+       [m] __init__(self, chain: str='solana', min_interval: float=0.25, timeout: int=30)  :: 
+       [m] _throttle(self) -> None  :: 
+       [M] rpc(self, method: str, params: Optional[List[Any]]=None) -> Any  :: 
+       [M] get_slot(self) -> int  :: 
+       [M] get_block(self, slot: int, details: bool=False) -> Optional[Dict[str, Any]]  :: 
+       [M] get_signatures_for_address(self, address: str, limit: int=100, before: Optional[str]=None) -> List[Dict[str, Any]]  :: 
+       [M] get_transaction(self, signature: str) -> Optional[Dict[str, Any]]  :: 
+       [M] get_token_accounts(self, owner: str, mint: Optional[str]=None) -> List[Dict[str, Any]]  :: 
+       [M] get_balance(self, address: str) -> int  :: 
+       [M] get_account_info(self, address: str) -> Optional[Dict[str, Any]]  :: 
+       [M] get_latest_blockhash(self) -> Optional[str]  :: 
+====================================================================================================
+MODULE leapspace/cli.py  (698 lines)
+  DOC: Command-line orchestrator.
+  local: .alerts, .archviz, .backtest, .disclosure, .gamma, .http, .market, .memecoin, .onchain, .provenance, .quant, .regime, .report
+  third: -
+  std  : __future__, argparse, datetime, json, os, sys, typing
+  [f] _out(obj: Any, as_json: bool, text: str='') -> None  :: 
+  [f] _fetcher() -> CachedFetcher  :: 
+  [F] cmd_architecture(args) -> int  :: Generate the architecture diagram from the code.
+  [F] cmd_regime(args) -> int  :: 
+  [F] cmd_gamma(args) -> int  :: 
+  [F] cmd_memes(args) -> int  :: 
+  [F] cmd_wallet(args) -> int  :: 
+  [F] cmd_disclosure(args) -> int  :: 
+  [F] cmd_alerts(args) -> int  :: 
+  [F] merge_backtest_results(path: str, rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]  :: Merge freshly-run rows INTO the stored results file and write it back.
+  [F] cmd_backtest(args) -> int  :: 
+  [f] _backfill_papers(payload: Dict[str, Any]) -> None  :: Fill a missing 'paper' field on backtest rows from the spec catalogue.
+  [F] cmd_report(args) -> int  :: 
+  [F] build_parser() -> argparse.ArgumentParser  :: 
+  [F] main(argv: Optional[Sequence[str]]=None) -> int  :: 
+====================================================================================================
+MODULE leapspace/cmd_extra.py  (580 lines)
+  DOC: CLI command bodies that live outside quant.py.
+  local: ., .edge, .holders, .launchscan, .market, .memecoinscan, .report_memecoin, .signal, .traders, .whitelist
+  third: -
+  std  : __future__, json, os, typing
+  [f] _out(obj: Any, as_json: bool=True) -> None  :: 
+  [F] cmd_holders(args) -> int  :: Holder composition over time, and abrupt ownership changes.
+  [F] cmd_memeflow(args) -> int  :: Top holders of a memecoin, classified, with their allocation.
+  [F] cmd_traders(args) -> int  :: Wallet qualification against the cited standards.
+  [F] cmd_edge(args) -> int  :: Evaluate a wallet's edge against the fluke tests.
+  [F] cmd_whitelist(args) -> int  :: The whitelist of consistent traders, with rejected candidates shown.
+  [F] cmd_launchscan(args) -> int  :: Find the early buyers of a freshly launched meme and test them.
+  [F] cmd_etherscan(args) -> int  :: Etherscan V2: the one source that needs a key.
+  [F] cmd_vizmem(args) -> int  :: Build the memecoin-trader charts from the real artefacts.
+  [F] cmd_signal(args) -> int  :: Produce a decision-ready trade brief for one token.
+====================================================================================================
+MODULE leapspace/costs.py  (1416 lines)
+  DOC: Per-wallet realised PnL for free, with NO historical price API.
+  local: .http, .provenance
+  third: -
+  std  : __future__, json, os, threading, time, typing
+  [f] _hex_to_int(h: Any) -> Optional[int]  :: 
+  [f] _dec_addr(h: Any) -> Optional[str]  :: 
+  [f] _addr_from_topic(topic: str) -> str  :: 
+  [f] _norm(addr: Optional[str]) -> str  :: 
+  [f] _block_tag(block: Any) -> str  :: 
+  [f] _dl_throttle() -> None  :: 
+  [F] defillama_price(chain: str, token: str, timestamp: int) -> Dict[str, Any]  :: Historical price for a token at a unix timestamp. Keyless.
+  [F] defillama_current_price(chain: str, token: str) -> Dict[str, Any]  :: 
+  [F] geckoterminal_ohlcv(chain: str, pool: str, timeframe: str='hour', limit: int=1000, before_timestamp: Optional[int]=None) -> Dict[str, Any]  :: OHLCV candles for a POOL. Keyless, but the public tier refuses
+  [F] read_pool_state(pool: str, block: int, chain: str='ethereum', rpc: Optional[ArchiveRpc]=None) -> Dict[str, Any]  :: Read a Uniswap V2 pair or V3 pool's own state at a PAST block.
+  [f] _pool_state(kind: str, pool: str, block: int, chain: str, t0: str, t1: str, dec0: int, dec1: int, price_t0_in_t1: Optional[float], callrec: Dict[str, Any], rpc: ArchiveRpc) -> Dict[str, Any]  :: 
+  [F] pool_price_for_token(state: Dict[str, Any], token: str) -> Dict[str, Any]  :: Express `state`'s price for `token` in terms of the other leg.
+  [F] swap_price_from_logs(pool: str, block: int, token: str, chain: str='ethereum', rpc: Optional[ArchiveRpc]=None) -> Dict[str, Any]  :: Read the pool's own Swap event(s) in one block.
+  [f] _price_from_swaps(state: Dict[str, Any], token: str) -> Optional[Dict[str, Any]]  :: 
+  [F] price_trade(trade: Dict[str, Any], chain: str='ethereum', method: str='auto', rpc: Optional[ArchiveRpc]=None) -> Dict[str, Any]  :: Price ONE trade, degrading honestly.
+  [f] _to_usd(px: Dict[str, Any], chain: str, ts: Optional[int], rpc: ArchiveRpc) -> Dict[str, Any]  :: Convert a price in the quote token into USD.
+  [f] _nearest_candle(candles: Sequence[Any], ts: int) -> Optional[Dict[str, Any]]  :: GeckoTerminal candle format: [ts, o, h, l, c, v].
+  [F] fifo_cost_basis(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: FIFO cost basis over priced trades.
+  [F] weighted_average_cost_basis(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: Weighted-average cost basis over priced trades.
+  [F] quantity_proxy(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: A PnL PROXY that needs no price at all.
+  [F] proxy_bias_test() -> Dict[str, Any]  :: MEASURE the quantity proxy's bias on a case where the truth is
+  [F] wallet_realised_pnl(trades: Sequence[Dict[str, Any]], chain: str='ethereum', method: str='auto', basis: str='fifo', price_first: bool=True) -> Dict[str, Any]  :: Realised PnL for one wallet from its transfer history.
+  [F] prices_or_raw(priced: List[Dict[str, Any]], trades: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]  :: Give the quantity proxy every trade (priced or not).
+  [F] self_test() -> Dict[str, Any]  :: Offline self-test: the cost-basis engines and the proxy.
+  [C] class ArchiveRpc  :: Keyless archive-capable JSON-RPC client.
+       [m] __init__(self, chain: str='ethereum', urls: Optional[Sequence[str]]=None, timeout: int=30)  :: 
+       [M] remember_archive(self, url: str) -> None  :: Record a provider that served historical state.
+       [m] _raw(self, url: str, method: str, params: List[Any]) -> Dict[str, Any]  :: 
+       [M] verify_archive(self, probe_block: Optional[int]=None) -> Dict[str, Any]  :: Prove a provider can serve HISTORICAL STATE, not just headers.
+       [m] _head(self) -> Optional[int]  :: 
+       [M] call(self, to: str, data: str, block: Any) -> Dict[str, Any]  :: eth_call. Returns {ok, result, http_status, url, rpc_error}.
+       [M] get_block(self, block: Any, full: bool=False) -> Dict[str, Any]  :: 
+       [M] get_logs(self, address: str, topics: List[str], from_block: int, to_block: int) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/criteria.py  (139 lines)
+  DOC: Load the agent-researched, authority-tagged consistency criteria and
+  local: -
+  third: -
+  std  : __future__, json, os, typing
+  [F] load_criteria(path: Optional[str]=None) -> Dict[str, Any]  :: The full criteria spec.
+  [F] criteria_index(spec: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: criteria keyed by key, for O(1) lookup.
+  [F] criterion(key: str, spec: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: One criterion, with its authority, tag and URL.
+  [F] cited_thresholds(spec: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Thresholds that carry a real citation.
+  [F] analyst_thresholds(spec: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Thresholds that are the analyst's own, with no published source.
+  [F] fluke_test_specs(spec: Optional[Dict[str, Any]]=None) -> List[Dict[str, Any]]  :: The fluke tests from the spec, with their definitions.
+  [F] verdict_semantics(spec: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: How each verdict is defined in the spec.
+  [F] tag_definitions(spec: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: 
+  [F] criteria_table(spec: Optional[Dict[str, Any]]=None) -> List[Dict[str, Any]]  :: A flat, printable index: key, threshold, tag, authority, url.
+  [F] derived_scoring(spec: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/crosschain.py  (1234 lines)
+  DOC: Candidate cross-chain wallet linker.
+  local: .costs, .http, .provenance
+  third: -
+  std  : __future__, bisect, datetime, json, math, time, typing
+  [f] _norm_addr(a: Optional[str]) -> str  :: 
+  [f] _rpc_any(rpc: ArchiveRpc, method: str, params: List[Any]) -> Dict[str, Any]  :: Call `method` on the first provider that answers.
+  [F] first_funder(address: str, chain: str='ethereum', rpc: Optional[ArchiveRpc]=None, max_backscan_blocks: int=20000) -> Dict[str, Any]  :: The first address that sent native gas to `address`.
+  [F] funder_is_bridge(funder: Optional[str], chain: str='ethereum', rpc: Optional[ArchiveRpc]=None) -> Dict[str, Any]  :: Is the funder a contract, and is it a KNOWN bridge?
+  [F] wallet_counterparties(address: str, chain: str='ethereum', limit: int=100) -> Dict[str, Any]  :: The set of addresses this wallet interacts with, plus its
+  [f] _bs_counterparties(host: str, address: str, limit: int) -> Dict[str, Any]  :: 
+  [f] _rpc_counterparties(address: str, chain: str, limit: int) -> Dict[str, Any]  :: Counterparties from raw JSON-RPC.
+  [F] timing_correlation(ts_a: Sequence[Any], ts_b: Sequence[Any], tolerance_seconds: int=3600) -> Dict[str, Any]  :: How tightly do two wallets' activity windows overlap?
+  [F] size_similarity(sizes_a: Sequence[float], sizes_b: Sequence[float]) -> Dict[str, Any]  :: Do two wallets trade similar sizes?
+  [F] link_score(a: Dict[str, Any], b: Dict[str, Any], weights: Optional[Dict[str, float]]=None) -> Dict[str, Any]  :: Score ONE pair of wallets.
+  [F] find_confirmation(a: Dict[str, Any], b: Dict[str, Any]) -> Optional[Dict[str, Any]]  :: Is there an EXPLICIT on-chain artefact linking these wallets?
+  [F] find_bridge_flows(address: str, chain: str='ethereum', rpc: Optional[ArchiveRpc]=None, lookback_blocks: int=200000) -> Dict[str, Any]  :: Look for bridging flows OUT of `address`.
+  [F] build_wallet_profile(address: str, chain: str='ethereum', sizes: Optional[Sequence[float]]=None, timestamps: Optional[Sequence[Any]]=None, rpc: Optional[ArchiveRpc]=None, with_bridge_scan: bool=True) -> Dict[str, Any]  :: Collect every signal this module can get for ONE wallet on ONE
+  [F] link_wallets(profiles: Sequence[Dict[str, Any]], weights: Optional[Dict[str, float]]=None) -> Dict[str, Any]  :: Score every PAIR of wallet profiles and rank the candidates.
+  [F] self_test() -> Dict[str, Any]  :: Offline self-test of the scoring and the confirmation logic.
+====================================================================================================
+MODULE leapspace/cryptoderivs.py  (482 lines)
+  DOC: Crypto derivatives: funding, open interest and basis.
+  local: .http, .leading, .provenance
+  third: -
+  std  : __future__, json, math, time, typing
+  [f] _now_ms() -> int  :: 
+  [F] annualise_funding(rate: float, interval_hours: float=_FUNDING_INTERVAL_HOURS) -> float  :: Scale a periodic funding rate to an annual rate.
+  [F] fetch_bybit_funding(symbol: str='BTCUSDT', limit: int=200, days: Optional[int]=None, timeout: int=30) -> Tuple[List[Tuple[int, float]], Provenance]  :: Historical funding rates from Bybit.
+  [F] fetch_bybit_open_interest(symbol: str='BTCUSDT', interval: str='1d', limit: int=200, days: Optional[int]=None, timeout: int=30) -> Tuple[List[Tuple[int, float]], Provenance]  :: Historical open interest from Bybit.
+  [F] fetch_binance_funding(symbol: str='BTCUSDT', limit: int=200, days: Optional[int]=None, timeout: int=30) -> Tuple[List[Tuple[int, float]], Provenance]  :: Historical funding rates from Binance.
+  [F] fetch_binance_open_interest(symbol: str='BTCUSDT', period: str='1d', limit: int=200, timeout: int=30) -> Tuple[List[Tuple[int, float]], Provenance]  :: Historical open interest from Binance.
+  [F] funding_zscore(series: Sequence[Tuple[int, float]], window: Optional[int]=None) -> List[Tuple[int, Optional[float]]]  :: The funding rate's z-score over its own history.
+  [F] oi_change(series: Sequence[Tuple[int, float]], window: int=1) -> List[Tuple[int, Optional[float]]]  :: The CHANGE in open interest over `window` observations, in percent.
+  [F] fetch_crypto_derivatives(symbol: str='BTCUSDT', venue: str='bybit', limit: int=200, bar_timestamps: Optional[Sequence[int]]=None, interval: str='1d', timeout: int=30) -> Dict[str, Any]  :: Fetch funding and open interest together and assemble the block.
+  [F] build_crypto_derivatives_features(funding: Sequence[Tuple[int, float]], open_interest: Optional[Sequence[Tuple[int, float]]]=None, bar_timestamps: Optional[Sequence[int]]=None, interval_hours: float=_FUNDING_INTERVAL_HOURS, max_lag_bars: int=1, oi_window: int=1, source: str='', asset: str='') -> Dict[str, Any]  :: Assemble the crypto-derivatives leading features.
+====================================================================================================
+MODULE leapspace/deployers.py  (398 lines)
+  DOC: Deployer discovery: derive token deployers from on-chain data.
+  local: .chains, .http, .models, .provenance
+  third: -
+  std  : __future__, json, os, sys, typing
+  [F] find_evm_contract_creator(chain: str, address: str, max_calls: int=60) -> Dict[str, Any]  :: Find the address that deployed an EVM contract.
+  [f] _scan_block_for_creation(client, block: int, address: str) -> Tuple[Optional[str], Optional[str]]  :: Find the tx in `block` that created `address`.
+  [F] find_solana_mint_creator(mint: str, use_rugcheck: bool=True) -> Dict[str, Any]  :: Find the address that created a Solana mint.
+  [f] _rugcheck_report(mint: str) -> Optional[Dict[str, Any]]  :: 
+  [f] _oldest_signature(client, address: str, max_pages: int=40) -> Optional[str]  :: Page getSignaturesForAddress backwards to the oldest signature.
+  [f] _first_external_signer(tx: Optional[Dict[str, Any]], mint: str) -> Optional[str]  :: The first signer of a transaction that is not the mint itself.
+  [F] seed_registry(tokens: List[Dict[str, str]], registry_path: str=REGISTRY_PATH, merge: bool=True) -> Dict[str, Any]  :: Derive deployers for `tokens` and seed the registry from them.
+  [F] load_registry(registry_path: str=REGISTRY_PATH) -> Dict[str, Any]  :: 
+  [F] registry_as_addresses(registry_path: str=REGISTRY_PATH) -> List[str]  :: The derived deployer addresses, for the profiler's insider filter.
+====================================================================================================
+MODULE leapspace/disclosure.py  (1047 lines)
+  DOC: US officials' legally-required financial disclosures — all three branches —
+  local: .http, .provenance
+  third: -
+  std  : __future__, collections, dataclasses, datetime, fitz, math, pymupdf, re, typing, xml.etree.ElementTree
+  [F] decode_house_glyphs(text: str) -> str  :: 
+  [f] _parse_house_date(text: str) -> Optional[_dt.date]  :: House FilingDate is M/D/YYYY — not ISO.
+  [F] fetch_house_index(year: int=2026) -> Tuple[List[HouseFiling], Provenance]  :: 
+  [F] extract_pdf_text(pdf_bytes: bytes) -> Optional[str]  :: Extract a PDF's text layer with PyMuPDF. None when unavailable.
+  [F] fetch_house_pdf(filing: HouseFiling) -> Tuple[Optional[str], Provenance]  :: 
+  [f] _parse_oge_dt(text: str) -> Optional[_dt.datetime]  :: 
+  [F] fetch_oge_index(search: Optional[str]=None, start: int=0, length: int=OGE_PAGE_SIZE) -> Tuple[List[OgeFiling], int, Provenance]  :: Fetch one page of the OGE PAS index.
+  [F] fetch_oge_all(search: Optional[str]=None, max_pages: int=200) -> Tuple[List[OgeFiling], List[str], Provenance]  :: Page the whole OGE index for a name. Returns (filings, gaps, provenance).
+  [F] fetch_oge_pdf(filing: OgeFiling) -> Tuple[Optional[str], Provenance]  :: 
+  [F] fetch_judicial_filings(include_mirrors: bool=True) -> Tuple[List[JudicialFiling], List[Dict[str, Any]]]  :: Collect judicial-branch filings.
+  [F] fetch_judicial_text(filing: JudicialFiling) -> Tuple[Optional[str], str]  :: Fetch a judicial PDF's text. Returns (text, note).
+  [f] _parse_band(text: str) -> Tuple[Optional[float], Optional[float]]  :: Parse a VALUE BAND into (low, high).
+  [f] _is_band_line(text: str) -> bool  :: 
+  [F] classify_oge_document(text: str) -> str  :: Classify an OGE PDF's text into a document kind.
+  [F] classify_house_document(text: str) -> str  :: Classify a House PDF into house_fd / house_ptr / house_other.
+  [F] extract_assets_from_text(text: str, doc_kind: str='auto') -> List[DisclosedAsset]  :: Pull disclosed assets out of an extracted filing text.
+  [F] analyse_market_impact(disclosure_date: _dt.date, tickers: Sequence[str], bars_by_symbol: Dict[str, List[Dict[str, Any]]], benchmark: str='SPY', value_by_ticker: Optional[Dict[str, float]]=None) -> Tuple[List[ImpactObservation], List[str]]  :: Measure what the market did after a disclosure date.
+  [F] build_disclosure_report(house_year: int=2026, oge_names: Optional[Sequence[str]]=None, include_judicial: bool=True, fetch_pdfs_for: Optional[Sequence[str]]=None) -> Dict[str, Any]  :: Assemble the three-branch disclosure report.
+  [f] _count_by(items: Iterable[Any]) -> Any  :: 
+  [C] class HouseFiling  :: 
+       [M] is_member(self) -> bool  :: 
+       [M] is_candidate(self) -> bool  :: 
+       [M] pdf_url(self) -> str  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+  [C] class OgeFiling  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+  [C] class JudicialFiling  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+  [C] class DisclosedAsset  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+  [C] class ImpactObservation  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/edge.py  (948 lines)
+  DOC: Edge and consistency: separating a consistently profitable trader from a
+  local: ., .gate_tests, .pbo, .stats, .traders
+  third: -
+  std  : __future__, collections, math, typing
+  [F] independent_bets(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: Count INDEPENDENT bets, not raw trades.
+  [F] time_disjoint_bets(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: The maximum number of bets whose HOLDING INTERVALS do not overlap.
+  [F] bet_outcomes(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: One outcome per INDEPENDENT BET.
+  [F] drawdown_duration(returns: Sequence[float]) -> Dict[str, Any]  :: The LONGEST underwater stretch, in observations and in days.
+  [F] posterior_split_half_stability(bets: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: P(theta > 0.5) on the EARLY half versus the FULL history.
+  [F] n_required_independent_bets(p0: float=0.5, p1: float=0.55, alpha: float=0.05, beta: float=0.2, delta: float=0.05) -> Dict[str, Any]  :: The NIST-computed sample size for a claim about the win rate.
+  [F] nist_sample_size_table() -> List[Dict[str, Any]]  :: The NIST sample sizes for a grid of claims, for reference.
+  [F] evaluate_edge(trades: Sequence[Dict[str, Any]], trials_scanned: Optional[int]=None, choices: Optional[Dict[str, Any]]=None, periods: Optional[Sequence[Dict[str, Any]]]=None, context: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Judge a wallet's edge. Returns the metrics, the fluke tests, and a
+  [F] screen_universe(candidates: Sequence[Dict[str, Any]], trials_scanned: Optional[int]=None, choices: Optional[Dict[str, Any]]=None, periods_by_candidate: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Screen a WHOLE universe of candidates and compute the PBO over it.
+====================================================================================================
+MODULE leapspace/ensemble.py  (415 lines)
+  DOC: The long/short hedged ensemble: the answer to "higher upside than
+  local: .paperspecs
+  third: -
+  std  : __future__, math, typing
+  [f] _rank(values_by_symbol: Dict[str, List[Optional[float]]], n: int, symbols: Sequence[str]) -> Dict[str, List[Optional[float]]]  :: The cross-sectional percentile rank of each symbol at each bar.
+  [F] signal_ensemble_blend(panel, features: Dict[str, Any], members: Optional[Sequence[Dict[str, Any]]]=None, min_agreement: int=2, rank_floor: float=0.3, invert_signal: bool=False, **kw) -> Dict[str, List[float]]  :: Blend the concept features into one long/short signal.
+  [f] _best_rank(member_ranks: Sequence[Dict[str, List[Optional[float]]]], symbols: Sequence[str], i: int, direction: float) -> Optional[float]  :: The most extreme rank among the members that agree with `direction`.
+  [F] ensemble_spec(asset_class: str, params: Optional[Dict[str, Any]]=None, name: Optional[str]=None) -> Dict[str, Any]  :: Build the ensemble spec for one asset class.
+====================================================================================================
+MODULE leapspace/etherscan.py  (300 lines)
+  DOC: Etherscan V2 adapter - the one source that needs a key.
+  local: .http
+  third: -
+  std  : __future__, os, time, typing, urllib.parse
+  [F] api_key() -> Optional[str]  :: The key, if one is configured. The VALUE is never returned to a
+  [F] has_key() -> bool  :: 
+  [f] _throttle() -> None  :: 
+  [f] _call(params: Dict[str, Any], chain: str='ethereum') -> Dict[str, Any]  :: One Etherscan V2 call, with the error convention handled.
+  [F] token_holders(token: str, chain: str='ethereum', limit: int=100, addresses: Optional[List[str]]=None) -> Dict[str, Any]  :: Holder balances for an ERC-20.
+  [F] token_balances(addresses: List[str], token: str, chain: str='ethereum') -> Dict[str, Any]  :: ERC-20 balances for up to 20 addresses, in ONE call.
+  [F] token_balance(address: str, token: str, chain: str='ethereum') -> Dict[str, Any]  :: One address's ERC-20 balance.
+  [F] token_holders_from_transfers(token: str, chain: str='ethereum', limit: int=5000) -> Dict[str, Any]  :: Reconstruct the holders of an ERC-20 from its transfer tape.
+  [F] token_transfers(token: str, chain: str='ethereum', limit: int=1000) -> Dict[str, Any]  :: Transfers of an ERC-20.
+  [F] address_transfers(address: str, chain: str='ethereum', limit: int=1000, offset: int=0, token: Optional[str]=None) -> Dict[str, Any]  :: ERC-20 transfers involving one address.
+  [F] balance(address: str, chain: str='ethereum') -> Dict[str, Any]  :: The native balance.
+  [F] contract_source(token: str, chain: str='ethereum') -> Dict[str, Any]  :: The verified source of a contract, if it is verified.
+====================================================================================================
+MODULE leapspace/friction.py  (1401 lines)
+  DOC: Friction-aware meme-coin backtesting: slippage, latency, fees, failed
+  local: ., .models, .provenance
+  third: -
+  std  : __future__, bisect, dataclasses, datetime, json, random, typing
+  [f] _f(v: Any, default: float=0.0) -> float  :: 
+  [F] price_at_or_before(series: Sequence[Tuple[int, float]], ts: int) -> Optional[Tuple[int, float]]  :: The most recent price observable at `ts` (never a future price).
+  [F] run_simulation(signals: Sequence[WalletTrade], price_series: Sequence[Tuple[int, float]], friction: Optional[Friction]=None, bankroll: Optional[float]=None, rug_config: Optional[RugConfig]=None, mev_config: Optional[MEVConfig]=None, seed: int=0, config: Optional[CopyConfig]=None, candidates: Optional[Dict[str, TokenCandidate]]=None, price_provenance: str=SYNTHETIC, signal_provenance: Optional[str]=None, source: str='', notes: str='') -> SimulationResult  :: Run one friction-aware copy-trading simulation.
+  [f] _synthetic_series(seed: int=7, n: int=120, start_ts: int=1760000000, step: int=300, start_px: float=2e-05) -> List[Tuple[int, float]]  :: A synthetic meme-coin price path. SYNTHETIC by construction.
+  [f] _synthetic_signals(series: Sequence[Tuple[int, float]], seed: int=11, every: int=7, token: str='SYNTHETIC-MEME', wallets: Sequence[str]=('WalletA', 'WalletB')) -> List[WalletTrade]  :: A synthetic wallet signal list. SYNTHETIC by construction.
+  [f] _synthetic_market(seed: int=7, n: int=120, tokens: Sequence[str]=('SYN-A', 'SYN-B', 'SYN-C', 'SYN-D'), start_ts: int=1760000000, step: int=300) -> Dict[str, List[Tuple[int, float]]]  :: Several synthetic meme-coin price paths. SYNTHETIC by construction.
+  [f] _synthetic_signals_multi(series_by_token: Dict[str, List[Tuple[int, float]]], seed: int=11, every: int=5, wallets: Sequence[str]=('WalletA', 'WalletB')) -> List[WalletTrade]  :: Synthetic signals across several tokens. SYNTHETIC by construction.
+  [f] _live_series(symbol: str='DOGE-USD', rng_range: str='3mo', interval: str='1d') -> Tuple[List[Tuple[int, float]], Provenance]  :: Real prices from leapspace.market (Yahoo chart). LIVE provenance.
+  [f] _print_run(title: str, result: SimulationResult) -> None  :: 
+  [f] _self_test() -> int  :: 
+  [C] class PriceSeries  :: A sorted (ts, px) series with O(log n) causal price lookup.
+       [m] __init__(self, points: Iterable[Tuple[int, float]])  :: 
+       [m] __len__(self) -> int  :: 
+       [m] __iter__(self)  :: 
+       [M] at_or_before(self, ts: int) -> Optional[Tuple[int, float]]  :: 
+       [M] last(self) -> Optional[Tuple[int, float]]  :: 
+  [C] class Fill  :: The outcome of one simulated order.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class FrictionModel  :: Execution friction, wrapping the shared `models.Friction` contract.
+       [m] __init__(self, friction: Optional[Friction]=None, sandwich_probability: float=1.0)  :: 
+       [M] slippage_bps(self) -> float  :: 
+       [M] mev_penalty_bps(self) -> float  :: 
+       [M] failed_tx_rate(self) -> float  :: 
+       [M] latency_seconds(self) -> float  :: 
+       [M] priority_fee_usd(self) -> float  :: 
+       [M] gas_usd(self) -> float  :: 
+       [M] apply_slippage(self, px: float, side: str) -> float  :: Adverse slippage: buys pay up, sells receive less.
+       [M] apply_mev(self, px: float, side: str, rng: random.Random, qty: Optional[float]=None) -> Tuple[float, float]  :: Sandwich penalty from a front-running bot.
+       [M] total_cost_usd(self, notional: float, priority_fee: Optional[float]=None, gas: Optional[float]=None) -> float  :: Modelled friction cost of a trade of `notional` USD.
+       [M] simulate_fill(self, px: float, side: str, notional: float, rng: random.Random) -> Fill  :: Simulate one order end to end.
+       [M] latency_shift(self, ts: int, latency_seconds: Optional[float]=None) -> int  :: Execution timestamp: the decision time moved LATER.
+  [C] class RugConfig  :: How rugs are injected into a historical price series.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class RugEvent  :: One injected rug / liquidity removal, recorded for audit.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class RugInjector  :: Inject random rug pulls (80-99% drops) into a price series.
+       [m] __init__(self, config: Optional[RugConfig]=None)  :: 
+       [M] inject(self, points: Sequence[Tuple[int, float]], token: str='') -> Tuple[List[Tuple[int, float]], List[RugEvent]]  :: Return (rugged series, events). The input is not modified.
+  [C] class MEVConfig  :: Sandwich attack parameters.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class MEVOrder  :: One intended order (what we wanted to trade).
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class MEVEvent  :: The penalty applied to one order.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class MEVSimulator  :: Apply a randomised sandwich penalty to a series of intended orders.
+       [m] __init__(self, friction: Optional[FrictionModel]=None, config: Optional[MEVConfig]=None)  :: 
+       [m] _as_order(o: Any) -> MEVOrder  :: 
+       [M] apply_to_orders(self, orders: Sequence[Any]) -> List[MEVEvent]  :: Penalise every intended order; returns one event per order.
+  [C] class CopyConfig  :: Copy-trading rules and sizing.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class TradeRecord  :: A `CopyTrade` plus the simulation detail the ledger needs.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class SimulationResult  :: Everything a simulation produced, in flattener-friendly form.
+       [M] to_flat(self) -> Dict[str, Any]  :: Shallow, flattener-friendly dict (the package convention).
+       [M] to_json(self) -> str  :: 
+  [C] class CopyTradeSimulator  :: Follow a set of wallets with a FINITE bankroll.
+       [m] __init__(self, friction: FrictionModel, config: Optional[CopyConfig]=None, candidates: Optional[Dict[str, TokenCandidate]]=None)  :: 
+       [m] _record(self, trade: CopyTrade, intended: str='', pnl: Optional[float]=None, mev: float=0.0, exit_reason: str='', reason: str='', hold: Optional[int]=None) -> None  :: 
+       [m] _skip(self, token: str, wallet: str, reason: str, ts: int, chain: str='', intended: str='', provenance: str='', extra: str='', counts_as_decision: bool=True) -> None  :: 
+       [m] _equity(self, px_hint: Optional[float]=None) -> float  :: 
+       [m] _mark(self, token: str, px: float, ts: int) -> None  :: 
+       [m] _wallet_allowed(self, sig: WalletTrade) -> Optional[str]  :: The trusted-wallet / consensus rules, when they are configured.
+       [m] _trigger_reason(self, pos: Position, ts: int, px: float) -> str  :: Stop-loss, take-profit and time-stop. Enforced in code.
+       [m] _normalise_series(price_series: Any) -> Tuple[Dict[str, PriceSeries], Optional[PriceSeries]]  :: Accept a single [(ts, px)] series or a {token: [(ts, px)]} map.
+       [m] _series_for(self, token: str) -> Optional[PriceSeries]  :: 
+       [m] _price_for(self, token: str, ts: int) -> Optional[Tuple[int, float]]  :: The price observable for `token` at `ts` (never a future price).
+       [m] _execute(self, order: Dict[str, Any]) -> None  :: 
+       [M] run(self, signals: Sequence[WalletTrade], price_series: Any, seed: Optional[int]=None) -> SimulationResult  :: 
+       [m] _decide(self, sig: WalletTrade, bar: int, ts: int, pending: List[Dict[str, Any]]) -> None  :: Apply the copy rules to one signal; schedule an order or skip.
+       [m] _result(self) -> SimulationResult  :: 
+====================================================================================================
+MODULE leapspace/gamma.py  (521 lines)
+  DOC: Dealer gamma exposure and option-flow measures.
+  local: .stats
+  third: -
+  std  : __future__, dataclasses, datetime, math, typing
+  [f] _norm_pdf(x: float) -> float  :: 
+  [F] bs_greeks(spot: float, strike: float, t_years: float, rate: float, iv: float, dividend_yield: float=0.0) -> Dict[str, float]  :: Black-Scholes delta, gamma, vega, theta.
+  [F] bs_price(spot: float, strike: float, t_years: float, rate: float, iv: float, option_type: str, dividend_yield: float=0.0) -> float  :: Black-Scholes European option price.
+  [F] implied_vol_from_price(price: float, spot: float, strike: float, t_years: float, rate: float, option_type: str, dividend_yield: float=0.0, lo: float=0.01, hi: float=5.0) -> Optional[float]  :: Bisection implied vol from a traded premium. None if it does not converge.
+  [F] parse_expiry(text: str, reference: Optional[_dt.date]=None) -> Optional[_dt.date]  :: Parse the expiry strings the sources actually use.
+  [F] year_fraction(expiry: _dt.date, as_of: Optional[_dt.date]=None) -> float  :: 
+  [F] compute_gamma_exposure(chain: Dict[str, Any], spot: Optional[float]=None, rate: float=0.04, dividend_yield: float=0.0, as_of_date: Optional[_dt.date]=None, min_oi: float=1.0) -> GammaExposure  :: Compute dealer net gamma exposure from an option chain.
+  [F] compute_option_flow(chain: Dict[str, Any], spot: Optional[float]=None, rate: float=0.04, dividend_yield: float=0.0, as_of_date: Optional[_dt.date]=None) -> OptionFlow  :: Exposure-adjusted option flow.
+  [F] merge_flow_and_gamma(flow: OptionFlow, gamma: GammaExposure) -> Dict[str, Any]  :: The paper's combined read: flow says what pressure exists, gamma says
+  [C] class GammaExposure  :: 
+       [M] sign(self) -> Optional[int]  :: 
+       [M] state(self) -> str  :: The paper's regime read of the gamma sign.
+       [M] interpretation(self) -> str  :: The NASDAQ paper's execution mapping, in its own terms.
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+  [C] class OptionFlow  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/gate_tests.py  (286 lines)
+  DOC: leapspace.gate_tests - the individual consistency-gate tests.
+  local: .pbo
+  third: -
+  std  : __future__, dataclasses, typing
+  [f] _pbo_from_candidates(candidate_returns: Any) -> Dict[str, Any]  :: Run the Probability of Backtest Overfitting over the full
+  [F] run_gate_tests(c: GateContext) -> Dict[str, Any]  :: Run every consistency test and return the findings.
+  [C] class GateContext  :: Everything the individual tests need.
+====================================================================================================
+MODULE leapspace/holders.py  (555 lines)
+  DOC: Holder-composition time series, and abrupt ownership change detection.
+  local: .http, .memecoin, .provenance
+  third: -
+  std  : __future__, base64, json, os, re, time, typing
+  [F] top_n_percentage(amounts: List[float], total: float, n: int=TOP_N) -> float  :: Percentage of supply held by the top n addresses.
+  [F] gini_coefficient(amounts: List[float]) -> float  :: Inequality of the holder distribution (0 = equal, 1 = one holder).
+  [F] hhi(amounts: List[float]) -> float  :: Herfindahl-Hirschman Index of market shares (0-10000).
+  [F] nakamoto_coefficient(amounts: List[float]) -> int  :: How many holders together control >51% of supply.
+  [F] classify_concentration(top10_pct: float, gini: float) -> str  :: Risk band from the token-holder-analysis skill's thresholds.
+  [f] _sol_rpc(url: str, method: str, params: List[Any], attempts: int=4) -> Any  :: Solana JSON-RPC with a throttle and backoff on rate limiting.
+  [F] solana_holder_composition(rpc_url: str, mint: str, top_n: int=TOP_N) -> Dict[str, Any]  :: Top holders of a Solana mint, resolved to OWNING WALLETS.
+  [f] _evm_rpc(url: str, method: str, params: List[Any]) -> Any  :: 
+  [f] _evm_call(url: str, to: str, data: str) -> str  :: 
+  [F] evm_holder_composition(rpc_url: str, token: str, top_n: int=TOP_N, blocks_back: int=4000, log_span_cap: int=5000) -> Dict[str, Any]  :: Reconstruct ERC-20 holders from Transfer logs.
+  [F] rugcheck_holder_composition(mint: str, top_n: int=TOP_N) -> Dict[str, Any]  :: Holder composition from RugCheck's FULL report (Solana).
+  [f] _series_path(chain: str, mint: str) -> str  :: 
+  [F] load_series(chain: str, mint: str) -> Dict[str, Any]  :: 
+  [F] save_series(chain: str, mint: str, series: Dict[str, Any]) -> str  :: 
+  [F] record_snapshot(chain: str, mint: str, composition: Dict[str, Any], price_usd: Optional[float], price_change_24h: Optional[float], provenance: str=LIVE, source: str='') -> Dict[str, Any]  :: Append one timestamped holder-composition snapshot to the series.
+  [F] detect_ownership_shifts(chain: str, mint: str, spike_pct: float=SPIKE_PCT_DEFAULT, concentration_delta_pp: float=CONCENTRATION_DELTA_PP_DEFAULT, min_snapshots: int=MIN_SNAPSHOTS_DEFAULT) -> Dict[str, Any]  :: Find windows where composition changed abruptly around a price spike.
+====================================================================================================
+MODULE leapspace/http.py  (269 lines)
+  DOC: Stdlib HTTP layer with a browser User-Agent, retries, gzip handling and an
+  local: .provenance
+  third: -
+  std  : __future__, certifi, gzip, hashlib, json, os, re, ssl, time, typing, urllib.error, urllib.request
+  [F] ssl_context() -> ssl.SSLContext  :: 
+  [f] _decompress(body: bytes, headers: Dict[str, str]) -> bytes  :: 
+  [F] http_get(url: str, headers: Optional[Dict[str, str]]=None, timeout: int=30, retries: int=3, backoff: float=1.5) -> Tuple[int, bytes, Dict[str, str]]  :: GET with retries. Raises HttpError (a SourceUnavailable) on failure.
+  [F] http_json(url: str, headers: Optional[Dict[str, str]]=None, timeout: int=30, retries: int=3) -> Tuple[Any, int]  :: 
+  [F] http_post_json(url: str, payload: Any, headers: Optional[Dict[str, str]]=None, timeout: int=30, retries: int=3) -> Tuple[Any, int]  :: 
+  [f] _cache_key(url: str) -> str  :: A filesystem-safe cache key for a URL.
+  [f] _load_secret_file() -> None  :: Populate os.environ from a `.secrets.env` beside the package.
+  [F] get_secret(name: str) -> Optional[str]  :: A credential, or None. The value is returned to the caller only;
+  [F] redact(text: str) -> str  :: Strip credential-shaped strings out of text before it is written
+  [C] class HttpError(SourceUnavailable)  :: 
+  [C] class CachedFetcher  :: Fetch-with-cache helper.
+       [m] __init__(self, cache_dir: str, max_age_seconds: Optional[float]=None)  :: 
+       [m] _key(self, name: str, params: Optional[Dict[str, Any]]=None) -> str  :: 
+       [M] get_json(self, name: str, url: str, params: Optional[Dict[str, Any]]=None, headers: Optional[Dict[str, str]]=None, max_age_seconds: Optional[float]=None, refresh: bool=False, timeout: int=30, source: str='http') -> Tuple[Any, Provenance]  :: 
+====================================================================================================
+MODULE leapspace/launchscan.py  (628 lines)
+  DOC: Launch scan: identify early buyers of a NEW memecoin and test whether
+  local: .costs, .edge, .http, .memecoinscan, .provenance
+  third: -
+  std  : __future__, time, typing, urllib.parse
+  [F] fetch_transfer_logs(token: str, from_block: int, to_block: int, chain: str='ethereum', max_providers: int=4) -> Dict[str, Any]  :: Fetch a token's ERC-20 Transfer LOGS over a block range.
+  [F] decode_transfer_logs(logs: List[Dict[str, Any]], decimals: int=18) -> List[Dict[str, Any]]  :: Decode ERC-20 Transfer logs into per-recipient purchases.
+  [F] scan_launch_window(logs: List[Dict[str, Any]], launch_block: int, window_blocks: int=1000, decimals: int=18, provider: Optional[str]=None, token: Optional[str]=None) -> Dict[str, Any]  :: Find the buyers inside a launch window, from transfer logs.
+  [f] _bs(path: str, params: Optional[Dict[str, Any]]=None, chain: str='ethereum', timeout: int=30) -> Any  :: 
+  [f] _rpc(method: str, params: List[Any], timeout: int=30) -> Any  :: 
+  [F] token_launch(token: str, chain: str='ethereum') -> Dict[str, Any]  :: The launch block and creation transaction of a token.
+  [F] fetch_token_transfers(token: str, chain: str='ethereum', max_pages: int=40) -> Dict[str, Any]  :: ALL transfers of a token, paginated.
+  [F] early_buyers(token: str, chain: str='ethereum', window_blocks: int=1000, max_pages: int=40) -> Dict[str, Any]  :: Wallets that bought the token within `window_blocks` of its launch.
+  [f] _entry_class(lag: Optional[int]) -> str  :: 
+  [F] screen_early_buyers(token: str, chain: str='ethereum', window_blocks: int=1000, universe: Optional[Dict[str, Any]]=None, max_candidates: int=25, max_pages: int=40, early: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Find early buyers of a token and test each against the edge gate.
+====================================================================================================
+MODULE leapspace/leading.py  (711 lines)
+  DOC: Leading-indicator features: the forward-looking half of the regime model.
+  local: .gamma, .http, .market, .provenance
+  third: -
+  std  : __future__, datetime, math, re, time, typing
+  [f] _now_ms() -> int  :: 
+  [F] implied_vol_series(symbol: str='^VIX', rng: str='2y', interval: str='1d', timeout: int=30) -> Tuple[List[Tuple[int, float]], Provenance]  :: Historical implied volatility for an equity index.
+  [F] dvol_history(currency: str='BTC', days: int=125, resolution: int=3600, max_pages: int=8, timeout: int=45) -> Tuple[List[Tuple[int, float]], Provenance]  :: Historical implied volatility for a crypto asset, from Deribit.
+  [F] realized_vol_series(closes: Sequence[float], window: int=20) -> List[Optional[float]]  :: Annualised realised volatility from closes. This is LAGGING.
+  [F] volatility_risk_premium(iv: Optional[float], rv: Optional[float]) -> Optional[float]  :: Implied minus realised volatility, in percentage points.
+  [F] iv_term_slope(short_iv: Optional[float], long_iv: Optional[float]) -> Optional[float]  :: Short-versus-long implied-volatility spread.
+  [F] deribit_gamma_exposure(currency: str='BTC', spot: Optional[float]=None, timeout: int=45) -> Tuple[Dict[str, Any], Provenance]  :: Dealer gamma exposure for a crypto asset, from the live option book.
+  [f] _expiry_years(exp: str, now_ts: float) -> Optional[float]  :: Years to expiry from a Deribit expiry string like '26DEC26'.
+  [F] deribit_option_flow(currency: str='BTC', limit: int=500, timeout: int=45) -> Tuple[Dict[str, Any], Provenance]  :: Net option flow from the live Deribit trade tape.
+  [F] align_to_bars(series: Sequence[Tuple[int, float]], bar_timestamps: Sequence[int], max_lag_bars: int=1) -> List[Optional[float]]  :: Align a timestamped series to a bar grid WITHOUT look-ahead.
+  [F] build_leading_features(iv_series: Sequence[Tuple[int, float]], bar_timestamps: Sequence[int], closes: Optional[Sequence[float]]=None, rv_window: int=20, max_lag_bars: int=1, label: str='', derivatives: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Assemble the leading feature block for a bar grid.
+====================================================================================================
+MODULE leapspace/leadingcache.py  (255 lines)
+  DOC: Cache and panel-resolution helpers for the leading-indicator features.
+  local: .leading, .provenance
+  third: -
+  std  : __future__, calendar, json, os, time, typing
+  [F] leading_cache_path(source: str, asset: str) -> str  :: Where the cached series for (source, asset) lives.
+  [F] store_leading_series(source: str, asset: str, series: Sequence[Tuple[int, float]], url: str='', note: str='') -> str  :: Write a leading series to the cache and return the path.
+  [F] load_leading_series(source: str, asset: str, max_age_seconds: Optional[int]=MAX_AGE_SECONDS) -> Tuple[List[Tuple[int, float]], Provenance]  :: Read a cached leading series.
+  [F] resolve_leading_source(symbols: Sequence[str]) -> Tuple[str, str, str]  :: Decide which leading series applies to a panel's universe.
+  [F] panel_date_timestamps(dates: Sequence[str]) -> List[int]  :: Convert the engine's ``YYYY-MM-DD`` date strings to unix seconds.
+  [F] series_for_panel(panel: Any, source: Optional[str]=None, asset: Optional[str]=None, allow_fetch: bool=True) -> Tuple[List[Tuple[int, float]], Dict[str, Any]]  :: Get the leading series for a panel, fetching and caching if needed.
+====================================================================================================
+MODULE leapspace/leadingspecs.py  (318 lines)
+  DOC: The LEADING-INDICATOR specifications.
+  local: -
+  third: -
+  std  : __future__, json, os, typing
+  [f] _base(name: str, paper: str, hypothesis: str, universe: Dict[str, Any], period: Dict[str, Any], features: List[Dict[str, Any]], signal: Dict[str, Any], portfolio: Dict[str, Any], execution: Dict[str, Any], capital: Dict[str, Any], provenance: Dict[str, Any], notes: str) -> Dict[str, Any]  :: 
+  [f] _specs() -> List[Dict[str, Any]]  :: 
+  [F] load_leading_specs() -> List[Dict[str, Any]]  :: The leading-indicator specs.
+  [F] write_leading_specs(path: Optional[str]=None) -> str  :: Write the specs to disk so they are inspectable and reportable.
+====================================================================================================
+MODULE leapspace/market.py  (403 lines)
+  DOC: Market data: OHLCV, options chains, crypto prices.
+  local: .http, .provenance
+  third: -
+  std  : __future__, datetime, json, math, os, re, typing
+  [f] _yahoo_symbol(sym: str) -> str  :: 
+  [F] fetch_ohlcv(symbol: str, rng: str='10y', interval: str='1d', fetcher: Optional[CachedFetcher]=None, refresh: bool=False, timeout: int=30) -> Tuple[List[Dict[str, Any]], Provenance]  :: Fetch OHLCV bars from the Yahoo chart API.
+  [F] fetch_many_ohlcv(symbols: Sequence[str], rng: str='10y', interval: str='1d', fetcher: Optional[CachedFetcher]=None, refresh: bool=False) -> Tuple[Dict[str, List[Dict[str, Any]]], List[Dict[str, Any]], List[Provenance]]  :: Fetch several symbols. Returns (bars_by_symbol, failures, provenances).
+  [F] closes_and_volumes(bars: Sequence[Dict[str, Any]]) -> Tuple[List[float], List[float]]  :: 
+  [f] _num(v: Any) -> Optional[float]  :: Nasdaq uses the string '--' for a missing value.
+  [f] _asset_class(symbol: str) -> str  :: 
+  [f] _parse_last_trade(text: Any) -> Tuple[Optional[float], Optional[str]]  :: Nasdaq returns the underlying's last trade as a formatted string.
+  [F] fetch_option_chain(symbol: str, from_date: Optional[str]=None, to_date: Optional[str]=None, fetcher: Optional[CachedFetcher]=None, refresh: bool=False, timeout: int=60) -> Tuple[Dict[str, Any], Provenance]  :: Fetch the full option chain for a US symbol.
+  [F] fetch_deribit_instruments(currency: str='BTC') -> Tuple[List[Dict[str, Any]], Provenance]  :: 
+  [F] fetch_deribit_book(currency: str='BTC', kind: str='option') -> Tuple[List[Dict[str, Any]], Provenance]  :: 
+  [F] fetch_deribit_trades(currency: str='BTC', kind: str='option', limit: int=100) -> Tuple[List[Dict[str, Any]], Provenance]  :: 
+  [F] fetch_coingecko_prices(coin_ids: Sequence[str], vs: str='usd') -> Tuple[Dict[str, float], Provenance]  :: 
+  [F] fetch_dex_pairs(query: str, limit: int=30) -> Tuple[List[Dict[str, Any]], Provenance]  :: 
+  [F] normalise_dex_pair(p: Dict[str, Any]) -> Dict[str, Any]  :: Flatten a DexScreener pair into the fields the meme-coin screen needs.
+====================================================================================================
+MODULE leapspace/memecoin.py  (779 lines)
+  DOC: Meme-coin screening — the paper's five-layer edge framework.
+  local: .http, .market, .narrative, .provenance
+  third: -
+  std  : __future__, dataclasses, datetime, json, math, typing
+  [f] _pct(x: Any) -> Optional[float]  :: 
+  [F] fetch_token_profile(mint: str) -> Tuple[Dict[str, Any], Provenance]  :: Jupiter token profile: holder count, authorities, organic score, audit.
+  [F] fetch_rugcheck(mint: str) -> Tuple[Dict[str, Any], Provenance]  :: RugCheck full report: top holders with insider flags, risks, liquidity.
+  [F] fetch_migration_evidence(mint: str) -> Tuple[Dict[str, Any], Provenance]  :: Launchpad-origin and migration evidence from the token's DEX pairs.
+  [F] screen_meme_coin(mint: str, pair: Optional[Dict[str, Any]]=None, thresholds: Optional[Dict[str, float]]=None) -> ScreenResult  :: Apply the paper's five layers to one token.
+  [F] screen_search(query: str, limit: int=15, thresholds: Optional[Dict[str, float]]=None) -> Dict[str, Any]  :: Search a meme-coin narrative and screen each result.
+  [C] class ScreenResult  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/memecoinscan.py  (771 lines)
+  DOC: Reverse-engineer the trading process of PEPE's top holders.
+  local: .etherscan, .http, .provenance
+  third: -
+  std  : __future__, concurrent.futures, datetime, json, os, time, typing, urllib.parse
+  [f] _f(v: Any) -> float  :: Coerce to float; None when not numeric.
+  [f] _parse_ts(v: Any) -> Optional[int]  :: Blockscout timestamps are ISO strings. They are NOT integers.
+  [f] _bs_get(path: str, params: Optional[Dict[str, Any]]=None, chain: str='ethereum', timeout: int=30) -> Tuple[Optional[int], Any]  :: 
+  [f] _holder_entity(holder: Dict[str, Any]) -> Tuple[str, str]  :: Classify a holder: EXCHANGE / CONTRACT / EOA / UNKNOWN.
+  [F] fetch_top_holders(token: str, chain: str='ethereum', limit: int=50) -> Dict[str, Any]  :: Top holders of an ERC-20, with entity classification.
+  [F] memecoin_universe(symbols: Optional[List[str]]=None, chain: str='ethereum') -> Dict[str, Any]  :: Resolve meme symbols to live contract addresses via DexScreener.
+  [f] _etherscan_fallback(address: str, chain: str, token: Optional[str], max_items: int) -> Dict[str, Any]  :: The same transfer tape, from Etherscan, when Blockscout fails.
+  [F] fetch_token_transfers(address: str, chain: str='ethereum', max_items: int=400, token: Optional[str]=None) -> Dict[str, Any]  :: A wallet's ERC-20 transfer history from Blockscout.
+  [F] token_launch_block(token: str, chain: str='ethereum') -> Dict[str, Any]  :: The block a token was created in, and its creation timestamp.
+  [F] wallet_memecoin_profile(address: str, universe: Dict[str, Any], chain: str='ethereum', max_items: int=400, known_exchange_addresses: Optional[Dict[str, str]]=None) -> Dict[str, Any]  :: Reconstruct a wallet's memecoin allocation and trading process.
+  [f] _entry_class(lag_blocks: Optional[int]) -> str  :: Classify entry timing. Thresholds are ANALYST CHOICES.
+====================================================================================================
+MODULE leapspace/models.py  (421 lines)
+  DOC: Unified on-chain models for the memecoin quant layer.
+  local: .provenance
+  third: -
+  std  : __future__, dataclasses, json, time, typing
+  [F] get_chain(chain_id: str) -> ChainSpec  :: Look up a chain, with a helpful error rather than a KeyError.
+  [F] now_ts() -> int  :: 
+  [F] to_json(obj: Any) -> str  :: Serialise any model to its FLAT json form.
+  [C] class ChainSpec  :: Static facts about one chain. No network state.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class TokenEvent  :: A unified on-chain event, normalised across chains.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class WalletTrade  :: One wallet's trade in one token, normalised across chains.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class WalletProfile  :: A wallet scored against the operator's consistency thresholds.
+       [M] qualifies(self) -> bool  :: 
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class FundingSource  :: Where a wallet's first token arrived from — the anti-insider input.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class TokenCandidate  :: A token that tripped a detection rule, with its traction evidence.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class Friction  :: Execution friction assumptions. Every field is explicit and tunable.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class Position  :: 
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class CopyTrade  :: One simulated copy-trade, including the ones that were SKIPPED.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class KillSwitchState  :: Whether trading is permitted, and why.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class Anomaly  :: An unexpected market condition, logged with its exact context.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+  [C] class BiasFinding  :: One bias detected by the auditor.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/narrative.py  (555 lines)
+  DOC: Narrative specificity: is this token a NICHE community, or a generic trend clone?
+  local: .provenance
+  third: -
+  std  : __future__, json, os, re, statistics, time, typing
+  [f] _name_specificity(name: str, symbol: str) -> Dict[str, Any]  :: Analyse a token's NAME for generic-launchpad signs.
+  [F] classify_specificity(profile: Dict[str, Any], pair: Dict[str, Any]) -> Dict[str, Any]  :: Score one token's narrative specificity from free sources.
+  [F] cohort_baseline(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: The baseline the clause needs, taken from the cohort itself.
+  [f] _rank_pct(score: float, baseline: Dict[str, Any]) -> Optional[float]  :: The percentile RANK of a score within the cohort (ties averaged).
+  [F] relative_to_cohort(row: Dict[str, Any], baseline: Dict[str, Any]) -> Dict[str, Any]  :: Place one token in its cohort's distribution, BY RANK.
+  [F] backward_association(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: BACKWARD association between specificity and 24h performance.
+  [F] save_cohort(rows: Sequence[Dict[str, Any]], path: str=COHORT_PATH) -> Dict[str, Any]  :: Write a timestamped snapshot so a later run can measure FORWARD returns.
+  [F] select_base_rows(snaps: Sequence[Dict[str, Any]], now: Optional[int]=None, min_gap_seconds: int=3600) -> tuple  :: Select, per token, the EARLIEST qualifying observation.
+  [F] verify_cohort(path: str=COHORT_PATH, min_gap_seconds: int=3600, current_rows: Optional[Sequence[Dict[str, Any]]]=None) -> Dict[str, Any]  :: Measure FORWARD returns between two snapshots and test the claim.
+====================================================================================================
+MODULE leapspace/onchain.py  (571 lines)
+  DOC: Crypto wallet tracking and transaction analysis.
+  local: .http, .provenance
+  third: -
+  std  : __future__, collections, dataclasses, datetime, os, time, typing
+  [F] helius_key() -> Optional[str]  :: 
+  [f] _rpc(method: str, params: List[Any], helius: bool=True, retries: int=4) -> Any  :: JSON-RPC call with 429-aware backoff.
+  [F] get_signatures(address: str, limit: int=50, before: Optional[str]=None) -> Tuple[List[Dict[str, Any]], Provenance]  :: Recent transaction signatures for a wallet.
+  [F] get_transaction(signature: str) -> Tuple[Dict[str, Any], Provenance]  :: A single parsed transaction.
+  [F] get_balance(address: str) -> Tuple[float, Provenance]  :: 
+  [F] get_token_accounts(address: str) -> Tuple[List[Dict[str, Any]], Provenance]  :: All token accounts (and their mints) owned by a wallet.
+  [F] get_asset_holders(mint: str) -> Tuple[List[Dict[str, Any]], Provenance]  :: Top token accounts for a mint (owner + balance), via getTokenLargestAccounts.
+  [f] _balances_to_transfers(meta: Dict[str, Any], owner_accounts: Sequence[str]) -> List[Dict[str, Any]]  :: Derive token transfers from pre/post token balances.
+  [f] _parsed_instruction_transfers(tx: Dict[str, Any]) -> List[Dict[str, Any]]  :: Extract transfers from `parsed` instructions (System/SPL transfers).
+  [F] parse_transaction(tx: Dict[str, Any]) -> WalletTransaction  :: 
+  [F] analyse_wallet(address: str, tx_limit: int=50, fetch_transactions: bool=True) -> WalletProfile  :: Fetch and analyse a wallet's recent activity.
+  [F] cluster_wallets(wallets: Sequence[WalletProfile], min_shared: int=2) -> Dict[str, Any]  :: Cluster wallets that share funding sources / counterparties.
+  [F] concentration_report(mint: str) -> Tuple[Dict[str, Any], List[Provenance]]  :: Top-holder concentration for a token — the paper's structural-risk layer.
+  [f] _concentration_read(top1: Optional[float], top10: Optional[float]) -> str  :: Thresholds are ANALYST CHOICES, disclosed as such — the paper does not
+  [C] class WalletTransaction  :: 
+       [M] timestamp(self) -> Optional[_dt.datetime]  :: 
+       [M] counterparties(self) -> List[str]  :: 
+  [C] class WalletProfile  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/paperreport.py  (953 lines)
+  DOC: The paper-concept report: the matrix, read and rendered.
+  local: .viz_leading
+  third: -
+  std  : __future__, html, json, os, typing
+  [F] load_results(path: Optional[str]=None) -> List[Dict[str, Any]]  :: The results rows, or an empty list when there are none.
+  [f] _is_control(name: str) -> bool  :: 
+  [f] _twin(name: str) -> str  :: The real spec's name for a control, or the control's for a real.
+  [f] _sharpe(row: Dict[str, Any]) -> Optional[float]  :: The POOLED OUT-OF-SAMPLE Sharpe, or None.
+  [f] _in_sample_sharpe(row: Dict[str, Any]) -> Optional[float]  :: The IN-SAMPLE Sharpe, or None.
+  [f] _ran(row: Dict[str, Any]) -> bool  :: Whether a spec ACTUALLY EXECUTED, as opposed to failing.
+  [F] summarise(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: Turn the rows into the tables the report renders.
+  [f] _counts(rows: Sequence[Dict[str, Any]]) -> Dict[str, int]  :: 
+  [f] _stage_coverage(rows: Sequence[Dict[str, Any]]) -> Dict[str, Dict[str, int]]  :: How often each robustness stage RAN, was SKIPPED, or ERRORED.
+  [f] _fold_tables(rows: Sequence[Dict[str, Any]], limit: int=12) -> List[Dict[str, Any]]  :: The specs worth showing a fold table for.
+  [F] render_markdown(rows: Sequence[Dict[str, Any]], summary: Optional[Dict[str, Any]]=None) -> str  :: Render the findings as markdown.
+  [f] _verdict_matrix_svg(summary: Dict[str, Any]) -> str  :: A grid of cells, coloured by verdict.
+  [f] _esc(s: Any) -> str  :: 
+  [F] render_html(rows: Sequence[Dict[str, Any]], summary: Optional[Dict[str, Any]]=None) -> str  :: Render the matrix as a self-contained HTML page.
+  [F] build_report(results_path: Optional[str]=None, md_path: Optional[str]=None, html_path: Optional[str]=None) -> Dict[str, Any]  :: Build the markdown report and the HTML dashboard.
+====================================================================================================
+MODULE leapspace/paperrun.py  (409 lines)
+  DOC: The paper-concept runner.
+  local: .backtest, .leading, .leadingcache
+  third: -
+  std  : __future__, datetime, json, os, time, typing
+  [f] _lock(path: str, timeout: float=120.0)  :: A simple exclusive lock so parallel workers do not clobber.
+  [f] _release(lock_path: str) -> None  :: 
+  [F] merge_results(path: str, rows: Sequence[Dict[str, Any]]) -> str  :: Merge rows into the results file BY NAME, keeping the file order.
+  [F] leading_coverage_for(spec: Dict[str, Any]) -> Dict[str, Any]  :: How much leading-indicator data actually covers this spec's panel.
+  [f] _panel_bars(spec: Dict[str, Any]) -> List[int]  :: The panel's bar grid as unix timestamps, if it can be had.
+  [f] _preset_symbols(spec: Dict[str, Any]) -> List[str]  :: The symbols of a spec's universe, so the leading source resolves.
+  [F] run_matrix(specs: Sequence[Dict[str, Any]], quick: bool=False, out_path: Optional[str]=None, log_path: Optional[str]=None, only: Optional[Sequence[str]]=None, n_variants: Optional[int]=None) -> Dict[str, Any]  :: Run the specs and merge the results.
+  [f] _row_from_result(res: BacktestResult, spec: Dict[str, Any], elapsed: float) -> Dict[str, Any]  :: Turn a BacktestResult into the row the report consumes.
+====================================================================================================
+MODULE leapspace/paperspecs.py  (808 lines)
+  DOC: The PAPER-CONCEPT specification set.
+  local: .ensemble
+  third: -
+  std  : __future__, json, os, typing
+  [f] _prov(source: str, note: str, citation: str='not stated in source') -> Dict[str, str]  :: 
+  [f] _make(name: str, paper: str, concept: str, hypothesis: str, asset_class: str, features: List[Dict[str, Any]], signal: Dict[str, Any], provenance: Dict[str, Dict[str, str]], variants_tried: int=1, notes: str='') -> Dict[str, Any]  :: Assemble one spec with the constant risk block and full provenance.
+  [f] _c1_regime_switch(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c2_leading_vrp(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c3_vol_regime_filter(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c4_volume_confirmation(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c5_rsi_reversion(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c6_rebound_danger(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c7_session_drift(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c8_liquidity_reversal(asset_class: str) -> Dict[str, Any]  :: 
+  [f] _c9_ensemble(asset_class: str) -> Dict[str, Any]  :: The long/short hedged ensemble - the combination of the papers'
+  [F] build_specs(concepts: Optional[List[str]]=None, asset_classes: Optional[List[str]]=None) -> List[Dict[str, Any]]  :: Build the paper-concept spec matrix.
+  [F] build_negative_controls(specs: Optional[List[Dict[str, Any]]]=None) -> List[Dict[str, Any]]  :: Build inverted-polarity twins of the real specs.
+  [F] load_paper_specs(include_controls: bool=True) -> List[Dict[str, Any]]  :: The specs, read from disk when the file exists, else built.
+  [F] write_paper_specs(path: Optional[str]=None) -> str  :: Write the full matrix (specs + controls) to disk.
+====================================================================================================
+MODULE leapspace/pbo.py  (718 lines)
+  DOC: Probability of Backtest Overfitting (PBO) and the multiple-testing
+  local: -
+  third: -
+  std  : __future__, fractions, math, statistics, typing
+  [f] _sharpe(returns: Sequence[float]) -> float  :: Sharpe ratio of PER-OBSERVATION returns, sample stdev (ddof = 1).
+  [f] _median(values: Sequence[float]) -> float  :: Median of a non-empty sequence (stdlib statistics).
+  [f] _fraction_to(p: float, q: float) -> int  :: Largest k with p_(k) <= (k/m) * q, by the Benjamini-Hochberg rule.
+  [F] probability_of_backtest_overfitting(candidate_returns: Sequence[Sequence[float]], n_splits: Optional[int]=None, n_partitions: int=8, test_fraction: float=0.5) -> Dict[str, Any]  :: Probability of Backtest Overfitting via CSCV.
+  [F] bonferroni_alpha(n_tests: int, family_alpha: float=0.05) -> float  :: The per-test significance level that controls the family-wise error
+  [F] benjamini_hochberg(pvalues: Sequence[float], q: float=0.05) -> Dict[str, Any]  :: The Benjamini-Hochberg false-discovery-rate procedure.
+  [F] multiple_testing_t_statistic_hurdle(n_tests: int, alpha: float=0.05) -> Dict[str, Any]  :: The Harvey-Liu-Zhu t-statistic hurdle for a newly discovered signal.
+  [F] harvey_liu_zhu_hurdle(n_tests: int, alpha: float=0.05) -> Dict[str, Any]  :: Alias of `multiple_testing_t_statistic_hurdle` (same citation, same
+====================================================================================================
+MODULE leapspace/portfolio.py  (612 lines)
+  DOC: Risk-managed portfolio construction.
+  local: -
+  third: -
+  std  : __future__, math, typing
+  [F] estimate_covariance(returns: Sequence[Sequence[Optional[float]]], shrinkage: float=0.3) -> Tuple[List[List[float]], List[str]]  :: Sample covariance with shrinkage toward a scaled diagonal.
+  [F] ewma_volatility(returns: Sequence[Optional[float]], lam: float=0.94) -> float  :: Exponentially weighted volatility (RiskMetrics' lambda).
+  [F] blended_volatility(returns: Sequence[Optional[float]], realised_window: int=60, ewma_lambda: float=0.94, ewma_weight: float=0.5) -> float  :: A blend of the long realised volatility and the faster EWMA.
+  [F] risk_parity_weights(cov: Sequence[Sequence[float]], names: Optional[Sequence[str]]=None, tol: float=1e-08, max_iter: int=500) -> Dict[str, Any]  :: Equal-risk-contribution weights for a covariance matrix.
+  [F] drawdown_scaler(drawdown_pct: float, soft_limit: float=0.05, hard_limit: float=0.2, floor: float=0.0) -> float  :: Scale exposure down as the account's drawdown deepens.
+  [F] build_risk_managed_weights(signals: Dict[str, Sequence[Optional[float]]], returns: Optional[Dict[str, Sequence[Optional[float]]]]=None, asset_class: Optional[Dict[str, str]]=None, target_vol: float=0.15, vol_lookback: int=60, ewma_lambda: float=0.94, ewma_weight: float=0.5, shrinkage: float=0.3, gross_leverage: float=1.0, max_position: float=0.1, net_target: Optional[float]=0.0, drawdown_pct: float=0.0, dd_soft_limit: float=0.05, dd_hard_limit: float=0.2, dd_floor: float=0.0, class_caps: Optional[Dict[str, float]]=None) -> Dict[str, Any]  :: Build risk-managed target weights from raw signals.
+  [F] portfolio_risk_report(weights: Dict[str, float], returns: Optional[Dict[str, Sequence[Optional[float]]]]=None, cov: Optional[Sequence[Sequence[float]]]=None, asset_class: Optional[Dict[str, str]]=None, target_vol: float=0.15) -> Dict[str, Any]  :: Report the SHAPE of a book's risk, not just its size.
+====================================================================================================
+MODULE leapspace/priceatblock.py  (328 lines)
+  DOC: A DIRECT USD price at a PAST BLOCK, computed from the DEX pool itself.
+  local: .costs
+  third: -
+  std  : __future__, time, typing
+  [f] _enc_addr(a: str) -> str  :: 
+  [f] _addr(hexstr: Optional[str]) -> Optional[str]  :: 
+  [f] _int(hexstr: Optional[str]) -> Optional[int]  :: 
+  [f] _decimals(rpc: ArchiveRpc, token: str, block: int) -> int  :: 
+  [F] v2_pair(rpc: ArchiveRpc, token_a: str, token_b: str, block: int) -> Optional[str]  :: The Uniswap V2 pair that existed for these two tokens at `block`.
+  [F] v2_reserves(rpc: ArchiveRpc, pair: str, block: int) -> Optional[Tuple[int, int]]  :: (reserve0, reserve1) of a V2 pair at a block.
+  [f] _pair_price(rpc: ArchiveRpc, pair: str, token: str, quote: str, block: int, min_quote_liquidity: float) -> Optional[Dict[str, Any]]  :: The price of `token` in units of `quote`, from a V2 pair.
+  [F] weth_usd(rpc: ArchiveRpc, block: int) -> Optional[Dict[str, Any]]  :: The WETH/USD price at a block, from the deep WETH/USDC V2 pair.
+  [F] usd_price_at_block(token: str, block: int, chain: str='ethereum', rpc: Optional[ArchiveRpc]=None) -> Dict[str, Any]  :: The USD price of a token at a past block, from the DEX itself.
+  [F] price_events_by_block(events: list, chain: str='ethereum', rpc: Optional[ArchiveRpc]=None, min_interval: float=0.12, max_blocks: int=40) -> Dict[str, Any]  :: Price a list of transfer events by their block.
+  [F] clear_caches() -> None  :: 
+====================================================================================================
+MODULE leapspace/priced.py  (396 lines)
+  DOC: Price a wallet's memecoin trades at HISTORICAL prices and compute a real
+  local: .costs, .edge, .http, .memecoinscan, .priceatblock
+  third: -
+  std  : __future__, time, typing
+  [f] _cached_price(chain: str, contract: str, ts: int, throttle: Optional[_Throttle]=None) -> Dict[str, Any]  :: 
+  [F] clear_price_cache() -> None  :: Empty the shared price cache.
+  [f] _token_price(chain: str, contract: str, ts: int, throttle: Optional[_Throttle]=None) -> Dict[str, Any]  :: The historical price of a token at a timestamp.
+  [F] price_position_events(position: Dict[str, Any], chain: str='ethereum', throttle: Optional[_Throttle]=None) -> Dict[str, Any]  :: Price every buy and sell event of one position.
+  [F] price_wallet_positions(profile: Dict[str, Any], chain: str='ethereum', max_events: int=400, throttle: Optional[_Throttle]=None, method: str='auto', max_blocks: int=40) -> Dict[str, Any]  :: Price every position of one wallet profile.
+  [F] fifo_closed_trades(trades: List[Dict[str, Any]], price_field: str='price_usd', qty_field: str='qty') -> List[Dict[str, Any]]  :: Match buys to sells FIFO and produce CLOSED trades.
+  [F] build_gate_trades(trades: List[Dict[str, Any]]) -> List[Dict[str, Any]]  :: Convert priced transfer events into the trade shape `edge.py` wants.
+  [F] realised_pnl_and_edge(priced: Dict[str, Any], trials_scanned: int=1, basis: str='fifo') -> Dict[str, Any]  :: Compute realised PnL and run the consistency gate on priced trades.
+  [F] screen_wallet(address: str, universe: Dict[str, Any], chain: str='ethereum', trials_scanned: int=1, max_items: int=400) -> Dict[str, Any]  :: Full pipeline for one wallet: history -> prices -> PnL -> gate.
+  [c] class _Throttle  :: A simple per-host rate limiter.
+       [m] __init__(self, interval: float=_MIN_INTERVAL) -> None  :: 
+       [M] wait(self) -> None  :: 
+====================================================================================================
+MODULE leapspace/profiler.py  (680 lines)
+  DOC: Wallet profiling, anti-insider filtering, consensus and the trusted pool.
+  local: .chains, .models, .provenance
+  third: -
+  std  : __future__, json, os, statistics, sys, typing
+  [F] load_registries(config: Optional[Dict[str, Any]]=None) -> Dict[str, List[str]]  :: The deployer / cabal / exchange / insider address lists.
+  [f] _resolve_price(trade: WalletTrade, price_lookup: Optional[Any]=None) -> Optional[float]  :: The price for a trade: its own, else whatever the lookup returns.
+  [f] _realized_pnl(trades: Sequence[WalletTrade], price_lookup: Optional[Any]=None) -> Tuple[List[Dict[str, Any]], int]  :: Realised PnL from closed round trips, matched FIFO per token.
+  [F] profile_wallet(chain: str, wallet: str, trades: Optional[Sequence[WalletTrade]]=None, thresholds: Optional[Dict[str, Any]]=None, source: str='', price_lookup: Optional[Any]=None) -> WalletProfile  :: Score one wallet against the operator's consistency thresholds.
+  [F] profile_many(chain: str, wallets: Sequence[str], thresholds: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Profile several wallets; returns a flat summary plus the raw profiles.
+  [F] trace_funding_source(chain: str, wallet: str, registries: Optional[Dict[str, List[str]]]=None) -> FundingSource  :: Find the earliest inbound token transfer to a wallet.
+  [f] _label_funder(funder: str, regs: Dict[str, List[str]]) -> str  :: 
+  [f] _solana_funding(chain: str, wallet: str, max_sigs: int=100) -> Dict[str, Any]  :: The earliest INBOUND token transfer to a Solana wallet.
+  [f] _evm_funding(chain: str, wallet: str, blocks: int=5000) -> Dict[str, Any]  :: 
+  [F] is_insider(wallet: str, funding: FundingSource, registries: Optional[Dict[str, List[str]]]=None, launch_block: Optional[int]=None, snipe_block_window: int=5) -> Dict[str, Any]  :: Apply the anti-insider rules to one wallet.
+  [F] consensus_signal(trades: Sequence[WalletTrade], min_wallets: int=3, window_seconds: int=3600, trusted_wallets: Optional[Iterable[str]]=None, profiled_only: bool=True) -> Dict[str, Any]  :: Did >=N wallets act on the same token inside the window?
+  [C] class TrustedPool  :: The trusted wallet pool, with periodic re-evaluation.
+       [m] __init__(self, path: str=POOL_PATH, cfg: Optional[Dict[str, Any]]=None)  :: 
+       [M] load(self) -> bool  :: 
+       [M] save(self) -> str  :: 
+       [M] add(self, wallet: str, score: Optional[float]=None, reason: str='') -> None  :: 
+       [M] remove(self, wallet: str, reason: str='') -> None  :: 
+       [M] re_evaluate(self, profiles: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Demote wallets that no longer deserve to be trusted.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/provenance.py  (136 lines)
+  DOC: Provenance and disclosure primitives.
+  local: -
+  third: -
+  std  : __future__, dataclasses, datetime, json, os, time, typing
+  [F] utcnow_iso() -> str  :: 
+  [F] unavailable(source: str, url: Optional[str], reason: str) -> Dict[str, Any]  :: 
+  [F] write_json(path: str, payload: Any) -> str  :: Atomic JSON write (write to .tmp then os.replace).
+  [F] read_json(path: str, default: Any=None) -> Any  :: 
+  [C] class Provenance  :: Where a piece of data came from, and whether it is real.
+       [M] is_real(self) -> bool  :: 
+       [M] is_synthetic(self) -> bool  :: 
+       [M] disclosure(self) -> str  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+  [C] class DataPoint  :: A value plus its provenance. Use .value; never lose the provenance.
+       [M] is_real(self) -> bool  :: 
+       [M] is_synthetic(self) -> bool  :: 
+  [C] class SourceUnavailable(Exception)  :: Raised when a required source cannot be reached.
+====================================================================================================
+MODULE leapspace/quant.py  (1370 lines)
+  DOC: On-chain memecoin quant CLI: chains, profiling, consensus, simulation, risk.
+  local: .backtest, .biasaudit, .chainregistry, .chains, .cmd_extra, .crosschain, .deployers, .friction, .holders, .market, .memecoin, .memecoinscan, .models, .narrative, .priced, .profiler, .provenance, .riskguard, .social, .socialedge, .viz
+  third: -
+  std  : __future__, json, os, sys, typing
+  [F] load_config(path: str=CONFIG_PATH) -> Dict[str, Any]  :: 
+  [f] _out(obj: Any, as_json: bool) -> None  :: 
+  [f] _cfg(args) -> Dict[str, Any]  :: 
+  [F] cmd_chains(args) -> int  :: Which chains are we targeting today, and are they actually reachable?
+  [F] cmd_profile(args) -> int  :: Profile one wallet against the operator's consistency thresholds.
+  [f] _num(v) -> str  :: 
+  [f] _trade_field(record: Any, name: str) -> Any  :: Read a field from a trade record that may be a dataclass OR a dict.
+  [F] cmd_consensus(args) -> int  :: Did >=N profiled wallets act on the same token inside the window?
+  [F] cmd_pool(args) -> int  :: Inspect, add to, or re-evaluate the trusted wallet pool.
+  [f] _build_config(section: str, obj: Dict[str, Any], cls, label: str)  :: Build a dataclass from a config block, keeping only the declared
+  [F] cmd_simulate(args) -> int  :: Run a friction-aware copy-trading simulation over a price series.
+  [f] _load_price_series(path: str)  :: 
+  [f] _load_signals(path: str)  :: Load the signal file and convert each row to a WalletTrade.
+  [F] cmd_risk(args) -> int  :: Inspect or reset the code-enforced kill switch.
+  [F] cmd_anomaly(args) -> int  :: Show the anomaly log and the promoted Known Unknowns.
+  [F] cmd_audit(args) -> int  :: Audit the specs and the stored backtest results for hidden bias.
+  [F] cmd_viz(args) -> int  :: Build the visual report: PNG charts + an HTML dashboard.
+  [F] cmd_narrative(args) -> int  :: Narrative specificity: classify a token, or run the forward test.
+  [F] cmd_landscape(args) -> int  :: The memecoin chain registry: ranked, layered, and honest about gaps.
+  [F] cmd_social(args) -> int  :: Narrative specificity and traction for one token on one chain.
+  [F] cmd_socialedge(args) -> int  :: The social-edge test: did a wallet buy BEFORE the traction spike?
+  [F] cmd_pnl(args) -> int  :: A wallet's real cost basis, priced at each trade's own block.
+  [F] cmd_link(args) -> int  :: Cross-chain identity: score every pair of wallets, with evidence.
+  [F] add_parsers(sub) -> None  :: Register the quant subcommands on an existing subparser action.
+====================================================================================================
+MODULE leapspace/reference_gate.py  (1105 lines)
+  DOC: An INDEPENDENT reference implementation of the memecoin consistency gate.
+  local: -
+  third: -
+  std  : __future__, math, statistics, typing
+  [f] _norm_cdf(x: float) -> float  :: P(Z <= x) for a standard normal.
+  [f] _norm_ppf(p: float) -> float  :: Inverse standard normal CDF (stdlib `statistics.NormalDist`).
+  [f] _token_key(t: Dict[str, Any]) -> str  :: The asset a trade belongs to.
+  [f] _ts(t: Dict[str, Any]) -> int  :: 
+  [f] _is_leg(t: Dict[str, Any]) -> bool  :: Is this row a position-changing event (a raw leg)?
+  [f] _is_closed(t: Dict[str, Any]) -> bool  :: Is this row a CLOSED trade (a realised outcome)?
+  [f] _flat_to_flat_bets(trades: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]  :: Every bounded (flat-to-flat) bet, per asset, with its interval.
+  [F] bet_structure(trades: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]  :: One outcome per INDEPENDENT BET, with the time-disjoint flag.
+  [F] independent_bets(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: Count the INDEPENDENT BETS, with per-asset detail.
+  [F] time_disjoint_bets(trades: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: The maximum set of mutually NON-OVERLAPPING holding intervals.
+  [F] wilson_interval(wins: int, n: int, confidence: float=0.95) -> Tuple[Optional[float], Optional[float]]  :: The Wilson score interval for a win rate. Returns (lower, upper).
+  [F] binomial_tail_p(wins: int, n: int) -> Optional[float]  :: P(the true win rate exceeds 50%) under a uniform Beta(1,1) prior.
+  [F] expected_max_sharpe(n_trials: int) -> float  :: SR0: the expected maximum Sharpe over N independent trials.
+  [F] deflated_sharpe(sharpe: float, n_obs: int, n_trials: int, skew: float=0.0, kurtosis: float=3.0) -> Optional[float]  :: The Deflated Sharpe Ratio, per Bailey & Lopez de Prado Eq. (2).
+  [F] nist_sample_size(p0: float=0.5, p1: float=0.55, alpha: float=0.05, beta: float=0.2, delta: float=0.05) -> Dict[str, Any]  :: The NIST sample size for a win-rate claim. Reported BESIDE the
+  [F] evaluate(trades: Sequence[Dict[str, Any]], trials_scanned: Optional[int]=None, choices: Optional[Dict[str, Any]]=None, periods: Optional[Sequence[Dict[str, Any]]]=None, context: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Judge a wallet's edge. Returns the metrics, the fluke tests and a
+====================================================================================================
+MODULE leapspace/regime.py  (586 lines)
+  DOC: Market regime identification.
+  local: -
+  third: -
+  std  : __future__, dataclasses, math, typing
+  [f] _mean(xs: Sequence[float]) -> Optional[float]  :: 
+  [f] _stdev(xs: Sequence[float]) -> Optional[float]  :: 
+  [f] _rolling(xs: Sequence[Optional[float]], window: int, fn) -> List[Optional[float]]  :: 
+  [F] build_regime_features(closes: Sequence[float], volumes: Sequence[float], vol_short: int=10, vol_long: int=60, trend_lookback: int=60, drawdown_lookback: int=60, liquidity_lookback: int=20, rebound_lookback: int=20, event_flags: Optional[Sequence[bool]]=None) -> Dict[str, List[Optional[float]]]  :: Build the four core regime features + the rebound/event overlays.
+  [f] _log_gauss(x: float, mu: float, var: float) -> float  :: 
+  [F] label_states(hmm: HMM, feature_names: Sequence[str]) -> Dict[int, str]  :: Assign the paper's labels to latent states using their emission means.
+  [F] identify_regimes(features: Dict[str, List[Optional[float]]], feature_names: Sequence[str]=('vol_level', 'vol_change', 'trend', 'drawdown', 'liquidity'), n_states: int=4, max_iter: int=120, standardize: bool=True, min_bars: int=250) -> Optional[RegimeResult]  :: Fit the HMM and label the states.
+  [C] class HMM  :: Gaussian HMM with diagonal covariance.
+       [m] _emit(self, obs: Sequence[float]) -> List[float]  :: 
+       [m] _forward(self, seq: List[List[float]], scaled: bool=True)  :: 
+       [m] _backward(self, seq: List[List[float]], T, scales)  :: 
+       [M] fit(self, seq: List[List[float]], max_iter: int=120, tol: float=1e-05) -> 'HMM'  :: 
+       [M] filter(self, seq: List[List[float]]) -> List[List[float]]  :: CAUSAL posterior P(S_t | x_1..t). Safe for backtesting.
+       [M] smooth(self, seq: List[List[float]]) -> List[List[float]]  :: Posterior P(S_t | x_1..T). RETROSPECTIVE ONLY — look-ahead if used live.
+       [M] viterbi(self, seq: List[List[float]]) -> List[int]  :: Most likely state path (uses the whole series).
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+  [C] class RegimeResult  :: 
+       [M] probability_of(self, label: str, series: str='filtered') -> List[Optional[float]]  :: 
+       [M] summary(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/report.py  (396 lines)
+  DOC: Consolidated report writer.
+  local: .provenance, .source_reliability, leapspace.reportvalidate
+  third: -
+  std  : __future__, datetime, json, os, typing
+  [f] _fmt(v: Any, pct: bool=False, nd: int=3) -> str  :: 
+  [f] _verdict_banner(verdict: str) -> str  :: 
+  [F] merge_full_gauntlet(payload: Dict[str, Any], path: str) -> int  :: Overlay the FULL-gauntlet verdicts onto a quick-run payload.
+  [F] render_report(payload: Dict[str, Any]) -> str  :: 
+  [F] write_report(payload: Dict[str, Any], out_dir: str=REPORT_DIR) -> Dict[str, str]  :: 
+====================================================================================================
+MODULE leapspace/report_memecoin.py  (2508 lines)
+  DOC: The MEMECOIN-TRADER half of the consolidated report.
+  local: .etherscan
+  third: -
+  std  : __future__, ast, datetime, importlib, json, os, re, sys, typing
+  [f] _default_package_root() -> str  :: The project root: the directory that holds `leapspace/`, `reports/`
+  [f] _read_json(path: str) -> Tuple[Any, Optional[str]]  :: Read a JSON file. Returns (data, error). Never raises.
+  [f] _read_text(path: str) -> Tuple[Optional[str], Optional[str]]  :: Read a text file. Returns (text, error). Never raises.
+  [f] _iso_now() -> str  :: 
+  [f] _fmt_usd(v: Any) -> str  :: 
+  [f] _fmt_pct(v: Any) -> str  :: 
+  [f] _fmt_price(v: Any) -> str  :: A USD price at full precision. A price is not a currency amount
+  [f] _fmt_threshold(v: Any) -> str  :: Render a criterion threshold. A null threshold means the source
+  [f] _md_cell(v: Any) -> str  :: Make a value safe for a markdown table cell.
+  [f] _absent(name: str, path: str, what_missing: str) -> Dict[str, Any]  :: The record for a missing input. No default is substituted.
+  [f] _base(name: str, sources: Sequence[str]) -> Dict[str, Any]  :: 
+  [f] _decisive_test(result: Dict[str, Any], whitelist_entry: Optional[Dict[str, Any]]) -> Dict[str, Any]  :: The single most decisive rejected_by test for one wallet.
+  [f] _section_consistency_gate(root: str) -> Dict[str, Any]  :: The gate's own results, from reports/pepe_priced_edge.json.
+  [f] _function_index(source: str) -> List[Tuple[int, int, str]]  :: (start_line, end_line, name) for every function in a source file.
+  [f] _enclosing(funcs: Sequence[Tuple[int, int, str]], line: int) -> str  :: The innermost function containing a line, or "<module>".
+  [f] _scan_enforcement(root: str) -> Dict[str, Any]  :: Read the four enforcement modules and index their tokens.
+  [f] _code_thresholds(modules: Dict[str, Dict[str, Any]]) -> Dict[str, Any]  :: The gate's OWN threshold table, parsed out of edge.py.
+  [f] _coverage_row(crit: Dict[str, Any], modules: Dict[str, Dict[str, Any]], code_thresholds: Dict[str, Any]) -> Dict[str, Any]  :: One coverage row: is this criterion enforced, and where.
+  [f] _section_criteria_coverage(root: str) -> Dict[str, Any]  :: The enforcement status of the criteria in the spec JSON.
+  [f] _whitelist_blob(root: str) -> Dict[str, Any]  :: The state whitelist plus the one embedded in the priced-edge file.
+  [f] _status_counts(blob: Dict[str, Any]) -> Dict[str, int]  :: 
+  [f] _section_whitelist(root: str) -> Dict[str, Any]  :: The whitelist registry: statuses, promotions, retirements.
+  [f] _price_method_constants(root: str) -> Dict[str, Any]  :: The pricing constants, read from the source file on disk.
+  [f] _section_price_method(root: str) -> Dict[str, Any]  :: How the historical prices were obtained, and how good they are.
+  [f] _section_new_meme_path(root: str) -> Dict[str, Any]  :: The launch scan: who was in the window, and did they have an edge.
+  [f] _section_social_edge(root: str) -> Dict[str, Any]  :: The narrative cohort and any stored community-size series.
+  [f] _section_keyed_source(root: str) -> Dict[str, Any]  :: The Etherscan adapter: free tier, Pro-only actions, key handling.
+  [f] _find_source(sources: Sequence[Dict[str, Any]], needle: str) -> Optional[Dict[str, Any]]  :: 
+  [f] _section_source_reliability(root: str) -> Dict[str, Any]  :: The free-data catalogue and the host traps that shape it.
+  [f] _section_gaps(root: str, others: Dict[str, Any]) -> Dict[str, Any]  :: An explicit list of what this report does NOT show.
+  [F] build_memecoin_sections(package_root: Optional[str]=None) -> Dict[str, Any]  :: Build the machine-readable memecoin-trader payload.
+  [f] _prov_line(sec: Dict[str, Any]) -> str  :: 
+  [f] _render_consistency_gate(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_criteria_coverage(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_whitelist(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_price_method(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_new_meme_path(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_social_edge(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_keyed_source(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_source_reliability(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [f] _render_gaps(sec: Dict[str, Any], out: List[str]) -> None  :: 
+  [F] render_memecoin_markdown(payload: Dict[str, Any]) -> str  :: Render the memecoin-trader payload as markdown.
+  [F] write_memecoin_report(payload: Optional[Dict[str, Any]]=None, package_root: Optional[str]=None, out_dir: Optional[str]=None) -> Dict[str, str]  :: Write reports/memecoin_report.md and reports/memecoin_report.json.
+  [F] main() -> int  :: Render the report and write both artefacts.
+====================================================================================================
+MODULE leapspace/reportvalidate.py  (518 lines)
+  DOC: Pre-flight report validator — a REAL gate over generated reports.
+  local: leapspace.adapter_checks
+  third: -
+  std  : __future__, re, typing
+  [f] _is_missing(value: Any) -> bool  :: True when a value represents MISSING rather than a real zero.
+  [f] _line_of(text: str, index: int) -> int  :: 1-based line number of a character offset.
+  [f] _check_base_unit_scale(text: str, payload: Optional[Dict[str, Any]]=None) -> List[VendorFinding]  :: Catch a raw base-unit quantity compared against a whole-token price.
+  [f] _check_missing_not_zero(text: str, payload: Optional[Dict[str, Any]]=None) -> List[VendorFinding]  :: Catch a MISSING value rendered as a hard zero.
+  [f] _check_percent_scale(text: str, payload: Optional[Dict[str, Any]]=None) -> List[VendorFinding]  :: Catch a percentage that contradicts itself across the two scales.
+  [f] _walk_scalars(obj: Any, prefix: str='', _depth: int=0) -> List[Tuple[str, Any]]  :: Yield ``(dotted_key, value)`` for every scalar in a nested dict.
+  [f] _validate_payload(text: str, payload: Optional[Dict[str, Any]]) -> List[VendorFinding]  :: Adapter checks that need the JSON payload rather than the text.
+  [F] validate_report(markdown_text: str, payload: Optional[Dict[str, Any]]=None, *, checks: Optional[Sequence[str]]=None, as_of: Optional[Any]=None, filepath: Optional[str]=None) -> Dict[str, Any]  :: Validate a rendered report against the vendored + adapter checks.
+  [F] format_validation_block(result: Dict[str, Any]) -> str  :: Render a machine-readable validation warning block for a report.
+====================================================================================================
+MODULE leapspace/riskguard.py  (798 lines)
+  DOC: Code-enforced kill switch + anomaly log (operator brief, quadrants 3 and 4).
+  local: .models, .provenance
+  third: -
+  std  : __future__, ast, collections, dataclasses, inspect, json, os, shutil, tempfile, textwrap, typing
+  [f] _t(key: str) -> Any  :: 
+  [f] _pct(value: Any) -> Optional[float]  :: Normalise a percentage. Values above 1 are read as PERCENT (20 -> 0.20).
+  [f] _flat_scalars(d: Any) -> Dict[str, Any]  :: Flatten a mapping to scalars only; non-scalars become JSON strings.
+  [f] _state_kwargs(st: Dict[str, Any]) -> Dict[str, Any]  :: Normalise a persisted KillSwitchState payload into constructor kwargs.
+  [f] _anomaly_from_dict(r: Dict[str, Any]) -> Anomaly  :: Rebuild an Anomaly from its persisted dict.
+  [F] state_json(ks: KillSwitch) -> str  :: Flat JSON of the switch state, for the flattener.
+  [f] _get(state: Any, key: str, default: Any=None) -> Any  :: 
+  [f] _drop(now: Any, prev: Any) -> Optional[float]  :: Fractional fall from `prev` to `now`, or None if not computable.
+  [F] rug_signal_details(token_state: Any) -> List[Dict[str, Any]]  :: Structured rug signals for one token's live state.
+  [F] detect_rug_signals(token_state: Any) -> List[str]  :: Risk flags for one token's live state, shaped to drop straight into
+  [f] _selftest() -> int  :: 
+  [c] class _GuardedKillState(KillSwitchState)  :: `KillSwitchState` whose `halted` flag can only be CLEARED by reset().
+       [m] __setattr__(self, name: str, value: Any) -> None  :: 
+       [m] __init__(self, **kwargs: Any) -> None  :: 
+  [C] class KillSwitch  :: CODE-ENFORCED trading halt. The LLM cannot override this.
+       [m] __init__(self, cfg: Optional[Dict[str, Any]]=None, *, max_drawdown_pct: Optional[float]=None, drawdown_window_seconds: Optional[int]=None, min_liquidity_usd: Optional[float]=None, max_slippage_bps: Optional[float]=None, token_rules: Optional[Dict[str, Dict[str, Any]]]=None, state_path: Optional[str]=None) -> None  :: 
+       [m] _rules_for(self, token: Optional[str]) -> Dict[str, Optional[float]]  :: 
+       [m] _push(self, ts: int, equity: float) -> Optional[float]  :: Append an equity sample, drop expired ones, return the peak.
+       [m] _log(self, line: str) -> None  :: 
+       [m] _halt_message(self) -> str  :: 
+       [m] _trip(self, reason: str, trigger: str, ts: int) -> Tuple[bool, str]  :: 
+       [M] check(self, equity_usd: Optional[float], ts: int, liquidity_usd: Optional[float]=None, token: Optional[str]=None, slippage_bps: Optional[float]=None) -> Tuple[bool, str]  :: May we trade right now? Returns `(allowed, reason)`. `reason` is
+       [M] halt(self, reason: str, trigger: str, ts: Optional[int]=None) -> KillSwitchState  :: Halt trading. Idempotent; the FIRST reason is the one kept.
+       [M] reset(self, by: str, reason: str, ts: Optional[int]=None, equity_usd: Optional[float]=None) -> KillSwitchState  :: Clear the halt. REQUIRES an actor and a non-empty reason.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+       [M] save(self, path: Optional[str]=None) -> str  :: Persist the halt so a restarted process does NOT resume trading.
+       [M] load(self, path: Optional[str]=None) -> bool  :: Reload a persisted halt. True when a state file was read.
+       [M] verify_no_bypass(self) -> Dict[str, Any]  :: Prove the 'cannot be overridden' claim against this module's source.
+  [C] class AnomalyLog  :: Record unprecedented market conditions and promote them to Known Unknowns.
+       [m] __init__(self, path: Optional[str]=None) -> None  :: 
+       [M] load(self, path: Optional[str]=None) -> bool  :: 
+       [M] save(self, path: Optional[str]=None) -> str  :: 
+       [M] record(self, kind: str, description: str, market_state: Dict[str, Any], severity: str='medium', action_taken: str='', chain: str='', token: str='', symbol: str='', ts: Optional[int]=None) -> Anomaly  :: Log one anomaly with the exact market conditions that produced it.
+       [M] promote_to_known_unknown(self, anomaly: Anomaly, lesson: str) -> Dict[str, Any]  :: Convert an Unknown Unknowing into a replayable Known Unknown.
+       [m] _series(price_series: Any) -> List[Tuple[int, float]]  :: 
+       [M] replay_known_unknowns(self, price_series: Any) -> List[Dict[str, Any]]  :: Scan a price series for the recorded conditions.
+       [M] to_flat(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/signal.py  (1269 lines)
+  DOC: leapspace.signal - the trade-decision engine.
+  local: ., .riskguard
+  third: -
+  std  : __future__, dataclasses, json, os, statistics, time, typing
+  [f] _read_json(path: str) -> Optional[Any]  :: 
+  [f] _root(project_root: Optional[str]=None) -> str  :: 
+  [f] _leg_safe(name: str, fn: Callable[..., Leg], *args, **kwargs) -> Leg  :: Run an evidence leg. Any failure becomes an UNAVAILABLE leg with
+  [F] leg_identity(address: str, chain: str='solana') -> Leg  :: Resolve the token and its current market state from live DEX data.
+  [F] leg_data_quality(legs: List[Leg]) -> Leg  :: Grade how much of the evidence set actually answered.
+  [f] _iter_verdicts(obj: Any)  :: Yield (name, verdict) from any of the shapes these artefacts use.
+  [F] leg_research_edge(project_root: Optional[str]=None) -> Leg  :: What do the paper-derived specifications currently say?
+  [f] _load_priced_wallets(project_root: Optional[str]=None) -> Dict[str, Any]  :: 
+  [f] _qualified_set(root: str) -> set  :: 
+  [f] _wallet_holds_token(d: Dict[str, Any], token_address: str) -> bool  :: 
+  [F] leg_qualified_wallets(token_address: str, project_root: Optional[str]=None) -> Leg  :: How many QUALIFIED wallets hold this token, and what did they do?
+  [F] leg_narrative(address: str, chain: str='solana') -> Leg  :: Narrative specificity: does the project declare a specific story?
+  [F] leg_traction(address: str, chain: str='solana') -> Leg  :: Traction: observable market and community behaviour.
+  [F] leg_holder_risk(address: str, chain: str='solana') -> Leg  :: Concentration and insider share of the holder base.
+  [f] _total_supply(address: str, chain: str='solana') -> Optional[float]  :: The token's total supply in its SMALLEST unit.
+  [f] _token_decimals(address: str, chain: str='solana') -> Optional[int]  :: The token's decimal count, or None when it cannot be established.
+  [F] leg_liquidity(identity: Leg, target_usd: float=1000.0) -> Leg  :: Is there enough depth to enter AND exit a target position?
+  [f] _kill_switch_from_config(project_root: Optional[str]=None)  :: Build the kill switch from the operator config.
+  [F] kill_switch_gate(ks: Any=None, token_address: Optional[str]=None, chain: str='ethereum', equity_usd: Optional[float]=None, liquidity_usd: Optional[float]=None, slippage_bps: Optional[float]=None, ts: Optional[int]=None, project_root: Optional[str]=None) -> Dict[str, Any]  :: Ask the kill switch whether trading is permitted right now.
+  [f] _now_ts() -> int  :: Current unix timestamp.
+  [F] halt_on_data_quality(ks: Any, dq_leg: Optional['Leg']=None) -> bool  :: Halt the switch when the evidence set is too thin to trade on.
+  [F] apply_kill_switch(signal_obj: Dict[str, Any], gate: Dict[str, Any]) -> Dict[str, Any]  :: Apply the gate's answer to a verdict.
+  [F] assess_trade(address: str, chain: str='solana', target_usd: float=1000.0, project_root: Optional[str]=None, risk_per_trade_pct: float=0.005, max_position_pct_of_liquidity: float=0.01) -> TradeSignal  :: Gather every leg of evidence and return a decision.
+  [F] render_brief(sig: TradeSignal) -> str  :: Render the decision as a briefing the user can act on.
+  [f] _fmt(v: Any) -> str  :: 
+  [F] write_brief(sig: TradeSignal, path: str) -> str  :: 
+  [C] class Leg  :: One independent strand of evidence.
+  [C] class TradeSignal  :: 
+       [M] to_dict(self) -> Dict[str, Any]  :: 
+====================================================================================================
+MODULE leapspace/social.py  (866 lines)
+  DOC: Multi-platform social signals and traction measurement.
+  local: .chains, .http, .memecoin, .provenance
+  third: -
+  std  : __future__, datetime, json, os, re, time, typing
+  [f] _normalise_platform(raw_type: str, url: str) -> str  :: Map a social link to a platform name, falling back to the URL host.
+  [f] _class_of(platform: str) -> str  :: 
+  [F] analyse_description(text: str) -> Dict[str, Any]  :: Classify a project's own description for community vs generic framing.
+  [f] _dexscreener_pair_socials(chain: str, token: str) -> Dict[str, Any]  :: Social links carried on the DexScreener PAIR record.
+  [f] _dexscreener_profile_links(chain: str, token: str) -> Dict[str, Any]  :: Social links + description for a token, from DexScreener's global lists.
+  [f] _jupiter_profile(mint: str) -> Dict[str, Any]  :: Jupiter token record: tags, organic score, stats, audit (Solana).
+  [f] _rugcheck_summary(mint: str) -> Dict[str, Any]  :: RugCheck FULL report: top holders with owners, insider flags, risks.
+  [f] _telegram_username(url: str) -> Optional[str]  :: Extract a public channel username from a t.me link.
+  [f] _discord_invite_code(url: str) -> Optional[str]  :: Extract a Discord invite code from a discord.gg / discord.com link.
+  [f] _clean_count(s: str) -> Optional[int]  :: '11 009' -> 11009. Handles spaces, nbsp, narrow-nbsp and commas.
+  [F] fetch_telegram_size(url: str) -> Dict[str, Any]  :: Member and online counts from a Telegram channel's public preview.
+  [F] fetch_discord_size(url: str) -> Dict[str, Any]  :: Member and presence counts from a Discord invite.
+  [F] fetch_social_profile(chain: str, token: str, jupiter: bool=False, rugcheck: bool=False) -> Dict[str, Any]  :: Collect every free social + traction signal available for a token.
+  [F] score_narrative(profile: Dict[str, Any], name_info: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Turn a social profile into a narrative score + niche verdict.
+  [F] score_traction(profile: Dict[str, Any]) -> Dict[str, Any]  :: Turn observed market behaviour into a traction score.
+====================================================================================================
+MODULE leapspace/socialedge.py  (1375 lines)
+  DOC: Social-edge testing: did this wallet buy BEFORE the crowd noticed?
+  local: .http
+  third: -
+  std  : __future__, datetime, json, os, re, time, typing
+  [f] _as_ts(value: Any) -> Optional[int]  :: Coerce a timestamp to UNIX epoch seconds.
+  [f] _num(value: Any) -> Optional[float]  :: Coerce to float; None when not numeric.
+  [f] _median(values: Sequence[float]) -> Optional[float]  :: 
+  [f] _linear_slope(points: Sequence[Tuple[float, float]]) -> Optional[float]  :: OLS slope of y on x. None when x has no spread.
+  [F] build_community_series(snapshots: Iterable[Dict[str, Any]]) -> List[Dict[str, Any]]  :: Turn raw snapshot records into a clean community-size time series.
+  [F] community_series_diagnostics(series: Sequence[Dict[str, Any]]) -> Dict[str, Any]  :: Describe the coverage of a community series, honestly.
+  [f] _series_path(chain: str, mint: str) -> str  :: 
+  [F] load_community_series(chain: str, mint: str) -> Dict[str, Any]  :: Load the stored community-size series for a token.
+  [F] save_community_series(chain: str, mint: str, snapshots: Sequence[Dict[str, Any]]) -> str  :: Persist a community-size series. Atomic replace.
+  [F] record_community_snapshot(chain: str, mint: str, telegram_members: Optional[int]=None, discord_members: Optional[int]=None, telegram_online: Optional[int]=None, discord_online: Optional[int]=None, source: str='') -> Dict[str, Any]  :: Append one timestamped community-size observation to the series.
+  [F] membership_threshold_event(series: Sequence[Dict[str, Any]], threshold: int=MEMBERSHIP_THRESHOLD_DEFAULT, platform: str='combined') -> Dict[str, Any]  :: The first snapshot at which community size crosses `threshold`.
+  [F] holder_inflection_event(holder_series: Sequence[Dict[str, Any]], multiple: float=HOLDER_GROWTH_INFLECTION_MULTIPLE) -> Dict[str, Any]  :: The timestamp at which the holder-count growth rate inflects.
+  [F] first_mention_event(mention_series: Sequence[Dict[str, Any]], multiple: float=MAJOR_MENTION_MULTIPLE, count_key: str='mentions') -> Dict[str, Any]  :: The first MAJOR social mention event in an attention series.
+  [f] _classify_lead(lead_hours: Optional[float], window_hours: float) -> str  :: 
+  [F] compute_lead_time(buy_ts: int, comparators: Dict[str, Dict[str, Any]], coincident_window_hours: float=COINCIDENT_WINDOW_HOURS_DEFAULT) -> Dict[str, Any]  :: Compute lead time in hours against each comparator.
+  [F] assess_wallet_edge(wallet_buys: Sequence[Dict[str, Any]], community_series: Sequence[Dict[str, Any]], token_address: Optional[str]=None, symbol: Optional[str]=None, holder_series: Optional[Sequence[Dict[str, Any]]]=None, mention_series: Optional[Sequence[Dict[str, Any]]]=None, membership_threshold: int=MEMBERSHIP_THRESHOLD_DEFAULT, coincident_window_hours: float=COINCIDENT_WINDOW_HOURS_DEFAULT) -> Dict[str, Any]  :: Full social-edge assessment for one wallet against one token.
+  [f] _iso(ts: Optional[int]) -> Optional[str]  :: 
+  [F] narrative_established_ts(community_series: Sequence[Dict[str, Any]], threshold: int=NARRATIVE_ESTABLISHED_MEMBERS_DEFAULT) -> Dict[str, Any]  :: The moment the narrative was ESTABLISHED, not merely detected.
+  [F] classify_late_buyers(wallet_buys: Sequence[Dict[str, Any]], community_series: Sequence[Dict[str, Any]], token_address: Optional[str]=None, symbol: Optional[str]=None, established_threshold: int=NARRATIVE_ESTABLISHED_MEMBERS_DEFAULT, grace_hours: float=0.0) -> Dict[str, Any]  :: Separate wallets that bought AFTER the narrative was established.
+  [F] social_vs_onchain_divergence(points: Sequence[Dict[str, Any]], social_key: str='combined_members', volume_key: str='volume', min_points: int=MIN_DIVERGENCE_POINTS, slope_window: Optional[int]=None) -> Dict[str, Any]  :: Flag the window where social is still RISING but volume has FALLEN.
+  [F] telegram_post_activity(url: str, timeout: int=25) -> Dict[str, Any]  :: Read the post timestamps from a Telegram channel's public preview.
+  [F] build_activity_series(stamps: Sequence[int], bucket_seconds: int=3600) -> List[Dict[str, Any]]  :: Bucket post timestamps into a per-bucket POST COUNT series.
+  [F] sample_community_size(social_links: Dict[str, str], timeout: int=25) -> Dict[str, Any]  :: Read the CURRENT community size for a token's Telegram/Discord links.
+  [f] _clean_count(raw: str) -> Optional[int]  :: '11 004' -> 11004. Handles spaces, nbsp, narrow-nbsp and commas.
+  [f] _telegram_size(url: str, timeout: int=25) -> Dict[str, Any]  :: Member and online counts from a Telegram channel's public preview.
+  [f] _discord_code(url: str) -> Optional[str]  :: 
+  [f] _discord_size(url: str, timeout: int=25) -> Dict[str, Any]  :: Member and presence counts from a Discord invite.
+====================================================================================================
+MODULE leapspace/source_reliability.py  (81 lines)
+  DOC: Source reliability register: the papers' own defects and this package's scope.
+  local: -
+  third: -
+  std  : json, os, typing
+  [F] load_register(path: str=None) -> Dict[str, Any]  :: Load the register. Returns {} when it is absent (degrade, don't crash).
+  [F] defect_rows(reg: Dict[str, Any]) -> List[Dict[str, Any]]  :: Flatten the register into one row per defect, across all documents.
+  [F] scope_rows(reg: Dict[str, Any]) -> List[Dict[str, Any]]  :: The paper sections this package deliberately does not implement.
+  [F] register_section(reg: Dict[str, Any]) -> Dict[str, Any]  :: The report-ready payload for the source-reliability section.
+====================================================================================================
+MODULE leapspace/specs_2_0.py  (62 lines)
+  DOC: Loads the LeapSpace 2.0 strategy specs.
+  local: -
+  third: -
+  std  : __future__, json, os, typing
+  [F] load_specs() -> List[Dict[str, Any]]  :: Load the LeapSpace 2.0 specs from disk.
+  [F] spec_summary() -> List[Dict[str, Any]]  :: 
+====================================================================================================
+MODULE leapspace/stats.py  (194 lines)
+  DOC: Shared statistical primitives.
+  local: -
+  third: -
+  std  : __future__, math, typing
+  [F] norm_cdf(x: float) -> float  :: 
+  [F] poly(coeffs: Tuple[float, ...], x: float) -> float  :: Horner evaluation of a coefficient list.
+  [F] norm_ppf(p: float) -> float  :: Inverse normal CDF (Acklam), used for the DSR threshold.
+  [F] binomial_tail_p(wins: int, n: int) -> float  :: P(X <= wins) for X ~ Binomial(n, 0.5), EXACTLY (integer arithmetic).
+  [F] expected_max_sharpe(n_trials: int) -> float  :: E[max SR] over N independent trials under the null of zero skill.
+  [F] deflated_sharpe_ratio(sharpe: float, n_obs: int, n_trials: int, skew: float=0.0, kurtosis: float=3.0) -> Tuple[Optional[float], Dict[str, Any]]  :: The Deflated Sharpe Ratio, and the detail behind it.
+  [F] bayesian_skill_probability(wins: int, n: int) -> Optional[float]  :: P(the true win rate > 0.5) with a uniform Beta(1,1) prior.
+====================================================================================================
+MODULE leapspace/traders.py  (601 lines)
+  DOC: Trader qualification against CITED standards, and a GIPS-consistent
+  local: .chains, .provenance, .stats
+  third: -
+  std  : __future__, json, math, os, time, typing
+  [F] required_sample_size(p0: float=0.5, p1: float=0.55, alpha: float=0.05, beta: float=0.2, delta: float=0.05, one_sided: bool=True, continuity_correction: bool=True) -> Dict[str, Any]  :: Minimum N to show p1 is better than p0 (NIST 7.2.4.2).
+  [F] wilson_interval(wins: int, n: int, confidence: float=0.95) -> Dict[str, Any]  :: Wilson score interval for a win rate (NIST 7.2.4.1).
+  [F] rule_of_three(n: int) -> Dict[str, Any]  :: 95% upper bound on the rate when zero events were observed.
+  [F] validity_floor(p0: float=0.5) -> Dict[str, Any]  :: NIST's validity conditions for the one-proportion test.
+  [F] criteria_table() -> List[Dict[str, Any]]  :: Flat, printable view of every criterion with its authority.
+  [F] qualify_wallet(profile: Dict[str, Any], criteria: Optional[Dict[str, Any]]=None) -> Dict[str, Any]  :: Judge a wallet profile against the criteria, with the authority of
+  [F] load_pool(path: Optional[str]=None) -> Dict[str, Any]  :: 
+  [F] save_pool(pool: Dict[str, Any], path: Optional[str]=None) -> str  :: 
+  [F] record_evaluation(address: str, chain: str, verdict: Dict[str, Any], pool: Optional[Dict[str, Any]]=None, path: Optional[str]=None) -> Dict[str, Any]  :: Record one evaluation and update the wallet's forward eligibility.
+  [F] pool_report(pool: Optional[Dict[str, Any]]=None, path: Optional[str]=None) -> Dict[str, Any]  :: The pool, reported with retired wallets' history retained.
+  [F] track_wallets(chain: str='solana', limit: int=25, pool: Optional[Dict[str, Any]]=None, path: Optional[str]=None) -> Dict[str, Any]  :: Poll the forward cohort for new activity and update their records.
+====================================================================================================
+MODULE leapspace/trend.py  (344 lines)
+  DOC: The paper's LONG/SHORT trend rule, and the pairs-trading spread.
+  local: .backtest
+  third: -
+  std  : __future__, math, typing
+  [F] sig_trend_long_short(panel, features, feature=None, threshold=0.0, dead_band=0.0, invert_signal=False, **kw) -> Dict[str, List[float]]  :: The paper's trend rule, with BOTH legs live.
+  [f] _log(closes: Sequence[float]) -> List[Optional[float]]  :: 
+  [F] select_pairs(panel, lookback: int=252, max_pairs: int=5) -> List[Tuple[str, str]]  :: The pairs most likely to mean-revert.
+  [F] bt_closes(panel, sym) -> List[Optional[float]]  :: The close series for one symbol, without importing the engine.
+  [F] sig_pairs_mean_reversion(panel, features, pairs=None, betas=None, lookback_stats: int=60, z_entry: float=2.0, z_exit: float=0.5, max_hold_bars: int=20, max_pairs: int=3, pair_lookback: int=252, invert_signal: bool=False, **kw) -> Dict[str, List[float]]  :: Dollar-neutral pairs mean-reversion, across SEVERAL pairs.
+  [f] _pair_legs(panel, a: str, b: str, beta: float, lookback_stats: int, z_entry: float, z_exit: float, max_hold_bars: int, invert_signal: bool) -> Tuple[List[float], List[float]]  :: The two legs of one pair's mean-reversion trade.
+====================================================================================================
+MODULE leapspace/viz.py  (789 lines)
+  DOC: Visual presentation of the package's outputs.
+  local: ., .backtest, .chains, .friction, .models, .report, .report_memecoin
+  third: matplotlib, matplotlib.gridspec, matplotlib.lines, matplotlib.pyplot
+  std  : __future__, btengine, btvalidate, json, os, sys, typing
+  [f] _style() -> None  :: 
+  [f] _save(fig, path: str) -> Optional[str]  :: 
+  [F] load_backtest_results(path: Optional[str]=None) -> List[Dict[str, Any]]  :: 
+  [F] equity_curve_for_spec(spec: Dict[str, Any]) -> Dict[str, Any]  :: Run one spec through the engine and capture its real equity curve.
+  [f] _apply_gauntlet_overlay(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]  :: Overlay the FULL-gauntlet verdicts before charting.
+  [F] chart_verdicts(rows: List[Dict[str, Any]], path: str) -> Optional[str]  :: IS Sharpe vs OOS Sharpe for every spec, coloured by verdict.
+  [F] chart_walk_forward(rows: List[Dict[str, Any]], path: str) -> Optional[str]  :: Per-fold in-sample vs out-of-sample Sharpe.
+  [F] chart_equity(equities: Dict[str, List[float]], path: str, title: str='Equity curves (real engine output)') -> Optional[str]  :: Equity curve above, underwater drawdown below, shared x-axis.
+  [f] _equity_points(sim: Any) -> Tuple[List[Any], List[float]]  :: Extract (x, y) points from a simulation result.
+  [F] chart_simulation(sim: Dict[str, Any], path: str) -> Optional[str]  :: The friction-aware copy-trade simulation: equity, drawdown, rugs.
+  [F] chart_regime(price: Sequence[float], labels: Sequence[str], path: str, title: str='Market regime') -> Optional[str]  :: Price with the HMM regime states shaded behind it.
+  [F] chart_chains(health: Dict[str, Any], path: str) -> Optional[str]  :: Multi-chain reachability and live liquidity.
+  [f] _table(rows: Sequence[Sequence[Any]], headers: Sequence[str]) -> str  :: 
+  [F] run_demo_simulation(seed: int=42) -> Any  :: Run the friction-aware copy-trade simulation for the dashboard.
+  [F] build_dashboard(out_dir: str=VIZ_DIR, results_path: Optional[str]=None, live: bool=True) -> Dict[str, Any]  :: Build the PNG charts and the HTML dashboard. Returns the paths.
+====================================================================================================
+MODULE leapspace/viz_leading.py  (474 lines)
+  DOC: Visual presentation of the LEADING-indicator work.
+  local: -
+  third: -
+  std  : __future__, html, json, math, os, random, typing
+  [f] _esc(s: Any) -> str  :: 
+  [f] _scale(values: Sequence[float], lo: float, hi: float, px0: float, px1: float) -> List[float]  :: Map values into pixel space, inverted so high values are up.
+  [F] svg_line_chart(series: Sequence[Dict[str, Any]], labels: Optional[Sequence[str]]=None, title: str='', width: int=1000, height: int=320, y_label: str='', hlines: Sequence[Dict[str, Any]]=(), legend: bool=True) -> str  :: Render one or more line series as inline SVG.
+  [F] svg_bars(items: Sequence[Dict[str, Any]], title: str='', width: int=1000, height: int=260, value_key: str='value', label_key: str='label') -> str  :: Render a labelled bar chart as inline SVG (used for GEX by expiry).
+  [f] _card(title: str, svg: str, note: str='', warn: bool=False) -> str  :: 
+  [F] render_leading_dashboard(payload: Dict[str, Any]) -> str  :: Render the whole leading-indicator page as one HTML string.
+  [F] build_leading_dashboard(payload: Dict[str, Any], out_dir: Optional[str]=None) -> Dict[str, Any]  :: Write the leading-indicator dashboard. Returns the paths written.
+  [f] _demo_payload() -> Dict[str, Any]  :: A synthetic payload, so the renderer can be tested offline.
+====================================================================================================
+MODULE leapspace/viz_memecoin.py  (346 lines)
+  DOC: Charts for the memecoin-trader half of the package.
+  local: .viz
+  third: matplotlib, matplotlib.pyplot, numpy
+  std  : __future__, json, os, time, typing
+  [f] _fig(w: float=11.0, h: float=6.0)  :: 
+  [f] _addr(a: str) -> str  :: 
+  [F] chart_edge_gate(results: Sequence[Dict[str, Any]], path: str) -> Optional[str]  :: The key chart: raw closed trades vs INDEPENDENT BETS, per wallet.
+  [F] chart_whitelist(wl: Dict[str, Any], path: str) -> Optional[str]  :: Whitelist status counts and the promotion/retirement timeline.
+  [F] chart_price_accuracy(path: str) -> Optional[str]  :: The price-at-block method against the known reference prices.
+  [F] chart_criteria_coverage(rows: Sequence[Dict[str, Any]], path: str) -> Optional[str]  :: Which of the cited criteria are actually enforced in code.
+  [F] chart_community_series(series_by_token: Dict[str, Any], path: str) -> Optional[str]  :: The community-size series as it accrues.
+====================================================================================================
+MODULE leapspace/walletsearch.py  (460 lines)
+  DOC: leapspace.walletsearch - find wallets that are actually skilled.
+  local: .
+  third: -
+  std  : __future__, json, os, time, typing
+  [F] build_universe(chain: str='ethereum', symbols: Optional[Sequence[str]]=None, extra_tokens: Optional[Sequence[Dict[str, Any]]]=None) -> Dict[str, Any]  :: A wide memecoin universe, resolved from live market data.
+  [F] discover_new_tokens(chain: str='ethereum', limit: int=20, pages: int=2, progress: Optional[Any]=None) -> Dict[str, Any]  :: Find FRESH memecoins on a chain, from the chain's live top pools.
+  [F] discover_candidates(universe: Dict[str, Any], chain: str='ethereum', max_tokens: Optional[int]=None, holders_per_token: int=50, early_buyers: bool=True, early_window_blocks: int=1000, early_max_pages: int=40, progress: Optional[Any]=None) -> Dict[str, Any]  :: Find candidate wallets across the universe and score their BREADTH.
+  [F] screen_candidates(candidates: Sequence[Dict[str, Any]], universe: Dict[str, Any], chain: str='ethereum', trials_scanned: Optional[int]=None, max_candidates: int=25, progress: Optional[Any]=None) -> Dict[str, Any]  :: Price and gate each candidate.
+  [f] _counts(results: Sequence[Dict[str, Any]]) -> Dict[str, int]  :: 
+  [F] search(chain: str='ethereum', symbols: Optional[Sequence[str]]=None, extra_tokens: Optional[Sequence[Dict[str, Any]]]=None, max_tokens: Optional[int]=None, min_breadth: int=2, max_candidates: int=25, holders_per_token: int=50, early_buyers: bool=True, progress: Optional[Any]=None) -> Dict[str, Any]  :: The whole search: universe -> candidates -> screened -> ranked.
+  [F] render_report(result: Dict[str, Any]) -> str  :: A human-readable summary of a search.
+  [F] save(result: Dict[str, Any], path: str) -> str  :: 
+====================================================================================================
+MODULE leapspace/whitelist.py  (282 lines)
+  DOC: The whitelist: memecoin whales and consistently successful traders.
+  local: .provenance
+  third: -
+  std  : __future__, json, os, time, typing
+  [F] load_whitelist(path: Optional[str]=None) -> Dict[str, Any]  :: 
+  [F] save_whitelist(blob: Dict[str, Any], path: Optional[str]=None) -> str  :: 
+  [f] _entry_key(address: str, chain: str='ethereum', cluster_id: Optional[str]=None) -> str  :: 
+  [F] record_evaluation(address: str, chain: str, edge: Dict[str, Any], evidence: Optional[Dict[str, Any]]=None, cluster_id: Optional[str]=None, cluster_evidence: Optional[Dict[str, Any]]=None, blob: Optional[Dict[str, Any]]=None, path: Optional[str]=None) -> Dict[str, Any]  :: Record one edge evaluation and update the whitelist status.
+  [F] whitelist_report(blob: Optional[Dict[str, Any]]=None, path: Optional[str]=None) -> Dict[str, Any]  :: The whitelist, reported with every rejected candidate visible.
+====================================================================================================
+MODULE leapspace/tests/check_intake_gate.py  (60 lines)
+  DOC: Check the intake gate against every spec — no backtests, just the gate.
+  local: leapspace.backtest
+  third: -
+  std  : copy, json, os, sys
+====================================================================================================
+MODULE leapspace/tests/check_meme_paper_coverage.py  (259 lines)
+  DOC: COVERAGE AUDIT: the meme-coin paper vs the implementation.
+  local: leapspace
+  third: -
+  std  : os, re, sys
+====================================================================================================
+MODULE leapspace/tests/check_narrative_forward_selection.py  (174 lines)
+  DOC: Regression tests for the narrative forward-test base selection.
+  local: leapspace.narrative
+  third: -
+  std  : json, os, sys, tempfile, time
+  [F] check(name, cond, detail='')  :: 
+  [F] snap(ts, rows)  :: 
+  [F] row(mint, price, pair=None, niche=False)  :: 
+  [F] write_snapshots(snaps)  :: Write snapshots to a temp file and return its path.
+====================================================================================================
+MODULE leapspace/tests/check_quant_cli.py  (58 lines)
+  DOC: Verify the CLI wiring for the on-chain quant subcommands.
+  local: leapspace.cli, leapspace.quant
+  third: -
+  std  : os, sys
+====================================================================================================
+MODULE leapspace/tests/check_quant_integration.py  (272 lines)
+  DOC: End-to-end integration check for the on-chain memecoin quant layer.
+  local: leapspace.backtest, leapspace.biasaudit, leapspace.chains, leapspace.friction, leapspace.models, leapspace.profiler, leapspace.provenance, leapspace.riskguard
+  third: -
+  std  : json, os, sys, tempfile
+  [F] check(label, ok, detail='')  :: 
+====================================================================================================
+MODULE leapspace/tests/check_report_integrity.py  (133 lines)
+  DOC: Final integrity check: the report must agree with the results file.
+  local: leapspace.reportvalidate
+  third: -
+  std  : json, os, re, sys
+  [F] load(name)  :: 
+====================================================================================================
+MODULE leapspace/tests/check_source_reliability.py  (73 lines)
+  DOC: Verify the source-reliability register and its effect on the specs.
+  local: leapspace.backtest, leapspace.source_reliability
+  third: -
+  std  : json, os, sys
+====================================================================================================
+MODULE leapspace/tests/debug_regime_signal.py  (63 lines)
+  DOC: Debug the regime-switch signal: label distribution and signal density.
+  local: leapspace.backtest, leapspace.regime
+  third: -
+  std  : btengine, collections, os, sys
+====================================================================================================
+MODULE leapspace/tests/debug_wallet_parse.py  (28 lines)
+  DOC: Check that a wallet's transactions actually yield parsed transfers.
+  local: leapspace.onchain
+  third: -
+  std  : json, os, sys
+====================================================================================================
+MODULE leapspace/tests/demo_socialedge.py  (233 lines)
+  DOC: End-to-end demo of the social-edge methodology.
+  local: leapspace
+  third: -
+  std  : __future__, json, os, sys
+  [F] hr(ts)  :: 
+  [F] main()  :: 
+====================================================================================================
+MODULE leapspace/tests/diagnose_intake.py  (39 lines)
+  DOC: Show exactly what the intake gate flags, and why, for each refused spec.
+  local: leapspace.backtest
+  third: btengine
+  std  : intake, json, os, sys
+====================================================================================================
+MODULE leapspace/tests/test_backtest_run.py  (41 lines)
+  DOC: Run the paper-derived backtest specs through the engine.
+  local: leapspace.backtest
+  third: -
+  std  : json, os, sys
+====================================================================================================
+MODULE leapspace/tests/test_cross_sectional_parity.py  (198 lines)
+  DOC: The repo's cross-sectional wrapper must keep the engine's book.
+  local: leapspace
+  third: -
+  std  : __future__, inspect, os, re, sys, typing
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [c] class _Panel  :: 
+       [m] __init__(self, n: int=200, n_syms: int=8)  :: 
+====================================================================================================
+MODULE leapspace/tests/test_crosscheck_gate.py  (898 lines)
+  DOC: CROSS-CHECK: the package's consistency gate vs an INDEPENDENT reference.
+  local: leapspace, leapspace.traders
+  third: -
+  std  : __future__, json, math, os, random, sys
+  [f] _fmt(v) -> str  :: 
+  [F] compare(label: str, pkg, ref, tol: float=FLOAT_TOL, expect: str='AGREE', note: str='') -> bool  :: Print the two numbers side by side and record any disagreement.
+  [F] section(title: str) -> None  :: 
+  [F] load_real_wallets() -> list[dict]  :: 
+  [f] _bet(trades: list, tok: str, ts: int, n_sells: int, exit_prices: list, entry_price: float=1.0) -> int  :: Append ONE flat-to-flat bet to `trades`.
+  [f] _build(specs) -> list  :: specs: a list of (token, n_sells, [exit_prices]) in time order.
+  [F] synthetic_consistent() -> list  :: A wallet with a real, broad edge: 60 bets over 3 tokens, all
+  [F] synthetic_one_lucky_win() -> list  :: One enormous win carries the entire PnL; everything else loses.
+  [F] synthetic_coin_flip() -> list  :: A 50/50 record. The Bayesian skill probability cannot distinguish
+  [F] synthetic_decaying() -> list  :: A wallet whose edge was real early and is nearly gone recently.
+  [F] synthetic_unit_bug_split() -> list  :: The fixture that exposes the `edge_decay` unit mismatch.
+  [F] test_bayesian_skill_probability_matches_posterior()  :: The cited criterion is the POSTERIOR PROBABILITY P(p > 0.5) under
+  [F] test_expected_max_sharpe_matches_the_standards_table()  :: `expected_max_sharpe` must reproduce the E[max SR] table in the
+  [F] test_wilson_interval_matches_to_float_precision()  :: The Wilson score interval (NIST/SEMATECH e-Handbook 7.2.4.1).
+  [F] test_nist_sample_size_is_reported()  :: The NIST sample size (637 for a 55%-vs-50% claim) must be
+  [F] test_real_wallets_crosscheck()  :: Both implementations, on the SAME real trades.
+  [F] test_synthetic_wallets_agree()  :: Four constructed wallets, one per failure mode. Both
+  [F] test_synthetic_wallets_exercise_the_failure_modes()  :: The synthetic wallets must actually FAIL what they are meant to
+  [F] test_edge_decay_unit_divergence_is_characterised()  :: The `edge_decay` split must be on the BET series, and the package
+  [F] test_package_bet_counters_are_mutually_consistent()  :: The package exposes three bet counters. They must agree with each
+  [F] test_vendor_bands_are_context_only()  :: GMGN's win-rate band (>0.6) and profit-ratio band (>1.0) are
+  [F] main() -> int  :: 
+====================================================================================================
+MODULE leapspace/tests/test_cryptoderivs.py  (232 lines)
+  DOC: Tests for the crypto derivatives leading layer.
+  local: leapspace, leapspace.leading
+  third: -
+  std  : __future__, math, os, sys
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+====================================================================================================
+MODULE leapspace/tests/test_disclosure_live.py  (102 lines)
+  DOC: Live end-to-end check of the three-branch disclosure module.
+  local: leapspace.disclosure
+  third: -
+  std  : datetime, json, os, sys, traceback
+====================================================================================================
+MODULE leapspace/tests/test_edge_ground_truth.py  (281 lines)
+  DOC: Ground truth for the consistency gate.
+  local: leapspace, leapspace.stats
+  third: -
+  std  : __future__, math, os, random, sys
+  [F] check(name: str, condition: bool, detail: str='') -> None  :: 
+  [F] make_wallet(n_bets: int=60, win_rate: float=0.7, tokens: int=3, seed: int=1, decay: bool=False, vary: bool=True, pnl: float=10.0, spacing: int=7200) -> list  :: Build a synthetic trade history.
+  [F] make_one_big_win(n_bets: int=10) -> list  :: One trade carries the entire profit; everything else loses.
+  [F] beta_pdf(x: float, a: int, b: int) -> float  :: 
+  [F] posterior_prob_above_half(wins: int, n: int) -> float  :: P(p > 0.5) for a Beta(1,1) prior, by numerical integration.
+====================================================================================================
+MODULE leapspace/tests/test_ensemble.py  (308 lines)
+  DOC: The long/short hedged ensemble: does it do what it claims?
+  local: leapspace, leapspace.ensemble, leapspace.paperspecs
+  third: -
+  std  : __future__, math, os, sys, typing
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _features(panel: _Panel) -> Dict[str, Any]  :: 
+  [f] _nonzero(sig: Dict[str, List[float]]) -> int  :: 
+  [f] _longs(sig: Dict[str, List[float]]) -> int  :: 
+  [f] _shorts(sig: Dict[str, List[float]]) -> int  :: 
+  [f] _truncate(p: _Panel, k: int) -> _Panel  :: 
+  [c] class _Panel  :: A synthetic panel with a clear cross-sectional ordering.
+       [m] __init__(self, n: int=300, n_syms: int=8)  :: 
+  [c] class _Trunc(_Panel)  :: 
+====================================================================================================
+MODULE leapspace/tests/test_friction_sim.py  (244 lines)
+  DOC: Regression tests for the copy-trade simulator's OFFLINE path.
+  local: -
+  third: -
+  std  : __future__, json, os, subprocess, sys, tempfile
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _write_fixtures(tmp: str)  :: A tiny deterministic price series and a wallet that buys then sells.
+  [f] _run(args)  :: 
+====================================================================================================
+MODULE leapspace/tests/test_gamma_live.py  (49 lines)
+  DOC: Live end-to-end check: fetch a real option chain, compute gamma + flow.
+  local: leapspace.gamma, leapspace.market
+  third: -
+  std  : os, sys
+====================================================================================================
+MODULE leapspace/tests/test_killswitch_wiring.py  (290 lines)
+  DOC: Tests for the kill switch ON THE DECISION PATH.
+  local: leapspace, leapspace.riskguard
+  third: -
+  std  : __future__, json, os, sys, tempfile
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+====================================================================================================
+MODULE leapspace/tests/test_launchscan_logs.py  (266 lines)
+  DOC: Tests for the log-based launch-window scan.
+  local: leapspace
+  third: -
+  std  : __future__, inspect, os, sys
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _log(block: int, frm: str, to: str, amount: int, log_index: int=0)  :: 
+====================================================================================================
+MODULE leapspace/tests/test_leading.py  (270 lines)
+  DOC: Tests for the LEADING-indicator features.
+  local: leapspace
+  third: -
+  std  : __future__, os, sys, tempfile
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+====================================================================================================
+MODULE leapspace/tests/test_leading_causality.py  (338 lines)
+  DOC: Tests for the CAUSALITY of the leading features.
+  local: leapspace, leapspace.leading
+  third: -
+  std  : __future__, calendar, datetime, math, os, sys, typing
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _synthetic_iv(n: int, start_date: str='2020-01-01') -> List[Tuple[int, float]]  :: A synthetic implied-volatility series on the panel's own dates.
+  [f] _drifting_panel(n: int=240) -> FakePanel  :: A price series with a clear drift, so the volatility risk
+  [f] _whole_panel_zscore(raw: List[Optional[float]]) -> List[Optional[float]]  :: The ORIGINAL, non-causal implementation, kept here so the test
+  [f] _truncate(panel: FakePanel, k: int) -> FakePanel  :: A copy of the panel cut off after bar k.
+  [C] class FakePanel  :: A minimal stand-in for btengine's Panel.
+       [m] __init__(self, closes: List[float], volumes: Optional[List[float]]=None, highs: Optional[List[float]]=None, lows: Optional[List[float]]=None, opens: Optional[List[float]]=None, start_date: str='2020-01-01', iv_series: Optional[List[Tuple[int, float]]]=None)  :: 
+====================================================================================================
+MODULE leapspace/tests/test_merge_backtest_results.py  (89 lines)
+  DOC: Test the results-file merge: a subset run must NOT shrink the file.
+  local: leapspace.cli
+  third: -
+  std  : json, os, sys, tempfile
+====================================================================================================
+MODULE leapspace/tests/test_narrative_live.py  (107 lines)
+  DOC: LIVE TEST of the narrative-specificity classifier.
+  local: leapspace.memecoin, leapspace.narrative
+  third: -
+  std  : json, os, sys
+====================================================================================================
+MODULE leapspace/tests/test_negative_controls.py  (300 lines)
+  DOC: Every negative control must ACTUALLY differ from its twin.
+  local: leapspace, leapspace.paperspecs
+  third: -
+  std  : __future__, inspect, math, os, sys, typing
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _features(panel: _Panel) -> Dict[str, Any]  :: A feature block with everything the paper signals might read.
+  [c] class _Panel  :: A minimal panel with enough shape for the signals to run.
+       [m] __init__(self, n: int=400, n_syms: int=6)  :: 
+====================================================================================================
+MODULE leapspace/tests/test_onchain_live.py  (79 lines)
+  DOC: Live end-to-end check of the on-chain wallet tracker.
+  local: leapspace.onchain
+  third: -
+  std  : os, sys
+====================================================================================================
+MODULE leapspace/tests/test_pbo.py  (524 lines)
+  DOC: Offline checks for the PBO module (`leapspace/pbo.py`).
+  local: leapspace.pbo
+  third: -
+  std  : __future__, itertools, math, os, random, statistics, sys
+  [F] check(name, cond, detail='')  :: 
+  [f] _sharpe(xs)  :: Sample (ddof=1) Sharpe of per-observation returns.
+  [F] reference_pbo(series, S=8)  :: An independent implementation of the published CSCV procedure.
+  [F] dominant_matrix(seed=SEED_DOMINANT, n=N_CANDIDATES, t=T_PERIODS)  :: One candidate genuinely dominates; the rest are zero-drift noise.
+  [F] noise_universe(seed=SEED_NOISE, pool_size=400, keep=N_CANDIDATES, t=T_PERIODS)  :: Best-of-many PURE NOISE: draw a big pool of noise series and keep
+  [F] main() -> int  :: 
+====================================================================================================
+MODULE leapspace/tests/test_portfolio.py  (304 lines)
+  DOC: Tests for the risk-managed portfolio layer.
+  local: leapspace
+  third: -
+  std  : __future__, math, os, sys
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _port_var(cov, w)  :: 
+====================================================================================================
+MODULE leapspace/tests/test_portfolio_binding.py  (349 lines)
+  DOC: Does the risk layer actually IMPROVE the book, or just add complexity?
+  local: leapspace
+  third: -
+  std  : __future__, math, os, sys, typing
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _correlated_assets(n: int=1500, seed: int=7) -> Dict[str, List[float]]  :: Two assets with a POSITIVE correlation and DIFFERENT risk profiles.
+  [f] _annualised_vol(rets: List[float]) -> float  :: 
+  [f] _portfolio_path(weights: Dict[str, float], rets: Dict[str, List[float]]) -> Tuple[List[float], float]  :: The portfolio return path and its max drawdown.
+  [f] _replay(scale_at: List[float]) -> Tuple[float, float]  :: 
+  [f] _hhi(w: Dict[str, float]) -> float  :: 
+====================================================================================================
+MODULE leapspace/tests/test_regime.py  (105 lines)
+  DOC: Self-test for the regime module: causality, labelling, no crashes.
+  local: leapspace.regime
+  third: -
+  std  : math, os, random, sys
+  [F] check(name, cond, detail='')  :: 
+  [F] synthetic_market(n=900, seed=11)  :: A regime-switching synthetic series. SYNTHETIC - test fixture only.
+====================================================================================================
+MODULE leapspace/tests/test_report_memecoin.py  (359 lines)
+  DOC: Offline checks for `leapspace/report_memecoin.py`.
+  local: leapspace
+  third: -
+  std  : __future__, json, os, re, shutil, sys, tempfile
+  [F] check(name: str, cond: bool, detail: object='') -> bool  :: Record one check. Prints PASS/FAIL and remembers failures.
+  [F] section(title: str) -> None  :: 
+  [f] _load_spec_criteria() -> list  :: The criterion keys in the specification JSON, read straight from
+  [F] main() -> int  :: 
+====================================================================================================
+MODULE leapspace/tests/test_reportvalidate.py  (352 lines)
+  DOC: Failing-case tests for the pre-flight report validator.
+  local: leapspace.reportvalidate
+  third: -
+  std  : __future__, os, sys
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [F] categories(result) -> set  :: 
+====================================================================================================
+MODULE leapspace/tests/test_skip_contract.py  (144 lines)
+  DOC: The quick-mode skip list must ACTUALLY skip what it claims.
+  local: leapspace, leapspace.paperspecs
+  third: -
+  std  : __future__, inspect, os, re, sys, typing
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+====================================================================================================
+MODULE leapspace/tests/test_socialedge.py  (597 lines)
+  DOC: Offline + live checks for `leapspace/socialedge.py`.
+  local: leapspace, leapspace.chains, leapspace.social
+  third: -
+  std  : __future__, json, os, sys, time
+  [F] check(name, cond, detail: object='')  :: 
+  [F] section(title)  :: 
+  [F] offline()  :: 
+  [F] live()  :: 
+  [F] main()  :: 
+====================================================================================================
+MODULE leapspace/tests/test_stdev_equivalence.py  (185 lines)
+  DOC: Verify the float stdev is numerically equivalent to statistics.stdev.
+  local: leapspace
+  third: -
+  std  : __future__, ast, inspect, math, os, random, statistics, sys, textwrap, typing
+  [F] check(label: str, ok: bool, detail: str='') -> None  :: 
+  [f] _is_nan(x: object) -> bool  :: 
+  [F] original_stdev(xs: Sequence[Optional[float]]) -> Optional[float]  :: The engine's ORIGINAL implementation, verbatim.
+  [F] float_stdev(xs: Sequence[Optional[float]]) -> Optional[float]  :: The float implementation.

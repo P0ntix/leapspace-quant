@@ -1,0 +1,3830 @@
+[
+  {
+    "name": "paper_trend_longshort_us_equity_style",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 12-month time-series momentum. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "us_equity_style",
+    "universe": {
+      "preset": "us_equity_style"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 252,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "12-month time-series momentum - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 12-mont"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the US equity style ETFs universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_us_equity_style_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 12-month time-series momentum. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "us_equity_style",
+    "universe": {
+      "preset": "us_equity_style"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 252,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "12-month time-series momentum - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. The position polarity is flipped, so the control trades the trend the wrong way. It must FAIL; if it does not, the trend reading is not what produced the result."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 12-mont"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the US equity style ETFs universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_us_equity_style",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "us_equity_style",
+    "universe": {
+      "preset": "us_equity_style"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the US equity style ETFs universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_us_equity_style_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "us_equity_style",
+    "universe": {
+      "preset": "us_equity_style"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. A pairs strategy has no polarity to flip - the spread's direction is the spread's - so the control trades the mean-reversion the WRONG WAY. It must FAIL."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the US equity style ETFs universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_crypto",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 20-day crypto-adapted trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "crypto",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 20,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "20-day crypto-adapted trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 20-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the crypto majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2021-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_crypto_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 20-day crypto-adapted trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "crypto",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 20,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "20-day crypto-adapted trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. The position polarity is flipped, so the control trades the trend the wrong way. It must FAIL; if it does not, the trend reading is not what produced the result."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 20-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the crypto majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2021-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_crypto",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "crypto",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the crypto majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2021-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_crypto_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "crypto",
+    "universe": {
+      "preset": "crypto"
+    },
+    "period": {
+      "start": "2021-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. A pairs strategy has no polarity to flip - the spread's direction is the spread's - so the control trades the mean-reversion the WRONG WAY. It must FAIL."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the crypto majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2021-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_fx_major",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "fx_major",
+    "universe": {
+      "preset": "fx_major"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the G10 FX majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_fx_major_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "fx_major",
+    "universe": {
+      "preset": "fx_major"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. The position polarity is flipped, so the control trades the trend the wrong way. It must FAIL; if it does not, the trend reading is not what produced the result."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the G10 FX majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_fx_major",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "fx_major",
+    "universe": {
+      "preset": "fx_major"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the G10 FX majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_fx_major_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "fx_major",
+    "universe": {
+      "preset": "fx_major"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. A pairs strategy has no polarity to flip - the spread's direction is the spread's - so the control trades the mean-reversion the WRONG WAY. It must FAIL."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the G10 FX majors universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_commodities",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "commodities",
+    "universe": {
+      "preset": "commodities"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the commodities universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_commodities_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "commodities",
+    "universe": {
+      "preset": "commodities"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. The position polarity is flipped, so the control trades the trend the wrong way. It must FAIL; if it does not, the trend reading is not what produced the result."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the commodities universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_commodities",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "commodities",
+    "universe": {
+      "preset": "commodities"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the commodities universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_commodities_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "commodities",
+    "universe": {
+      "preset": "commodities"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. A pairs strategy has no polarity to flip - the spread's direction is the spread's - so the control trades the mean-reversion the WRONG WAY. It must FAIL."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the commodities universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_futures_broad",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "futures_broad",
+    "universe": {
+      "preset": "futures_broad"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the futures broad universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_futures_broad_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "futures_broad",
+    "universe": {
+      "preset": "futures_broad"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. The position polarity is flipped, so the control trades the trend the wrong way. It must FAIL; if it does not, the trend reading is not what produced the result."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the futures broad universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_futures_broad",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "futures_broad",
+    "universe": {
+      "preset": "futures_broad"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the futures broad universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_futures_broad_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "futures_broad",
+    "universe": {
+      "preset": "futures_broad"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. A pairs strategy has no polarity to flip - the spread's direction is the spread's - so the control trades the mean-reversion the WRONG WAY. It must FAIL."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the futures broad universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_rates_credit",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "rates_credit",
+    "universe": {
+      "preset": "rates_credit"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the rates and credit universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_trend_longshort_rates_credit_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day trend window. Hypothesis: the paper's rule - long above the trend proxy, short below - produces a risk-managed, dollar-neutral trend signal that survives stressed costs, and its inverted twin does not.",
+    "concept": "PAPER_TREND_LONG_SHORT",
+    "asset_class": "rates_credit",
+    "universe": {
+      "preset": "rates_credit"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "momentum",
+        "params": {
+          "lookback": 60,
+          "skip": 0
+        }
+      }
+    ],
+    "signal": {
+      "type": "trend_long_short",
+      "params": {
+        "feature": "momentum",
+        "threshold": 0.0,
+        "dead_band": 0.0,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's long/short rule, tested for the first time. The previously SUPPORTED nasdaq_12m_timeseries_momentum was long_only:true, which CONTRADICTS the paper's own direction rule quoted above. Costs are stressed to 2x the engine default."
+    },
+    "parameter_provenance": {
+      "signal.params.dead_band": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - no dead band, so the rule is the paper's own: long above the trend proxy, short below. A dead band is an analyst addition and would change the rule being tested."
+      },
+      "signal.params.threshold": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - the trend proxy is the sign of the momentum itself, so zero is the paper's rule."
+      },
+      "features.momentum.lookback": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "60-day trend window - the paper names the window: a 12-month time-series momentum for equities and a shorter crypto-adapted window for crypto."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. The position polarity is flipped, so the control trades the trend the wrong way. It must FAIL; if it does not, the trend reading is not what produced the result."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies'. Direction rule, quoted: \"Go long when price is above its trend proxy; go short or flat when below, if your venue supports it.\" Window: 60-day "
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the rates and credit universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_rates_credit",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "rates_credit",
+    "universe": {
+      "preset": "rates_credit"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": false
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the rates and credit universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  },
+  {
+    "name": "paper_pairs_meanrev_rates_credit_CONTROL",
+    "paper": "Trading strategies for retail traders (LeapSpace 2.0)",
+    "hypothesis": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis: a dollar-neutral pairs construction - one leg long, the other short, sized by the hedge ratio, entered on a z-score and exited on reversion - produces a market-neutral return stream with a high win rate and a bounded downside, and the inverted-spread control does not.",
+    "concept": "PAPER_PAIRS_MEAN_REVERSION",
+    "asset_class": "rates_credit",
+    "universe": {
+      "preset": "rates_credit"
+    },
+    "period": {
+      "start": "2005-01-01",
+      "end": null,
+      "interval": "1d"
+    },
+    "features": [
+      {
+        "name": "zscore",
+        "params": {
+          "lookback": 60
+        }
+      }
+    ],
+    "signal": {
+      "type": "pairs_mean_reversion",
+      "params": {
+        "feature": "zscore",
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "max_hold_bars": 20,
+        "max_pairs": 3,
+        "invert_signal": true
+      }
+    },
+    "portfolio": {
+      "gross_leverage": 1.0,
+      "vol_target": 0.15,
+      "vol_lookback": 60,
+      "max_position": 0.1,
+      "max_names": 5,
+      "net_target": 0.0,
+      "long_only": false,
+      "rebalance": "monthly"
+    },
+    "execution": {
+      "fill_at": "open",
+      "cost_multiplier": 2.0,
+      "max_participation": 0.1
+    },
+    "capital": 100000.0,
+    "intake": {
+      "confirmed": [
+        "hypothesis",
+        "universe",
+        "direction",
+        "entry",
+        "exit",
+        "timeframe",
+        "rebalance",
+        "sizing",
+        "leverage",
+        "costs",
+        "period",
+        "variants_tried"
+      ],
+      "variants_tried": 1,
+      "notes": "The paper's pairs construction, market-neutral by design: each pair's legs offset, so the SPREAD's exposure is what is traded. The control is the inverted spread direction."
+    },
+    "parameter_provenance": {
+      "signal.params.z_entry": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 sigma. The paper says 'a z-score entry' without a number; 2.0 is the standard entry for a spread that is expected to revert."
+      },
+      "signal.params.z_exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.5 sigma - exit when the spread has reverted halfway back. The paper says 'a mean-reversion exit'."
+      },
+      "signal.params.max_hold_bars": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "A short holding period for crypto: 'crypto mean reversion can be fast' (RET p16). 20 trading days."
+      },
+      "signal.params.max_pairs": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "3 pairs. The paper does not say how many; the count is limited so concentration cannot come from one spread."
+      },
+      "signal.params.invert_signal": {
+        "source": "analyst_choice",
+        "citation": "control",
+        "note": "TRUE - this is the NEGATIVE CONTROL. A pairs strategy has no polarity to flip - the spread's direction is the spread's - so the control trades the mean-reversion the WRONG WAY. It must FAIL."
+      },
+      "hypothesis": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "Section 'Momentum and Mean Reversion Trading Strategies', subsection on pairs. Quoted: \"Use a cointegration or spread model on stable pairs, with a z-score entry and a mean-reversion exit.\" Hypothesis"
+      },
+      "universe.preset": {
+        "source": "paper",
+        "citation": "Trading strategies for retail traders (LeapSpace 2.0)",
+        "note": "the rates and credit universe; the papers require the claim to be tested on more than one market because crypto and equities behave differently"
+      },
+      "portfolio.rebalance": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "monthly. The papers state no cadence; monthly keeps the turnover inside a retail account's cost budget and matches the regime paper's 'swing/daily' horizon."
+      },
+      "portfolio.gross_leverage": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "1.0 - no leverage. The papers do not discuss leverage, so the unlevered result is the one reported."
+      },
+      "portfolio.max_position": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "10% of equity per name. A concentration limit is standard risk management; the papers set no number."
+      },
+      "portfolio.vol_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "15% annual volatility target, so the book is sized to a risk level rather than to a dollar amount. The papers set no number."
+      },
+      "portfolio.max_names": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "5 names, so concentration is limited by count as well as by weight."
+      },
+      "portfolio.net_target": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "0.0 - dollar neutral, so a result cannot be a beta bet dressed up as alpha."
+      },
+      "portfolio.long_only": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "False - long/short. The regime paper's switching mechanism needs both legs: momentum in trend states and reversal in stress states, and a long-only book cannot express the second. The papers set no direction."
+      },
+      "exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "The exit is the signal returning to flat. Where the signal has an explicit exit band it is stated in the signal's own params; otherwise the rule is 'the entry condition no longer holds', which is what a regime-conditioned signal means."
+      },
+      "signal.params.exit": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "Where the signal carries an exit band it is in its params; otherwise the position closes when the entry condition stops holding. The papers state no exit band for the switching mechanism."
+      },
+      "execution.cost_multiplier": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2.0 - the STRESSED cost case. A strategy that only survives at typical costs has no edge at retail size; the engine also runs a gross-of-costs stage that separates 'no edge' from 'edge too small to trade'."
+      },
+      "period.start": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "2005-01-01, chosen to cover the 2008 crisis, the 2020 COVID crash and the 2022 bear market - the stress regimes the papers say a signal must survive."
+      },
+      "signal.feature": {
+        "source": "analyst_choice",
+        "citation": "not stated in source",
+        "note": "the traded feature for this concept."
+      }
+    }
+  }
+]
