@@ -684,16 +684,126 @@
     "paper": "Free trading indicators for directional edge (LeapSpace)",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "us_equity_style",
-    "elapsed_s": 63.8,
+    "elapsed_s": 83.0,
     "metrics": {
-      "oos_sharpe": -0.06104761158157341,
+      "oos_sharpe": -0.06564194802955602,
+      "oos_sharpe_live": -0.06564194802955602,
       "in_sample_sharpe": -0.06104761158157341,
       "n_trades": 24,
       "max_drawdown": 0.029258469238045648,
-      "total_return": -0.0060212615882662135
+      "total_return": -0.0060212615882662135,
+      "oos_max_drawdown": 0.029258469238047757,
+      "oos_cagr": -0.000320358052398273,
+      "oos_profitable_folds": 2,
+      "oos_retention": null,
+      "pbo": null,
+      "n_oos_trades": 24,
+      "deflated_sharpe": -0.06104761158157341
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": -0.06564194802955602,
+      "oos_sharpe_live": -0.06564194802955602,
+      "oos_cagr": -0.000320358052398273,
+      "oos_max_drawdown": 0.029258469238047757,
+      "oos_trades_total": 24,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "pbo": null,
+      "pbo_detail": null,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.5973523864201409,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.6597431065929124,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -1.0395090498858843,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.02875098386933687,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -718,16 +828,126 @@
     "paper": "Free trading indicators for directional edge (LeapSpace)",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "crypto",
-    "elapsed_s": 37.9,
+    "elapsed_s": 51.9,
     "metrics": {
-      "oos_sharpe": -0.3037777063746183,
+      "oos_sharpe": 0.08020156264670915,
+      "oos_sharpe_live": 0.08020156264670915,
       "in_sample_sharpe": -0.3037777063746183,
       "n_trades": 10,
       "max_drawdown": 0.020677306569737097,
-      "total_return": -0.013511109723563619
+      "total_return": -0.013511109723563619,
+      "oos_max_drawdown": 0.004402045743272298,
+      "oos_cagr": 0.0003617889139968522,
+      "oos_profitable_folds": 1,
+      "oos_retention": null,
+      "pbo": null,
+      "n_oos_trades": 10,
+      "deflated_sharpe": -0.3037777063746183
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": 0.08020156264670915,
+      "oos_sharpe_live": 0.08020156264670915,
+      "oos_cagr": 0.0003617889139968522,
+      "oos_max_drawdown": 0.004402045743272298,
+      "oos_trades_total": 10,
+      "oos_profitable_folds": 1,
+      "final_is_sharpe": -0.5716028760253228,
+      "oos_retention": null,
+      "pbo": null,
+      "pbo_detail": null,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.17908688560118438,
+          "in_sample_sharpe": -0.5716028760253228,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 10 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -748,16 +968,125 @@
     "paper": "Free trading indicators for directional edge (LeapSpace)",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "fx_major",
-    "elapsed_s": 72.7,
+    "elapsed_s": 109.9,
     "metrics": {
-      "oos_sharpe": 0.25808245072477703,
+      "oos_sharpe": 0.2988940453828775,
+      "oos_sharpe_live": 0.2988940453828775,
       "in_sample_sharpe": 0.25808245072477703,
       "n_trades": 119,
       "max_drawdown": 0.02528255052229389,
-      "total_return": 0.046215525403686675
+      "total_return": 0.046215525403686675,
+      "oos_max_drawdown": 0.019148817479459068,
+      "oos_cagr": 0.002413508569381051,
+      "oos_profitable_folds": 3,
+      "oos_retention": null,
+      "pbo": 0.6666666666666666,
+      "n_oos_trades": 103,
+      "deflated_sharpe": 0.25808245072477703
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": 0.2988940453828775,
+      "oos_sharpe_live": 0.2988940453828775,
+      "oos_cagr": 0.002413508569381051,
+      "oos_max_drawdown": 0.019148817479459068,
+      "oos_trades_total": 103,
+      "oos_profitable_folds": 3,
+      "final_is_sharpe": -0.1375625667055912,
+      "oos_retention": null,
+      "pbo": 0.6666666666666666,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.7418995492516548,
+          "in_sample_sharpe": null,
+          "oos_trades": 23,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.4401221551042724,
+          "in_sample_sharpe": null,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.022848822812303028,
+          "in_sample_sharpe": -1.239924684245957,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.1005420173631016,
+          "in_sample_sharpe": -1.0733595815738488,
+          "oos_trades": 40,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.28206583491125614,
+          "in_sample_sharpe": -0.1375625667055912,
+          "oos_trades": 24,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "no ADV data"
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -781,16 +1110,125 @@
     "paper": "Free trading indicators for directional edge (LeapSpace)",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "commodities",
-    "elapsed_s": 115.8,
+    "elapsed_s": 163.2,
     "metrics": {
-      "oos_sharpe": -0.011121374226221156,
+      "oos_sharpe": -0.07199338918487097,
+      "oos_sharpe_live": -0.07199338918487097,
       "in_sample_sharpe": -0.011121374226221156,
       "n_trades": 336,
       "max_drawdown": 0.20686636585492335,
-      "total_return": -0.03083927894067262
+      "total_return": -0.03083927894067262,
+      "oos_max_drawdown": 0.237360584110213,
+      "oos_cagr": -0.004235334597907037,
+      "oos_profitable_folds": 3,
+      "oos_retention": -0.22532428479027228,
+      "pbo": 0.3333333333333333,
+      "n_oos_trades": 302,
+      "deflated_sharpe": -0.011121374226221156
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": -0.07199338918487097,
+      "oos_sharpe_live": -0.07199338918487097,
+      "oos_cagr": -0.004235334597907037,
+      "oos_max_drawdown": 0.237360584110213,
+      "oos_trades_total": 302,
+      "oos_profitable_folds": 3,
+      "final_is_sharpe": 0.3195101196121896,
+      "oos_retention": -0.22532428479027228,
+      "pbo": 0.3333333333333333,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.11475206272441928,
+          "in_sample_sharpe": null,
+          "oos_trades": 63,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.17260519160873503,
+          "in_sample_sharpe": 0.9298025271110257,
+          "oos_trades": 38,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.16879302427563536,
+          "in_sample_sharpe": 0.18798737934518925,
+          "oos_trades": 94,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.14667635272510796,
+          "in_sample_sharpe": -0.08929087802676659,
+          "oos_trades": 39,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.46448251327325135,
+          "in_sample_sharpe": 0.3195101196121896,
+          "oos_trades": 68,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -815,16 +1253,125 @@
     "paper": "Free trading indicators for directional edge (LeapSpace)",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "futures_broad",
-    "elapsed_s": 117.6,
+    "elapsed_s": 177.9,
     "metrics": {
-      "oos_sharpe": -0.09461719333508223,
+      "oos_sharpe": -0.16221825264845433,
+      "oos_sharpe_live": -0.16221825264845433,
       "in_sample_sharpe": -0.09461719333508223,
       "n_trades": 550,
       "max_drawdown": 0.2773192288650683,
-      "total_return": -0.12429411173978788
+      "total_return": -0.12429411173978788,
+      "oos_max_drawdown": 0.2767515903115163,
+      "oos_cagr": -0.009609635497019098,
+      "oos_profitable_folds": 1,
+      "oos_retention": -7.7377312279313655,
+      "pbo": 0.8333333333333334,
+      "n_oos_trades": 482,
+      "deflated_sharpe": -0.09461719333508223
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": -0.16221825264845433,
+      "oos_sharpe_live": -0.16221825264845433,
+      "oos_cagr": -0.009609635497019098,
+      "oos_max_drawdown": 0.2767515903115163,
+      "oos_trades_total": 482,
+      "oos_profitable_folds": 1,
+      "final_is_sharpe": 0.020964575774212096,
+      "oos_retention": -7.7377312279313655,
+      "pbo": 0.8333333333333334,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.6387644426011944,
+          "in_sample_sharpe": null,
+          "oos_trades": 83,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.9954570857322308,
+          "in_sample_sharpe": 1.0011691079364882,
+          "oos_trades": 97,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.09991678505337968,
+          "in_sample_sharpe": -0.6336185351216866,
+          "oos_trades": 138,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.13995563737964872,
+          "in_sample_sharpe": -0.6858890648878206,
+          "oos_trades": 119,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.7190231708842227,
+          "in_sample_sharpe": 0.020964575774212096,
+          "oos_trades": 45,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -849,16 +1396,125 @@
     "paper": "Free trading indicators for directional edge (LeapSpace)",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "rates_credit",
-    "elapsed_s": 89.6,
+    "elapsed_s": 137.6,
     "metrics": {
-      "oos_sharpe": 0.12769887359581925,
+      "oos_sharpe": 0.06633068485013395,
+      "oos_sharpe_live": 0.06633068485013395,
       "in_sample_sharpe": 0.12769887359581925,
       "n_trades": 157,
       "max_drawdown": 0.03560885045907247,
-      "total_return": 0.028350132226240055
+      "total_return": 0.028350132226240055,
+      "oos_max_drawdown": 0.16540719838335793,
+      "oos_cagr": 0.0021803791782901705,
+      "oos_profitable_folds": 2,
+      "oos_retention": 0.09411260717708227,
+      "pbo": 0.4,
+      "n_oos_trades": 188,
+      "deflated_sharpe": 0.12769887359581925
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": 0.06633068485013395,
+      "oos_sharpe_live": 0.06633068485013395,
+      "oos_cagr": 0.0021803791782901705,
+      "oos_max_drawdown": 0.16540719838335793,
+      "oos_trades_total": 188,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": 0.7048012677549793,
+      "oos_retention": 0.09411260717708227,
+      "pbo": 0.4,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.047318227539805635,
+          "in_sample_sharpe": 0.8586929541733996,
+          "oos_trades": 20,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.6204874403422845,
+          "in_sample_sharpe": 0.5089654998394274,
+          "oos_trades": 36,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.14695118921928427,
+          "in_sample_sharpe": 0.4159689531240307,
+          "oos_trades": 60,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -1.0508528658198866,
+          "in_sample_sharpe": 0.37133810814239415,
+          "oos_trades": 48,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.8739353845478898,
+          "in_sample_sharpe": 0.7048012677549793,
+          "oos_trades": 24,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -878,16 +1534,125 @@
     "paper": "Financial market regime identification (LeapSpace)",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "us_equity_style",
-    "elapsed_s": 39.4,
+    "elapsed_s": 74.1,
     "metrics": {
-      "oos_sharpe": 0.25051836511137543,
+      "oos_sharpe": 0.42854573994449674,
+      "oos_sharpe_live": 0.42854573994449674,
       "in_sample_sharpe": 0.25051836511137543,
       "n_trades": 90,
       "max_drawdown": 0.08880634696868694,
-      "total_return": 0.16664138205940437
+      "total_return": 0.16664138205940437,
+      "oos_max_drawdown": 0.05497899753845914,
+      "oos_cagr": 0.01255267152567452,
+      "oos_profitable_folds": 3,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "n_oos_trades": 90,
+      "deflated_sharpe": 0.25051836511137543
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": 0.42854573994449674,
+      "oos_sharpe_live": 0.42854573994449674,
+      "oos_cagr": 0.01255267152567452,
+      "oos_max_drawdown": 0.05497899753845914,
+      "oos_trades_total": 90,
+      "oos_profitable_folds": 3,
+      "final_is_sharpe": -0.12073424356804542,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.4799146528700672,
+          "in_sample_sharpe": -1.8385453657997635,
+          "oos_trades": 30,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.3669583785971102,
+          "in_sample_sharpe": -0.9695039133645695,
+          "oos_trades": 18,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.2207239992726073,
+          "in_sample_sharpe": -1.5893109356654929,
+          "oos_trades": 18,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 1.2309146477795978,
+          "in_sample_sharpe": -0.7362266577875938,
+          "oos_trades": 18,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.04210502690760515,
+          "in_sample_sharpe": -0.12073424356804542,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -910,16 +1675,125 @@
     "paper": "Financial market regime identification (LeapSpace)",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "crypto",
-    "elapsed_s": 23.7,
+    "elapsed_s": 51.3,
     "metrics": {
-      "oos_sharpe": -0.40937971830515946,
+      "oos_sharpe": -0.41784737023372087,
+      "oos_sharpe_live": -0.41784737023372087,
       "in_sample_sharpe": -0.40937971830515946,
       "n_trades": 30,
       "max_drawdown": 0.43805517165965524,
-      "total_return": -0.34272648699134656
+      "total_return": -0.34272648699134656,
+      "oos_max_drawdown": 0.34813386197362195,
+      "oos_cagr": -0.0763669775044673,
+      "oos_profitable_folds": 1,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "n_oos_trades": 50,
+      "deflated_sharpe": -0.40937971830515946
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": -0.41784737023372087,
+      "oos_sharpe_live": -0.41784737023372087,
+      "oos_cagr": -0.0763669775044673,
+      "oos_max_drawdown": 0.34813386197362195,
+      "oos_trades_total": 50,
+      "oos_profitable_folds": 1,
+      "final_is_sharpe": -1.0326151142249345,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.15646998192441625,
+          "in_sample_sharpe": -0.1586151203604759,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.0267593344545053,
+          "in_sample_sharpe": -0.6462390180902081,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -1.9650105254373293,
+          "in_sample_sharpe": 0.058494472822526164,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.21530469190138513,
+          "in_sample_sharpe": -1.2118837805722562,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.8042231716591108,
+          "in_sample_sharpe": -1.0326151142249345,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -943,16 +1817,125 @@
     "paper": "Financial market regime identification (LeapSpace)",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "fx_major",
-    "elapsed_s": 52.7,
+    "elapsed_s": 124.3,
     "metrics": {
-      "oos_sharpe": -0.13097890685175637,
-      "in_sample_sharpe": -0.13097890685175637,
+      "oos_sharpe": -0.11367864409483208,
+      "oos_sharpe_live": -0.11367864409483208,
+      "in_sample_sharpe": -0.13097890685175131,
       "n_trades": 8,
-      "max_drawdown": 0.20121264751908974,
-      "total_return": -0.1397010944599424
+      "max_drawdown": 0.20121264751908852,
+      "total_return": -0.13970109445993817,
+      "oos_max_drawdown": 0.19691436808557128,
+      "oos_cagr": -0.005890185476298937,
+      "oos_profitable_folds": 2,
+      "oos_retention": null,
+      "pbo": 0.7,
+      "n_oos_trades": 40,
+      "deflated_sharpe": -0.13097890685175131
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": -0.11367864409483208,
+      "oos_sharpe_live": -0.11367864409483208,
+      "oos_cagr": -0.005890185476298937,
+      "oos_max_drawdown": 0.19691436808557128,
+      "oos_trades_total": 40,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": -0.3525765355825428,
+      "oos_retention": null,
+      "pbo": 0.7,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.125611423815465,
+          "in_sample_sharpe": -1.607705661488682,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.14394980809071078,
+          "in_sample_sharpe": -0.22934278675688932,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.36748591273401643,
+          "in_sample_sharpe": -0.44278997191680414,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.7576414000643363,
+          "in_sample_sharpe": -0.2683105141329174,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.3977107500212919,
+          "in_sample_sharpe": -0.3525765355825428,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 8 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "no ADV data"
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -977,16 +1960,125 @@
     "paper": "Financial market regime identification (LeapSpace)",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "commodities",
-    "elapsed_s": 81.0,
+    "elapsed_s": 159.5,
     "metrics": {
-      "oos_sharpe": -0.28820118163318603,
+      "oos_sharpe": -0.3269272667740663,
+      "oos_sharpe_live": -0.3269272667740663,
       "in_sample_sharpe": -0.28820118163318603,
       "n_trades": 13,
       "max_drawdown": 0.6537588184845695,
-      "total_return": -0.5303352361392477
+      "total_return": -0.5303352361392477,
+      "oos_max_drawdown": 0.6052232767777945,
+      "oos_cagr": -0.03937020003253211,
+      "oos_profitable_folds": 1,
+      "oos_retention": -2.4144652529736703,
+      "pbo": 0.6,
+      "n_oos_trades": 65,
+      "deflated_sharpe": -0.28820118163318603
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": -0.3269272667740663,
+      "oos_sharpe_live": -0.3269272667740663,
+      "oos_cagr": -0.03937020003253211,
+      "oos_max_drawdown": 0.6052232767777945,
+      "oos_trades_total": 65,
+      "oos_profitable_folds": 1,
+      "final_is_sharpe": 0.13540359148735756,
+      "oos_retention": -2.4144652529736703,
+      "pbo": 0.6,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.6304396169794586,
+          "in_sample_sharpe": 1.6483926523126535,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.32885532511768856,
+          "in_sample_sharpe": 0.09167243295564022,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.3374098305226692,
+          "in_sample_sharpe": -0.022661282377808248,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.5248954759121741,
+          "in_sample_sharpe": 0.10650058848839729,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.13639753124995546,
+          "in_sample_sharpe": 0.13540359148735756,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 13 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1010,16 +2102,125 @@
     "paper": "Financial market regime identification (LeapSpace)",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "futures_broad",
-    "elapsed_s": 95.8,
+    "elapsed_s": 198.4,
     "metrics": {
-      "oos_sharpe": -0.14831617063321992,
-      "in_sample_sharpe": -0.14831617063321992,
+      "oos_sharpe": -0.1603508959401458,
+      "oos_sharpe_live": -0.1603508959401458,
+      "in_sample_sharpe": -0.14831617063321986,
       "n_trades": 15,
-      "max_drawdown": 0.510149955128095,
-      "total_return": -0.35497189044902644
+      "max_drawdown": 0.5101499551280946,
+      "total_return": -0.35497189044902644,
+      "oos_max_drawdown": 0.4636578940380689,
+      "oos_cagr": -0.022339661002508282,
+      "oos_profitable_folds": 2,
+      "oos_retention": null,
+      "pbo": 0.1,
+      "n_oos_trades": 73,
+      "deflated_sharpe": -0.14831617063321986
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": -0.1603508959401458,
+      "oos_sharpe_live": -0.1603508959401458,
+      "oos_cagr": -0.022339661002508282,
+      "oos_max_drawdown": 0.4636578940380689,
+      "oos_trades_total": 73,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": -0.5029503649468176,
+      "oos_retention": null,
+      "pbo": 0.1,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.09453647939778385,
+          "in_sample_sharpe": 0.21395330708069732,
+          "oos_trades": 14,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.37142316603268155,
+          "in_sample_sharpe": -1.1687970161379768,
+          "oos_trades": 14,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.8595284139719774,
+          "in_sample_sharpe": -1.332543320073611,
+          "oos_trades": 15,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.026199492464767195,
+          "in_sample_sharpe": -0.7969169698034452,
+          "oos_trades": 15,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.11667366823048204,
+          "in_sample_sharpe": -0.5029503649468176,
+          "oos_trades": 15,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 15 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1042,16 +2243,125 @@
     "paper": "Financial market regime identification (LeapSpace)",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "rates_credit",
-    "elapsed_s": 71.7,
+    "elapsed_s": 145.4,
     "metrics": {
-      "oos_sharpe": -0.2531923203324148,
-      "in_sample_sharpe": -0.2531923203324148,
+      "oos_sharpe": 0.12335699212492143,
+      "oos_sharpe_live": 0.12335699212492143,
+      "in_sample_sharpe": -0.253192320332415,
       "n_trades": 12,
-      "max_drawdown": 0.23061128133920983,
-      "total_return": -0.19431998767934155
+      "max_drawdown": 0.23061128133921083,
+      "total_return": -0.19431998767934155,
+      "oos_max_drawdown": 0.6817658233135693,
+      "oos_cagr": 0.005318416804707793,
+      "oos_profitable_folds": 3,
+      "oos_retention": 1.3917740025267327,
+      "pbo": 0.1,
+      "n_oos_trades": 60,
+      "deflated_sharpe": -0.253192320332415
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": 0.12335699212492143,
+      "oos_sharpe_live": 0.12335699212492143,
+      "oos_cagr": 0.005318416804707793,
+      "oos_max_drawdown": 0.6817658233135693,
+      "oos_trades_total": 60,
+      "oos_profitable_folds": 3,
+      "final_is_sharpe": 0.0886329187791766,
+      "oos_retention": 1.3917740025267327,
+      "pbo": 0.1,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.16092268824390918,
+          "in_sample_sharpe": -0.3488635195929775,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.5080298934821292,
+          "in_sample_sharpe": -0.34850422149169824,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.15561150778889615,
+          "in_sample_sharpe": -0.03335564271121189,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 1.2536592760042369,
+          "in_sample_sharpe": 0.1953254298204693,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.18668185212726876,
+          "in_sample_sharpe": 0.0886329187791766,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 12 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1461,16 +2771,126 @@
     "paper": "Negative control for c5_rsi_reversion_us_equity_style; not a paper claim",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "us_equity_style",
-    "elapsed_s": 61.8,
+    "elapsed_s": 90.4,
     "metrics": {
-      "oos_sharpe": 0.014980003527899598,
+      "oos_sharpe": 0.016107354898227646,
+      "oos_sharpe_live": 0.016107354898227646,
       "in_sample_sharpe": 0.014980003527899598,
       "n_trades": 24,
       "max_drawdown": 0.01996888196986968,
-      "total_return": 0.0012057138059355932
+      "total_return": 0.0012057138059355932,
+      "oos_max_drawdown": 0.01996888196987001,
+      "oos_cagr": 6.39298022078183e-05,
+      "oos_profitable_folds": 1,
+      "oos_retention": null,
+      "pbo": null,
+      "n_oos_trades": 24,
+      "deflated_sharpe": 0.014980003527899598
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": 0.016107354898227646,
+      "oos_sharpe_live": 0.016107354898227646,
+      "oos_cagr": 6.39298022078183e-05,
+      "oos_max_drawdown": 0.01996888196987001,
+      "oos_trades_total": 24,
+      "oos_profitable_folds": 1,
+      "final_is_sharpe": null,
+      "oos_retention": null,
+      "pbo": null,
+      "pbo_detail": null,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.6429970847713395,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.7011711640033089,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 1.009465987441546,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.016939186219454557,
+          "in_sample_sharpe": null,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1495,16 +2915,126 @@
     "paper": "Negative control for c5_rsi_reversion_crypto; not a paper claim",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "crypto",
-    "elapsed_s": 37.5,
+    "elapsed_s": 57.1,
     "metrics": {
-      "oos_sharpe": 0.14329584282443017,
+      "oos_sharpe": -0.6859652998122312,
+      "oos_sharpe_live": -0.6859652998122312,
       "in_sample_sharpe": 0.14329584282443017,
       "n_trades": 10,
       "max_drawdown": 0.009160348306158195,
-      "total_return": 0.006511680492917282
+      "total_return": 0.006511680492917282,
+      "oos_max_drawdown": 0.017077751212005388,
+      "oos_cagr": -0.0031179814620310164,
+      "oos_profitable_folds": 0,
+      "oos_retention": -2.5449973859306065,
+      "pbo": null,
+      "n_oos_trades": 10,
+      "deflated_sharpe": 0.14329584282443017
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": -0.6859652998122312,
+      "oos_sharpe_live": -0.6859652998122312,
+      "oos_cagr": -0.0031179814620310164,
+      "oos_max_drawdown": 0.017077751212005388,
+      "oos_trades_total": 10,
+      "oos_profitable_folds": 0,
+      "final_is_sharpe": 0.26953477579364993,
+      "oos_retention": -2.5449973859306065,
+      "pbo": null,
+      "pbo_detail": null,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": null,
+          "in_sample_sharpe": null,
+          "oos_trades": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -1.5374112486614784,
+          "in_sample_sharpe": 0.26953477579364993,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 10 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1529,16 +3059,125 @@
     "paper": "Negative control for c5_rsi_reversion_fx_major; not a paper claim",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "fx_major",
-    "elapsed_s": 85.1,
+    "elapsed_s": 123.2,
     "metrics": {
-      "oos_sharpe": -0.32680078193678497,
+      "oos_sharpe": -0.36390016391192437,
+      "oos_sharpe_live": -0.36390016391192437,
       "in_sample_sharpe": -0.32680078193678497,
       "n_trades": 119,
       "max_drawdown": 0.07060798630768128,
-      "total_return": -0.05811479908901218
+      "total_return": -0.05811479908901218,
+      "oos_max_drawdown": 0.07398789677530715,
+      "oos_cagr": -0.003062541982894018,
+      "oos_profitable_folds": 1,
+      "oos_retention": -17.84724126458337,
+      "pbo": 0.6666666666666666,
+      "n_oos_trades": 103,
+      "deflated_sharpe": -0.32680078193678497
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": -0.36390016391192437,
+      "oos_sharpe_live": -0.36390016391192437,
+      "oos_cagr": -0.003062541982894018,
+      "oos_max_drawdown": 0.07398789677530715,
+      "oos_trades_total": 103,
+      "oos_profitable_folds": 1,
+      "final_is_sharpe": 0.020389715055517253,
+      "oos_retention": -17.84724126458337,
+      "pbo": 0.6666666666666666,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.7855683827546726,
+          "in_sample_sharpe": null,
+          "oos_trades": 23,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.45953372495548606,
+          "in_sample_sharpe": null,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.037278886695422134,
+          "in_sample_sharpe": 1.1110014325747826,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.2039458586028182,
+          "in_sample_sharpe": 0.961900022254276,
+          "oos_trades": 40,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.12112371819810351,
+          "in_sample_sharpe": 0.020389715055517253,
+          "oos_trades": 24,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "no ADV data"
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1561,16 +3200,125 @@
     "paper": "Negative control for c5_rsi_reversion_commodities; not a paper claim",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "commodities",
-    "elapsed_s": 135.2,
+    "elapsed_s": 201.4,
     "metrics": {
-      "oos_sharpe": 0.013630571219064486,
+      "oos_sharpe": 0.07308389495137099,
+      "oos_sharpe_live": 0.07308389495137099,
       "in_sample_sharpe": 0.013630571219064486,
       "n_trades": 336,
       "max_drawdown": 0.16874703310703032,
-      "total_return": -0.009596835052063435
+      "total_return": -0.009596835052063435,
+      "oos_max_drawdown": 0.17555568257566334,
+      "oos_cagr": 0.0023360052204191017,
+      "oos_profitable_folds": 2,
+      "oos_retention": null,
+      "pbo": 0.3333333333333333,
+      "n_oos_trades": 302,
+      "deflated_sharpe": 0.013630571219064486
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": 0.07308389495137099,
+      "oos_sharpe_live": 0.07308389495137099,
+      "oos_cagr": 0.0023360052204191017,
+      "oos_max_drawdown": 0.17555568257566334,
+      "oos_trades_total": 302,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": -0.3544843983440307,
+      "oos_retention": null,
+      "pbo": 0.3333333333333333,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.1544179496576351,
+          "in_sample_sharpe": null,
+          "oos_trades": 63,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.22247838929515745,
+          "in_sample_sharpe": -0.9351007496838721,
+          "oos_trades": 38,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.2106124088312055,
+          "in_sample_sharpe": -0.29037335787609564,
+          "oos_trades": 94,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.2070658775847981,
+          "in_sample_sharpe": 0.018773054294366487,
+          "oos_trades": 39,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.41475005885520116,
+          "in_sample_sharpe": -0.3544843983440307,
+          "oos_trades": 68,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1592,16 +3340,125 @@
     "paper": "Negative control for c5_rsi_reversion_futures_broad; not a paper claim",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "futures_broad",
-    "elapsed_s": 151.3,
+    "elapsed_s": 274.2,
     "metrics": {
-      "oos_sharpe": 0.07186663695053905,
+      "oos_sharpe": 0.14903565468776914,
+      "oos_sharpe_live": 0.14903565468776914,
       "in_sample_sharpe": 0.07186663695053905,
       "n_trades": 550,
       "max_drawdown": 0.161478596520658,
-      "total_return": 0.05291411652900302
+      "total_return": 0.05291411652900302,
+      "oos_max_drawdown": 0.13840483306128193,
+      "oos_cagr": 0.0063911107743190865,
+      "oos_profitable_folds": 4,
+      "oos_retention": null,
+      "pbo": 0.8333333333333334,
+      "n_oos_trades": 481,
+      "deflated_sharpe": 0.07186663695053905
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": 0.14903565468776914,
+      "oos_sharpe_live": 0.14903565468776914,
+      "oos_cagr": 0.0063911107743190865,
+      "oos_max_drawdown": 0.13840483306128193,
+      "oos_trades_total": 481,
+      "oos_profitable_folds": 4,
+      "final_is_sharpe": -0.08804275759564383,
+      "oos_retention": null,
+      "pbo": 0.8333333333333334,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.6473945249890779,
+          "in_sample_sharpe": null,
+          "oos_trades": 83,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.9378253901185604,
+          "in_sample_sharpe": -1.0054621501593126,
+          "oos_trades": 96,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.034727040219364104,
+          "in_sample_sharpe": 0.5980585593005032,
+          "oos_trades": 138,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.18752808570581816,
+          "in_sample_sharpe": 0.6442273133249826,
+          "oos_trades": 119,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.6900704098369305,
+          "in_sample_sharpe": -0.08804275759564383,
+          "oos_trades": 45,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1625,16 +3482,125 @@
     "paper": "Negative control for c5_rsi_reversion_rates_credit; not a paper claim",
     "concept": "C5_rsi_secondary_confirmation",
     "asset_class": "rates_credit",
-    "elapsed_s": 118.6,
+    "elapsed_s": 209.8,
     "metrics": {
-      "oos_sharpe": -0.23459913678301403,
+      "oos_sharpe": -0.033733992486111794,
+      "oos_sharpe_live": -0.033733992486111794,
       "in_sample_sharpe": -0.23459913678301403,
       "n_trades": 157,
       "max_drawdown": 0.07306126253740142,
-      "total_return": -0.05432523600300654
+      "total_return": -0.05432523600300654,
+      "oos_max_drawdown": 0.23881262989860885,
+      "oos_cagr": -0.004842881429532375,
+      "oos_profitable_folds": 2,
+      "oos_retention": null,
+      "pbo": 0.3,
+      "n_oos_trades": 188,
+      "deflated_sharpe": -0.23459913678301403
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 14,
+      "purge_bars": 14,
+      "embargo_bars": 14,
+      "purge_bars_requested": 14,
+      "embargo_bars_requested": 14,
+      "oos_sharpe": -0.033733992486111794,
+      "oos_sharpe_live": -0.033733992486111794,
+      "oos_cagr": -0.004842881429532375,
+      "oos_max_drawdown": 0.23881262989860885,
+      "oos_trades_total": 188,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": -0.7511000642445465,
+      "oos_retention": null,
+      "pbo": 0.3,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.08340818436883841,
+          "in_sample_sharpe": -0.9019967127786169,
+          "oos_trades": 20,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.6399307497986259,
+          "in_sample_sharpe": -0.5386865202013023,
+          "oos_trades": 36,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.02540092765641801,
+          "in_sample_sharpe": -0.4402564931704143,
+          "oos_trades": 60,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.9984439262413285,
+          "in_sample_sharpe": -0.41457931563186184,
+          "oos_trades": 48,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.6668000716274884,
+          "in_sample_sharpe": -0.7511000642445465,
+          "oos_trades": 24,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1658,16 +3624,125 @@
     "paper": "Negative control for c6_rebound_danger_us_equity_style; not a paper claim",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "us_equity_style",
-    "elapsed_s": 52.8,
+    "elapsed_s": 81.6,
     "metrics": {
-      "oos_sharpe": -0.428452486100696,
+      "oos_sharpe": -0.5957780100577714,
+      "oos_sharpe_live": -0.5957780100577714,
       "in_sample_sharpe": -0.428452486100696,
       "n_trades": 90,
       "max_drawdown": 0.28878672291766516,
-      "total_return": -0.2539861622351599
+      "total_return": -0.2539861622351599,
+      "oos_max_drawdown": 0.29515511498128744,
+      "oos_cagr": -0.01848891894624749,
+      "oos_profitable_folds": 0,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "n_oos_trades": 90,
+      "deflated_sharpe": -0.428452486100696
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": -0.5957780100577714,
+      "oos_sharpe_live": -0.5957780100577714,
+      "oos_cagr": -0.01848891894624749,
+      "oos_max_drawdown": 0.29515511498128744,
+      "oos_trades_total": 90,
+      "oos_profitable_folds": 0,
+      "final_is_sharpe": -0.14378037747933187,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.6310201145838867,
+          "in_sample_sharpe": 1.418516269912109,
+          "oos_trades": 30,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.5284056598125318,
+          "in_sample_sharpe": 0.6854745664412457,
+          "oos_trades": 18,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.05175579846094255,
+          "in_sample_sharpe": 1.2381422834825233,
+          "oos_trades": 18,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -1.3202596305164966,
+          "in_sample_sharpe": 0.40284439984939774,
+          "oos_trades": 18,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.16162976845948246,
+          "in_sample_sharpe": -0.14378037747933187,
+          "oos_trades": 6,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1692,16 +3767,125 @@
     "paper": "Negative control for c6_rebound_danger_crypto; not a paper claim",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "crypto",
-    "elapsed_s": 32.2,
+    "elapsed_s": 48.6,
     "metrics": {
-      "oos_sharpe": 0.014790126722099364,
+      "oos_sharpe": 0.11853941574725906,
+      "oos_sharpe_live": 0.11853941574725906,
       "in_sample_sharpe": 0.014790126722099364,
       "n_trades": 30,
       "max_drawdown": 0.33741160577470153,
-      "total_return": -0.031001069658029623
+      "total_return": -0.031001069658029623,
+      "oos_max_drawdown": 0.2539638225564559,
+      "oos_cagr": 0.006270240829723495,
+      "oos_profitable_folds": 2,
+      "oos_retention": 0.1698380289966502,
+      "pbo": 0.6,
+      "n_oos_trades": 50,
+      "deflated_sharpe": 0.014790126722099364
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": 0.11853941574725906,
+      "oos_sharpe_live": 0.11853941574725906,
+      "oos_cagr": 0.006270240829723495,
+      "oos_max_drawdown": 0.2539638225564559,
+      "oos_trades_total": 50,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": 0.6979556725166486,
+      "oos_retention": 0.1698380289966502,
+      "pbo": 0.6,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.41873998052490585,
+          "in_sample_sharpe": 0.1561879909266367,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": -0.07294176418638296,
+          "in_sample_sharpe": 0.5588681141932624,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 1.5957307832225716,
+          "in_sample_sharpe": -0.2925226703906649,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -0.33451253330843483,
+          "in_sample_sharpe": 0.884734586915382,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.3371732499991524,
+          "in_sample_sharpe": 0.6979556725166486,
+          "oos_trades": 10,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1723,16 +3907,125 @@
     "paper": "Negative control for c6_rebound_danger_fx_major; not a paper claim",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "fx_major",
-    "elapsed_s": 68.8,
+    "elapsed_s": 113.1,
     "metrics": {
-      "oos_sharpe": 0.024826026014280553,
-      "in_sample_sharpe": 0.024826026014280553,
+      "oos_sharpe": 0.007480908001395374,
+      "oos_sharpe_live": 0.007480908001395374,
+      "in_sample_sharpe": 0.024826026014279964,
       "n_trades": 8,
-      "max_drawdown": 0.24332751146738973,
-      "total_return": 0.0028376308779711756
+      "max_drawdown": 0.24332751146738607,
+      "total_return": 0.0028376308779707315,
+      "oos_max_drawdown": 0.20489515349225385,
+      "oos_cagr": -0.0006363125659226698,
+      "oos_profitable_folds": 3,
+      "oos_retention": 0.02830016422883507,
+      "pbo": 0.7,
+      "n_oos_trades": 40,
+      "deflated_sharpe": 0.024826026014279964
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": 0.007480908001395374,
+      "oos_sharpe_live": 0.007480908001395374,
+      "oos_cagr": -0.0006363125659226698,
+      "oos_max_drawdown": 0.20489515349225385,
+      "oos_trades_total": 40,
+      "oos_profitable_folds": 3,
+      "final_is_sharpe": 0.2643415049080552,
+      "oos_retention": 0.02830016422883507,
+      "pbo": 0.7,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.20552704625264887,
+          "in_sample_sharpe": 1.477215128205709,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.04643004753681563,
+          "in_sample_sharpe": 0.14186289734173607,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.4779002028010215,
+          "in_sample_sharpe": 0.3334316407828299,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.6076568470835507,
+          "in_sample_sharpe": 0.16394682452354328,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.28077203658559347,
+          "in_sample_sharpe": 0.2643415049080552,
+          "oos_trades": 8,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 8 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "no ADV data"
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1753,16 +4046,125 @@
     "paper": "Negative control for c6_rebound_danger_commodities; not a paper claim",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "commodities",
-    "elapsed_s": 104.7,
+    "elapsed_s": 186.9,
     "metrics": {
-      "oos_sharpe": 0.2497254661859544,
+      "oos_sharpe": 0.3029546358534225,
+      "oos_sharpe_live": 0.3029546358534225,
       "in_sample_sharpe": 0.2497254661859544,
       "n_trades": 13,
       "max_drawdown": 0.2131545429437871,
-      "total_return": 0.5704659080839372
+      "total_return": 0.5704659080839372,
+      "oos_max_drawdown": 0.21195137854865564,
+      "oos_cagr": 0.02756737860075642,
+      "oos_profitable_folds": 4,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "n_oos_trades": 65,
+      "deflated_sharpe": 0.2497254661859544
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": 0.3029546358534225,
+      "oos_sharpe_live": 0.3029546358534225,
+      "oos_cagr": 0.02756737860075642,
+      "oos_max_drawdown": 0.21195137854865564,
+      "oos_trades_total": 65,
+      "oos_profitable_folds": 4,
+      "final_is_sharpe": -0.3433967918546397,
+      "oos_retention": null,
+      "pbo": 0.5,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.5422043680495574,
+          "in_sample_sharpe": -1.7392448349858423,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.2516107880701574,
+          "in_sample_sharpe": -0.1869970898047717,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.2547858476821211,
+          "in_sample_sharpe": -0.13581521926667767,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.5613729722368508,
+          "in_sample_sharpe": -0.27928683253890046,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.11221601566174971,
+          "in_sample_sharpe": -0.3433967918546397,
+          "oos_trades": 13,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 13 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1784,16 +4186,125 @@
     "paper": "Negative control for c6_rebound_danger_futures_broad; not a paper claim",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "futures_broad",
-    "elapsed_s": 117.3,
+    "elapsed_s": 247.7,
     "metrics": {
-      "oos_sharpe": 0.13037742262774865,
+      "oos_sharpe": 0.15957672381416058,
+      "oos_sharpe_live": 0.15957672381416058,
       "in_sample_sharpe": 0.13037742262774865,
       "n_trades": 15,
       "max_drawdown": 0.2679725667107088,
-      "total_return": 0.1955684049752351
+      "total_return": 0.1955684049752351,
+      "oos_max_drawdown": 0.26436478275473463,
+      "oos_cagr": 0.0116888659888299,
+      "oos_profitable_folds": 4,
+      "oos_retention": 0.4349168970178608,
+      "pbo": 0.1,
+      "n_oos_trades": 73,
+      "deflated_sharpe": 0.13037742262774865
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": 0.15957672381416058,
+      "oos_sharpe_live": 0.15957672381416058,
+      "oos_cagr": 0.0116888659888299,
+      "oos_max_drawdown": 0.26436478275473463,
+      "oos_trades_total": 73,
+      "oos_profitable_folds": 4,
+      "final_is_sharpe": 0.36691313882800747,
+      "oos_retention": 0.4349168970178608,
+      "pbo": 0.1,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": -0.13100376210083964,
+          "in_sample_sharpe": -0.28791827263286457,
+          "oos_trades": 14,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.31475523718003756,
+          "in_sample_sharpe": 1.1093031366164634,
+          "oos_trades": 14,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": 0.8054640273931094,
+          "in_sample_sharpe": 1.2555635671403909,
+          "oos_trades": 15,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": 0.07129067013250591,
+          "in_sample_sharpe": 0.7007717078349207,
+          "oos_trades": 15,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": 0.09822424882630434,
+          "in_sample_sharpe": 0.36691313882800747,
+          "oos_trades": 15,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 15 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -1815,16 +4326,125 @@
     "paper": "Negative control for c6_rebound_danger_rates_credit; not a paper claim",
     "concept": "C6_rebound_after_crash_danger",
     "asset_class": "rates_credit",
-    "elapsed_s": 95.8,
+    "elapsed_s": 339.4,
     "metrics": {
-      "oos_sharpe": 0.11375155521864799,
-      "in_sample_sharpe": 0.11375155521864799,
+      "oos_sharpe": -0.13976789182806065,
+      "oos_sharpe_live": -0.13976789182806065,
+      "in_sample_sharpe": 0.11375155521865395,
       "n_trades": 12,
-      "max_drawdown": 0.17004338120435314,
-      "total_return": 0.07409196986523425
+      "max_drawdown": 0.17004338120434992,
+      "total_return": 0.07409196986523892,
+      "oos_max_drawdown": 0.7395555553943027,
+      "oos_cagr": -0.0422531387553573,
+      "oos_profitable_folds": 2,
+      "oos_retention": null,
+      "pbo": 0.1,
+      "n_oos_trades": 60,
+      "deflated_sharpe": 0.11375155521865395
     },
-    "walk_forward": null,
-    "stages": {},
+    "walk_forward": {
+      "n_folds": 5,
+      "mode": "purged_embargoed",
+      "label_horizon": 60,
+      "purge_bars": 60,
+      "embargo_bars": 60,
+      "purge_bars_requested": 60,
+      "embargo_bars_requested": 60,
+      "oos_sharpe": -0.13976789182806065,
+      "oos_sharpe_live": -0.13976789182806065,
+      "oos_cagr": -0.0422531387553573,
+      "oos_max_drawdown": 0.7395555553943027,
+      "oos_trades_total": 60,
+      "oos_profitable_folds": 2,
+      "final_is_sharpe": -0.29107853340203327,
+      "oos_retention": null,
+      "pbo": 0.1,
+      "folds": [
+        {
+          "fold": 0,
+          "oos_sharpe": 0.15810398419892782,
+          "in_sample_sharpe": 0.2351183378540749,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 1,
+          "oos_sharpe": 0.47244328843238087,
+          "in_sample_sharpe": 0.1284002400044042,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 2,
+          "oos_sharpe": -0.051568483374196686,
+          "in_sample_sharpe": -0.14689607789107956,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 3,
+          "oos_sharpe": -1.1617214007845096,
+          "in_sample_sharpe": -0.4027282865535119,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        },
+        {
+          "fold": 4,
+          "oos_sharpe": -0.2904920140321717,
+          "in_sample_sharpe": -0.29107853340203327,
+          "oos_trades": 12,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    "stages": {
+      "gross_vs_net": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "cost_stress": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "parameter_sensitivity": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "monte_carlo": {
+        "status": "ERROR",
+        "passed": null,
+        "note": "only 12 trades \u2014 Monte Carlo needs >=20"
+      },
+      "subperiod": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "capacity": {
+        "status": "ran",
+        "passed": null,
+        "note": "Assumes costs scale linearly; real capacity is lower once market impact is modelled."
+      },
+      "causality": {
+        "status": "ran",
+        "passed": null,
+        "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
+      }
+    },
+    "skipped_stages": [],
     "leading_coverage": {
       "n_bars": 0,
       "n_leading": 0,
@@ -4874,7 +7494,7 @@
     "paper": "Trading strategies for retail traders (LeapSpace)",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "us_equity_style",
-    "elapsed_s": 41.1,
+    "elapsed_s": 26.5,
     "metrics": {
       "oos_sharpe": 0.1348875086447168,
       "oos_sharpe_live": 0.1348875086447168,
@@ -4911,40 +7531,40 @@
         {
           "fold": 0,
           "oos_sharpe": -0.15802582516467284,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.06922625258355193,
+          "oos_trades": 11,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": 0.47691320962252554,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.06816118547098353,
+          "oos_trades": 11,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.3541223538676353,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.39502526759691414,
+          "oos_trades": 11,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 0.5935678984591091,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.5493004957509469,
+          "oos_trades": 7,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": 0.04331667049363555,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.16992356758810415,
+          "oos_trades": 9,
           "start": null,
           "end": null
         }
@@ -4967,7 +7587,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 8 trades \u2014 Monte Carlo needs >=20"
       },
@@ -4985,6 +7605,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5002,7 +7627,7 @@
     "verdict": "REFUTED",
     "flags": [
       "only 10 trades (need >=30)",
-      "t-stat 0.91 below 2.0 - the return series is not distinguishable from noise",
+      "t-stat 1.33 below 2.0 - the return series is not distinguishable from noise",
       "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
       "OOS Sharpe retains only -71% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
     ],
@@ -5010,21 +7635,21 @@
     "paper": "Trading strategies for retail traders (LeapSpace)",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "crypto",
-    "elapsed_s": 20.8,
+    "elapsed_s": 17.8,
     "metrics": {
       "oos_sharpe": -0.6288674978742219,
       "oos_sharpe_live": -0.6288674978742219,
-      "in_sample_sharpe": 0.31295361059755444,
+      "in_sample_sharpe": 0.45732720474827576,
       "n_trades": 10,
-      "max_drawdown": 0.311245267574664,
-      "total_return": 0.36941652608636066,
+      "max_drawdown": 0.2863538408490037,
+      "total_return": 0.6329716233482345,
       "oos_max_drawdown": 0.4347933738928501,
       "oos_cagr": -0.07888341504662943,
       "oos_profitable_folds": 0,
-      "oos_retention": -0.7139927559364072,
+      "oos_retention": -0.7114851590143827,
       "pbo": 0.8,
       "n_oos_trades": 50,
-      "deflated_sharpe": 0.31295361059755444
+      "deflated_sharpe": 0.45732720474827576
     },
     "walk_forward": {
       "n_folds": 5,
@@ -5040,47 +7665,47 @@
       "oos_max_drawdown": 0.4347933738928501,
       "oos_trades_total": 50,
       "oos_profitable_folds": 0,
-      "final_is_sharpe": 0.880775739873519,
-      "oos_retention": -0.7139927559364072,
+      "final_is_sharpe": 0.8838799937097624,
+      "oos_retention": -0.7114851590143827,
       "pbo": 0.8,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": -0.30965940544107223,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.6474501167239081,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.38037032797052706,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.6813534685773686,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -1.2283637075748453,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 1.2371076714573592,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -0.955444830651502,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 1.054409281109687,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": -0.25074820591848473,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.8838799937097624,
+          "oos_trades": 10,
           "start": null,
           "end": null
         }
@@ -5103,7 +7728,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 10 trades \u2014 Monte Carlo needs >=20"
       },
@@ -5121,6 +7746,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5146,7 +7776,7 @@
     "paper": "Trading strategies for retail traders (LeapSpace)",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "fx_major",
-    "elapsed_s": 44.0,
+    "elapsed_s": 35.6,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -5185,7 +7815,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5193,7 +7823,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5201,7 +7831,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5209,7 +7839,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5217,7 +7847,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -5240,7 +7870,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -5258,6 +7888,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5275,30 +7910,30 @@
     "verdict": "REFUTED",
     "flags": [
       "only 13 trades (need >=30)",
-      "t-stat -1.46 below 2.0 - the return series is not distinguishable from noise",
+      "t-stat -1.08 below 2.0 - the return series is not distinguishable from noise",
       "0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few",
       "edge does not survive 2x cost stress",
-      "only 8/22 profitable years"
+      "only 10/22 profitable years"
     ],
     "errors": [],
     "paper": "Trading strategies for retail traders (LeapSpace)",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "commodities",
-    "elapsed_s": 69.0,
+    "elapsed_s": 53.4,
     "metrics": {
       "oos_sharpe": -0.3723093105128827,
       "oos_sharpe_live": -0.3723093105128827,
-      "in_sample_sharpe": -0.31175557727340525,
+      "in_sample_sharpe": -0.23199529745983044,
       "n_trades": 13,
-      "max_drawdown": 0.6813365326921688,
-      "total_return": -0.5407415099094008,
+      "max_drawdown": 0.6169524626927831,
+      "total_return": -0.4631292126854677,
       "oos_max_drawdown": 0.6608109236494049,
       "oos_cagr": -0.04170512036431151,
       "oos_profitable_folds": 0,
       "oos_retention": null,
-      "pbo": 0.9,
+      "pbo": 1.0,
       "n_oos_trades": 65,
-      "deflated_sharpe": -0.31175557727340525
+      "deflated_sharpe": -0.23199529745983044
     },
     "walk_forward": {
       "n_folds": 5,
@@ -5314,47 +7949,47 @@
       "oos_max_drawdown": 0.6608109236494049,
       "oos_trades_total": 65,
       "oos_profitable_folds": 0,
-      "final_is_sharpe": -0.2237112034346352,
+      "final_is_sharpe": -0.041540605149124527,
       "oos_retention": null,
-      "pbo": 0.9,
+      "pbo": 1.0,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": -0.8282124743395519,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.4512410197462382,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.2110947108998485,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.10124464721466254,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.7533705489659038,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.36832891824040936,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -0.23073963144369342,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.16073057457049073,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": -0.23053535192614844,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.041540605149124527,
+          "oos_trades": 13,
           "start": null,
           "end": null
         }
@@ -5377,7 +8012,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 13 trades \u2014 Monte Carlo needs >=20"
       },
@@ -5395,6 +8030,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5412,30 +8052,29 @@
     "verdict": "REFUTED",
     "flags": [
       "only 15 trades (need >=30)",
-      "t-stat -0.56 below 2.0 - the return series is not distinguishable from noise",
+      "t-stat 0.25 below 2.0 - the return series is not distinguishable from noise",
       "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
-      "edge does not survive 2x cost stress",
       "only 9/22 profitable years"
     ],
     "errors": [],
     "paper": "Trading strategies for retail traders (LeapSpace)",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "futures_broad",
-    "elapsed_s": 83.8,
+    "elapsed_s": 37.8,
     "metrics": {
       "oos_sharpe": -0.0644845024056179,
       "oos_sharpe_live": -0.0644845024056179,
-      "in_sample_sharpe": -0.11923160428652402,
+      "in_sample_sharpe": 0.05401936776126215,
       "n_trades": 15,
-      "max_drawdown": 0.5986144133452808,
-      "total_return": -0.33719743583083517,
+      "max_drawdown": 0.6547736776247706,
+      "total_return": -0.0032422143877574028,
       "oos_max_drawdown": 0.5397521150508452,
       "oos_cagr": -0.01323075183271838,
       "oos_profitable_folds": 2,
       "oos_retention": null,
-      "pbo": 0.0,
+      "pbo": 0.2,
       "n_oos_trades": 73,
-      "deflated_sharpe": -0.11923160428652402
+      "deflated_sharpe": 0.05401936776126215
     },
     "walk_forward": {
       "n_folds": 5,
@@ -5451,47 +8090,47 @@
       "oos_max_drawdown": 0.5397521150508452,
       "oos_trades_total": 73,
       "oos_profitable_folds": 2,
-      "final_is_sharpe": -0.8637131988115355,
+      "final_is_sharpe": -1.0919845714725374,
       "oos_retention": null,
-      "pbo": 0.0,
+      "pbo": 0.2,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": 0.4010804489930832,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.2052440822423096,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.9455851394583017,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -2.0283348627438147,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.08711942306971913,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.67390607234912,
+          "oos_trades": 15,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 0.05205075427645994,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.5210355918723943,
+          "oos_trades": 15,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": -0.08406584639810717,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.0919845714725374,
+          "oos_trades": 15,
           "start": null,
           "end": null
         }
@@ -5514,7 +8153,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 15 trades \u2014 Monte Carlo needs >=20"
       },
@@ -5532,6 +8171,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5549,7 +8193,7 @@
     "verdict": "REFUTED",
     "flags": [
       "only 12 trades (need >=30)",
-      "t-stat 0.17 below 2.0 - the return series is not distinguishable from noise",
+      "t-stat 0.16 below 2.0 - the return series is not distinguishable from noise",
       "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
       "OOS Sharpe retains only -21% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
     ],
@@ -5557,21 +8201,21 @@
     "paper": "Trading strategies for retail traders (LeapSpace)",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "rates_credit",
-    "elapsed_s": 58.0,
+    "elapsed_s": 37.1,
     "metrics": {
       "oos_sharpe": -0.20667360100948626,
       "oos_sharpe_live": -0.20667360100948626,
-      "in_sample_sharpe": 0.036921444474586756,
+      "in_sample_sharpe": 0.03438514443326592,
       "n_trades": 12,
-      "max_drawdown": 0.5103235465210703,
-      "total_return": -0.014795830630727758,
+      "max_drawdown": 0.5103338605529966,
+      "total_return": -0.01962088216030955,
       "oos_max_drawdown": 0.9224396407596738,
       "oos_cagr": -0.10617034523191049,
       "oos_profitable_folds": 2,
-      "oos_retention": -0.2081999025493758,
+      "oos_retention": -0.213302683221095,
       "pbo": 0.4,
       "n_oos_trades": 84,
-      "deflated_sharpe": 0.036921444474586756
+      "deflated_sharpe": 0.03438514443326592
     },
     "walk_forward": {
       "n_folds": 5,
@@ -5587,47 +8231,47 @@
       "oos_max_drawdown": 0.9224396407596738,
       "oos_trades_total": 84,
       "oos_profitable_folds": 2,
-      "final_is_sharpe": 0.9926690573761072,
-      "oos_retention": -0.2081999025493758,
+      "final_is_sharpe": 0.9689217120408303,
+      "oos_retention": -0.213302683221095,
       "pbo": 0.4,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": -0.5276999120768688,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 1.4902753251261294,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": 0.22260493013092192,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.20734174344428244,
+          "oos_trades": 20,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.6594221288027562,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.007471486200236678,
+          "oos_trades": 17,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -0.4487006953556129,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.3147547724999551,
+          "oos_trades": 17,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": 0.551926738368502,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.9689217120408303,
+          "oos_trades": 20,
           "start": null,
           "end": null
         }
@@ -5650,7 +8294,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 12 trades \u2014 Monte Carlo needs >=20"
       },
@@ -5668,6 +8312,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5694,7 +8343,7 @@
     "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "us_equity_style",
-    "elapsed_s": 116.6,
+    "elapsed_s": 80.5,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -5733,7 +8382,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5741,7 +8390,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5749,7 +8398,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5757,7 +8406,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5765,7 +8414,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -5788,7 +8437,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -5806,6 +8455,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5832,7 +8486,7 @@
     "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "crypto",
-    "elapsed_s": 66.2,
+    "elapsed_s": 81.2,
     "metrics": {
       "oos_sharpe": 0.6500287512277273,
       "oos_sharpe_live": 0.6500287512277273,
@@ -5871,7 +8525,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -5879,31 +8533,31 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": null,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.14021384452213612,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 1.4562147318445517,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.12155340742385287,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": null,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.7250714426775406,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -5944,6 +8598,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -5970,7 +8629,7 @@
     "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "fx_major",
-    "elapsed_s": 144.1,
+    "elapsed_s": 182.9,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -6009,7 +8668,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6017,7 +8676,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6025,7 +8684,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6033,7 +8692,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6041,7 +8700,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -6064,7 +8723,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -6082,6 +8741,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -6106,7 +8770,7 @@
     "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "commodities",
-    "elapsed_s": 204.0,
+    "elapsed_s": 257.8,
     "metrics": {
       "oos_sharpe": 0.16116034666461562,
       "oos_sharpe_live": 0.16116034666461562,
@@ -6144,39 +8808,39 @@
           "fold": 0,
           "oos_sharpe": 0.5312852120323227,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 25,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": 0.13462190269428706,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.9685671522537047,
+          "oos_trades": 38,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.09015899147398101,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.7924200817462509,
+          "oos_trades": 45,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -0.04811612697651296,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.6867535319781488,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": 0.1453251876202253,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.614518529866251,
+          "oos_trades": 39,
           "start": null,
           "end": null
         }
@@ -6217,6 +8881,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -6243,7 +8912,7 @@
     "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "futures_broad",
-    "elapsed_s": 221.1,
+    "elapsed_s": 312.2,
     "metrics": {
       "oos_sharpe": 0.0013354105182441895,
       "oos_sharpe_live": 0.0013354105182441895,
@@ -6281,39 +8950,39 @@
           "fold": 0,
           "oos_sharpe": 0.50920909061427,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.3387837044745867,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.6945665916047726,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.1954393598846123,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.5681034620204075,
+          "oos_trades": 40,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 0.12796533088627032,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.49242317834602833,
+          "oos_trades": 28,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": null,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.4406684917699108,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -6354,6 +9023,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -6380,7 +9054,7 @@
     "paper": "Financial market regime identification (LeapSpace); Trading strategies for retail traders (LeapSpace)",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "rates_credit",
-    "elapsed_s": 197.8,
+    "elapsed_s": 320.0,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -6419,7 +9093,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6427,7 +9101,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6435,7 +9109,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6443,7 +9117,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6451,7 +9125,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -6474,7 +9148,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -6492,6 +9166,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -6518,7 +9197,7 @@
     "paper": "Negative control for c7_session_drift_us_equity_style; not a paper claim",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "us_equity_style",
-    "elapsed_s": 30.9,
+    "elapsed_s": 53.5,
     "metrics": {
       "oos_sharpe": -0.4894992890573981,
       "oos_sharpe_live": -0.4894992890573981,
@@ -6555,40 +9234,40 @@
         {
           "fold": 0,
           "oos_sharpe": -0.16531486218596966,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.6165108738572477,
+          "oos_trades": 11,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.924831189346452,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.5641306237510997,
+          "oos_trades": 11,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.12665872116866453,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.8937743924159722,
+          "oos_trades": 11,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -0.9391429105801931,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.0515167814701885,
+          "oos_trades": 7,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": -0.3272678976225646,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.6289679843371868,
+          "oos_trades": 9,
           "start": null,
           "end": null
         }
@@ -6611,7 +9290,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 8 trades \u2014 Monte Carlo needs >=20"
       },
@@ -6629,6 +9308,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -6646,7 +9330,7 @@
     "verdict": "REFUTED",
     "flags": [
       "only 10 trades (need >=30)",
-      "t-stat -1.88 below 2.0 - the return series is not distinguishable from noise",
+      "t-stat -2.40 below 2.0 - the return series is not distinguishable from noise",
       "edge does not survive 2x cost stress",
       "only 0/6 profitable years"
     ],
@@ -6654,21 +9338,21 @@
     "paper": "Negative control for c7_session_drift_crypto; not a paper claim",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "crypto",
-    "elapsed_s": 18.7,
+    "elapsed_s": 30.3,
     "metrics": {
       "oos_sharpe": 0.15388257429005228,
       "oos_sharpe_live": 0.15388257429005228,
-      "in_sample_sharpe": -0.6467566703863004,
+      "in_sample_sharpe": -0.8253287972531497,
       "n_trades": 10,
-      "max_drawdown": 0.7050090749553024,
-      "total_return": -0.6080551721075504,
+      "max_drawdown": 0.7428687767714537,
+      "total_return": -0.6684350487771559,
       "oos_max_drawdown": 0.19347759702401912,
       "oos_cagr": 0.011115750261403434,
       "oos_profitable_folds": 3,
       "oos_retention": null,
-      "pbo": 0.8,
+      "pbo": 0.7,
       "n_oos_trades": 50,
-      "deflated_sharpe": -0.6467566703863004
+      "deflated_sharpe": -0.8253287972531497
     },
     "walk_forward": {
       "n_folds": 5,
@@ -6684,47 +9368,47 @@
       "oos_max_drawdown": 0.19347759702401912,
       "oos_trades_total": 50,
       "oos_profitable_folds": 3,
-      "final_is_sharpe": -1.0404901020816641,
+      "final_is_sharpe": -1.109046814696884,
       "oos_retention": null,
-      "pbo": 0.8,
+      "pbo": 0.7,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": 0.05568047534270338,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.5901547166567979,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.24955612013945339,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.7373797188855888,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": 0.6737399875934927,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.4609937468954761,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 0.5900729775546938,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.2798883850953748,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": -0.5542433940801216,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.109046814696884,
+          "oos_trades": 10,
           "start": null,
           "end": null
         }
@@ -6747,7 +9431,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 10 trades \u2014 Monte Carlo needs >=20"
       },
@@ -6765,6 +9449,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -6790,7 +9479,7 @@
     "paper": "Negative control for c7_session_drift_fx_major; not a paper claim",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "fx_major",
-    "elapsed_s": 40.4,
+    "elapsed_s": 67.8,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -6829,7 +9518,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6837,7 +9526,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6845,7 +9534,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6853,7 +9542,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -6861,7 +9550,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -6884,7 +9573,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -6902,6 +9591,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -6919,27 +9613,27 @@
     "verdict": "REFUTED",
     "flags": [
       "only 13 trades (need >=30)",
-      "t-stat 1.35 below 2.0 - the return series is not distinguishable from noise"
+      "t-stat 0.99 below 2.0 - the return series is not distinguishable from noise"
     ],
     "errors": [],
     "paper": "Negative control for c7_session_drift_commodities; not a paper claim",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "commodities",
-    "elapsed_s": 48.7,
+    "elapsed_s": 101.5,
     "metrics": {
       "oos_sharpe": 0.36366340440404743,
       "oos_sharpe_live": 0.36366340440404743,
-      "in_sample_sharpe": 0.28885633172228425,
+      "in_sample_sharpe": 0.21164665709143626,
       "n_trades": 13,
-      "max_drawdown": 0.32096983738320795,
-      "total_return": 0.6331344443003355,
+      "max_drawdown": 0.2937612705950161,
+      "total_return": 0.40134146416762606,
       "oos_max_drawdown": 0.2732306348619459,
       "oos_cagr": 0.030235356362088517,
       "oos_profitable_folds": 5,
-      "oos_retention": 4.632453866567887,
+      "oos_retention": null,
       "pbo": 0.9,
       "n_oos_trades": 65,
-      "deflated_sharpe": 0.28885633172228425
+      "deflated_sharpe": 0.21164665709143626
     },
     "walk_forward": {
       "n_folds": 5,
@@ -6955,47 +9649,47 @@
       "oos_max_drawdown": 0.2732306348619459,
       "oos_trades_total": 65,
       "oos_profitable_folds": 5,
-      "final_is_sharpe": 0.07850340551226688,
-      "oos_retention": 4.632453866567887,
+      "final_is_sharpe": -0.07351321190163838,
+      "oos_retention": null,
       "pbo": 0.9,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": 0.7089802083774485,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.5545913000556897,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": 0.06489869914737155,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.05946712324604572,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": 0.6494334502738058,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.560239887156491,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 0.3612834740716115,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.35216919294619214,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": 0.1908915398495651,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.07351321190163838,
+          "oos_trades": 13,
           "start": null,
           "end": null
         }
@@ -7018,7 +9712,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 13 trades \u2014 Monte Carlo needs >=20"
       },
@@ -7036,6 +9730,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -7053,29 +9752,31 @@
     "verdict": "REFUTED",
     "flags": [
       "only 15 trades (need >=30)",
-      "t-stat 0.34 below 2.0 - the return series is not distinguishable from noise",
+      "t-stat -0.73 below 2.0 - the return series is not distinguishable from noise",
       "only 2/5 walk-forward folds profitable (edge concentrated in a few periods)",
-      "OOS Sharpe retains only 4% of the in-sample Sharpe (need 40%) - the edge degrades out of sample"
+      "OOS Sharpe retains only 3% of the in-sample Sharpe (need 40%) - the edge degrades out of sample",
+      "edge does not survive 2x cost stress",
+      "only 10/22 profitable years"
     ],
     "errors": [],
     "paper": "Negative control for c7_session_drift_futures_broad; not a paper claim",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "futures_broad",
-    "elapsed_s": 53.7,
+    "elapsed_s": 102.6,
     "metrics": {
       "oos_sharpe": 0.0345788089691653,
       "oos_sharpe_live": 0.0345788089691653,
-      "in_sample_sharpe": 0.07266495725911994,
+      "in_sample_sharpe": -0.1571526069494895,
       "n_trades": 15,
-      "max_drawdown": 0.37527249937470497,
-      "total_return": 0.0523100730317021,
+      "max_drawdown": 0.6163994500391028,
+      "total_return": -0.3946031752362842,
       "oos_max_drawdown": 0.33368241499395723,
       "oos_cagr": -0.0015138214118066706,
       "oos_profitable_folds": 2,
-      "oos_retention": 0.04340932536366845,
-      "pbo": 0.2,
+      "oos_retention": 0.03345382991090146,
+      "pbo": 0.4,
       "n_oos_trades": 73,
-      "deflated_sharpe": 0.07266495725911994
+      "deflated_sharpe": -0.1571526069494895
     },
     "walk_forward": {
       "n_folds": 5,
@@ -7091,47 +9792,47 @@
       "oos_max_drawdown": 0.33368241499395723,
       "oos_trades_total": 73,
       "oos_profitable_folds": 2,
-      "final_is_sharpe": 0.796575590140503,
-      "oos_retention": 0.04340932536366845,
-      "pbo": 0.2,
+      "final_is_sharpe": 1.0336278106650278,
+      "oos_retention": 0.03345382991090146,
+      "pbo": 0.4,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": -0.4799935332382263,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 1.1647093868366762,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": 0.8279996308525875,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 2.0883873818912337,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": -0.00972486839972424,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 1.6143916428876772,
+          "oos_trades": 15,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -0.001627122561951067,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 1.468372247370398,
+          "oos_trades": 15,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": 0.04954853814794694,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 1.0336278106650278,
+          "oos_trades": 15,
           "start": null,
           "end": null
         }
@@ -7154,7 +9855,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 15 trades \u2014 Monte Carlo needs >=20"
       },
@@ -7172,6 +9873,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -7189,7 +9895,7 @@
     "verdict": "REFUTED",
     "flags": [
       "only 12 trades (need >=30)",
-      "t-stat -0.53 below 2.0 - the return series is not distinguishable from noise",
+      "t-stat -0.51 below 2.0 - the return series is not distinguishable from noise",
       "edge does not survive 2x cost stress",
       "only 10/22 profitable years"
     ],
@@ -7197,21 +9903,21 @@
     "paper": "Negative control for c7_session_drift_rates_credit; not a paper claim",
     "concept": "C7_order_flow_microstructure_base",
     "asset_class": "rates_credit",
-    "elapsed_s": 47.5,
+    "elapsed_s": 86.7,
     "metrics": {
       "oos_sharpe": 0.32061276745792955,
       "oos_sharpe_live": 0.32061276745792955,
-      "in_sample_sharpe": -0.11333580087515174,
+      "in_sample_sharpe": -0.10996450726865067,
       "n_trades": 12,
-      "max_drawdown": 0.4377642497493286,
-      "total_return": -0.1948766533256565,
+      "max_drawdown": 0.43776688476892334,
+      "total_return": -0.19079989218761406,
       "oos_max_drawdown": 0.7905147489056286,
       "oos_cagr": 0.05304022022354715,
       "oos_profitable_folds": 3,
       "oos_retention": null,
       "pbo": 0.3,
       "n_oos_trades": 84,
-      "deflated_sharpe": -0.11333580087515174
+      "deflated_sharpe": -0.10996450726865067
     },
     "walk_forward": {
       "n_folds": 5,
@@ -7227,47 +9933,47 @@
       "oos_max_drawdown": 0.7905147489056286,
       "oos_trades_total": 84,
       "oos_profitable_folds": 3,
-      "final_is_sharpe": -1.118275570656128,
+      "final_is_sharpe": -1.0876864580322845,
       "oos_retention": null,
       "pbo": 0.3,
       "folds": [
         {
           "fold": 0,
           "oos_sharpe": 0.2334893020535214,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.6531308757404584,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.15475952238173576,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.22968549607907734,
+          "oos_trades": 20,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": 0.9460354644374496,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.06185509814552211,
+          "oos_trades": 17,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 0.5479403300070662,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.3187491645899192,
+          "oos_trades": 17,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": -0.9579724520480146,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -1.0876864580322845,
+          "oos_trades": 20,
           "start": null,
           "end": null
         }
@@ -7290,7 +9996,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 12 trades \u2014 Monte Carlo needs >=20"
       },
@@ -7308,6 +10014,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -7334,7 +10045,7 @@
     "paper": "Negative control for c8_liquidity_reversal_us_equity_style; not a paper claim",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "us_equity_style",
-    "elapsed_s": 120.5,
+    "elapsed_s": 153.8,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -7373,7 +10084,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7381,7 +10092,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7389,7 +10100,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7397,7 +10108,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7405,7 +10116,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -7428,7 +10139,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -7446,6 +10157,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -7473,7 +10189,7 @@
     "paper": "Negative control for c8_liquidity_reversal_crypto; not a paper claim",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "crypto",
-    "elapsed_s": 59.4,
+    "elapsed_s": 93.4,
     "metrics": {
       "oos_sharpe": -0.654076525691794,
       "oos_sharpe_live": -0.654076525691794,
@@ -7512,7 +10228,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7520,31 +10236,31 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": null,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.44787208731443345,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -1.4653445354727401,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": -0.38823199083236226,
+          "oos_trades": 10,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": null,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.39993888823799545,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -7585,6 +10301,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -7611,7 +10332,7 @@
     "paper": "Negative control for c8_liquidity_reversal_fx_major; not a paper claim",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "fx_major",
-    "elapsed_s": 110.4,
+    "elapsed_s": 250.2,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -7650,7 +10371,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7658,7 +10379,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7666,7 +10387,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7674,7 +10395,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -7682,7 +10403,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -7705,7 +10426,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -7723,6 +10444,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -7750,7 +10476,7 @@
     "paper": "Negative control for c8_liquidity_reversal_commodities; not a paper claim",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "commodities",
-    "elapsed_s": 164.2,
+    "elapsed_s": 394.7,
     "metrics": {
       "oos_sharpe": -0.18764338754748394,
       "oos_sharpe_live": -0.18764338754748394,
@@ -7788,39 +10514,39 @@
           "fold": 0,
           "oos_sharpe": -0.534375245332653,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 25,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": -0.20208950882333196,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.9506337431339605,
+          "oos_trades": 38,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": 0.044862756267626515,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.7778006250931045,
+          "oos_trades": 45,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": 0.033735293048215216,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.6740911909843488,
+          "oos_trades": 13,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": -0.16139790141197935,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.6031921735508738,
+          "oos_trades": 39,
           "start": null,
           "end": null
         }
@@ -7861,6 +10587,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -7887,7 +10618,7 @@
     "paper": "Negative control for c8_liquidity_reversal_futures_broad; not a paper claim",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "futures_broad",
-    "elapsed_s": 174.7,
+    "elapsed_s": 411.3,
     "metrics": {
       "oos_sharpe": -0.036701250175215076,
       "oos_sharpe_live": -0.036701250175215076,
@@ -7925,39 +10656,39 @@
           "fold": 0,
           "oos_sharpe": -0.5374858304004131,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 1,
           "oos_sharpe": 0.30847413367220516,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.6903822153215902,
+          "oos_trades": 14,
           "start": null,
           "end": null
         },
         {
           "fold": 2,
           "oos_sharpe": 0.14972257415928672,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.5646831154526905,
+          "oos_trades": 40,
           "start": null,
           "end": null
         },
         {
           "fold": 3,
           "oos_sharpe": -0.17384571542395855,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.48945941461775155,
+          "oos_trades": 28,
           "start": null,
           "end": null
         },
         {
           "fold": 4,
           "oos_sharpe": null,
-          "in_sample_sharpe": null,
-          "oos_trades": null,
+          "in_sample_sharpe": 0.4380167307793117,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -7998,6 +10729,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],
@@ -8024,7 +10760,7 @@
     "paper": "Negative control for c8_liquidity_reversal_rates_credit; not a paper claim",
     "concept": "C8_liquidity_provision_reversal",
     "asset_class": "rates_credit",
-    "elapsed_s": 140.9,
+    "elapsed_s": 590.0,
     "metrics": {
       "oos_sharpe": null,
       "oos_sharpe_live": null,
@@ -8063,7 +10799,7 @@
           "fold": 0,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -8071,7 +10807,7 @@
           "fold": 1,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -8079,7 +10815,7 @@
           "fold": 2,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -8087,7 +10823,7 @@
           "fold": 3,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         },
@@ -8095,7 +10831,7 @@
           "fold": 4,
           "oos_sharpe": null,
           "in_sample_sharpe": null,
-          "oos_trades": null,
+          "oos_trades": 0,
           "start": null,
           "end": null
         }
@@ -8118,7 +10854,7 @@
         "note": null
       },
       "monte_carlo": {
-        "status": "ran",
+        "status": "ERROR",
         "passed": null,
         "note": "only 0 trades \u2014 Monte Carlo needs >=20"
       },
@@ -8136,6 +10872,11 @@
         "status": "ran",
         "passed": null,
         "note": null
+      },
+      "replication": {
+        "status": "SKIPPED",
+        "passed": null,
+        "note": "the gauntlet only runs cross-market replication when alternative universes are supplied, and the matrix runner supplies none - so NO spec in this matrix was tested for whether it transfers to a different market"
       }
     },
     "skipped_stages": [],

@@ -1288,6 +1288,35 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     def _invert(v: float, invert: bool) -> float:
         return -float(v) if invert else float(v)
 
+    def sig_trend_long_short(panel, features, feature=None, threshold=0.0,
+                             dead_band=0.0, invert_signal=False, **kw):
+        """The paper's trend rule with BOTH legs live.
+
+        Delegates to `leapspace.trend.sig_trend_long_short`. Long above
+        the trend, short below it, flat in the dead band.
+        """
+        from .trend import sig_trend_long_short as _impl
+        return _impl(panel, features, feature=feature, threshold=threshold,
+                      dead_band=dead_band, invert_signal=invert_signal,
+                      **kw)
+
+    def sig_pairs_mean_reversion(panel, features, pairs=None, betas=None,
+                                 lookback_stats=60, z_entry=2.0, z_exit=0.5,
+                                 max_hold_bars=20, max_pairs=3,
+                                 pair_lookback=252, invert_signal=False,
+                                 **kw):
+        """Dollar-neutral pairs mean-reversion.
+
+        Delegates to `leapspace.trend.sig_pairs_mean_reversion`. One leg
+        long, the other short, sized by the hedge ratio.
+        """
+        from .trend import sig_pairs_mean_reversion as _impl
+        return _impl(panel, features, pairs=pairs, betas=betas,
+                      lookback_stats=lookback_stats, z_entry=z_entry,
+                      z_exit=z_exit, max_hold_bars=max_hold_bars,
+                      max_pairs=max_pairs, pair_lookback=pair_lookback,
+                      invert_signal=invert_signal, **kw)
+
     def sig_ensemble_blend(panel, features, members=None,
                            min_agreement=2, rank_floor=0.30,
                            invert_signal=False, **kw):
@@ -1585,6 +1614,8 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
     btengine.SIGNALS["liquidity_gated_reversion"] = sig_liquidity_gated_reversion
     btengine.SIGNALS["paper_cross_sectional"] = sig_paper_cross_sectional
     btengine.SIGNALS["ensemble_blend"] = sig_ensemble_blend
+    btengine.SIGNALS["trend_long_short"] = sig_trend_long_short
+    btengine.SIGNALS["pairs_mean_reversion"] = sig_pairs_mean_reversion
     return {
         "registered": True,
         "features": ["regime_momentum_score", "leading_iv_level",

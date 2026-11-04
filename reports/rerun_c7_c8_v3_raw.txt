@@ -1,0 +1,67 @@
+==============================================================================
+C7/C8 v3 RE-RUN — full validation gauntlet, quick=False
+started: 2026-11-04 04:58:03
+==============================================================================
+total specs built      : 96
+specs in C7/C8 scope   : 24
+   - c7_session_drift_us_equity_style
+   - c7_session_drift_crypto
+   - c7_session_drift_fx_major
+   - c7_session_drift_commodities
+   - c7_session_drift_futures_broad
+   - c7_session_drift_rates_credit
+   - c8_liquidity_reversal_us_equity_style
+   - c8_liquidity_reversal_crypto
+   - c8_liquidity_reversal_fx_major
+   - c8_liquidity_reversal_commodities
+   - c8_liquidity_reversal_futures_broad
+   - c8_liquidity_reversal_rates_credit
+   - NEGATIVE-CONTROL-c7_session_drift_us_equity_style
+   - NEGATIVE-CONTROL-c7_session_drift_crypto
+   - NEGATIVE-CONTROL-c7_session_drift_fx_major
+   - NEGATIVE-CONTROL-c7_session_drift_commodities
+   - NEGATIVE-CONTROL-c7_session_drift_futures_broad
+   - NEGATIVE-CONTROL-c7_session_drift_rates_credit
+   - NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style
+   - NEGATIVE-CONTROL-c8_liquidity_reversal_crypto
+   - NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major
+   - NEGATIVE-CONTROL-c8_liquidity_reversal_commodities
+   - NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad
+   - NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit
+------------------------------------------------------------------------------
+[37/96] c7_session_drift_us_equity_style -> REFUTED (26.5s)
+[38/96] c7_session_drift_crypto -> REFUTED (17.8s)
+[39/96] c7_session_drift_fx_major -> INCONCLUSIVE (35.6s)
+[40/96] c7_session_drift_commodities -> REFUTED (53.4s)
+[41/96] c7_session_drift_futures_broad -> REFUTED (37.8s)
+[42/96] c7_session_drift_rates_credit -> REFUTED (37.1s)
+[43/96] c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (80.5s)
+[44/96] c8_liquidity_reversal_crypto -> FRAGILE (81.2s)
+[45/96] c8_liquidity_reversal_fx_major -> INCONCLUSIVE (182.9s)
+[46/96] c8_liquidity_reversal_commodities -> REFUTED (257.8s)
+[47/96] c8_liquidity_reversal_futures_broad -> REFUTED (312.2s)
+[48/96] c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (320.0s)
+[85/96] NEGATIVE-CONTROL-c7_session_drift_us_equity_style -> REFUTED (53.5s)
+[86/96] NEGATIVE-CONTROL-c7_session_drift_crypto -> REFUTED (30.3s)
+[87/96] NEGATIVE-CONTROL-c7_session_drift_fx_major -> INCONCLUSIVE (67.8s)
+[88/96] NEGATIVE-CONTROL-c7_session_drift_commodities -> REFUTED (101.5s)
+[89/96] NEGATIVE-CONTROL-c7_session_drift_futures_broad -> REFUTED (102.6s)
+[90/96] NEGATIVE-CONTROL-c7_session_drift_rates_credit -> REFUTED (86.7s)
+[91/96] NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style -> INCONCLUSIVE (153.8s)
+[92/96] NEGATIVE-CONTROL-c8_liquidity_reversal_crypto -> REFUTED (93.4s)
+[93/96] NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major -> INCONCLUSIVE (250.2s)
+[94/96] NEGATIVE-CONTROL-c8_liquidity_reversal_commodities -> REFUTED (394.7s)
+[95/96] NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad -> REFUTED (411.3s)
+[96/96] NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit -> INCONCLUSIVE (590.0s)
+------------------------------------------------------------------------------
+run_matrix returned:
+{
+  "results_path": "reports/paper_concept_results.json",
+  "log_path": "reports/_rerun_c7_c8_v3.log",
+  "n_run": 24,
+  "elapsed_s": 3804.2
+}
+elapsed_s: 3805.8
+==============================================================================
+C7/C8 v3 RE-RUN COMPLETE
+==============================================================================

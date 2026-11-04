@@ -1,0 +1,1176 @@
+========================================================================================================
+RESULTS FILE      : C:\Users\HP\AppData\Local\hermes\projects\leapspace-quant\reports\paper_concept_results.json
+total rows in file: 96   rows in C7/C8 scope: 24
+========================================================================================================
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_commodities
+  concept / asset_class : C7_order_flow_microstructure_base / commodities
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : 0.3637
+  IN-SAMPLE Sharpe      : 0.2116
+  oos_sharpe_live       : 0.3637
+  n_trades              : 13
+  max_drawdown          : 0.2938
+  total_return          : 0.4013
+  oos_max_drawdown      : 0.2732
+  oos_cagr              : 0.0302
+  n_oos_trades          : 65
+  oos_profitable_folds  : 5
+  oos_retention         : None
+  pbo                   : 0.9
+  deflated_sharpe       : 0.2116
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 101.5
+  FLAGS (2), verbatim:
+     * only 13 trades (need >=30)
+     * t-stat 0.99 below 2.0 - the return series is not distinguishable from noise
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=0.7090  in_sample=-0.5546  oos_trades=13  window=None -> None
+     fold 1: oos_sharpe=0.0649  in_sample=-0.0595  oos_trades=13  window=None -> None
+     fold 2: oos_sharpe=0.6494  in_sample=-0.5602  oos_trades=13  window=None -> None
+     fold 3: oos_sharpe=0.3613  in_sample=-0.3522  oos_trades=13  window=None -> None
+     fold 4: oos_sharpe=0.1909  in_sample=-0.0735  oos_trades=13  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 13 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_crypto
+  concept / asset_class : C7_order_flow_microstructure_base / crypto
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : 0.1539
+  IN-SAMPLE Sharpe      : -0.8253
+  oos_sharpe_live       : 0.1539
+  n_trades              : 10
+  max_drawdown          : 0.7429
+  total_return          : -0.6684
+  oos_max_drawdown      : 0.1935
+  oos_cagr              : 0.0111
+  n_oos_trades          : 50
+  oos_profitable_folds  : 3
+  oos_retention         : None
+  pbo                   : 0.7
+  deflated_sharpe       : -0.8253
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 30.3
+  FLAGS (4), verbatim:
+     * only 10 trades (need >=30)
+     * t-stat -2.40 below 2.0 - the return series is not distinguishable from noise
+     * edge does not survive 2x cost stress
+     * only 0/6 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=0.0557  in_sample=-0.5902  oos_trades=10  window=None -> None
+     fold 1: oos_sharpe=-0.2496  in_sample=-0.7374  oos_trades=10  window=None -> None
+     fold 2: oos_sharpe=0.6737  in_sample=-1.4610  oos_trades=10  window=None -> None
+     fold 3: oos_sharpe=0.5901  in_sample=-1.2799  oos_trades=10  window=None -> None
+     fold 4: oos_sharpe=-0.5542  in_sample=-1.1090  oos_trades=10  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 10 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_futures_broad
+  concept / asset_class : C7_order_flow_microstructure_base / futures_broad
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : 0.0346
+  IN-SAMPLE Sharpe      : -0.1572
+  oos_sharpe_live       : 0.0346
+  n_trades              : 15
+  max_drawdown          : 0.6164
+  total_return          : -0.3946
+  oos_max_drawdown      : 0.3337
+  oos_cagr              : -0.0015
+  n_oos_trades          : 73
+  oos_profitable_folds  : 2
+  oos_retention         : 0.0335
+  pbo                   : 0.4
+  deflated_sharpe       : -0.1572
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 102.6
+  FLAGS (6), verbatim:
+     * only 15 trades (need >=30)
+     * t-stat -0.73 below 2.0 - the return series is not distinguishable from noise
+     * only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+     * OOS Sharpe retains only 3% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+     * edge does not survive 2x cost stress
+     * only 10/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.4800  in_sample=1.1647  oos_trades=14  window=None -> None
+     fold 1: oos_sharpe=0.8280  in_sample=2.0884  oos_trades=14  window=None -> None
+     fold 2: oos_sharpe=-0.0097  in_sample=1.6144  oos_trades=15  window=None -> None
+     fold 3: oos_sharpe=-0.0016  in_sample=1.4684  oos_trades=15  window=None -> None
+     fold 4: oos_sharpe=0.0495  in_sample=1.0336  oos_trades=15  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 15 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_fx_major
+  concept / asset_class : C7_order_flow_microstructure_base / fx_major
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 67.8
+  FLAGS (4), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_rates_credit
+  concept / asset_class : C7_order_flow_microstructure_base / rates_credit
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : 0.3206
+  IN-SAMPLE Sharpe      : -0.1100
+  oos_sharpe_live       : 0.3206
+  n_trades              : 12
+  max_drawdown          : 0.4378
+  total_return          : -0.1908
+  oos_max_drawdown      : 0.7905
+  oos_cagr              : 0.0530
+  n_oos_trades          : 84
+  oos_profitable_folds  : 3
+  oos_retention         : None
+  pbo                   : 0.3
+  deflated_sharpe       : -0.1100
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 86.7
+  FLAGS (4), verbatim:
+     * only 12 trades (need >=30)
+     * t-stat -0.51 below 2.0 - the return series is not distinguishable from noise
+     * edge does not survive 2x cost stress
+     * only 10/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=0.2335  in_sample=-1.6531  oos_trades=10  window=None -> None
+     fold 1: oos_sharpe=-0.1548  in_sample=-0.2297  oos_trades=20  window=None -> None
+     fold 2: oos_sharpe=0.9460  in_sample=0.0619  oos_trades=17  window=None -> None
+     fold 3: oos_sharpe=0.5479  in_sample=-0.3187  oos_trades=17  window=None -> None
+     fold 4: oos_sharpe=-0.9580  in_sample=-1.0877  oos_trades=20  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 12 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c7_session_drift_us_equity_style
+  concept / asset_class : C7_order_flow_microstructure_base / us_equity_style
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.4895
+  IN-SAMPLE Sharpe      : -0.5125
+  oos_sharpe_live       : -0.4895
+  n_trades              : 8
+  max_drawdown          : 0.2429
+  total_return          : -0.2187
+  oos_max_drawdown      : 0.2215
+  oos_cagr              : -0.0109
+  n_oos_trades          : 49
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : 0.5
+  deflated_sharpe       : -0.5125
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 53.5
+  FLAGS (5), verbatim:
+     * only 8 trades (need >=30)
+     * t-stat -2.39 below 2.0 - the return series is not distinguishable from noise
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * only 4/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.1653  in_sample=-0.6165  oos_trades=11  window=None -> None
+     fold 1: oos_sharpe=-0.9248  in_sample=-0.5641  oos_trades=11  window=None -> None
+     fold 2: oos_sharpe=-0.1267  in_sample=-0.8938  oos_trades=11  window=None -> None
+     fold 3: oos_sharpe=-0.9391  in_sample=-1.0515  oos_trades=7  window=None -> None
+     fold 4: oos_sharpe=-0.3273  in_sample=-0.6290  oos_trades=9  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 8 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c8_liquidity_reversal_commodities
+  concept / asset_class : C8_liquidity_provision_reversal / commodities
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.1876
+  IN-SAMPLE Sharpe      : -0.0804
+  oos_sharpe_live       : -0.1876
+  n_trades              : 171
+  max_drawdown          : 0.0832
+  total_return          : -0.0298
+  oos_max_drawdown      : 0.0963
+  oos_cagr              : -0.0036
+  n_oos_trades          : 160
+  oos_profitable_folds  : 2
+  oos_retention         : -0.3111
+  pbo                   : 0.5
+  deflated_sharpe       : -0.0804
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 394.7
+  FLAGS (6), verbatim:
+     * t-stat -0.38 below 2.0 - the return series is not distinguishable from noise
+     * only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+     * OOS Sharpe retains only -31% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+     * edge does not survive 2x cost stress
+     * Monte Carlo prob(profitable) 31%
+     * only 7/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.5344  in_sample=None  oos_trades=25  window=None -> None
+     fold 1: oos_sharpe=-0.2021  in_sample=0.9506  oos_trades=38  window=None -> None
+     fold 2: oos_sharpe=0.0449  in_sample=0.7778  oos_trades=45  window=None -> None
+     fold 3: oos_sharpe=0.0337  in_sample=0.6741  oos_trades=13  window=None -> None
+     fold 4: oos_sharpe=-0.1614  in_sample=0.6032  oos_trades=39  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            RAN      note=-
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c8_liquidity_reversal_crypto
+  concept / asset_class : C8_liquidity_provision_reversal / crypto
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.6541
+  IN-SAMPLE Sharpe      : -0.0162
+  oos_sharpe_live       : -0.6541
+  n_trades              : 30
+  max_drawdown          : 0.0266
+  total_return          : -0.0015
+  oos_max_drawdown      : 0.2089
+  oos_cagr              : -0.0426
+  n_oos_trades          : 10
+  oos_profitable_folds  : 0
+  oos_retention         : -1.6354
+  pbo                   : None
+  deflated_sharpe       : -0.0162
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 93.4
+  FLAGS (6), verbatim:
+     * t-stat -0.05 below 2.0 - the return series is not distinguishable from noise
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * OOS Sharpe retains only -164% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+     * edge does not survive 2x cost stress
+     * Monte Carlo prob(profitable) 44%
+     * only 2/6 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=-0.4479  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=-1.4653  in_sample=-0.3882  oos_trades=10  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=0.3999  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            RAN      note=-
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad
+  concept / asset_class : C8_liquidity_provision_reversal / futures_broad
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.0367
+  IN-SAMPLE Sharpe      : 0.0620
+  oos_sharpe_live       : -0.0367
+  n_trades              : 110
+  max_drawdown          : 0.0227
+  total_return          : 0.0097
+  oos_max_drawdown      : 0.0227
+  oos_cagr              : -0.0003
+  n_oos_trades          : 96
+  oos_profitable_folds  : 2
+  oos_retention         : -0.0838
+  pbo                   : 0.0
+  deflated_sharpe       : 0.0620
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 411.3
+  FLAGS (5), verbatim:
+     * t-stat 0.29 below 2.0 - the return series is not distinguishable from noise
+     * only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+     * OOS Sharpe retains only -8% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+     * Monte Carlo prob(profitable) 61%
+     * only 4/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.5375  in_sample=None  oos_trades=14  window=None -> None
+     fold 1: oos_sharpe=0.3085  in_sample=0.6904  oos_trades=14  window=None -> None
+     fold 2: oos_sharpe=0.1497  in_sample=0.5647  oos_trades=40  window=None -> None
+     fold 3: oos_sharpe=-0.1738  in_sample=0.4895  oos_trades=28  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=0.4380  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            RAN      note=-
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major
+  concept / asset_class : C8_liquidity_provision_reversal / fx_major
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 250.2
+  FLAGS (5), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * parameter stability 0% (< 60%)
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit
+  concept / asset_class : C8_liquidity_provision_reversal / rates_credit
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 590.0
+  FLAGS (5), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * parameter stability 0% (< 60%)
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style
+  concept / asset_class : C8_liquidity_provision_reversal / us_equity_style
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 153.8
+  FLAGS (5), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * parameter stability 0% (< 60%)
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c7_session_drift_commodities
+  concept / asset_class : C7_order_flow_microstructure_base / commodities
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.3723
+  IN-SAMPLE Sharpe      : -0.2320
+  oos_sharpe_live       : -0.3723
+  n_trades              : 13
+  max_drawdown          : 0.6170
+  total_return          : -0.4631
+  oos_max_drawdown      : 0.6608
+  oos_cagr              : -0.0417
+  n_oos_trades          : 65
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : 1.0
+  deflated_sharpe       : -0.2320
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 53.4
+  FLAGS (5), verbatim:
+     * only 13 trades (need >=30)
+     * t-stat -1.08 below 2.0 - the return series is not distinguishable from noise
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * only 10/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.8282  in_sample=0.4512  oos_trades=13  window=None -> None
+     fold 1: oos_sharpe=-0.2111  in_sample=-0.1012  oos_trades=13  window=None -> None
+     fold 2: oos_sharpe=-0.7534  in_sample=0.3683  oos_trades=13  window=None -> None
+     fold 3: oos_sharpe=-0.2307  in_sample=0.1607  oos_trades=13  window=None -> None
+     fold 4: oos_sharpe=-0.2305  in_sample=-0.0415  oos_trades=13  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 13 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c7_session_drift_crypto
+  concept / asset_class : C7_order_flow_microstructure_base / crypto
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.6289
+  IN-SAMPLE Sharpe      : 0.4573
+  oos_sharpe_live       : -0.6289
+  n_trades              : 10
+  max_drawdown          : 0.2864
+  total_return          : 0.6330
+  oos_max_drawdown      : 0.4348
+  oos_cagr              : -0.0789
+  n_oos_trades          : 50
+  oos_profitable_folds  : 0
+  oos_retention         : -0.7115
+  pbo                   : 0.8
+  deflated_sharpe       : 0.4573
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 17.8
+  FLAGS (4), verbatim:
+     * only 10 trades (need >=30)
+     * t-stat 1.33 below 2.0 - the return series is not distinguishable from noise
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * OOS Sharpe retains only -71% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.3097  in_sample=0.6475  oos_trades=10  window=None -> None
+     fold 1: oos_sharpe=-0.3804  in_sample=0.6814  oos_trades=10  window=None -> None
+     fold 2: oos_sharpe=-1.2284  in_sample=1.2371  oos_trades=10  window=None -> None
+     fold 3: oos_sharpe=-0.9554  in_sample=1.0544  oos_trades=10  window=None -> None
+     fold 4: oos_sharpe=-0.2507  in_sample=0.8839  oos_trades=10  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 10 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c7_session_drift_futures_broad
+  concept / asset_class : C7_order_flow_microstructure_base / futures_broad
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.0645
+  IN-SAMPLE Sharpe      : 0.0540
+  oos_sharpe_live       : -0.0645
+  n_trades              : 15
+  max_drawdown          : 0.6548
+  total_return          : -0.0032
+  oos_max_drawdown      : 0.5398
+  oos_cagr              : -0.0132
+  n_oos_trades          : 73
+  oos_profitable_folds  : 2
+  oos_retention         : None
+  pbo                   : 0.2
+  deflated_sharpe       : 0.0540
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 37.8
+  FLAGS (4), verbatim:
+     * only 15 trades (need >=30)
+     * t-stat 0.25 below 2.0 - the return series is not distinguishable from noise
+     * only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+     * only 9/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=0.4011  in_sample=-1.2052  oos_trades=14  window=None -> None
+     fold 1: oos_sharpe=-0.9456  in_sample=-2.0283  oos_trades=14  window=None -> None
+     fold 2: oos_sharpe=-0.0871  in_sample=-1.6739  oos_trades=15  window=None -> None
+     fold 3: oos_sharpe=0.0521  in_sample=-1.5210  oos_trades=15  window=None -> None
+     fold 4: oos_sharpe=-0.0841  in_sample=-1.0920  oos_trades=15  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 15 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c7_session_drift_fx_major
+  concept / asset_class : C7_order_flow_microstructure_base / fx_major
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 35.6
+  FLAGS (4), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c7_session_drift_rates_credit
+  concept / asset_class : C7_order_flow_microstructure_base / rates_credit
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : -0.2067
+  IN-SAMPLE Sharpe      : 0.0344
+  oos_sharpe_live       : -0.2067
+  n_trades              : 12
+  max_drawdown          : 0.5103
+  total_return          : -0.0196
+  oos_max_drawdown      : 0.9224
+  oos_cagr              : -0.1062
+  n_oos_trades          : 84
+  oos_profitable_folds  : 2
+  oos_retention         : -0.2133
+  pbo                   : 0.4
+  deflated_sharpe       : 0.0344
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 37.1
+  FLAGS (4), verbatim:
+     * only 12 trades (need >=30)
+     * t-stat 0.16 below 2.0 - the return series is not distinguishable from noise
+     * only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+     * OOS Sharpe retains only -21% of the in-sample Sharpe (need 40%) - the edge degrades out of sample
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.5277  in_sample=1.4903  oos_trades=10  window=None -> None
+     fold 1: oos_sharpe=0.2226  in_sample=0.2073  oos_trades=20  window=None -> None
+     fold 2: oos_sharpe=-0.6594  in_sample=0.0075  oos_trades=17  window=None -> None
+     fold 3: oos_sharpe=-0.4487  in_sample=0.3148  oos_trades=17  window=None -> None
+     fold 4: oos_sharpe=0.5519  in_sample=0.9689  oos_trades=20  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 12 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c7_session_drift_us_equity_style
+  concept / asset_class : C7_order_flow_microstructure_base / us_equity_style
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : 0.1349
+  IN-SAMPLE Sharpe      : 0.1572
+  oos_sharpe_live       : 0.1349
+  n_trades              : 8
+  max_drawdown          : 0.0841
+  total_return          : 0.0713
+  oos_max_drawdown      : 0.0753
+  oos_cagr              : 0.0027
+  n_oos_trades          : 49
+  oos_profitable_folds  : 3
+  oos_retention         : 0.7938
+  pbo                   : 0.4
+  deflated_sharpe       : 0.1572
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=1 embargo=1
+  elapsed_s             : 26.5
+  FLAGS (2), verbatim:
+     * only 8 trades (need >=30)
+     * t-stat 0.73 below 2.0 - the return series is not distinguishable from noise
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=-0.1580  in_sample=-0.0692  oos_trades=11  window=None -> None
+     fold 1: oos_sharpe=0.4769  in_sample=0.0682  oos_trades=11  window=None -> None
+     fold 2: oos_sharpe=-0.3541  in_sample=0.3950  oos_trades=11  window=None -> None
+     fold 3: oos_sharpe=0.5936  in_sample=0.5493  oos_trades=7  window=None -> None
+     fold 4: oos_sharpe=0.0433  in_sample=0.1699  oos_trades=9  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 8 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c8_liquidity_reversal_commodities
+  concept / asset_class : C8_liquidity_provision_reversal / commodities
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : 0.1612
+  IN-SAMPLE Sharpe      : 0.0474
+  oos_sharpe_live       : 0.1612
+  n_trades              : 171
+  max_drawdown          : 0.0953
+  total_return          : 0.0136
+  oos_max_drawdown      : 0.0723
+  oos_cagr              : 0.0028
+  n_oos_trades          : 160
+  oos_profitable_folds  : 3
+  oos_retention         : None
+  pbo                   : 0.3333333333333333
+  deflated_sharpe       : 0.0474
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 257.8
+  FLAGS (3), verbatim:
+     * t-stat 0.22 below 2.0 - the return series is not distinguishable from noise
+     * Monte Carlo prob(profitable) 59%
+     * only 8/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=0.5313  in_sample=None  oos_trades=25  window=None -> None
+     fold 1: oos_sharpe=0.1346  in_sample=-0.9686  oos_trades=38  window=None -> None
+     fold 2: oos_sharpe=-0.0902  in_sample=-0.7924  oos_trades=45  window=None -> None
+     fold 3: oos_sharpe=-0.0481  in_sample=-0.6868  oos_trades=13  window=None -> None
+     fold 4: oos_sharpe=0.1453  in_sample=-0.6145  oos_trades=39  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            RAN      note=-
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c8_liquidity_reversal_crypto
+  concept / asset_class : C8_liquidity_provision_reversal / crypto
+  VERDICT               : FRAGILE
+  POOLED OOS Sharpe     : 0.6500
+  IN-SAMPLE Sharpe      : -0.1936
+  oos_sharpe_live       : 0.6500
+  n_trades              : 30
+  max_drawdown          : 0.0311
+  total_return          : -0.0137
+  oos_max_drawdown      : 0.0462
+  oos_cagr              : 0.0336
+  n_oos_trades          : 10
+  oos_profitable_folds  : 1
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : -0.1936
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 81.2
+  FLAGS (5), verbatim:
+     * t-stat -0.56 below 2.0 - the return series is not distinguishable from noise
+     * only 1/5 walk-forward folds profitable (edge concentrated in a few periods)
+     * edge does not survive 2x cost stress
+     * Monte Carlo prob(profitable) 37%
+     * only 1/6 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=0.1402  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=1.4562  in_sample=0.1216  oos_trades=10  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=-0.7251  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            RAN      note=-
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c8_liquidity_reversal_futures_broad
+  concept / asset_class : C8_liquidity_provision_reversal / futures_broad
+  VERDICT               : REFUTED
+  POOLED OOS Sharpe     : 0.0013
+  IN-SAMPLE Sharpe      : -0.0888
+  oos_sharpe_live       : 0.0013
+  n_trades              : 110
+  max_drawdown          : 0.0450
+  total_return          : -0.0154
+  oos_max_drawdown      : 0.0307
+  oos_cagr              : -0.0000
+  n_oos_trades          : 96
+  oos_profitable_folds  : 2
+  oos_retention         : None
+  pbo                   : 0.0
+  deflated_sharpe       : -0.0888
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 312.2
+  FLAGS (5), verbatim:
+     * t-stat -0.41 below 2.0 - the return series is not distinguishable from noise
+     * only 2/5 walk-forward folds profitable (edge concentrated in a few periods)
+     * edge does not survive 2x cost stress
+     * Monte Carlo prob(profitable) 33%
+     * only 3/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=0.5092  in_sample=None  oos_trades=14  window=None -> None
+     fold 1: oos_sharpe=-0.3388  in_sample=-0.6946  oos_trades=14  window=None -> None
+     fold 2: oos_sharpe=-0.1954  in_sample=-0.5681  oos_trades=40  window=None -> None
+     fold 3: oos_sharpe=0.1280  in_sample=-0.4924  oos_trades=28  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=-0.4407  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=Assumes costs scale linearly; real capacity is lower once market impact is modelled.
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            RAN      note=-
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c8_liquidity_reversal_fx_major
+  concept / asset_class : C8_liquidity_provision_reversal / fx_major
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 182.9
+  FLAGS (5), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * parameter stability 0% (< 60%)
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c8_liquidity_reversal_rates_credit
+  concept / asset_class : C8_liquidity_provision_reversal / rates_credit
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 320.0
+  FLAGS (5), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * parameter stability 0% (< 60%)
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+--------------------------------------------------------------------------------------------------------
+SPEC: c8_liquidity_reversal_us_equity_style
+  concept / asset_class : C8_liquidity_provision_reversal / us_equity_style
+  VERDICT               : INCONCLUSIVE
+  POOLED OOS Sharpe     : None
+  IN-SAMPLE Sharpe      : None
+  oos_sharpe_live       : None
+  n_trades              : None
+  max_drawdown          : None
+  total_return          : None
+  oos_max_drawdown      : 0.0000
+  oos_cagr              : 0.0000
+  n_oos_trades          : 0
+  oos_profitable_folds  : 0
+  oos_retention         : None
+  pbo                   : None
+  deflated_sharpe       : None
+  walk_forward n_folds  : 5  mode=purged_embargoed  purge=20 embargo=20
+  elapsed_s             : 80.5
+  FLAGS (5), verbatim:
+     * only 0 trades (need >=30)
+     * 0/5 walk-forward folds profitable - the edge is absent in every out-of-sample period, not merely concentrated in a few
+     * edge does not survive 2x cost stress
+     * parameter stability 0% (< 60%)
+     * only 0/22 profitable years
+  ERRORS (0), verbatim:
+     (none)
+  PER-FOLD OOS SHARPE TABLE (5 folds):
+     fold 0: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 1: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 2: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 3: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+     fold 4: oos_sharpe=None  in_sample=None  oos_trades=0  window=None -> None
+  STAGE LEDGER:
+     capacity               RAN      note=no traded symbols or zero turnover
+     causality              RAN      note=-
+     cost_stress            RAN      note=-
+     gross_vs_net           RAN      note=-
+     monte_carlo            ERRORED  note=only 0 trades — Monte Carlo needs >=20
+     parameter_sensitivity  RAN      note=-
+     replication            SKIPPED  note=the gauntlet only runs cross-market replication when alternative universes are supplied, a
+     subperiod              RAN      note=-
+     skipped_stages list : (none recorded)
+
+========================================================================================================
+NEGATIVE CONTROL vs TWIN — every control MUST differ from its twin
+========================================================================================================
+control                                                  verdict       ctrlOOS  twinOOS   ctrlIS ctrlN  twinN  status
+NEGATIVE-CONTROL-c7_session_drift_commodities            REFUTED         0.364   -0.372    0.212    13     13  differs
+NEGATIVE-CONTROL-c7_session_drift_crypto                 REFUTED         0.154   -0.629   -0.825    10     10  differs
+NEGATIVE-CONTROL-c7_session_drift_futures_broad          REFUTED         0.035   -0.064   -0.157    15     15  differs
+NEGATIVE-CONTROL-c7_session_drift_fx_major               INCONCLUSIVE     None     None     None  None   None  VACUOUS (both sides zero trades)
+NEGATIVE-CONTROL-c7_session_drift_rates_credit           REFUTED         0.321   -0.207   -0.110    12     12  differs
+NEGATIVE-CONTROL-c7_session_drift_us_equity_style        REFUTED        -0.489    0.135   -0.512     8      8  differs
+NEGATIVE-CONTROL-c8_liquidity_reversal_commodities       REFUTED        -0.188    0.161   -0.080   171    171  differs
+NEGATIVE-CONTROL-c8_liquidity_reversal_crypto            REFUTED        -0.654    0.650   -0.016    30     30  differs
+NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad     REFUTED        -0.037    0.001    0.062   110    110  differs
+NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major          INCONCLUSIVE     None     None     None  None   None  VACUOUS (both sides zero trades)
+NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit      INCONCLUSIVE     None     None     None  None   None  VACUOUS (both sides zero trades)
+NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style   INCONCLUSIVE     None     None     None  None   None  VACUOUS (both sides zero trades)
+
+CONTROLS THAT DIFFER FROM THEIR TWIN : 8 of 12
+CONTROLS VACUOUS (both sides 0 trades): 4
+   VACUOUS: NEGATIVE-CONTROL-c7_session_drift_fx_major (twin n_trades=None, control n_trades=None)
+   VACUOUS: NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major (twin n_trades=None, control n_trades=None)
+   VACUOUS: NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit (twin n_trades=None, control n_trades=None)
+   VACUOUS: NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style (twin n_trades=None, control n_trades=None)
+CONTROLS IDENTICAL TO THEIR TWIN      : 0
+   (none — no control is byte-identical to its twin)
+
+========================================================================================================
+CROSS-ASSET-CLASS CONSISTENCY — C7 (pooled OUT-OF-SAMPLE Sharpe)
+========================================================================================================
+asset class                OOS  in-sample n_trades  oos_tr    maxDD    totret  verdict
+us_equity_style          0.135      0.157        8      49    0.084     0.071  REFUTED
+crypto                  -0.629      0.457       10      50    0.286     0.633  REFUTED
+fx_major                  None       None     None       0     None      None  INCONCLUSIVE
+commodities             -0.372     -0.232       13      65    0.617    -0.463  REFUTED
+futures_broad           -0.064      0.054       15      73    0.655    -0.003  REFUTED
+rates_credit            -0.207      0.034       12      84    0.510    -0.020  REFUTED
+  positive OOS Sharpe on 1 of 6 asset classes; 5 of 6 produced any trade at all
+
+========================================================================================================
+CROSS-ASSET-CLASS CONSISTENCY — C8 (pooled OUT-OF-SAMPLE Sharpe)
+========================================================================================================
+asset class                OOS  in-sample n_trades  oos_tr    maxDD    totret  verdict
+us_equity_style           None       None     None       0     None      None  INCONCLUSIVE
+crypto                   0.650     -0.194       30      10    0.031    -0.014  FRAGILE
+fx_major                  None       None     None       0     None      None  INCONCLUSIVE
+commodities              0.161      0.047      171     160    0.095     0.014  REFUTED
+futures_broad            0.001     -0.089      110      96    0.045    -0.015  REFUTED
+rates_credit              None       None     None       0     None      None  INCONCLUSIVE
+  positive OOS Sharpe on 3 of 6 asset classes; 3 of 6 produced any trade at all
+
+========================================================================================================
+STAGE LEDGER MATRIX — which stages RAN, SKIPPED, ERRORED on every row
+========================================================================================================
+spec                                                        capacity   causality cost_stress gross_vs_ne monte_carlo parameter_s replication   subperiod
+NEGATIVE-CONTROL-c7_session_drift_commodities                    RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c7_session_drift_crypto                         RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c7_session_drift_futures_broad                  RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c7_session_drift_fx_major                       RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c7_session_drift_rates_credit                   RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c7_session_drift_us_equity_style                RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c8_liquidity_reversal_commodities               RAN         RAN         RAN         RAN         RAN         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c8_liquidity_reversal_crypto                    RAN         RAN         RAN         RAN         RAN         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad             RAN         RAN         RAN         RAN         RAN         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major                  RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit              RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style           RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c7_session_drift_commodities                                     RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c7_session_drift_crypto                                          RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c7_session_drift_futures_broad                                   RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c7_session_drift_fx_major                                        RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c7_session_drift_rates_credit                                    RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c7_session_drift_us_equity_style                                 RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c8_liquidity_reversal_commodities                                RAN         RAN         RAN         RAN         RAN         RAN     SKIPPED         RAN
+c8_liquidity_reversal_crypto                                     RAN         RAN         RAN         RAN         RAN         RAN     SKIPPED         RAN
+c8_liquidity_reversal_futures_broad                              RAN         RAN         RAN         RAN         RAN         RAN     SKIPPED         RAN
+c8_liquidity_reversal_fx_major                                   RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c8_liquidity_reversal_rates_credit                               RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+c8_liquidity_reversal_us_equity_style                            RAN         RAN         RAN         RAN     ERRORED         RAN     SKIPPED         RAN
+
+per-stage tally across the 24 rows:
+   capacity               {'RAN': 24}
+   causality              {'RAN': 24}
+   cost_stress            {'RAN': 24}
+   gross_vs_net           {'RAN': 24}
+   monte_carlo            {'ERRORED': 18, 'RAN': 6}
+   parameter_sensitivity  {'RAN': 24}
+   replication            {'SKIPPED': 24}
+   subperiod              {'RAN': 24}
+
+========================================================================================================
+VERDICT MIX (24 rows in scope)
+========================================================================================================
+{
+  "REFUTED": 15,
+  "INCONCLUSIVE": 8,
+  "FRAGILE": 1
+}
+
+========================================================================================================
+DELTA vs THE PRE-FIX RUN (v2, same file snapshot before this run)
+========================================================================================================
+spec                                                        v2 OOS    v3 OOS   v2 n   v3 n    v2 verdict    v3 verdict
+NEGATIVE-CONTROL-c7_session_drift_commodities                0.364     0.364     13     13       REFUTED       REFUTED
+NEGATIVE-CONTROL-c7_session_drift_crypto                     0.154     0.154     10     10       REFUTED       REFUTED
+NEGATIVE-CONTROL-c7_session_drift_futures_broad              0.035     0.035     15     15       REFUTED       REFUTED
+NEGATIVE-CONTROL-c7_session_drift_fx_major                    None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+NEGATIVE-CONTROL-c7_session_drift_rates_credit               0.321     0.321     12     12       REFUTED       REFUTED
+NEGATIVE-CONTROL-c7_session_drift_us_equity_style           -0.489    -0.489      8      8       REFUTED       REFUTED
+NEGATIVE-CONTROL-c8_liquidity_reversal_commodities          -0.188    -0.188    171    171       REFUTED       REFUTED
+NEGATIVE-CONTROL-c8_liquidity_reversal_crypto               -0.654    -0.654     30     30       REFUTED       REFUTED
+NEGATIVE-CONTROL-c8_liquidity_reversal_futures_broad        -0.037    -0.037    110    110       REFUTED       REFUTED
+NEGATIVE-CONTROL-c8_liquidity_reversal_fx_major               None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+NEGATIVE-CONTROL-c8_liquidity_reversal_rates_credit           None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+NEGATIVE-CONTROL-c8_liquidity_reversal_us_equity_style        None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+c7_session_drift_commodities                                -0.372    -0.372     13     13       REFUTED       REFUTED
+c7_session_drift_crypto                                     -0.629    -0.629     10     10       REFUTED       REFUTED
+c7_session_drift_futures_broad                              -0.064    -0.064     15     15       REFUTED       REFUTED
+c7_session_drift_fx_major                                     None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+c7_session_drift_rates_credit                               -0.207    -0.207     12     12       REFUTED       REFUTED
+c7_session_drift_us_equity_style                             0.135     0.135      8      8       REFUTED       REFUTED
+c8_liquidity_reversal_commodities                            0.161     0.161    171    171       REFUTED       REFUTED
+c8_liquidity_reversal_crypto                                 0.650     0.650     30     30       FRAGILE       FRAGILE
+c8_liquidity_reversal_futures_broad                          0.001     0.001    110    110       REFUTED       REFUTED
+c8_liquidity_reversal_fx_major                                None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+c8_liquidity_reversal_rates_credit                            None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+c8_liquidity_reversal_us_equity_style                         None      None   None   None  INCONCLUSIVE  INCONCLUSIVE
+  rows whose OOS Sharpe or verdict changed: 0 of 24
