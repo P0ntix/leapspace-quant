@@ -65,6 +65,16 @@ def _fetcher() -> CachedFetcher:
 # --------------------------------------------------------------------------
 
 
+def cmd_architecture(args) -> int:
+    """Generate the architecture diagram from the code."""
+    from .archviz import build_architecture
+    out = getattr(args, "out", None)
+    r = build_architecture(out)
+    print(f"wrote {r['html']}")
+    print(f"  {r['n_modules']} modules, {r['n_public']} public functions")
+    return 0
+
+
 def cmd_regime(args) -> int:
     f = _fetcher()
     bars, failures, provs = fetch_many_ohlcv([args.symbol], rng=args.range,
@@ -661,6 +671,16 @@ def build_parser() -> argparse.ArgumentParser:
     # --- on-chain memecoin quant (the four-quadrant operator brief) ---
     from .quant import add_parsers as _add_quant
     _add_quant(sub)
+
+    # --- the architecture diagram ---
+    sp = sub.add_parser(
+        "architecture",
+        help="generate the architecture diagram and module inventory "
+             "(read from the code with ast, so it cannot go stale)")
+    sp.add_argument("--out", default=None,
+                    help="where to write the HTML (default: "
+                         "reports/charts/architecture.html)")
+    sp.set_defaults(func=cmd_architecture)
 
     common(p)
     p.set_defaults(func=cmd_report)
