@@ -637,6 +637,135 @@ REGIME_SWITCH_SPECS: List[Dict[str, Any]] = [
 # --------------------------------------------------------------------------
 
 
+def _require_usable_feature(features: Dict[str, Any], name: str,
+                            panel: Any, signal_name: str) -> None:
+    """Raise if a feature is unusable across the WHOLE panel.
+
+    WHY THIS EXISTS
+        Twelve matrix rows produced ZERO trades, and six of them had
+        inverted controls that ALSO produced zero trades - so those
+        controls were VACUOUS: they could not fail, and they proved
+        nothing. The cause was not the strategy. It was that the
+        feature the signal needs is entirely absent on that universe:
+
+          fx_major   Yahoo's spot-FX daily bars carry `volume: 0` on
+                     100% of bars (45,440 of 45,440 observations), so
+                     `volume_ratio` and `session_drift` are ALL None.
+
+        A signal that depends on a feature which does not exist on the
+        universe SILENTLY produces zero trades, and the runner then
+        reports INCONCLUSIVE - which reads as "not enough data" rather
+        than "this configuration cannot run". A zero-trade row is a
+        CONFIGURATION ERROR and must say so.
+
+    The check is deliberately strict: the feature must be unusable for
+        EVERY symbol in the panel. A feature that is None for some
+        symbols and present for others is a data gap, not a
+        configuration error, and the signal handles it as it always
+        did.
+    """
+    if name not in (features or {}):
+        raise ValueError(
+            f"{signal_name}: the required feature '{name}' is not in the "
+            f"feature set at all. Available: {sorted(features or {})}")
+    series = features.get(name) or {}
+    total = 0
+    usable = 0
+    for s in getattr(panel, "symbols", []):
+        vals = series.get(s) or []
+        total += len(vals)
+        usable += sum(1 for v in vals if v is not None)
+    if total and usable == 0:
+        raise ValueError(
+            f"{signal_name}: the required feature '{name}' is unusable on "
+            f"this universe - all {total} observations across "
+            f"{len(getattr(panel, 'symbols', []))} symbols are None. "
+            f"This is a CONFIGURATION ERROR, not a research result: the "
+            f"signal cannot be tested here because its input does not "
+            f"exist on this universe. (On Yahoo spot-FX, for example, "
+            f"the daily bars carry volume 0, so any volume-derived "
+            f"feature is undefined.)")
+
+
+def _build_market_regime_features(panel: Any, btengine: Any,
+                                   momentum_lookback: int
+                                   ) -> Tuple[Dict[str, List[Optional[float]]],
+                                              Tuple[str, ...],
+                                              Tuple[str, ...]]:
+    """The market-level regime feature matrix, minus what does not exist.
+
+    Returns ``(features, usable_names, dropped_names)``.
+
+    WHY THE DROPPING EXISTS
+        The regime classifier takes five inputs: volatility level,
+        volatility change, trend, drawdown and liquidity. LIQUIDITY is
+        measured as the log of average DOLLAR VOLUME, so it is None
+        wherever the average dollar volume is zero.
+
+        On Yahoo spot-FX the daily bars carry `volume: 0` on 100% of
+        bars (45,440 of 45,440 observations), so the liquidity column
+        was all None on every bar of every symbol. That column was fed
+        into the classifier anyway, and the result was a regime that
+        never permitted a position: `c1_regime_switch_fx_major`
+        produced ZERO trades, and so did its inverted control - which
+        made that control VACUOUS, able to neither pass nor fail.
+
+        The fix is to use the features that ARE there and RECORD which
+        were dropped. The regime claim is about volatility, trend and
+        drawdown conditioning; liquidity is one of five inputs, and its
+        absence is disclosed rather than silently crippling the
+        classifier.
+
+        If EVERY column is unusable, that is a configuration error and
+        it raises - a regime cannot be classified from nothing.
+    """
+    from .regime import build_regime_features
+
+    closes_by_sym = {s: btengine._close_series(panel, s) for s in panel.symbols}
+    vols_by_sym = {s: (panel.vol.get(s) or [0.0] * panel.n)
+                   for s in panel.symbols}
+
+    per_symbol_features = {}
+    for s in panel.symbols:
+        per_symbol_features[s] = build_regime_features(
+            closes_by_sym[s], vols_by_sym[s],
+            vol_short=20, vol_long=60,
+            trend_lookback=max(10, momentum_lookback),
+            drawdown_lookback=max(10, momentum_lookback),
+            liquidity_lookback=20, rebound_lookback=20)
+
+    names = ("vol_level", "vol_change", "trend", "drawdown", "liquidity")
+    market_features: Dict[str, List[Optional[float]]] = {}
+    for nm in names:
+        series = []
+        for i in range(panel.n):
+            vals_i = [per_symbol_features[s][nm][i] for s in panel.symbols
+                      if per_symbol_features[s][nm][i] is not None]
+            series.append(sorted(vals_i)[len(vals_i) // 2] if vals_i else None)
+        market_features[nm] = series
+
+    usable = tuple(nm for nm in names
+                   if any(v is not None for v in market_features[nm]))
+    dropped = tuple(nm for nm in names if nm not in usable)
+    if not usable:
+        raise ValueError(
+            "regime_switch: NONE of the regime features "
+            f"({', '.join(names)}) is usable on this universe. A regime "
+            "cannot be classified from nothing - this is a "
+            "CONFIGURATION ERROR, not a research result.")
+    if dropped:
+        # Record the disclosure on the panel's own metadata, so the
+        # result row can carry it. Each panel belongs to one spec, so
+        # this is safe across parallel workers.
+        meta = getattr(panel, "meta", None)
+        if isinstance(meta, dict):
+            meta.setdefault("leapspace_regime_features_dropped", [])
+            for nm in dropped:
+                if nm not in meta["leapspace_regime_features_dropped"]:
+                    meta["leapspace_regime_features_dropped"].append(nm)
+    return market_features, usable, dropped
+
+
 def register_extensions(btengine: Any) -> Dict[str, Any]:
     """Register the paper-derived features and signals with the engine.
 
@@ -703,29 +832,12 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
         closes_by_sym = {s: btengine._close_series(panel, s) for s in panel.symbols}
         vols_by_sym = {s: (panel.vol.get(s) or [0.0] * panel.n) for s in panel.symbols}
 
-        from .regime import build_regime_features, identify_regimes
+        from .regime import identify_regimes
 
-        per_symbol_features = {}
-        for s in panel.symbols:
-            per_symbol_features[s] = build_regime_features(
-                closes_by_sym[s], vols_by_sym[s],
-                vol_short=20, vol_long=60,
-                trend_lookback=max(10, momentum_lookback),
-                drawdown_lookback=max(10, momentum_lookback),
-                liquidity_lookback=20, rebound_lookback=20)
+        market_features, usable, _dropped = _build_market_regime_features(
+            panel, btengine, momentum_lookback)
 
-        # Median feature series across symbols -> one market regime series.
-        names = ("vol_level", "vol_change", "trend", "drawdown", "liquidity")
-        market_features: Dict[str, List[Optional[float]]] = {}
-        for nm in names:
-            series = []
-            for i in range(panel.n):
-                vals_i = [per_symbol_features[s][nm][i] for s in panel.symbols
-                          if per_symbol_features[s][nm][i] is not None]
-                series.append(sorted(vals_i)[len(vals_i) // 2] if vals_i else None)
-            market_features[nm] = series
-
-        result = identify_regimes(market_features, names, n_states=n_states,
+        result = identify_regimes(market_features, usable, n_states=n_states,
                                    min_bars=max(120, momentum_lookback * 2))
         if result is None:
             # Not enough history to classify: stand aside rather than guess.
@@ -854,28 +966,12 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
         closes_by_sym = {s: btengine._close_series(panel, s) for s in panel.symbols}
         vols_by_sym = {s: (panel.vol.get(s) or [0.0] * panel.n) for s in panel.symbols}
 
-        from .regime import build_regime_features, identify_regimes
+        from .regime import identify_regimes
 
-        per_symbol_features = {}
-        for s in panel.symbols:
-            per_symbol_features[s] = build_regime_features(
-                closes_by_sym[s], vols_by_sym[s],
-                vol_short=20, vol_long=60,
-                trend_lookback=max(10, momentum_lookback),
-                drawdown_lookback=max(10, momentum_lookback),
-                liquidity_lookback=20, rebound_lookback=20)
+        market_features, usable, _dropped = _build_market_regime_features(
+            panel, btengine, momentum_lookback)
 
-        names = ("vol_level", "vol_change", "trend", "drawdown", "liquidity")
-        market_features: Dict[str, List[Optional[float]]] = {}
-        for nm in names:
-            series = []
-            for i in range(panel.n):
-                vi = [per_symbol_features[s][nm][i] for s in panel.symbols
-                      if per_symbol_features[s][nm][i] is not None]
-                series.append(sorted(vi)[len(vi) // 2] if vi else None)
-            market_features[nm] = series
-
-        result = identify_regimes(market_features, names, n_states=n_states,
+        result = identify_regimes(market_features, usable, n_states=n_states,
                                    min_bars=max(120, momentum_lookback * 2))
         if result is None:
             return {s: [0.0] * panel.n for s in panel.symbols}
@@ -1354,6 +1450,21 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
         short leg, which is exactly the polarity flip a negative
         control needs.
         """
+        # The C7 feature is a daily-bar PROXY for session drift, and
+        # it is volume-weighted. On an universe with no volume the
+        # proxy is undefined on every bar, so the cross-sectional rank
+        # has nothing to rank and the signal produces ZERO trades.
+        # Its inverted control then produces zero trades too - which
+        # makes the control VACUOUS, able to neither pass nor fail.
+        # That is a configuration error and it says so.
+        #
+        # `feature` reaches this wrapper through **kw: the engine's
+        # `compute_signal` passes it as a keyword, and this wrapper's
+        # signature does not name it.
+        _feature = kw.get("feature")
+        if _feature:
+            _require_usable_feature(features, _feature, panel,
+                                    "paper_cross_sectional")
         sig = btengine.SIGNALS["cross_sectional"](
             panel, features, long_rank=long_rank, short_rank=short_rank,
             **kw)
@@ -1417,6 +1528,12 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
             raise ValueError("volume_confirmed_momentum requires a feature")
         if volume_feature is None:
             volume_feature = "volume_ratio"
+        # A volume-confirmed signal on an universe with no volume is a
+        # CONFIGURATION ERROR, not a zero-trade result. Without this the
+        # row reads INCONCLUSIVE, and its inverted control is vacuous -
+        # it also produces zero trades and therefore cannot fail.
+        _require_usable_feature(features, volume_feature, panel,
+                                "volume_confirmed_momentum")
         vals = features.get(feature) or {}
         vols = features.get(volume_feature) or {}
         sig: Dict[str, List[float]] = {}
@@ -1486,7 +1603,21 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
                 else:
                     if zz >= float(exit):
                         in_pos = False
-                    row.append(0.0)
+                    # THE POSITION IS APPENDED EVERY BAR.
+                    #
+                    # The engine reads a signal series as a per-bar
+                    # TARGET POSITION - that is the contract the
+                    # engine's own `time_series_zscore` follows, and
+                    # the one this package's `regime_switch` follows.
+                    #
+                    # Appending 0.0 while holding therefore CLOSES the
+                    # position on the very next bar. The rule was
+                    # reduced to a one-bar hold, the exit condition
+                    # could never be reached, and every result this
+                    # signal produced was about a different strategy
+                    # than the one the paper describes.
+                    row.append(_invert(1.0, invert_signal) if in_pos
+                               else 0.0)
             sig[s] = row
         return sig
 
@@ -1546,12 +1677,38 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
                                       entry=-2.0, exit=-0.5,
                                       max_volume_ratio=0.8,
                                       min_volatility=0.30,
+                                      vol_percentile=None,
+                                      vol_rank_lookback=252,
                                       invert_signal=False, **kw):
         """Reversion PERMITTED ONLY in thin liquidity and high volatility.
 
         The papers: 'Reversal is stronger in illiquid stocks, lower-
         turnover environments, and more volatile conditions; profits are
         especially concentrated where liquidity is scarce.'
+
+        THE VOLATILITY GATE IS RELATIVE BY DEFAULT, AND IT HAS TO BE.
+
+        `min_volatility` is an ABSOLUTE annualised threshold. On the
+        current universes it is a structural exclusion, not a gate:
+        only 8.4% of us_equity_style observations and 16.9% of
+        rates_credit observations clear 0.30, while crypto and
+        commodities clear it routinely. The result was that
+        `liquidity_gated_reversion` produced ZERO trades on equities and
+        rates - and its inverted control also produced zero trades, so
+        the control was VACUOUS and could not fail.
+
+        The paper's wording is RELATIVE - "more volatile conditions" -
+        meaning more volatile than the asset's OWN NORM, not more
+        volatile than 30%. So `vol_percentile` compares the current
+        volatility against its own trailing distribution. With
+        `vol_percentile=0.75` the gate opens when the asset's
+        volatility is in the top quartile of its own recent history,
+        which means the same rule applies to a 7%-vol FX pair and an
+        80%-vol crypto coin.
+
+        `min_volatility` remains available as an absolute floor for a
+        spec that wants one, but it is NOT the default reading of the
+        paper.
         """
         if feature is None:
             raise ValueError("liquidity_gated_reversion requires a feature")
@@ -1559,6 +1716,13 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
             volume_feature = "volume_ratio"
         if vol_feature is None:
             vol_feature = "volatility"
+        # See volume_confirmed_momentum: a liquidity-gated signal on a
+        # universe with no volume is a CONFIGURATION ERROR, not a
+        # zero-trade result.
+        _require_usable_feature(features, volume_feature, panel,
+                                "liquidity_gated_reversion")
+        _require_usable_feature(features, vol_feature, panel,
+                                "liquidity_gated_reversion")
         vals = features.get(feature) or {}
         vols = features.get(volume_feature) or {}
         vs = features.get(vol_feature) or {}
@@ -1584,7 +1748,26 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
                     row.append(0.0)
                     continue
                 thin = rv <= float(max_volume_ratio)
-                hot = vol >= float(min_volatility)
+                if vol_percentile is not None:
+                    # RELATIVE gate: is the current volatility high
+                    # compared with the asset's OWN trailing
+                    # distribution? This is the paper's "more volatile
+                    # conditions", and it travels across asset classes
+                    # where an absolute threshold does not.
+                    lo = max(0, i - int(vol_rank_lookback))
+                    hist = [float(x) for x in vv[lo:i + 1]
+                            if x is not None]
+                    if len(hist) < 20:
+                        hot = False
+                    else:
+                        below = sum(1 for x in hist if x <= vol)
+                        hot = (below / len(hist)) >= float(vol_percentile)
+                    # The absolute floor still applies on top, so a
+                    # spec can require BOTH.
+                    if min_volatility is not None:
+                        hot = hot and (vol >= float(min_volatility))
+                else:
+                    hot = vol >= float(min_volatility)
                 if not in_pos:
                     if zz <= float(entry) and thin and hot:
                         in_pos = True
@@ -1594,7 +1777,21 @@ def register_extensions(btengine: Any) -> Dict[str, Any]:
                 else:
                     if zz >= float(exit):
                         in_pos = False
-                    row.append(0.0)
+                    # THE POSITION IS APPENDED EVERY BAR.
+                    #
+                    # The engine reads a signal series as a per-bar
+                    # TARGET POSITION - that is the contract the
+                    # engine's own `time_series_zscore` follows, and
+                    # the one this package's `regime_switch` follows.
+                    #
+                    # Appending 0.0 while holding therefore CLOSES the
+                    # position on the very next bar. The rule was
+                    # reduced to a one-bar hold, the exit condition
+                    # could never be reached, and every result this
+                    # signal produced was about a different strategy
+                    # than the one the paper describes.
+                    row.append(_invert(1.0, invert_signal) if in_pos
+                               else 0.0)
             sig[s] = row
         return sig
 
@@ -2063,7 +2260,7 @@ def _stage_entry(val: Dict[str, Any]) -> Dict[str, Any]:
 def run_spec(spec: Dict[str, Any], quick: bool = False,
              n_variants: Optional[int] = None,
              walk_forward_folds: int = 5,
-             alt_universes: Optional[List[Dict[str, Any]]] = None,
+             alt_universes: Optional[List[str]] = None,
              out_dir: Optional[str] = None,
              verbose: bool = True) -> BacktestResult:
     """Run one spec through the full validation gauntlet."""

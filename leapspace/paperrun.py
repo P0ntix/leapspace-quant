@@ -39,6 +39,7 @@ import time
 from typing import Any, Dict, List, Optional, Sequence
 
 from .backtest import BacktestResult, run_spec
+from .paperspecs import alt_universes_for
 
 __all__ = ["run_matrix", "merge_results", "PAPER_RESULTS_PATH",
            "leading_coverage_for"]
@@ -296,8 +297,17 @@ def run_matrix(specs: Sequence[Dict[str, Any]],
                 continue
             t0 = time.time()
             try:
+                # The CROSS-MARKET REPLICATION stage. The gauntlet
+                # only runs it when alternative universes are supplied,
+                # and supplying none left `replication: SKIPPED` on
+                # every one of the 120 rows. The alternatives are
+                # genuinely DIFFERENT markets, not neighbouring presets
+                # of the same one - otherwise the stage would answer
+                # almost nothing.
+                _alt = alt_universes_for(spec.get("asset_class") or "")
                 res: BacktestResult = run_spec(spec, quick=quick,
                                                n_variants=n_variants,
+                                               alt_universes=_alt or None,
                                                verbose=False)
                 row = _row_from_result(res, spec, time.time() - t0)
             except Exception as exc:  # noqa: BLE001

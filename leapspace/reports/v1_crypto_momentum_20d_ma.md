@@ -4,7 +4,7 @@
 
 ## VERDICT: **FRAGILE**
 
-OOS Sharpe 0.74 is positive but concerns remain: Monte Carlo prob(profitable) 80%
+OOS Sharpe 0.74 is positive but concerns remain: Monte Carlo prob(profitable) 79%
 
 ## In-Sample Metrics
 
@@ -86,11 +86,11 @@ Costs paid: $1,280,879 on $640,439,483 of turnover.
 
 ## Monte Carlo (trade resampling)
 
-- 3000 resamples over 1330 trades (104 trades/year)
-- P(profitable): **80.2%**
-- P(Sharpe < 0): 43.5%
-- Sharpe p5 / p50 / p95: -0.46 / 0.09 / 0.53
-- Median reshuffled max drawdown: 109.9%
+- 10000 resamples over 1330 trades (104 trades/year)
+- P(profitable): **79.3%**
+- P(Sharpe < 0): 43.7%
+- Sharpe p5 / p50 / p95: -0.46 / 0.08 / 0.53
+- Median reshuffled max drawdown: 110.1%
 
 > A p5 Sharpe below 0 means a fifth of orderings of these same trades lose money — the edge is thinner than the sample implies.
 
@@ -100,7 +100,7 @@ Costs paid: $1,280,879 on $640,439,483 of turnover.
 
 ## Concerns Raised
 
-- ⚠ Monte Carlo prob(profitable) 80%
+- ⚠ Monte Carlo prob(profitable) 79%
 
 ---
 

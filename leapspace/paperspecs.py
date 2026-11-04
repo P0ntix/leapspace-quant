@@ -210,6 +210,38 @@ _ANALYST = "analyst_choice"
 _ENGINE = "engine_default"
 
 
+#: ALTERNATIVE UNIVERSES for the cross-market replication stage.
+#:
+#: The gauntlet only runs that stage when alternative universes are
+#: supplied, and the matrix runner supplied none - so on every one of
+#: the 120 rows the ledger read
+#: `replication: SKIPPED ... NO spec in this matrix was tested for
+#: whether it transfers to a different market`.
+#:
+#: Testing a concept on six asset classes is BREADTH, not replication:
+#: it is the SAME universe each time. These are genuinely DIFFERENT
+#: universes, so the stage can answer the question that matters - is
+#: this an edge, or a curiosity of one market?
+#:
+#: The mapping is deliberately to a different market class, not to a
+#: neighbouring preset of the same class. `us_equity_style` ->
+#: `us_equity_sector` would be the same market with different
+#: constituents, which would answer almost nothing.
+ALT_UNIVERSES: Dict[str, List[str]] = {
+    "us_equity_style": ["us_equity_sector", "us_equity_broad"],
+    "crypto": ["multi_asset", "risk_on_risk_off"],
+    "fx_major": ["fx_emerging", "multi_asset"],
+    "commodities": ["real_asset", "multi_asset"],
+    "futures_broad": ["real_asset", "multi_asset"],
+    "rates_credit": ["real_asset", "multi_asset"],
+}
+
+
+def alt_universes_for(asset_class: str) -> List[str]:
+    """The alternative universes for one asset class."""
+    return list(ALT_UNIVERSES.get(asset_class, []))
+
+
 def _make(name: str, paper: str, concept: str, hypothesis: str,
           asset_class: str, features: List[Dict[str, Any]],
           signal: Dict[str, Any], provenance: Dict[str, Dict[str, str]],
@@ -667,7 +699,19 @@ def _c8_liquidity_reversal(asset_class: str) -> Dict[str, Any]:
             "volume_feature": "volume_ratio",
             "vol_feature": "volatility",
             "entry": -2.0, "exit": -0.5,
-            "max_volume_ratio": 0.8, "min_volatility": 0.30}},
+            "max_volume_ratio": 0.8,
+            # The volatility gate is RELATIVE to the asset's own
+            # trailing distribution. An absolute 30% annualised floor
+            # excluded equities and rates structurally - only 8.4% and
+            # 16.9% of their observations clear it - so the rule
+            # produced ZERO trades on those two universes, and their
+            # inverted controls produced zero trades too, making those
+            # controls VACUOUS. The paper says "more volatile
+            # conditions", which is a statement about the asset's own
+            # norm, not about 30%.
+            "vol_percentile": 0.75,
+            "vol_rank_lookback": 252,
+            "min_volatility": None}},
         provenance={
             "signal.type": _prov(
                 _PAPER,
@@ -677,8 +721,26 @@ def _c8_liquidity_reversal(asset_class: str) -> Dict[str, Any]:
                          "Reversion and Reversal by Market State'"),
             "signal.params.max_volume_ratio": _prov(
                 _ANALYST, "0.8 - liquidity must be thin."),
+            "signal.params.vol_percentile": _prov(
+                _ANALYST,
+                "0.75 - the asset's volatility must be in the top "
+                "quartile of its OWN trailing 252-bar distribution. This "
+                "is the paper's 'more volatile conditions' read as a "
+                "RELATIVE condition, which is what makes one rule "
+                "portable across a 7%-vol FX pair and an 80%-vol "
+                "crypto coin. The previous absolute 0.30 annualised "
+                "floor excluded equities (8.4% of observations clear "
+                "it) and rates (16.9%) outright."),
+            "signal.params.vol_rank_lookback": _prov(
+                _ANALYST,
+                "252 bars - one trading year of the asset's own "
+                "volatility history, so the percentile is measured "
+                "against a full seasonal cycle."),
             "signal.params.min_volatility": _prov(
-                _ANALYST, "0.30 annualised - volatility must be high."),
+                _ANALYST,
+                "None - NO absolute floor. The relative percentile is "
+                "the gate. An absolute floor was what excluded two of "
+                "the six asset classes."),
             "signal.params.entry": _prov(_ANALYST, "-2.0 z-score."),
             "signal.params.exit": _prov(_ANALYST, "-0.5 z-score."),
         },
